@@ -1,4 +1,4 @@
-const fs=require('fs');const {JSDOM,VirtualConsole}=require('/tmp/node_modules/jsdom');
+const fs=require('fs');const {JSDOM,VirtualConsole}=(()=>{try{return require('jsdom')}catch(e){return require('/tmp/node_modules/jsdom')}})();
 const path=require('path');
 function learnoHTML(){
   const c=[process.env.LEARNO_HTML,

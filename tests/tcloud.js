@@ -1,6 +1,6 @@
 /* Test de l'écran de connexion et de la couche de synchronisation.
    Aucun appel réseau réel : on simule Supabase avec un faux fetch. */
-const fs=require('fs');const {JSDOM,VirtualConsole}=require('/tmp/node_modules/jsdom');
+const fs=require('fs');const {JSDOM,VirtualConsole}=(()=>{try{return require('jsdom')}catch(e){return require('/tmp/node_modules/jsdom')}})();
 const path=require('path');
 function learnoHTML(){
   const c=[process.env.LEARNO_HTML,
