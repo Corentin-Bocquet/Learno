@@ -36,7 +36,7 @@ jobs:
 
       - name: Sauvegarde, synchro, interface, finitions
         run: |
-          for t in tbackup tcloud tui tmissions tpratique tpro; do
+          for t in tbackup tcloud tui tmissions tpratique tpro tmasc; do
             echo "--- $t"
             node --max-old-space-size=4000 tests/$t.js | tee /tmp/out.txt
             grep -q "^ERREURS: 0" /tmp/out.txt || { echo "ECHEC sur $t"; exit 1; }

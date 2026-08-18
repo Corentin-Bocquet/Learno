@@ -2,7 +2,7 @@
    Objectif : que l'application s'ouvre et fonctionne sans reseau.
    Strategie : reseau d'abord pour la page, cache d'abord pour les
    ressources fixes. Le cache est purge a chaque nouvelle version.   */
-const V = "learno-v3";
+const V = "learno-v4";
 const FIXE = [
   "./",
   "./index.html",
