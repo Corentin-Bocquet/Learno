@@ -10153,14 +10153,22 @@ function lookPick(el,si,k){
 
 /* ---------------- SPLASH NOUVELLE NOTION ---------------- */
 function newNotionSplash(txt,cb){
+  /* un splash a la fois : sinon deux couches se superposent */
+  document.querySelectorAll(".splash").forEach(x=>x.remove());
   const d=document.createElement("div");
   d.className="splash";
+  d.setAttribute("role","status");
+  d.setAttribute("aria-live","polite");
   d.innerHTML=`<div class="splashcard">${esc(txt)}</div><div class="splashlbl">Nouvelle notion</div>
     <button class="btn" style="max-width:280px" id="sp-go">Continuer</button>`;
   document.body.appendChild(d);
   sfx("combo");
-  const close=()=>{d.remove();if(cb)cb();};
-  d.querySelector("#sp-go").onclick=close;
+  let fini=false;
+  const close=()=>{ if(fini)return; fini=true; d.remove(); if(cb)cb(); };
+  /* on ne suppose jamais que le bouton existe : un clic n importe ou ferme aussi */
+  const b=d.querySelector("#sp-go");
+  if(b){ b.onclick=close; setTimeout(()=>{try{b.focus();}catch(e){}},60); }
+  d.addEventListener("click",close);
   setTimeout(()=>{if(document.body.contains(d))close();},4200);
 }
 
