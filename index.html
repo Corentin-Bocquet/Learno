@@ -15,7 +15,10 @@
 <meta name="apple-mobile-web-app-title" content="Multilingo">
 <meta name="application-name" content="Multilingo">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="theme-color" content="#131F24">
+<meta name="theme-color" content="#131F24" id="meta-theme">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap">
 <style>
 :root{
   color-scheme: dark;
@@ -26,10 +29,24 @@
   --red:#FF4B4B; --red-d:#D63434; --gold:#FFC800; --gold-d:#D6A500;
   --orange:#FF9600; --orange-d:#D67D00; --pink:#FF86D0;
   --shadow:0 4px 0;
+  /* elevation a trois niveaux */
+  --el1:0 1px 2px rgba(0,0,0,.28);
+  --el2:0 6px 18px rgba(0,0,0,.34);
+  --el3:0 24px 60px rgba(0,0,0,.52);
+  /* rayons nommes */
+  --r-sm:10px; --r-md:16px; --r-lg:24px; --r-pill:99px;
+  /* echelle de profondeur declaree, du fond vers l avant */
+  --z-sticky:10; --z-fab:20; --z-float:40; --z-overlay:100;
+  --z-modal:200; --z-splash:250; --z-auth:300; --z-fx:500; --z-toast:600;
+  /* duree d animation, mise a 0 si l utilisateur refuse le mouvement */
+  --t-fast:.14s; --t-mid:.24s; --t-slow:.42s;
   --font:"Nunito","SF Pro Rounded",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,system-ui,sans-serif;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent;}
 html,body{margin:0;padding:0;height:100%;background:var(--bg);}
+/* iOS : 100% se cale sur le grand viewport, donc le bas passe sous la barre
+   d adresse de Safari. dvh suit la hauteur reellement visible.            */
+@supports (height:100dvh){ html,body{height:100dvh} }
 body{font-family:var(--font);color:var(--txt);font-weight:800;overflow:hidden;}
 button{font-family:inherit;font-weight:800;color:inherit;background:none;border:none;cursor:pointer;}
 input{font-family:inherit;font-weight:800;}
@@ -63,7 +80,7 @@ input{font-family:inherit;font-weight:800;}
 .scroll{flex:1;overflow-y:auto;padding:16px 16px 120px;scroll-behavior:smooth}
 
 /* ---------- topbar mobile ---------- */
-#mtop{display:none;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--bg);position:relative;z-index:5}
+#mtop{display:none;align-items:center;justify-content:space-between;gap:8px;padding:10px 14px;border-bottom:2px solid var(--line);background:var(--bg);position:relative;z-index:var(--z-sticky)}
 .stat{display:flex;align-items:center;gap:5px;font-size:16px}
 .stat .em{font-size:19px}
 .s-fire{color:var(--orange)} .s-gem{color:var(--blue)} .s-heart{color:var(--red)} .s-xp{color:var(--gold)}
@@ -95,7 +112,7 @@ input{font-family:inherit;font-weight:800;}
 .section-t{font-size:13px;letter-spacing:1.2px;text-transform:uppercase;color:var(--dim2);margin:20px 2px 10px}
 
 /* ---------- chemin ---------- */
-.unitbar{position:sticky;top:0;z-index:3;margin:14px 0 6px;border-radius:16px;padding:14px 16px;
+.unitbar{position:sticky;top:0;z-index:12;margin:14px 0 6px;border-radius:16px;padding:14px 16px;
   display:flex;align-items:center;justify-content:space-between;gap:10px;box-shadow:0 4px 0 rgba(0,0,0,.25)}
 .unitbar .t1{font-size:12px;letter-spacing:1.2px;text-transform:uppercase;opacity:.85}
 .unitbar .t2{font-size:18px;margin-top:2px;line-height:1.2}
@@ -222,7 +239,7 @@ input{font-family:inherit;font-weight:800;}
 .sw.on{border-color:#fff}
 
 /* ---------- modale / effets ---------- */
-.modal{position:fixed;inset:0;background:rgba(6,12,15,.72);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:100;padding:18px}
+.modal{position:fixed;inset:0;background:rgba(6,12,15,.72);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:var(--z-modal);padding:18px}
 .modal.on{display:flex;animation:fade .18s}
 @keyframes fade{from{opacity:0}to{opacity:1}}
 .mcard{background:var(--bg);border:2px solid var(--line);border-radius:22px;padding:24px 20px;max-width:460px;width:100%;max-height:88vh;overflow-y:auto;text-align:center;animation:pop .25s cubic-bezier(.2,1.2,.4,1)}
@@ -232,12 +249,12 @@ input{font-family:inherit;font-weight:800;}
 .mcard img.hero{width:130px;height:130px;animation:pop2 .5s}
 @keyframes pop2{0%{transform:scale(.4) rotate(-12deg)}70%{transform:scale(1.12) rotate(4deg)}100%{transform:scale(1) rotate(0)}}
 .big{font-size:56px;margin:4px 0}
-.combo{position:fixed;top:76px;left:50%;transform:translateX(-50%);z-index:60;background:var(--orange);color:#3A2000;border-radius:14px;
+.combo{position:fixed;top:76px;left:50%;transform:translateX(-50%);z-index:var(--z-float);background:var(--orange);color:#3A2000;border-radius:14px;
   padding:9px 18px;font-size:14px;box-shadow:0 4px 0 var(--orange-d);animation:cpop .4s}
 @keyframes cpop{0%{transform:translate(-50%,-16px) scale(.8);opacity:0}100%{transform:translate(-50%,0) scale(1);opacity:1}}
-.toast{position:fixed;left:50%;bottom:104px;transform:translateX(-50%);z-index:80;background:var(--card2);border:2px solid var(--line);
+.toast{position:fixed;left:50%;bottom:104px;transform:translateX(-50%);z-index:var(--z-toast);background:var(--card2);border:2px solid var(--line);
   color:var(--txt);border-radius:14px;padding:12px 18px;font-size:14px;max-width:90%;text-align:center;line-height:1.45;animation:cpop .3s}
-#fx{position:fixed;inset:0;pointer-events:none;z-index:90}
+#fx{position:fixed;inset:0;pointer-events:none;z-index:var(--z-fx)}
 .shake{animation:shake .4s}
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(4px)}}
 .pulse{animation:pulse .5s}
@@ -464,10 +481,10 @@ input{font-family:inherit;font-weight:800;}
 @media(max-width:520px){ .rcell{font-size:7.5px} .ptable{max-width:100%} }
 
 /* ---------- calculatrice ---------- */
-.calcbtn{position:fixed;right:16px;bottom:120px;z-index:40;width:56px;height:56px;border-radius:18px;background:var(--blue);
+.calcbtn{position:fixed;right:16px;bottom:120px;z-index:var(--z-fab);width:56px;height:56px;border-radius:18px;background:var(--blue);
   color:#04222F;box-shadow:0 5px 0 var(--blue-d);display:flex;align-items:center;justify-content:center}
 .calcbtn:active{transform:translateY(4px);box-shadow:0 1px 0 var(--blue-d)}
-.calcwrap{position:fixed;inset:0;z-index:60;background:rgba(6,12,15,.72);display:flex;align-items:flex-end;justify-content:center;padding:12px}
+.calcwrap{position:fixed;inset:0;z-index:var(--z-overlay);background:rgba(6,12,15,.72);display:flex;align-items:flex-end;justify-content:center;padding:12px}
 .calcpanel{width:100%;max-width:400px;background:var(--bg);border:2px solid var(--line);border-radius:22px;padding:16px;box-shadow:0 -6px 30px rgba(0,0,0,.5)}
 .calcscr{border:2px solid var(--line);border-radius:14px;background:var(--bg2);padding:12px 14px;text-align:right;margin-bottom:12px}
 .calcexp{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:15px;color:var(--dim);min-height:20px;word-break:break-all}
@@ -480,7 +497,7 @@ input{font-family:inherit;font-weight:800;}
 .ckey.del{color:var(--red)}
 
 /* ---------- splash nouvelle notion ---------- */
-.splash{position:fixed;inset:0;z-index:70;background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:24px}
+.splash{position:fixed;inset:0;z-index:var(--z-splash);background:var(--bg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:26px;padding:24px}
 .splashcard{border:3px solid var(--purple);border-radius:22px;padding:34px 26px;max-width:340px;text-align:center;
   font-size:22px;color:var(--purple);background:var(--bg2);animation:sppop .45s cubic-bezier(.2,1.4,.4,1)}
 @keyframes sppop{0%{transform:scale(.6);opacity:0}100%{transform:scale(1);opacity:1}}
@@ -579,7 +596,7 @@ input{font-family:inherit;font-weight:800;}
 @media (max-width:860px){
   #side{display:none}
   #mtop{display:flex}
-  #mtabs{display:flex;justify-content:space-around;align-items:center;border-top:2px solid var(--line);background:var(--bg);padding:8px 4px 12px;position:relative;z-index:5}
+  #mtabs{display:flex;justify-content:space-around;align-items:center;border-top:2px solid var(--line);background:var(--bg);padding:8px 4px calc(12px + env(safe-area-inset-bottom));position:relative;z-index:var(--z-sticky)}
   #mtabs .navitem{flex-direction:column;gap:3px;padding:6px 8px;font-size:9.5px;letter-spacing:.4px;border:none;border-radius:12px}
   #mtabs .navitem .ic{font-size:22px;width:auto}
   #center{max-width:100%}
@@ -589,7 +606,7 @@ input{font-family:inherit;font-weight:800;}
 
 /* ===================== ÉCRAN DE CONNEXION (Learno) ===================== */
 #auth{
-  position:fixed;inset:0;z-index:400;display:none;
+  position:fixed;inset:0;z-index:var(--z-auth);display:none;
   background:var(--bg);
   align-items:center;justify-content:center;padding:24px;
   overflow-y:auto;
@@ -708,6 +725,240 @@ input{font-family:inherit;font-weight:800;}
   .auth-form h2{font-size:26px}
 }
 
+
+/* =====================================================================
+   FINITION PRODUIT
+   ===================================================================== */
+
+/* ---------- 1. ZONES DE SECURITE iOS -------------------------------
+   viewport-fit=cover retire les marges automatiques d iOS : il faut
+   les rendre nous memes, sinon les boutons du bas passent sous la
+   barre d adresse de Safari ou sous la barre gestuelle.              */
+#auth{
+  padding:24px 24px calc(24px + env(safe-area-inset-bottom)) 24px;
+  padding-left:calc(24px + env(safe-area-inset-left));
+  padding-right:calc(24px + env(safe-area-inset-right));
+}
+@supports (height:100dvh){ #auth{height:100dvh} }
+.toast{ bottom:calc(104px + env(safe-area-inset-bottom)) }
+.calcbtn{ bottom:calc(120px + env(safe-area-inset-bottom)) }
+.calcwrap{ padding-bottom:calc(12px + env(safe-area-inset-bottom)) }
+.modal{ padding-bottom:calc(18px + env(safe-area-inset-bottom)) }
+.splash{ padding-bottom:calc(24px + env(safe-area-inset-bottom)) }
+@media(max-width:900px){
+  /* le formulaire ne doit jamais etre centre verticalement sur un petit
+     ecran : il glisserait sous la barre du navigateur.                */
+  #auth{ padding:0; align-items:flex-start }
+  .auth-form{ padding-bottom:calc(44px + env(safe-area-inset-bottom)) }
+}
+/* filet de securite : sur les ecrans vraiment courts on compacte tout */
+@media(max-width:900px) and (max-height:700px){
+  .auth-art{ min-height:150px; padding:16px 20px 6px }
+  .auth-hero .mascot{ width:74px }
+  .auth-hero h3{ font-size:17px }
+  .auth-curve{ height:40px }
+  .auth-form{ padding:18px 20px calc(30px + env(safe-area-inset-bottom)) }
+  .auth-form h2{ font-size:21px }
+  .auth-form .sub{ margin-bottom:14px; font-size:12.5px }
+  .auth-tabs{ margin-bottom:14px }
+  .auth-field{ margin-bottom:10px }
+  .auth-field input{ padding:12px 16px 12px 44px }
+}
+
+/* ---------- 2. ACCESSIBILITE --------------------------------------- */
+:focus{ outline:none }
+:focus-visible{
+  outline:3px solid var(--blue);
+  outline-offset:3px;
+  border-radius:6px;
+}
+.btn:focus-visible,.auth-btn:focus-visible,.navitem:focus-visible{ outline-offset:4px }
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0;
+}
+.skiplink{
+  position:fixed;top:-60px;left:12px;z-index:var(--z-toast);
+  background:var(--green);color:#10230A;padding:10px 18px;border-radius:var(--r-pill);
+  transition:top var(--t-fast);
+}
+.skiplink:focus{ top:calc(12px + env(safe-area-inset-top)) }
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{
+    animation-duration:.001ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.001ms !important;
+    scroll-behavior:auto !important;
+  }
+}
+
+/* ---------- 3. MICRO-INTERACTIONS ---------------------------------- */
+@keyframes lrn-pop{0%{transform:scale(1)}42%{transform:scale(1.13)}100%{transform:scale(1)}}
+@keyframes lrn-shake{0%,100%{transform:translateX(0)}18%{transform:translateX(-6px)}38%{transform:translateX(5px)}58%{transform:translateX(-3px)}78%{transform:translateX(2px)}}
+@keyframes lrn-rise{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+@keyframes lrn-shine{0%{background-position:-220px 0}100%{background-position:260px 0}}
+@keyframes lrn-glow{0%,100%{box-shadow:0 0 0 0 rgba(88,204,2,0)}45%{box-shadow:0 0 0 9px rgba(88,204,2,.16)}}
+.anim-pop{ animation:lrn-pop var(--t-mid) cubic-bezier(.34,1.56,.64,1) }
+.anim-shake{ animation:lrn-shake .34s ease }
+.anim-rise{ animation:lrn-rise var(--t-mid) ease both }
+.anim-glow{ animation:lrn-glow .6s ease }
+/* la barre de progression depasse legerement puis revient */
+.pbar > div, .prog > div, .mbar > div{ transition:width var(--t-slow) cubic-bezier(.34,1.4,.64,1) }
+/* squelettes de chargement, jamais d ecran vide */
+.skel{
+  border-radius:var(--r-md);background:var(--card2);
+  background-image:linear-gradient(90deg,transparent,rgba(255,255,255,.07),transparent);
+  background-size:220px 100%;background-repeat:no-repeat;
+  animation:lrn-shine 1.15s infinite linear;
+}
+.skel.line{height:14px;margin:9px 0}
+.skel.card{height:76px;margin:10px 0}
+/* compteur qui defile */
+.rollnum{font-variant-numeric:tabular-nums}
+
+/* ---------- 4. THEME CLAIR ----------------------------------------- */
+body.theme-light{
+  color-scheme:light;
+  --bg:#FFFFFF; --bg2:#F4F8FA; --card:#FFFFFF; --card2:#EEF4F7; --line:#D8E3E8;
+  --txt:#12222A; --dim:#5A7280; --dim2:#8FA5B1;
+  --el1:0 1px 2px rgba(20,40,50,.10);
+  --el2:0 6px 18px rgba(20,40,50,.12);
+  --el3:0 24px 60px rgba(20,40,50,.20);
+}
+body.theme-light .modal{ background:rgba(30,50,60,.42) }
+body.theme-light .calcwrap{ background:rgba(30,50,60,.42) }
+body.theme-light .auth-art{
+  background:
+    radial-gradient(120% 100% at 20% 10%, rgba(88,204,2,.22), transparent 60%),
+    radial-gradient(120% 110% at 85% 90%, rgba(28,176,246,.20), transparent 60%),
+    linear-gradient(150deg,#E9F6E0 0%,#E4F1F6 55%,#EFF6F9 100%);
+}
+body.theme-light .auth-art .blob{ background:rgba(255,255,255,.5) }
+body.theme-light .auth-hero h3{ color:#12222A }
+body.theme-light .auth-brand .w{ color:var(--green-d) }
+body.theme-light .skel{ background-image:linear-gradient(90deg,transparent,rgba(0,0,0,.05),transparent) }
+
+/* ---------- 5. REGLAGE DES ONGLETS --------------------------------- */
+.tabcfg{display:flex;flex-direction:column;gap:8px;margin:2px 0 4px}
+.tabrow{
+  display:flex;align-items:center;gap:13px;padding:11px 14px;
+  border:2px solid var(--line);border-radius:var(--r-md);background:var(--bg);
+  transition:border-color var(--t-fast),background var(--t-fast);
+}
+.tabrow.off{ opacity:.55 }
+.tabrow.on{ border-color:var(--green) }
+.tabrow .ic{display:flex;width:24px;justify-content:center;flex:none}
+.tabrow .nm{flex:1;min-width:0;font-size:14px;text-align:left}
+.tabrow .lock{font-size:10.5px;letter-spacing:.7px;text-transform:uppercase;color:var(--dim2);flex:none}
+.swi{
+  flex:none;width:50px;height:29px;border-radius:var(--r-pill);background:var(--line);
+  position:relative;transition:background var(--t-fast);cursor:pointer;
+}
+.swi::after{
+  content:"";position:absolute;top:3px;left:3px;width:23px;height:23px;border-radius:50%;
+  background:var(--txt);transition:transform var(--t-mid) cubic-bezier(.34,1.4,.64,1);
+}
+.swi.on{ background:var(--green) }
+.swi.on::after{ transform:translateX(21px);background:#fff }
+.swi[aria-disabled="true"]{ opacity:.4;cursor:not-allowed }
+
+/* ---------- 6. RECHERCHE GLOBALE ----------------------------------- */
+#pal{
+  position:fixed;inset:0;z-index:var(--z-modal);display:none;
+  background:rgba(6,12,15,.66);backdrop-filter:blur(4px);
+  align-items:flex-start;justify-content:center;
+  padding:calc(60px + env(safe-area-inset-top)) 16px calc(16px + env(safe-area-inset-bottom));
+}
+#pal.on{display:flex}
+.pal-box{
+  width:100%;max-width:620px;background:var(--card);border:2px solid var(--line);
+  border-radius:var(--r-lg);box-shadow:var(--el3);overflow:hidden;
+  display:flex;flex-direction:column;max-height:100%;
+  animation:lrn-rise var(--t-mid) ease both;
+}
+.pal-in{display:flex;align-items:center;gap:12px;padding:15px 18px;border-bottom:2px solid var(--line)}
+.pal-in input{
+  flex:1;min-width:0;background:none;border:none;outline:none;color:var(--txt);font-size:17px;
+}
+.pal-in input::placeholder{color:var(--dim2)}
+.pal-in kbd{
+  font-family:inherit;font-size:10.5px;letter-spacing:.6px;color:var(--dim2);
+  border:1.5px solid var(--line);border-radius:6px;padding:3px 7px;
+}
+.pal-list{overflow-y:auto;padding:8px}
+.pal-empty{padding:26px 18px;text-align:center;color:var(--dim);font-size:13.5px;font-weight:700}
+.pal-sec{font-size:10.5px;letter-spacing:1px;text-transform:uppercase;color:var(--dim2);padding:10px 12px 5px}
+.pal-it{
+  display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:var(--r-sm);
+  cursor:pointer;border:2px solid transparent;
+}
+.pal-it:hover,.pal-it.sel{background:var(--bg2);border-color:var(--line)}
+.pal-it .t{flex:1;min-width:0;font-size:14px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;text-align:left}
+.pal-it .s{font-size:11px;color:var(--dim);font-weight:700;flex:none}
+
+/* ---------- 7. MODE EXAMEN ----------------------------------------- */
+.exam-top{
+  display:flex;align-items:center;gap:12px;padding:12px 14px;
+  border-bottom:2px solid var(--line);background:var(--bg);
+  position:sticky;top:0;z-index:var(--z-sticky);
+}
+.exam-chrono{
+  font-size:19px;letter-spacing:.5px;color:var(--txt);font-variant-numeric:tabular-nums;
+  padding:5px 13px;border-radius:var(--r-pill);border:2px solid var(--line);flex:none;
+}
+.exam-chrono.warn{color:var(--orange);border-color:var(--orange)}
+.exam-chrono.hot{color:var(--red);border-color:var(--red);animation:lrn-pop .9s infinite}
+.exam-dots{display:flex;flex-wrap:wrap;gap:5px;flex:1;min-width:0}
+.exam-dot{width:11px;height:11px;border-radius:50%;background:var(--line);flex:none;transition:background var(--t-fast)}
+.exam-dot.done{background:var(--blue)}
+.exam-dot.now{background:var(--gold);transform:scale(1.35)}
+.exam-score{
+  font-size:64px;letter-spacing:-2px;line-height:1;margin:6px 0 2px;
+}
+.exam-score.good{color:var(--green)} .exam-score.mid{color:var(--gold)} .exam-score.bad{color:var(--red)}
+.exam-rev{
+  display:flex;gap:11px;align-items:flex-start;padding:13px;border-radius:var(--r-md);
+  border:2px solid var(--line);margin-bottom:9px;text-align:left;background:var(--bg);
+}
+.exam-rev.ko{border-color:var(--red);background:rgba(255,75,75,.07)}
+.exam-rev .n{
+  width:26px;height:26px;border-radius:50%;flex:none;display:flex;align-items:center;
+  justify-content:center;font-size:12px;background:var(--card2);color:var(--dim)
+}
+.exam-rev.ko .n{background:var(--red);color:#fff}
+.exam-rev .q{font-size:13.5px;line-height:1.45}
+.exam-rev .a{font-size:12.5px;color:var(--dim);font-weight:700;margin-top:5px;line-height:1.45}
+
+/* ---------- 8. CARNET D ERREURS ET COURBE D OUBLI ------------------- */
+.err-row{
+  display:flex;align-items:center;gap:12px;padding:12px 13px;border:2px solid var(--line);
+  border-radius:var(--r-md);margin-bottom:8px;text-align:left;background:var(--bg);
+}
+.err-row .cnt{
+  flex:none;min-width:34px;height:30px;border-radius:var(--r-pill);display:flex;align-items:center;
+  justify-content:center;font-size:13px;background:rgba(255,75,75,.15);color:var(--red);border:2px solid var(--red);
+}
+.err-row .cnt.warm{background:rgba(255,150,0,.15);color:var(--orange);border-color:var(--orange)}
+.err-row .tx{flex:1;min-width:0}
+.err-row .tx .q{font-size:13.5px;line-height:1.4}
+.err-row .tx .u{font-size:11px;color:var(--dim2);font-weight:700;margin-top:3px}
+.decay{display:flex;flex-direction:column;gap:7px}
+.decay-row{display:flex;align-items:center;gap:11px}
+.decay-row .nm{flex:1;min-width:0;font-size:12.5px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--dim)}
+.decay-bar{width:112px;height:9px;border-radius:var(--r-pill);background:var(--card2);overflow:hidden;flex:none}
+.decay-bar > i{display:block;height:100%;border-radius:var(--r-pill);transition:width var(--t-slow)}
+.decay-row .pc{width:38px;text-align:right;font-size:12px;flex:none;font-variant-numeric:tabular-nums}
+
+/* ---------- 9. DIVERS --------------------------------------------- */
+.chipline{display:flex;flex-wrap:wrap;gap:7px;margin:2px 0 10px}
+.chip{
+  font-size:11.5px;letter-spacing:.5px;padding:6px 12px;border-radius:var(--r-pill);
+  border:2px solid var(--line);color:var(--dim);cursor:pointer;
+}
+.chip.on{border-color:var(--blue);color:var(--blue);background:rgba(28,176,246,.12)}
+/* large ecran : on arrete de gaspiller les deux tiers de la fenetre */
+@media(min-width:1500px){ #center{max-width:760px} #rail{width:380px} }
+
 </style>
 </head>
 <body>
@@ -770,6 +1021,8 @@ input{font-family:inherit;font-weight:800;}
       <section class="screen" id="sc-courses"><div class="scroll" id="coursesbody"></div></section>
       <!-- PROFIL -->
       <section class="screen" id="sc-profile"><div class="scroll" id="profilebody"></div></section>
+      <section class="screen" id="sc-exam"><div class="scroll" id="exambody"></div></section>
+      <section class="screen" id="sc-errors"><div class="scroll" id="errorsbody"></div></section>
 
       <!-- LECON -->
       <section class="screen" id="sc-lesson">
@@ -815,6 +1068,15 @@ input{font-family:inherit;font-weight:800;}
    local) et remplacé par les animations SVG dans l'artefact.
    ===================================================================== */
 const ICONS={
+ eye:'<path d="M12 5c-5 0-9 4.2-10 7 1 2.8 5 7 10 7s9-4.2 10-7c-1-2.8-5-7-10-7z"/><circle cx="12" cy="12" r="3.4" fill="rgba(0,0,0,.55)"/><circle cx="13.1" cy="10.9" r="1.1" fill="rgba(255,255,255,.9)"/>',
+ eyeoff:'<path d="M12 5c-5 0-9 4.2-10 7 .6 1.7 2.4 4 5 5.6L12 5z" opacity=".55"/><path d="M12 5c5 0 9 4.2 10 7-1 2.8-5 7-10 7-1.2 0-2.3-.2-3.3-.6L12 5z"/><circle cx="12" cy="12" r="3.2" fill="rgba(0,0,0,.5)"/><path d="M4 3.2 20.8 20" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" fill="none"/>',
+ bell:'<path d="M12 2a1.6 1.6 0 0 1 1.6 1.6v.7A6 6 0 0 1 18 10v4l1.6 2.6A.8.8 0 0 1 18.9 18H5.1a.8.8 0 0 1-.7-1.4L6 14v-4a6 6 0 0 1 4.4-5.7v-.7A1.6 1.6 0 0 1 12 2z"/><path d="M9.6 19.4h4.8a2.4 2.4 0 0 1-4.8 0z"/>',
+ belloff:'<path d="M6 14v-4a6 6 0 0 1 1.1-3.4l9.5 9.5H5.1a.8.8 0 0 1-.7-1.4z" opacity=".6"/><path d="M18 14V10a6 6 0 0 0-7.5-5.8A1.6 1.6 0 0 1 13.6 4v.3A6 6 0 0 1 18 10v4z"/><path d="M9.6 19.4h4.8a2.4 2.4 0 0 1-4.8 0z"/><path d="M4 3.2 20.8 20" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" fill="none"/>',
+ exam:'<path d="M6 2h9l4 4v16a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V3a1 1 0 0 1 1-1z"/><path d="M8 8h6M8 12h8M8 16h5" stroke="rgba(0,0,0,.45)" stroke-width="1.8" stroke-linecap="round" fill="none"/><circle cx="17.5" cy="17.5" r="4.5" fill="var(--red)"/><path d="M17.5 15v2.6l1.7 1.1" stroke="#fff" stroke-width="1.5" stroke-linecap="round" fill="none"/>',
+ moon:'<path d="M20.5 14.6A8.6 8.6 0 0 1 9.4 3.5 8.7 8.7 0 1 0 20.5 14.6z"/>',
+ layers:'<path d="M12 2.6 22 8l-10 5.4L2 8z"/><path d="m4.6 11.4-2.6 1.4L12 18.2l10-5.4-2.6-1.4L12 15z" opacity=".55"/>',
+ upload:'<path d="M12 3.2 17 9h-3.3v6.4h-3.4V9H7z"/><path d="M4 15v4a1.6 1.6 0 0 0 1.6 1.6h12.8A1.6 1.6 0 0 0 20 19v-4"  stroke="currentColor" stroke-width="2.1" fill="none" stroke-linecap="round"/>',
+ grid:'<rect x="3" y="3" width="7.6" height="7.6" rx="2"/><rect x="13.4" y="3" width="7.6" height="7.6" rx="2" opacity=".55"/><rect x="3" y="13.4" width="7.6" height="7.6" rx="2" opacity=".55"/><rect x="13.4" y="13.4" width="7.6" height="7.6" rx="2"/>',
  save:'<path d="M4 3h13l4 4v14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1z"/><rect x="7" y="4" width="8" height="6" rx="1" fill="rgba(0,0,0,.45)"/><rect x="7" y="14" width="10" height="7" rx="1" fill="rgba(255,255,255,.75)"/>',
  calcul:'<rect x="4" y="2" width="16" height="20" rx="3"/><rect x="6.5" y="4.5" width="11" height="4.5" rx="1.5" fill="rgba(0,0,0,.45)"/><g fill="rgba(0,0,0,.45)"><rect x="6.5" y="11" width="3" height="3" rx="1"/><rect x="10.5" y="11" width="3" height="3" rx="1"/><rect x="14.5" y="11" width="3" height="3" rx="1"/><rect x="6.5" y="15.5" width="3" height="3" rx="1"/><rect x="10.5" y="15.5" width="3" height="3" rx="1"/><rect x="14.5" y="15.5" width="3" height="3" rx="1"/></g>',
  shirt:'<path d="M8 2 4 4 2 9l3 1.2V22h14V10.2L22 9l-2-5-4-2-4 3z"/>',
@@ -8672,6 +8934,8 @@ function setTab(t){
   if(t==="review"){show("review");renderReview();}
   if(t==="courses"){show("courses");renderCourses();}
   if(t==="profile"){show("profile");renderProfile();}
+  if(t==="exam"){show("exam");renderExam();}
+  if(t==="errors"){show("errors");renderErrors();}
   refreshTop();
 }
 </script>
@@ -8857,7 +9121,7 @@ function nextQ(){
   if(L.idx>=L.queue.length){finish();return;}
   const ex=L.queue[L.idx];
   S.seenNotions=S.seenNotions||[];
-  if(ex.nw&&L.mode!=="calib"&&L.mode!=="legend"&&!S.seenNotions.includes(ex.i)){
+  if(ex.nw&&L.mode!=="calib"&&L.mode!=="legend"&&L.mode!=="exam"&&!S.seenNotions.includes(ex.i)){
     S.seenNotions.push(ex.i); save();
     newNotionSplash(ex.nw, ()=>renderQ(ex));
     return;
@@ -8874,7 +9138,7 @@ function renderQ(ex){
     cards:"Lis ta main",spot:"À toi de jouer",range:"Construis ta range",pick:"Sélectionne les cartes",
     dames:"Lis la position",move:"Joue le coup",look:"Compose la tenue",
     studio:"Lis ton Studio",curve:"Analyse la courbe",thumb:"Choisis la miniature",slider:"Règle le curseur"};
-  let h=`<div class="qkind">${L.mode==="legend"?"👑 Légendaire · ":""}${L.mode==="calib"?"Test de niveau "+(L.idx+1)+"/"+L.queue.length+" · ":""}${kinds[ex.t]||""}${ex.lv&&L.mode!=="calib"?" · niveau "+ex.lv:""}</div>`;
+  let h=`<div class="qkind">${L.mode==="legend"?"👑 Légendaire · ":""}${L.mode==="calib"?"Test de niveau "+(L.idx+1)+"/"+L.queue.length+" · ":""}${L.mode==="exam"?"Examen · question "+(L.idx+1)+" sur "+L.queue.length+" · ":""}${kinds[ex.t]||""}${ex.lv&&L.mode!=="calib"?" · niveau "+ex.lv:""}</div>`;
   if(ex.ctx)h+=`<div class="ctxbox"><span class="ck">${esc(ex.ck||"Énoncé")}</span>${esc(ex.ctx)}</div>`;
   if(ex.t==="story"&&ex.sc){
     h+=`<div class="story">`+ex.sc.map((l,i)=>{
@@ -9049,8 +9313,8 @@ function doCheck(){
   }else{
     L.wrong++;L.combo=0;L.errors.push(ex.i);sfx("wrong");buzz([35,55,35]);
     $("#qwrap").classList.add("shake");setTimeout(()=>$("#qwrap").classList.remove("shake"),420);
-    if(L.mode!=="legend"&&L.mode!=="calib"&&S.settings.hearts){S.hearts=Math.max(0,S.hearts-1);if(S.hearts===4)S.heartTs=Date.now();}
-    if(L.mode!=="calib"&&!L.repeat.find(e=>e.i===ex.i))L.repeat.push(ex);
+    if(L.mode!=="legend"&&L.mode!=="calib"&&L.mode!=="exam"&&S.settings.hearts){S.hearts=Math.max(0,S.hearts-1);if(S.hearts===4)S.heartTs=Date.now();}
+    if(L.mode!=="calib"&&L.mode!=="exam"&&!L.repeat.find(e=>e.i===ex.i))L.repeat.push(ex);
   }
   if(["tf","mcq","fill","story","color","outfit","cards","spot","dames","studio","thumb"].includes(ex.t)){
     $$("#qwrap .choice, #qwrap .swcard, #qwrap .fitcard, #qwrap .thumbcard").forEach(b=>{const raw=b.dataset.v;if(raw===undefined)return;
@@ -9081,6 +9345,18 @@ function doCheck(){
   if(ex.t==="look")$$("#qwrap .fitcard").forEach(b=>{const si=+b.dataset.s,k=+b.dataset.v;
     if(ex.slots[si].a===k)b.classList.add("good"); else if(b.classList.contains("sel"))b.classList.add("bad");
     b.classList.remove("sel");});
+  if(L.mode==="exam"){
+    /* evaluation : aucun retour avant la fin, on note et on avance */
+    L.exam.log.push({i:ex.i,ok:ok,sol:sol});
+    $$("#qwrap .choice, #qwrap .swcard, #qwrap .fitcard, #qwrap .thumbcard").forEach(b=>b.classList.remove("good","bad","sel"));
+    $("#checkbar").className="checkbar";
+    $("#verdict").innerHTML=`<div class="muted" style="font-size:12.5px">Réponse enregistrée. Correction à la fin.</div>`;
+    const be=$("#btn-check");
+    be.textContent = (L.idx>=L.queue.length-1)?"Terminer l'examen":"Question suivante";
+    be.className="btn blue"; be.disabled=false;
+    be.onclick=()=>{ L.idx++; if(L.idx>=L.queue.length){examFinish();return;} nextQ(); examPaint(); refreshTop(); };
+    refreshTop(); save(); return;
+  }
   $("#checkbar").className="checkbar "+(ok?"good":"bad");
   $("#verdict").innerHTML=`<div class="verdict">${img(ok?"fox":"foxSad")}
     <div><div class="vt">${ok?pick1(["Excellent !","Nickel.","Bien vu.","Exact.","Impeccable.","Parfait."]):"Pas tout à fait"}</div>
@@ -9089,6 +9365,7 @@ function doCheck(){
   b.onclick=()=>{
     L.idx++;
     if(L.mode==="calib"){ if(L.idx>=L.queue.length){finishCalib();return;} nextQ(); refreshTop(); return; }
+    if(L.mode==="exam"){ if(L.idx>=L.queue.length){examFinish();return;} nextQ(); examPaint(); refreshTop(); return; }
     if(L.mode!=="legend"&&S.settings.hearts&&S.hearts<=0&&L.idx<L.queue.length){failLesson();return;}
     if(L.mode==="legend"&&!ok){legendFail();return;}
     nextQ(); refreshTop();
@@ -10620,7 +10897,12 @@ function renderProfile(){
   <button class="btn ${S.admin?"purple":"ghost"}" onclick="askCode()">🔑 ${S.admin?"Mode admin actif · vies illimitées":"Entrer un code"}</button><div style="height:8px"></div>
   <button class="btn ghost" onclick="editGoal()">🎯 Objectif quotidien : ${S.goal} XP</button><div style="height:8px"></div>
   <button class="btn ghost" onclick="editName()">✏️ Changer mon nom</button><div style="height:8px"></div>
+  <button class="btn ghost" onclick="toggleTheme()">${typeof S.settings.theme!=="undefined"&&S.settings.theme==="light"?ico("sun",16)+" Thème : clair":ico("moon",16)+" Thème : sombre"}</button><div style="height:8px"></div>
+  <button class="btn ghost" onclick="palOpen()">${ico("search",16)} Rechercher partout <span class="muted" style="font-weight:700">(Cmd+K)</span></button><div style="height:8px"></div>
+  <button class="btn blue" onclick="askImportCourse()">${ico("upload",16)} Importer un cours (JSON)</button><div style="height:8px"></div>
+  ${typeof navCardHTML==="function"?navCardHTML():""}
   ${typeof syncCardHTML==="function"?syncCardHTML():""}
+  ${typeof notifCardHTML==="function"?notifCardHTML():""}
   <h2 class="section-t">Sauvegarde locale</h2>
   <p class="muted" style="margin:-4px 0 10px">Un export sur ton disque, en plus du serveur. Utile pour archiver un instantané ou repartir d'un état précis.</p>
   <button class="btn green" style="background:var(--green);color:#0F1B0A" onclick="exportBackup()">💾 Exporter ma sauvegarde</button><div style="height:8px"></div>
@@ -10984,8 +11266,8 @@ function authHTML(){
   const signup=AUTH_MODE==="signup", reset=AUTH_MODE==="reset";
   const titre = reset?"Mot de passe oublié" : signup?"Créer un compte":"Content de te revoir";
   const sous  = reset?"On t'envoie un lien pour choisir un nouveau mot de passe."
-              : signup?"Un compte, et ta progression te suit sur tous tes appareils."
-              :"Connecte-toi pour retrouver ta progression, où que tu sois.";
+              : signup?"Un compte, et plus jamais de progression perdue."
+              :"Ta progression t'attend, exactement où tu l'as laissée.";
   const cta   = reset?"Envoyer le lien" : signup?"Créer mon compte":"Se connecter";
   return `
 <div class="auth-shell">
@@ -10994,8 +11276,8 @@ function authHTML(){
     <div class="auth-brand">${img("fox")}<span class="w">Multilingo</span></div>
     <div class="auth-hero">
       ${img("fox","mascot")}
-      <h3>Ta progression,<br>sur tous tes appareils</h3>
-      <p>Téléphone, ordinateur, tablette. Tu reprends toujours exactement là où tu t'es arrêté.</p>
+      <h3>Reprends exactement<br>là où tu t'es arrêté</h3>
+      <p>Ta série, tes XP et chaque notion révisée te suivent du téléphone à l'ordinateur, sans que tu aies rien à faire.</p>
     </div>
     <div class="auth-feat">
       <div>${ico("shield",16,"var(--green-l)")} Tes données ne sont visibles que par toi</div>
@@ -11026,7 +11308,7 @@ function authHTML(){
       <label for="au-pass">Mot de passe</label>
       <div class="wrap"><span class="lic">${ico("lock",19,"var(--dim)")}</span>
         <input id="au-pass" type="password" autocomplete="${signup?"new-password":"current-password"}" placeholder="${signup?"6 caractères minimum":"Ton mot de passe"}" onkeydown="authKey(event)">
-        <button class="eye" type="button" onclick="authEye()" aria-label="Afficher le mot de passe">${ico("search",17)}</button>
+        <button class="eye" id="au-eye" type="button" onclick="authEye()" aria-label="Afficher le mot de passe">${ico("eye",18)}</button>
       </div>
     </div>`}
     ${signup?`<div class="auth-field">
@@ -11046,7 +11328,14 @@ function authHTML(){
   </div>
 </div>`;
 }
-function authEye(){ const i=document.getElementById("au-pass"); if(i)i.type=i.type==="password"?"text":"password"; }
+function authEye(){
+  const i=document.getElementById("au-pass"), b=document.getElementById("au-eye"); if(!i)return;
+  const montre = i.type==="password";
+  i.type = montre?"text":"password";
+  if(b){ b.innerHTML=ico(montre?"eyeoff":"eye",18);
+         b.setAttribute("aria-label",montre?"Masquer le mot de passe":"Afficher le mot de passe"); }
+  i.focus();
+}
 function authKey(e){ if(e.key==="Enter")authGo(); }
 function authMsg(kind,txt){
   const m=document.getElementById("au-msg"); if(!m)return;
@@ -11153,5 +11442,918 @@ function syncCardHTML(){
   const vierge = !S.onboarded && (S.xp||0)===0 && !((S.stats&&S.stats.lessons)||0);
   if(isLogged()){ cloudSet("idle"); setTimeout(()=>cloudSync(true),600); }
   else if(vierge){ setTimeout(()=>authOpen("login"),350); }   /* appareil neuf : on propose le compte d'abord */
+})();
+</script>
+
+<script>
+/* =====================================================================
+   FINITION : onglets configurables, theme, recherche, accessibilite,
+   micro-interactions. Aucune fonctionnalite existante n est retiree.
+   ===================================================================== */
+
+/* ---------------- 1. LES ONGLETS ---------------------------------- */
+const TABS=[
+ {id:"path",   nm:"Apprendre", ic:"home",   fix:true },
+ {id:"tasks",  nm:"Missions",  ic:"tasks"  },
+ {id:"league", nm:"Ligues",    ic:"trophy" },
+ {id:"quests", nm:"Quêtes",    ic:"list"   },
+ {id:"habits", nm:"Habitudes", ic:"flame"  },
+ {id:"review", nm:"Révision",  ic:"target" },
+ {id:"exam",   nm:"Examen",    ic:"exam"   },
+ {id:"errors", nm:"Mes erreurs", ic:"brain" },
+ {id:"courses",nm:"Mes cours",  ic:"book"  },
+ {id:"profile",nm:"Profil",    ic:"user",  fix:true }
+];
+function navOff(){ if(!Array.isArray(S.navOff))S.navOff=[]; return S.navOff; }
+function tabOn(id){ const t=TABS.find(x=>x.id===id); return !!t&&(t.fix||!navOff().includes(id)); }
+function visibleTabs(){ return TABS.filter(t=>tabOn(t.id)); }
+
+function renderNav(){
+  const vis=visibleTabs(), cur=(document.querySelector(".navitem.on")||{}).dataset;
+  const actif=(cur&&cur.tab)||"path";
+  const side=document.getElementById("side");
+  if(side){
+    const logo=side.querySelector(".logo");
+    side.innerHTML="";
+    if(logo)side.appendChild(logo);
+    side.insertAdjacentHTML("beforeend", vis.map(t=>
+      `<button class="navitem${t.id===actif?" on":""}" data-tab="${t.id}" type="button">
+         <span class="ic">${ico(t.ic,22)}</span>${t.nm}</button>`).join(""));
+  }
+  /* barre du bas : au maximum 5 entrees, le reste passe dans "Plus" */
+  const mt=document.getElementById("mtabs");
+  if(mt){
+    const court=vis.slice(0,5), reste=vis.slice(5);
+    mt.innerHTML = court.map(t=>
+      `<button class="navitem${t.id===actif?" on":""}" data-tab="${t.id}" type="button">
+         <span class="ic">${ico(t.ic,22)}</span>${t.nm}</button>`).join("")
+      + (reste.length?`<button class="navitem" type="button" onclick="moreTabs()" aria-label="Plus d'onglets">
+         <span class="ic">${ico("grid",22)}</span>Plus</button>`:"");
+  }
+  bindNav();
+}
+function bindNav(){
+  document.querySelectorAll(".navitem[data-tab]").forEach(b=>{
+    if(b.dataset.bound)return; b.dataset.bound="1";
+    b.addEventListener("click",()=>setTab(b.dataset.tab));
+  });
+}
+function moreTabs(){
+  const reste=visibleTabs().slice(5);
+  openModal(`<h2>Autres onglets</h2>
+    <div class="tabcfg" style="margin-top:12px">
+      ${reste.map(t=>`<button class="tabrow on" type="button" onclick="closeModal();setTab('${t.id}')">
+         <span class="ic">${ico(t.ic,20,"var(--blue)")}</span><span class="nm">${t.nm}</span>
+         <span class="chev">${ico("arrowdown",14)}</span></button>`).join("")}
+    </div>
+    <div style="height:10px"></div>
+    <button class="btn ghost" onclick="closeModal()">Fermer</button>`);
+}
+function toggleTab(id){
+  const t=TABS.find(x=>x.id===id); if(!t||t.fix)return;
+  const off=navOff(), i=off.indexOf(id);
+  if(i>=0)off.splice(i,1); else off.push(id);
+  save(); sfx("click"); renderNav(); renderProfile();
+  /* si on masque l onglet ouvert, on revient sur Apprendre */
+  const on=document.querySelector(".navitem.on");
+  if(!on||!tabOn(on.dataset.tab))setTab("path");
+}
+function navCardHTML(){
+  return `<h2 class="section-t">Onglets visibles</h2>
+  <p class="muted" style="margin:-4px 0 10px">Masque ce que tu n'utilises pas. Apprendre et Profil restent toujours là.</p>
+  <div class="tabcfg">
+   ${TABS.map(t=>{
+     const on=tabOn(t.id);
+     return `<div class="tabrow ${on?"on":"off"}">
+       <span class="ic">${ico(t.ic,20,on?"var(--green)":"var(--dim2)")}</span>
+       <span class="nm">${t.nm}</span>
+       ${t.fix?`<span class="lock">Toujours</span>
+                <span class="swi on" aria-disabled="true" role="switch" aria-checked="true"></span>`
+              :`<span class="swi ${on?"on":""}" role="switch" tabindex="0" aria-checked="${on}"
+                      aria-label="${t.nm}" onclick="toggleTab('${t.id}')"
+                      onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleTab('${t.id}')}"></span>`}
+     </div>`;}).join("")}
+  </div>`;
+}
+
+/* ---------------- 2. THEME CLAIR OU SOMBRE ------------------------ */
+function applyTheme(){
+  const clair=S.settings&&S.settings.theme==="light";
+  document.body.classList.toggle("theme-light",clair);
+  const m=document.getElementById("meta-theme");
+  if(m)m.setAttribute("content",clair?"#FFFFFF":"#131F24");
+}
+function toggleTheme(){
+  S.settings.theme = (S.settings.theme==="light")?"dark":"light";
+  applyTheme(); save(); sfx("click"); renderProfile();
+}
+
+/* ---------------- 3. RECHERCHE GLOBALE ---------------------------- */
+let PAL_SEL=0, PAL_RES=[];
+function palOpen(){
+  const el=document.getElementById("pal");
+  el.innerHTML=`<div class="pal-box" role="dialog" aria-modal="true" aria-label="Recherche">
+    <div class="pal-in">${ico("search",20,"var(--dim)")}
+      <input id="pal-q" type="search" placeholder="Chercher une notion, une unité, un exercice..."
+             autocomplete="off" spellcheck="false" aria-label="Recherche">
+      <kbd>ESC</kbd></div>
+    <div class="pal-list" id="pal-list"></div></div>`;
+  el.classList.add("on");
+  el.onclick=e=>{ if(e.target===el)palClose(); };
+  const q=document.getElementById("pal-q");
+  q.addEventListener("input",()=>palRun(q.value));
+  q.addEventListener("keydown",palKey);
+  palRun("");
+  setTimeout(()=>q.focus(),40);
+  trapFocus(el);
+}
+function palClose(){ const el=document.getElementById("pal"); el.classList.remove("on"); el.innerHTML=""; releaseFocus(); }
+function palKey(e){
+  if(e.key==="Escape"){ palClose(); return; }
+  if(e.key==="ArrowDown"||e.key==="ArrowUp"){
+    e.preventDefault();
+    PAL_SEL=Math.max(0,Math.min(PAL_RES.length-1,PAL_SEL+(e.key==="ArrowDown"?1:-1)));
+    palPaint();
+    const n=document.querySelector(".pal-it.sel"); if(n)n.scrollIntoView({block:"nearest"});
+  }
+  if(e.key==="Enter"&&PAL_RES[PAL_SEL]){ e.preventDefault(); palGo(PAL_SEL); }
+}
+function palRun(q){
+  q=(q||"").trim().toLowerCase();
+  PAL_SEL=0; PAL_RES=[];
+  const norm=t=>String(t||"").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");
+  const qq=norm(q);
+  if(!qq){
+    PAL_RES=[{k:"act",t:"Lancer une révision ciblée",s:"Action",go:()=>setTab("review")},
+             {k:"act",t:"Passer un examen blanc",s:"Action",go:()=>setTab("exam")},
+             {k:"act",t:"Voir mes erreurs récurrentes",s:"Action",go:()=>setTab("errors")},
+             {k:"act",t:"Changer de thème",s:"Action",go:()=>toggleTheme()}];
+  }else{
+    UNITS.forEach(u=>{
+      if(norm(u.t).includes(qq)||norm(u.n).includes(qq)){
+        const c=COURSES.find(x=>x.id===u.c);
+        PAL_RES.push({k:"u",t:u.t,s:(c&&c.short)||u.c,go:()=>{S.active=u.c;save();setTab("path");setTimeout(()=>openGuide(u.id),120);}});
+      }
+    });
+    EXOS.forEach(e=>{
+      if(PAL_RES.length>60)return;
+      const txt=norm(e.q)+" "+norm(e.nw)+" "+norm(e.ctx);
+      if(txt.includes(qq)){
+        const u=UNITS.find(x=>x.id===e.u), c=u&&COURSES.find(x=>x.id===u.c);
+        PAL_RES.push({k:"e",t:e.q||e.nw||e.i,s:(c&&c.short)||"",go:()=>{ if(u){S.active=u.c;save();setTab("path");setTimeout(()=>openGuide(u.id),120);} }});
+      }
+    });
+  }
+  palPaint();
+}
+function palPaint(){
+  const L=document.getElementById("pal-list"); if(!L)return;
+  if(!PAL_RES.length){ L.innerHTML=`<div class="pal-empty">Rien trouvé. Essaie un mot plus court.</div>`; return; }
+  let h="",sec="";
+  PAL_RES.slice(0,60).forEach((r,i)=>{
+    const lbl=r.k==="act"?"Actions":r.k==="u"?"Unités":"Exercices";
+    if(lbl!==sec){ sec=lbl; h+=`<div class="pal-sec">${sec}</div>`; }
+    h+=`<button class="pal-it${i===PAL_SEL?" sel":""}" type="button" onclick="palGo(${i})">
+      <span>${ico(r.k==="act"?"bolt":r.k==="u"?"book":"target",17,"var(--dim)")}</span>
+      <span class="t">${esc(r.t)}</span><span class="s">${esc(r.s)}</span></button>`;
+  });
+  L.innerHTML=h;
+}
+function palGo(i){ const r=PAL_RES[i]; palClose(); if(r&&r.go)setTimeout(r.go,60); }
+
+/* ---------------- 4. ACCESSIBILITE -------------------------------- */
+let TRAP=null, TRAP_PREV=null;
+const FOCUSABLE='a[href],button:not([disabled]),input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])';
+function trapFocus(box){
+  releaseFocus();
+  TRAP_PREV=document.activeElement;
+  TRAP=e=>{
+    if(e.key!=="Tab")return;
+    const f=[...box.querySelectorAll(FOCUSABLE)].filter(n=>n.offsetParent!==null||n===document.activeElement);
+    if(!f.length)return;
+    const a=f[0], z=f[f.length-1];
+    if(e.shiftKey&&document.activeElement===a){ e.preventDefault(); z.focus(); }
+    else if(!e.shiftKey&&document.activeElement===z){ e.preventDefault(); a.focus(); }
+  };
+  document.addEventListener("keydown",TRAP);
+}
+function releaseFocus(){
+  if(TRAP)document.removeEventListener("keydown",TRAP);
+  TRAP=null;
+  if(TRAP_PREV&&TRAP_PREV.focus){ try{TRAP_PREV.focus();}catch(e){} }
+  TRAP_PREV=null;
+}
+/* les modales existantes deviennent accessibles sans toucher a leur code */
+const __openModal=openModal, __closeModal=closeModal;
+window.openModal=function(h){
+  __openModal(h);
+  const card=document.getElementById("mcard");
+  card.setAttribute("role","dialog"); card.setAttribute("aria-modal","true");
+  const first=card.querySelector(FOCUSABLE);
+  if(first)setTimeout(()=>{try{first.focus();}catch(e){}},60);
+  trapFocus(card);
+};
+window.closeModal=function(){ __closeModal(); releaseFocus(); };
+
+/* raccourcis clavier globaux */
+document.addEventListener("keydown",e=>{
+  const dansChamp=/^(INPUT|TEXTAREA|SELECT)$/.test((e.target||{}).tagName||"");
+  if((e.metaKey||e.ctrlKey)&&e.key.toLowerCase()==="k"){ e.preventDefault(); palOpen(); return; }
+  if(e.key==="/"&&!dansChamp){ e.preventDefault(); palOpen(); return; }
+  if(e.key==="Escape"){
+    if(document.getElementById("pal").classList.contains("on")){ palClose(); return; }
+    if(document.getElementById("modal").classList.contains("on")){ closeModal(); return; }
+  }
+});
+
+/* ---------------- 5. MICRO-INTERACTIONS --------------------------- */
+function animate(el,cls){
+  if(!el)return;
+  if(window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  el.classList.remove(cls); void el.offsetWidth; el.classList.add(cls);
+  setTimeout(()=>el.classList.remove(cls),700);
+}
+/* compteur qui defile plutot que de sauter d un coup */
+function rollTo(el,from,to,ms){
+  if(!el)return;
+  if(from===to){ el.textContent=String(to); return; }
+  const t0=performance.now(), d=ms||700;
+  (function step(t){
+    const k=Math.min(1,(t-t0)/d), e=1-Math.pow(1-k,3);
+    el.textContent=String(Math.round(from+(to-from)*e));
+    if(k<1)requestAnimationFrame(step);
+  })(t0);
+}
+/* on enveloppe la verification sans rien changer a sa logique */
+const __doCheck=doCheck;
+window.doCheck=function(){
+  const avant=(L&&L.ok)||0;
+  __doCheck.apply(null,arguments);
+  const apres=(L&&L.ok)||0;
+  if(apres>avant){ animate(document.getElementById("ls-prog"),"anim-pop");
+                   animate(document.querySelector(".lhead .prog"),"anim-glow"); }
+  else { animate(document.getElementById("checkbar"),"anim-shake"); }
+};
+
+/* ---------------- 6. DEMARRAGE ------------------------------------ */
+(function uiBoot(){
+  if(!Array.isArray(S.navOff))S.navOff=[];
+  if(!S.settings.theme)S.settings.theme="dark";
+  applyTheme();
+  /* lien d evitement pour la navigation au clavier */
+  if(!document.querySelector(".skiplink")){
+    const a=document.createElement("a");
+    a.className="skiplink"; a.href="#sc-path"; a.textContent="Aller au contenu";
+    document.body.insertBefore(a,document.body.firstChild);
+  }
+  if(!document.getElementById("pal")){
+    const d=document.createElement("div"); d.id="pal"; document.body.appendChild(d);
+  }
+  renderNav();
+})();
+</script>
+
+<script>
+/* =====================================================================
+   MODE EXAMEN, CARNET D ERREURS, COURBE D OUBLI
+   ===================================================================== */
+
+/* ================= 1. EXAMEN BLANC ================= */
+const EXAM_FMT=[
+ {n:10,min:8,  nm:"Rapide",   d:"10 questions, 8 minutes"},
+ {n:20,min:20, nm:"Standard", d:"20 questions, 20 minutes"},
+ {n:30,min:35, nm:"Complet",  d:"30 questions, 35 minutes"}
+];
+let EXAM_TICK=null;
+
+function renderExam(){
+  const cid=S.active, c=COURSES.find(x=>x.id===cid)||{name:"",short:""};
+  const dispo=EXOS.filter(e=>{const u=unitOf(e.u);return u&&u.c===cid;}).length;
+  const h=(S.exams||[]).filter(x=>x.cid===cid).slice(-6).reverse();
+  let out=`<div class="card" style="border-color:var(--red);background:rgba(255,75,75,.07)">
+     <div style="display:flex;align-items:center;gap:12px;margin-bottom:8px">
+       ${ico("exam",34,"var(--red)")}
+       <div><h3 style="margin:0;color:var(--red)">Examen blanc</h3>
+       <div class="muted" style="font-size:12.5px">${esc(c.name)} · ${dispo} exercices disponibles</div></div>
+     </div>
+     <p class="muted" style="margin:0 0 12px;line-height:1.5">
+       Conditions réelles : chronomètre, aucune correction avant la fin, aucun coeur perdu.
+       Les questions sont tirées de tout le cours, en pondérant ce que tu maîtrises le moins.</p>
+     <div class="chipline">
+       ${COURSES.filter(x=>!S.hidden.includes(x.id)).map(x=>
+         `<button class="chip ${x.id===cid?"on":""}" onclick="S.active='${x.id}';save();renderExam()">${esc(x.short)}</button>`).join("")}
+     </div>
+   </div>
+   <h2 class="section-t">Choisis ton format</h2>`;
+  EXAM_FMT.forEach((f,k)=>{
+    const ok=dispo>=f.n;
+    out+=`<button class="btn ${k===1?"":"ghost"}" ${ok?"":"disabled"} onclick="examStart('${cid}',${k})"
+      style="text-align:left;${ok?"":"opacity:.45"}">
+      ${ico("clock",16)} <b>${f.nm}</b> · ${f.d}${ok?"":" · pas assez d'exercices"}</button><div style="height:8px"></div>`;
+  });
+  if(h.length){
+    out+=`<h2 class="section-t">Tes derniers résultats</h2>`;
+    h.forEach(r=>{
+      const cl=r.pc>=75?"good":r.pc>=50?"mid":"bad";
+      const col=r.pc>=75?"var(--green)":r.pc>=50?"var(--gold)":"var(--red)";
+      out+=`<div class="rowline">
+        <div class="lbl" style="font-size:13px">${new Date(r.ts).toLocaleDateString("fr-FR",{day:"2-digit",month:"short"})} · ${r.n} questions</div>
+        <div style="width:110px"><div class="mbar"><div style="width:${r.pc}%;background:${col}"></div></div></div>
+        <div style="width:44px;text-align:right;color:${col}">${r.pc}%</div></div>`;
+    });
+    const moy=Math.round(h.reduce((a,b)=>a+b.pc,0)/h.length);
+    out+=`<p class="muted" style="margin-top:8px">Moyenne sur tes ${h.length} derniers examens : <b>${moy}%</b>.</p>`;
+  }else{
+    out+=`<p class="muted" style="margin-top:14px">Aucun examen passé sur ce cours. Le premier sert de point zéro, ne t'inquiète pas du score.</p>`;
+  }
+  document.getElementById("exambody").innerHTML=out;
+}
+
+function examPool(cid,n){
+  const pool=EXOS.filter(e=>{const u=unitOf(e.u);return u&&u.c===cid;});
+  /* on privilegie ce qui est fragile, sans jamais tomber dans le tout-difficile */
+  const note=e=>{
+    const it=S.items[e.i];
+    if(!it||!it.n)return .55;                 /* jamais vu : interessant */
+    const acc=it.c/it.n, r=recall(e.i);
+    return 1-(acc*.6+r*.4);                    /* plus c est fragile, plus le score monte */
+  };
+  const tri=pool.map(e=>({e,s:note(e)+Math.random()*.28})).sort((a,b)=>b.s-a.s);
+  const fort=tri.slice(0,Math.ceil(n*.7)).map(o=>o.e);
+  const reste=shuffle(tri.slice(Math.ceil(n*.7)).map(o=>o.e)).slice(0,n-fort.length);
+  return shuffle(fort.concat(reste)).slice(0,n);
+}
+
+function examStart(cid,k){
+  const f=EXAM_FMT[k], q=examPool(cid,f.n);
+  if(q.length<3){ toast(ico("cross",18)+" Pas assez d'exercices dans ce cours."); return; }
+  L={uid:null,li:null,cid,mode:"exam",queue:q,idx:0,wrong:0,ok:0,combo:0,maxCombo:0,repeat:[],errors:[],
+     exam:{log:[],t0:Date.now(),limit:f.min*60000,fmt:k}};
+  show("lesson");
+  const hw=document.getElementById("ls-hearts-w"); if(hw)hw.style.display="none";
+  examBar(true); nextQ(); examPaint();
+  if(EXAM_TICK)clearInterval(EXAM_TICK);
+  EXAM_TICK=setInterval(examChrono,500);
+  toast(ico("exam",18)+" "+f.nm+" · "+f.min+" minutes. Aucune correction avant la fin.",4200);
+}
+function examBar(on){
+  const old=document.getElementById("exam-bar"); if(old)old.remove();
+  if(!on)return;
+  const d=document.createElement("div");
+  d.id="exam-bar"; d.className="exam-top";
+  d.innerHTML=`<span class="exam-chrono" id="exam-chrono" aria-live="polite">--:--</span>
+    <div class="exam-dots" id="exam-dots" aria-hidden="true"></div>
+    <button class="tbtn warn" onclick="examAbort()">${ico("cross",13)} Abandonner</button>`;
+  const sec=document.getElementById("sc-lesson");
+  sec.insertBefore(d,sec.firstChild);
+}
+function examPaint(){
+  const d=document.getElementById("exam-dots"); if(!d||!L||!L.exam)return;
+  d.innerHTML=L.queue.map((_,i)=>
+    `<span class="exam-dot ${i<L.idx?"done":i===L.idx?"now":""}"></span>`).join("");
+}
+function examChrono(){
+  if(!L||L.mode!=="exam"||!L.exam){ clearInterval(EXAM_TICK); EXAM_TICK=null; return; }
+  const reste=Math.max(0,L.exam.limit-(Date.now()-L.exam.t0));
+  const el=document.getElementById("exam-chrono"); if(!el)return;
+  const m=Math.floor(reste/60000), sec=Math.floor((reste%60000)/1000);
+  el.textContent=String(m).padStart(2,"0")+":"+String(sec).padStart(2,"0");
+  el.className="exam-chrono"+(reste<30000?" hot":reste<120000?" warn":"");
+  if(reste<=0){ clearInterval(EXAM_TICK); EXAM_TICK=null; examFinish(true); }
+}
+function examAbort(){
+  openModal(`<div class="big">${ico("cross",50,"var(--orange)")}</div>
+    <h2>Abandonner l'examen ?</h2>
+    <p class="muted">Les questions déjà répondues comptent pour ta mémorisation, mais aucun score ne sera enregistré.</p>
+    <button class="btn red" onclick="closeModal();examQuit()">Oui, abandonner</button>
+    <div style="height:8px"></div><button class="btn ghost" onclick="closeModal()">Continuer l'examen</button>`);
+}
+function examQuit(){
+  if(EXAM_TICK){clearInterval(EXAM_TICK);EXAM_TICK=null;}
+  examBar(false); L=null; killCalc(); setTab("exam");
+}
+function examFinish(tempsEcoule){
+  if(EXAM_TICK){clearInterval(EXAM_TICK);EXAM_TICK=null;}
+  const log=L.exam.log, n=log.length||1;
+  const just=log.filter(x=>x.ok).length;
+  const pc=Math.round(100*just/n);
+  const duree=Math.round((Date.now()-L.exam.t0)/1000);
+  S.exams=S.exams||[];
+  S.exams.push({ts:Date.now(),cid:L.cid,n:log.length,ok:just,pc,sec:duree,fmt:L.exam.fmt});
+  S.exams=S.exams.slice(-40);
+  S.xp+=Math.round(pc/5);
+  save();
+  const cl=pc>=75?"good":pc>=50?"mid":"bad";
+  const mot=pc>=90?"Tu es prêt.":pc>=75?"Solide. Quelques trous à boucher.":pc>=50?"La moitié tient. L'autre moitié, c'est le travail des prochains jours.":"Le score est bas et c'est une information, pas un jugement. Tu sais maintenant où creuser.";
+  /* les unites ou ca a coince */
+  const parUnite={};
+  log.filter(x=>!x.ok).forEach(x=>{ const e=EXOS.find(z=>z.i===x.i); if(!e)return;
+    const u=unitOf(e.u); if(!u)return; parUnite[u.t]=(parUnite[u.t]||0)+1; });
+  const faibles=Object.entries(parUnite).sort((a,b)=>b[1]-a[1]).slice(0,4);
+
+  let h=`<div style="text-align:center">
+    ${img(pc>=75?"fox":"foxSad","hero")}
+    <div class="exam-score ${cl}" id="exam-pc">0%</div>
+    <div class="muted" style="margin-bottom:4px">${just} bonnes réponses sur ${n}${tempsEcoule?" · temps écoulé":""} · ${Math.floor(duree/60)} min ${duree%60} s</div>
+    <p style="max-width:420px;margin:10px auto 16px;line-height:1.5">${esc(mot)}</p>
+  </div>`;
+  if(faibles.length){
+    h+=`<h2 class="section-t">Ce qu'il faut revoir en priorité</h2>`;
+    faibles.forEach(([t,k])=>{ h+=`<div class="rowline"><div class="lbl" style="font-size:13px">${esc(t)}</div>
+      <div class="muted" style="width:80px;text-align:right">${k} erreur${k>1?"s":""}</div></div>`; });
+  }
+  h+=`<h2 class="section-t">Correction complète</h2>`;
+  log.forEach((x,i)=>{
+    const e=EXOS.find(z=>z.i===x.i)||{};
+    h+=`<div class="exam-rev ${x.ok?"":"ko"}">
+      <div class="n">${x.ok?ico("check",14):i+1}</div>
+      <div><div class="q">${esc(e.q||e.nw||"")}</div>
+      ${x.ok?"":`<div class="a">${esc(x.sol||"")}${esc(e.w||"")}</div>`}</div></div>`;
+  });
+  h+=`<div style="height:10px"></div>
+    <button class="btn" onclick="examQuit()">${ico("check",16)} Terminer</button><div style="height:8px"></div>
+    <button class="btn purple" onclick="examQuit();setTimeout(()=>startPractice('mistakes'),150)">${ico("target",16)} Réviser mes erreurs maintenant</button>`;
+  examBar(false);
+  document.getElementById("exambody").innerHTML=h;
+  L=null; killCalc(); show("exam");
+  document.querySelectorAll(".navitem").forEach(b=>b.classList.toggle("on",b.dataset.tab==="exam"));
+  sfx(pc>=75?"complete":"wrong");
+  if(pc>=75)confetti(80);
+  const el=document.getElementById("exam-pc");
+  if(el)setTimeout(()=>{ const t0=performance.now();
+    (function st(t){ const k=Math.min(1,(t-t0)/900), e=1-Math.pow(1-k,3);
+      el.textContent=Math.round(pc*e)+"%"; if(k<1)requestAnimationFrame(st); })(t0); },260);
+}
+
+/* ================= 2. CARNET D ERREURS + COURBE D OUBLI ================= */
+function errStats(cid){
+  const out=[];
+  EXOS.forEach(e=>{
+    const u=unitOf(e.u); if(!u||u.c!==cid)return;
+    const it=S.items[e.i]; if(!it||!it.n)return;
+    const faux=it.n-it.c;
+    if(faux>0)out.push({e,u,faux,n:it.n,acc:it.c/it.n,r:recall(e.i)});
+  });
+  return out.sort((a,b)=> (b.faux-a.faux) || (a.acc-b.acc) );
+}
+function decayList(cid,seuil){
+  const out=[];
+  EXOS.forEach(e=>{
+    const u=unitOf(e.u); if(!u||u.c!==cid)return;
+    const it=S.items[e.i]; if(!it||!it.n)return;
+    const r=recall(e.i);
+    if(r<seuil)out.push({e,u,r});
+  });
+  return out.sort((a,b)=>a.r-b.r);
+}
+function renderErrors(){
+  const cid=S.active, c=COURSES.find(x=>x.id===cid)||{name:"",short:""};
+  const errs=errStats(cid), fragile=decayList(cid,.7);
+  const vus=EXOS.filter(e=>{const u=unitOf(e.u);return u&&u.c===cid&&S.items[e.i]&&S.items[e.i].n;}).length;
+
+  let h=`<div class="chipline">
+    ${COURSES.filter(x=>!S.hidden.includes(x.id)).map(x=>
+      `<button class="chip ${x.id===cid?"on":""}" onclick="S.active='${x.id}';save();renderErrors()">${esc(x.short)}</button>`).join("")}
+  </div>`;
+
+  if(!vus){
+    h+=`<div class="card" style="text-align:center">${img("fox","hero")}
+      <h3>Rien à afficher pour l'instant</h3>
+      <p class="muted">Fais une ou deux leçons de ${esc(c.short)} et cette page se remplira toute seule.</p>
+      <button class="btn" onclick="setTab('path')">Aller au cours</button></div>`;
+    document.getElementById("errorsbody").innerHTML=h; return;
+  }
+
+  /* --- la courbe d oubli --- */
+  h+=`<div class="card">
+    <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
+      ${ico("brain",24,"var(--blue)")}<h3 style="margin:0">Ce qui s'efface</h3></div>
+    <p class="muted" style="margin:2px 0 12px;line-height:1.5">
+      Chaque notion perd en mémoire avec le temps. Voici les ${Math.min(12,fragile.length)} qui sont
+      passées sous les 70 % de rétention estimée.</p>`;
+  if(!fragile.length){
+    h+=`<p class="muted">Tout est au-dessus du seuil. Reviens dans quelques jours.</p>`;
+  }else{
+    h+=`<div class="decay">`;
+    fragile.slice(0,12).forEach(o=>{
+      const pc=Math.round(o.r*100);
+      const col=pc<30?"var(--red)":pc<55?"var(--orange)":"var(--gold)";
+      h+=`<div class="decay-row">
+        <span class="nm" title="${esc(o.u.t)}">${esc(o.e.q||o.e.nw||o.u.t)}</span>
+        <span class="decay-bar"><i style="width:${Math.max(3,pc)}%;background:${col}"></i></span>
+        <span class="pc" style="color:${col}">${pc}%</span></div>`;
+    });
+    h+=`</div><div style="height:12px"></div>
+      <button class="btn blue" onclick="startPractice('review')">${ico("refresh",16)} Réviser les ${Math.min(10,fragile.length)} plus fragiles</button>`;
+  }
+  h+=`</div>`;
+
+  /* --- le carnet d erreurs --- */
+  h+=`<h2 class="section-t">Carnet d'erreurs</h2>`;
+  if(!errs.length){
+    h+=`<div class="card" style="text-align:center">${img("fox","hero")}
+      <h3>Aucune erreur enregistrée</h3>
+      <p class="muted">Sur ${vus} notions vues dans ${esc(c.short)}, tu n'as encore rien raté. Continue.</p></div>`;
+  }else{
+    const recur=errs.filter(o=>o.faux>=2);
+    h+=`<p class="muted" style="margin:-4px 0 12px;line-height:1.5">
+      ${errs.length} notion${errs.length>1?"s":""} ratée${errs.length>1?"s":""} au moins une fois.
+      ${recur.length?`<b style="color:var(--red)">${recur.length}</b> reviennent plusieurs fois : ce sont celles qui coûtent le plus cher.`:""}</p>`;
+    errs.slice(0,30).forEach(o=>{
+      h+=`<div class="err-row">
+        <span class="cnt ${o.faux>=3?"":"warm"}">${o.faux}×</span>
+        <span class="tx"><span class="q">${esc(o.e.q||o.e.nw||"")}</span>
+        <span class="u">${esc(o.u.t)} · ${Math.round(o.acc*100)} % de réussite sur ${o.n} passages</span></span></div>`;
+    });
+    if(errs.length>30)h+=`<p class="muted">et ${errs.length-30} de plus.</p>`;
+    h+=`<div style="height:10px"></div>
+      <button class="btn purple" onclick="startPractice('mistakes')">${ico("target",16)} Réparer mes erreurs</button>
+      <div style="height:8px"></div>
+      <button class="btn ghost" onclick="startPractice('weak')">${ico("brain",16)} Travailler mes points faibles</button>`;
+  }
+  document.getElementById("errorsbody").innerHTML=h;
+}
+</script>
+
+<script>
+/* =====================================================================
+   HORS LIGNE, RAPPELS, IMPORT DE COURS
+   ===================================================================== */
+
+/* ================= 1. FONCTIONNEMENT HORS LIGNE ================= */
+(function sw(){
+  if(!("serviceWorker" in navigator))return;
+  if(location.protocol!=="https:"&&location.hostname!=="localhost")return;
+  window.addEventListener("load",()=>{
+    navigator.serviceWorker.register("sw.js").catch(()=>{});
+  });
+})();
+
+/* ================= 2. RAPPELS =================
+   Trois rappels au maximum, jamais plus d un par jour, jamais entre
+   22 h et 8 h. Le but est de servir la serie, pas de harceler.      */
+const NOTIF_DEF={on:false, heure:19, dernier:null, semaine:[], bilan:true, serie:true};
+function notif(){ if(!S.notif)S.notif=Object.assign({},NOTIF_DEF); return S.notif; }
+function notifSupport(){ return typeof Notification!=="undefined"; }
+function notifEtat(){
+  if(!notifSupport())return "absent";
+  if(Notification.permission==="denied")return "refuse";
+  if(Notification.permission!=="granted")return "aDemander";
+  return notif().on?"actif":"eteint";
+}
+function notifCardHTML(){
+  const e=notifEtat(), n=notif();
+  const chip={actif:['on',ico("check",13)+" Actifs"],eteint:['off',ico("belloff",13)+" Éteints"],
+              aDemander:['off',ico("bell",13)+" À autoriser"],refuse:['off',ico("cross",13)+" Bloqués"],
+              absent:['off',ico("cross",13)+" Indisponibles"]}[e];
+  let corps;
+  if(e==="absent")corps=`<p class="muted" style="font-size:12.5px;margin:0">Ce navigateur ne gère pas les rappels. Sur iPhone, ajoute d'abord Learno à ton écran d'accueil.</p>`;
+  else if(e==="refuse")corps=`<p class="muted" style="font-size:12.5px;margin:0;line-height:1.5">Tu as bloqué les notifications pour ce site. Réautorise-les dans les réglages du navigateur, puis reviens ici.</p>`;
+  else if(e==="aDemander")corps=`
+     <p class="muted" style="font-size:12.5px;margin:0 0 12px;line-height:1.5">
+       Trois rappels au maximum, jamais plus d'un par jour, jamais la nuit. Tu peux tout couper d'un bouton.</p>
+     <button class="btn" onclick="notifAsk()">${ico("bell",16)} Activer les rappels</button>`;
+  else corps=`
+     <div class="tabcfg">
+       <div class="tabrow ${n.on?"on":"off"}">
+         <span class="ic">${ico("bell",20,n.on?"var(--green)":"var(--dim2)")}</span>
+         <span class="nm">Rappel quotidien${n.on?" à "+String(n.heure).padStart(2,"0")+" h":""}</span>
+         <span class="swi ${n.on?"on":""}" role="switch" tabindex="0" aria-checked="${n.on}" aria-label="Rappel quotidien"
+               onclick="notifTog('on')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();notifTog('on')}"></span>
+       </div>
+       <div class="tabrow ${n.serie?"on":"off"}">
+         <span class="ic">${ico("flame",20,n.serie?"var(--orange)":"var(--dim2)")}</span>
+         <span class="nm">Alerte série en jeu (21 h)</span>
+         <span class="swi ${n.serie?"on":""}" role="switch" tabindex="0" aria-checked="${n.serie}" aria-label="Alerte série"
+               onclick="notifTog('serie')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();notifTog('serie')}"></span>
+       </div>
+       <div class="tabrow ${n.bilan?"on":"off"}">
+         <span class="ic">${ico("brain",20,n.bilan?"var(--blue)":"var(--dim2)")}</span>
+         <span class="nm">Bilan mémoire du dimanche</span>
+         <span class="swi ${n.bilan?"on":""}" role="switch" tabindex="0" aria-checked="${n.bilan}" aria-label="Bilan hebdomadaire"
+               onclick="notifTog('bilan')" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();notifTog('bilan')}"></span>
+       </div>
+     </div>
+     <div style="height:10px"></div>
+     <button class="btn ghost" onclick="notifHeure()">${ico("clock",16)} Heure du rappel : ${String(n.heure).padStart(2,"0")} h 00</button>
+     <div style="height:8px"></div>
+     <button class="btn ghost" onclick="notifTest()">${ico("play",16)} Envoyer un rappel de test</button>
+     <p class="muted" style="font-size:11.5px;margin-top:10px;line-height:1.5">
+       ${n.semaine.length} rappel(s) cette semaine, plafond fixé à 5. Les rappels partent quand Learno tourne
+       en arrière-plan ou à ta prochaine ouverture, sans serveur qui te piste.</p>`;
+  return `<h2 class="section-t">Rappels</h2>
+    <div class="card" style="text-align:left">
+      <div class="rowline" style="padding:2px 0 10px">
+        <div class="lbl">Notifications</div>
+        <span class="sync-badge ${chip[0]}">${chip[1]}</span>
+      </div>${corps}
+    </div>`;
+}
+function notifAsk(){
+  if(!notifSupport())return;
+  Notification.requestPermission().then(p=>{
+    if(p==="granted"){ notif().on=true; save(); sfx("complete");
+      notifSend("Rappels activés","Je te ferai signe une fois par jour, pas plus.");
+    } else sfx("wrong");
+    renderProfile();
+  });
+}
+function notifTog(k){ const n=notif(); n[k]=!n[k]; save(); sfx("click"); renderProfile(); }
+function notifHeure(){
+  const n=notif();
+  openModal(`<div class="big">${ico("clock",50,"var(--blue)")}</div>
+    <h2>Heure du rappel</h2>
+    <p class="muted">Choisis le moment où tu es le plus susceptible de faire ta leçon.</p>
+    <div class="chipline" style="justify-content:center;margin:14px 0">
+      ${[8,12,14,17,18,19,20,21].map(h=>`<button class="chip ${h===n.heure?"on":""}" onclick="setNotifHeure(${h})">${String(h).padStart(2,"0")} h</button>`).join("")}
+    </div>
+    <button class="btn ghost" onclick="closeModal()">Fermer</button>`);
+}
+function setNotifHeure(h){ notif().heure=h; save(); closeModal(); renderProfile(); toast(ico("check",18)+" Rappel réglé sur "+String(h).padStart(2,"0")+" h."); }
+function notifTest(){ notifSend("Test Learno","Voilà à quoi ressemble un rappel. Ni plus long, ni plus fréquent.",true); }
+
+function notifSend(titre,corps,test){
+  if(!notifSupport()||Notification.permission!=="granted")return false;
+  try{
+    const opt={body:corps,icon:"icon-192.png",badge:"icon-192.png",tag:"learno",renotify:false,silent:false};
+    if(navigator.serviceWorker&&navigator.serviceWorker.ready)
+      navigator.serviceWorker.ready.then(r=>r.showNotification(titre,opt)).catch(()=>new Notification(titre,opt));
+    else new Notification(titre,opt);
+    if(!test){ const n=notif(); n.dernier=today(); n.semaine=(n.semaine||[]).filter(d=>dayDiff(d,today())<7).concat([today()]); save(); }
+    return true;
+  }catch(e){ return false; }
+}
+function notifCheck(){
+  const n=notif();
+  if(!n.on||!notifSupport()||Notification.permission!=="granted")return;
+  const d=new Date(), h=d.getHours();
+  if(h<8||h>=22)return;                                  /* jamais la nuit */
+  if(n.dernier===today())return;                          /* un seul par jour */
+  n.semaine=(n.semaine||[]).filter(x=>dayDiff(x,today())<7);
+  if(n.semaine.length>=5)return;                          /* plafond hebdomadaire */
+  const faitAujourdhui=(S.daily&&S.daily.date===today()&&S.daily.xp>0);
+
+  /* 1. bilan du dimanche */
+  if(n.bilan&&d.getDay()===0&&h>=18){
+    const fr=decayList(S.active,.7).length;
+    if(fr>0){ notifSend("Bilan de la semaine", fr+" notion(s) sont passées sous les 70 % de mémoire. Vingt minutes suffisent à les remonter."); return; }
+  }
+  /* 2. serie en jeu */
+  if(n.serie&&h>=21&&!faitAujourdhui&&S.streak>=3){
+    notifSend("Ta série de "+S.streak+" jours est en jeu","Une leçon de deux minutes suffit à la sauver."); return;
+  }
+  /* 3. rappel quotidien */
+  if(h>=n.heure&&!faitAujourdhui){
+    const reste=Math.max(0,S.goal-((S.daily&&S.daily.date===today()?S.daily.xp:0)));
+    notifSend("C'est l'heure de Learno", reste+" XP pour tenir ton objectif du jour. Ça se joue en une leçon.");
+  }
+}
+setInterval(notifCheck,120000);
+document.addEventListener("visibilitychange",()=>{ if(!document.hidden)setTimeout(notifCheck,1500); });
+
+/* ================= 3. IMPORT D UN COURS ================= */
+function askImportCourse(){
+  openModal(`<div class="big">${ico("upload",50,"var(--blue)")}</div>
+    <h2>Importer un cours</h2>
+    <p class="muted" style="line-height:1.5">Un fichier <b>.json</b> qui décrit un cours complet, ses unités et ses exercices.
+      Le cours s'ajoute aux autres, rien n'est remplacé.</p>
+    <button class="btn blue" onclick="pickCourseFile()">${ico("book",16)} Choisir un fichier</button>
+    <div class="partlbl" style="text-align:center">ou colle le JSON</div>
+    <textarea class="tnote" id="cr-in" placeholder='{"id":"MONCOURS","name":"...","units":[...]}'
+      style="min-height:110px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:11px"></textarea>
+    <div style="height:8px"></div>
+    <button class="btn" onclick="readPastedCourse()">${ico("check",16)} Lire ce cours</button>
+    <div style="height:8px"></div>
+    <button class="btn ghost" onclick="showCourseSpec()">${ico("list",16)} Voir le format attendu</button>
+    <div style="height:8px"></div>
+    <button class="btn ghost" onclick="closeModal()">Annuler</button>
+    ${(S.custom&&S.custom.length)?`<div class="partlbl">Cours importés</div>`+
+      S.custom.map((c,k)=>`<div class="rowline"><div class="lbl">${esc(c.name)}</div>
+        <button class="tbtn warn" onclick="delCourse(${k})">${ico("trash",13)} Retirer</button></div>`).join(""):""}`);
+}
+function showCourseSpec(){
+  const ex={id:"CUISINE",name:"Cuisine de base",short:"Cuisine",icon:"food",col:"--orange",
+    teacher:"De zéro à autonome",practice:true,
+    units:[{n:"Module 1",t:"Les cuissons",ic:"food",guide:"<h3>L'essentiel</h3><p>Texte du guide.</p>",
+      exos:[{t:"mcq",q:"Quelle température pour saisir une viande ?",o:["Très forte","Douce","Aucune"],a:0,w:"Il faut une réaction de Maillard.",d:.4,lv:1},
+            {t:"tf",q:"On sale une viande après la cuisson.",a:false,w:"Le sel avant aide la croûte.",d:.4,lv:1}]}]};
+  openModal(`<h2>Format d'un cours</h2>
+    <p class="muted" style="line-height:1.5">Types d'exercices acceptés : <b>mcq</b> (choix multiple),
+    <b>tf</b> (vrai ou faux), <b>num</b> (résultat chiffré), <b>tiles</b> (phrase à reconstituer),
+    <b>match</b> (paires), <b>order</b> (remise en ordre), <b>story</b> (scène dialoguée).</p>
+    <textarea class="tnote" id="cr-spec" readonly style="min-height:260px;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:10.5px"></textarea>
+    <div style="height:10px"></div>
+    <button class="btn blue" onclick="copySpec()">${ico("copy",16)} Copier cet exemple</button>
+    <div style="height:8px"></div>
+    <button class="btn ghost" onclick="askImportCourse()">Retour</button>`);
+  const ta=document.getElementById("cr-spec"); if(ta)ta.value=JSON.stringify(ex,null,2);
+}
+function copySpec(){ const t=document.getElementById("cr-spec"); if(!t)return;
+  try{ t.select(); document.execCommand("copy"); toast(ico("check",18)+" Exemple copié."); }catch(e){ toast("Sélectionne le texte à la main."); } }
+function pickCourseFile(){
+  let i=document.getElementById("cr-file"); if(i)i.remove();
+  i=document.createElement("input"); i.type="file"; i.accept=".json,application/json"; i.id="cr-file"; i.style.display="none";
+  i.onchange=()=>{ const f=i.files&&i.files[0]; if(!f)return;
+    const fr=new FileReader(); fr.onload=()=>applyCourse(String(fr.result||"")); fr.readAsText(f); };
+  document.body.appendChild(i); i.click();
+}
+function readPastedCourse(){ const el=document.getElementById("cr-in");
+  const t=(el&&el.value||"").trim(); if(!t){toast("Colle d'abord le JSON du cours.");return;} applyCourse(t); }
+
+function validCourse(o){
+  if(!o||typeof o!=="object")return "Fichier illisible.";
+  if(!o.id||!/^[A-Z0-9_]{2,16}$/.test(o.id))return "Il manque un identifiant en majuscules, par exemple \"CUISINE\".";
+  if(COURSES.find(c=>c.id===o.id))return "Un cours porte déjà l'identifiant "+o.id+".";
+  if(!o.name)return "Il manque le nom du cours.";
+  if(!Array.isArray(o.units)||!o.units.length)return "Il faut au moins une unité.";
+  let n=0;
+  for(const u of o.units){
+    if(!u.t)return "Une unité n'a pas de titre.";
+    if(!Array.isArray(u.exos)||!u.exos.length)return "L'unité \""+u.t+"\" n'a aucun exercice.";
+    for(const e of u.exos){
+      n++;
+      if(!e.t)return "Un exercice de \""+u.t+"\" n'a pas de type.";
+      if(!["mcq","tf","num","tiles","match","order","story","fill"].includes(e.t))
+        return "Type d'exercice non géré à l'import : "+e.t+".";
+      if(["mcq","fill","story"].includes(e.t)&&(!Array.isArray(e.o)||typeof e.a!=="number"||e.a>=e.o.length))
+        return "Un exercice \""+e.t+"\" a des propositions ou une réponse invalides.";
+      if(e.t==="tf"&&typeof e.a!=="boolean")return "Un vrai/faux doit avoir une réponse true ou false.";
+      if(e.t==="num"&&typeof e.a!=="number")return "Un exercice num doit avoir une réponse chiffrée.";
+      if(e.t==="match"&&!Array.isArray(e.p))return "Un exercice match doit avoir un tableau p de paires.";
+      if(e.t==="order"&&!Array.isArray(e.it))return "Un exercice order doit avoir un tableau it.";
+      if((e.t==="tiles")&&!Array.isArray(e.a))return "Un exercice tiles doit avoir un tableau a.";
+      if(e.t==="story"&&!Array.isArray(e.sc))return "Un exercice story doit avoir un tableau sc.";
+    }
+  }
+  if(n<4)return "Il faut au moins 4 exercices dans le cours.";
+  return null;
+}
+function applyCourse(txt){
+  let o; try{ o=JSON.parse(txt); }catch(e){ sfx("wrong"); toast(ico("cross",18)+" Ce n'est pas du JSON valide.",4000); return; }
+  const err=validCourse(o);
+  if(err){ sfx("wrong"); toast(ico("cross",18)+" "+err,5000); return; }
+  S.custom=S.custom||[]; S.custom.push(o);
+  S.courses[o.id]=S.courses[o.id]||courseState();
+  mountCustom();
+  save(); closeModal(); sfx("complete"); confetti(60);
+  const nEx=o.units.reduce((a,u)=>a+u.exos.length,0);
+  toast(ico("check",18)+" Cours \""+esc(o.name)+"\" ajouté : "+o.units.length+" unité(s), "+nEx+" exercices.",4200);
+  S.active=o.id; save(); setTab("path");
+}
+function delCourse(k){
+  const c=S.custom[k]; if(!c)return;
+  openModal(`<div class="big">${ico("trash",50,"var(--red)")}</div>
+    <h2>Retirer "${esc(c.name)}" ?</h2>
+    <p class="muted">Le cours et ta progression dessus disparaissent. Les autres cours ne bougent pas.</p>
+    <button class="btn red" onclick="doDelCourse(${k})">Retirer</button>
+    <div style="height:8px"></div><button class="btn ghost" onclick="askImportCourse()">Annuler</button>`);
+}
+function doDelCourse(k){
+  const c=S.custom[k]; if(!c)return;
+  S.custom.splice(k,1); delete S.courses[c.id];
+  if(S.active===c.id)S.active=COURSES[0].id;
+  save(); closeModal();
+  toast(ico("check",18)+" Cours retiré. Recharge la page pour finaliser.",4000);
+  setTimeout(()=>location.reload(),1400);
+}
+/* on branche les cours importes sur le moteur existant */
+function mountCustom(){
+  if(!Array.isArray(S.custom)||!S.custom.length)return;
+  let uid=9000;
+  S.custom.forEach(c=>{
+    if(!COURSES.find(x=>x.id===c.id))
+      COURSES.push({id:c.id,name:c.name,short:c.short||c.name.slice(0,10),
+                    icon:c.icon||"book",col:c.col||"--blue",teacher:c.teacher||"Cours importé",
+                    practice:!!c.practice,custom:true});
+    if(!S.courses[c.id])S.courses[c.id]=courseState();
+    c.units.forEach((u,k)=>{
+      const id=uid++;
+      if(UNITS.find(x=>x.id===id))return;
+      UNITS.push({id,c:c.id,n:u.n||("Module "+(k+1)),t:u.t,col:u.col||c.col||"--blue",
+                  ic:u.ic||c.icon||"book",guide:u.guide||"<h3>"+esc(u.t)+"</h3><p>Cours importé.</p>"});
+      u.exos.forEach((e,j)=>{
+        const ex=Object.assign({},e,{i:c.id.toLowerCase()+"-"+id+"-"+j,u:id,
+                                     d:typeof e.d==="number"?e.d:.45, lv:e.lv||2});
+        if(!EXOS.find(x=>x.i===ex.i))EXOS.push(ex);
+      });
+    });
+  });
+}
+mountCustom();
+</script>
+
+<script>
+/* =====================================================================
+   BADGES DE COURS
+   Un medaillon dessine par cours, a la place de l emoji. Meme langage
+   graphique partout : disque colore, ombre portee interne, forme
+   pleine aux angles arrondis, un seul accent clair.
+   ===================================================================== */
+const BADGE_ART={
+ /* risque de credit : une courbe de perte et son seuil */
+ MRC:`<path d="M14 44 Q24 20 32 30 T50 16" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      <path d="M12 48h40" stroke="rgba(255,255,255,.5)" stroke-width="3" stroke-linecap="round"/>
+      <circle cx="50" cy="16" r="5" fill="#fff"/>`,
+ /* economie bancaire : fronton a colonnes */
+ BANQUE:`<path d="M32 12 54 24H10z" fill="#fff"/>
+      <rect x="15" y="27" width="6" height="17" rx="2" fill="#fff"/>
+      <rect x="29" y="27" width="6" height="17" rx="2" fill="#fff"/>
+      <rect x="43" y="27" width="6" height="17" rx="2" fill="#fff"/>
+      <rect x="11" y="46" width="42" height="5" rx="2.5" fill="rgba(255,255,255,.72)"/>`,
+ /* style : col de chemise et cravate */
+ STYLE:`<path d="M22 14 32 22 42 14l10 6-6 30H18l-6-30z" fill="#fff"/>
+      <path d="M32 22 27 27l5 20 5-20z" fill="rgba(0,0,0,.28)"/>`,
+ /* humour : micro sur pied */
+ HUMOUR:`<rect x="26" y="10" width="12" height="21" rx="6" fill="#fff"/>
+      <path d="M19 27a13 13 0 0 0 26 0" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      <path d="M32 40v10" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+      <path d="M22 52h20" stroke="rgba(255,255,255,.7)" stroke-width="4" stroke-linecap="round"/>`,
+ /* poker : deux cartes croisees */
+ POKER:`<rect x="12" y="18" width="22" height="30" rx="4" fill="rgba(255,255,255,.62)" transform="rotate(-13 23 33)"/>
+      <rect x="28" y="15" width="22" height="30" rx="4" fill="#fff"/>
+      <path d="M39 22c3 3 6 5 6 8a3.4 3.4 0 0 1-6 2 3.4 3.4 0 0 1-6-2c0-3 3-5 6-8z" fill="#E4392F"/>`,
+ /* dames : deux pions empiles */
+ DAMES:`<ellipse cx="32" cy="40" rx="17" ry="8" fill="rgba(0,0,0,.3)"/>
+      <ellipse cx="32" cy="35" rx="17" ry="8" fill="#fff"/>
+      <ellipse cx="32" cy="27" rx="17" ry="8" fill="rgba(255,255,255,.78)"/>
+      <ellipse cx="32" cy="24" rx="9" ry="4" fill="rgba(0,0,0,.2)"/>`,
+ /* youtube : triangle de lecture et courbe de croissance */
+ YT:`<rect x="10" y="16" width="44" height="30" rx="8" fill="#fff"/>
+      <path d="M28 25l12 6-12 6z" fill="rgba(0,0,0,.55)"/>
+      <path d="M14 52l8-6 7 4 9-9 12 5" fill="none" stroke="rgba(255,255,255,.85)" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"/>`,
+ /* analyste risque : bouclier et coche */
+ RISK:`<path d="M32 10 52 17v14c0 12-8 19-20 23-12-4-20-11-20-23V17z" fill="#fff"/>
+      <path d="M23 32l7 7 13-14" fill="none" stroke="rgba(0,0,0,.45)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>`,
+ /* nietzsche : le marteau */
+ NIETZ:`<rect x="14" y="14" width="26" height="14" rx="4" fill="#fff" transform="rotate(-32 27 21)"/>
+      <path d="M27 27 46 50" stroke="rgba(255,255,255,.85)" stroke-width="6" stroke-linecap="round"/>
+      <path d="M12 50h14" stroke="rgba(255,255,255,.45)" stroke-width="3" stroke-linecap="round"/>`
+};
+const BADGE_FALL=`<rect x="14" y="12" width="30" height="40" rx="4" fill="#fff"/>
+      <rect x="44" y="12" width="6" height="40" rx="3" fill="rgba(255,255,255,.6)"/>
+      <path d="M20 22h18M20 30h18M20 38h12" stroke="rgba(0,0,0,.4)" stroke-width="3" stroke-linecap="round"/>`;
+
+function badgeSVG(cid,size){
+  const c=COURSES.find(x=>x.id===cid)||{col:"--blue"};
+  const s=size||44, art=BADGE_ART[cid]||BADGE_FALL;
+  const uid="bg"+cid+s;
+  return `<svg class="cbadge" viewBox="0 0 64 64" width="${s}" height="${s}" role="img" aria-label="${esc(c.short||cid)}"
+   style="display:block;flex:none">
+   <defs>
+     <linearGradient id="${uid}" x1="0" y1="0" x2="0" y2="1">
+       <stop offset="0" stop-color="var(${c.col})" stop-opacity="1"/>
+       <stop offset="1" stop-color="var(${c.col})" stop-opacity=".72"/>
+     </linearGradient>
+   </defs>
+   <rect x="2" y="2" width="60" height="60" rx="18" fill="url(#${uid})"/>
+   <rect x="2" y="2" width="60" height="60" rx="18" fill="none" stroke="rgba(0,0,0,.22)" stroke-width="2"/>
+   <path d="M2 20a18 18 0 0 1 18-18h24a18 18 0 0 1 18 18z" fill="rgba(255,255,255,.14)"/>
+   <g>${art}</g>
+  </svg>`;
+}
+
+/* --- on remplace les emoji de cours partout, sans toucher aux moteurs --- */
+(function badgesPartout(){
+  /* selecteur de cours en haut du chemin */
+  const __renderPath=renderPath;
+  window.renderPath=function(){
+    __renderPath.apply(null,arguments);
+    document.querySelectorAll('#pathbody .btn.sm[onclick^="setCourse"]').forEach(b=>{
+      const m=/setCourse\('([^']+)'\)/.exec(b.getAttribute("onclick")||""); if(!m)return;
+      const svg=b.querySelector("svg.cbadge"); if(svg)return;
+      const ic=b.querySelector("svg.ic-svg"); if(ic)ic.remove();
+      b.insertAdjacentHTML("afterbegin",badgeSVG(m[1],20));
+      b.style.display="inline-flex"; b.style.alignItems="center"; b.style.gap="7px";
+    });
+  };
+  /* liste des cours */
+  const __renderCourses=(typeof renderCourses==="function")?renderCourses:null;
+  if(__renderCourses)window.renderCourses=function(){
+    __renderCourses.apply(null,arguments);
+    document.querySelectorAll("#coursesbody .rowline").forEach(r=>{
+      const b=r.querySelector('[onclick*="setCourse"],[onclick*="toggleCourse"]');
+      if(!b)return;
+      const m=/'([A-Z0-9_]+)'/.exec(b.getAttribute("onclick")||""); if(!m)return;
+      if(r.querySelector("svg.cbadge"))return;
+      r.insertAdjacentHTML("afterbegin",badgeSVG(m[1],38));
+    });
+  };
+  /* profil : progression par cours */
+  const __renderProfile=renderProfile;
+  window.renderProfile=function(){
+    __renderProfile.apply(null,arguments);
+    const body=document.getElementById("profilebody"); if(!body)return;
+    COURSES.forEach(c=>{
+      [...body.querySelectorAll(".rowline .lbl")].forEach(l=>{
+        if(l.dataset.bd)return;
+        if(l.textContent.trim().replace(/\s+/g," ")===c.name){
+          l.dataset.bd="1";
+          l.style.display="flex"; l.style.alignItems="center"; l.style.gap="9px";
+          const ic=l.querySelector("svg.ic-svg"); if(ic)ic.remove();
+          l.insertAdjacentHTML("afterbegin",badgeSVG(c.id,26));
+        }
+      });
+    });
+  };
 })();
 </script>
