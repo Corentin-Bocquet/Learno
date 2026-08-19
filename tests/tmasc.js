@@ -46,8 +46,8 @@ console.log("toutes distinctes :",new Set(["k","d"].flatMap(p=>[0,1,2,3,4,5,6,7]
 
 console.log("\n=== POSES ===");
 console.log("poses declarees :",E("POSES.join(' ')"));
-const toutes=E("POSES.map(p=>poseKey(p)).join(',')");
-console.log("koala :",toutes);
+const posesKoala=E("POSES.map(p=>poseKey(p)).join(',')");
+console.log("koala :",posesKoala);
 console.log("diable :",E("POSES.map(p=>poseKey(p,'diable')).join(',')"));
 console.log("balise complete :",/^<img src="data:image\/webp;base64,[^"]+" alt="[^"]+"/.test(E("masc('fier')")));
 console.log("texte alternatif :",E("masc('triste')").match(/alt="([^"]*)"/)[1]);
@@ -133,6 +133,34 @@ console.log("\n=== NON REGRESSION ===");
 console.log("les 10 onglets rendent :",!errs.some(e=>/onglet/.test(e)));
 console.log("cours :",E("COURSES.length"),"| unites :",E("UNITS.length"),"| exercices :",E("EXOS.length"));
 console.log("aucune image cassee :",[...doc.querySelectorAll("img")].filter(i=>!i.getAttribute("src")).length,"sans source");
+
+console.log("\n=== PLUS DE RENARD NI DE HIBOU ===");
+const cles=E("Object.keys(IMG).sort().join(',')");
+console.log("images embarquees :",cles);
+console.log("aucune ancienne image :",!/fox|prof/.test(cles));
+E("S.active='MRC';setTab('path')"); await wait(300);
+const pc=[...doc.querySelectorAll("#pathbody img.pathchar")].map(i=>i.getAttribute("src"));
+const mascSrc=new Set(["k","d"].flatMap(p=>[0,1,2,3,4,5,6,7].map(i=>E("IMG['m_"+p+i+"']"))));
+console.log("decors du chemin :",pc.length,"| tous sont des mascottes :",pc.length>0&&pc.every(s2=>mascSrc.has(s2)));
+console.log("les deux personnages present sur le chemin :",
+  pc.some(s2=>s2===E("IMG.m_k0")||s2===E("IMG.m_k5")||s2===E("IMG.m_k3")||s2===E("IMG.m_k1")) &&
+  pc.some(s2=>s2===E("IMG.m_d2")||s2===E("IMG.m_d5")||s2===E("IMG.m_d0")||s2===E("IMG.m_d3")));
+console.log("logo = koala qui salue :",doc.getElementById("logoimg").getAttribute("src")===E("IMG.m_k0"));
+console.log("image d'accueil = koala :",doc.getElementById("ob-img").getAttribute("src")===E("IMG.m_k0"));
+const ttImg=[...doc.querySelectorAll("img")].map(i=>i.getAttribute("src")||"").filter(s2=>s2.startsWith("data:"));
+console.log("toutes les images de la page sont des mascottes :",ttImg.every(s2=>mascSrc.has(s2)),"("+ttImg.length+" images)");
+
+console.log("\n=== LE NOM ===");
+console.log("titre :",doc.title);
+console.log("barre laterale :",doc.querySelector("#side .logo").textContent.trim());
+console.log("nom iOS :",doc.querySelector('meta[name="apple-mobile-web-app-title"]').getAttribute("content"));
+console.log("titre masque :",doc.querySelector(".sr-h1").textContent.trim());
+E("authOpen('login')"); await wait(200);
+console.log("ecran de connexion :",doc.querySelector(".auth-brand .w").textContent.trim());
+E("authSkip()"); await wait(120);
+console.log("sauvegarde :",E("BK_APP"),"| fichier :",E("backupFileName()"));
+if(/Multilingo/.test(html))errs.push("le nom Multilingo traine encore dans le fichier");
+console.log("plus aucun 'Multilingo' dans le fichier :",!/Multilingo/.test(html));
 
 console.log("\nERREURS:",errs.length,errs.slice(0,5));
 process.exit(0);
