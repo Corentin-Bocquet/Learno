@@ -28,7 +28,8 @@ console.log("structure:",w.eval(`(()=>{const bad=[];EXOS.forEach(e=>{
    match:['p'],order:['it'],color:['cols','a'],outfit:['items','a'],
    cards:['o','a','hand'],spot:['o','a','hand'],range:['sel'],pick:['cards','a'],
    dames:['o','a','pos'],move:['pos','a','side'],look:['slots'],
-   studio:['o','a'],curve:['pts','zones','a'],thumb:['thumbs','a'],slider:['min','max','a']}[e.t];
+   studio:['o','a'],curve:['pts','zones','a'],thumb:['thumbs','a'],slider:['min','max','a'],
+   sort:['bins','it'],multi:['o','a']}[e.t];
  if(!need){bad.push(e.i+':type '+e.t);return;}
  need.forEach(k=>{if(e[k]===undefined)bad.push(e.i+':manque '+k);});
  if(['mcq','fill','story','cards','spot','dames','studio'].includes(e.t)&&e.o&&e.a>=e.o.length)bad.push(e.i+':index');
@@ -38,6 +39,8 @@ console.log("structure:",w.eval(`(()=>{const bad=[];EXOS.forEach(e=>{
  if(e.t==='pick'&&e.a.some(k=>k>=e.cards.length))bad.push(e.i+':index carte');
  if(e.t==='range'&&e.sel.some(n=>!/^[2-9TJQKA]{2}[so]?$/.test(n)))bad.push(e.i+':main invalide');
  if(e.t==='color'&&e.a>=e.cols.length)bad.push(e.i+':index');
+ if(e.t==='sort'&&e.it.some(x=>!(x[1]>=0&&x[1]<e.bins.length)))bad.push(e.i+':case');
+ if(e.t==='multi'&&(!e.a.length||e.a.some(k=>k>=e.o.length)))bad.push(e.i+':index');
  if(e.t==='outfit'&&e.a>=e.items.length)bad.push(e.i+':index');
  if(e.t==='tf'&&typeof e.a!=='boolean')bad.push(e.i+':bool');
  if(e.t==='num'&&typeof e.a!=='number')bad.push(e.i+':nombre');
@@ -78,6 +81,9 @@ function answer(ex,correct){
       (correct?mv:[mv[0],mv[0]]).forEach(n=>w.eval("damesTap("+n+")"));}
   else if(ex.t==="range"){ (correct?ex.sel:["AA"]).forEach(n=>{
       const c=[...doc.querySelectorAll("#qwrap .rcell")].find(b=>b.dataset.h===n); if(c)click(c);});}
+  else if(ex.t==="sort"){ ex.it.forEach((it,k)=>w.eval("sortTap("+k+","+(correct?it[1]:(it[1]+1)%ex.bins.length)+")"));}
+  else if(ex.t==="multi"){ (correct?ex.a:[ex.o.map((_,k)=>k).find(k=>!ex.a.includes(k))??0]).forEach(k=>
+      click(doc.querySelector('#qwrap .mchk[data-m="'+k+'"]')));}
   else if(ex.t==="pick"){ (correct?ex.a:[0]).forEach(k=>click(doc.querySelectorAll("#qwrap .pcardbtn")[k]));}
   else if(ex.t==="order"){for(let p=0;p<60;p++){const o=w.eval("A.order.slice()");let sw=false;
       for(let i=0;i<o.length-1;i++){if(o[i]>o[i+1]){w.eval("moveO("+i+",1)");sw=true;break;}}if(!sw)break;}}
