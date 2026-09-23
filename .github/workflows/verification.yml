@@ -28,7 +28,7 @@ jobs:
 
       - name: Rejouer chaque cours
         run: |
-          for c in MRC BANQUE PATRI NEGO STYLE HUMOUR POKER DAMES YT RISK NIETZ; do
+          for c in MRC BANQUE PATRI NEGO NON STYLE HUMOUR POKER DAMES YT RISK NIETZ; do
             echo "--- $c"
             CID=$c node --max-old-space-size=4000 tests/tall.js | tee /tmp/out.txt
             grep -q "^ERREURS: 0" /tmp/out.txt || { echo "REGRESSION sur $c"; exit 1; }
@@ -44,7 +44,7 @@ jobs:
 
       - name: Charte des nouveaux cours (notions, formats, longueurs)
         run: |
-          for c in NEGO; do
+          for c in NEGO NON; do
             echo "--- $c"
             CID=$c node --max-old-space-size=4000 tests/tcours.js | tee /tmp/out.txt
             grep -q "^ERREURS: 0" /tmp/out.txt || { echo "CHARTE NON RESPECTEE sur $c"; exit 1; }
