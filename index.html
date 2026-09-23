@@ -8709,12 +8709,11 @@ EXOS.push(
 );
 </script>
 
-<!-- PATRI:DEBUT -->
+<!-- COURS:PATRI:DEBUT -->
 <script>
 /* =====================================================================
    COURS PATRI : TRANSMISSION DU PATRIMOINE
-   16 modules de 32 exercices, soit 8 lecons par module. Chiffres verifies
-   au 23/09/2026 (Code civil, CGI, loi de finances pour 2026).
+   16 modules de 32 exercices. Genere depuis les fichiers sources du cours.
    ===================================================================== */
 UNITS.push(
 {id:133,c:"PATRI",n:"Module 1",t:"Qui hérite ? Les ordres et les degrés",col:"--gold",ic:"🌳",guide:`
@@ -9830,7 +9829,7 @@ EXOS.push(
 {i:"p148_32",u:148,t:"story",d:.55,q:"Que conseilles-tu en priorité à Thomas, 64 ans ?",ctx:"Thomas veut transmettre sa société à Léa, qui la dirigera. Il hésite à attendre ses 72 ans pour « profiter encore un peu ».",sc:[{who:"Thomas",txt:"Si j'attends 72 ans pour donner, je perds quoi exactement ?"}],o:["La réduction de 50 % des droits, réservée aux donateurs de moins de 70 ans","Le pacte Dutreil, interdit aux donateurs de plus de 70 ans","L'abattement de 100 000 €, supprimé après 70 ans","Rien : les règles de donation ne dépendent jamais de l'âge"],a:0,w:"Le Dutreil reste possible après 70 ans, mais la réduction de 50 % disparaît. Donner avant 70 ans, en pleine propriété, divise encore les droits par deux."}
 );
 </script>
-<!-- PATRI:FIN -->
+<!-- COURS:PATRI:FIN -->
 <script>
 /* =====================================================================
    MULTILINGO v2 — moteur
@@ -9839,15 +9838,15 @@ const LS="risklingo_v2"; /* clé conservée : ne pas renommer, sinon la progress
 const IMG=window.__IMG||{}, SNDDATA=window.__SND||{};
 const HEART_MIN=20, LESSON_LEN=7;
 const COURSES=[
- {id:"MRC",    name:"Risque de crédit", short:"MRC",    icon:"📐", col:"--green", teacher:"JC", cat:"ecole"},
- {id:"BANQUE", name:"Économie bancaire",short:"Banque", icon:"🏦", col:"--blue",  teacher:"M. Kather", cat:"ecole"},
- {id:"PATRI",  name:"Transmission du patrimoine", short:"Patrimoine", icon:"🏛️", col:"--gold", teacher:"Gestion de patrimoine", cat:"ecole", mix:true},
- {id:"STYLE",practice:true,  name:"Style masculin",     short:"Style",  icon:"👔", col:"--orange",teacher:"Formation complète", cat:"style"},
- {id:"HUMOUR",practice:true, name:"Raconter et faire rire",short:"Humour",icon:"🎤", col:"--red",   teacher:"École du stand-up narratif", cat:"diver"},
- {id:"POKER",practice:true,  name:"Poker No Limit Hold'em",short:"Poker",icon:"🃏", col:"--gold", teacher:"De débutant à expert", calib:true, cat:"jeux"},
- {id:"DAMES",practice:true,  name:"Jeu de dames international",short:"Dames",icon:"🎴", col:"--purple",teacher:"De débutant à expert", calib:true, cat:"jeux"},
- {id:"YT",practice:true,     name:"YouTube : 0 à 100 000",short:"YouTube",icon:"▶️", col:"--red",   teacher:"Méthode de conversion", calib:true, cat:"diver"},
- {id:"RISK",practice:true,   name:"Analyste risque en banque",short:"Risque",icon:"🛡️",col:"--blue",  teacher:"De débutant à expert", calib:true, cat:"ecole"},
+ {id:"MRC",    name:"Risque de crédit : pricer le défaut", short:"MRC",    icon:"📐", col:"--green", teacher:"JC", cat:"ecole"},
+ {id:"BANQUE", name:"Économie bancaire : comment gagne une banque",short:"Banque", icon:"🏦", col:"--blue",  teacher:"M. Kather", cat:"ecole"},
+ {id:"PATRI",  name:"Transmission du patrimoine : qui hérite, qui paie", short:"Patrimoine", icon:"🏛️", col:"--gold", teacher:"Gestion de patrimoine", cat:"ecole", mix:true},
+ {id:"STYLE",practice:true,  name:"Style masculin : s'habiller avec assurance", short:"Style",  icon:"👔", col:"--orange",teacher:"Formation complète", cat:"style"},
+ {id:"HUMOUR",practice:true, name:"Humour : raconter et faire rire",short:"Humour",icon:"🎤", col:"--red",   teacher:"École du stand-up narratif", cat:"diver"},
+ {id:"POKER",practice:true,  name:"Poker : gagner au No Limit Hold'em",short:"Poker",icon:"🃏", col:"--gold", teacher:"De débutant à expert", calib:true, cat:"jeux"},
+ {id:"DAMES",practice:true,  name:"Dames : de débutant à expert",short:"Dames",icon:"🎴", col:"--purple",teacher:"De débutant à expert", calib:true, cat:"jeux"},
+ {id:"YT",practice:true,     name:"YouTube : de 0 à 100 000 abonnés",short:"YouTube",icon:"▶️", col:"--red",   teacher:"Méthode de conversion", calib:true, cat:"diver"},
+ {id:"RISK",practice:true,   name:"Analyste risque en banque : le métier",short:"Risque",icon:"🛡️",col:"--blue",  teacher:"De débutant à expert", calib:true, cat:"ecole"},
  {id:"NIETZ",practice:true,  name:"Nietzsche : penser avec un marteau",short:"Nietzsche",icon:"🔨",col:"--purple",teacher:"De la généalogie au surhomme", calib:true, cat:"livres"}
 ];
 /* Regroupement des cours par famille. Purement cosmetique : un cours sans
@@ -9857,7 +9856,9 @@ const CATS=[
  {id:"jeux",  nm:"Jeux",          d:"Les jeux qui se travaillent comme un sport", icon:"🃏", col:"--gold"},
  {id:"diver", nm:"Divertissement",d:"Créer, raconter, faire rire",           icon:"🎬", col:"--red"},
  {id:"style", nm:"Style",         d:"L'image que tu renvoies",               icon:"👔", col:"--orange"},
- {id:"livres",nm:"Livres et idées",d:"Penser plus large et plus profond",    icon:"📚", col:"--purple"}
+ {id:"livres",nm:"Livres et idées",d:"Penser plus large et plus profond",    icon:"📚", col:"--purple"},
+ {id:"sport", nm:"Sport et santé", d:"Le corps, l'assiette et le terrain",     icon:"🥊", col:"--green"},
+ {id:"perso", nm:"Développement perso",d:"S'affirmer et mieux vivre avec les autres",icon:"🧭", col:"--pink"}
 ];
 const CAT_AUTRE={id:"autre", nm:"Autres", d:"Cours sans famille attribuée", icon:"📦", col:"--dim"};
 function catOf(cid){ const c=COURSES.find(x=>x.id===cid); const k=c&&c.cat;

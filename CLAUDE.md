@@ -14,6 +14,30 @@ Il reprend les demandes de Corentin pour tous les futurs cours (les anciens cour
   d'un script pas encore exécuté : le script est vidé et ne s'exécute jamais, sans erreur.
   Écrire les emoji sous la forme `\u{1F48E}`. Le test `tests/tpatri.js` le vérifie.
 
+## Objectif de chaque cours (demande de Corentin)
+
+À la fin d'un cours, l'apprenant doit être un crack, presque un professionnel du sujet : il connaît
+tout, il a tout compris, et il a revu chaque notion au moins sept fois.
+- **Toutes les notions sont vues en profondeur.** Chaque mot, chaque notion présente dans la source
+  (mind map, podcast, vidéo, notes), même cité sans explication, est défini, expliqué, illustré et
+  entraîné. On liste les notions dans `cours/<CID>/notions.txt` et le test `tests/tcours.js` vérifie
+  que chacune apparaît dans un guide et dans plusieurs exercices.
+- **Sept expositions par notion :** le guide, plusieurs exercices dans son module, des exercices de
+  rappel dans les modules suivants, les rappels automatiques (`mix`), et un module final de synthèse.
+- **La pratique d'abord.** Plus de cas pratiques que de théorie : situations réelles, conversations,
+  décisions à prendre, calculs, schémas. Pour les sports, des schémas SVG (cibles, positions, phases).
+- **Un retour à chaque réponse.** L'explication `w` explique pourquoi, rassure quand c'est utile
+  (surtout pour les cours de développement personnel) et redonne le moyen mnémotechnique.
+- **Recherches approfondies** avant d'écrire, sources récentes, chiffres vérifiés et datés.
+- **Sources en ligne** (podcast, YouTube) : l'accès direct est bloqué dans le conteneur ; passer par
+  Firecrawl via Composio (page YouTube complète ou youtubetotranscript.com) pour récupérer la transcription.
+
+## Les noms des cours
+
+Un nom doit dire en deux secondes de quoi parle le cours ET donner envie de cliquer. Format conseillé :
+« Sujet : promesse concrète » (exemple : « Transmission du patrimoine : qui hérite, qui paie »).
+Si un nom existant est flou ou ne donne pas envie, on peut le renommer (autorisé par Corentin).
+
 ## Méthode pour créer un cours à partir de notes
 
 1. Extraire toute la matière (une mind map MindNode est une archive zip contenant un plist binaire).
@@ -31,10 +55,12 @@ Il reprend les demandes de Corentin pour tous les futurs cours (les anciens cour
 - Chaque module compte exactement 32 exercices, donc 8 leçons de 4 questions neuves.
 - Le cours porte `mix:true` dans `COURSES` : chaque leçon de 7 questions contient 4 questions neuves,
   2 rappels tirés des modules précédents (les plus oubliés d'abord) et 1 rappel du module en cours.
-- Le cours porte une catégorie `cat` : `ecole`, `jeux`, `diver`, `style`, `livres` (liste `CATS`).
-- Les données sont ajoutées dans un script à part, placé avant le moteur (voir le bloc
-  `<!-- PATRI:DEBUT -->`). Identifiants d'unités à la suite des existants, identifiants d'exercices
-  préfixés et uniques.
+- Le cours porte une catégorie `cat` : `ecole`, `jeux`, `diver`, `style`, `livres`, `sport`, `perso` (liste `CATS`).
+- Les sources de chaque cours vivent dans `cours/<CID>/uNNN.js` (un fichier par module : le guide puis
+  les exercices). `python3 tools/assemble.py` les injecte dans `index.html`, dans un bloc
+  `<!-- COURS:<CID>:DEBUT -->` placé avant le moteur. On n'édite jamais ce bloc à la main.
+  `node tools/longueurs.js cours/<CID>/uNNN.js` affiche la longueur des propositions pour traquer le biais.
+- Identifiants d'unités à la suite des existants, identifiants d'exercices préfixés et uniques.
 
 ## Le guide de chaque module : faire vivre la notion
 
