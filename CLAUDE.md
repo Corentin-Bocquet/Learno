@@ -88,6 +88,19 @@ On retient ce qu'on a vécu. Chaque guide doit contenir :
   nouveau cours.
 - Chaque exercice a une explication `w` qui rappelle la règle et, si possible, le moyen mnémotechnique.
 
+## Design Arcade (choix de Corentin, 24/09/2026)
+
+- Base visuelle : direction « Arcade » (fond marine #141432, titres en Baloo 2, grosses cartes colorées),
+  enrichie de « Duo Jour » (modules en cartes, carte Reprendre, erreur expliquée) et « Mondes »
+  (bulle Commencer +XP, fin de leçon XP / précision / temps, ligue et trophées).
+- Sources : `design/arcade/arcade.css` et `design/arcade/arcade.js`. `python3 tools/design.py` les injecte
+  à la fin de `index.html`, dans le bloc `<!-- DESIGN:ARCADE:DEBUT -->`. On n'édite jamais ce bloc à la main.
+- Tout passe par des enveloppes (renderPath, doCheck, finish, renderLeague...) : aucun cours ni règle de jeu
+  n'est modifié. Les mascottes (Koala et Diable) ne sont jamais redessinées, on choisit seulement leurs poses.
+- Images générées (coffres, potions, gel) : `design/assets/`, prompts dans `design/assets/PROMPTS_IMAGES.md`.
+- Nouveaux jeux construits sur les exercices existants : Éclair (paires), Vrai ou faux express, Frise
+  (remise en ordre), Boss du module (le Diable), Duel de ligue. Test : `tests/tarcade.js`.
+
 ## Examen blanc
 
 Trois niveaux de difficulté avant le format : Facile 10/20/30 questions, Moyen 15/40/60, Difficile 30/60/100,
@@ -105,7 +118,7 @@ avec les mêmes durées de 8, 20 et 35 minutes (choix de Corentin).
 ## Tests
 
 Avant tout envoi : `tests/ci_smoke.js`, `tests/tall.js` pour chaque cours (`CID=...`), puis
-`tbackup tcloud tui tmissions tpratique tpro tmasc tpatri`. Ajouter chaque nouveau cours dans
+`tbackup tcloud tui tmissions tpratique tpro tmasc tpatri tarcade`. Ajouter chaque nouveau cours dans
 `.github/workflows/verification.yml` et relever les seuils de `tests/ci_smoke.js`.
 
 ## Publication : fusion automatique dans main (demande de Corentin, 24/09/2026)

@@ -2,14 +2,24 @@
    Objectif : que l'application s'ouvre et fonctionne sans reseau.
    Strategie : reseau d'abord pour la page, cache d'abord pour les
    ressources fixes. Le cache est purge a chaque nouvelle version.   */
-const V = "learno-v5";
+const V = "learno-v6";
 const FIXE = [
   "./",
   "./index.html",
   "./manifest.webmanifest",
   "./icon-192.png",
   "./icon-512.png",
-  "./apple-touch-icon.png"
+  "./apple-touch-icon.png",
+  "./design/assets/coffre.png",
+  "./design/assets/ouvert.png",
+  "./design/assets/matin.png",
+  "./design/assets/soir.png",
+  "./design/assets/legendaire.png",
+  "./design/assets/quete.png",
+  "./design/assets/potion15.png",
+  "./design/assets/potion2.png",
+  "./design/assets/potion3.png",
+  "./design/assets/gel.png"
 ];
 
 self.addEventListener("install", e => {
