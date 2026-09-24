@@ -572,3 +572,7 @@ body.arcade .pbanner .avbig svg,body.arcade .pbanner .avbig img{width:92px!impor
 .arc-fx.open .box .opened{filter:drop-shadow(0 0 22px var(--a)) drop-shadow(0 18px 24px rgba(0,0,0,.55)) brightness(1.12)}
 .arc-acc .btn{height:auto;min-height:52px;line-height:1.25;white-space:normal}
 .cattile .ci,.cathead .ci,.courseline .cf{overflow:visible}
+
+/* la barre du bas reste toujours au dessus du contenu qui defile
+   (les bandeaux de module colles en haut sont au niveau 12) */
+@media (max-width:860px){ body.arcade #mtabs{z-index:60} }
