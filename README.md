@@ -6,12 +6,13 @@ Jeu de revision facon Duolingo, en un seul fichier HTML, avec progression synchr
 
 ## Contenu
 
-9 cours, 132 unites, 1529 exercices.
+10 cours, 148 unites, 2041 exercices, ranges par familles (Ecole, Jeux, Divertissement, Style, Livres et idees).
 
 | Cours | Sujet |
 |---|---|
 | MRC | Risque de credit |
 | Banque | Economie bancaire |
+| Patrimoine | Transmission du patrimoine (16 modules, 512 exercices, chiffres verifies au 23/09/2026) |
 | Style | Style masculin |
 | Humour | Raconter et faire rire |
 | Poker | No Limit Hold'em, debutant a expert |
@@ -20,6 +21,16 @@ Jeu de revision facon Duolingo, en un seul fichier HTML, avec progression synchr
 | Risque | Analyste risque en banque |
 | Nietzsche | Penser avec un marteau |
 
+## Fonctions de jeu
+
+- **Boutique** : les gemmes achetent des potions d'XP (x1,5, x2, x3), des gels de serie, des coeurs ;
+  coffres du matin et du soir, pari de serie.
+- **Examen blanc** : trois niveaux (10/20/30, 15/40/60, 30/60/100 questions) sur 8, 20 et 35 minutes.
+- **Revisions inter-modules** : dans les cours marques `mix`, chaque lecon melange questions neuves et rappels
+  des modules precedents.
+- **Ligue en ligne** : les joueurs connectes apparaissent dans la ligue a la place des personnages fictifs
+  (table `learno_league`, voir `supabase/learno_league.sql`).
+
 ## Synchronisation
 
 La progression vit d'abord dans le localStorage du navigateur. Avec un compte, elle est
@@ -27,6 +38,7 @@ aussi poussee sur Supabase (Postgres), ce qui permet de reprendre sur n'importe 
 
 - Authentification : email et mot de passe (Supabase Auth)
 - Stockage : table `learno_state`, une ligne par utilisateur, colonne `data` en JSONB
+- Classement : table `learno_league`, lisible par les joueurs connectes, chacun n'ecrit que sa ligne
 - Isolation : Row Level Security, chaque utilisateur ne peut lire et ecrire que sa propre ligne
 - Hors ligne : si le serveur est injoignable, l'application fonctionne normalement en local
 

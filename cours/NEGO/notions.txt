@@ -1,0 +1,140 @@
+# Notions du cours NEGO (mind map « Négociation bancaire »)
+# Une ligne = une notion ; variantes séparées par | ; * = notion centrale (5 exercices minimum, sinon 3)
+*position
+*intérêt|interet
+*critère objectif|criteres objectifs|critere objectif
+*question ouverte|questions ouvertes
+*MESORE
+*BATNA
+*ZOPA
+*point cible
+*point de réserve|points de reserve
+distributive
+intégrative
+*valeur ajoutée|valeur creee|cree de la valeur|creer de la valeur|demontrer la valeur|la valeur
+coûte peu
+commencer par le prix|ne pas commencer par|parler prix|le prix viendra
+cartographier|carte du client|carte client
+émotion
+plancher
+argument
+preuve
+anticiper
+liquidité
+confiance
+fiscalité
+*reformul
+silence
+résumé intermédiaire
+*SPIN
+question de situation|questions de situation|Situation
+Problème
+Implication
+need-payoff
+*SONCAS
+Sécurité
+Orgueil
+Nouveauté
+Confort
+Sympathie
+*objection
+accueillir|je comprends votre point de vue
+clarifier
+prétexte
+inquiétude
+traiter
+valider|validation
+*concession conditionnelle|si nous ajustons|si vous
+réciprocité
+closing
+suivi
+prochaines étapes
+objectif principal
+alternative si refus|solution de repli
+non négociable
+moment de vie|moments de vie
+patrimoine de flux
+décideur
+influenceur
+biais
+question d'ouverture
+analogie
+documents à remettre|document d'informations cles|DIC
+court terme
+moyen terme
+long terme
+contrainte
+dette
+horizon
+éthique
+capacité de perte
+tolérance
+expérience
+critères de choix|criteres de decision|critere de decision
+4R
+Reprendre
+Relier
+Revalider
+*CIF
+lettre de mission
+rapport écrit|rapport
+*IAS
+exigences et besoins
+devoir de conseil|conseil personnalise
+*IOBSP
+devoir d'explication
+agent immobilier|carte T
+démarchage
+courtage|courtier
+abondement
+intéressement
+participation
+voiture de fonction
+télétravail
+SCPI
+PER
+fonds euros
+obligation
+produit structuré
+prêt étudiant
+transmission
+*KYC
+carte nationale d'identite|CNI|piece d'identite
+justificatif de domicile|JDD
+régime matrimonial
+passif
+garantie
+engagement
+profil investisseur
+*LCB-FT
+approche par les risques|familles de risque|famille de risque
+*PPE|politiquement expos
+anonymat
+assurance-vie
+pays à risque|pays sous sanctions|liste grise
+sanctions
+flux internationa|etranger
+fréquence
+bénéficiaire
+origine des fonds
+origine du patrimoine
+entrée en relation
+mise à jour
+suivi des opérations
+réexamen
+anomalie
+*TRACFIN
+déclaration de soupçon|soupcon
+HCSF
+Lemoine
+IRA|remboursement anticipe
+domiciliation
+TAEG
+taux d'usure
+ancrage
+Harvard|Fisher
+aversion à la perte
+statu quo
+ORIAS
+AMF
+ACPR
