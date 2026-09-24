@@ -21,7 +21,19 @@ Jeu de revision facon Duolingo, en un seul fichier HTML, avec progression synchr
 | Risque | Analyste risque en banque |
 | Nietzsche | Penser avec un marteau |
 
+## Design
+
+Refonte « Arcade » (septembre 2026) : fond marine, grosses cartes colorées, accueil en une vue
+(série de la semaine, carte Reprendre, coffre du jour, programme), parcours en **Modules** ou en
+**Chemin** au choix, corrections avec l'explication et le mémo du module, fin de leçon
+XP / précision / temps. Sources dans `design/arcade/`, injectées par `python3 tools/design.py`.
+
 ## Fonctions de jeu
+
+- **Nouveaux jeux** (onglet Réviser et accueil) : Éclair 60 s (paires), Vrai ou faux express (on glisse
+  les cartes), Frise (remettre des étapes dans l'ordre), Boss du module (battre le Diable pour un coffre
+  légendaire), Duel de ligue (contre son rival direct). Ils utilisent les exercices existants et
+  alimentent la répétition espacée.
 
 - **Boutique** : les gemmes achetent des potions d'XP (x1,5, x2, x3), des gels de serie, des coeurs ;
   coffres du matin et du soir, pari de serie.

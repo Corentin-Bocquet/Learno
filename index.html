@@ -18,7 +18,7 @@
 <meta name="theme-color" content="#131F24" id="meta-theme">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@600;700;800;900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;700;800&family=Nunito:wght@600;700;800;900&display=swap">
 <style>
 :root{
   color-scheme: dark;
@@ -19858,3 +19858,875 @@ function lgToggle(){
   setInterval(()=>lgPull(false),120000);
 })();
 </script>
+<!-- DESIGN:ARCADE:DEBUT -->
+<style>
+/* =====================================================================
+   DESIGN ARCADE (septembre 2026)
+   Base : la direction 4 « Arcade », enrichie de ce qui a plu dans
+   « Duo Jour » (modules en cartes, reprise en un geste, erreur expliquee)
+   et « Mondes » (bulle Commencer, fin de lecon, ligue et trophees).
+   Tout est range sous body.arcade : si la classe saute, l ancien design
+   revient tel quel. Le theme clair garde son propre jeu de couleurs.
+   ===================================================================== */
+body.arcade:not(.theme-light){
+  --bg:#141432; --bg2:#1C1C44; --card:#22224A; --card2:#2B2B5C; --line:#3A3A6E;
+  --txt:#F4F4FF; --dim:#B9B9E0; --dim2:#9090C4;
+  --shade:#101028;
+  background:#141432;
+}
+body.arcade{ --arc-font:"Baloo 2","Nunito",system-ui,sans-serif; }
+body.arcade .arc-h,body.arcade .mcard h2,body.arcade .unitbar .t2,body.arcade #sc-lesson .qtitle{
+  font-family:var(--arc-font); letter-spacing:-.2px; }
+
+/* ---------- barre du haut : cours actif, serie, gemmes, coeurs ---------- */
+body.arcade #mtop{display:flex;gap:4px;padding:10px 12px 8px;border-bottom:2px solid var(--line);background:var(--bg)}
+body.arcade #mtop .stat{display:flex;align-items:center;gap:4px;font-size:15.5px;font-weight:900;min-height:44px;padding:0 4px;border-radius:12px;flex:none}
+body.arcade #mtop .stat:active{transform:translateY(1px)}
+body.arcade #mtop .s-fire{color:var(--orange)}
+body.arcade #mtop .s-gem{color:var(--blue)}
+body.arcade #mtop .s-heart{color:var(--red)}
+body.arcade #mtop .s-xp{display:none}
+.arc-cpill{display:flex;align-items:center;gap:7px;border:2px solid var(--line);border-bottom-width:4px;border-radius:14px;
+  padding:5px 8px 5px 6px;min-height:44px;max-width:40%;min-width:0;flex:0 1 auto;font-size:14px;font-weight:900;color:var(--txt);background:var(--card)}
+.arc-cpill .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.arc-cpill svg.cbadge{flex:none}
+.arc-avbtn{width:38px;height:38px;border-radius:50%;overflow:hidden;flex:none;border:2px solid var(--line);padding:0;background:var(--card)}
+.arc-avbtn svg{width:100%;height:100%}
+
+/* ---------- barre d onglets : lisible, contrastee, 6 cases max ---------- */
+body.arcade:not(.theme-light) #mtabs{background:#10102A;border-top:2px solid var(--line)}
+body.arcade:not(.theme-light) #mtabs .navitem{color:#C9C9EE}
+body.arcade #mtabs .navitem{font-size:10.5px;letter-spacing:.3px;min-width:52px;min-height:50px;padding:6px 4px}
+body.arcade #mtabs .navitem .ic svg{width:25px;height:25px}
+body.arcade #mtabs .navitem.on{color:var(--gold);background:var(--card);box-shadow:inset 0 -3px 0 var(--gold)}
+body.arcade.theme-light #mtabs .navitem.on{color:#9A6F00}
+body.arcade.theme-light #side .navitem.on{color:#9A6F00;border-color:#D6A500}
+body.arcade:not(.theme-light) #side{background:#10102A;border-right-color:var(--line)}
+body.arcade:not(.theme-light) #side .navitem{color:#C9C9EE}
+body.arcade #side .navitem.on{color:var(--gold);border-color:var(--gold);background:rgba(255,200,0,.10)}
+/* pendant une lecon ou un jeu, rien ne distrait : ni compteurs ni onglets */
+body.arcade.arc-focus #mtop,body.arcade.arc-focus #mtabs{display:none!important}
+@media (min-width:861px){ body.arcade #mtop{display:flex} }
+
+/* ---------- briques communes ---------- */
+.arc-card{background:var(--card);border:2px solid var(--line);border-radius:20px}
+.arc-sec{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:22px 2px 10px;
+  font-size:13px;letter-spacing:1.1px;text-transform:uppercase;color:var(--dim)}
+.arc-img{object-fit:contain;flex:none;-webkit-user-drag:none;user-select:none}
+.arc-play{display:flex;gap:14px;align-items:center;width:100%;border:0;border-radius:22px;padding:14px 16px;color:#fff;text-align:left;
+  margin-bottom:12px;box-shadow:0 5px 0 var(--sh,rgba(0,0,0,.3));transition:transform .08s}
+.arc-play:active{transform:translateY(4px);box-shadow:0 1px 0 var(--sh,rgba(0,0,0,.3))}
+.arc-play .pi{width:54px;height:54px;border-radius:16px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;flex:none}
+.arc-play .pt{flex:1;min-width:0}
+.arc-play .pt b{display:block;font-family:var(--arc-font);font-size:20px;font-weight:800;line-height:1.1}
+.arc-play .pt span{display:block;font-size:13.5px;font-weight:800;opacity:.95;margin-top:3px}
+.arc-play .pg{background:rgba(0,0,0,.24);border-radius:10px;padding:6px 8px;font-size:12.5px;font-weight:900;white-space:nowrap}
+
+/* ---------- accueil : serie ---------- */
+.arc-streak{padding:14px 16px}
+.arc-streak .top{display:flex;align-items:center;gap:12px}
+.arc-streak .n{font-family:var(--arc-font);font-size:30px;font-weight:800;line-height:1}
+.arc-streak .s{font-size:13.5px;color:var(--dim);margin-top:3px}
+.arc-week{display:flex;justify-content:space-between;margin-top:12px}
+.arc-week .d{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;color:var(--dim)}
+.arc-week .o{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--line);background:var(--bg2)}
+.arc-week .d.on .o{background:var(--orange);border-color:var(--orange)}
+.arc-week .d.now .o{box-shadow:0 0 0 3px rgba(255,150,0,.35)}
+
+/* ---------- accueil : reprendre ---------- */
+.arc-resume{margin-top:14px;background:var(--blue);border-radius:22px;padding:16px 16px 16px 18px;display:flex;gap:12px;align-items:center;color:#fff;box-shadow:0 5px 0 var(--blue-d)}
+.arc-resume .k{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:#E6F7FF;font-weight:900}
+.arc-resume .t{font-family:var(--arc-font);font-size:21px;font-weight:800;line-height:1.15;margin:4px 0 12px}
+.arc-resume .go{background:#fff;color:#0B6FA0;border-radius:14px;padding:11px 20px;font-size:15px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;box-shadow:0 4px 0 #CFE9F7;min-height:46px}
+.arc-resume .go:active{transform:translateY(3px);box-shadow:0 1px 0 #CFE9F7}
+.arc-ring{position:relative;width:92px;height:92px;flex:none;display:flex;align-items:center;justify-content:center}
+.arc-ring svg{position:absolute;inset:0}
+.arc-ring span{position:relative;font-size:13px;font-weight:900;text-align:center;line-height:1.15}
+.arc-chestrow{margin-top:14px;padding:10px 14px;display:flex;gap:12px;align-items:center;cursor:pointer}
+.arc-chestrow .t{flex:1;min-width:0}
+.arc-chestrow b{display:block;font-size:15.5px}
+.arc-chestrow span{display:block;font-size:13px;color:var(--dim);margin-top:2px}
+.arc-chestrow .cta{color:var(--gold);font-weight:900;font-size:13.5px;letter-spacing:.5px}
+
+/* ---------- parcours : bascule modules / chemin ---------- */
+.arc-seg{display:inline-flex;background:var(--bg2);border:2px solid var(--line);border-radius:14px;padding:3px;gap:2px}
+.arc-seg button{min-height:38px;padding:0 12px;border-radius:10px;font-size:12.5px;letter-spacing:.3px;color:var(--dim);display:flex;align-items:center;gap:6px;text-transform:none}
+.arc-seg button.on{background:var(--card2);color:var(--txt);box-shadow:0 2px 0 var(--line)}
+
+.arc-mod{padding:14px 14px 14px;margin-bottom:14px;box-shadow:0 4px 0 var(--line)}
+.arc-mod.cur{border-color:var(--green);box-shadow:0 4px 0 var(--green-d)}
+.arc-mod.lock{opacity:.62}
+.arc-mod .h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.arc-mod .k{font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:900}
+.arc-mod .t{font-family:var(--arc-font);font-size:18.5px;font-weight:800;line-height:1.2;margin-top:2px}
+.arc-mod .c{color:var(--dim);font-weight:900;font-size:14px;white-space:nowrap}
+.arc-dots{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.arc-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:0;padding:0;
+  background:var(--card2);box-shadow:0 4px 0 var(--shade,#101028);color:#6E6EA6;position:relative}
+.arc-dot.done{background:var(--green);box-shadow:0 4px 0 var(--green-d);color:#fff}
+.arc-dot.gold{background:var(--gold);box-shadow:0 4px 0 var(--gold-d);color:#fff}
+.arc-dot.now{background:var(--green);box-shadow:0 4px 0 var(--green-d),0 0 0 4px rgba(137,226,25,.35);color:#fff}
+.arc-dot.legend.on{background:var(--purple);box-shadow:0 4px 0 var(--purple-d);color:#fff}
+.arc-dot.chest{background:none;box-shadow:none}
+.arc-dot.chest img{width:40px;height:40px}
+.arc-dot.chest.lock img{filter:grayscale(1) brightness(.7);opacity:.55}
+.arc-dot:active{transform:translateY(3px)}
+.arc-mod .f{display:flex;gap:10px;margin-top:14px;align-items:center}
+.arc-mini{border:2px solid var(--line);border-bottom-width:4px;border-radius:12px;min-height:42px;padding:0 12px;font-size:12.5px;letter-spacing:.5px;
+  text-transform:uppercase;color:var(--blue);display:inline-flex;align-items:center;gap:6px;background:var(--card)}
+.arc-go{flex:1;min-height:44px;border-radius:14px;background:var(--green);color:#fff;box-shadow:0 4px 0 var(--green-d);font-size:14px;letter-spacing:.6px;text-transform:uppercase}
+.arc-go:active{transform:translateY(3px);box-shadow:0 1px 0 var(--green-d)}
+
+/* chemin en serpent : l ancien chemin, habille en arcade */
+body.arcade .unitbar{border-radius:20px;box-shadow:0 4px 0 rgba(0,0,0,.28)}
+body.arcade .unitbar .t2{font-size:19px}
+body.arcade .startbub{background:#EF8FCF;color:#3A0F2C;border:0;box-shadow:0 4px 0 #C7659F;border-radius:14px;
+  padding:9px 14px;font-size:13px;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;font-weight:900}
+body.arcade .startbub:after{background:#EF8FCF;border:0}
+body.arcade .node.chest .glyph img{width:74px;height:74px}
+body.arcade .node.chest.lock .glyph img{filter:grayscale(1) brightness(.75);opacity:.6}
+
+/* ---------- lecon ---------- */
+body.arcade #sc-lesson{background:var(--bg)}
+body.arcade .lhead{padding:16px 16px 8px}
+body.arcade .prog{height:18px;background:var(--card2)}
+body.arcade .prog>div{background:linear-gradient(180deg,#8EE33A,#58CC02);box-shadow:inset 0 -5px 0 rgba(0,0,0,.1)}
+body.arcade .choice{background:var(--card);border-color:var(--line);box-shadow:0 2px 0 var(--line)}
+body.arcade .qkind{color:var(--purple);font-weight:900}
+body.arcade .checkbar{max-height:62vh;overflow-y:auto;border-top-width:2px}
+body.arcade .checkbar.good{background:#17301A;border-top-color:#2F6B16}
+body.arcade .checkbar.bad{background:#3A1624;border-top-color:#7A2438}
+body.arcade #sc-lesson{position:relative}
+body.arcade .calcbtn{position:absolute;top:12px;bottom:auto;right:12px;width:44px;height:44px;border-radius:14px}
+body.arcade #sc-lesson:has(#calc-fab) .lhead{padding-right:66px}
+.arcv .vt{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--arc-font);font-size:22px}
+.arcv .vw{color:#E4E4F7!important;font-size:14.5px!important}
+.checkbar.good .arcv .vw{color:#D7F5BD!important}
+.checkbar.bad .arcv .vw{color:#FFD9DF!important}
+.arc-combo{display:inline-flex;align-items:center;gap:4px;color:var(--gold);font-family:var(--font);font-size:14px;font-weight:900;
+  background:rgba(255,200,0,.14);border-radius:10px;padding:3px 9px}
+.arc-sol{display:inline-block;margin-bottom:6px;color:#fff;font-weight:900}
+.arc-memo{display:flex;gap:10px;align-items:flex-start;border:2px dashed rgba(255,200,0,.55);border-radius:14px;padding:10px 12px;
+  font-size:13.5px;line-height:1.45;margin:0 0 14px;color:#FFF3C4;font-weight:700}
+.arc-memo b{color:var(--gold)}
+.numin.arc-bad{color:var(--red)!important;text-decoration:line-through;border-color:var(--red)!important}
+.numin.arc-good{color:var(--green-l)!important;border-color:var(--green)!important}
+.arc-pad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:14px}
+.arc-pad button{min-height:52px;border-radius:14px;border:2px solid var(--line);border-bottom-width:4px;background:var(--card);font-size:22px;font-weight:900;color:var(--txt)}
+.arc-pad button:active{transform:translateY(2px);border-bottom-width:2px}
+.arc-pad button.fn{font-size:14px;color:var(--dim)}
+
+/* ---------- fin de lecon ---------- */
+.arc-done{display:flex;flex-direction:column;align-items:center;gap:10px}
+.arc-done img.hero{width:150px!important;height:150px!important}
+.arc-done .ttl{font-family:var(--arc-font);font-size:30px;font-weight:800;color:var(--gold);margin:0;line-height:1.1}
+.arc-done .sub{color:var(--dim);font-size:15px;margin:-2px 0 4px}
+.arc-stats{display:flex;gap:10px;width:100%;margin:6px 0 8px}
+.arc-stats .b{flex:1;border:2px solid var(--c);border-radius:16px;overflow:hidden}
+.arc-stats .b .l{background:var(--c);color:#10102A;font-size:11.5px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;padding:4px 2px}
+.arc-stats .b .v{display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 2px;font-family:var(--arc-font);font-size:19px;font-weight:800;color:var(--c);white-space:nowrap}
+.arc-stats .b .v svg{width:16px;height:16px}
+.arc-combobig{display:flex;align-items:center;gap:12px;width:100%;background:radial-gradient(circle at 30% 50%,#3B2A8A,#22224A 70%);
+  border:2px solid var(--line);border-radius:18px;padding:10px 14px;text-align:left}
+.arc-combobig .x{font-family:var(--arc-font);font-size:44px;font-weight:800;color:var(--blue);line-height:1;text-shadow:0 4px 0 #0A4F78}
+.arc-streakup{font-family:var(--arc-font);font-size:22px;color:var(--orange);display:flex;align-items:center;gap:6px}
+
+/* ---------- ligue ---------- */
+.arc-cups{display:flex;justify-content:center;align-items:flex-end;gap:14px;padding:8px 0 14px}
+.arc-cups .cup{display:flex;flex-direction:column;align-items:center;gap:4px;opacity:.38}
+.arc-cups .cup.on{opacity:1}
+.arc-cups .cup.cur{transform:scale(1.18)}
+.arc-cups .cup i{display:block;width:44px;height:8px;border-radius:5px;background:var(--card2)}
+body.arcade .zone{font-size:13px;font-weight:900;border-top:0;padding:12px 8px;display:flex;justify-content:center;gap:8px;align-items:center}
+body.arcade .lgrow{padding:10px 12px}
+body.arcade .lgrow.me{background:var(--card);border-color:var(--pink,#FF86D0)}
+body.arcade .lgrow.me .nm{color:var(--pink,#FF86D0)}
+.arc-nudge{display:flex;gap:12px;align-items:center;padding:10px 14px;margin:6px 0 12px;background:linear-gradient(90deg,#3A1D5C,var(--card));cursor:pointer}
+.arc-nudge .t{flex:1;font-size:14px;line-height:1.35}
+.arc-nudge .p{color:var(--blue);font-weight:900;display:flex;gap:4px;align-items:center;white-space:nowrap}
+
+/* ---------- boutique, quetes ---------- */
+body.arcade .shopit{background:var(--card);border-radius:20px}
+body.arcade .shopit{display:grid;grid-template-columns:84px minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:center}
+body.arcade .shopit .si{grid-row:1 / span 2;display:flex;justify-content:center}
+body.arcade .shopit .sn,body.arcade .shopit .sd{grid-column:2}
+body.arcade .shopit > .btn,body.arcade .shopit > .muted{grid-column:1 / -1}
+body.arcade .shopit .si img{width:80px;height:80px;display:block}
+body.arcade .quest{background:var(--card);border-radius:18px}
+body.arcade .quest .qi img{width:56px;height:56px;display:block}
+body.arcade .stbox{background:var(--card)}
+
+/* ---------- profil ---------- */
+body.arcade .pbanner{border-radius:22px!important;border-width:0!important;background:linear-gradient(160deg,#D9716B,#B4507F)!important;color:#fff;
+  padding:18px!important;box-shadow:0 5px 0 #7E3558}
+body.arcade .pbanner .pu,body.arcade .pbanner .muted{color:#FFE7EC!important}
+body.arcade .pbanner .chip{background:rgba(0,0,0,.22);color:#fff;border-color:transparent}
+.arc-goalcard{display:flex;gap:12px;align-items:center;padding:14px 16px;margin:14px 0;background:var(--blue);color:#06283A;border:0;box-shadow:0 5px 0 var(--blue-d)}
+.arc-goalcard b{display:block;font-size:16px;line-height:1.3}
+.arc-goalcard span{display:block;color:#fff;font-weight:900;font-size:13px;margin-top:5px}
+
+/* ---------- selecteur de cours ---------- */
+.arc-crow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:10px 12px;margin-bottom:8px;border:2px solid var(--line);border-radius:16px;background:var(--card);color:var(--txt)}
+.arc-crow.on{border-color:var(--blue);background:rgba(28,176,246,.12)}
+.arc-crow .i{flex:1;min-width:0}
+.arc-crow b{display:block;font-size:14.5px;line-height:1.25}
+.arc-crow .bar{height:8px;border-radius:9px;background:var(--card2);overflow:hidden;margin-top:7px}
+.arc-crow .bar i{display:block;height:100%;border-radius:9px}
+.arc-crow .p{color:var(--dim);font-size:12.5px;font-weight:900;white-space:nowrap}
+.arc-cat{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin:14px 2px 8px;text-align:left}
+
+/* ---------- jeux ---------- */
+#sc-game .scroll{padding:0}
+.arc-ghead{display:flex;align-items:center;gap:12px;padding:16px 16px 8px;position:sticky;top:0;background:var(--bg);z-index:5}
+.arc-gstats{flex:1;display:flex;border:2px solid var(--line);border-radius:16px;overflow:hidden}
+.arc-gstats span{flex:1;display:flex;justify-content:center;align-items:center;gap:6px;padding:8px;font-weight:900;font-size:15px}
+.arc-gstats span+span{border-left:2px solid var(--line)}
+.arc-gbar{height:8px;margin:2px 16px 0;border-radius:9px;background:var(--card2);overflow:hidden}
+.arc-gbar i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--gold));transition:width .2s linear}
+.arc-gbody{padding:14px 16px}
+.arc-gtitle{font-family:var(--arc-font);font-size:25px;font-weight:800;line-height:1.15;margin:4px 0 14px}
+.arc-pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.arc-tile{min-height:66px;border-radius:16px;border:2px solid var(--line);border-bottom-width:4px;background:var(--card);color:var(--txt);
+  font-size:14px;font-weight:800;line-height:1.25;padding:8px;transition:transform .08s,opacity .25s}
+.arc-tile.sel{border-color:var(--blue);background:#16365A;color:#BDE9FF}
+.arc-tile.ok{border-color:var(--green);opacity:.28;pointer-events:none}
+.arc-tile.ko{border-color:var(--red);animation:arcshake .35s}
+.arc-tile:active{transform:translateY(2px)}
+@keyframes arcshake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.arc-pips{display:flex;justify-content:center;gap:8px;margin-top:18px;flex-wrap:wrap}
+.arc-pips i{width:14px;height:14px;border-radius:50%;background:var(--line)}
+.arc-pips i.on{background:var(--green)}
+.arc-vf{position:relative;height:330px;margin:10px auto 0;max-width:340px}
+.arc-vfcard{position:absolute;inset:0;border-radius:22px;border:2px solid var(--line);background:var(--card2);padding:22px;display:flex;flex-direction:column;
+  justify-content:center;gap:12px;box-shadow:0 6px 0 var(--line);touch-action:pan-y;user-select:none;transition:transform .18s}
+.arc-vfcard .q{font-family:var(--arc-font);font-size:22px;font-weight:800;line-height:1.3}
+.arc-vfcard .stamp{position:absolute;top:18px;border:3px solid;border-radius:10px;padding:3px 10px;font-weight:900;opacity:0}
+.arc-vfbtns{display:flex;justify-content:center;gap:44px;margin-top:22px}
+.arc-vfbtns button{width:76px;height:76px;border-radius:50%;border:3px solid;background:none;display:flex;align-items:center;justify-content:center}
+.arc-vfbtns .no{border-color:var(--red);box-shadow:0 5px 0 var(--red-d)}
+.arc-vfbtns .yes{border-color:var(--green);box-shadow:0 5px 0 var(--green-d)}
+.arc-vfbtns button:active{transform:translateY(4px);box-shadow:none}
+.arc-foot{position:sticky;bottom:0;margin:14px -16px -14px;box-shadow:0 -8px 16px rgba(0,0,0,.25);padding:12px 16px calc(16px + env(safe-area-inset-bottom));background:var(--bg);border-top:2px solid var(--line);display:flex;flex-direction:column;gap:10px;z-index:4}
+.arc-boss .arc-foot{background:#1A1432}
+.arc-flash{min-height:44px;text-align:center;font-size:14px;line-height:1.4;color:var(--dim);margin-top:14px;padding:0 10px}
+.arc-slots{display:flex;flex-direction:column;gap:10px}
+.arc-slot{display:flex;gap:12px;align-items:center}
+.arc-slot .n{width:34px;height:34px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;border:3px dashed var(--purple);color:var(--purple);font-weight:900}
+.arc-slot .v{flex:1;min-height:50px;border:2px dashed var(--line);border-radius:14px;display:flex;align-items:center;padding:8px 12px;font-size:14.5px;line-height:1.3;color:var(--dim)}
+.arc-slot.full .n{border-style:solid;background:var(--purple);color:#2A0D3D}
+.arc-slot.full .v{border-style:solid;border-color:var(--purple);color:var(--txt);background:var(--card)}
+.arc-slot.good .v{border-color:var(--green);background:rgba(88,204,2,.14)}
+.arc-slot.bad .v{border-color:var(--red);background:rgba(255,75,75,.14)}
+.arc-bank{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.arc-chip{border:2px solid var(--line);border-bottom-width:4px;border-radius:14px;background:var(--card);color:var(--txt);padding:10px 12px;font-size:14px;font-weight:800;text-align:left;line-height:1.3}
+.arc-chip.used{opacity:.25;pointer-events:none}
+.arc-boss{background:linear-gradient(180deg,#2A1330,var(--bg) 60%)}
+.arc-bossimg{display:flex;flex-direction:column;align-items:center;gap:6px;padding:4px 0}
+.arc-bossimg img{width:130px;height:130px}
+.arc-hp{display:flex;align-items:center;gap:10px;width:100%}
+.arc-hp .b{flex:1;height:18px;border-radius:9px;background:var(--line);overflow:hidden;border:2px solid #5A2D82}
+.arc-hp .b i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--orange));transition:width .35s}
+.arc-q{border:2px solid #5A2D82;border-radius:18px;padding:14px;font-size:16.5px;line-height:1.4;background:var(--card);margin-bottom:12px}
+.arc-opts{display:flex;flex-direction:column;gap:10px}
+.arc-opt{border:2px solid var(--line);border-bottom-width:4px;border-radius:16px;background:var(--card);color:var(--txt);padding:13px 14px;text-align:left;font-size:15px;font-weight:800;line-height:1.35}
+.arc-opt.good{border-color:var(--green);background:rgba(88,204,2,.15);color:var(--green-l)}
+.choice.bad,.arc-opt.bad{text-decoration:line-through;text-decoration-thickness:2px}
+.arc-opt.bad{border-color:var(--red);background:rgba(255,75,75,.15);color:#FF9DA8}
+.arc-opt[disabled]{pointer-events:none}
+.arc-reward{display:flex;gap:12px;align-items:center;background:rgba(199,101,159,.14);border:2px solid #5A2D82;border-radius:16px;padding:8px 12px;margin-top:12px;font-size:14px}
+.arc-duel{background:linear-gradient(135deg,var(--blue),var(--purple));padding:18px 16px;color:#fff}
+.arc-duel .row{display:flex;justify-content:space-between;align-items:center}
+.arc-duel .p{display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:900;min-width:96px}
+.arc-duel .p .av{width:72px;height:72px;border-radius:50%;overflow:hidden;background:rgba(255,255,255,.2)}
+.arc-duel .p .av svg{width:100%;height:100%}
+.arc-duel .p .sc{font-family:var(--arc-font);font-size:28px;line-height:1}
+.arc-duel .vs{font-family:var(--arc-font);font-size:30px;font-weight:800}
+.arc-steps{display:flex;gap:6px;margin:14px 0 6px}
+.arc-steps i{flex:1;height:10px;border-radius:9px;background:var(--line)}
+.arc-steps i.g{background:var(--green)} .arc-steps i.r{background:var(--red)}
+.arc-end{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:26px 20px}
+.arc-end .x{font-family:var(--arc-font);font-size:78px;font-weight:800;color:var(--blue);line-height:1;text-shadow:0 6px 0 #0A4F78}
+.arc-end .ttl{font-family:var(--arc-font);font-size:28px;font-weight:800}
+.arc-end .st{display:flex;gap:10px;width:100%}
+.arc-end .st div{flex:1;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:10px 6px}
+.arc-end .st b{display:block;font-family:var(--arc-font);font-size:24px}
+.arc-end .st span{font-size:12.5px;color:var(--dim)}
+.arc-games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.arc-gtile{border:0;border-radius:20px;padding:14px;color:#fff;text-align:left;display:flex;flex-direction:column;gap:6px;min-height:120px;box-shadow:0 5px 0 var(--sh)}
+.arc-gtile:active{transform:translateY(4px);box-shadow:0 1px 0 var(--sh)}
+.arc-gtile b{font-family:var(--arc-font);font-size:18px;line-height:1.1}
+.arc-gtile span{font-size:12.5px;font-weight:800;opacity:.95;line-height:1.3}
+@media (prefers-reduced-motion: reduce){ .arc-tile.ko{animation:none} .arc-vfcard{transition:none} }
+</style>
+<script>
+/* =====================================================================
+   DESIGN ARCADE (septembre 2026)
+   Refonte visuelle demandee par Corentin : base « Arcade », avec les
+   meilleurs morceaux de « Duo Jour » et « Mondes ». Aucun cours, aucune
+   regle de jeu, aucune mascotte n est modifie : tout passe par des
+   enveloppes autour des fonctions existantes, comme les couches
+   precedentes. Aucun emoji litteral ici (voir CLAUDE.md) : les icones
+   sont les SVG de ico(), les images sont dans design/assets.
+   ===================================================================== */
+(function arcade(){
+  const ASSET=k=>"design/assets/"+k+".png";
+  const ALT={coffre:"Coffre",ouvert:"Coffre ouvert rempli de gemmes",matin:"Coffre du matin",soir:"Coffre du soir",
+    legendaire:"Coffre légendaire",quete:"Coffre de quête",potion15:"Potion x1,5",potion2:"Potion x2",potion3:"Potion x3",gel:"Gel de série"};
+  function aimg(k,size,cls){
+    return '<img src="'+ASSET(k)+'" alt="'+(ALT[k]||"")+'" class="arc-img '+(cls||"")+'" width="'+size+'" height="'+size+'" style="width:'+size+'px;height:'+size+'px" draggable="false">';
+  }
+  window.arcImg=aimg;
+  const ARC=()=>{ if(!S.arcade||typeof S.arcade!=="object")S.arcade={rec:{}}; if(!S.arcade.rec)S.arcade.rec={}; return S.arcade; };
+  const fmtDay=d=>d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+  const court=(t,n)=>{ t=String(t||"").replace(/\s+/g," ").trim(); if(t.length<=n)return t;
+    const c=t.slice(0,n); const p=Math.max(c.lastIndexOf(". "),c.lastIndexOf(" : ")); return (p>n*.5?c.slice(0,p+1):c.replace(/\s+\S*$/,""))+" ..."; };
+  const phrase1=t=>{ t=String(t||"").replace(/\s+/g," ").trim(); const m=/^(.{20,180}?[.!?])(\s|$)/.exec(t); return m?m[1]:court(t,160); };
+  const cName=()=>{ const c=COURSES.find(x=>x.id===S.active); return c?c.short:""; };
+
+  /* ---------------- 1. ONGLETS : Jouer, Réviser, Défis, Ligue, Boutique ---------------- */
+  const NOMS={path:"Jouer",review:"Réviser",quests:"Défis",league:"Ligue",shop:"Boutique",profile:"Profil"};
+  const ICS={quests:"sun"};
+  const ORDRE=["path","review","quests","league","shop","profile","tasks","habits","exam","errors","courses"];
+  function arcTabs(){
+    if(typeof TABS==="undefined")return;
+    TABS.forEach(t=>{ if(NOMS[t.id])t.nm=NOMS[t.id]; if(ICS[t.id])t.ic=ICS[t.id]; });
+    TABS.sort((a,b)=>{ const i=ORDRE.indexOf(a.id), j=ORDRE.indexOf(b.id); return (i<0?99:i)-(j<0?99:j); });
+    if(typeof renderNav==="function")renderNav();
+  }
+
+  /* ---------------- 2. BARRE DU HAUT ---------------- */
+  function arcTop(){
+    const top=document.getElementById("mtop"); if(!top||top.dataset.arc)return;
+    top.dataset.arc="1";
+    top.innerHTML=`<button class="arc-cpill" id="mt-course" type="button" onclick="arcCourses()" aria-label="Changer de cours"></button>
+      <button class="stat s-fire" type="button" onclick="setTab('quests')" aria-label="Série">${ico("flame",22)}<span id="mt-streak">0</span></button>
+      <button class="stat s-gem" type="button" onclick="setTab('shop')" aria-label="Gemmes, ouvrir la boutique">${ico("gem",22)}<span id="mt-gems">0</span></button>
+      <div class="stat s-heart" aria-label="Coeurs">${ico("heart",22)}<span id="mt-hearts">5</span></div>
+      <span class="stat s-xp"><span id="mt-xp">0</span></span>
+      <button class="arc-avbtn" id="mt-av" type="button" onclick="setTab('profile')" aria-label="Profil"></button>`;
+  }
+  function arcTopFill(){
+    const c=COURSES.find(x=>x.id===S.active); const p=document.getElementById("mt-course");
+    if(p&&c)p.innerHTML=(typeof badgeSVG==="function"?badgeSVG(c.id,26):"")+`<span class="nm">${esc(c.short)}</span>${ico("arrowdown",14,"var(--dim)")}`;
+    const av=document.getElementById("mt-av");
+    if(av&&typeof avatarSVG==="function")av.innerHTML=avatarSVG((S.avatar&&S.avatar.cfg)||avatarCfg(S.name||"Corentin"),40,false);
+  }
+
+  /* ---------------- 3. SELECTEUR DE COURS ---------------- */
+  function coursePct(cid){ let n=0,d=0; courseUnits(cid).forEach(u=>{ n+=lessonsIn(u.id); d+=unitDone(u.id); }); return n?Math.round(100*d/n):0; }
+  window.arcCourses=function(){
+    let h=`<h2 class="arc-h" style="text-align:left;margin-top:0">Mes cours</h2>`;
+    catList().forEach(k=>{
+      const l=catCourses(k.id).filter(c=>!S.hidden.includes(c.id)); if(!l.length)return;
+      h+=`<div class="arc-cat">${esc(k.nm)}</div>`;
+      l.forEach(c=>{ const p=coursePct(c.id);
+        h+=`<button class="arc-crow ${c.id===S.active?"on":""}" type="button" onclick="closeModal();setCourse('${c.id}')">
+          ${badgeSVG(c.id,40)}<span class="i"><b>${esc(c.name)}</b><span class="bar"><i style="width:${p}%;background:var(${c.col})"></i></span></span>
+          <span class="p">${p} %</span></button>`; });
+    });
+    h+=`<div style="height:6px"></div><button class="btn ghost" onclick="closeModal();setTab('courses')">${ico("gear",16)} Gérer mes cours</button>`;
+    openModal(h);
+  };
+
+  /* ---------------- 4. ACCUEIL ---------------- */
+  function weekHTML(){
+    const d=new Date(), dow=(d.getDay()+6)%7, L7=["L","M","M","J","V","S","D"]; let h="";
+    for(let i=0;i<7;i++){ const x=new Date(d); x.setDate(d.getDate()-(dow-i)); const k=fmtDay(x);
+      const on=((S.hist||{})[k]||0)>0 || (i===dow&&S.lastDay===today());
+      h+=`<div class="d ${on?"on":""} ${i===dow?"now":""}"><span>${L7[i]}</span><span class="o">${ico("flame",18,on?"#fff":"var(--line)")}</span></div>`; }
+    return h;
+  }
+  function chestRow(){
+    const h=new Date().getHours(), c=dayChests();
+    let img="matin",t="",s="",cta="JOUER",act="arcResume()";
+    if(h<12&&!c.matin){ t="Coffre du matin prêt"; s="Termine une leçon avant midi pour l'ouvrir"; }
+    else if(h>=18&&!c.soir){ img="soir"; t="Coffre du soir prêt"; s="Termine une leçon ce soir pour l'ouvrir"; }
+    else if(h<18){ img="soir"; t="Coffre du soir"; s=c.matin?"Coffre du matin ouvert. Le suivant s'ouvre à 18 h":"S'ouvre à 18 h"; cta="VOIR"; act="setTab('shop')"; }
+    else { img="ouvert"; t="Coffre du jour ouvert"; s="Nouveau coffre demain matin"; cta="VOIR"; act="setTab('shop')"; }
+    return `<div class="arc-card arc-chestrow" role="button" tabindex="0" onclick="${act}">${aimg(img,56)}
+      <div class="t"><b>${t}</b><span>${s}</span></div><span class="cta">${cta}</span></div>`;
+  }
+  function resumeCard(){
+    const n=nextLessonExists(), pct=Math.min(1,(S.daily.xp||0)/Math.max(1,S.goal)), C=97.4;
+    const ring=`<div class="arc-ring"><svg width="92" height="92" viewBox="0 0 36 36" aria-hidden="true">
+      <circle cx="18" cy="18" r="15.5" fill="none" stroke="rgba(255,255,255,.3)" stroke-width="4"/>
+      <circle cx="18" cy="18" r="15.5" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round" stroke-dasharray="${(pct*C).toFixed(1)} ${C}" transform="rotate(-90 18 18)"/></svg>
+      <span>${S.daily.xp||0}<br>/ ${S.goal} XP</span></div>`;
+    if(!n)return `<div class="arc-resume"><div style="flex:1"><div class="k">Cours terminé</div><div class="t">Vise les couronnes légendaires</div>
+      <button class="go" type="button" onclick="setTab('review')">Réviser</button></div>${ring}</div>`;
+    const u=unitOf(n.u);
+    return `<div class="arc-resume"><div style="flex:1;min-width:0"><div class="k">Reprendre</div>
+      <div class="t">${esc(u.t)} · leçon ${n.l+1}</div>
+      <button class="go" type="button" onclick="arcResume()">Continuer</button></div>${ring}</div>`;
+  }
+  window.arcResume=function(){ const n=nextLessonExists(); if(n)startLesson(n.u,n.l); else setTab("review"); };
+  function play(bg,sh,icon,t,s,tag,act){
+    return `<button class="arc-play" type="button" style="background:${bg};--sh:${sh}" onclick="${act}">
+      <span class="pi">${ico(icon,30,"#fff")}</span><span class="pt"><b>${t}</b><span>${s}</span></span><span class="pg">${tag}</span></button>`;
+  }
+  function homeHTML(){
+    const cid=S.active, due=dueItems(cid,999).length, calib=typeof needsCalib==="function"&&needsCalib(cid);
+    return `<div class="arc-card arc-streak"><div class="top">${ico("flame",46,"var(--orange)")}
+        <div><div class="n arc-h">${S.streak} jour${S.streak>1?"s":""}</div>
+        <div class="s">${S.lastDay===today()?"Série tenue aujourd'hui. Bravo.":"Fais une leçon pour tenir ta série"}</div></div></div>
+        <div class="arc-week">${weekHTML()}</div></div>
+      ${calib?"":resumeCard()}
+      ${chestRow()}
+      <div class="arc-sec"><span>Au programme</span></div>
+      ${play("#9B51E0","#7A3BB5","bolt","Éclair 60 s","Paires express, combo à battre","+20 XP","arcGame('eclair')")}
+      ${play("#1899D6","#10729F","target","Rappels",due?due+" notion"+(due>1?"s":"")+" à revoir avant oubli":"Rien à revoir, tout est frais","+12 XP","startPractice('review')")}
+      ${play("#C7478F","#93306A","crown","Boss du module","Bats le Diable pour un coffre légendaire","Coffre","arcGame('boss')")}
+      ${play("#E5484D","#B3363A","exam","Examen blanc","Facile · Moyen · Difficile","Chrono","setTab('exam')")}`;
+  }
+  function pathView(){ return (S.settings&&S.settings.pathView)==="snake"?"snake":"cards"; }
+  window.arcView=function(v){ S.settings.pathView=v; save(); sfx("click"); renderPath(); };
+  function pathHead(v){
+    return `<div class="arc-sec" id="arc-parcours"><span>Parcours · ${esc(cName())}</span>
+      <div class="arc-seg" role="group" aria-label="Affichage du parcours">
+        <button type="button" class="${v==="cards"?"on":""}" aria-pressed="${v==="cards"}" onclick="arcView('cards')">${ico("list",15)} Modules</button>
+        <button type="button" class="${v==="snake"?"on":""}" aria-pressed="${v==="snake"}" onclick="arcView('snake')">${ico("star",15)} Chemin</button></div></div>`;
+  }
+  function cardsHTML(){
+    const cid=S.active, c=S.courses[cid]; let firstOpen=true, h="";
+    courseUnits(cid).forEach(u=>{
+      const unlocked=unitUnlocked(u.id), nL=lessonsIn(u.id), done=unitDone(u.id);
+      let dots="", cur=false, curLi=-1;
+      for(let li=0;li<nL;li++){
+        const st=c.lessons[lkey(u.id,li)];
+        let cls="arc-dot", g=ico("lock",16), act="lockMsg()", lab="Leçon "+(li+1)+" verrouillée";
+        if(unlocked&&st){ cls+=st>=3?" gold":" done"; g=ico(st>=3?"crown":"check",18); act=`startLesson(${u.id},${li})`; lab="Refaire la leçon "+(li+1); }
+        else if(unlocked&&firstOpen){ cls+=" now"; g=ico("star",18); act=`startLesson(${u.id},${li})`; firstOpen=false; cur=true; curLi=li; lab="Commencer la leçon "+(li+1); }
+        dots+=`<button class="${cls}" type="button" onclick="${act}" aria-label="${lab}">${g}</button>`;
+        if(li>0&&(li%3===2||(nL<3&&li===nL-1))){
+          const ck=`chest-${u.id}-${li}`, got=c.lessons[ck], ready=done>li&&!got;
+          dots+=`<button class="arc-dot chest ${got||ready?"":"lock"}" type="button" onclick="${ready?`openChest('${ck}')`:"chestMsg("+(got?1:0)+")"}"
+            aria-label="${got?"Coffre ouvert":ready?"Ouvrir le coffre":"Coffre verrouillé"}">${aimg(got?"ouvert":"coffre",40)}</button>`;
+        }
+      }
+      const can=unitComplete(u.id), crown=c.crowns[u.id];
+      dots+=`<button class="arc-dot legend ${can?"on":""}" type="button" onclick="${can?`startLesson(${u.id},-1)`:"lockMsg()"}"
+        aria-label="${crown?"Épreuve légendaire validée":"Épreuve légendaire"}">${ico(crown?"trophy":can?"crown":"lock",17)}</button>`;
+      h+=`<div class="arc-card arc-mod ${cur?"cur":""} ${unlocked?"":"lock"}">
+        <div class="h"><div><div class="k" style="color:var(${u.col})">${esc(u.n)}</div><div class="t">${esc(u.t)}</div></div><span class="c">${done} / ${nL}</span></div>
+        <div class="arc-dots">${dots}</div>
+        <div class="f"><button class="arc-mini" type="button" onclick="openGuide(${u.id})">${ico("book",15)} Guide</button>
+        ${cur?`<button class="arc-go" type="button" onclick="startLesson(${u.id},${curLi})">Commencer +10 XP</button>`:""}</div></div>`;
+    });
+    return h;
+  }
+  function snakeDress(body){
+    body.querySelectorAll(".node.chest").forEach(n=>{
+      const g=n.querySelector(".glyph"); if(!g||g.dataset.arc)return; g.dataset.arc="1";
+      const lab=(n.parentElement&&n.parentElement.querySelector(".nodelabel")||{}).textContent||"";
+      g.innerHTML=aimg(/ouvert/i.test(lab)?"ouvert":"coffre",74);
+    });
+    body.querySelectorAll(".startbub").forEach(b=>{ b.textContent="Commencer +10 XP"; });
+  }
+
+  /* ---------------- 5. LECON : corrections et pave numerique ---------------- */
+  function memoOf(ex){
+    const u=unitOf(ex.u); if(!u||!u.guide)return "";
+    const m=/<div class="gmnemo">([\s\S]*?)<\/div>/.exec(u.guide); if(!m)return "";
+    const t=m[1].replace(/<\/?(p|br|li|ul|ol|div|h\d)\b[^>]*>/g," ").replace(/<[^>]+>/g,"").replace(/\s+/g," ").trim();
+    const q=/^«\s*([^»]{6,170})\s*»/.exec(t);
+    return q?"« "+q[1].trim()+" »":phrase1(t);
+  }
+  function arcVerdict(){
+    if(!L||L.mode==="exam"||!A||!A.ex)return;
+    const cb=document.getElementById("checkbar"); if(!cb)return;
+    const ok=cb.classList.contains("good"), bad=cb.classList.contains("bad"); if(!ok&&!bad)return;
+    const v=cb.querySelector(".verdict"); if(!v||v.dataset.arc)return; v.dataset.arc="1"; v.classList.add("arcv");
+    const ex=A.ex, vt=v.querySelector(".vt"), vw=v.querySelector(".vw");
+    if(ok&&vt&&L.combo>=2)vt.insertAdjacentHTML("beforeend",`<span class="arc-combo">${ico("bolt",14)} Combo x${L.combo}</span>`);
+    if(bad&&vw){
+      const all=vw.textContent, w=String(ex.w||""), sol=(w&&all.endsWith(w))?all.slice(0,all.length-w.length).trim():"";
+      if(sol)vw.innerHTML=`<span class="arc-sol">${esc(sol.replace(/^Réponse\s*:/,"Bonne réponse :"))}</span><br>${esc(w)}`;
+    }
+    const memo=memoOf(ex);
+    if(memo)v.insertAdjacentHTML("afterend",`<div class="arc-memo">${ico("brain",20,"var(--gold)")}<span><b>Mémo :</b> ${esc(memo)}</span></div>`);
+    const n=document.getElementById("numin"); if(n&&ex.t==="num")n.classList.add(ok?"arc-good":"arc-bad");
+  }
+  function arcPad(){
+    const i=document.getElementById("numin"); if(!i||document.getElementById("arc-pad"))return;
+    const tactile=window.matchMedia&&window.matchMedia("(pointer:coarse)").matches;
+    if(tactile)i.setAttribute("inputmode","none");
+    const k=["7","8","9","4","5","6","1","2","3",",","0","del"];
+    i.parentElement.insertAdjacentHTML("beforeend",`<div class="arc-pad" id="arc-pad">${k.map(x=>
+      `<button type="button" class="${x==="del"?"fn":""}" onclick="arcKey('${x}')" aria-label="${x==="del"?"Effacer":x}">${x==="del"?ico("cross",20):x}</button>`).join("")}</div>`);
+  }
+  window.arcKey=function(x){
+    if(A&&A.done)return; const i=document.getElementById("numin"); if(!i)return;
+    i.value = x==="del" ? i.value.slice(0,-1) : (i.value+x);
+    i.dispatchEvent(new Event("input",{bubbles:true})); sfx("click");
+  };
+
+  /* ---------------- 6. FIN DE LECON ---------------- */
+  function arcDone(snap,dxp,streakUp){
+    const card=document.getElementById("mcard"); if(!card||!document.getElementById("modal").classList.contains("on"))return;
+    const hero=card.querySelector("img.hero"), h2=card.querySelector("h2"), btns=[...card.querySelectorAll("button.btn")];
+    const ach=[...card.querySelectorAll("p")].filter(p=>/Succès/.test(p.textContent));
+    const sec=Math.max(1,Math.round((Date.now()-(snap.t0||Date.now()))/1000));
+    const prec=Math.round(100*snap.ok/Math.max(1,snap.ok+snap.wrong));
+    const box=(c,l,i,v)=>`<div class="b" style="--c:${c}"><div class="l">${l}</div><div class="v">${ico(i,20)}${v}</div></div>`;
+    const wrap=document.createElement("div");
+    wrap.innerHTML=`<div class="arc-done"><div class="hs"></div>
+      <h2 class="ttl">${h2?h2.innerHTML:"Leçon terminée !"}</h2>
+      <div class="sub">${snap.wrong===0?"Zéro faute. Du travail propre.":prec>=80?"Solide. Encore une et c'est acquis.":"Chaque erreur revient bientôt en rappel. C'est comme ça qu'on retient."}</div>
+      ${streakUp?`<div class="arc-streakup">${ico("flame",24)} ${S.streak} jour${S.streak>1?"s":""} de série</div>`:""}
+      ${snap.max>=5?`<div class="arc-combobig">${aimg("ouvert",70)}<div><div class="x">x${snap.max}</div><div style="font-size:14px;color:var(--dim)">Meilleur combo de la leçon</div></div></div>`:""}
+      <div class="arc-stats">${box("var(--gold)","XP gagnés","bolt","+"+dxp)}${box("var(--green)","Précision","target",prec+" %")}${box("var(--blue)","Temps","clock",Math.floor(sec/60)+":"+String(sec%60).padStart(2,"0"))}</div></div>`;
+    if(hero){
+      /* une lecon reussie merite une mascotte heureuse : on choisit parmi ses poses existantes */
+      const pose=snap.wrong===0?"fier":prec>=60?"content":"";
+      if(pose&&typeof poseKey==="function"){ const k=poseKey(pose); if(IMG[k])hero.setAttribute("src",IMG[k]); }
+      wrap.querySelector(".hs").appendChild(hero); }
+    btns.forEach((b,i)=>{ if(i)wrap.appendChild(Object.assign(document.createElement("div"),{style:"height:8px"})); wrap.appendChild(b); });
+    ach.forEach(p=>wrap.appendChild(p));
+    card.innerHTML=""; card.appendChild(wrap);
+  }
+
+  /* ---------------- 7. NOUVEAUX JEUX ---------------- */
+  let G=null;
+  const CHOIX=e=>(["mcq","story","fill"].includes(e.t)&&Array.isArray(e.o)&&e.o.length>1&&typeof e.a==="number")||(e.t==="tf"&&typeof e.a==="boolean");
+  function openUnits(){
+    const us=courseUnits(S.active), ids=us.filter(u=>unitUnlocked(u.id)).map(u=>u.id);
+    const nx=us.find(u=>!unitUnlocked(u.id)); if(nx)ids.push(nx.id);
+    return ids;
+  }
+  function pool(test,min){
+    const ids=openUnits(); let p=EXOS.filter(e=>ids.includes(e.u)&&test(e));
+    if(p.length<min)p=EXOS.filter(e=>unitOf(e.u).c===S.active&&test(e));
+    return p;
+  }
+  function award(xp,gems){
+    const m=typeof boostMult==="function"?boostMult():1; xp=Math.round(xp*m);
+    S.xp+=xp; S.daily.xp+=xp; S.hist=S.hist||{}; S.hist[today()]=(S.hist[today()]||0)+xp; S.league.xpWeek+=xp;
+    if(S.courses[S.active])S.courses[S.active].xp+=xp; S.gems+=gems||0;
+    if(xp>0){ touchDay(S.active); qprog("xp",xp); }
+    save(); refreshTop(); return xp;
+  }
+  function stop(){ if(G&&G.timer){ clearInterval(G.timer); G.timer=null; } }
+  window.arcQuit=function(){ stop(); G=null; setTab("path"); };
+  const body=()=>document.getElementById("gamebody");
+  const head=stats=>`<div class="arc-ghead"><button class="lquit" type="button" onclick="arcQuit()" aria-label="Quitter le jeu">${ico("cross",24,"var(--dim)")}</button>
+    <div class="arc-gstats">${stats}</div></div>`;
+  window.arcGame=function(k){
+    stop(); const f={eclair:eclairStart,vf:vfStart,frise:friseStart,boss:bossStart,duel:duelStart}[k];
+    if(!f)return; if(f()===false){ G=null; return; }
+    show("game"); paint();
+  };
+  function paint(){ if(!G)return; ({eclair:eclairPaint,vf:vfPaint,frise:frisePaint,boss:bossPaint,duel:duelPaint})[G.k](); }
+  function endScreen(o){
+    stop(); const b=body(); if(!b)return;
+    const A0=ARC(); if(o.rec!=null){ const r=A0.rec[G.k]||0; o.newRec=o.rec>r; if(o.newRec)A0.rec[G.k]=o.rec; save(); }
+    sfx(o.win===false?"wrong":"complete"); if(o.win!==false)confetti(80);
+    b.innerHTML=`<div class="arc-end">${o.img?aimg(o.img,150):""}${o.masc||""}
+      ${o.big?`<div class="x">${o.big}</div>`:""}<div class="ttl">${o.title}</div><div class="muted" style="font-size:15px">${o.sub||""}</div>
+      <div class="st">${o.stats.map(s=>`<div><b style="color:${s[2]||"var(--txt)"}">${s[0]}</b><span>${s[1]}</span></div>`).join("")}</div>
+      <div style="width:100%;display:flex;flex-direction:column;gap:12px;margin-top:14px">
+        <button class="btn gold" onclick="arcGame('${G.k}')">Rejouer</button>
+        <button class="btn ghost" onclick="arcQuit()">Retour</button></div></div>`;
+    G.over=true;
+  }
+
+  /* --- Éclair : relier les paires en 60 secondes --- */
+  function eclairStart(){
+    const all=[], vu=new Set();
+    shuffle(pool(e=>e.t==="match"&&Array.isArray(e.p),2)).forEach(e=>e.p.forEach(p=>{
+      const a=String(p[0]), b=String(p[1]); if(a.length>70||b.length>90||vu.has(a))return; vu.add(a); all.push([a,b]); }));
+    if(all.length<5){ toast("Pas encore assez de paires dans ce cours pour l'Éclair."); return false; }
+    G={k:"eclair",all,deck:shuffle(all),end:Date.now()+60000,sel:null,combo:0,best:0,found:0,miss:0};
+    deal(); G.timer=setInterval(()=>{ if(!G||G.k!=="eclair"||G.over)return; if(Date.now()>=G.end)eclairEnd(); else tick(); },200);
+  }
+  function deal(){ if(G.deck.length<5)G.deck=G.deck.concat(shuffle(G.all)); const d=G.deck.splice(0,5);
+    G.b={p:d,L:shuffle(d.map((_,i)=>i)),R:shuffle(d.map((_,i)=>i)),ok:[]}; }
+  function tick(){ const r=Math.max(0,G.end-Date.now()), t=document.getElementById("arc-t"), bar=document.getElementById("arc-bar");
+    if(t)t.textContent="0:"+String(Math.ceil(r/1000)).padStart(2,"0"); if(bar)bar.style.width=(100*r/60000)+"%"; }
+  function eclairPaint(){
+    const r=Math.max(0,G.end-Date.now()), b=G.b;
+    const tile=(s,i)=>{ const txt=s==="L"?b.p[i][0]:b.p[i][1], ok=b.ok.includes(i), sel=G.sel&&G.sel.s===s&&G.sel.i===i;
+      return `<button class="arc-tile ${ok?"ok":""} ${sel?"sel":""}" id="t${s}${i}" type="button" onclick="arcTap('${s}',${i})">${esc(txt)}</button>`; };
+    body().innerHTML=head(`<span style="color:var(--purple)">${ico("bolt",18)} Combo x${G.combo}</span><span style="color:var(--gold)">${ico("clock",18)} <b id="arc-t">0:${String(Math.ceil(r/1000)).padStart(2,"0")}</b></span>`)
+      +`<div class="arc-gbar"><i id="arc-bar" style="width:${100*r/60000}%"></i></div>
+      <div class="arc-gbody"><div class="arc-gtitle">Relie chaque notion à sa définition</div>
+      <div class="arc-pairs">${b.L.map((li,k)=>tile("L",li)+tile("R",b.R[k])).join("")}</div>
+      <div class="arc-pips">${Array.from({length:10},(_,i)=>`<i class="${i<G.found%10||(G.found&&G.found%10===0)?"on":""}"></i>`).join("")}</div>
+      <div class="muted" style="text-align:center;margin-top:10px">${G.found} paire${G.found>1?"s":""} · record : ${ARC().rec.eclair||0}</div></div>`;
+  }
+  window.arcTap=function(s,i){
+    if(!G||G.k!=="eclair"||G.over||G.b.ok.includes(i))return;
+    if(!G.sel||G.sel.s===s){ G.sel={s,i}; sfx("click"); eclairPaint(); return; }
+    const other=G.sel; G.sel=null;
+    if(other.i===i){ G.b.ok.push(i); G.found++; G.combo++; G.best=Math.max(G.best,G.combo); sfx(G.combo%5===0?"combo":"correct"); buzz(12);
+      if(G.b.ok.length===G.b.p.length){ deal(); } eclairPaint(); }
+    else { G.combo=0; G.miss++; G.end-=2000; sfx("wrong"); buzz([30,40,30]); eclairPaint();
+      const e=document.getElementById("t"+s+i); if(e)e.classList.add("ko"); }
+  };
+  function eclairEnd(){
+    const xp=award(Math.min(40,G.found*2), G.found>=10?5:G.found>=5?2:0);
+    endScreen({img:"ouvert",big:"x"+G.best,title:G.best>=10?"Combo parfait !":"Temps écoulé !",
+      sub:G.found+" paire"+(G.found>1?"s":"")+" trouvée"+(G.found>1?"s":"")+", "+G.miss+" erreur"+(G.miss>1?"s":""),
+      rec:G.found,stats:[["+"+xp,"XP","var(--gold)"],[G.found,"paires","var(--blue)"],[(G.found>(ARC().rec.eclair||0)?"Record":(ARC().rec.eclair||0)),"record","var(--green)"]]});
+  }
+
+  /* --- Vrai ou faux express : glisser a droite si vrai, a gauche si faux --- */
+  function vfStart(){
+    const p=pool(e=>e.t==="tf"&&typeof e.a==="boolean",8);
+    if(p.length<5){ toast("Pas encore assez d'affirmations dans ce cours."); return false; }
+    G={k:"vf",deck:shuffle(p),i:0,ok:0,ko:0,combo:0,best:0,end:Date.now()+60000,flash:""};
+    G.timer=setInterval(()=>{ if(!G||G.k!=="vf"||G.over)return; if(Date.now()>=G.end)vfEnd(); else tick(); },200);
+  }
+  function vfPaint(){
+    const ex=G.deck[G.i%G.deck.length], r=Math.max(0,G.end-Date.now());
+    body().innerHTML=head(`<span style="color:var(--green)">${ico("check",18)} ${G.ok}</span><span style="color:var(--gold)">${ico("clock",18)} <b id="arc-t">0:${String(Math.ceil(r/1000)).padStart(2,"0")}</b></span>`)
+      +`<div class="arc-gbar"><i id="arc-bar" style="width:${100*r/60000}%"></i></div>
+      <div class="arc-gbody"><div class="arc-vf"><div class="arc-vfcard" id="arc-card">
+        <span class="stamp" id="st-no" style="left:18px;color:var(--red);border-color:var(--red)">FAUX</span>
+        <span class="stamp" id="st-yes" style="right:18px;color:var(--green);border-color:var(--green)">VRAI</span>
+        <div class="q">${esc(ex.q)}</div><div class="muted" style="font-size:13.5px">Glisse à droite si c'est vrai, à gauche si c'est faux.</div></div></div>
+      <div class="arc-vfbtns"><button class="no" type="button" onclick="arcVF(false)" aria-label="Faux">${ico("cross",32,"var(--red)")}</button>
+        <button class="yes" type="button" onclick="arcVF(true)" aria-label="Vrai">${ico("check",32,"var(--green)")}</button></div>
+      <div class="arc-flash" id="arc-flash">${G.flash}</div></div>`;
+    swipe(document.getElementById("arc-card"));
+  }
+  function swipe(el){
+    if(!el)return; let x0=null,dx=0;
+    el.addEventListener("pointerdown",e=>{ x0=e.clientX; dx=0; try{el.setPointerCapture(e.pointerId);}catch(_){} });
+    el.addEventListener("pointermove",e=>{ if(x0==null)return; dx=e.clientX-x0; el.style.transition="none";
+      el.style.transform=`translateX(${dx}px) rotate(${dx/18}deg)`;
+      const y=document.getElementById("st-yes"), n=document.getElementById("st-no");
+      if(y)y.style.opacity=Math.max(0,Math.min(1,dx/90)); if(n)n.style.opacity=Math.max(0,Math.min(1,-dx/90)); });
+    const up=()=>{ if(x0==null)return; x0=null; el.style.transition="";
+      if(Math.abs(dx)>90)arcVF(dx>0); else { el.style.transform=""; ["st-yes","st-no"].forEach(i=>{const s=document.getElementById(i);if(s)s.style.opacity=0;}); } };
+    el.addEventListener("pointerup",up); el.addEventListener("pointercancel",up);
+  }
+  window.arcVF=function(v){
+    if(!G||G.k!=="vf"||G.over)return;
+    const ex=G.deck[G.i%G.deck.length], ok=v===ex.a; grade(ex,ok,S.active);
+    if(ok){ G.ok++; G.combo++; G.best=Math.max(G.best,G.combo); sfx("correct"); G.flash=`<b style="color:var(--green)">Bien vu.</b> ${esc(court(ex.w,120))}`; }
+    else { G.ko++; G.combo=0; sfx("wrong"); buzz([30,40,30]); G.flash=`<b style="color:var(--red)">C'était ${ex.a?"vrai":"faux"}.</b> ${esc(court(ex.w,140))}`; }
+    G.i++; vfPaint();
+  };
+  function vfEnd(){
+    const xp=award(Math.min(40,G.ok*2), G.ok>=12?5:G.ok>=6?2:0);
+    endScreen({img:"quete",title:"Temps écoulé !",sub:G.ok+" bonne"+(G.ok>1?"s":"")+" réponse"+(G.ok>1?"s":"")+" sur "+(G.ok+G.ko)+". Tes erreurs reviendront en rappel.",
+      rec:G.ok,stats:[["+"+xp,"XP","var(--gold)"],[G.ok+" / "+(G.ok+G.ko),"justes","var(--green)"],["x"+G.best,"combo","var(--blue)"]]});
+  }
+
+  /* --- Frise : remettre les etapes dans l ordre --- */
+  function friseStart(){
+    const p=pool(e=>e.t==="order"&&Array.isArray(e.it)&&e.it.length>=3&&e.it.length<=7,3);
+    if(!p.length){ toast("Pas encore de frise dans ce cours."); return false; }
+    G={k:"frise",rounds:shuffle(p).slice(0,3),r:0,ok:0}; friseRound();
+  }
+  function friseRound(){ const ex=G.rounds[G.r]; G.placed=[]; G.bank=shuffle(ex.it.map((_,k)=>k)); G.checked=false; }
+  function frisePaint(){
+    const ex=G.rounds[G.r], n=ex.it.length;
+    body().innerHTML=head(`<span style="color:var(--purple)">${ico("list",18)} Frise ${G.r+1} / ${G.rounds.length}</span><span style="color:var(--green)">${ico("check",18)} ${G.ok}</span>`)
+      +`<div class="arc-gbody"><div class="arc-gtitle">${esc(ex.q)}</div><div class="arc-slots">
+      ${Array.from({length:n},(_,j)=>{ const k=G.placed[j], full=k!=null, st=G.checked?(k===j?"good":"bad"):"";
+        return `<div class="arc-slot ${full?"full":""} ${st}"><span class="n">${j+1}</span>
+          <button class="v" type="button" ${full&&!G.checked?`onclick="arcFriseDel(${j})"`:""}>${full?esc(ex.it[k]):"Dépose l'étape ici"}</button></div>`; }).join("")}</div>
+      ${G.checked?`<div class="arc-flash" style="text-align:left">${G.placed.every((k,j)=>k===j)?`<b style="color:var(--green)">Parfait.</b> `:`<b style="color:var(--red)">Le bon ordre :</b> ${ex.it.map((s,i)=>(i+1)+". "+esc(s)).join(" · ")}<br>`}${esc(court(ex.w,200))}</div>`
+        :`<div class="arc-sec"><span>Il reste</span></div><div class="arc-bank">${G.bank.map(k=>`<button class="arc-chip ${G.placed.includes(k)?"used":""}" type="button" onclick="arcFrise(${k})">${esc(ex.it[k])}</button>`).join("")}</div>`}
+      <div class="arc-foot"><button class="btn ${G.checked?"":"purple"}" ${!G.checked&&G.placed.length<n?"disabled":""} onclick="${G.checked?"arcFriseNext()":"arcFriseCheck()"}">${G.checked?(G.r+1<G.rounds.length?"Frise suivante":"Terminer"):"Vérifier"}</button></div></div>`;
+  }
+  window.arcFrise=function(k){ if(!G||G.checked||G.placed.includes(k))return; G.placed.push(k); sfx("click"); frisePaint(); };
+  window.arcFriseDel=function(j){ if(!G||G.checked)return; G.placed.splice(j,1); frisePaint(); };
+  window.arcFriseCheck=function(){ const ex=G.rounds[G.r], ok=G.placed.every((k,j)=>k===j); G.checked=true; grade(ex,ok,S.active);
+    if(ok){G.ok++;sfx("correct");}else{sfx("wrong");buzz([30,40,30]);} frisePaint(); };
+  window.arcFriseNext=function(){ G.r++; if(G.r>=G.rounds.length){ const xp=award(G.ok*10,G.ok===G.rounds.length?4:1);
+      endScreen({img:G.ok===G.rounds.length?"ouvert":"coffre",title:G.ok===G.rounds.length?"Chronologie parfaite !":"Frises terminées",
+        sub:G.ok+" frise"+(G.ok>1?"s":"")+" sur "+G.rounds.length+" dans le bon ordre",stats:[["+"+xp,"XP","var(--gold)"],[G.ok+" / "+G.rounds.length,"justes","var(--green)"]]}); return; }
+    friseRound(); frisePaint(); };
+
+  /* --- questions a choix communes au boss et au duel --- */
+  function qHTML(ex,fn){
+    if(!G.opt){ G.opt=ex.t==="tf"?[true,false]:shuffle(ex.o.map((_,k)=>k)); }
+    return `<div class="arc-q">${ex.ctx?`<div class="muted" style="font-size:13px;margin-bottom:6px">${esc(ex.ctx)}</div>`:""}${esc(ex.q)}</div>
+      <div class="arc-opts">${G.opt.map((v,j)=>{ const lab=ex.t==="tf"?(v?"Vrai":"Faux"):ex.o[v];
+        let cls=""; if(G.picked!=null){ if(v===ex.a)cls="good"; else if(v===G.picked)cls="bad"; }
+        return `<button class="arc-opt ${cls}" type="button" ${G.picked!=null?"disabled":""} onclick="${fn}(${j})">${esc(lab)}</button>`; }).join("")}</div>`;
+  }
+
+  /* --- Boss du module : le Diable, 5 coups pour le battre, 3 coeurs --- */
+  function bossStart(){
+    const n=nextLessonExists(), us=courseUnits(S.active);
+    const u=(n&&unitOf(n.u))||us.filter(x=>unitUnlocked(x.id)).pop()||us[0]; if(!u){ toast("Aucun module ouvert."); return false; }
+    let p=EXOS.filter(e=>e.u===u.id&&CHOIX(e)); if(p.length<8)p=p.concat(shuffle(pool(CHOIX,8)).filter(e=>!p.includes(e)));
+    if(p.length<5){ toast("Pas encore assez de questions pour un boss."); return false; }
+    G={k:"boss",u,hp:100,hearts:3,q:shuffle(p).slice(0,14),i:0,picked:null,opt:null};
+  }
+  const TAUNT=["Tu crois connaître ce module ? Prouve-le.","Encore une réponse au hasard et je gagne.","Pas mal. Mais je n'ai pas dit mon dernier mot.","Tu commences à me faire mal.","Un coup de plus et je tombe."];
+  function bossPaint(){
+    const ex=G.q[G.i];
+    body().innerHTML=`<div class="arc-boss">`+head(`<span style="color:var(--pink,#FF86D0)">${ico("crown",18)} Boss</span><span style="color:var(--red)">${ico("heart",18)} ${G.hearts}</span>`)
+      +`<div class="arc-gbody"><div class="arc-bossimg">${masc(G.picked!=null&&G.picked!==ex.a?"fier":G.hp<=40?"triste":"colere","","","diable")}
+        <div class="arc-h" style="font-size:21px">Le Diable du ${esc(G.u.n)}</div>
+        <div class="arc-hp"><div class="b"><i style="width:${G.hp}%"></i></div><b style="color:var(--orange)">${G.hp} PV</b></div>
+        <div class="muted" style="font-size:13.5px;text-align:center">${TAUNT[Math.min(4,Math.floor((100-G.hp)/20))]}</div></div>
+      ${qHTML(ex,"arcBoss")}
+      ${G.picked!=null?`<div class="arc-foot"><div class="arc-flash" style="text-align:left;margin-top:0">${esc(court(ex.w,220))}</div><button class="btn" onclick="arcBossNext()">Continuer</button></div>`
+        :`<div class="arc-reward">${aimg("legendaire",52)}<span>Bats-le pour gagner le <b style="color:#EF8FCF">coffre légendaire</b> : 30 gemmes et 30 XP.</span></div>`}
+      </div></div>`;
+  }
+  window.arcBoss=function(j){ if(!G||G.picked!=null)return; const ex=G.q[G.i]; G.picked=G.opt[j]; const ok=G.picked===ex.a; grade(ex,ok,S.active);
+    if(ok){ G.hp=Math.max(0,G.hp-20); sfx("correct"); buzz(20); } else { G.hearts--; sfx("wrong"); buzz([30,40,30]); } bossPaint(); };
+  window.arcBossNext=function(){
+    if(G.hp<=0){ const xp=award(30,30); endScreen({img:"legendaire",title:"Boss vaincu !",sub:"Le Diable du "+G.u.n+" est à terre. Le coffre légendaire est à toi.",
+      stats:[["+"+xp,"XP","var(--gold)"],["+30","gemmes","var(--blue)"],[G.hearts+" / 3","coeurs","var(--red)"]]}); return; }
+    if(G.hearts<=0||G.i+1>=G.q.length){ const xp=award(5,0); endScreen({win:false,masc:masc("fier","","width:130px;height:130px","diable"),title:"Le Diable a gagné",
+      sub:"Relis le guide du module et reviens le défier. Tes erreurs sont déjà dans tes rappels.",stats:[["+"+xp,"XP","var(--gold)"],[G.hp+" PV","restants","var(--orange)"]]}); return; }
+    G.i++; G.picked=null; G.opt=null; bossPaint(); };
+
+  /* --- Duel de ligue : memes questions, ton rival joue en meme temps --- */
+  function duelStart(){
+    ensureLeague(); const rows=leagueRows(), me=rows.findIndex(r=>r.me);
+    const rv=rows[me>0?me-1:1]||{n:"Gabriel M."};
+    const p=pool(CHOIX,7); if(p.length<5){ toast("Pas encore assez de questions pour un duel."); return false; }
+    G={k:"duel",rv:{n:rv.n,cfg:rv.cfg||avatarCfg(rv.n)},acc:.55+Math.random()*.25,q:shuffle(p).slice(0,7),i:0,me:0,him:0,res:[],picked:null,opt:null};
+  }
+  function duelPaint(){
+    const ex=G.q[G.i];
+    body().innerHTML=`<div class="arc-duel"><div class="row">
+      <div class="p"><span class="av">${avatarSVG((S.avatar&&S.avatar.cfg)||avatarCfg(S.name),72,false)}</span>Toi<span class="sc">${G.me}</span></div>
+      <div style="display:flex;flex-direction:column;align-items:center;gap:8px"><button class="lquit" type="button" onclick="arcQuit()" aria-label="Quitter le duel" style="color:#fff">${ico("cross",22,"#fff")}</button><span class="vs">VS</span></div>
+      <div class="p"><span class="av">${avatarSVG(G.rv.cfg,72,false)}</span>${esc(G.rv.n)}<span class="sc">${G.him}</span></div></div></div>
+      <div class="arc-gbody"><div class="arc-steps">${G.q.map((_,i)=>`<i class="${G.res[i]===true?"g":G.res[i]===false?"r":""}"></i>`).join("")}</div>
+      <div class="muted" style="font-size:13.5px;margin-bottom:10px">Question ${G.i+1} sur ${G.q.length} · mêmes questions pour vous deux</div>
+      ${qHTML(ex,"arcDuel")}
+      ${G.picked!=null?`<div class="arc-foot"><div class="arc-flash" style="text-align:left;margin-top:0"><b>${G.rvOk?esc(G.rv.n)+" a trouvé aussi.":esc(G.rv.n)+" s'est trompé."}</b> ${esc(court(ex.w,160))}</div><button class="btn" onclick="arcDuelNext()">${G.i+1<G.q.length?"Question suivante":"Voir le résultat"}</button></div>`
+        :`<div class="arc-reward">${ico("gem",26,"var(--blue)")}<span>Le gagnant remporte 10 gemmes et 30 XP de ligue.</span></div>`}</div>`;
+  }
+  window.arcDuel=function(j){ if(!G||G.picked!=null)return; const ex=G.q[G.i]; G.picked=G.opt[j]; const ok=G.picked===ex.a; grade(ex,ok,S.active);
+    G.rvOk=Math.random()<G.acc; if(ok)G.me++; if(G.rvOk)G.him++; G.res[G.i]=ok; sfx(ok?"correct":"wrong"); duelPaint(); };
+  window.arcDuelNext=function(){
+    if(G.i+1<G.q.length){ G.i++; G.picked=null; G.opt=null; duelPaint(); return; }
+    const win=G.me>G.him, egal=G.me===G.him, xp=award(win?30:egal?15:5, win?10:0);
+    endScreen({win:win||egal,img:win?"ouvert":null,masc:win?"":masc(egal?"content":"triste","","width:130px;height:130px"),
+      title:win?"Duel gagné !":egal?"Égalité":"Duel perdu",sub:"Toi "+G.me+" · "+G.rv.n+" "+G.him,
+      stats:[["+"+xp,"XP","var(--gold)"],[win?"+10":"0","gemmes","var(--blue)"],[G.me+" / "+G.q.length,"justes","var(--green)"]]});
+  };
+  function gamesHTML(){
+    const t=(bg,sh,i,n,s,k)=>`<button class="arc-gtile" type="button" style="background:${bg};--sh:${sh}" onclick="arcGame('${k}')">${ico(i,28,"#fff")}<b>${n}</b><span>${s}</span></button>`;
+    return `<div class="arc-games">
+      ${t("#9B51E0","#7A3BB5","bolt","Éclair 60 s","Relie les paires, bats ton record","eclair")}
+      ${t("#D9731A","#A5530C","check","Vrai ou faux","Glisse les cartes à toute vitesse","vf")}
+      ${t("#3F6FD8","#2A50A8","list","Frise","Remets les étapes dans l'ordre","frise")}
+      ${t("#C7478F","#93306A","crown","Boss du module","Bats le Diable, gagne un coffre","boss")}
+      ${t("#1E9E6A","#157650","trophy","Duel de ligue","Affronte ton rival direct","duel")}
+      ${t("#E5484D","#B3363A","exam","Examen blanc","Trois niveaux, chrono","exam")}</div>`;
+  }
+  const __game=window.arcGame;
+  window.arcGame=function(k){ if(k==="exam"){ setTab("exam"); return; } return __game(k); };
+
+  /* ---------------- 8. BRANCHEMENTS ---------------- */
+  function boot(){
+    document.body.classList.add("arcade");
+    if(!document.getElementById("sc-game")){
+      const ref=document.getElementById("sc-lesson");
+      if(ref)ref.insertAdjacentHTML("afterend",`<section class="screen" id="sc-game"><div class="scroll" id="gamebody"></div></section>`);
+    }
+    arcTop(); arcTabs();
+
+    const __show=show;
+    window.show=function(id){ __show.apply(null,arguments); document.body.classList.toggle("arc-focus",id==="lesson"||id==="game"); };
+    const __setTab=setTab;
+    window.setTab=function(t){ if(G){ stop(); G=null; } return __setTab.apply(null,arguments); };
+    const __refresh=refreshTop;
+    window.refreshTop=function(){ __refresh.apply(null,arguments); arcTopFill(); };
+
+    const __rp=renderPath;
+    window.renderPath=function(){
+      __rp.apply(null,arguments);
+      const b=document.getElementById("pathbody"); if(!b)return;
+      const fam=b.querySelector(":scope > .chipline"); if(fam)fam.remove();
+      [...b.children].forEach(d=>{ if(d.querySelector&&d.querySelector('[onclick^="setCourse"]'))d.remove(); });
+      const v=pathView(), first=b.querySelector(".unitbar");
+      /* le test de niveau ou le niveau evalue passent juste sous la serie */
+      const pre=[]; for(const n of [...b.children]){ if(n===first)break; pre.push(n); }
+      b.insertAdjacentHTML("afterbegin",`<div class="arc-home">${homeHTML()}</div>`);
+      const st=b.querySelector(".arc-streak"); if(st)pre.slice().reverse().forEach(n=>st.after(n));
+      const tmp=document.createElement("div"); tmp.innerHTML=pathHead(v);
+      if(first)b.insertBefore(tmp.firstElementChild,first); else b.appendChild(tmp.firstElementChild);
+      if(v==="cards"){ b.querySelectorAll(".unitbar,.pathnodes").forEach(n=>n.remove()); b.insertAdjacentHTML("beforeend",cardsHTML()); }
+      else snakeDress(b);
+    };
+    const __oc=openChest;
+    window.openChest=function(k){ __oc.apply(null,arguments); const d=document.querySelector("#mcard > div"); if(d)d.innerHTML=aimg("ouvert",130); };
+
+    const __rq=renderQ;
+    window.renderQ=function(ex){ __rq.apply(null,arguments); if(ex&&ex.t==="num")arcPad(); };
+    const __nq=nextQ;
+    window.nextQ=function(){ if(L&&!L.t0)L.t0=Date.now(); return __nq.apply(null,arguments); };
+    const __dc=doCheck;
+    window.doCheck=function(){ __dc.apply(null,arguments); try{ arcVerdict(); }catch(e){} };
+    const __fin=finish;
+    window.finish=function(){
+      const snap=L?{t0:L.t0,ok:L.ok,wrong:L.wrong,max:L.maxCombo}:null, xp0=S.xp, st0=S.streak;
+      __fin.apply(null,arguments);
+      if(snap)try{ arcDone(snap,S.xp-xp0,S.streak!==st0); }catch(e){}
+    };
+
+    const __rl=renderLeague;
+    window.renderLeague=function(){
+      __rl.apply(null,arguments);
+      const b=document.getElementById("leaguebody"); if(!b)return;
+      const t=b.querySelector(".trophies");
+      if(t&&!t.dataset.arc){ t.dataset.arc="1"; t.className="arc-cups";
+        t.innerHTML=LEAGUES.map((l,i)=>`<div class="cup ${i<=S.league.tier?"on":""} ${i===S.league.tier?"cur":""}" title="${esc(l.n)}">${ico("trophy",i===S.league.tier?52:40,l.c)}<i></i></div>`).join("");
+        const hd=t.previousElementSibling; if(hd&&hd.firstElementChild)hd.firstElementChild.remove(); if(hd)hd.parentNode.insertBefore(t,hd);
+      }
+      b.querySelectorAll(".zone").forEach(z=>{ if(z.dataset.arc)return; z.dataset.arc="1";
+        const dn=z.classList.contains("dn"), mid=/Maintien/.test(z.textContent);
+        if(!mid)z.innerHTML=ico(dn?"arrowdown":"arrowup",16)+" "+esc(z.textContent)+" "+ico(dn?"arrowdown":"arrowup",16); });
+      if(!b.querySelector(".arc-nudge")){
+        const rows=leagueRows(), me=rows.findIndex(r=>r.me), rv=me>0?rows[me-1]:null, z=b.querySelector(".zone");
+        const gap=rv?Math.max(1,rv.x-rows[me].x+1):0;
+        const pot=boostOn()?`<div class="arc-card arc-nudge" onclick="setTab('shop')">${aimg("potion2",46)}<span class="t">Potion active : encore <b>${boostLeft()}</b>. Chaque XP compte double ou plus.</span></div>`
+          :rv?`<div class="arc-card arc-nudge" onclick="${(inv().p2||0)>0?"drinkPotion('p2');renderLeague()":"setTab('shop')"}">${aimg("potion2",46)}<span class="t">Double tes XP pendant 15 min pour rattraper <b>${esc(rv.n)}</b> (${gap} XP d'écart).</span><span class="p">${(inv().p2||0)>0?"BOIRE":ico("gem",16)+" 100"}</span></div>`:"";
+        const duel=rv?`<div class="arc-card arc-nudge" onclick="arcGame('duel')">${ico("trophy",38,"var(--gold)")}<span class="t">Défie <b>${esc(rv.n)}</b> en duel : 7 questions, 10 gemmes au gagnant.</span><span class="p" style="color:var(--gold)">DUEL</span></div>`:"";
+        if(z)z.insertAdjacentHTML("beforebegin",pot+duel);
+      }
+    };
+
+    const __rs=renderShop;
+    window.renderShop=function(){
+      __rs.apply(null,arguments);
+      const K=["potion15","potion2","potion3","matin","soir","gel",null,"coffre"];
+      document.querySelectorAll("#shopbody .shopit .si").forEach((s,i)=>{ if(K[i])s.innerHTML=aimg(K[i],84); });
+    };
+
+    const __rqu=renderQuests;
+    window.renderQuests=function(){
+      __rqu.apply(null,arguments);
+      document.querySelectorAll("#questsbody .quest").forEach((q,i)=>{ const ic=q.querySelector(".qi"); if(!ic)return;
+        const done=/100%/.test((q.querySelector(".qbar>div")||{style:{}}).style.width||"");
+        ic.innerHTML=aimg(done?"ouvert":i%2?"quete":"coffre",56); });
+      const b=document.getElementById("questsbody");
+      if(b&&!b.querySelector(".arc-daily"))b.insertAdjacentHTML("beforeend",`<div class="arc-daily"><div class="arc-sec"><span>Ma journée</span></div>
+        ${play("#1E9E6A","#157650","check","Mes habitudes",(S.habits||[]).length+" habitude"+((S.habits||[]).length>1?"s":"")+" à cocher","Voir","setTab('habits')")}
+        ${play("#3F6FD8","#2A50A8","tasks","Missions","Tes tâches du jour, rangées par l'IA","Voir","setTab('tasks')")}</div>`);
+    };
+
+    const __rr=renderReview;
+    window.renderReview=function(){
+      __rr.apply(null,arguments);
+      const b=document.getElementById("reviewbody"); if(!b||b.querySelector(".arc-games"))return;
+      b.insertAdjacentHTML("afterbegin",`<div class="arc-sec" style="margin-top:4px"><span>Jeux · ${esc(cName())}</span></div>${gamesHTML()}`);
+    };
+
+    const __rpf=renderProfile;
+    window.renderProfile=function(){
+      __rpf.apply(null,arguments);
+      const pb=document.querySelector("#profilebody .pbanner"); if(!pb||document.querySelector("#profilebody .arc-goalcard"))return;
+      const c=COURSES.find(x=>x.id===S.active), p=coursePct(S.active);
+      pb.insertAdjacentHTML("afterend",`<div class="arc-card arc-goalcard"><div style="flex:1"><b>Finis le cours ${esc(c?c.short:"")} pour décrocher sa couronne de maître</b><span>${p} % du cours accompli</span></div>${masc("content","","width:74px;height:74px")}</div>`);
+    };
+
+    if(typeof S!=="undefined"&&S){ refreshTop(); if(document.getElementById("sc-path").classList.contains("on"))renderPath(); }
+  }
+  try{ boot(); }catch(e){ if(window.console)console.error("design arcade",e); }
+})();
+</script>
+<!-- DESIGN:ARCADE:FIN -->

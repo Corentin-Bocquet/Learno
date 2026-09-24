@@ -1,0 +1,297 @@
+/* =====================================================================
+   DESIGN ARCADE (septembre 2026)
+   Base : la direction 4 « Arcade », enrichie de ce qui a plu dans
+   « Duo Jour » (modules en cartes, reprise en un geste, erreur expliquee)
+   et « Mondes » (bulle Commencer, fin de lecon, ligue et trophees).
+   Tout est range sous body.arcade : si la classe saute, l ancien design
+   revient tel quel. Le theme clair garde son propre jeu de couleurs.
+   ===================================================================== */
+body.arcade:not(.theme-light){
+  --bg:#141432; --bg2:#1C1C44; --card:#22224A; --card2:#2B2B5C; --line:#3A3A6E;
+  --txt:#F4F4FF; --dim:#B9B9E0; --dim2:#9090C4;
+  --shade:#101028;
+  background:#141432;
+}
+body.arcade{ --arc-font:"Baloo 2","Nunito",system-ui,sans-serif; }
+body.arcade .arc-h,body.arcade .mcard h2,body.arcade .unitbar .t2,body.arcade #sc-lesson .qtitle{
+  font-family:var(--arc-font); letter-spacing:-.2px; }
+
+/* ---------- barre du haut : cours actif, serie, gemmes, coeurs ---------- */
+body.arcade #mtop{display:flex;gap:4px;padding:10px 12px 8px;border-bottom:2px solid var(--line);background:var(--bg)}
+body.arcade #mtop .stat{display:flex;align-items:center;gap:4px;font-size:15.5px;font-weight:900;min-height:44px;padding:0 4px;border-radius:12px;flex:none}
+body.arcade #mtop .stat:active{transform:translateY(1px)}
+body.arcade #mtop .s-fire{color:var(--orange)}
+body.arcade #mtop .s-gem{color:var(--blue)}
+body.arcade #mtop .s-heart{color:var(--red)}
+body.arcade #mtop .s-xp{display:none}
+.arc-cpill{display:flex;align-items:center;gap:7px;border:2px solid var(--line);border-bottom-width:4px;border-radius:14px;
+  padding:5px 8px 5px 6px;min-height:44px;max-width:40%;min-width:0;flex:0 1 auto;font-size:14px;font-weight:900;color:var(--txt);background:var(--card)}
+.arc-cpill .nm{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.arc-cpill svg.cbadge{flex:none}
+.arc-avbtn{width:38px;height:38px;border-radius:50%;overflow:hidden;flex:none;border:2px solid var(--line);padding:0;background:var(--card)}
+.arc-avbtn svg{width:100%;height:100%}
+
+/* ---------- barre d onglets : lisible, contrastee, 6 cases max ---------- */
+body.arcade:not(.theme-light) #mtabs{background:#10102A;border-top:2px solid var(--line)}
+body.arcade:not(.theme-light) #mtabs .navitem{color:#C9C9EE}
+body.arcade #mtabs .navitem{font-size:10.5px;letter-spacing:.3px;min-width:52px;min-height:50px;padding:6px 4px}
+body.arcade #mtabs .navitem .ic svg{width:25px;height:25px}
+body.arcade #mtabs .navitem.on{color:var(--gold);background:var(--card);box-shadow:inset 0 -3px 0 var(--gold)}
+body.arcade.theme-light #mtabs .navitem.on{color:#9A6F00}
+body.arcade.theme-light #side .navitem.on{color:#9A6F00;border-color:#D6A500}
+body.arcade:not(.theme-light) #side{background:#10102A;border-right-color:var(--line)}
+body.arcade:not(.theme-light) #side .navitem{color:#C9C9EE}
+body.arcade #side .navitem.on{color:var(--gold);border-color:var(--gold);background:rgba(255,200,0,.10)}
+/* pendant une lecon ou un jeu, rien ne distrait : ni compteurs ni onglets */
+body.arcade.arc-focus #mtop,body.arcade.arc-focus #mtabs{display:none!important}
+@media (min-width:861px){ body.arcade #mtop{display:flex} }
+
+/* ---------- briques communes ---------- */
+.arc-card{background:var(--card);border:2px solid var(--line);border-radius:20px}
+.arc-sec{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:22px 2px 10px;
+  font-size:13px;letter-spacing:1.1px;text-transform:uppercase;color:var(--dim)}
+.arc-img{object-fit:contain;flex:none;-webkit-user-drag:none;user-select:none}
+.arc-play{display:flex;gap:14px;align-items:center;width:100%;border:0;border-radius:22px;padding:14px 16px;color:#fff;text-align:left;
+  margin-bottom:12px;box-shadow:0 5px 0 var(--sh,rgba(0,0,0,.3));transition:transform .08s}
+.arc-play:active{transform:translateY(4px);box-shadow:0 1px 0 var(--sh,rgba(0,0,0,.3))}
+.arc-play .pi{width:54px;height:54px;border-radius:16px;background:rgba(255,255,255,.22);display:flex;align-items:center;justify-content:center;flex:none}
+.arc-play .pt{flex:1;min-width:0}
+.arc-play .pt b{display:block;font-family:var(--arc-font);font-size:20px;font-weight:800;line-height:1.1}
+.arc-play .pt span{display:block;font-size:13.5px;font-weight:800;opacity:.95;margin-top:3px}
+.arc-play .pg{background:rgba(0,0,0,.24);border-radius:10px;padding:6px 8px;font-size:12.5px;font-weight:900;white-space:nowrap}
+
+/* ---------- accueil : serie ---------- */
+.arc-streak{padding:14px 16px}
+.arc-streak .top{display:flex;align-items:center;gap:12px}
+.arc-streak .n{font-family:var(--arc-font);font-size:30px;font-weight:800;line-height:1}
+.arc-streak .s{font-size:13.5px;color:var(--dim);margin-top:3px}
+.arc-week{display:flex;justify-content:space-between;margin-top:12px}
+.arc-week .d{display:flex;flex-direction:column;align-items:center;gap:4px;font-size:12px;color:var(--dim)}
+.arc-week .o{width:34px;height:34px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:2px solid var(--line);background:var(--bg2)}
+.arc-week .d.on .o{background:var(--orange);border-color:var(--orange)}
+.arc-week .d.now .o{box-shadow:0 0 0 3px rgba(255,150,0,.35)}
+
+/* ---------- accueil : reprendre ---------- */
+.arc-resume{margin-top:14px;background:var(--blue);border-radius:22px;padding:16px 16px 16px 18px;display:flex;gap:12px;align-items:center;color:#fff;box-shadow:0 5px 0 var(--blue-d)}
+.arc-resume .k{font-size:12.5px;letter-spacing:1px;text-transform:uppercase;color:#E6F7FF;font-weight:900}
+.arc-resume .t{font-family:var(--arc-font);font-size:21px;font-weight:800;line-height:1.15;margin:4px 0 12px}
+.arc-resume .go{background:#fff;color:#0B6FA0;border-radius:14px;padding:11px 20px;font-size:15px;font-weight:900;letter-spacing:.6px;text-transform:uppercase;box-shadow:0 4px 0 #CFE9F7;min-height:46px}
+.arc-resume .go:active{transform:translateY(3px);box-shadow:0 1px 0 #CFE9F7}
+.arc-ring{position:relative;width:92px;height:92px;flex:none;display:flex;align-items:center;justify-content:center}
+.arc-ring svg{position:absolute;inset:0}
+.arc-ring span{position:relative;font-size:13px;font-weight:900;text-align:center;line-height:1.15}
+.arc-chestrow{margin-top:14px;padding:10px 14px;display:flex;gap:12px;align-items:center;cursor:pointer}
+.arc-chestrow .t{flex:1;min-width:0}
+.arc-chestrow b{display:block;font-size:15.5px}
+.arc-chestrow span{display:block;font-size:13px;color:var(--dim);margin-top:2px}
+.arc-chestrow .cta{color:var(--gold);font-weight:900;font-size:13.5px;letter-spacing:.5px}
+
+/* ---------- parcours : bascule modules / chemin ---------- */
+.arc-seg{display:inline-flex;background:var(--bg2);border:2px solid var(--line);border-radius:14px;padding:3px;gap:2px}
+.arc-seg button{min-height:38px;padding:0 12px;border-radius:10px;font-size:12.5px;letter-spacing:.3px;color:var(--dim);display:flex;align-items:center;gap:6px;text-transform:none}
+.arc-seg button.on{background:var(--card2);color:var(--txt);box-shadow:0 2px 0 var(--line)}
+
+.arc-mod{padding:14px 14px 14px;margin-bottom:14px;box-shadow:0 4px 0 var(--line)}
+.arc-mod.cur{border-color:var(--green);box-shadow:0 4px 0 var(--green-d)}
+.arc-mod.lock{opacity:.62}
+.arc-mod .h{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.arc-mod .k{font-size:12px;letter-spacing:1px;text-transform:uppercase;font-weight:900}
+.arc-mod .t{font-family:var(--arc-font);font-size:18.5px;font-weight:800;line-height:1.2;margin-top:2px}
+.arc-mod .c{color:var(--dim);font-weight:900;font-size:14px;white-space:nowrap}
+.arc-dots{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.arc-dot{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;border:0;padding:0;
+  background:var(--card2);box-shadow:0 4px 0 var(--shade,#101028);color:#6E6EA6;position:relative}
+.arc-dot.done{background:var(--green);box-shadow:0 4px 0 var(--green-d);color:#fff}
+.arc-dot.gold{background:var(--gold);box-shadow:0 4px 0 var(--gold-d);color:#fff}
+.arc-dot.now{background:var(--green);box-shadow:0 4px 0 var(--green-d),0 0 0 4px rgba(137,226,25,.35);color:#fff}
+.arc-dot.legend.on{background:var(--purple);box-shadow:0 4px 0 var(--purple-d);color:#fff}
+.arc-dot.chest{background:none;box-shadow:none}
+.arc-dot.chest img{width:40px;height:40px}
+.arc-dot.chest.lock img{filter:grayscale(1) brightness(.7);opacity:.55}
+.arc-dot:active{transform:translateY(3px)}
+.arc-mod .f{display:flex;gap:10px;margin-top:14px;align-items:center}
+.arc-mini{border:2px solid var(--line);border-bottom-width:4px;border-radius:12px;min-height:42px;padding:0 12px;font-size:12.5px;letter-spacing:.5px;
+  text-transform:uppercase;color:var(--blue);display:inline-flex;align-items:center;gap:6px;background:var(--card)}
+.arc-go{flex:1;min-height:44px;border-radius:14px;background:var(--green);color:#fff;box-shadow:0 4px 0 var(--green-d);font-size:14px;letter-spacing:.6px;text-transform:uppercase}
+.arc-go:active{transform:translateY(3px);box-shadow:0 1px 0 var(--green-d)}
+
+/* chemin en serpent : l ancien chemin, habille en arcade */
+body.arcade .unitbar{border-radius:20px;box-shadow:0 4px 0 rgba(0,0,0,.28)}
+body.arcade .unitbar .t2{font-size:19px}
+body.arcade .startbub{background:#EF8FCF;color:#3A0F2C;border:0;box-shadow:0 4px 0 #C7659F;border-radius:14px;
+  padding:9px 14px;font-size:13px;letter-spacing:.4px;text-transform:uppercase;white-space:nowrap;font-weight:900}
+body.arcade .startbub:after{background:#EF8FCF;border:0}
+body.arcade .node.chest .glyph img{width:74px;height:74px}
+body.arcade .node.chest.lock .glyph img{filter:grayscale(1) brightness(.75);opacity:.6}
+
+/* ---------- lecon ---------- */
+body.arcade #sc-lesson{background:var(--bg)}
+body.arcade .lhead{padding:16px 16px 8px}
+body.arcade .prog{height:18px;background:var(--card2)}
+body.arcade .prog>div{background:linear-gradient(180deg,#8EE33A,#58CC02);box-shadow:inset 0 -5px 0 rgba(0,0,0,.1)}
+body.arcade .choice{background:var(--card);border-color:var(--line);box-shadow:0 2px 0 var(--line)}
+body.arcade .qkind{color:var(--purple);font-weight:900}
+body.arcade .checkbar{max-height:62vh;overflow-y:auto;border-top-width:2px}
+body.arcade .checkbar.good{background:#17301A;border-top-color:#2F6B16}
+body.arcade .checkbar.bad{background:#3A1624;border-top-color:#7A2438}
+body.arcade #sc-lesson{position:relative}
+body.arcade .calcbtn{position:absolute;top:12px;bottom:auto;right:12px;width:44px;height:44px;border-radius:14px}
+body.arcade #sc-lesson:has(#calc-fab) .lhead{padding-right:66px}
+.arcv .vt{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-family:var(--arc-font);font-size:22px}
+.arcv .vw{color:#E4E4F7!important;font-size:14.5px!important}
+.checkbar.good .arcv .vw{color:#D7F5BD!important}
+.checkbar.bad .arcv .vw{color:#FFD9DF!important}
+.arc-combo{display:inline-flex;align-items:center;gap:4px;color:var(--gold);font-family:var(--font);font-size:14px;font-weight:900;
+  background:rgba(255,200,0,.14);border-radius:10px;padding:3px 9px}
+.arc-sol{display:inline-block;margin-bottom:6px;color:#fff;font-weight:900}
+.arc-memo{display:flex;gap:10px;align-items:flex-start;border:2px dashed rgba(255,200,0,.55);border-radius:14px;padding:10px 12px;
+  font-size:13.5px;line-height:1.45;margin:0 0 14px;color:#FFF3C4;font-weight:700}
+.arc-memo b{color:var(--gold)}
+.numin.arc-bad{color:var(--red)!important;text-decoration:line-through;border-color:var(--red)!important}
+.numin.arc-good{color:var(--green-l)!important;border-color:var(--green)!important}
+.arc-pad{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:14px}
+.arc-pad button{min-height:52px;border-radius:14px;border:2px solid var(--line);border-bottom-width:4px;background:var(--card);font-size:22px;font-weight:900;color:var(--txt)}
+.arc-pad button:active{transform:translateY(2px);border-bottom-width:2px}
+.arc-pad button.fn{font-size:14px;color:var(--dim)}
+
+/* ---------- fin de lecon ---------- */
+.arc-done{display:flex;flex-direction:column;align-items:center;gap:10px}
+.arc-done img.hero{width:150px!important;height:150px!important}
+.arc-done .ttl{font-family:var(--arc-font);font-size:30px;font-weight:800;color:var(--gold);margin:0;line-height:1.1}
+.arc-done .sub{color:var(--dim);font-size:15px;margin:-2px 0 4px}
+.arc-stats{display:flex;gap:10px;width:100%;margin:6px 0 8px}
+.arc-stats .b{flex:1;border:2px solid var(--c);border-radius:16px;overflow:hidden}
+.arc-stats .b .l{background:var(--c);color:#10102A;font-size:11.5px;font-weight:900;letter-spacing:.5px;text-transform:uppercase;padding:4px 2px}
+.arc-stats .b .v{display:flex;align-items:center;justify-content:center;gap:6px;padding:12px 2px;font-family:var(--arc-font);font-size:19px;font-weight:800;color:var(--c);white-space:nowrap}
+.arc-stats .b .v svg{width:16px;height:16px}
+.arc-combobig{display:flex;align-items:center;gap:12px;width:100%;background:radial-gradient(circle at 30% 50%,#3B2A8A,#22224A 70%);
+  border:2px solid var(--line);border-radius:18px;padding:10px 14px;text-align:left}
+.arc-combobig .x{font-family:var(--arc-font);font-size:44px;font-weight:800;color:var(--blue);line-height:1;text-shadow:0 4px 0 #0A4F78}
+.arc-streakup{font-family:var(--arc-font);font-size:22px;color:var(--orange);display:flex;align-items:center;gap:6px}
+
+/* ---------- ligue ---------- */
+.arc-cups{display:flex;justify-content:center;align-items:flex-end;gap:14px;padding:8px 0 14px}
+.arc-cups .cup{display:flex;flex-direction:column;align-items:center;gap:4px;opacity:.38}
+.arc-cups .cup.on{opacity:1}
+.arc-cups .cup.cur{transform:scale(1.18)}
+.arc-cups .cup i{display:block;width:44px;height:8px;border-radius:5px;background:var(--card2)}
+body.arcade .zone{font-size:13px;font-weight:900;border-top:0;padding:12px 8px;display:flex;justify-content:center;gap:8px;align-items:center}
+body.arcade .lgrow{padding:10px 12px}
+body.arcade .lgrow.me{background:var(--card);border-color:var(--pink,#FF86D0)}
+body.arcade .lgrow.me .nm{color:var(--pink,#FF86D0)}
+.arc-nudge{display:flex;gap:12px;align-items:center;padding:10px 14px;margin:6px 0 12px;background:linear-gradient(90deg,#3A1D5C,var(--card));cursor:pointer}
+.arc-nudge .t{flex:1;font-size:14px;line-height:1.35}
+.arc-nudge .p{color:var(--blue);font-weight:900;display:flex;gap:4px;align-items:center;white-space:nowrap}
+
+/* ---------- boutique, quetes ---------- */
+body.arcade .shopit{background:var(--card);border-radius:20px}
+body.arcade .shopit{display:grid;grid-template-columns:84px minmax(0,1fr);column-gap:14px;row-gap:4px;align-items:center}
+body.arcade .shopit .si{grid-row:1 / span 2;display:flex;justify-content:center}
+body.arcade .shopit .sn,body.arcade .shopit .sd{grid-column:2}
+body.arcade .shopit > .btn,body.arcade .shopit > .muted{grid-column:1 / -1}
+body.arcade .shopit .si img{width:80px;height:80px;display:block}
+body.arcade .quest{background:var(--card);border-radius:18px}
+body.arcade .quest .qi img{width:56px;height:56px;display:block}
+body.arcade .stbox{background:var(--card)}
+
+/* ---------- profil ---------- */
+body.arcade .pbanner{border-radius:22px!important;border-width:0!important;background:linear-gradient(160deg,#D9716B,#B4507F)!important;color:#fff;
+  padding:18px!important;box-shadow:0 5px 0 #7E3558}
+body.arcade .pbanner .pu,body.arcade .pbanner .muted{color:#FFE7EC!important}
+body.arcade .pbanner .chip{background:rgba(0,0,0,.22);color:#fff;border-color:transparent}
+.arc-goalcard{display:flex;gap:12px;align-items:center;padding:14px 16px;margin:14px 0;background:var(--blue);color:#06283A;border:0;box-shadow:0 5px 0 var(--blue-d)}
+.arc-goalcard b{display:block;font-size:16px;line-height:1.3}
+.arc-goalcard span{display:block;color:#fff;font-weight:900;font-size:13px;margin-top:5px}
+
+/* ---------- selecteur de cours ---------- */
+.arc-crow{display:flex;align-items:center;gap:12px;width:100%;text-align:left;padding:10px 12px;margin-bottom:8px;border:2px solid var(--line);border-radius:16px;background:var(--card);color:var(--txt)}
+.arc-crow.on{border-color:var(--blue);background:rgba(28,176,246,.12)}
+.arc-crow .i{flex:1;min-width:0}
+.arc-crow b{display:block;font-size:14.5px;line-height:1.25}
+.arc-crow .bar{height:8px;border-radius:9px;background:var(--card2);overflow:hidden;margin-top:7px}
+.arc-crow .bar i{display:block;height:100%;border-radius:9px}
+.arc-crow .p{color:var(--dim);font-size:12.5px;font-weight:900;white-space:nowrap}
+.arc-cat{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:var(--dim);margin:14px 2px 8px;text-align:left}
+
+/* ---------- jeux ---------- */
+#sc-game .scroll{padding:0}
+.arc-ghead{display:flex;align-items:center;gap:12px;padding:16px 16px 8px;position:sticky;top:0;background:var(--bg);z-index:5}
+.arc-gstats{flex:1;display:flex;border:2px solid var(--line);border-radius:16px;overflow:hidden}
+.arc-gstats span{flex:1;display:flex;justify-content:center;align-items:center;gap:6px;padding:8px;font-weight:900;font-size:15px}
+.arc-gstats span+span{border-left:2px solid var(--line)}
+.arc-gbar{height:8px;margin:2px 16px 0;border-radius:9px;background:var(--card2);overflow:hidden}
+.arc-gbar i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--gold));transition:width .2s linear}
+.arc-gbody{padding:14px 16px}
+.arc-gtitle{font-family:var(--arc-font);font-size:25px;font-weight:800;line-height:1.15;margin:4px 0 14px}
+.arc-pairs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.arc-tile{min-height:66px;border-radius:16px;border:2px solid var(--line);border-bottom-width:4px;background:var(--card);color:var(--txt);
+  font-size:14px;font-weight:800;line-height:1.25;padding:8px;transition:transform .08s,opacity .25s}
+.arc-tile.sel{border-color:var(--blue);background:#16365A;color:#BDE9FF}
+.arc-tile.ok{border-color:var(--green);opacity:.28;pointer-events:none}
+.arc-tile.ko{border-color:var(--red);animation:arcshake .35s}
+.arc-tile:active{transform:translateY(2px)}
+@keyframes arcshake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.arc-pips{display:flex;justify-content:center;gap:8px;margin-top:18px;flex-wrap:wrap}
+.arc-pips i{width:14px;height:14px;border-radius:50%;background:var(--line)}
+.arc-pips i.on{background:var(--green)}
+.arc-vf{position:relative;height:330px;margin:10px auto 0;max-width:340px}
+.arc-vfcard{position:absolute;inset:0;border-radius:22px;border:2px solid var(--line);background:var(--card2);padding:22px;display:flex;flex-direction:column;
+  justify-content:center;gap:12px;box-shadow:0 6px 0 var(--line);touch-action:pan-y;user-select:none;transition:transform .18s}
+.arc-vfcard .q{font-family:var(--arc-font);font-size:22px;font-weight:800;line-height:1.3}
+.arc-vfcard .stamp{position:absolute;top:18px;border:3px solid;border-radius:10px;padding:3px 10px;font-weight:900;opacity:0}
+.arc-vfbtns{display:flex;justify-content:center;gap:44px;margin-top:22px}
+.arc-vfbtns button{width:76px;height:76px;border-radius:50%;border:3px solid;background:none;display:flex;align-items:center;justify-content:center}
+.arc-vfbtns .no{border-color:var(--red);box-shadow:0 5px 0 var(--red-d)}
+.arc-vfbtns .yes{border-color:var(--green);box-shadow:0 5px 0 var(--green-d)}
+.arc-vfbtns button:active{transform:translateY(4px);box-shadow:none}
+.arc-foot{position:sticky;bottom:0;margin:14px -16px -14px;box-shadow:0 -8px 16px rgba(0,0,0,.25);padding:12px 16px calc(16px + env(safe-area-inset-bottom));background:var(--bg);border-top:2px solid var(--line);display:flex;flex-direction:column;gap:10px;z-index:4}
+.arc-boss .arc-foot{background:#1A1432}
+.arc-flash{min-height:44px;text-align:center;font-size:14px;line-height:1.4;color:var(--dim);margin-top:14px;padding:0 10px}
+.arc-slots{display:flex;flex-direction:column;gap:10px}
+.arc-slot{display:flex;gap:12px;align-items:center}
+.arc-slot .n{width:34px;height:34px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;border:3px dashed var(--purple);color:var(--purple);font-weight:900}
+.arc-slot .v{flex:1;min-height:50px;border:2px dashed var(--line);border-radius:14px;display:flex;align-items:center;padding:8px 12px;font-size:14.5px;line-height:1.3;color:var(--dim)}
+.arc-slot.full .n{border-style:solid;background:var(--purple);color:#2A0D3D}
+.arc-slot.full .v{border-style:solid;border-color:var(--purple);color:var(--txt);background:var(--card)}
+.arc-slot.good .v{border-color:var(--green);background:rgba(88,204,2,.14)}
+.arc-slot.bad .v{border-color:var(--red);background:rgba(255,75,75,.14)}
+.arc-bank{display:flex;flex-wrap:wrap;gap:8px;margin-top:16px}
+.arc-chip{border:2px solid var(--line);border-bottom-width:4px;border-radius:14px;background:var(--card);color:var(--txt);padding:10px 12px;font-size:14px;font-weight:800;text-align:left;line-height:1.3}
+.arc-chip.used{opacity:.25;pointer-events:none}
+.arc-boss{background:linear-gradient(180deg,#2A1330,var(--bg) 60%)}
+.arc-bossimg{display:flex;flex-direction:column;align-items:center;gap:6px;padding:4px 0}
+.arc-bossimg img{width:130px;height:130px}
+.arc-hp{display:flex;align-items:center;gap:10px;width:100%}
+.arc-hp .b{flex:1;height:18px;border-radius:9px;background:var(--line);overflow:hidden;border:2px solid #5A2D82}
+.arc-hp .b i{display:block;height:100%;background:linear-gradient(90deg,var(--red),var(--orange));transition:width .35s}
+.arc-q{border:2px solid #5A2D82;border-radius:18px;padding:14px;font-size:16.5px;line-height:1.4;background:var(--card);margin-bottom:12px}
+.arc-opts{display:flex;flex-direction:column;gap:10px}
+.arc-opt{border:2px solid var(--line);border-bottom-width:4px;border-radius:16px;background:var(--card);color:var(--txt);padding:13px 14px;text-align:left;font-size:15px;font-weight:800;line-height:1.35}
+.arc-opt.good{border-color:var(--green);background:rgba(88,204,2,.15);color:var(--green-l)}
+.choice.bad,.arc-opt.bad{text-decoration:line-through;text-decoration-thickness:2px}
+.arc-opt.bad{border-color:var(--red);background:rgba(255,75,75,.15);color:#FF9DA8}
+.arc-opt[disabled]{pointer-events:none}
+.arc-reward{display:flex;gap:12px;align-items:center;background:rgba(199,101,159,.14);border:2px solid #5A2D82;border-radius:16px;padding:8px 12px;margin-top:12px;font-size:14px}
+.arc-duel{background:linear-gradient(135deg,var(--blue),var(--purple));padding:18px 16px;color:#fff}
+.arc-duel .row{display:flex;justify-content:space-between;align-items:center}
+.arc-duel .p{display:flex;flex-direction:column;align-items:center;gap:4px;font-weight:900;min-width:96px}
+.arc-duel .p .av{width:72px;height:72px;border-radius:50%;overflow:hidden;background:rgba(255,255,255,.2)}
+.arc-duel .p .av svg{width:100%;height:100%}
+.arc-duel .p .sc{font-family:var(--arc-font);font-size:28px;line-height:1}
+.arc-duel .vs{font-family:var(--arc-font);font-size:30px;font-weight:800}
+.arc-steps{display:flex;gap:6px;margin:14px 0 6px}
+.arc-steps i{flex:1;height:10px;border-radius:9px;background:var(--line)}
+.arc-steps i.g{background:var(--green)} .arc-steps i.r{background:var(--red)}
+.arc-end{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px;padding:26px 20px}
+.arc-end .x{font-family:var(--arc-font);font-size:78px;font-weight:800;color:var(--blue);line-height:1;text-shadow:0 6px 0 #0A4F78}
+.arc-end .ttl{font-family:var(--arc-font);font-size:28px;font-weight:800}
+.arc-end .st{display:flex;gap:10px;width:100%}
+.arc-end .st div{flex:1;background:var(--card);border:2px solid var(--line);border-radius:16px;padding:10px 6px}
+.arc-end .st b{display:block;font-family:var(--arc-font);font-size:24px}
+.arc-end .st span{font-size:12.5px;color:var(--dim)}
+.arc-games{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.arc-gtile{border:0;border-radius:20px;padding:14px;color:#fff;text-align:left;display:flex;flex-direction:column;gap:6px;min-height:120px;box-shadow:0 5px 0 var(--sh)}
+.arc-gtile:active{transform:translateY(4px);box-shadow:0 1px 0 var(--sh)}
+.arc-gtile b{font-family:var(--arc-font);font-size:18px;line-height:1.1}
+.arc-gtile span{font-size:12.5px;font-weight:800;opacity:.95;line-height:1.3}
+@media (prefers-reduced-motion: reduce){ .arc-tile.ko{animation:none} .arc-vfcard{transition:none} }
