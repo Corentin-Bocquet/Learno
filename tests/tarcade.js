@@ -191,6 +191,26 @@ const semi=E(`UNITS.map(u=>{ const t=String(u.guide||"").replace(/<div class="fo
   .replace(/<[^>]+>/g," ").replace(/«[^»]*»/g,""); return / ; |\\s;\\s*$/m.test(t)?u.c+" "+u.id:null; }).filter(Boolean)`);
 console.log("leçons avec des points-virgules :",semi.length,semi.slice(0,6).join(", "));
 if(semi.length)ko("points-virgules dans la prose des leçons : "+semi.slice(0,6).join(", "));
+/* serie juste : un vrai jour manque remet l affichage a 0, un gel sauve un jour et se voit */
+E("(()=>{const d=new Date();d.setDate(d.getDate()-4);S.lastDay=fmtDayT(d);S.streak=5;})()".replace("fmtDayT(d)","d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')"));
+E("refreshTop()");
+const st0=E("S.streak");
+E("(()=>{const d=new Date();d.setDate(d.getDate()-2);S.lastDay=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');S.streak=3;S.freezes=1;S.gelDays=[];touchDay(S.active);})()");
+const gel=E("S.gelDays.length"), st1=E("S.streak");
+E("setTab('path')"); await wait(40);
+console.log("série après 4 jours sans leçon :",st0,"| gel utilisé :",gel,"jour noté | série :",st1,"| flocon dans la semaine :",!!doc.querySelector(".arc-week .d.gel"));
+if(st0!==0)ko("la série affichée ne retombe pas à 0 après un jour manqué");
+if(gel!==1||st1!==4)ko("le gel de série n'est pas noté");
+/* coffres animes, trophees, icones de cours */
+E("S.active='MMA';(()=>{const u=courseUnits('MMA')[0].id;openChest('chest-'+u+'-2');})()"); await wait(40);
+const fx=doc.querySelector(".arc-fx");
+console.log("animation de coffre :",!!fx,"| récompense :",fx?fx.querySelector(".card").textContent.replace(/\s+/g," ").trim().slice(0,60):"");
+if(!fx)ko("pas d'animation à l'ouverture du coffre");
+if(fx)fx.remove();
+E("setTab('league')"); await wait(40);
+if(doc.querySelectorAll("#leaguebody .arc-trophy").length<6)ko("trophées des divisions absents");
+const fallback=E("COURSES.filter(c=>!/arc-cb/.test(badgeSVG(c.id,40))).map(c=>c.id)");
+if(fallback.length)ko("icônes de cours non refaites : "+fallback.join(","));
 /* le contenu n a pas bouge */
 console.log("cours :",E("COURSES.length"),"| unités :",E("UNITS.length"),"| exercices :",E("EXOS.length"));
 
