@@ -312,11 +312,14 @@
     const nx=us.find(u=>!unitUnlocked(u.id)); if(nx)ids.push(nx.id);
     return ids;
   }
-  function pool(test,min){
-    const ids=openUnits(); let p=EXOS.filter(e=>ids.includes(e.u)&&test(e));
-    if(p.length<min)p=EXOS.filter(e=>unitOf(e.u).c===S.active&&test(e));
-    return p;
+  /* les jeux ne piochent que dans ce qui a deja ete etudie : les lecons
+     faites (et la lecon en cours) des modules ouverts, jamais plus loin */
+  function studied(e){
+    const u=unitOf(e.u); if(!u||u.c!==S.active||!unitUnlocked(e.u))return false;
+    if(S.items&&S.items[e.i]&&S.items[e.i].n>0)return true;
+    return unitExos(e.u).indexOf(e)<Math.min(lessonsIn(e.u),unitDone(e.u)+1)*4;
   }
+  function pool(test,min){ return EXOS.filter(e=>test(e)&&studied(e)); }
   function award(xp,gems){
     const m=typeof boostMult==="function"?boostMult():1; xp=Math.round(xp*m);
     S.xp+=xp; S.daily.xp+=xp; S.hist=S.hist||{}; S.hist[today()]=(S.hist[today()]||0)+xp; S.league.xpWeek+=xp;
@@ -452,9 +455,9 @@
   }
   window.arcFrise=function(k){ if(!G||G.checked||G.placed.includes(k))return; G.placed.push(k); sfx("click"); frisePaint(); };
   window.arcFriseDel=function(j){ if(!G||G.checked)return; G.placed.splice(j,1); frisePaint(); };
-  window.arcFriseCheck=function(){ const ex=G.rounds[G.r], ok=G.placed.every((k,j)=>k===j); G.checked=true; grade(ex,ok,S.active);
+  window.arcFriseCheck=function(){ if(!G||G.k!=="frise"||G.over||G.checked)return; const ex=G.rounds[G.r], ok=G.placed.every((k,j)=>k===j); G.checked=true; grade(ex,ok,S.active);
     if(ok){G.ok++;sfx("correct");}else{sfx("wrong");buzz([30,40,30]);} frisePaint(); };
-  window.arcFriseNext=function(){ G.r++; if(G.r>=G.rounds.length){ const xp=award(G.ok*10,G.ok===G.rounds.length?4:1);
+  window.arcFriseNext=function(){ if(!G||G.k!=="frise"||G.over)return; G.r++; if(G.r>=G.rounds.length){ const xp=award(G.ok*10,G.ok===G.rounds.length?4:1);
       endScreen({img:G.ok===G.rounds.length?"ouvert":"coffre",title:G.ok===G.rounds.length?"Chronologie parfaite !":"Frises terminées",
         sub:G.ok+" frise"+(G.ok>1?"s":"")+" sur "+G.rounds.length+" dans le bon ordre",stats:[["+"+xp,"XP","var(--gold)"],[G.ok+" / "+G.rounds.length,"justes","var(--green)"]]}); return; }
     friseRound(); frisePaint(); };
@@ -472,7 +475,7 @@
   function bossStart(){
     const n=nextLessonExists(), us=courseUnits(S.active);
     const u=(n&&unitOf(n.u))||us.filter(x=>unitUnlocked(x.id)).pop()||us[0]; if(!u){ toast("Aucun module ouvert."); return false; }
-    let p=EXOS.filter(e=>e.u===u.id&&CHOIX(e)); if(p.length<8)p=p.concat(shuffle(pool(CHOIX,8)).filter(e=>!p.includes(e)));
+    let p=EXOS.filter(e=>e.u===u.id&&CHOIX(e)&&studied(e)); if(p.length<8)p=p.concat(shuffle(pool(CHOIX,8)).filter(e=>!p.includes(e)));
     if(p.length<5){ toast("Pas encore assez de questions pour un boss."); return false; }
     G={k:"boss",u,hp:100,hearts:3,q:shuffle(p).slice(0,14),i:0,picked:null,opt:null};
   }
@@ -491,7 +494,7 @@
   }
   window.arcBoss=function(j){ if(!G||G.picked!=null)return; const ex=G.q[G.i]; G.picked=G.opt[j]; const ok=G.picked===ex.a; grade(ex,ok,S.active);
     if(ok){ G.hp=Math.max(0,G.hp-20); sfx("correct"); buzz(20); } else { G.hearts--; sfx("wrong"); buzz([30,40,30]); } bossPaint(); };
-  window.arcBossNext=function(){
+  window.arcBossNext=function(){ if(!G||G.k!=="boss"||G.over)return;
     if(G.hp<=0){ const xp=award(30,30); endScreen({img:"legendaire",title:"Boss vaincu !",sub:"Le Diable du "+G.u.n+" est à terre. Le coffre légendaire est à toi.",
       stats:[["+"+xp,"XP","var(--gold)"],["+30","gemmes","var(--blue)"],[G.hearts+" / 3","coeurs","var(--red)"]]});
       arcChestFX("legendaire",{title:"Coffre légendaire !",lines:[gemLine(30),`${ico("xp",22)} <b data-n="${xp}">+${xp}</b> XP`]}); return; }
@@ -520,7 +523,7 @@
   }
   window.arcDuel=function(j){ if(!G||G.picked!=null)return; const ex=G.q[G.i]; G.picked=G.opt[j]; const ok=G.picked===ex.a; grade(ex,ok,S.active);
     G.rvOk=Math.random()<G.acc; if(ok)G.me++; if(G.rvOk)G.him++; G.res[G.i]=ok; sfx(ok?"correct":"wrong"); duelPaint(); };
-  window.arcDuelNext=function(){
+  window.arcDuelNext=function(){ if(!G||G.k!=="duel"||G.over)return;
     if(G.i+1<G.q.length){ G.i++; G.picked=null; G.opt=null; duelPaint(); return; }
     const win=G.me>G.him, egal=G.me===G.him, xp=award(win?30:egal?15:5, win?10:0);
     endScreen({win:win||egal,img:win?"ouvert":null,masc:win?"":masc(egal?"content":"triste","","width:130px;height:130px"),
@@ -902,6 +905,28 @@
   }
   const gelDays=()=>{ if(!Array.isArray(S.gelDays))S.gelDays=[]; return S.gelDays; };
 
+  /* ---------------- 7 undecies. UNE LECON NE DEVANCE JAMAIS LE COURS ----------------
+     Dans une lecon N d un module, on ne pose que des questions des lecons
+     1 a N de ce module, ou des modules precedents (rappels). Jamais une
+     question d une lecon pas encore faite, ni d un module suivant.      */
+  function lessonGate(Lx){
+    if(!Lx||Lx.mode!=="normal"||Lx.uid==null||!(Lx.li>=0))return Lx;
+    const uid=Lx.uid, cid=unitOf(uid).c, us=courseUnits(cid), ui=us.findIndex(u=>u.id===uid);
+    const pool=unitExos(uid), lim=(Lx.li+1)*4;
+    const ok=e=>{ if(e.u===uid)return pool.indexOf(e)<lim; const k=us.findIndex(u=>u.id===e.u); return k>=0&&k<ui; };
+    const keep=Lx.queue.filter(ok), ids=new Set(keep.map(e=>e.i)), manque=Lx.queue.length-keep.length;
+    if(manque>0){
+      const rec=e=>{ const it=S.items&&S.items[e.i]; return it&&it.n?recall(e.i):2; };
+      const ici=pool.slice(0,lim).filter(e=>!ids.has(e.i)).sort((a,b)=>rec(a)-rec(b));
+      const avant=EXOS.filter(e=>{ const k=us.findIndex(u=>u.id===e.u); return k>=0&&k<ui&&!ids.has(e.i)&&S.items&&S.items[e.i]&&S.items[e.i].n>0; })
+        .sort((a,b)=>rec(a)-rec(b));
+      ici.concat(avant).slice(0,manque).forEach(e=>{ keep.push(e); ids.add(e.i); });
+    }
+    Lx.queue=shuffle(keep);
+    return Lx;
+  }
+  window.arcLessonGate=lessonGate;
+
   /* ---------------- 8. BRANCHEMENTS ---------------- */
   function boot(){
     document.body.classList.add("arcade");
@@ -979,6 +1004,7 @@
       if(ev==="freeze"&&avant){ const p=avant.split("-").map(Number); gelDays().push(fmtDay(new Date(p[0],p[1]-1,p[2]+1))); save(); }
       return ev; }; }
     window.badgeSVG=glassBadge;
+    if(typeof buildLesson==="function"){ const __bl=buildLesson; window.buildLesson=function(){ return lessonGate(__bl.apply(null,arguments)); }; }
     streakFix();
 
     const __rq=renderQ;
