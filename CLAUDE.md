@@ -107,3 +107,14 @@ avec les mêmes durées de 8, 20 et 35 minutes (choix de Corentin).
 Avant tout envoi : `tests/ci_smoke.js`, `tests/tall.js` pour chaque cours (`CID=...`), puis
 `tbackup tcloud tui tmissions tpratique tpro tmasc tpatri`. Ajouter chaque nouveau cours dans
 `.github/workflows/verification.yml` et relever les seuils de `tests/ci_smoke.js`.
+
+## Publication : fusion automatique dans main (demande de Corentin, 24/09/2026)
+
+Tout travail terminé est fusionné dans `main` automatiquement, sans redemander l'accord :
+1. lancer les tests ci-dessus en local ;
+2. committer et pousser sur la branche de travail, ouvrir la PR (ou réutiliser celle qui est ouverte) ;
+3. attendre que la CI « tests » soit verte sur le dernier commit et qu'il n'y ait aucun conflit ;
+4. passer la PR en « prête » et la fusionner dans `main` (méthode merge), puis arrêter la surveillance.
+
+Si la CI est rouge, on corrige et on repousse ; on ne fusionne jamais une PR rouge ou en conflit.
+Après une fusion, tout nouveau travail repart de `main` à jour, sur une nouvelle PR.
