@@ -21,7 +21,7 @@
 <tr><td>Points gagnés au retour</td><td>La capacité à mettre la pression au retour</td></tr></table>
 <p>Chez les amateurs, la grande majorité des points se terminent sur une faute plutôt que sur un coup gagnant. Réduire ses fautes directes est donc le levier le plus rentable.</p>
 <div class="gmnemo"><b>« 70 dans les 4 »</b> : 70 % des points se jouent en quatre frappes ou moins. Et <b>« 54 suffit »</b> : on n'a pas besoin de gagner tous les points pour gagner le match.</div>
-<div class="gtrap">Idée reçue : « le joueur qui fait le plus de coups gagnants gagne le match ». Faux : il faut regarder le bilan coups gagnants moins fautes directes, et le nombre de fautes provoquées. Un joueur peut frapper 40 coups gagnants et perdre avec 60 fautes directes. Autre piège : juger un match au nombre d'aces ; le pourcentage de points gagnés sur la deuxième balle en dit souvent plus.</div>
+<div class="gtrap">Idée reçue : « le joueur qui fait le plus de coups gagnants gagne le match ». C'est faux : il faut regarder le bilan coups gagnants moins fautes directes, et le nombre de fautes provoquées. Un joueur peut frapper 40 coups gagnants et perdre avec 60 fautes directes. Autre piège : juger un match au nombre d'aces. Le pourcentage de points gagnés sur la deuxième balle en dit souvent plus.</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Citer la répartition des points selon leur durée</li><li>Distinguer faute directe, faute provoquée et coup gagnant</li><li>Calculer un bilan et des pourcentages</li><li>En déduire des priorités d'entraînement</li></ul>`},
 /*EXOS*/

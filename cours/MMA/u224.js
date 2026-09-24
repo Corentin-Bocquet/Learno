@@ -1,7 +1,7 @@
 /*UNIT*/
 {id:224,c:"MMA",n:"Module 10",t:"Le sol, niveau 2 : étranglements, clés et comment s'en sortir",col:"--red",ic:"🔒",guide:`
 <h3>Taper, ce n'est pas perdre la face</h3>
-<div class="gstory">Samedi, Maëlle fait « rouler » Tom six minutes. Elle lui prend le dos, glisse un bras sous son menton ; Tom serre les dents et refuse de taper. Maëlle relâche aussitôt et le regarde : « Si je ne lâche pas, dans quelques secondes tu dors. En compétition, l'arbitre arrête et tu as perdu quand même, en plus de t'être mis en danger. Taper, c'est se donner le droit de revenir demain. » Tom, vexé, promet de taper la prochaine fois. Rachid, qui passait, ajoute : « Et apprends pourquoi tu tapes. Chaque soumission a sa porte de sortie, si tu la prends assez tôt. »</div>
+<div class="gstory">Samedi, Maëlle fait « rouler » Tom six minutes. Elle lui prend le dos et glisse un bras sous son menton. Tom serre les dents et refuse de taper. Maëlle relâche aussitôt et le regarde : « Si je ne lâche pas, dans quelques secondes tu dors. En compétition, l'arbitre arrête et tu as perdu quand même, en plus de t'être mis en danger. Taper, c'est se donner le droit de revenir demain. » Tom, vexé, promet de taper la prochaine fois. Rachid, qui passait, ajoute : « Et apprends pourquoi tu tapes. Chaque soumission a sa porte de sortie, si tu la prends assez tôt. »</div>
 <h3>Deux familles de soumissions</h3>
 <table><tr><th>Famille</th><th>Principe</th><th>Effet</th></tr>
 <tr><td><b>Étranglements</b></td><td>Comprimer les artères du cou (carotides), plus rarement la trachée</td><td>Perte de conscience en quelques secondes si l'on ne tape pas</td></tr>
@@ -23,9 +23,9 @@
 <tr><td>Clé de cou</td><td>Colonne cervicale</td><td>Ne pas laisser la tête se faire enrouler</td></tr></table>
 <p>La kimura porte le nom du judoka japonais Masahiko Kimura, qui a vaincu Hélio Gracie avec cette clé en 1951. Au sol, la règle d'or : <b>défendre avant que la prise soit posée</b>. Une soumission bien posée ne se défend presque plus.</p>
 <h3>Des combats pour s'en souvenir</h3>
-<ul><li><b>Nate Diaz contre Conor McGregor</b> (UFC 196, 5 mars 2016) : McGregor, fatigué, tente une amenée ; Diaz prend son dos et gagne par étranglement arrière au 2e round.</li>
+<ul><li><b>Nate Diaz contre Conor McGregor</b> (UFC 196, 5 mars 2016) : McGregor, fatigué, tente une amenée. Diaz prend son dos et gagne par étranglement arrière au 2e round.</li>
 <li><b>Khabib Nurmagomedov contre Conor McGregor</b> (UFC 229, 2018) : clé de cou au 4e round (module 7).</li></ul>
-<div class="gtrap">Idée reçue dangereuse : « un vrai dur ne tape jamais ». Un étranglement bien serré fait perdre connaissance en quelques secondes ; une clé non tapée casse un coude ou un genou et peut arrêter une carrière. En compétition, si le combattant perd connaissance, l'arbitre arrête et il perd par soumission technique. Taper n'est pas une faiblesse : c'est une décision intelligente.</div>
+<div class="gtrap">Idée reçue dangereuse : « un vrai dur ne tape jamais ». Un étranglement bien serré fait perdre connaissance en quelques secondes. Une clé non tapée casse un coude ou un genou et peut arrêter une carrière. En compétition, si le combattant perd connaissance, l'arbitre arrête et il perd par soumission technique. Taper n'est pas une faiblesse, c'est une décision intelligente.</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Distinguer étranglements et clés, et leur danger</li><li>Associer chaque soumission à sa position de départ</li><li>Donner la défense principale de chaque soumission</li><li>Analyser les soumissions célèbres de Diaz et de Khabib</li></ul>`},
 /*EXOS*/

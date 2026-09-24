@@ -11,7 +11,7 @@
 <p>On sert du côté <b>égalité</b> (à droite) quand le total des points du jeu est pair (0-0, 15-15, 30-0) et du côté <b>avantage</b> (à gauche) quand il est impair. On alterne le service à chaque jeu.</p>
 <h3>Les trois effets</h3>
 <ul><li><b>Plat</b> : le plus rapide, le moins sûr. Idéal au T en première balle.</li>
-<li><b>Slicé</b> : la balle tourne sur le côté. Pour un droitier, il fuit vers l'extérieur côté égalité ; pour un <b>gaucher</b>, il fuit vers l'extérieur côté <b>avantage</b>, sur le revers d'un droitier.</li>
+<li><b>Slicé</b> : la balle tourne sur le côté. Pour un droitier, ce service fuit vers l'extérieur du côté égalité. Pour un <b>gaucher</b>, il fuit vers l'extérieur du côté <b>avantage</b>, donc sur le revers d'un droitier.</li>
 <li><b>Lifté (kick)</b> : la balle monte haut au rebond. C'est la <b>deuxième balle</b> de référence : grande marge au-dessus du filet, rebond haut sur le revers.</li></ul>
 <h3>Première et deuxième balle en chiffres</h3>
 <p>Chez les professionnels, on gagne environ <b>70 à 75 %</b> des points quand la première balle passe, et environ <b>50 %</b> seulement sur la deuxième. Le serveur a donc intérêt à passer beaucoup de premières balles (autour de <b>60 à 65 %</b>) plutôt qu'à en passer peu très vite.</p>

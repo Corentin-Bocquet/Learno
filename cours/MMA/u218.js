@@ -9,7 +9,7 @@
 <tr><td>3</td><td><b>Crochet</b> du bras avant</td><td>Coup circulaire, fait tourner la tête ou touche le foie</td></tr>
 <tr><td>4</td><td>Crochet du bras arrière</td><td>Puissant, plus lent, plus visible</td></tr>
 <tr><td>5 et 6</td><td><b>Uppercut</b> avant et arrière</td><td>Coup de bas en haut, à courte distance, au menton ou au corps</td></tr></table>
-<div class="gmnemo"><b>« Impair devant, pair derrière. »</b> 1, 3, 5 : bras avant ; 2, 4, 6 : bras arrière. Et le premier enchaînement que tout le monde apprend : <b>« 1-2, puis sors. »</b></div>
+<div class="gmnemo"><b>« Impair devant, pair derrière. »</b> Les coups 1, 3 et 5 partent du bras avant. Les coups 2, 4 et 6 partent du bras arrière. Et le premier enchaînement que tout le monde apprend : <b>« 1-2, puis sors. »</b></div>
 <h3>Frapper juste</h3>
 <ul><li>La puissance vient du <b>sol</b> : le pied pivote, les hanches tournent, l'épaule suit. Le bras ne fait que transmettre.</li>
 <li>L'<b>épaule</b> du bras qui frappe protège le menton, l'autre main reste au visage.</li>

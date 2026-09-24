@@ -3,7 +3,7 @@
 <h3>La journée en montagnes russes</h3>
 <div class="gstory">Mercredi chez Cargo &amp; Co. 9 h : un article élogieux dans Sud Ouest, Léa rayonne. 11 h : le concurrent parisien VéloFret annonce une levée de 5 millions, elle se crispe. 14 h : Hugo, le nouveau stagiaire, réussit enfin à monter seul une roue, toute l'équipe applaudit et Léa sourit sincèrement. 17 h : Victor écrit « Où en sont les chiffres ? », et une boule se forme dans son ventre. Le soir, elle dit à Julien : « J'ai vécu dix émotions différentes. » Julien sort une feuille : « Spinoza n'en compte que trois. Tout le reste, ce sont des mélanges. »</div>
 <h3>Qu'est-ce qu'un affect ?</h3>
-<p>Un <b>affect</b>, ce sont les affections du corps qui <b>augmentent ou diminuent sa puissance d'agir</b>, et en même temps les idées de ces affections (E3, définition 3). Quand nous en sommes la cause <b>adéquate</b> (complète), c'est une <b>action</b> ; sinon, c'est une <b>passion</b> : nous le subissons.</p>
+<p>Un <b>affect</b>, ce sont les affections du corps qui <b>augmentent ou diminuent sa puissance d'agir</b>, et en même temps les idées de ces affections (E3, définition 3). Quand nous en sommes la cause <b>adéquate</b> (complète), c'est une <b>action</b>. Sinon, c'est une <b>passion</b> : nous le subissons.</p>
 <h3>Trois affects primaires (E3P11, scolie)</h3>
 <table><tr><th>Affect</th><th>Définition</th></tr>
 <tr><td><b>Désir</b></td><td>L'essence de l'homme, son conatus conscient (module 7)</td></tr>
@@ -22,7 +22,7 @@
 <tr><td><b>Envie</b></td><td>Haine qui attriste du bonheur d'autrui et réjouit de son malheur</td></tr>
 <tr><td><b>Ambition</b></td><td>Désir immodéré de gloire</td></tr>
 <tr><td><b>Émulation</b></td><td>Désir d'une chose, né de ce que nous imaginons que d'autres, semblables à nous, la désirent</td></tr></table>
-<p>Pas d'espoir sans crainte : qui espère doute, donc craint ; qui craint doute, donc espère. Quand le doute disparaît, l'espoir devient <b>sécurité</b> et la crainte <b>désespoir</b>.</p>
+<p>Pas d'espoir sans crainte. Celui qui espère doute, donc il craint. Celui qui craint doute, donc il espère. Quand le doute disparaît, l'espoir devient <b>sécurité</b> et la crainte devient <b>désespoir</b>.</p>
 <h3>La fluctuation de l'âme</h3>
 <p>Quand deux affects contraires nous tiraillent en même temps pour la même chose, Spinoza parle de <b>fluctuation de l'âme</b> (<i>fluctuatio animi</i>, E3P17, scolie). Théo Lion l'applique au succès : toute joie qui dépend d'une cause extérieure peut se renverser si la cause change. Un succès obtenu nourrit <b>déjà</b> la crainte de le perdre.</p>
 <div class="gtrap">Nuance importante : Spinoza ne condamne pas les <b>passions joyeuses</b>. Elles augmentent vraiment la puissance, et elles sont un bon point de départ. Mais comme elles dépendent de causes extérieures, on ne peut pas en attendre une joie stable. Le vrai problème, ce sont les <b>passions tristes</b>. Et un point décisif : il n'existe d'affects actifs que de <b>joie et de désir</b>, jamais de tristesse (E3P59). Toute tristesse est une passion.</div>

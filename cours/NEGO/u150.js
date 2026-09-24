@@ -10,7 +10,7 @@
 <tr><td><b>Point cible</b></td><td>Résultat ambitieux mais crédible que tu vises</td><td>Pour la banque : garder 0,75 %</td></tr>
 <tr><td><b>Point de réserve</b></td><td>Limite au-delà de laquelle tu ne signes pas</td><td>Pour la banque : pas sous 0,60 %</td></tr>
 <tr><td><b>MESORE / BATNA</b></td><td>Ce que tu fais si c'est non</td><td>Pour Marc : NeoBanque à 0,50 % sans conseil</td></tr></table>
-<p>Le point de réserve se <b>calcule à partir de la MESORE</b>. Marc sait qu'à 0,50 % chez NeoBanque il perd son conseiller et le suivi de sa pharmacie ; il estime que ce service vaut 0,20 %. Son point de réserve est donc 0,70 % : au-dessus, il part ; en dessous, il reste.</p>
+<p>Le point de réserve se <b>calcule à partir de la MESORE</b>. Marc sait qu'à 0,50 % chez NeoBanque, il perd son conseiller et le suivi de sa pharmacie. Il estime que ce service vaut 0,20 %. Son point de réserve est donc 0,70 % : au-dessus, il part, et en dessous, il reste.</p>
 <h3>La ZOPA : la zone où l'accord est possible</h3>
 <p>La <b>ZOPA</b> (<i>Zone Of Possible Agreement</i>, zone d'accord possible) est l'espace entre les deux points de réserve. Elle n'existe que s'ils se chevauchent.</p>
 <div class="formula">Banque : ne descend pas sous 0,60 %  (réserve banque)

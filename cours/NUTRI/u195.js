@@ -15,7 +15,7 @@
 <p>Laurence Plumey ne diabolise pas : aller au fast-food <b>de temps en temps</b>, pour se faire plaisir, « aucun problème ». Ça croustille, c'est gras, c'est sucré : tout est fait pour plaire. Ce qui la gêne, c'est quand ça devient <b>une cantine</b> ou <b>un modèle</b> : les parents épuisés qui commandent tacos, pizza ou burger tous les soirs grâce à la <b>livraison</b>. À l'hôpital Necker, elle voyait des enfants qui ne mangeaient pas au fast-food tous les jours, mais « façon fast-food » à la maison tous les jours.</p>
 <div class="gmnemo"><b>« Plaisir oui, cantine non. »</b> Et au comptoir, la règle <b>« 1 petit, 1 vert, 1 eau »</b> : un burger simple, une salade ou des légumes à la place d'une partie des frites, et de l'eau.</div>
 <h3>À quelle heure dîner</h3>
-<p>Pour un adulte qui se lève à 7 h et veut dormir 8 heures, le coucher est à 23 h ; il faut environ <b>2 heures</b> de digestion, donc un dîner vers <b>20 h</b>. Deux pièges :</p>
+<p>Prenons un adulte qui se lève à 7 h et veut dormir 8 heures : il doit se coucher à 23 h. Comme la digestion prend environ <b>2 heures</b>, il doit dîner vers <b>20 h</b>. Deux pièges sont à éviter :</p>
 <ul><li><b>Trop tard</b> (21 h 30, 22 h) : la digestion retarde l'endormissement (le cerveau envoie le signal du sommeil vers 22 h 30) et le sommeil est de mauvaise qualité. La grosse raclette du soir donne une « nuit cata ». Mauvais sommeil, prise de poids (module 3).</li>
 <li><b>Trop tôt</b> (19 h pour un adulte qui se couche à 23 h) : l'intestin se vide, le cerveau envoie un signal de faim, et on <b>grignote</b> biscuits ou chocolat devant la télé.</li></ul>
 <p>Si on dîne tôt avec les enfants, on prévoit une petite collation calculée (un yaourt, un fruit) plutôt que de grignoter au hasard.</p>

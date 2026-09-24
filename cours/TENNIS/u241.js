@@ -14,8 +14,8 @@
 <li><b>Altitude</b> : l'air est moins dense, la balle va plus vite et plus loin (Madrid, à plus de 600 m).</li>
 <li><b>Vent de face</b> : la balle ralentit, on peut frapper plus fort et plus profond. <b>Vent dans le dos</b> : la balle file, on ajoute du lift et de la marge. <b>Vent de côté</b> : on vise plus au centre.</li>
 <li><b>Soleil</b> : on décale un peu son lancer de balle au service, et l'on lobe l'adversaire qui a le soleil dans les yeux.</li></ul>
-<div class="gmnemo"><b>« Terre : patience, gazon : vitesse, dur : équilibre. »</b> Et pour le vent : <b>« Vent de face, on frappe ; vent dans le dos, on lifte. »</b></div>
-<div class="gtrap">Idée reçue : « on joue pareil partout ». Faux : sur terre, le coup gagnant arrive plus tard dans l'échange ; sur gazon, le service et le premier coup pèsent davantage. Autre erreur : ignorer le changement de côté. On change de côté après les jeux impairs (module 1) : le vent et le soleil changent de camp, la tactique aussi.</div>
+<div class="gmnemo"><b>« Terre : patience, gazon : vitesse, dur : équilibre. »</b> Et pour le vent : <b>« Vent de face, on frappe. Vent dans le dos, on lifte. »</b></div>
+<div class="gtrap">Idée reçue : « on joue pareil partout ». C'est faux. Sur terre, le coup gagnant arrive plus tard dans l'échange. Sur gazon, le service et le premier coup pèsent davantage. Autre erreur : ignorer le changement de côté. On change de côté après les jeux impairs (module 1), donc le vent et le soleil changent de camp, et la tactique aussi.</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Adapter son plan à la surface</li><li>Jouer avec le vent, le soleil, la chaleur et l'altitude</li><li>Profiter du changement de côté</li></ul>`},
 /*EXOS*/

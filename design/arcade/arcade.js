@@ -29,7 +29,10 @@
     <linearGradient id="arcFl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FF3D1F"/><stop offset=".5" stop-color="#FF8A00"/><stop offset="1" stop-color="#FFC21A"/></linearGradient>
     <linearGradient id="arcFc" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FFD84A"/><stop offset="1" stop-color="#FFF7D1"/></linearGradient>
     <linearGradient id="arcXp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE473"/><stop offset="1" stop-color="#F29E00"/></linearGradient>
-    <linearGradient id="arcCh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FE0FF"/><stop offset="1" stop-color="#1C8FF6"/></linearGradient></defs></svg>`;
+    <linearGradient id="arcCh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FE0FF"/><stop offset="1" stop-color="#1C8FF6"/></linearGradient>
+    <linearGradient id="arcGw" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#D4D8FF"/></linearGradient>
+    <linearGradient id="arcGem" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#9BE7FF"/><stop offset="1" stop-color="#1C8FF6"/></linearGradient>
+    <linearGradient id="arcHrt" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FF8A95"/><stop offset="1" stop-color="#E5334B"/></linearGradient></defs></svg>`;
   const FL="M13.2 1.6C13.6 5 17 7.1 18.6 10.4c.8 1.6 1.2 3.1 1.2 4.5A7.8 7.8 0 0 1 12 22.6a7.8 7.8 0 0 1-7.8-7.7c0-2.9 1.4-5.2 3.4-6.9-.1 1.9.6 3.5 1.9 4.4C9 8.2 10.6 4.4 13.2 1.6z";
   const FC="M12.3 11.2c.3 2.1 3.3 3.2 3.3 6.1a3.6 3.6 0 0 1-7.2 0c0-1.7.8-2.9 2-3.8.1 1 .5 1.7 1.1 2.1-.2-1.6.1-3.1.8-4.4z";
   const svgw=(s,inner,lab)=>`<svg class="arc-ico" viewBox="0 0 24 24" width="${s||20}" height="${s||20}" ${lab?`role="img" aria-label="${lab}"`:'aria-hidden="true"'}>${inner}</svg>`;
@@ -37,6 +40,12 @@
     flame:(s,c)=>(!c||c==="var(--orange)"||c==="currentColor")
       ? svgw(s,`<path d="${FL}" fill="url(#arcFl)"/><path d="${FC}" fill="url(#arcFc)"/><path d="M13.2 3.6c.6 2.2 2.5 3.8 3.7 5.7" stroke="rgba(255,255,255,.45)" stroke-width="1.1" fill="none" stroke-linecap="round"/>`)
       : svgw(s,`<path d="${FL}" fill="${c}"/>`),
+    gem:(s,c)=>(!c||c==="currentColor"||c==="var(--blue)")
+      ? svgw(s,`<path d="M6.6 3.5h10.8L21.5 9 12 21 2.5 9z" fill="url(#arcGem)"/><path d="M2.8 9h18.4M8.4 9 12 20.4 15.6 9M6.6 3.5 8.4 9 12 3.5 15.6 9l1.8-5.5" stroke="#fff" stroke-opacity=".55" stroke-width="1" fill="none" stroke-linejoin="round"/>`)
+      : svgw(s,`<path d="M6.6 3.5h10.8L21.5 9 12 21 2.5 9z" fill="${c}"/>`),
+    heart:(s,c)=>(!c||c==="currentColor"||c==="var(--red)")
+      ? svgw(s,`<path d="M12 21s-8.6-5.2-8.6-11.3A4.9 4.9 0 0 1 12 6.6a4.9 4.9 0 0 1 8.6 3.1C20.6 15.8 12 21 12 21z" fill="url(#arcHrt)"/><path d="M6.4 7.6a2.6 2.6 0 0 1 2.6-1" stroke="#fff" stroke-opacity=".7" stroke-width="1.4" stroke-linecap="round" fill="none"/>`)
+      : svgw(s,`<path d="M12 21s-8.6-5.2-8.6-11.3A4.9 4.9 0 0 1 12 6.6a4.9 4.9 0 0 1 8.6 3.1C20.6 15.8 12 21 12 21z" fill="${c}"/>`),
     xp:s=>svgw(s,`<path d="M12 1.8 21 7v10l-9 5.2L3 17V7z" fill="url(#arcXp)" stroke="#C77800" stroke-width="1.3" stroke-linejoin="round"/><path d="M5 8 12 4v3.2L7.6 9.8z" fill="rgba(255,255,255,.4)"/><path d="M13.3 5.4 8 13.3h3.4l-1.1 5.3 5.5-8h-3.5z" fill="#fff"/>`,"XP"),
     chrono:s=>svgw(s,`<rect x="9.8" y="1.4" width="4.4" height="2.6" rx="1.1" fill="#1C8FF6"/><rect x="11.2" y="3.6" width="1.6" height="2.2" fill="#1C8FF6"/><path d="M18.4 5.4l1.7 1.7" stroke="#1C8FF6" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="13.6" r="8.4" fill="url(#arcCh)"/><circle cx="12" cy="13.6" r="6.3" fill="#fff"/><path d="M12 7.9v1.3M17.7 13.6h-1.3M12 19.3V18M6.3 13.6h1.3" stroke="#9DB8D6" stroke-width="1.2" stroke-linecap="round"/><path d="M12 13.6 12 9.6" stroke="#FF4B4B" stroke-width="1.8" stroke-linecap="round"/><path d="M12 13.6l2.8 1.7" stroke="#10102A" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="13.6" r="1.2" fill="#10102A"/>`,"Chronométré")
   };
@@ -47,6 +56,44 @@
     window.ico=function(n,s,c){ return MINE[n]?MINE[n](s,c):__ico.apply(null,arguments); };
   }
   const xpTag=n=>ico("xp",22)+"+"+n;
+
+  /* ---------------- 0 bis. ICONES VERRE LIQUIDE ----------------
+     Un seul jeu d icones pour toute l interface : un glyphe clair en
+     degrade (blanc vers lavande), des details sombres, pose sur une tuile
+     de verre (flou, reflet en haut, bord lumineux). Dessins maison.      */
+  const D='fill="#1C1C48" fill-opacity=".72"', DS='stroke="#1C1C48" stroke-opacity=".72" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"';
+  const W='fill="url(#arcGw)"', WS='stroke="url(#arcGw)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"';
+  const GL={
+    jouer:`<path d="M2.6 11.1 12 3l9.4 8.1" ${WS}/><path d="M5 10.4 12 4.4l7 6V19.6a1.9 1.9 0 0 1-1.9 1.9H14v-5a2 2 0 0 0-4 0v5H6.9A1.9 1.9 0 0 1 5 19.6z" ${W}/>`,
+    reviser:`<rect x="8" y="2.5" width="12" height="15" rx="2.6" ${W} opacity=".5"/><rect x="4" y="6.5" width="12" height="15" rx="2.6" ${W}/><path d="M13 14a3 3 0 1 1-1.1-2.3" ${DS}/><path d="M12.3 9.6v2.3h-2.3" ${DS}/>`,
+    ligue:`<path d="M7.3 5.4H4.6a2.6 2.6 0 0 0 3 3.9M16.7 5.4h2.7a2.6 2.6 0 0 1-3 3.9" ${WS}/><path d="M7 3h10v5.6a5 5 0 0 1-10 0z" ${W}/><path d="M10.9 13.4h2.2v3.4h-2.2z" ${W}/><path d="M7.6 20.8a2.3 2.3 0 0 1 2.3-2.3h4.2a2.3 2.3 0 0 1 2.3 2.3v.7H7.6z" ${W}/><path d="m12 5.3.8 1.6 1.8.3-1.3 1.2.3 1.8-1.6-.9-1.6.9.3-1.8-1.3-1.2 1.8-.3z" ${D}/>`,
+    boutique:`<path d="M6.6 3.5h10.8L21.5 9 12 21 2.5 9z" ${W}/><path d="M2.8 9h18.4M8.4 9 12 20.4 15.6 9M6.6 3.5 8.4 9 12 3.5 15.6 9l1.8-5.5" ${DS} stroke-width="1.2"/>`,
+    plus:`<rect x="3" y="3" width="7.8" height="7.8" rx="2.4" ${W}/><rect x="13.2" y="3" width="7.8" height="7.8" rx="3.9" ${W} opacity=".55"/><rect x="3" y="13.2" width="7.8" height="7.8" rx="2.4" ${W} opacity=".55"/><rect x="13.2" y="13.2" width="7.8" height="7.8" rx="2.4" ${W}/>`,
+    eclair:`<path d="M13.6 1.8 4.6 13.6h6.2L9.6 22.2l9.8-12.3h-6.3z" ${W}/><path d="M13.6 1.8 11 9.9" stroke="#fff" stroke-opacity=".7" stroke-width="1" fill="none"/>`,
+    rappels:`<circle cx="12.5" cy="12.8" r="8.6" ${W}/><path d="M12.5 8v5.2l3.3 2" ${DS}/><path d="M1.8 7.6 3.6 3.3l3.6 2.7" ${WS} stroke-width="1.9"/>`,
+    boss:`<path d="M5.4 6 2.6 1.6l5 2.5M18.6 6l2.8-4.4-5 2.5" ${W}/><path d="M12 3.2 19.6 6v5.8c0 4.8-3.3 8.5-7.6 9.9-4.3-1.4-7.6-5.1-7.6-9.9V6z" ${W}/><path d="m7.8 10.6 3 1.3M16.2 10.6l-3 1.3M9.2 16.3c1.8-1.1 3.8-1.1 5.6 0" ${DS}/>`,
+    examen:`<path d="M6.4 2.4h8.3L19.6 7.3V13a6 6 0 0 0-7.4 8.6H6.4a1.9 1.9 0 0 1-1.9-1.9V4.3a1.9 1.9 0 0 1 1.9-1.9z" ${W}/><path d="M8 8h5.2M8 11.5h6" ${DS}/><circle cx="17.3" cy="17.6" r="4.6" ${W}/><path d="M17.3 15.3v2.4l1.6 1" ${DS} stroke-width="1.5"/>`,
+    vf:`<circle cx="15.4" cy="12" r="6.8" ${W} opacity=".55"/><circle cx="8.6" cy="12" r="6.8" ${W}/><path d="m5.7 12.1 2 2 3.8-4.2" ${DS} stroke-width="2"/><path d="m17.4 10-1.7 1.7m0-1.7 1.7 1.7" stroke="#1C1C48" stroke-opacity=".5" stroke-width="1.6" stroke-linecap="round"/>`,
+    frise:`<path d="M4 16.5h16" ${WS} opacity=".6"/><circle cx="5" cy="16.5" r="2.8" ${W}/><circle cx="12" cy="16.5" r="2.8" ${W}/><circle cx="19" cy="16.5" r="2.8" ${W}/><path d="M12 13.7V4.6" ${WS}/><path d="M12.8 3.4 18.6 6l-5.8 2.6z" ${W}/>`,
+    duel:`<path d="m4 3.6 11.2 11.2M20 3.6 8.8 14.8" ${WS} stroke-width="2.6"/><path d="m12.6 17.4 4.6-4.6M11.4 17.4l-4.6-4.6" ${WS}/><circle cx="18.6" cy="18.6" r="2.3" ${W}/><circle cx="5.4" cy="18.6" r="2.3" ${W}/>`,
+    defis:`<path d="M5.5 2.5v19" ${WS}/><path d="M6.2 3.6h12.3l-2.6 4.3 2.6 4.3H6.2z" ${W}/><path d="m10.6 6.2.6 1.2 1.3.2-1 .9.3 1.3-1.2-.6-1.2.6.3-1.3-1-.9 1.3-.2z" ${D}/>`,
+    profil:`<circle cx="12" cy="7.8" r="4.4" ${W}/><path d="M3.6 21a8.4 8.4 0 0 1 16.8 0z" ${W}/>`,
+    missions:`<rect x="4" y="3.4" width="16" height="18.2" rx="3" ${W}/><path d="M9 2.4h6v2.8H9z" ${W}/><path d="m7.6 10.2 1.4 1.4 2.4-2.6M13.6 10.3h3M7.6 16.2 9 17.6l2.4-2.6M13.6 16.3h3" ${DS}/>`,
+    habitudes:`<rect x="3" y="4.6" width="18" height="16.6" rx="3.2" ${W}/><path d="M7.6 2.6v4M16.4 2.6v4" ${WS}/><path d="M3 9.5h18" ${DS} stroke-width="1.2"/><path d="m8.4 15 2.4 2.4 4.8-5" ${DS} stroke-width="2"/>`,
+    erreurs:`<circle cx="12" cy="12" r="9.2" ${W}/><path d="M12 6.8v6.4" ${DS} stroke-width="2.4"/><circle cx="12" cy="16.9" r="1.4" ${D}/>`,
+    cours:`<rect x="3" y="4" width="5" height="17" rx="1.4" ${W}/><rect x="9.4" y="2.6" width="5" height="18.4" rx="1.4" ${W} opacity=".6"/><path d="m15.4 5.6 4.3-1.1 3.3 15.2-4.4 1z" ${W}/><path d="M4.5 8h2M4.5 17h2M10.9 7h2" ${DS} stroke-width="1.4"/>`,
+    lecon:`<path d="M11.2 6.3C9.5 4.9 7 4.2 4.3 4.2c-.7 0-1.3.6-1.3 1.3v11.9c0 .7.6 1.3 1.3 1.3 2.6 0 4.9.7 6.9 2.1z" ${W}/><path d="M12.8 6.3c1.7-1.4 4.2-2.1 6.9-2.1.7 0 1.3.6 1.3 1.3v11.9c0 .7-.6 1.3-1.3 1.3-2.6 0-4.9.7-6.9 2.1z" ${W} opacity=".7"/>`,
+    modules:`<rect x="3" y="3.5" width="18" height="5" rx="2" ${W}/><rect x="3" y="10" width="18" height="5" rx="2" ${W} opacity=".7"/><rect x="3" y="16.5" width="18" height="5" rx="2" ${W} opacity=".45"/>`,
+    chemin:`<path d="M6 20c0-4 12-4 12-8S6 8 6 4" ${WS} stroke-dasharray="1 3.2" opacity=".8"/><circle cx="6" cy="20" r="2.6" ${W}/><circle cx="18" cy="12" r="2.6" ${W}/><path d="m6 1.3.9 1.8 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2-1.5-1.4 2-.3z" ${W}/>`
+  };
+  /* glyphe seul (barre du bas) ou pose sur sa tuile de verre coloree */
+  const glyph=(k,s,lab)=>svgw(s,GL[k]||GL.plus,lab);
+  const tileG=(k,s,col)=>`<span class="arc-glass" style="--gc:${col||"rgba(255,255,255,.18)"};width:${s}px;height:${s}px">${glyph(k,Math.round(s*.6))}</span>`;
+  const NAVG={path:"jouer",review:"reviser",league:"ligue",shop:"boutique",quests:"defis",profile:"profil",tasks:"missions",
+    habits:"habitudes",exam:"examen",errors:"erreurs",courses:"cours"};
+  const NAVC={quests:"#E8A21A",profile:"#D9716B",tasks:"#3F6FD8",habits:"#1E9E6A",exam:"#E5484D",errors:"#9B51E0",courses:"#1899D6",
+    path:"#58CC02",review:"#1899D6",league:"#E8A21A",shop:"#1CB0F6"};
+  window.arcGlyph=glyph; window.arcTile=tileG;
 
   /* ---------------- 1. ONGLETS : Jouer, Réviser, Défis, Ligue, Boutique ---------------- */
   const NOMS={path:"Jouer",review:"Réviser",quests:"Défis",league:"Ligue",shop:"Boutique",profile:"Profil"};
@@ -80,6 +127,7 @@
   /* ---------------- 3. SELECTEUR DE COURS ---------------- */
   function coursePct(cid){ let n=0,d=0; courseUnits(cid).forEach(u=>{ n+=lessonsIn(u.id); d+=unitDone(u.id); }); return n?Math.round(100*d/n):0; }
   window.arcCourses=function(){
+    try{ applyCats(); }catch(e){}
     let h=`<h2 class="arc-h" style="text-align:left;margin-top:0">Mes cours</h2>`;
     catList().forEach(k=>{
       const l=catCourses(k.id).filter(c=>!S.hidden.includes(c.id)); if(!l.length)return;
@@ -127,7 +175,7 @@
   window.arcResume=function(){ const n=nextLessonExists(); if(n)arcStart(n.u,n.l); else setTab("review"); };
   function play(bg,sh,icon,t,s,tag,act){
     return `<button class="arc-play" type="button" style="background:${bg};--sh:${sh}" onclick="${act}">
-      <span class="pi">${ico(icon,30,"#fff")}</span><span class="pt"><b>${t}</b><span>${s}</span></span><span class="pg${/<img/.test(tag)?" img":""}">${tag}</span></button>`;
+      ${tileG(icon,56)}<span class="pt"><b>${t}</b><span>${s}</span></span><span class="pg${/<img/.test(tag)?" img":""}">${tag}</span></button>`;
   }
   function homeHTML(){
     const cid=S.active, due=dueItems(cid,999).length, calib=typeof needsCalib==="function"&&needsCalib(cid);
@@ -138,18 +186,18 @@
       ${calib?"":resumeCard()}
       ${chestRow()}
       <div class="arc-sec"><span>Au programme</span></div>
-      ${play("#9B51E0","#7A3BB5","bolt","Éclair 60 s","Paires express, combo à battre",xpTag(20),"arcGame('eclair')")}
-      ${play("#1899D6","#10729F","target","Rappels",due?due+" notion"+(due>1?"s":"")+" à revoir avant oubli":"Rien à revoir, tout est frais",xpTag(12),"startPractice('review')")}
-      ${play("#C7478F","#93306A","crown","Boss du module","Bats le Diable pour un coffre légendaire",aimg("legendaire",38),"arcGame('boss')")}
-      ${play("#E5484D","#B3363A","exam","Examen blanc","Facile · Moyen · Difficile",ico("chrono",30),"setTab('exam')")}`;
+      ${play("#9B51E0","#7A3BB5","eclair","Éclair 60 s","Paires express, combo à battre",xpTag(20),"arcGame('eclair')")}
+      ${play("#1899D6","#10729F","rappels","Rappels",due?due+" notion"+(due>1?"s":"")+" à revoir avant oubli":"Rien à revoir, tout est frais",xpTag(12),"startPractice('review')")}
+      ${play("#C7478F","#93306A","boss","Boss du module","Bats le Diable pour un coffre légendaire",aimg("legendaire",38),"arcGame('boss')")}
+      ${play("#E5484D","#B3363A","examen","Examen blanc","Facile · Moyen · Difficile",ico("chrono",30),"setTab('exam')")}`;
   }
   function pathView(){ return (S.settings&&S.settings.pathView)==="snake"?"snake":"cards"; }
   window.arcView=function(v){ S.settings.pathView=v; save(); sfx("click"); renderPath(); };
   function pathHead(v){
     return `<div class="arc-sec" id="arc-parcours"><span>Parcours · ${esc(cName())}</span>
       <div class="arc-seg" role="group" aria-label="Affichage du parcours">
-        <button type="button" class="${v==="cards"?"on":""}" aria-pressed="${v==="cards"}" onclick="arcView('cards')">${ico("list",15)} Modules</button>
-        <button type="button" class="${v==="snake"?"on":""}" aria-pressed="${v==="snake"}" onclick="arcView('snake')">${ico("star",15)} Chemin</button></div></div>`;
+        <button type="button" class="${v==="cards"?"on":""}" aria-pressed="${v==="cards"}" onclick="arcView('cards')">${glyph("modules",16)} Modules</button>
+        <button type="button" class="${v==="snake"?"on":""}" aria-pressed="${v==="snake"}" onclick="arcView('snake')">${glyph("chemin",16)} Chemin</button></div></div>`;
   }
   function cardsHTML(){
     const cid=S.active, c=S.courses[cid]; let firstOpen=true, h="";
@@ -477,14 +525,14 @@
       stats:[["+"+xp,"XP","var(--gold)"],[win?"+10":"0","gemmes","var(--blue)"],[G.me+" / "+G.q.length,"justes","var(--green)"]]});
   };
   function gamesHTML(){
-    const t=(bg,sh,i,n,s,k)=>`<button class="arc-gtile" type="button" style="background:${bg};--sh:${sh}" onclick="arcGame('${k}')">${ico(i,28,"#fff")}<b>${n}</b><span>${s}</span></button>`;
+    const t=(bg,sh,i,n,s,k)=>`<button class="arc-gtile" type="button" style="background:${bg};--sh:${sh}" onclick="arcGame('${k}')">${tileG(i,48)}<b>${n}</b><span>${s}</span></button>`;
     return `<div class="arc-games">
-      ${t("#9B51E0","#7A3BB5","bolt","Éclair 60 s","Relie les paires, bats ton record","eclair")}
-      ${t("#D9731A","#A5530C","check","Vrai ou faux","Glisse les cartes à toute vitesse","vf")}
-      ${t("#3F6FD8","#2A50A8","list","Frise","Remets les étapes dans l'ordre","frise")}
-      ${t("#C7478F","#93306A","crown","Boss du module","Bats le Diable, gagne un coffre","boss")}
-      ${t("#1E9E6A","#157650","trophy","Duel de ligue","Affronte ton rival direct","duel")}
-      ${t("#E5484D","#B3363A","exam","Examen blanc","Trois niveaux, chrono","exam")}</div>`;
+      ${t("#9B51E0","#7A3BB5","eclair","Éclair 60 s","Relie les paires, bats ton record","eclair")}
+      ${t("#D9731A","#A5530C","vf","Vrai ou faux","Glisse les cartes à toute vitesse","vf")}
+      ${t("#3F6FD8","#2A50A8","frise","Frise","Remets les étapes dans l'ordre","frise")}
+      ${t("#C7478F","#93306A","boss","Boss du module","Bats le Diable, gagne un coffre","boss")}
+      ${t("#1E9E6A","#157650","duel","Duel de ligue","Affronte ton rival direct","duel")}
+      ${t("#E5484D","#B3363A","examen","Examen blanc","Trois niveaux, chrono","exam")}</div>`;
   }
   const __game=window.arcGame;
   window.arcGame=function(k){ if(k==="exam"){ setTab("exam"); return; } return __game(k); };
@@ -563,6 +611,7 @@
     while(frag.firstChild)head.parentNode.insertBefore(frag.firstChild,frag);
     frag.remove();
     w.style.setProperty("--gcol",`var(${u.col})`);
+    w.insertAdjacentHTML("afterbegin",`<button class="arc-mclose" type="button" onclick="closeModal()" aria-label="Fermer la leçon">${ico("cross",22,"#fff")}</button>`);
   }
   window.arcToc=function(i){ const d=document.getElementById("arc-g"+i); if(!d)return; d.open=true; d.scrollIntoView({behavior:"smooth",block:"start"}); };
 
@@ -610,16 +659,104 @@
   function arcNav(){
     const mt=document.getElementById("mtabs"); if(!mt||typeof visibleTabs!=="function")return;
     const {main,reste}=navSplit();
-    mt.innerHTML=main.map(t=>`<button class="navitem${t.id===TAB?" on":""}" data-tab="${t.id}" type="button"><span class="ic">${ico(t.ic,24)}</span>${t.nm}</button>`).join("")
-      +`<button class="navitem${reste.some(t=>t.id===TAB)?" on":""}" id="arc-more" type="button" onclick="moreTabs()" aria-label="Plus d'onglets"><span class="ic">${ico("grid",24)}</span>Plus</button>`;
+    /* icones seules : un libelle debordait de sa bulle. Le nom reste lu par
+       VoiceOver (aria-label) et apparait au survol (title). */
+    mt.innerHTML=main.map(t=>`<button class="navitem${t.id===TAB?" on":""}" data-tab="${t.id}" type="button" aria-label="${esc(t.nm)}" title="${esc(t.nm)}"><span class="ic">${glyph(NAVG[t.id]||"plus",28)}</span></button>`).join("")
+      +`<button class="navitem${reste.some(t=>t.id===TAB)?" on":""}" id="arc-more" type="button" onclick="moreTabs()" aria-label="Plus" title="Plus"><span class="ic">${glyph("plus",28)}</span></button>`;
     if(typeof bindNav==="function")bindNav();
   }
   function arcMoreTabs(){
     const {reste}=navSplit();
     openModal(`<h2 class="arc-h" style="margin:0;text-align:left">Plus</h2>
       <div class="arc-more">${reste.map(t=>`<button type="button" class="${t.id===TAB?"on":""}" onclick="closeModal();setTab('${t.id}')">
-        <span class="i">${ico(t.ic,24,"var(--blue)")}</span>${esc(t.nm)}</button>`).join("")}</div>
+        ${tileG(NAVG[t.id]||"plus",48,NAVC[t.id])}${esc(t.nm)}</button>`).join("")}</div>
       <button class="btn ghost" onclick="closeModal()">Fermer</button>`);
+  }
+
+  /* ---------------- 7 sexies. CATEGORIES DE COURS ----------------
+     Renommer, ajouter, supprimer une categorie vide, deplacer un cours
+     (glisser par sa poignee, ou bouton Deplacer). Les reglages vivent dans
+     S.cats et s appliquent par dessus CATS et COURSES : rien n est perdu,
+     une categorie d origine renommee ou supprimee revient si on efface S.cats. */
+  const ORIG={cats:null,course:{}};
+  const CCOL=["--blue","--gold","--red","--orange","--purple","--green","--pink"];
+  function catCfg(){ if(!S.cats||typeof S.cats!=="object")S.cats={}; const g=S.cats;
+    g.ren=g.ren||{}; g.add=g.add||[]; g.del=g.del||[]; g.mv=g.mv||{}; return g; }
+  function applyCats(){
+    if(typeof CATS==="undefined"||typeof S==="undefined"||!S)return;
+    if(!ORIG.cats){ ORIG.cats=CATS.map(k=>Object.assign({},k)); COURSES.forEach(c=>{ ORIG.course[c.id]=c.cat; }); }
+    const g=catCfg(), nom=k=>Object.assign({},k,g.ren[k.id]?{nm:g.ren[k.id]}:{});
+    CATS.length=0;
+    ORIG.cats.concat(g.add).forEach(k=>{ if(!g.del.includes(k.id))CATS.push(nom(k)); });
+    COURSES.forEach(c=>{ const m=g.mv[c.id]; c.cat=(m&&CATS.some(k=>k.id===m))?m:ORIG.course[c.id]; });
+  }
+  let ORG=false, EDIT=null;
+  const allCats=()=>{ const l=CATS.slice(); if(catCourses("autre").length)l.push(CAT_AUTRE); return l; };
+  function orgHTML(){
+    const box=k=>{ const l=catCourses(k.id), n=l.length, fixe=k.id==="autre";
+      const hd=EDIT===k.id?`<div class="arc-catedit"><input id="arc-catin" type="text" maxlength="40" value="${esc(k.nm)}" aria-label="Nom de la catégorie"
+          onkeydown="if(event.key==='Enter')arcCatSave('${k.id}')"><button class="btn sm" type="button" onclick="arcCatSave('${k.id}')">OK</button></div>`
+        :`<div class="hd"><span class="ci" style="background:var(${k.col})">${k.icon}</span><span class="nm">${esc(k.nm)}</span><span class="ct">${n} cours</span>
+          ${fixe?"":`<button type="button" onclick="arcCatRen('${k.id}')" aria-label="Renommer ${esc(k.nm)}">${ico("pencil",18)}</button>
+          <button type="button" ${n?"disabled":""} onclick="arcCatDel('${k.id}')" aria-label="Supprimer ${esc(k.nm)}">${ico("trash",18)}</button>`}</div>`;
+      return `<div class="arc-catbox" data-cat="${k.id}">${hd}<div class="arc-chips">${n?l.map(c=>`<div class="arc-cchip" data-cid="${c.id}">
+          <span class="gr" data-grip="1" aria-hidden="true">${ico("grid",20)}</span>${typeof badgeSVG==="function"?badgeSVG(c.id,30):""}<span class="tx">${esc(c.name)}</span>
+          <button class="mv" type="button" onclick="arcCatMove('${c.id}')">Déplacer</button></div>`).join("")
+        :`<div class="vide">Glisse un cours ici</div>`}</div></div>`; };
+    return `<div class="section-t" style="margin-top:4px">Mes catégories</div>
+      <div class="arc-orgbar"><button class="btn blue" type="button" onclick="arcCatAdd()">${ico("plus",16)} Nouvelle catégorie</button>
+        <button class="btn" type="button" onclick="arcOrg(false)">Terminé</button></div>
+      <p class="muted" style="margin:-4px 2px 12px">Glisse un cours par sa poignée vers une autre catégorie, ou touche Déplacer. Une catégorie vide peut être supprimée.</p>
+      <div class="arc-cats">${allCats().map(box).join("")}</div>`;
+  }
+  function orgPaint(){ const b=document.getElementById("coursesbody"); if(!b)return; b.innerHTML=orgHTML(); bindDrag(b);
+    const i=document.getElementById("arc-catin"); if(i){ i.focus(); i.select(); } }
+  window.arcOrg=function(on){ ORG=!!on; EDIT=null; renderCourses(); };
+  const catSaved=()=>{ applyCats(); save(); orgPaint(); };
+  window.arcCatRen=function(id){ EDIT=id; orgPaint(); };
+  window.arcCatSave=function(id){ const i=document.getElementById("arc-catin"), v=i?i.value.replace(/\s+/g," ").trim():"";
+    if(v)catCfg().ren[id]=v; EDIT=null; catSaved(); };
+  window.arcCatAdd=function(){ const g=catCfg(), id="c"+Date.now().toString(36);
+    g.add.push({id,nm:"Nouvelle catégorie",d:"Ma catégorie",icon:"\u{1F4C1}",col:CCOL[g.add.length%CCOL.length]});
+    EDIT=id; catSaved(); };
+  window.arcCatDel=function(id){ if(catCourses(id).length){ toast("Vide d'abord cette catégorie."); return; }
+    const g=catCfg(); if(g.add.some(k=>k.id===id))g.add=g.add.filter(k=>k.id!==id); else if(!g.del.includes(id))g.del.push(id);
+    delete g.ren[id]; if(S.catOpen===id)S.catOpen=""; catSaved(); toast("Catégorie supprimée."); };
+  function moveTo(cid,cat){ const g=catCfg(); if(!cid||!cat||cat==="autre")return;
+    if(cat===ORIG.course[cid])delete g.mv[cid]; else g.mv[cid]=cat;
+    applyCats(); save(); sfx("click"); }
+  window.arcCatMove=function(cid){
+    const c=COURSES.find(x=>x.id===cid); if(!c)return;
+    openModal(`<h2 class="arc-h" style="margin:0 0 4px;text-align:left">Déplacer</h2><p class="muted" style="text-align:left;margin:0 0 12px">${esc(c.name)}</p>
+      <div style="display:flex;flex-direction:column;gap:8px">${CATS.map(k=>`<button class="arc-crow ${k.id===c.cat?"on":""}" type="button" onclick="closeModal();arcCatTo('${cid}','${k.id}')">
+        <span class="ci" style="width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:var(${k.col})">${k.icon}</span>
+        <span class="i"><b>${esc(k.nm)}</b></span></button>`).join("")}</div>
+      <div style="height:10px"></div><button class="btn ghost" onclick="closeModal()">Annuler</button>`);
+  };
+  window.arcCatTo=function(cid,cat){ moveTo(cid,cat); orgPaint(); };
+  /* glisser deposer au doigt : la poignee seule bloque le defilement,
+     le reste de la carte laisse la liste defiler normalement */
+  function bindDrag(root){
+    root.querySelectorAll(".arc-cchip [data-grip]").forEach(gr=>{
+      gr.style.touchAction="none";
+      gr.addEventListener("pointerdown",e=>{
+        const chip=gr.closest(".arc-cchip"), cid=chip.dataset.cid, r=chip.getBoundingClientRect(), sc=root.closest(".scroll")||root;
+        const gh=chip.cloneNode(true); gh.classList.add("arc-ghost"); gh.style.width=r.width+"px"; gh.style.left=r.left+"px"; gh.style.top=r.top+"px";
+        document.body.appendChild(gh); chip.classList.add("drag");
+        const dx=e.clientX-r.left, dy=e.clientY-r.top; let over=null, raf=null, lastY=e.clientY;
+        try{ gr.setPointerCapture(e.pointerId); }catch(_){}
+        const edge=()=>{ const b=sc.getBoundingClientRect(); if(lastY<b.top+60)sc.scrollTop-=12; else if(lastY>b.bottom-110)sc.scrollTop+=12; raf=requestAnimationFrame(edge); };
+        raf=requestAnimationFrame(edge);
+        const mv=ev=>{ lastY=ev.clientY; gh.style.left=(ev.clientX-dx)+"px"; gh.style.top=(ev.clientY-dy)+"px";
+          const t=document.elementFromPoint(ev.clientX,ev.clientY), b=t&&t.closest(".arc-catbox");
+          if(b!==over){ if(over)over.classList.remove("over"); over=b; if(over)over.classList.add("over"); } };
+        const up=()=>{ cancelAnimationFrame(raf); gr.removeEventListener("pointermove",mv); gr.removeEventListener("pointerup",up); gr.removeEventListener("pointercancel",up);
+          gh.remove(); chip.classList.remove("drag"); const cat=over&&over.dataset.cat; if(over)over.classList.remove("over");
+          const c=COURSES.find(x=>x.id===cid); if(cat&&c&&cat!==c.cat){ moveTo(cid,cat); orgPaint(); } };
+        gr.addEventListener("pointermove",mv); gr.addEventListener("pointerup",up); gr.addEventListener("pointercancel",up);
+        e.preventDefault();
+      });
+    });
   }
 
   /* ---------------- 8. BRANCHEMENTS ---------------- */
@@ -639,6 +776,13 @@
           <button class="arc-mini" type="button" style="justify-content:center" onclick="arcIntroAll()">${ico("lecon",16)} Toute la leçon du module</button></div></section>`);
     }
     arcIcons();
+    try{ applyCats(); }catch(e){}
+    if(typeof renderCourses==="function"){ const __rc=renderCourses; window.renderCourses=function(){
+      applyCats(); if(ORG){ orgPaint(); return; }
+      __rc.apply(null,arguments);
+      const b=document.getElementById("coursesbody");
+      if(b)b.insertAdjacentHTML("afterbegin",`<button class="btn ghost" type="button" style="margin:4px 0 6px" onclick="arcOrg(true)">${ico("pencil",16)} Organiser mes catégories</button>`);
+    }; }
     if(typeof renderNav==="function"){ const __rn=renderNav; window.renderNav=function(){ __rn.apply(null,arguments); arcNav(); }; }
     window.moreTabs=arcMoreTabs;
     arcTop(); arcTabs();
@@ -656,6 +800,7 @@
 
     const __rp=renderPath;
     window.renderPath=function(){
+      try{ applyCats(); }catch(e){}
       __rp.apply(null,arguments);
       const b=document.getElementById("pathbody"); if(!b)return;
       const fam=b.querySelector(":scope > .chipline"); if(fam)fam.remove();
@@ -723,8 +868,8 @@
         ic.innerHTML=aimg(done?"ouvert":i%2?"quete":"coffre",56); });
       const b=document.getElementById("questsbody");
       if(b&&!b.querySelector(".arc-daily"))b.insertAdjacentHTML("beforeend",`<div class="arc-daily"><div class="arc-sec"><span>Ma journée</span></div>
-        ${play("#1E9E6A","#157650","check","Mes habitudes",(S.habits||[]).length+" habitude"+((S.habits||[]).length>1?"s":"")+" à cocher","Voir","setTab('habits')")}
-        ${play("#3F6FD8","#2A50A8","tasks","Missions","Tes tâches du jour, rangées par l'IA","Voir","setTab('tasks')")}</div>`);
+        ${play("#1E9E6A","#157650","habitudes","Mes habitudes",(S.habits||[]).length+" habitude"+((S.habits||[]).length>1?"s":"")+" à cocher","Voir","setTab('habits')")}
+        ${play("#3F6FD8","#2A50A8","missions","Missions","Tes tâches du jour, rangées par l'IA","Voir","setTab('tasks')")}</div>`);
     };
 
     const __rr=renderReview;

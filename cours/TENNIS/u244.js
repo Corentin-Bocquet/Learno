@@ -11,14 +11,14 @@
 <tr><td>Sur le court</td><td>L'échauffement avec l'adversaire (souvent 5 minutes) : l'enquête du module 10</td></tr></table>
 <p>Le <b>plan de match</b> tient en <b>trois consignes</b> au maximum, par exemple : « premières balles au T », « croisé profond sur son revers », « monter sur les balles courtes ». Au-delà, on ne retient rien sous pression.</p>
 <h3>Pendant le match</h3>
-<ul><li><b>Boire</b> à chaque changement de côté, avant d'avoir soif ; manger un en-cas (banane, barre) dans les longs matchs.</li>
+<ul><li><b>Bois</b> à chaque changement de côté, avant d'avoir soif. Dans les longs matchs, mange aussi un en-cas (banane, barre de céréales).</li>
 <li><b>Le coaching</b> : depuis le <b>1er janvier 2025</b>, les règles de l'ITF autorisent le coaching depuis les tribunes, bref et discret, entre les points et pendant les pauses, jamais pendant un point. Chez les amateurs, le règlement de la compétition s'applique (par exemple, le capitaine en championnat par équipes).</li>
 <li><b>Le fair-play</b> : sans arbitre, chacun annonce les balles de son côté, et une balle douteuse est bonne pour l'adversaire.</li></ul>
 <h3>Après le match</h3>
 <ul><li>Récupérer : boire, manger, retour au calme.</li>
 <li>Remplir son <b>carnet de match</b> : adversaire, score, ce qui a marché, ce qui n'a pas marché, une priorité d'entraînement.</li></ul>
 <div class="gmnemo"><b>« Deux raquettes, trois consignes, un carnet. »</b> C'est tout ce qu'il faut pour transformer un match en progrès.</div>
-<div class="gtrap">Idée reçue : « un plan de match détaillé en dix points rassure ». Faux : sous pression, on n'en retient que deux ou trois. Autre erreur : croire que le coaching est toujours interdit. Il est autorisé chez les professionnels depuis 2025, dans des limites précises ; chez les amateurs, cela dépend du règlement de la compétition.</div>
+<div class="gtrap">Idée reçue : « un plan de match détaillé en dix points rassure ». C'est faux : sous pression, on n'en retient que deux ou trois. Autre erreur : croire que le coaching est toujours interdit. Il est autorisé chez les professionnels depuis 2025, dans des limites précises. Chez les amateurs, cela dépend du règlement de la compétition.</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Préparer son sac et son timing</li><li>Écrire un plan en trois consignes</li><li>Connaître les règles du coaching et du fair-play</li><li>Tenir un carnet de match</li></ul>`},
 /*EXOS*/

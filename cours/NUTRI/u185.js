@@ -6,7 +6,7 @@
 <ul><li>Un adulte a besoin de <b>7 à 8 heures</b> de sommeil (les repères internationaux disent 7 à 9 heures).</li>
 <li>Les Français dorment en moyenne environ <b>6 h 30</b> selon les enquêtes citées dans le podcast.</li>
 <li>Une heure de moins chaque nuit, c'est l'équivalent d'<b>une nuit blanche par semaine</b>.</li>
-<li>Les coupables modernes : écrans, séries enchaînées, réseaux sociaux. Il y a vingt ans, « se coucher tard » voulait dire minuit ; aujourd'hui, souvent 2 heures du matin.</li></ul>
+<li>Les coupables modernes sont les écrans, les séries enchaînées et les réseaux sociaux. Il y a vingt ans, « se coucher tard » voulait dire minuit. Aujourd'hui, cela veut souvent dire 2 heures du matin.</li></ul>
 <h3>Comment le manque de sommeil fait grossir : trois mécanismes</h3>
 <table><tr><th>Mécanisme</th><th>Ce qui se passe</th></tr>
 <tr><td><b>1. On s'économise</b></td><td>Fatigué, on bouge moins, on marche moins vite, on saute la salle : environ 300 kcal de moins dépensées par jour selon Laurence Plumey</td></tr>
@@ -23,10 +23,10 @@ Chaque cycle : sommeil léger → sommeil lent profond (récupérateur) → somm
 <h3>Les bons gestes</h3>
 <ul><li>Écouter les signaux (bâillements, paupières lourdes), souvent vers 22 h 30.</li>
 <li>Au lit avant minuit, idéalement vers 23 h au plus tard pour un lever à 7 h.</li>
-<li>Chambre fraîche (Laurence Plumey conseille de ne pas dépasser 19 °C), noire, calme, sans écran ; un livre plutôt que le téléphone.</li>
+<li>La chambre doit être fraîche (Laurence Plumey conseille de ne pas dépasser 19 °C), noire, calme et sans écran. Prends un livre plutôt que le téléphone.</li>
 <li>Dîner environ 2 heures avant le coucher (module 5).</li></ul>
 <h3>Le travail de nuit</h3>
-<p>Environ <b>15 %</b> des salariés travaillent la nuit en France (enquête de la Dares) ; Laurence Plumey parle de 20 % en incluant les horaires décalés. C'est un facteur majeur de prise de poids : rythme décalé, sommeil de jour plus court, grignotage nocturne. D'ailleurs, <b>40 %</b> des personnes qui la consultent se plaignent de leur sommeil.</p>
+<p>Environ <b>15 %</b> des salariés travaillent la nuit en France (enquête de la Dares). Laurence Plumey parle de 20 % en incluant les horaires décalés. C'est un facteur majeur de prise de poids, à cause du rythme décalé, du sommeil de jour plus court et du grignotage nocturne. D'ailleurs, <b>40 %</b> des personnes qui la consultent se plaignent de leur sommeil.</p>
 <div class="gtrap">Deux nuances. Les 800 g pris en quatre nuits ne sont pas 800 g de graisse pure : une partie est de l'eau et des réserves de sucre. Mais la tendance est réelle et, répétée des mois, elle devient du gras. Et les érections du matin sont surtout liées au sommeil paradoxal, pas seulement au pic de testostérone. Enfin, les besoins varient : il existe des « couche-tôt » et des « couche-tard » (on parle de chronotypes), et les adolescents sont naturellement décalés vers le soir.</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Expliquer les trois mécanismes qui relient sommeil court et prise de poids</li><li>Décrire un cycle de sommeil et ses phases</li><li>Citer ce que le cerveau fait la nuit</li><li>Donner des conseils concrets d'hygiène du sommeil, y compris pour un travailleur de nuit</li></ul>`},

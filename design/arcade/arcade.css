@@ -436,3 +436,63 @@ body.arcade .gwrap .ghero{border-radius:22px}
 .arc-more button{display:flex;flex-direction:column;align-items:center;gap:8px;padding:14px 6px;border-radius:18px;border:2px solid var(--line);background:var(--card);color:var(--txt);font-size:12.5px;min-height:92px}
 .arc-more button .i{width:40px;height:40px;border-radius:13px;display:flex;align-items:center;justify-content:center;background:var(--card2)}
 .arc-more button.on{border-color:var(--gold)}
+
+/* =====================================================================
+   VERRE LIQUIDE, TROISIEME PASSE (24/09/2026)
+   Icones seules dans la barre du bas, tuiles de verre pour toutes les
+   icones de l accueil, des jeux et de Plus, croix sur la lecon du module,
+   rangement des categories de cours.
+   ===================================================================== */
+.arc-glass{position:relative;display:inline-flex;align-items:center;justify-content:center;flex:none;border-radius:30%;
+  background:linear-gradient(160deg,rgba(255,255,255,.42),rgba(255,255,255,.10) 48%,rgba(255,255,255,.04)),var(--gc);
+  border:1px solid rgba(255,255,255,.42);border-bottom-color:rgba(255,255,255,.14);
+  -webkit-backdrop-filter:blur(10px) saturate(160%);backdrop-filter:blur(10px) saturate(160%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),inset 0 -6px 12px rgba(0,0,0,.12),0 6px 14px rgba(0,0,0,.22);overflow:hidden}
+.arc-glass:before{content:"";position:absolute;left:8%;right:8%;top:4%;height:42%;border-radius:40% 40% 60% 60%/60% 60% 40% 40%;
+  background:linear-gradient(180deg,rgba(255,255,255,.45),rgba(255,255,255,0));pointer-events:none}
+.arc-glass svg{position:relative;filter:drop-shadow(0 1px 1.5px rgba(0,0,0,.28))}
+.arc-play .arc-glass{margin:-2px 0}
+.arc-gtile .arc-glass{margin-bottom:4px}
+.arc-more button .arc-glass{margin-bottom:2px}
+.arc-seg button svg{filter:drop-shadow(0 1px 1px rgba(0,0,0,.3))}
+.arc-seg button:not(.on) svg{opacity:.6}
+
+/* barre du bas : icones seules, bien centrees dans leur bulle */
+@media (max-width:860px){
+  body.arcade #mtabs .navitem{padding:0;gap:0;font-size:0;letter-spacing:0;justify-content:center;align-items:center}
+  body.arcade #mtabs .navitem .ic{display:flex;align-items:center;justify-content:center;width:auto}
+  body.arcade #mtabs .navitem .ic svg{width:28px;height:28px;opacity:.62;transition:opacity .2s,transform .2s;filter:drop-shadow(0 1px 2px rgba(0,0,0,.35))}
+  body.arcade #mtabs .navitem.on .ic svg{opacity:1;transform:scale(1.08);filter:drop-shadow(0 0 8px rgba(255,255,255,.35)) drop-shadow(0 1px 2px rgba(0,0,0,.3))}
+  body.arcade.theme-light #mtabs .navitem .ic svg path,body.arcade.theme-light #mtabs .navitem .ic svg rect,body.arcade.theme-light #mtabs .navitem .ic svg circle{filter:brightness(.35)}
+}
+
+/* la lecon du module se ferme d une croix, en haut a droite */
+.arc-mclose{position:sticky;top:-10px;float:right;z-index:6;width:44px;height:44px;margin:-10px -8px 0 8px;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(180deg,rgba(255,255,255,.22),rgba(255,255,255,.06)),rgba(20,20,50,.55);border:1px solid rgba(255,255,255,.3);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);box-shadow:0 4px 14px rgba(0,0,0,.35)}
+.arc-mclose:active{transform:scale(.94)}
+
+/* ---------- categories de cours : renommer, ajouter, supprimer, glisser ---------- */
+.arc-orgbar{display:flex;gap:8px;margin:0 0 14px}
+.arc-orgbar .btn{flex:1}
+.arc-cats{display:flex;flex-direction:column;gap:12px}
+.arc-catbox{border:2px solid var(--line);border-radius:20px;background:var(--card);padding:10px 12px 12px;transition:border-color .15s,background .15s}
+.arc-catbox.over{border-color:var(--blue);background:rgba(28,176,246,.12)}
+.arc-catbox .hd{display:flex;align-items:center;gap:10px;min-height:44px}
+.arc-catbox .hd .nm{flex:1;min-width:0;font-family:var(--arc-font);font-size:17px;font-weight:800;line-height:1.2}
+.arc-catbox .hd .ct{color:var(--dim);font-size:12.5px;font-weight:900;white-space:nowrap}
+.arc-catbox .hd button{width:40px;height:40px;border-radius:12px;display:flex;align-items:center;justify-content:center;border:2px solid var(--line);color:var(--dim);flex:none}
+.arc-catbox .hd button[disabled]{opacity:.3}
+.arc-catbox .ci{width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;font-size:20px;flex:none}
+.arc-chips{display:flex;flex-direction:column;gap:8px;margin-top:8px;min-height:44px}
+.arc-chips .vide{border:2px dashed var(--line);border-radius:14px;min-height:48px;display:flex;align-items:center;justify-content:center;color:var(--dim2);font-size:13px}
+.arc-cchip{display:flex;align-items:center;gap:10px;min-height:52px;padding:6px 8px 6px 6px;border-radius:14px;border:2px solid var(--line);background:var(--bg2);
+  touch-action:none;user-select:none;-webkit-user-select:none;cursor:grab;text-align:left;width:100%;color:var(--txt)}
+.arc-cchip .gr{color:var(--dim2);flex:none;display:flex}
+.arc-cchip .tx{flex:1;min-width:0;font-size:14px;line-height:1.25}
+.arc-cchip .mv{flex:none;min-height:36px;padding:0 10px;border-radius:10px;border:2px solid var(--line);font-size:11.5px;letter-spacing:.4px;text-transform:uppercase;color:var(--blue)}
+.arc-cchip.drag{opacity:.35}
+.arc-ghost{position:fixed;z-index:var(--z-toast,600);pointer-events:none;transform:rotate(-2deg) scale(1.03);box-shadow:0 14px 34px rgba(0,0,0,.5);opacity:.95}
+.arc-catedit{display:flex;gap:8px;margin-top:4px}
+.arc-catedit input{flex:1;min-width:0;min-height:46px;border-radius:14px;border:2px solid var(--line);background:var(--bg2);color:var(--txt);padding:0 12px;font-size:16px}

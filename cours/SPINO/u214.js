@@ -4,14 +4,14 @@
 <div class="gstory">Un an et demi après la soirée des Chartrons, Léa monte sur la scène de Darwin, là même où Samir avait rêvé de Ferrari. Le thème de la soirée : « Réussir sa start-up ». Elle projette une seule diapositive : une rose et le mot <i>Caute</i>. « Je vais vous parler d'un polisseur de lentilles qui n'a jamais levé un euro. » Dans la salle, Samir, qui a finalement lancé un petit atelier de réparation de vélos avec deux amis, sourit. Anaïs filme. Julien, au dernier rang, prend des notes pour ses élèves de terminale.</div>
 <h3>Les cinq R de la droite manière d'entreprendre</h3>
 <table><tr><th>R</th><th>Principe</th><th>Modules</th></tr>
-<tr><td><b>1. Regarder son désir</b></td><td>Le désir est ton essence ; examine-le avec le test du regard et les 3 I (inversion, imagination, imitation)</td><td>7, 9</td></tr>
-<tr><td><b>2. Remonter aux causes</b></td><td>Passion comprise, passion transformée ; carnet, cinq remèdes, nécessité</td><td>6, 12, 13</td></tr>
-<tr><td><b>3. Remettre l'argent à sa place</b></td><td>Le succès est une issue, l'argent un moyen ; lucidité sur les dépendances (levée de fonds)</td><td>1, 9, 10</td></tr>
-<tr><td><b>4. Rejoindre les autres</b></td><td>Utile propre, associés complémentaires, générosité ; rien n'est plus utile à l'homme que l'homme</td><td>14</td></tr>
-<tr><td><b>5. Se Réjouir d'abord</b></td><td>La joie est la condition de l'action ; la béatitude est la vertu elle-même</td><td>8, 15</td></tr></table>
+<tr><td><b>1. Regarder son désir</b></td><td>Le désir est ton essence. Examine-le avec le test du regard et les 3 I : inversion, imagination, imitation.</td><td>7, 9</td></tr>
+<tr><td><b>2. Remonter aux causes</b></td><td>Une passion comprise est une passion transformée. Pour y arriver, tu as le carnet, les cinq remèdes et l'idée de nécessité.</td><td>6, 12, 13</td></tr>
+<tr><td><b>3. Remettre l'argent à sa place</b></td><td>Le succès est une issue et l'argent est un moyen. Reste lucide sur tes dépendances, par exemple lors d'une levée de fonds.</td><td>1, 9, 10</td></tr>
+<tr><td><b>4. Rejoindre les autres</b></td><td>Cherche ton utile propre, choisis des associés complémentaires et pratique la générosité. Rien n'est plus utile à l'homme que l'homme.</td><td>14</td></tr>
+<tr><td><b>5. Se Réjouir d'abord</b></td><td>La joie est la condition de l'action, et la béatitude est la vertu elle-même.</td><td>8, 15</td></tr></table>
 <div class="gmnemo"><b>« Les 5 R : Regarder, Remonter, Remettre, Rejoindre, se Réjouir. »</b> Et en une phrase : <b>« Comprendre ce qui te meut, pour agir par joie et non par manque. »</b></div>
 <h3>Spinoza et la politique</h3>
-<p>Dans le <i>Traité théologico-politique</i> (1670), Spinoza défend la <b>liberté de penser</b> : « La fin de l'État est en réalité la liberté » (chapitre 20). Il juge la <b>démocratie</b> le régime le plus naturel, car le plus proche de la liberté que la nature accorde à chacun. Il y explique aussi que la superstition naît de la <b>crainte</b> et de l'<b>espoir</b> : ceux qui veulent gouverner les hommes en entretenant leurs peurs les tiennent en servitude. Une leçon précieuse pour un dirigeant : on peut manager par la peur ; on obtient alors des salariés tristes, donc moins puissants.</p>
+<p>Dans le <i>Traité théologico-politique</i> (1670), Spinoza défend la <b>liberté de penser</b> : « La fin de l'État est en réalité la liberté » (chapitre 20). Il juge la <b>démocratie</b> le régime le plus naturel, car le plus proche de la liberté que la nature accorde à chacun. Il y explique aussi que la superstition naît de la <b>crainte</b> et de l'<b>espoir</b> : ceux qui veulent gouverner les hommes en entretenant leurs peurs les tiennent en servitude. Une leçon précieuse pour un dirigeant : on peut manager par la peur, mais on obtient alors des salariés tristes, donc moins puissants.</p>
 <h3>Ce qu'ils ont dit de lui</h3>
 <table><tr><th>Qui</th><th>Ce qu'il a dit ou fait</th></tr>
 <tr><td><b>Hegel</b></td><td>Être spinoziste est le commencement essentiel de toute philosophie</td></tr>

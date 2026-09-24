@@ -3,7 +3,7 @@
 <h3>Les échecs du sol</h3>
 <div class="gstory">Jeudi soir, Maëlle, 31 ans, ceinture violette de jiu-jitsu brésilien (JJB), prend Tom sous son aile. En deux minutes, elle passe ses jambes, s'assoit sur son ventre, puis prend son dos, sans jamais forcer. Tom, rouge, s'étonne : « Tu fais 20 kilos de moins que moi ! » Maëlle : « Le sol, c'est des échecs. Chaque position vaut quelque chose. Tant que tu ne connais pas la valeur des cases, tu joues sans savoir qui gagne. » Elle dessine au feutre, sur le tableau blanc, cinq positions.</div>
 <h3>D'où vient le JJB</h3>
-<p>Au début du XXe siècle, le judoka japonais Mitsuyo Maeda enseigne au Brésil. La famille <b>Gracie</b> (Carlos, puis Hélio) adapte son art pour le combat au sol, en misant sur les <b>leviers</b> plutôt que la force. En 1993, Royce Gracie gagne l'UFC 1 (module 1) : le monde découvre le jiu-jitsu brésilien. Les ceintures adultes vont de la <b>blanche</b> à la <b>noire</b>, en passant par la bleue, la violette et la marron ; il faut souvent une dizaine d'années pour la noire.</p>
+<p>Au début du XXe siècle, le judoka japonais Mitsuyo Maeda enseigne au Brésil. La famille <b>Gracie</b> (Carlos, puis Hélio) adapte son art pour le combat au sol, en misant sur les <b>leviers</b> plutôt que sur la force. En 1993, Royce Gracie gagne l'UFC 1 (module 1) et le monde découvre le jiu-jitsu brésilien. Les ceintures adultes vont de la <b>blanche</b> à la <b>noire</b>, en passant par la bleue, la violette et la marron. Il faut souvent une dizaine d'années pour obtenir la noire.</p>
 <h3>La hiérarchie des positions (pour celui du dessus)</h3>
 <table><tr><th>Rang</th><th>Position</th><th>Pourquoi</th></tr>
 <tr><td>1</td><td><b>Dos</b>, avec les crochets (pieds à l'intérieur de ses cuisses)</td><td>Il ne voit rien, ne peut pas frapper, étranglement arrière possible</td></tr>
@@ -29,7 +29,7 @@
 <ul><li>La <b>crevette</b> (échappement de hanche) : on pousse sur un pied pour glisser les hanches sur le côté et remettre une jambe entre soi et l'adversaire. C'est le mouvement le plus important du JJB.</li>
 <li>Le <b>pont</b> : sous la montée, on soulève les hanches en bloquant un bras et une jambe du même côté, pour le faire basculer.</li>
 <li>Les <b>cadres</b> : avant-bras sur son cou ou ses hanches, pour garder l'espace.</li></ul>
-<div class="gtrap">Précision importante : le JJB sportif et le sol du MMA ne sont pas identiques. En JJB, être sur le dos en garde est une position confortable ; en MMA, l'adversaire du dessus peut <b>frapper</b>, et les juges voient souvent celui du dessus comme dominant. Une garde fermée passive en MMA fait perdre des rounds. Le module 11 détaille ces différences.</div>
+<div class="gtrap">Précision importante : le JJB sportif et le sol du MMA ne sont pas identiques. En JJB, être sur le dos en garde est une position confortable. En MMA, l'adversaire du dessus peut <b>frapper</b>, et les juges voient souvent celui du dessus comme dominant. Une garde fermée passive en MMA fait donc perdre des rounds. Le module 11 détaille ces différences.</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Classer les positions de la plus dominante à la moins dominante</li><li>Reconnaître chaque position sur un schéma</li><li>Distinguer les gardes et les points du JJB</li><li>Expliquer la crevette, le pont et les cadres</li></ul>`},
 /*EXOS*/

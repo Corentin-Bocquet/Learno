@@ -3,7 +3,7 @@
 <h3>Pourquoi les gens demandent autant ?</h3>
 <div class="gstory">Hélène te pose une question étrange : « À votre avis, pourquoi Julie vous demande-t-elle tout ? Parce qu'elle est méchante ? » Tu hésites. Non, Julie n'est pas méchante. Elle est un peu paresseuse, un peu pressée, et surtout... ça marche. « Exactement, dit Hélène. Demander ne lui coûte rien, et vous dites toujours oui. À sa place, qui ne demanderait pas ? » Tu comprends soudain que le problème n'est pas Julie. C'est le prix de la demande : zéro.</div>
 <h3>Demander ne coûte presque rien</h3>
-<p><b>Flynn et Lake (2008)</b> ont demandé à des étudiants d'estimer combien d'inconnus ils devraient solliciter pour obtenir cinq oui à un petit service. Ils pensaient devoir en solliciter environ <b>20</b> ; il en a fallu environ <b>10</b>. Les gens disent oui bien plus souvent qu'on ne le croit, parce que dire non est difficile <b>pour tout le monde</b>. Conséquence : ceux qui l'ont compris demandent, « à tout hasard ». Ce n'est pas toujours du vice : c'est souvent de l'opportunisme ordinaire.</p>
+<p><b>Flynn et Lake (2008)</b> ont demandé à des étudiants d'estimer combien d'inconnus ils devraient solliciter pour obtenir cinq oui à un petit service. Ils pensaient devoir en solliciter environ <b>20</b>. Il en a fallu environ <b>10</b>. Les gens disent oui bien plus souvent qu'on ne le croit, parce que dire non est difficile <b>pour tout le monde</b>. Conséquence : ceux qui l'ont compris demandent « à tout hasard ». Ce n'est pas toujours du vice, c'est souvent de l'opportunisme ordinaire.</p>
 <h3>Les sept petits vices du demandeur</h3>
 <p>Les vieux « péchés capitaux » décrivent très bien les petits travers qui poussent les autres à abuser. Personne n'en est exempt, toi compris.</p>
 <table><tr><th>Vice</th><th>Ce qu'il donne dans une demande</th><th>Exemple</th></tr>
@@ -23,7 +23,7 @@
 <tr><td><b>Lecture de pensée</b></td><td>« Il va penser que je suis égoïste » sans preuve</td></tr>
 <tr><td><b>Personnalisation</b></td><td>Se croire responsable des problèmes des autres</td></tr>
 <tr><td><b>Coûts irrécupérables</b></td><td>« J'ai déjà tant donné, je ne peux pas arrêter maintenant »</td></tr></table>
-<div class="gtrap">Deux erreurs opposées. La première : voir des vices partout et devenir soupçonneux. La plupart des gens demandent parce que c'est facile, pas parce qu'ils sont mauvais. La seconde : ignorer les schémas. Une demande isolée n'est rien ; une demande qui se répète, qui grossit et qui ne rend jamais rien est un signal. <b>On juge les schémas, pas les personnes.</b></div>
+<div class="gtrap">Deux erreurs opposées. La première : voir des vices partout et devenir soupçonneux. La plupart des gens demandent parce que c'est facile, pas parce qu'ils sont mauvais. La seconde : ignorer les schémas. Une demande isolée n'est rien. Une demande qui se répète, qui grossit et qui ne rend jamais rien est un signal. <b>On juge les schémas, pas les personnes.</b></div>
 <h3>Ce que tu dois savoir faire à la fin de ce module</h3>
 <ul><li>Expliquer pourquoi les gens demandent si facilement (Flynn et Lake)</li><li>Reconnaître les sept petits vices du demandeur</li><li>Nommer tes propres biais qui te poussent au oui</li><li>Distinguer une demande isolée d'un schéma qui se répète</li></ul>`},
 /*EXOS*/

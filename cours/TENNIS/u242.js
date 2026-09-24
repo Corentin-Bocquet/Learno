@@ -3,7 +3,7 @@
 <h3>La raquette de Nathan</h3>
 <div class="gstory">Championnat régional, deuxième set. Nathan rate un smash facile, crie, tape sa raquette sur le sol, et perd les trois points suivants en ruminant. Au changement de côté, Valérie lui montre son téléphone : une vidéo de ses 25 secondes après le smash. Tête basse, épaules tombées, il se précipite pour servir en 8 secondes. « Regarde. Le point était fini, mais toi, tu le rejouais encore. On va construire ta routine. » Deux semaines plus tard, même situation, Nathan tourne le dos au filet, remet ses cordes droites, respire lentement, regarde sa cible. Il gagne le point suivant.</div>
 <h3>Le temps entre les points</h3>
-<p>Le point dure en moyenne quelques secondes ; le temps entre deux points peut aller jusqu'à <b>25 secondes</b> chez les professionnels (compte à rebours officiel). On passe donc plus de temps <b>entre</b> les points que <b>pendant</b>. C'est là que se joue le mental.</p>
+<p>Un point dure en moyenne quelques secondes. Le temps entre deux points peut aller jusqu'à <b>25 secondes</b> chez les professionnels (compte à rebours officiel). On passe donc plus de temps <b>entre</b> les points que <b>pendant</b>. C'est là que se joue le mental.</p>
 <h3>La routine en quatre étapes</h3>
 <p>Le psychologue du sport Jim Loehr a observé les meilleurs joueurs et décrit une routine en quatre étapes :</p>
 <table><tr><th>Étape</th><th>Ce que l'on fait</th></tr>
@@ -17,7 +17,7 @@
 <li><b>Le changement de côté</b> (90 secondes) : boire, faire le bilan, choisir le plan des deux jeux suivants.</li>
 <li><b>La pression est un privilège</b> : la formule de Billie Jean King rappelle que la pression signifie que l'on joue quelque chose d'important.</li></ul>
 <div class="gmnemo"><b>« Réagir, Relâcher, Préparer, Ritualiser : les 4 R. »</b> Et à chaque erreur : <b>« Point fini, point oublié. »</b></div>
-<div class="gtrap">Idée reçue : « se mettre en colère réveille ». Parfois, sur un point ; mais la colère qui dure fait perdre les points suivants, comme Nathan. Autre piège : se précipiter après un point perdu. Servir en 8 secondes, c'est rejouer le point précédent. On utilise son temps.</div>
+<div class="gtrap">Idée reçue : « se mettre en colère réveille ». Cela marche parfois sur un point, mais la colère qui dure fait perdre les points suivants, comme pour Nathan. Autre piège : se précipiter après un point perdu. Servir en 8 secondes, c'est rejouer le point précédent. On prend son temps.</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Construire une routine entre les points</li><li>Distinguer ce qu'on contrôle de ce qu'on ne contrôle pas</li><li>Utiliser le changement de côté</li></ul>`},
 /*EXOS*/

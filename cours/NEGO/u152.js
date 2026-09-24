@@ -10,13 +10,13 @@
 <tr><td><b>Contraintes</b></td><td>Qu'est-ce qui limite ses choix ?</td><td>Garder de la trésorerie pour l'entreprise, horizon court pour Léo</td></tr>
 <tr><td><b>Émotions</b></td><td>Que ressent-il ? Peurs, fiertés, colères</td><td>Peur de revivre 2020, fierté d'avoir sauvé l'atelier, méfiance envers les banques</td></tr></table>
 <div class="gmnemo"><b>La carte routière.</b> Où est la voiture ? (<b>Situation</b>). Où veut-elle aller ? (<b>Objectifs</b>). Quels travaux sur la route ? (<b>Contraintes</b>). Dans quel état est le conducteur, calme ou paniqué ? (<b>Émotions</b>). Oublie le conducteur, et même le meilleur itinéraire finit dans le fossé.</div>
-<p>Les émotions ne sont pas un détail. Un client qui a peur n'entend pas un argument de rendement ; un client blessé dans son orgueil n'entend pas une remise. Si tu ne les as pas repérées, tes arguments tombent à côté.</p>
+<p>Les émotions ne sont pas un détail. Un client qui a peur n'entend pas un argument de rendement. Un client blessé dans son orgueil n'entend pas une remise. Si tu ne les as pas repérées, tes arguments tombent à côté.</p>
 <h3>2. Définir ta position</h3>
 <div class="formula">Cible      : ce que tu vises (ambitieux mais crédible)
 Plancher   : ta limite, le point de réserve du module 2
 Arguments  : pourquoi ta proposition sert ses intérêts
 Preuves    : ce qui rend chaque argument vérifiable</div>
-<div class="gmnemo"><b>C.P.A.P. : « Chaque Promesse A sa Preuve ».</b> Cible, Plancher, Arguments, Preuves. Un argument sans preuve est une promesse en l'air ; le client le sent immédiatement.</div>
+<div class="gmnemo"><b>C.P.A.P. : « Chaque Promesse A sa Preuve ».</b> Cible, Plancher, Arguments, Preuves. Un argument sans preuve est une promesse en l'air, et le client le sent immédiatement.</div>
 <p>Une <b>preuve</b> peut être un chiffre publié (rendement moyen des fonds euros : 2,63 % en 2025 selon l'ACPR), une simulation chiffrée, un document contractuel, un historique de performance avec sa volatilité, un cas client anonymisé, un texte de loi.</p>
 <h3>3. Préparer les questions qui ouvrent la discussion</h3>
 <p>Tu écris à l'avance trois ou quatre questions ouvertes qui feront parler le client de ses priorités : « Qu'est-ce qui est important pour vous dans ce placement ? », « Comment voyez-vous les dix prochaines années ? », « Qu'est-ce qui vous a déçu jusqu'ici avec les banques ? ».</p>
@@ -29,7 +29,7 @@ Preuves    : ce qui rend chaque argument vérifiable</div>
 <tr><td><b>Confiance</b></td><td>« Vous voulez juste me vendre un produit »</td><td>Transparence sur ta rémunération, documents, suivi</td></tr>
 <tr><td><b>Fiscalité</b></td><td>« Je vais payer plus d'impôts »</td><td>Comparaison fiscale des enveloppes, simulation nette</td></tr></table>
 <div class="gmnemo"><b>La main du client.</b> Le pouce compte les billets : <b>Frais</b>. L'index pointe le danger : <b>Risques</b>. Le majeur, le plus long, doit pouvoir atteindre l'argent : <b>Liquidité</b>. L'annulaire porte l'alliance : <b>Confiance</b>. Le petit doigt se glisse partout, comme le fisc : <b>Fiscalité</b>. Avant chaque rendez-vous, compte sur tes doigts.</div>
-<div class="gtrap">Dans les notes, « Écoute active et questionnement » est rangé sous « Préparation stratégique ». L'écoute ne se prépare pas seulement : elle se pratique pendant l'entretien (module 5). Ce qu'on prépare, ce sont les <b>questions</b> ; ce qu'on pratique, c'est l'<b>écoute</b>. Et le « plancher » des notes est exactement le <b>point de réserve</b> du module 2 : deux mots, une même limite.</div>
+<div class="gtrap">Dans les notes, « Écoute active et questionnement » est rangé sous « Préparation stratégique ». Or l'écoute ne se prépare pas seulement : elle se pratique pendant l'entretien (module 5). Ce qu'on prépare, ce sont les <b>questions</b>. Ce qu'on pratique, c'est l'<b>écoute</b>. Et le « plancher » des notes est exactement le <b>point de réserve</b> du module 2 : deux mots pour une même limite.</div>
 <h3>Ce que tu dois savoir faire en examen</h3>
 <ul><li>Remplir une carte client en quatre cases à partir d'un brief</li><li>Distinguer cible et plancher, argument et preuve</li><li>Écrire trois questions d'ouverture</li><li>Citer les cinq objections et une réponse préparée pour chacune</li></ul>`},
 /*EXOS*/

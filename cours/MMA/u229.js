@@ -5,17 +5,17 @@
 <h3>Les neuf combats</h3>
 <table><tr><th>Combat</th><th>Ce qui s'est passé</th><th>La leçon</th></tr>
 <tr><td><b>Royce Gracie à l'UFC 1</b> (12 novembre 1993)</td><td>Le plus léger du tournoi gagne trois combats dans la soirée par soumission et par sa maîtrise du sol</td><td>La technique au sol bat la force brute</td></tr>
-<tr><td><b>Weidman contre Silva</b> (UFC 162, juillet 2013)</td><td>Silva provoque, mains basses ; Weidman le met KO au 2e round</td><td>L'arrogance et les mains basses se paient</td></tr>
+<tr><td><b>Weidman contre Silva</b> (UFC 162, juillet 2013)</td><td>Silva provoque son adversaire en gardant les mains basses. Weidman en profite et le met KO au 2e round.</td><td>L'arrogance et les mains basses se paient</td></tr>
 <tr><td><b>Weidman contre Silva 2</b> (UFC 168, 28 décembre 2013)</td><td>Silva se brise le tibia sur un check</td><td>Un coup de pied se prépare, le check protège</td></tr>
 <tr><td><b>Holm contre Rousey</b> (UFC 193, 15 novembre 2015)</td><td>Holm garde la distance, tourne, touche, puis coup de pied haut au 2e round</td><td>La distance et la mobilité battent la pression en ligne droite</td></tr>
 <tr><td><b>McGregor contre Aldo</b> (UFC 194, 12 décembre 2015)</td><td>Crochet gauche en contre sur une attaque d'Aldo : 13 secondes</td><td>Le contre fait les KO</td></tr>
-<tr><td><b>Diaz contre McGregor</b> (UFC 196, 5 mars 2016)</td><td>À une catégorie au-dessus de la sienne, McGregor s'épuise, tente une amenée et se fait étrangler au 2e round</td><td>Le cardio et le poids comptent ; la fatigue fait faire des erreurs</td></tr>
+<tr><td><b>Diaz contre McGregor</b> (UFC 196, 5 mars 2016)</td><td>À une catégorie au-dessus de la sienne, McGregor s'épuise, tente une amenée et se fait étrangler au 2e round</td><td>Le cardio et la gestion du poids comptent énormément. Un combattant fatigué commet des erreurs.</td></tr>
 <tr><td><b>Khabib contre McGregor</b> (UFC 229, 6 octobre 2018)</td><td>Amenées, pression au sol, clé de cou au 4e round</td><td>Celui qui choisit où se passe le combat domine</td></tr>
 <tr><td><b>Poirier contre McGregor 2</b> (UFC 257, 24 janvier 2021)</td><td>Calf kicks répétés, jambe avant détruite, TKO au 2e round</td><td>Les coups bas peuvent gagner un combat</td></tr>
 <tr><td><b>Ngannou contre Gane</b> (UFC 270, 22 janvier 2022)</td><td>Le frappeur Ngannou gagne aux points par la lutte</td><td>Remplir une case inattendue surprend l'adversaire</td></tr></table>
 <div class="gmnemo"><b>« Neuf combats, neuf leçons »</b>, à réciter dans l'ordre : <b>sol, arrogance, check, distance, contre, cardio, terrain, jambes, surprise.</b></div>
 <h3>Un bonus français</h3>
-<p>À l'UFC Paris, le <b>3 septembre 2022</b>, Ciryl Gane est envoyé au tapis par Tai Tuivasa au 2e round, revient, et gagne par KO au 3e round. Leçon : un <b>knockdown</b> n'est pas une défaite ; la lucidité et le calme après un coup dur (module 2) peuvent retourner un combat.</p>
+<p>À l'UFC Paris, le <b>3 septembre 2022</b>, Ciryl Gane est envoyé au tapis par Tai Tuivasa au 2e round, revient, et gagne par KO au 3e round. Leçon : un <b>knockdown</b> n'est pas une défaite. La lucidité et le calme après un coup dur (module 2) peuvent retourner un combat.</p>
 <h3>Comment analyser un combat célèbre</h3>
 <ol><li>Quelle était la <b>base</b> de chacun ? (module 12)</li><li>Quel était le <b>plan</b> du vainqueur, et le trou exploité ?</li><li>Quel <b>moment</b> a fait basculer le combat ?</li><li>Quelle <b>leçon</b> pour notre combattant ?</li></ol>
 <div class="gtrap">Attention à la mémoire des fans : on résume souvent un combat à son dernier coup (« Holm a eu de la chance », « Khabib était juste plus fort »). Un analyste cherche ce qui a <b>préparé</b> le dernier coup : la distance, la fatigue, les amenées répétées, les coups bas accumulés. Le KO est la fin d'une histoire, pas l'histoire entière.</div>

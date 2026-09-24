@@ -10,7 +10,7 @@
 <tr><td><b>Collar tie</b></td><td>Une main derrière la nuque</td><td>Contrôler la tête, ouvrir l'uppercut et le genou</td></tr>
 <tr><td><b>Plum</b> (clinch thaï)</td><td>Deux mains derrière la nuque, coudes serrés</td><td>Tirer la tête vers le bas, genoux</td></tr>
 <tr><td><b>Deux contre un</b></td><td>Tes deux mains sur un seul de ses bras</td><td>Neutraliser un bras, prendre le dos</td></tr></table>
-<div class="gmnemo"><b>« Sous le bras, tu contrôles ; par-dessus, tu te défends. »</b> Et l'ordre pour gagner un clinch : <b>« T.B.H. : la Tête, les Bras, les Hanches »</b>. D'abord la bonne position de tête, puis les underhooks, puis les hanches collées.</div>
+<div class="gmnemo"><b>« Sous le bras, tu contrôles. Par-dessus, tu te défends. »</b> Et l'ordre pour gagner un clinch : <b>« T.B.H. : la Tête, les Bras, les Hanches »</b>. D'abord la bonne position de tête, puis les underhooks, puis les hanches collées.</div>
 <h3>La bataille des bras : le pummeling</h3>
 <p>Le <b>pummeling</b>, c'est l'échange permanent pour glisser ses bras à l'intérieur et obtenir les underhooks. Celui qui a les deux underhooks, ou l'underhook et la bonne position de tête, dirige le clinch. Les lutteurs gréco-romains, qui ne saisissent que le haut du corps, en sont les maîtres.</p>
 <h3>Contre la cage</h3>

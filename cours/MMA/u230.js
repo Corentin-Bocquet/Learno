@@ -1,11 +1,11 @@
 /*UNIT*/
 {id:230,c:"MMA",n:"Module 16",t:"Synthèse : le soir du combat, dans le coin d'Enzo",col:"--red",ic:"🏆",guide:`
 <h3>Samedi, 21 h, Palais des sports de Marseille</h3>
-<div class="gstory">Le vestiaire sent l'huile de massage. Enzo, bandes aux mains, sautille. Rachid lui répète le plan une dernière fois ; toi, tu tiens la feuille avec les trois failles de Viktor. Lina et Maëlle sont dans le coin avec vous, Tom dans le public avec une pancarte. Round 1 : Viktor avance, Enzo tourne vers sa gauche, touche au jab, place deux calf kicks ; Viktor plonge après son jab, Enzo sprawle et se relève. À la minute de repos, Rachid donne deux consignes : « Contre son direct au foie. Et calf kick quand il avance. » Round 2 : Viktor boite. Round 3 : Viktor respire bouche ouverte, baisse les mains ; Enzo accélère, crochet gauche au foie, puis direct au menton. Viktor tombe, l'arbitre arrête le combat. TKO au 3e round. Dans le coin, Rachid te serre la main : « Bon travail, l'analyste. »</div>
+<div class="gstory">Le vestiaire sent l'huile de massage. Enzo, bandes aux mains, sautille. Rachid lui répète le plan une dernière fois, et toi, tu tiens la feuille avec les trois failles de Viktor. Lina et Maëlle sont dans le coin avec vous, Tom est dans le public avec une pancarte. Round 1 : Viktor avance, Enzo tourne vers sa gauche, touche au jab et place deux calf kicks. Viktor plonge après son jab, Enzo sprawle et se relève. À la minute de repos, Rachid donne deux consignes : « Contre son direct au foie. Et calf kick quand il avance. » Round 2 : Viktor boite. Round 3 : Viktor respire bouche ouverte et baisse les mains. Enzo accélère, crochet gauche au foie, puis direct au menton. Viktor tombe, l'arbitre arrête le combat. TKO au 3e round. Dans le coin, Rachid te serre la main : « Bon travail, l'analyste. »</div>
 <h3>Le plan complet, relu module par module</h3>
 <table><tr><th>Module</th><th>Ce qui a servi ce soir</th></tr>
 <tr><td>1. Règles</td><td>3 rounds de 5 minutes, gagner 2 rounds, pas de fautes</td></tr>
-<tr><td>2. Cibles</td><td>Foie à droite, crochet gauche ; mollet pour faire boiter</td></tr>
+<tr><td>2. Cibles</td><td>Le foie est à droite, donc on le vise avec un crochet gauche. On frappe le mollet pour le faire boiter.</td></tr>
 <tr><td>3. Garde et octogone</td><td>Loin de la main forte, le centre pour lui, couper la cage</td></tr>
 <tr><td>4 et 5. Boxe et Muay Thaï</td><td>Jab, contres, calf kicks rapides préparés aux poings</td></tr>
 <tr><td>6 à 8. Clinch et lutte</td><td>Éviter le grillage, sprawl, se relever</td></tr>

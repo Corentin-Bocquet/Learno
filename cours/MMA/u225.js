@@ -5,7 +5,7 @@
 <h3>Le ground and pound : frapper d'en haut</h3>
 <table><tr><th>Frappe au sol</th><th>Depuis</th><th>Remarque</th></tr>
 <tr><td>Coups de poing</td><td>Garde, demi-garde, montée</td><td>Il faut d'abord <b>se redresser</b> (retrouver sa posture)</td></tr>
-<tr><td><b>Coups de coude</b></td><td>Demi-garde, contrôle latéral, montée</td><td>Courts et coupants ; le coude 12-6 est autorisé depuis fin 2024 par les règles unifiées</td></tr>
+<tr><td><b>Coups de coude</b></td><td>Demi-garde, contrôle latéral, montée</td><td>Les coudes sont des coups courts qui coupent la peau. Le coude vertical 12-6 est autorisé depuis fin 2024 par les règles unifiées.</td></tr>
 <tr><td>Coups de marteau</td><td>Montée, contre la cage</td><td>Frappe avec le bas du poing, très sûre pour la main</td></tr>
 <tr><td>Coups de genou au corps</td><td>Contrôle latéral, quatre pattes</td><td>Au corps seulement : genou à la tête d'un adversaire au sol interdit</td></tr></table>
 <div class="gmnemo"><b>« P.P.P. : Posture, Pression, Poings. »</b> Au-dessus, on se redresse, on écrase de son poids, puis on frappe. En dessous : <b>« Contrôle, Casse, Relève »</b> : contrôler ses poignets, casser sa posture (tirer sa tête vers soi), et se relever dès que possible.</div>

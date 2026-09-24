@@ -4,13 +4,13 @@
 <div class="gstory">Premier mardi du mois, 8 h. Nathan ouvre l'application Ten'Up avant même de se lever : toujours 15/1. Il arrive au club furieux : « J'ai gagné cinq matchs ce mois-ci, pourquoi je ne monte pas ? » Valérie sort une feuille : « Parce que tu as battu des joueurs moins bien classés que toi, et qu'on ne garde que tes meilleures victoires. Si tu veux monter, il faut choisir tes tournois comme un pro choisit les siens. » Malik, lui, suit le classement ATP de son idole et demande pourquoi un joueur peut perdre des places sans avoir joué.</div>
 <h3>Le classement ATP (hommes)</h3>
 <ul><li>Il porte sur les <b>52 dernières semaines</b> : les points d'un tournoi disparaissent un an après. C'est pourquoi on parle de « <b>défendre ses points</b> » : si l'on a gagné un tournoi l'an dernier, il faut refaire aussi bien pour ne pas reculer.</li>
-<li>Il compte <b>19 résultats</b> : les 4 tournois du Grand Chelem, les 8 Masters 1000 obligatoires et les 7 meilleurs autres résultats ; les qualifiés pour les <b>ATP Finals</b> ajoutent un 20e résultat.</li></ul>
+<li>Il compte <b>19 résultats</b> : les 4 tournois du Grand Chelem, les 8 Masters 1000 obligatoires et les 7 meilleurs autres résultats. Les joueurs qualifiés pour les <b>ATP Finals</b> ajoutent un 20e résultat.</li></ul>
 <table><tr><th>Catégorie (barème depuis 2024)</th><th>Vainqueur</th><th>Finaliste</th><th>Demi-finale</th><th>Quart</th></tr>
 <tr><td><b>Grand Chelem</b></td><td>2000</td><td>1300</td><td>800</td><td>400</td></tr>
 <tr><td><b>Masters 1000</b></td><td>1000</td><td>650</td><td>400</td><td>200</td></tr>
 <tr><td>ATP 500</td><td>500</td><td>330</td><td>200</td><td>100</td></tr>
 <tr><td>ATP 250</td><td>250</td><td>165</td><td>100</td><td>50</td></tr></table>
-<p>Aux <b>ATP Finals</b> (les 8 meilleurs de la saison), chaque victoire de poule rapporte 200 points ; un vainqueur invaincu marque <b>1500 points</b>. Le classement de la saison civile, qui sert à se qualifier, s'appelle la <b>Race</b>.</p>
+<p>Aux <b>ATP Finals</b> (les 8 meilleurs de la saison), chaque victoire de poule rapporte 200 points. Un vainqueur invaincu marque <b>1500 points</b>. Le classement de la saison civile, qui sert à se qualifier, s'appelle la <b>Race</b>.</p>
 <h3>Le classement WTA (femmes)</h3>
 <p>Même principe sur 52 semaines, avec <b>18 résultats</b> (19 pour les qualifiées des WTA Finals) : les 4 Grand Chelem, les WTA 1000 obligatoires et les meilleurs autres résultats. Une victoire en Grand Chelem rapporte aussi <b>2000 points</b> (1300 pour la finaliste, 780 pour une demi-finaliste).</p>
 <div class="gmnemo"><b>« 2000, 1000, 500, 250 : le nom dit le prix. »</b> Le nom de la catégorie donne les points du vainqueur, sauf pour le Grand Chelem qui vaut le double d'un Masters. Et la règle d'or : <b>« 52 semaines, puis ça s'efface. »</b></div>

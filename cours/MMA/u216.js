@@ -7,8 +7,8 @@
 <table><tr><th>Cible</th><th>Pourquoi ça marche</th><th>Réaction typique</th></tr>
 <tr><td><b>1. Menton</b> (et angle de la mâchoire)</td><td>Un coup qui fait <b>pivoter</b> brusquement la tête secoue le cerveau dans la boîte crânienne</td><td>KO immédiat, jambes qui se dérobent</td></tr>
 <tr><td><b>2. Tempe</b></td><td>Os plus fin, zone latérale touchée par les crochets et les coups de pied hauts</td><td>KO, perte d'équilibre</td></tr>
-<tr><td><b>3. Plexus solaire</b></td><td>Réseau nerveux sous le sternum ; le diaphragme se bloque</td><td>Souffle coupé, combattant plié en deux</td></tr>
-<tr><td><b>4. Foie</b></td><td>Côté <b>droit</b> du corps de l'adversaire, sous les dernières côtes ; très innervé</td><td>Douleur <b>retardée</b> d'une ou deux secondes, puis chute, souvent conscient</td></tr>
+<tr><td><b>3. Plexus solaire</b></td><td>Un coup au plexus touche le réseau nerveux situé sous le sternum. Le diaphragme se bloque et l'adversaire n'arrive plus à respirer.</td><td>Souffle coupé, combattant plié en deux</td></tr>
+<tr><td><b>4. Foie</b></td><td>Le foie se trouve du côté <b>droit</b> du corps de l'adversaire, sous les dernières côtes. C'est une zone très innervée, donc très douloureuse.</td><td>Douleur <b>retardée</b> d'une ou deux secondes, puis chute, souvent conscient</td></tr>
 <tr><td><b>5. Côtes flottantes</b></td><td>Les dernières côtes, peu protégées</td><td>Douleur, respiration gênée, parfois fracture</td></tr>
 <tr><td><b>6. Cuisse</b> (face externe)</td><td>Coups de pied bas répétés sur le muscle</td><td>Jambe qui boite, appui qui cède</td></tr>
 <tr><td><b>7. Mollet</b> (face externe)</td><td>Le <b>calf kick</b> touche un nerf (le nerf fibulaire) sur le côté du mollet</td><td>Pied qui « ne répond plus », perte d'appui</td></tr></table>
@@ -24,7 +24,7 @@
 <tr><td>Jambes « en coton », pas désordonnés</td><td>Équilibre touché : il va chercher le clinch pour survivre</td></tr>
 <tr><td>Main qui descend sur le flanc droit</td><td>Le foie a été touché, il protège</td></tr>
 <tr><td>Changement de garde, jambe qui traîne</td><td>La jambe avant a pris trop de coups de pied bas</td></tr></table>
-<div class="gtrap">Point de sécurité à ne jamais oublier : un KO est une <b>commotion cérébrale</b>, pas un spectacle anodin. L'accumulation de coups à la tête, même sans KO, augmente le risque de lésions durables (on parle d'encéphalopathie traumatique chronique chez les sportifs de contact). À l'entraînement, on limite le sparring dur à la tête ; en compétition, un combattant qui a subi un KO doit respecter un repos médical. Un bon coach protège son combattant avant de chercher le spectacle.</div>
+<div class="gtrap">Point de sécurité à ne jamais oublier : un KO est une <b>commotion cérébrale</b>, pas un spectacle anodin. L'accumulation de coups à la tête, même sans KO, augmente le risque de lésions durables (on parle d'encéphalopathie traumatique chronique chez les sportifs de contact). À l'entraînement, on limite le sparring dur à la tête. En compétition, un combattant qui a subi un KO doit respecter un repos médical. Un bon coach protège son combattant avant de chercher le spectacle.</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Situer les sept cibles sur un schéma et dire pourquoi elles sont efficaces</li><li>Choisir le bon coup pour la bonne cible (foie, mollet, menton)</li><li>Interpréter la réaction d'un combattant touché</li><li>Rappeler les règles de sécurité autour des commotions</li></ul>`},
 /*EXOS*/

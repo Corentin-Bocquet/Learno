@@ -17,26 +17,26 @@
 <div class="formula">1. Préparer   : délimiter le périmètre cédé, clarifier la situation juridique et fiscale,
                élaborer un business plan de transmission
 2. Trouver    : cercle restreint (famille, salariés, partenaires), marché ouvert,
-               intermédiaires ; documents : teaser puis information memorandum
+               intermédiaires. Documents : teaser, puis information memorandum
 3. Négocier   : lettre d'intention (LOI), audits, garantie d'actif et de passif
 4. Conclure   : protocole d'accord (SPA pour des titres, APA pour des actifs),
                puis acte définitif de cession
 5. Après      : enregistrement, publicité, immatriculation,
                délai d'opposition des créanciers, transmission progressive</div>
-<div class="gmnemo">« <b>P</b>etit <b>T</b>igre <b>N</b>égocie <b>C</b>ontrat <b>A</b>vec soin » : <b>P</b>réparer, <b>T</b>rouver, <b>N</b>égocier, <b>C</b>onclure, <b>A</b>près. Le <b>teaser</b> est la bande-annonce anonyme d'une ou deux pages ; l'<b>information memorandum</b> est le film complet, remis après un engagement de confidentialité.</div>
+<div class="gmnemo">« <b>P</b>etit <b>T</b>igre <b>N</b>égocie <b>C</b>ontrat <b>A</b>vec soin » : <b>P</b>réparer, <b>T</b>rouver, <b>N</b>égocier, <b>C</b>onclure, <b>A</b>près. Le <b>teaser</b> est la bande-annonce anonyme d'une ou deux pages. L'<b>information memorandum</b> est le film complet, remis après un engagement de confidentialité.</div>
 <h3>Les audits</h3>
 <p>Avant de signer, l'acquéreur fait vérifier la société : audit <b>juridique</b> (contrats, litiges), <b>fiscal</b> (risques de redressement), <b>social</b> (salariés, contentieux), <b>comptable et financier</b> (qualité des comptes, dette).</p>
 <h3>La garantie d'actif et de passif (GAP)</h3>
 <p>Le cédant s'engage à <b>indemniser</b> l'acquéreur si :</p>
-<ul><li>certains <b>actifs</b> étaient <b>surévalués</b> ;</li><li>certains <b>passifs</b> étaient <b>sous-évalués ou cachés</b> ;</li><li>un <b>événement antérieur à la cession</b> entraîne une charge imprévue (un redressement fiscal sur une année passée, un procès prud'homal ancien).</li></ul>
+<ul><li>Certains <b>actifs</b> étaient <b>surévalués</b>.</li><li>Certains <b>passifs</b> étaient <b>sous-évalués ou cachés</b>.</li><li>Un <b>événement antérieur à la cession</b> entraîne une charge imprévue (un redressement fiscal sur une année passée, un procès prud'homal ancien).</li></ul>
 <table><tr><th>Élément</th><th>Contenu</th></tr>
 <tr><td>Déclarations et garanties</td><td>Ce que le cédant affirme sur la société</td></tr>
-<tr><td>Durée</td><td>En général <b>2 à 3 ans</b> ; pour le fiscal, jusqu'à l'expiration du <b>délai de reprise</b> de l'administration</td></tr>
+<tr><td>Durée</td><td>La garantie dure en général <b>2 à 3 ans</b>. Pour les risques fiscaux, elle court jusqu'à l'expiration du <b>délai de reprise</b> de l'administration.</td></tr>
 <tr><td>Franchise</td><td>Montant en dessous duquel l'acquéreur n'est pas indemnisé</td></tr>
 <tr><td>Seuil global</td><td>Montant cumulé de réclamations à atteindre pour déclencher la garantie</td></tr>
 <tr><td>Plafond</td><td>Montant maximal de l'indemnisation, souvent un pourcentage du prix</td></tr>
 <tr><td>Mise en œuvre</td><td>Délais de notification, gestion des litiges</td></tr></table>
-<p>Intérêt : pour l'acquéreur, être protégé ; pour le cédant, limiter et encadrer sa responsabilité ; pour les deux, créer la confiance. Vigilance : la rédaction est examinée de près par les juges en cas de litige.</p>
+<p>L'intérêt est triple. L'acquéreur est protégé. Le cédant limite et encadre sa responsabilité. Les deux parties se font confiance. Point de vigilance : en cas de litige, les juges examinent la rédaction de très près.</p>
 <h3>Les clauses complémentaires</h3>
 <table><tr><th>Clause</th><th>But</th></tr>
 <tr><td><b>Non-concurrence</b></td><td>Le cédant ne recrée pas la même activité, limitée dans le temps, l'espace et l'activité</td></tr>

@@ -4,7 +4,7 @@
 <div class="gstory">Kevin, infirmier au CHU (2 400 € net par mois), et Laura, graphiste (2 100 €), ont signé un compromis pour un deux-pièces à Rezé : 250 000 €, dont 30 000 € d'apport. Ils ont deux offres : la tienne et celle de la banque des parents de Kevin. Laura a préparé une liste : « taux, assurance, frais, et je ne sais plus quoi ». Ton travail : leur montrer tout ce qui se négocie vraiment, ce qui ne se négocie pas, et construire avec eux une offre qui tient sur vingt-cinq ans.</div>
 <h3>Ce qui ne se négocie pas : le cadre</h3>
 <table><tr><th>Règle</th><th>Contenu</th></tr>
-<tr><td><b>Normes du HCSF</b> (Haut Conseil de stabilité financière)</td><td>Taux d'effort maximum de <b>35 %</b> des revenus nets avant impôt, assurance comprise ; durée maximum de <b>25 ans</b> (27 ans si le différé est lié à des travaux ou à un achat sur plan) ; les banques peuvent déroger pour 20 % de leur production, surtout pour la résidence principale</td></tr>
+<tr><td><b>Normes du HCSF</b> (Haut Conseil de stabilité financière)</td><td>Le taux d'effort ne doit pas dépasser <b>35 %</b> des revenus nets avant impôt, assurance comprise. La durée du prêt est limitée à <b>25 ans</b>, ou 27 ans si le différé est lié à des travaux ou à un achat sur plan. Les banques peuvent déroger à ces règles pour 20 % de leur production, surtout pour la résidence principale.</td></tr>
 <tr><td><b>Taux d'usure</b></td><td>Le TAEG ne peut pas dépasser ce plafond légal, fixé par la Banque de France</td></tr>
 <tr><td><b>Délai de réflexion</b></td><td>10 jours : l'offre ne peut être acceptée qu'à partir du 11e jour</td></tr></table>
 <div class="formula">Taux d'effort = (mensualités de tous les crédits + assurance) / revenus nets mensuels
@@ -12,7 +12,7 @@ Kevin et Laura : 4 500 € × 35 % = 1 575 € de mensualité maximum</div>
 <h3>Ce qui se négocie</h3>
 <table><tr><th>Élément</th><th>Levier et règle</th></tr>
 <tr><td><b>Le taux nominal</b></td><td>Profil, apport, épargne, et surtout une offre concurrente (la MESORE)</td></tr>
-<tr><td><b>L'assurance emprunteur</b></td><td>Délégation possible dès la souscription ; depuis la <b>loi Lemoine</b> (2022), résiliation et changement <b>à tout moment</b>, à garanties équivalentes. Plus de questionnaire de santé si la part assurée par personne est de 200 000 € maximum et que le prêt se termine avant 60 ans. Droit à l'oubli à 5 ans pour les cancers et l'hépatite C</td></tr>
+<tr><td><b>L'assurance emprunteur</b></td><td>La délégation d'assurance est possible dès la souscription. Depuis la <b>loi Lemoine</b> (2022), on peut résilier et changer d'assurance <b>à tout moment</b>, à garanties équivalentes. Il n'y a plus de questionnaire de santé si la part assurée par personne est de 200 000 € maximum et que le prêt se termine avant 60 ans. Le droit à l'oubli s'applique après 5 ans pour les cancers et l'hépatite C.</td></tr>
 <tr><td><b>Les frais de dossier</b></td><td>Souvent réductibles, voire offerts</td></tr>
 <tr><td><b>Les IRA</b> (indemnités de remboursement anticipé)</td><td>Plafond légal : 6 mois d'intérêts sur le capital remboursé, sans dépasser 3 % du capital restant dû. On peut négocier leur suppression dans l'offre. Elles ne sont pas dues en cas de vente liée à une mobilité professionnelle, au décès ou à la cessation forcée d'activité</td></tr>
 <tr><td><b>La domiciliation des revenus</b></td><td>La banque peut l'exiger seulement en échange d'un avantage individualisé écrit dans l'offre. Depuis que le Conseil d'État a annulé en 2021 le décret qui la limitait à 10 ans, sa durée se négocie</td></tr>

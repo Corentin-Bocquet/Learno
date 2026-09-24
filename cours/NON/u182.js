@@ -5,9 +5,9 @@
 <h3>L'escalier des non : l'exposition progressive</h3>
 <p>Les thérapies comportementales utilisent l'<b>exposition progressive</b> : on affronte une peur par petites marches, de la plus facile à la plus difficile. Chaque marche réussie apprend au cerveau que le danger était surestimé.</p>
 <table><tr><th>Niveau</th><th>Exemples de marches</th></tr>
-<tr><td>Facile (1 à 3 sur 10)</td><td>Refuser un prospectus ; dire « non merci » au sac en caisse ; raccrocher à un démarcheur</td></tr>
-<tr><td>Moyen (4 à 6 sur 10)</td><td>Refuser un dernier verre ; dire à un collègue « 15 h plutôt » ; renvoyer un plat mal cuit</td></tr>
-<tr><td>Difficile (7 à 10 sur 10)</td><td>Conversation DESC avec Julie ; parler des 500 € à Sophie ; demander l'arbitrage à Karim ; limiter les visites chez tes parents</td></tr></table>
+<tr><td>Facile (1 à 3 sur 10)</td><td>Refuser un prospectus. Dire « non merci » au sac en caisse. Raccrocher à un démarcheur.</td></tr>
+<tr><td>Moyen (4 à 6 sur 10)</td><td>Refuser un dernier verre. Proposer à un collègue « 15 h plutôt ». Renvoyer un plat mal cuit.</td></tr>
+<tr><td>Difficile (7 à 10 sur 10)</td><td>Avoir la conversation DESC avec Julie. Parler des 500 € à Sophie. Demander l'arbitrage de Karim. Limiter les visites chez tes parents.</td></tr></table>
 <div class="gmnemo"><b>« Une marche à la fois, jamais deux d'un coup. »</b> Monte l'escalier des non marche par marche. Et note chaque marche dans ton <b>journal des non</b> : situation, phrase dite, peur prévue sur 10, réalité sur 10. L'écart entre la peur prévue et la réalité est ton meilleur professeur.</div>
 <h3>Le journal des non</h3>
 <div class="formula">Date | Situation | Ce que j'ai dit | Peur prévue /10 | Ce qui s'est passé | Réalité /10
@@ -20,7 +20,7 @@
 <ul><li><b>La bienveillance envers soi</b> : te parler comme à un ami (« c'était difficile, tu feras autrement la prochaine fois »).</li>
 <li><b>L'humanité commune</b> : tout le monde a du mal à dire non (77 % ont déjà accepté une invitation non voulue).</li>
 <li><b>La pleine conscience</b> : reconnaître l'émotion sans la grossir ni la nier.</li></ul>
-<div class="gtrap">Deux pièges pour finir. Le premier : vouloir tout changer d'un coup et commencer par la marche 10 (la conversation avec ta mère). Tu risques un échec qui confirme ta peur. Commence en bas. Le second : te juger sévèrement à chaque oui subi. La dureté envers soi ne fait pas progresser plus vite ; l'auto-compassion, si. Tu n'as pas à être parfait : tu as à continuer.</div>
+<div class="gtrap">Deux pièges pour finir. Le premier : vouloir tout changer d'un coup et commencer par la marche 10 (la conversation avec ta mère). Tu risques un échec qui confirme ta peur, alors commence en bas. Le second : te juger sévèrement à chaque oui subi. La dureté envers soi ne fait pas progresser plus vite, l'auto-compassion, si. Tu n'as pas à être parfait, tu as juste à continuer.</div>
 <h3>La carte de tout le cours</h3>
 <table><tr><th>Moment</th><th>Outil</th></tr>
 <tr><td>Avant de répondre</td><td>Respirer, test E.C.R., nommer le levier (REPAS RU, P.O.C.)</td></tr>

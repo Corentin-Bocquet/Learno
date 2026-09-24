@@ -5,12 +5,12 @@
 <h3>Les grandes dates</h3>
 <table><tr><th>Date</th><th>Événement</th></tr>
 <tr><td>24 novembre 1632</td><td>Naissance à <b>Amsterdam</b> dans une famille de marchands juifs d'origine <b>portugaise</b></td></tr>
-<tr><td>1654</td><td>Mort de son père ; il reprend le commerce familial avec son frère</td></tr>
+<tr><td>1654</td><td>Son père meurt. Spinoza reprend le commerce familial avec son frère.</td></tr>
 <tr><td><b>27 juillet 1656</b></td><td>À <b>23 ans</b>, il reçoit un <b>herem</b> (exclusion) de sa communauté, d'une violence rare</td></tr>
 <tr><td>1661</td><td>Il s'installe à <b>Rijnsburg</b>, près de Leyde</td></tr>
-<tr><td>1663</td><td>Il déménage à <b>Voorburg</b> ; il publie les <i>Principes de la philosophie de Descartes</i>, seul livre paru sous son nom de son vivant</td></tr>
-<tr><td>1670</td><td><i>Traité théologico-politique</i>, publié <b>anonymement</b> ; il s'installe à <b>La Haye</b></td></tr>
-<tr><td>1672</td><td>Lynchage des frères De Witt ; il veut afficher « <i>Ultimi barbarorum</i> » (les derniers des barbares), son logeur l'en empêche</td></tr>
+<tr><td>1663</td><td>Il déménage à <b>Voorburg</b>. Il publie les <i>Principes de la philosophie de Descartes</i>, le seul livre paru sous son nom de son vivant.</td></tr>
+<tr><td>1670</td><td>Il publie le <i>Traité théologico-politique</i> <b>anonymement</b>, puis s'installe à <b>La Haye</b>.</td></tr>
+<tr><td>1672</td><td>Les frères De Witt sont lynchés par la foule. Spinoza veut afficher « <i>Ultimi barbarorum</i> » (les derniers des barbares), mais son logeur l'en empêche.</td></tr>
 <tr><td>1673</td><td>Il refuse une chaire de professeur à Heidelberg pour garder sa liberté de philosopher</td></tr>
 <tr><td>21 février 1677</td><td>Mort à <b>La Haye</b>, à 44 ans, d'une maladie des poumons</td></tr>
 <tr><td>Fin 1677</td><td>Ses amis publient ses œuvres posthumes, dont l'<i>Éthique</i></td></tr></table>

@@ -103,11 +103,15 @@ On retient ce qu'on a vécu. Chaque guide doit contenir :
 - iPhone (demande du 24/09/2026) : rien ne passe sous l'encoche ni sous l'heure. Tout écran plein
   (barre du haut, croix de leçon, modales, jeux) respecte `env(safe-area-inset-top)` ; en bas, la marge
   suit `env(safe-area-inset-bottom)` sans la doubler. Vérifier chaque nouvel écran à 390 x 844.
-- Barre du bas : cinq cases au maximum (Jouer, Réviser, Ligue, Boutique, Plus), en verre liquide
+- Barre du bas : cinq cases au maximum (Jouer, Réviser, Ligue, Boutique, Plus), icônes seules sans texte, en verre liquide
   flottant. Tout autre onglet va dans Plus. Profil et Réviser sont rangés en sections repliables :
   on garde toutes les fonctions, on évite les longs défilements.
 - « Guide » s'appelle « Leçon » partout. Une leçon jamais faite s'ouvre sur son cours (la partie du guide
   la plus proche de ses questions), avec un bouton Passer, puis le quiz.
+- Icônes : jeu maison « verre liquide » (`GL` dans `design/arcade/arcade.js`) : glyphe clair sur tuile de verre
+  colorée. Toute nouvelle icône suit ce style ; pas d'emoji ni d'icône plate dans l'interface Arcade.
+- Catégories de cours : l'utilisateur peut les renommer, en ajouter, supprimer une catégorie vide et glisser
+  un cours d'une catégorie à l'autre (Mes cours, Organiser). Les réglages vivent dans `S.cats`.
 - Le masque de lancement (`DESIGN:ARCADE:TETE`, injecté dans `<head>` par `tools/design.py`) cache
   l'ancien design tant que la couche Arcade n'est pas installée.
 
@@ -118,6 +122,10 @@ Demande de Corentin : une leçon doit se lire comme une fiche, pas comme un bloc
 - Préférer listes, tableaux, formules et schémas SVG aux paragraphes ; un paragraphe ne dépasse pas trois lignes sur iPhone.
 - Commencer chaque guide par « Ce que tu dois savoir faire » (affiché en objectifs en haut de la leçon).
 - Mettre en gras le mot clé de chaque phrase importante (il est surligné à l'écran).
+- Des phrases complètes, jamais des fragments collés par des points-virgules (demande du 24/09/2026).
+  Aucun « ; » dans la prose des leçons, cellules de tableau et listes comprises : on écrit deux phrases.
+  Seules exceptions : une citation exacte entre guillemets et les formules (`<div class="formula">`).
+  Le test `tests/tarcade.js` le vérifie sur tous les cours.
 
 ## Examen blanc
 
