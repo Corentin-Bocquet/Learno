@@ -125,6 +125,11 @@ if(doc.body.classList.contains("arc-focus"))ko("la barre de navigation ne revien
 /* 5. les cinq jeux, sur trois cours */
 for(const cid of ["PATRI","TENNIS","MRC"]){
   E(`S.active='${cid}';save()`);
+  /* les jeux ne piochent que dans les lecons faites : on joue apres six modules */
+  E(`(()=>{const c=S.courses['${cid}'];courseUnits('${cid}').slice(0,6).forEach(u=>{for(let i=0;i<lessonsIn(u.id);i++)c.lessons[lkey(u.id,i)]=2;});save();})()`);
+  const hors=E(`(()=>{let n=0;const us=courseUnits('${cid}');for(let r=0;r<8;r++){arcGame('vf');const el=document.querySelector('#gamebody .arc-vfcard .q');
+    const q=el?el.textContent:"";const m=EXOS.filter(e=>e.t==='tf'&&e.q===q);if(m.length&&m.every(e=>us.findIndex(u=>u.id===e.u)>6))n++;}arcQuit();return n;})()`);
+  if(hors)ko(cid+" : le vrai ou faux pioche dans un module pas encore ouvert");
   const xp0=E("S.xp");
   E("arcGame('eclair')"); await wait(40);
   const tuiles=doc.querySelectorAll("#gamebody .arc-tile").length;
@@ -212,6 +217,24 @@ E("setTab('league')"); await wait(40);
 if(doc.querySelectorAll("#leaguebody .arc-trophy").length<6)ko("trophées des divisions absents");
 const fallback=E("COURSES.filter(c=>!/arc-cb/.test(badgeSVG(c.id,40))).map(c=>c.id)");
 if(fallback.length)ko("icônes de cours non refaites : "+fallback.join(","));
+/* demande du 24/09/2026 : la bonne reponse n est pas la plus longue, vrai/faux equilibre,
+   aucune question d une lecon pas encore faite */
+const biais=JSON.parse(E(`JSON.stringify(COURSES.map(c=>{const ex=EXOS.filter(e=>unitOf(e.u).c===c.id);
+ const ch=ex.filter(e=>Array.isArray(e.o)&&e.o.length>1&&typeof e.a==="number");
+ let lg=0,rt=0;ch.forEach(e=>{const L=e.o.map(x=>String(x).length),m=Math.max(...L);if(L[e.a]===m&&L.filter(x=>x===m).length===1)lg++;
+  const oth=L.filter((_,i)=>i!==e.a);rt+=L[e.a]/(oth.reduce((a,b)=>a+b,0)/oth.length);});
+ const tf=ex.filter(e=>e.t==="tf");
+ return {c:c.id,lg:lg/Math.max(1,ch.length),rt:rt/Math.max(1,ch.length),vrai:tf.filter(e=>e.a===true).length/Math.max(1,tf.length)};}))`));
+biais.forEach(b=>{
+  if(b.lg>0.34)ko(b.c+" : bonne réponse la plus longue dans "+Math.round(100*b.lg)+" % des questions");
+  if(b.rt>=1.12)ko(b.c+" : ratio de longueur "+b.rt.toFixed(2));
+  if(b.vrai<0.35||b.vrai>0.65)ko(b.c+" : vrai/faux déséquilibré ("+Math.round(100*b.vrai)+" % de vrai)");
+});
+const avance=E(`(()=>{let bad=0;for(const c of COURSES){const us=courseUnits(c.id);
+ us.forEach((u,ui)=>{for(let li=0;li<lessonsIn(u.id);li++){buildLesson(u.id,li,"normal").queue.forEach(e=>{
+  if(e.u===u.id){ if(unitExos(u.id).indexOf(e)>=(li+1)*4)bad++; } else if(us.findIndex(x=>x.id===e.u)>=ui)bad++; });}});}return bad;})()`);
+console.log("biais max :",Math.round(100*Math.max(...biais.map(b=>b.lg))),"% | questions en avance :",avance);
+if(avance)ko(avance+" questions portent sur une leçon pas encore faite");
 /* le contenu n a pas bouge */
 console.log("cours :",E("COURSES.length"),"| unités :",E("UNITS.length"),"| exercices :",E("EXOS.length"));
 

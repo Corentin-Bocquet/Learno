@@ -87,6 +87,11 @@ On retient ce qu'on a vécu. Chaque guide doit contenir :
   moyen de longueur inférieur à 1,12. Le test `tests/tpatri.js` le contrôle ; le reproduire pour chaque
   nouveau cours.
 - Chaque exercice a une explication `w` qui rappelle la règle et, si possible, le moyen mnémotechnique.
+- Vrai ou faux équilibré : entre 35 % et 65 % d'affirmations vraies par cours (demande du 24/09/2026).
+  Le test `tests/tarcade.js` contrôle ce point et le biais de longueur sur tous les cours.
+- Une leçon ne pose jamais de question sur une leçon pas encore faite (enveloppe `lessonGate` de `arcade.js`) :
+  les rappels viennent des leçons précédentes du module ou des modules précédents, jamais de plus loin.
+  Les jeux (Éclair, Vrai ou faux, Frise, Boss, Duel) ne piochent que dans ce qui a déjà été étudié.
 
 ## Design Arcade (choix de Corentin, 24/09/2026)
 
