@@ -112,6 +112,11 @@ On retient ce qu'on a vécu. Chaque guide doit contenir :
   colorée. Toute nouvelle icône suit ce style ; pas d'emoji ni d'icône plate dans l'interface Arcade.
 - Catégories de cours : l'utilisateur peut les renommer, en ajouter, supprimer une catégorie vide et glisser
   un cours d'une catégorie à l'autre (Mes cours, Organiser). Les réglages vivent dans `S.cats`.
+- Icônes de cours : une icône verre liquide dessinée pour chaque cours (`CB` dans `arcade.js`), jamais l'icône « page »
+  par défaut. Tout nouveau cours reçoit la sienne (le test Arcade le vérifie). Catégories : `CATG`.
+- Divisions de ligue : trophées en métal coloré (`trophySVG`), plus ornés à chaque palier.
+- Coffres : chaque ouverture joue une animation (`arcChestFX`) aux couleurs du coffre (matin, soir, légendaire, quête).
+- Série : l'affichage retombe à 0 après un vrai jour manqué ; un jour sauvé par un gel est noté (`S.gelDays`) et montré.
 - Le masque de lancement (`DESIGN:ARCADE:TETE`, injecté dans `<head>` par `tools/design.py`) cache
   l'ancien design tant que la couche Arcade n'est pas installée.
 

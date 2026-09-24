@@ -20362,6 +20362,82 @@ body.arcade .gwrap .ghero{border-radius:22px}
 .arc-ghost{position:fixed;z-index:var(--z-toast,600);pointer-events:none;transform:rotate(-2deg) scale(1.03);box-shadow:0 14px 34px rgba(0,0,0,.5);opacity:.95}
 .arc-catedit{display:flex;gap:8px;margin-top:4px}
 .arc-catedit input{flex:1;min-width:0;min-height:46px;border-radius:14px;border:2px solid var(--line);background:var(--bg2);color:var(--txt);padding:0 12px;font-size:16px}
+
+/* =====================================================================
+   QUATRIEME PASSE (24/09/2026) : icones de cours, trophees, coffres,
+   avatar rond, espace sous les jeux, serie juste.
+   ===================================================================== */
+/* avatar du profil : un vrai rond, la tete entiere */
+body.arcade .pbanner .avbig{flex:none!important;width:92px!important;height:92px!important;min-width:92px;border-radius:50%;overflow:hidden;
+  box-shadow:0 0 0 4px rgba(255,255,255,.35),0 8px 18px rgba(0,0,0,.25)}
+body.arcade .pbanner .avbig svg,body.arcade .pbanner .avbig img{width:92px!important;height:92px!important;max-width:none!important;display:block;object-fit:cover}
+.arc-avbtn svg{max-width:none!important}
+/* reviser : de l air entre les jeux et la pratique personnalisee */
+#reviewbody .arc-games{margin-bottom:24px}
+/* serie : jour sauve par un gel */
+.arc-week .d.gel .o{border-color:#7FD8FF;background:rgba(127,216,255,.14);box-shadow:0 0 10px rgba(127,216,255,.3)}
+.arc-streak .gl{display:inline-flex;align-items:center;gap:5px;color:#9FE3FF;font-size:12.5px;margin-top:4px}
+/* trophees des divisions */
+.arc-cups .cup .arc-trophy{filter:drop-shadow(0 6px 10px rgba(0,0,0,.35))}
+.arc-cups .cup:not(.on) .arc-trophy{filter:grayscale(1) brightness(.7)}
+.arc-cups .cup.cur .arc-trophy{animation:arctro 3s ease-in-out infinite}
+@keyframes arctro{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+
+/* ---------- ouverture de coffre ---------- */
+.arc-fx{position:fixed;inset:0;z-index:700;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;overflow:hidden;
+  padding:calc(20px + env(safe-area-inset-top)) 20px calc(20px + env(safe-area-inset-bottom));animation:fxin .3s ease both;cursor:pointer}
+.arc-fx.out{animation:fxout .26s ease both}
+@keyframes fxin{from{opacity:0}to{opacity:1}} @keyframes fxout{to{opacity:0;transform:scale(1.04)}}
+.arc-fx .bgl{position:absolute;inset:0;background:radial-gradient(circle at 50% 42%,color-mix(in srgb,var(--a) 38%,var(--bg)) 0%,var(--bg) 58%,#05050F 100%)}
+.arc-fx .stars b{position:absolute;width:3px;height:3px;border-radius:50%;background:#fff;box-shadow:0 0 6px #fff;animation:twk 2s ease-in-out infinite}
+@keyframes twk{0%,100%{opacity:.2}50%{opacity:1}}
+.arc-fx .stage{position:relative;width:300px;height:300px;display:flex;align-items:center;justify-content:center;flex:none}
+.arc-fx .rays{position:absolute;inset:-60px;border-radius:50%;opacity:0;transform:scale(.4);
+  background:repeating-conic-gradient(from 0deg,color-mix(in srgb,var(--a) 70%,transparent) 0 8deg,transparent 8deg 22deg);
+  -webkit-mask:radial-gradient(circle,#000 20%,transparent 68%);mask:radial-gradient(circle,#000 20%,transparent 68%);transition:opacity .4s,transform .6s cubic-bezier(.2,1.3,.4,1)}
+.arc-fx.open .rays{opacity:.85;transform:scale(1);animation:fxspin 9s linear infinite}
+@keyframes fxspin{to{transform:rotate(360deg)}}
+.arc-fx .halo{position:absolute;width:200px;height:200px;border-radius:50%;background:radial-gradient(circle,var(--a),transparent 65%);opacity:.35;animation:fxglow 1.6s ease-in forwards}
+@keyframes fxglow{0%{opacity:.15;transform:scale(.7)}100%{opacity:.8;transform:scale(1.15)}}
+.arc-fx.open .halo{animation:none;opacity:.9;transform:scale(1.35);transition:transform .5s}
+.arc-fx .box{position:relative;width:170px;height:170px;animation:fxdrop .6s cubic-bezier(.3,1.5,.5,1) both,fxshake 1.05s .6s ease-in both}
+.arc-fx .box img{position:absolute;inset:0;filter:drop-shadow(0 18px 24px rgba(0,0,0,.55))}
+.arc-fx .box .opened{opacity:0;transform:scale(.6)}
+.arc-fx.open .box{animation:fxpop .55s cubic-bezier(.2,1.6,.4,1) both}
+.arc-fx.open .box .closed{opacity:0}
+.arc-fx.open .box .opened{opacity:1;transform:scale(1);transition:transform .45s cubic-bezier(.2,1.6,.4,1)}
+@keyframes fxdrop{0%{transform:translateY(-420px) scale(.8)}70%{transform:translateY(10px) scale(1.04,.94)}100%{transform:translateY(0) scale(1)}}
+@keyframes fxshake{0%,100%{transform:rotate(0)}10%{transform:rotate(-3deg)}20%{transform:rotate(3deg)}35%{transform:rotate(-6deg) scale(1.03)}
+  50%{transform:rotate(6deg) scale(1.05)}65%{transform:rotate(-9deg) scale(1.07)}80%{transform:rotate(10deg) scale(1.1)}92%{transform:rotate(-4deg) scale(1.14,.9)}}
+@keyframes fxpop{0%{transform:scale(1.15,.85)}40%{transform:scale(.9,1.12) translateY(-16px)}100%{transform:scale(1) translateY(0)}}
+.arc-fx .flash{position:absolute;inset:-200px;background:radial-gradient(circle,#fff 0%,transparent 55%);opacity:0;pointer-events:none}
+.arc-fx.open .flash{animation:fxflash .6s ease-out}
+@keyframes fxflash{0%{opacity:1}100%{opacity:0}}
+.arc-fx .parts{position:absolute;left:50%;top:50%;width:0;height:0}
+.arc-fx .parts i{position:absolute;left:-7px;top:-7px;width:14px;height:14px;opacity:0;display:flex;align-items:center;justify-content:center}
+.arc-fx .parts i.s{border-radius:50%;background:radial-gradient(circle,#fff,var(--b) 60%,transparent 70%);box-shadow:0 0 12px var(--a)}
+.arc-fx.open .parts i{animation:fxburst 1.25s var(--d) cubic-bezier(.15,.8,.3,1) forwards}
+@keyframes fxburst{0%{opacity:1;transform:translate(0,0) scale(.4) rotate(0)}70%{opacity:1}
+  100%{opacity:0;transform:translate(var(--x),calc(var(--y) + 90px)) scale(1.1) rotate(var(--r))}}
+.arc-fx .card{position:relative;opacity:0;transform:translateY(30px);text-align:center;width:100%;max-width:340px;
+  background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05));border:1px solid rgba(255,255,255,.28);border-radius:26px;padding:16px 18px 18px;
+  -webkit-backdrop-filter:blur(18px);backdrop-filter:blur(18px);box-shadow:0 20px 40px rgba(0,0,0,.4);transition:opacity .4s,transform .5s cubic-bezier(.2,1.3,.4,1);pointer-events:none}
+.arc-fx.done .card{opacity:1;transform:translateY(0);pointer-events:auto}
+.arc-fx .card .k{font-size:12px;letter-spacing:1.4px;text-transform:uppercase;color:color-mix(in srgb,var(--a) 70%,#fff);font-weight:900}
+.arc-fx .card .ttl{font-family:var(--arc-font);font-size:28px;font-weight:800;color:#fff;margin:2px 0 10px;line-height:1.1}
+.arc-fx .card .rw{display:flex;align-items:center;justify-content:center;gap:8px;font-size:17px;font-weight:900;color:#fff;margin:6px 0}
+.arc-fx .card .rw b{font-family:var(--arc-font);font-size:24px;color:#7FE0FF}
+.arc-fx .card .btn{margin-top:12px}
+.arc-fx .skip{position:absolute;bottom:calc(18px + env(safe-area-inset-bottom));font-size:12px;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.45)}
+.arc-fx.done .skip{display:none}
+.arc-fx.fast .box,.arc-fx.fast .halo{animation:none}
+.arc-fx .card .ttl{white-space:normal;overflow:visible;text-overflow:clip}
+.arc-fx .beam{position:absolute;left:50%;bottom:50%;width:120px;height:0;transform:translateX(-50%);border-radius:60px 60px 0 0;
+  background:linear-gradient(0deg,color-mix(in srgb,var(--b) 80%,#fff),transparent);filter:blur(6px);opacity:0;transition:height .5s cubic-bezier(.2,1.2,.4,1),opacity .3s}
+.arc-fx.open .beam{height:260px;opacity:.75}
+.arc-fx.open .box .opened{filter:drop-shadow(0 0 22px var(--a)) drop-shadow(0 18px 24px rgba(0,0,0,.55)) brightness(1.12)}
+.arc-acc .btn{height:auto;min-height:52px;line-height:1.25;white-space:normal}
+.cattile .ci,.cathead .ci,.courseline .cf{overflow:visible}
 </style>
 <script>
 /* =====================================================================
@@ -20417,7 +20493,8 @@ body.arcade .gwrap .ghero{border-radius:22px}
   };
   function arcIcons(){
     if(typeof ICONS==="object"&&ICONS&&!ICONS.lecon)ICONS.lecon='<path d="M11.2 6.3C9.5 4.9 7 4.2 4.3 4.2c-.7 0-1.3.6-1.3 1.3v11.9c0 .7.6 1.3 1.3 1.3 2.6 0 4.9.7 6.9 2.1zM12.8 6.3c1.7-1.4 4.2-2.1 6.9-2.1.7 0 1.3.6 1.3 1.3v11.9c0 .7-.6 1.3-1.3 1.3-2.6 0-4.9.7-6.9 2.1z"/>';
-    if(!document.getElementById("arc-defs"))document.body.insertAdjacentHTML("afterbegin",DEFS);
+    if(!document.getElementById("arc-defs")){ document.body.insertAdjacentHTML("afterbegin",DEFS);
+      document.querySelector("#arc-defs defs").insertAdjacentHTML("beforeend",trophyDefs()+`<linearGradient id="arcTile" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff" stop-opacity=".34"/><stop offset=".5" stop-color="#fff" stop-opacity=".04"/><stop offset="1" stop-color="#000" stop-opacity=".2"/></linearGradient>`); }
     const __ico=ico;
     window.ico=function(n,s,c){ return MINE[n]?MINE[n](s,c):__ico.apply(null,arguments); };
   }
@@ -20436,11 +20513,11 @@ body.arcade .gwrap .ghero{border-radius:22px}
     boutique:`<path d="M6.6 3.5h10.8L21.5 9 12 21 2.5 9z" ${W}/><path d="M2.8 9h18.4M8.4 9 12 20.4 15.6 9M6.6 3.5 8.4 9 12 3.5 15.6 9l1.8-5.5" ${DS} stroke-width="1.2"/>`,
     plus:`<rect x="3" y="3" width="7.8" height="7.8" rx="2.4" ${W}/><rect x="13.2" y="3" width="7.8" height="7.8" rx="3.9" ${W} opacity=".55"/><rect x="3" y="13.2" width="7.8" height="7.8" rx="2.4" ${W} opacity=".55"/><rect x="13.2" y="13.2" width="7.8" height="7.8" rx="2.4" ${W}/>`,
     eclair:`<path d="M13.6 1.8 4.6 13.6h6.2L9.6 22.2l9.8-12.3h-6.3z" ${W}/><path d="M13.6 1.8 11 9.9" stroke="#fff" stroke-opacity=".7" stroke-width="1" fill="none"/>`,
-    rappels:`<circle cx="12.5" cy="12.8" r="8.6" ${W}/><path d="M12.5 8v5.2l3.3 2" ${DS}/><path d="M1.8 7.6 3.6 3.3l3.6 2.7" ${WS} stroke-width="1.9"/>`,
+    rappels:`<circle cx="12" cy="12" r="9.6" ${W}/><path d="M16.3 12a4.3 4.3 0 1 1-1.3-3.1" ${DS} stroke-width="2"/><path d="M15.6 5.9v3.3h-3.3" ${DS} stroke-width="2"/><circle cx="12" cy="12" r="1.3" ${D}/>`,
     boss:`<path d="M5.4 6 2.6 1.6l5 2.5M18.6 6l2.8-4.4-5 2.5" ${W}/><path d="M12 3.2 19.6 6v5.8c0 4.8-3.3 8.5-7.6 9.9-4.3-1.4-7.6-5.1-7.6-9.9V6z" ${W}/><path d="m7.8 10.6 3 1.3M16.2 10.6l-3 1.3M9.2 16.3c1.8-1.1 3.8-1.1 5.6 0" ${DS}/>`,
     examen:`<path d="M6.4 2.4h8.3L19.6 7.3V13a6 6 0 0 0-7.4 8.6H6.4a1.9 1.9 0 0 1-1.9-1.9V4.3a1.9 1.9 0 0 1 1.9-1.9z" ${W}/><path d="M8 8h5.2M8 11.5h6" ${DS}/><circle cx="17.3" cy="17.6" r="4.6" ${W}/><path d="M17.3 15.3v2.4l1.6 1" ${DS} stroke-width="1.5"/>`,
     vf:`<circle cx="15.4" cy="12" r="6.8" ${W} opacity=".55"/><circle cx="8.6" cy="12" r="6.8" ${W}/><path d="m5.7 12.1 2 2 3.8-4.2" ${DS} stroke-width="2"/><path d="m17.4 10-1.7 1.7m0-1.7 1.7 1.7" stroke="#1C1C48" stroke-opacity=".5" stroke-width="1.6" stroke-linecap="round"/>`,
-    frise:`<path d="M4 16.5h16" ${WS} opacity=".6"/><circle cx="5" cy="16.5" r="2.8" ${W}/><circle cx="12" cy="16.5" r="2.8" ${W}/><circle cx="19" cy="16.5" r="2.8" ${W}/><path d="M12 13.7V4.6" ${WS}/><path d="M12.8 3.4 18.6 6l-5.8 2.6z" ${W}/>`,
+    frise:`<rect x="2.6" y="14" width="5.4" height="7.6" rx="1.8" ${W} opacity=".55"/><rect x="9.3" y="10.2" width="5.4" height="11.4" rx="1.8" ${W} opacity=".78"/><rect x="16" y="6.2" width="5.4" height="15.4" rx="1.8" ${W}/><path d="M5.3 17.8h0M12 15.9h0M18.7 13.9h0" ${DS} stroke-width="2.4"/><path d="M3.4 9.6C6 5.4 10 3.2 14.6 3.2" ${WS} stroke-width="1.9"/><path d="m12.8 1.4 2.3 1.8-2 2.1" ${WS} stroke-width="1.9"/>`,
     duel:`<path d="m4 3.6 11.2 11.2M20 3.6 8.8 14.8" ${WS} stroke-width="2.6"/><path d="m12.6 17.4 4.6-4.6M11.4 17.4l-4.6-4.6" ${WS}/><circle cx="18.6" cy="18.6" r="2.3" ${W}/><circle cx="5.4" cy="18.6" r="2.3" ${W}/>`,
     defis:`<path d="M5.5 2.5v19" ${WS}/><path d="M6.2 3.6h12.3l-2.6 4.3 2.6 4.3H6.2z" ${W}/><path d="m10.6 6.2.6 1.2 1.3.2-1 .9.3 1.3-1.2-.6-1.2.6.3-1.3-1-.9 1.3-.2z" ${D}/>`,
     profil:`<circle cx="12" cy="7.8" r="4.4" ${W}/><path d="M3.6 21a8.4 8.4 0 0 1 16.8 0z" ${W}/>`,
@@ -20512,7 +20589,8 @@ body.arcade .gwrap .ghero{border-radius:22px}
     const d=new Date(), dow=(d.getDay()+6)%7, L7=["L","M","M","J","V","S","D"]; let h="";
     for(let i=0;i<7;i++){ const x=new Date(d); x.setDate(d.getDate()-(dow-i)); const k=fmtDay(x);
       const on=((S.hist||{})[k]||0)>0 || (i===dow&&S.lastDay===today());
-      h+=`<div class="d ${on?"on":""} ${i===dow?"now":""}"><span>${L7[i]}</span><span class="o">${ico("flame",on?20:18,on?undefined:"var(--line)")}</span></div>`; }
+      const gel=!on&&gelDays().includes(k);
+      h+=`<div class="d ${on?"on":""} ${gel?"gel":""} ${i===dow?"now":""}"><span>${L7[i]}</span><span class="o" ${gel?'title="Jour sauvé par un gel de série"':""}>${gel?aimg("gel",24):ico("flame",on?20:18,on?undefined:"var(--line)")}</span></div>`; }
     return h;
   }
   function chestRow(){
@@ -20547,7 +20625,7 @@ body.arcade .gwrap .ghero{border-radius:22px}
     const cid=S.active, due=dueItems(cid,999).length, calib=typeof needsCalib==="function"&&needsCalib(cid);
     return `<div class="arc-card arc-streak"><div class="top">${ico("flame",46,"var(--orange)")}
         <div><div class="n arc-h">${S.streak} jour${S.streak>1?"s":""}</div>
-        <div class="s">${S.lastDay===today()?"Série tenue aujourd'hui. Bravo.":"Fais une leçon pour tenir ta série"}</div></div></div>
+        <div class="s">${S.lastDay===today()?"Série tenue aujourd'hui. Bravo.":S.streak?"Fais une leçon pour tenir ta série":"Fais une leçon pour lancer ta série"}${S.streak&&gelDays().some(x=>dayDiff(x,today())<=S.streak)?`<br><span class="gl">${aimg("gel",16)} Un gel a sauvé un jour de ta série</span>`:""}</div></div></div>
         <div class="arc-week">${weekHTML()}</div></div>
       ${calib?"":resumeCard()}
       ${chestRow()}
@@ -20857,7 +20935,8 @@ body.arcade .gwrap .ghero{border-radius:22px}
     if(ok){ G.hp=Math.max(0,G.hp-20); sfx("correct"); buzz(20); } else { G.hearts--; sfx("wrong"); buzz([30,40,30]); } bossPaint(); };
   window.arcBossNext=function(){
     if(G.hp<=0){ const xp=award(30,30); endScreen({img:"legendaire",title:"Boss vaincu !",sub:"Le Diable du "+G.u.n+" est à terre. Le coffre légendaire est à toi.",
-      stats:[["+"+xp,"XP","var(--gold)"],["+30","gemmes","var(--blue)"],[G.hearts+" / 3","coeurs","var(--red)"]]}); return; }
+      stats:[["+"+xp,"XP","var(--gold)"],["+30","gemmes","var(--blue)"],[G.hearts+" / 3","coeurs","var(--red)"]]});
+      arcChestFX("legendaire",{title:"Coffre légendaire !",lines:[gemLine(30),`${ico("xp",22)} <b data-n="${xp}">+${xp}</b> XP`]}); return; }
     if(G.hearts<=0||G.i+1>=G.q.length){ const xp=award(5,0); endScreen({win:false,masc:masc("fier","","width:130px;height:130px","diable"),title:"Le Diable a gagné",
       sub:"Relis la leçon du module et reviens le défier. Tes erreurs sont déjà dans tes rappels.",stats:[["+"+xp,"XP","var(--gold)"],[G.hp+" PV","restants","var(--orange)"]]}); return; }
     G.i++; G.picked=null; G.opt=null; bossPaint(); };
@@ -21062,7 +21141,7 @@ body.arcade .gwrap .ghero{border-radius:22px}
     const box=k=>{ const l=catCourses(k.id), n=l.length, fixe=k.id==="autre";
       const hd=EDIT===k.id?`<div class="arc-catedit"><input id="arc-catin" type="text" maxlength="40" value="${esc(k.nm)}" aria-label="Nom de la catégorie"
           onkeydown="if(event.key==='Enter')arcCatSave('${k.id}')"><button class="btn sm" type="button" onclick="arcCatSave('${k.id}')">OK</button></div>`
-        :`<div class="hd"><span class="ci" style="background:var(${k.col})">${k.icon}</span><span class="nm">${esc(k.nm)}</span><span class="ct">${n} cours</span>
+        :`<div class="hd"><span class="ci">${catIcon(k,36)}</span><span class="nm">${esc(k.nm)}</span><span class="ct">${n} cours</span>
           ${fixe?"":`<button type="button" onclick="arcCatRen('${k.id}')" aria-label="Renommer ${esc(k.nm)}">${ico("pencil",18)}</button>
           <button type="button" ${n?"disabled":""} onclick="arcCatDel('${k.id}')" aria-label="Supprimer ${esc(k.nm)}">${ico("trash",18)}</button>`}</div>`;
       return `<div class="arc-catbox" data-cat="${k.id}">${hd}<div class="arc-chips">${n?l.map(c=>`<div class="arc-cchip" data-cid="${c.id}">
@@ -21095,7 +21174,7 @@ body.arcade .gwrap .ghero{border-radius:22px}
     const c=COURSES.find(x=>x.id===cid); if(!c)return;
     openModal(`<h2 class="arc-h" style="margin:0 0 4px;text-align:left">Déplacer</h2><p class="muted" style="text-align:left;margin:0 0 12px">${esc(c.name)}</p>
       <div style="display:flex;flex-direction:column;gap:8px">${CATS.map(k=>`<button class="arc-crow ${k.id===c.cat?"on":""}" type="button" onclick="closeModal();arcCatTo('${cid}','${k.id}')">
-        <span class="ci" style="width:36px;height:36px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:var(${k.col})">${k.icon}</span>
+        ${catIcon(k,36)}
         <span class="i"><b>${esc(k.nm)}</b></span></button>`).join("")}</div>
       <div style="height:10px"></div><button class="btn ghost" onclick="closeModal()">Annuler</button>`);
   };
@@ -21125,6 +21204,146 @@ body.arcade .gwrap .ghero{border-radius:22px}
     });
   }
 
+  /* ---------------- 7 septies. ICONES DE COURS EN VERRE ----------------
+     Une icone par cours, dessinee pour son sujet (plus de « page » par
+     defaut). Tuile de la couleur du cours, reflet de verre, glyphe clair. */
+  const W6='fill="url(#arcGw)"', D6='fill="#1C1C48" fill-opacity=".62"', DS6='stroke="#1C1C48" stroke-opacity=".62" stroke-linecap="round" stroke-linejoin="round" fill="none"';
+  const WS6='stroke="url(#arcGw)" stroke-linecap="round" stroke-linejoin="round" fill="none"';
+  const CB={
+    MRC:`<rect x="12" y="34" width="8" height="16" rx="2.5" ${W6} opacity=".6"/><rect x="24" y="26" width="8" height="24" rx="2.5" ${W6} opacity=".8"/><rect x="36" y="16" width="8" height="34" rx="2.5" ${W6}/><path d="M12 16l12 9 8-5 14 14" ${WS6} stroke-width="4"/><path d="M47 26v9h-9" ${WS6} stroke-width="4"/>`,
+    BANQUE:`<path d="M32 9 53 20v3H11v-3z" ${W6}/><rect x="15" y="26" width="6" height="18" rx="2" ${W6}/><rect x="29" y="26" width="6" height="18" rx="2" ${W6}/><rect x="43" y="26" width="6" height="18" rx="2" ${W6}/><rect x="10" y="46" width="44" height="7" rx="3" ${W6}/><circle cx="32" cy="16.5" r="2.6" ${D6}/>`,
+    PATRI:`<path d="M10 30 32 12l22 18" ${WS6} stroke-width="5"/><path d="M16 28 32 15l16 13v21a3 3 0 0 1-3 3H19a3 3 0 0 1-3-3z" ${W6}/><circle cx="32" cy="33" r="5.5" ${D6}/><path d="M32 38v8M32 42h4" ${DS6} stroke-width="3.2"/>`,
+    NEGO:`<path d="M8 16a6 6 0 0 1 6-6h20a6 6 0 0 1 6 6v10a6 6 0 0 1-6 6H20l-8 7v-7.6A6 6 0 0 1 8 26z" ${W6} opacity=".62"/><path d="M24 30a6 6 0 0 1 6-6h20a6 6 0 0 1 6 6v10a6 6 0 0 1-6 6h-2v8l-9-8h-9a6 6 0 0 1-6-6z" ${W6}/><path d="M32 35h14M32 40h9" ${DS6} stroke-width="3"/>`,
+    NON:`<path d="M10 18a8 8 0 0 1 8-8h28a8 8 0 0 1 8 8v18a8 8 0 0 1-8 8H30l-10 9v-9h-2a8 8 0 0 1-8-8z" ${W6}/><text x="32" y="33" text-anchor="middle" font-family="Baloo 2,Nunito,system-ui,sans-serif" font-weight="800" font-size="16" fill="#1C1C48" fill-opacity=".75">NON</text>`,
+    NUTRI:`<path d="M32 22c-4-5-15-5-18 4-3 9 2 22 9 25 3 1 6 0 9-1 3 1 6 2 9 1 7-3 12-16 9-25-3-9-14-9-18-4z" ${W6}/><path d="M32 22c0-6 2-10 6-12" ${WS6} stroke-width="3.4"/><path d="M36 14c4-5 11-5 14-2-3 5-10 6-14 2z" ${W6} opacity=".85"/><path d="M20 30c-1 4 0 8 2 11" ${DS6} stroke-width="2.6" opacity=".5"/>`,
+    SPINO:`<circle cx="32" cy="32" r="21" ${W6} opacity=".35"/><circle cx="32" cy="32" r="15" ${W6}/><path d="M32 17 36 32 32 47 28 32z" ${D6}/><path d="M32 17 36 32h-8z" fill="#FF6B6B"/><path d="M32 6v5M32 53v5M6 32h5M53 32h5M13.6 13.6l3.5 3.5M46.9 46.9l3.5 3.5M13.6 50.4l3.5-3.5M46.9 17.1l3.5-3.5" ${WS6} stroke-width="3.4"/>`,
+    MMA:`<path d="M24 8h16l12 12v16L40 48H24L12 36V20z" ${W6} opacity=".3"/><path d="M24 8h16l12 12v16L40 48H24L12 36V20z" ${WS6} stroke-width="4"/><path d="M18 14l28 28M46 14 18 42M12 28h40M32 8v40" ${WS6} stroke-width="1.6" opacity=".7"/><path d="M14 56h36" ${WS6} stroke-width="4" opacity=".8"/><path d="M20 48v8M44 48v8" ${WS6} stroke-width="3.4"/>`,
+    TENNIS:`<circle cx="36" cy="30" r="17" ${W6}/><path d="M21.5 22c7 3 9 13 4 22M50.5 38c-7-3-9-13-4-22" ${DS6} stroke-width="3"/><path d="M8 56l14-14" ${WS6} stroke-width="6"/><circle cx="12" cy="18" r="5" fill="#E7FF6B"/>`,
+    STYLE:`<path d="M22 12 32 21l10-9 11 6-6 32H17l-6-32z" ${W6}/><path d="M32 21l-5 5 5 21 5-21z" ${D6}/><path d="M22 12l10 9-6 6-7-9zM42 12l-10 9 6 6 7-9z" ${W6} opacity=".75"/>`,
+    HUMOUR:`<rect x="24" y="8" width="16" height="26" rx="8" ${W6}/><path d="M28 16h8M28 21h8M28 26h8" ${DS6} stroke-width="2.2"/><path d="M17 28a15 15 0 0 0 30 0" ${WS6} stroke-width="4"/><path d="M32 43v9M22 55h20" ${WS6} stroke-width="4.4"/>`,
+    POKER:`<rect x="10" y="16" width="24" height="34" rx="5" ${W6} opacity=".62" transform="rotate(-14 22 33)"/><rect x="27" y="11" width="26" height="36" rx="5" ${W6}/><path d="M40 18c4 4 8 7 8 11a4 4 0 0 1-7 2.6l1.4 5.4h-4.8l1.4-5.4A4 4 0 0 1 32 29c0-4 4-7 8-11z" ${D6}/>`,
+    DAMES:`<ellipse cx="32" cy="44" rx="20" ry="9" ${D6}/><ellipse cx="32" cy="40" rx="20" ry="9" ${W6}/><ellipse cx="32" cy="30" rx="20" ry="9" ${W6} opacity=".7"/><ellipse cx="32" cy="25" rx="20" ry="9" ${W6}/><ellipse cx="32" cy="25" rx="11" ry="4.6" ${DS6} stroke-width="2.4"/><path d="m32 20.8 1.4 2.8 3.1.4-2.3 2.1.6 3.1-2.8-1.5-2.8 1.5.6-3.1-2.3-2.1 3.1-.4z" ${D6}/>`,
+    YT:`<rect x="8" y="14" width="48" height="34" rx="11" ${W6}/><path d="M27 23.5 41 31l-14 7.5z" fill="#FF3B3B"/><path d="M14 56h36" ${WS6} stroke-width="4" opacity=".6"/>`,
+    RISK:`<path d="M32 8 52 15v15c0 13-9 21-20 25-11-4-20-12-20-25V15z" ${W6}/><path d="M22 31l7 7 13-14" ${DS6} stroke-width="5.4"/>`,
+    NIETZ:`<rect x="13" y="12" width="28" height="15" rx="4" ${W6} transform="rotate(-32 27 19.5)"/><path d="M28 26 48 52" ${WS6} stroke-width="7"/><path d="M14 18l6 10" ${DS6} stroke-width="2.4" transform="rotate(-32 27 19.5)"/>`,
+    CUISINE:`<path d="M18 30a9 9 0 0 1 4-17 11 11 0 0 1 20 0 9 9 0 0 1 4 17v10H18z" ${W6}/><rect x="18" y="42" width="28" height="10" rx="3" ${W6} opacity=".8"/><path d="M26 30v8M32 28v10M38 30v8" ${DS6} stroke-width="2.6"/>`
+  };
+  const CATG={ecole:`<path d="M6 24 32 12l26 12-26 12z" ${W6}/><path d="M16 30v12c5 5 27 5 32 0V30L32 38z" ${W6} opacity=".8"/><path d="M54 25v14" ${WS6} stroke-width="3"/><circle cx="54" cy="42" r="3.4" ${W6}/>`,
+    jeux:`<rect x="8" y="20" width="48" height="26" rx="13" ${W6}/><path d="M20 28v10M15 33h10" ${DS6} stroke-width="3.4"/><circle cx="42" cy="30" r="3" ${D6}/><circle cx="48" cy="36" r="3" ${D6}/>`,
+    sport:`<circle cx="32" cy="32" r="21" ${W6}/><path d="M32 11v42M11 32h42M17 17c9 7 9 23 0 30M47 17c-9 7-9 23 0 30" ${DS6} stroke-width="2.6"/>`};
+  Object.assign(CATG,{
+    diver:`<path d="M8 26h48v24a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4z" ${W6}/><path d="M8 18l44-9 2 9-44 9z" ${W6} opacity=".8"/><path d="m16 16.5 5 7M27 14.2l5 7M38 12l5 7" ${DS6} stroke-width="3"/><path d="M8 34h48" ${DS6} stroke-width="2.4"/>`,
+    style:CB.STYLE, livres:`<path d="M32 10a14 14 0 0 1 8 25.5V42H24v-6.5A14 14 0 0 1 32 10z" ${W6}/><rect x="25" y="45" width="14" height="5" rx="2.5" ${W6} opacity=".8"/><path d="M28 54h8" ${WS6} stroke-width="3.4"/><path d="M28 30l4-5 4 5" ${DS6} stroke-width="2.6"/>`,
+    perso:CB.SPINO, autre:`<path d="M8 20a4 4 0 0 1 4-4h14l5 5h21a4 4 0 0 1 4 4v23a4 4 0 0 1-4 4H12a4 4 0 0 1-4-4z" ${W6}/><path d="M8 28h48" ${DS6} stroke-width="2.4"/>`});
+  CATG.sport=CB.MMA; 
+  function catIcon(k,size){ const s=size||44, art=CATG[k.id]||CATG.autre;
+    return `<svg class="arc-cb" viewBox="0 0 64 64" width="${s}" height="${s}" aria-hidden="true" style="display:block;flex:none">
+      <rect x="2" y="2" width="60" height="60" rx="19" style="fill:var(${k.col||"--blue"})"/><rect x="2" y="2" width="60" height="60" rx="19" fill="url(#arcTile)"/>
+      <path d="M8 22c0-8 6-14 14-14h20c8 0 14 6 14 14-8-4-16-5-24-5s-16 1-24 5z" fill="#fff" fill-opacity=".28"/>
+      <rect x="2.8" y="2.8" width="58.4" height="58.4" rx="18.2" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.4"/>
+      <g style="filter:drop-shadow(0 1.5px 1.5px rgba(0,0,0,.28))">${art}</g></svg>`; }
+  window.arcCatIcon=catIcon;
+  function glassBadge(cid,size){
+    const c=COURSES.find(x=>x.id===cid)||{col:"--blue"}, s=size||44;
+    const art=CB[cid]||CATG[c.cat]||CATG.ecole;
+    return `<svg class="cbadge arc-cb" viewBox="0 0 64 64" width="${s}" height="${s}" role="img" aria-label="${esc(c.short||cid)}" style="display:block;flex:none">
+      <rect x="2" y="2" width="60" height="60" rx="19" style="fill:var(${c.col})"/>
+      <rect x="2" y="2" width="60" height="60" rx="19" fill="url(#arcTile)"/>
+      <path d="M8 22c0-8 6-14 14-14h20c8 0 14 6 14 14-8-4-16-5-24-5s-16 1-24 5z" fill="#fff" fill-opacity=".28"/>
+      <rect x="2.8" y="2.8" width="58.4" height="58.4" rx="18.2" fill="none" stroke="#fff" stroke-opacity=".45" stroke-width="1.4"/>
+      <g style="filter:drop-shadow(0 1.5px 1.5px rgba(0,0,0,.28))">${art}</g></svg>`;
+  }
+
+  /* ---------------- 7 octies. TROPHEES DES DIVISIONS ----------------
+     Un vrai trophee par division, en metal colore : la coupe grandit et
+     s orne a chaque palier (etoile, lauriers, gemme, ailes, couronne). */
+  const METAL=[["#F7C08F","#CD7F32","#6E3C12"],["#FFFFFF","#C7CCD6","#6F7787"],["#FFF3A6","#FFC800","#A06C00"],
+    ["#C4F0FF","#1CB0F6","#0A5580"],["#FFC2C2","#FF4B4B","#8E1626"],["#F5E3FF","#CE82FF","#5E2399"]];
+  const trophyDefs=()=>METAL.map((m,i)=>`<linearGradient id="arcL${i}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="${m[0]}"/><stop offset=".45" stop-color="${m[1]}"/><stop offset="1" stop-color="${m[2]}"/></linearGradient>`).join("");
+  function trophySVG(i,size,lab){
+    const g=`url(#arcL${i})`, m=METAL[i]||METAL[0], s=size||48;
+    const laur=i>=2?`<g fill="${m[1]}" stroke="${m[2]}" stroke-width=".8">${[0,1,2,3].map(k=>`<ellipse cx="${13-k*1.3}" cy="${44-k*7}" rx="2.6" ry="5" transform="rotate(${-30+k*10} ${13-k*1.3} ${44-k*7})"/><ellipse cx="${51+k*1.3}" cy="${44-k*7}" rx="2.6" ry="5" transform="rotate(${30-k*10} ${51+k*1.3} ${44-k*7})"/>`).join("")}</g>`:"";
+    const wings=i>=4?`<path d="M18 22C9 20 4 13 3 6c6 3 10 3 15 8zM46 22c9-2 14-9 15-16-6 3-10 3-15 8z" fill="${g}" stroke="${m[2]}" stroke-width="1"/>`:"";
+    const crown=i>=5?`<path d="M22 8l4 5 6-8 6 8 4-5-2 9H24z" fill="#FFD84D" stroke="#A06C00" stroke-width="1"/>`:"";
+    const emb=[`<circle cx="32" cy="25" r="5" fill="${m[0]}" stroke="${m[2]}" stroke-width="1.2"/>`,
+      `<path d="m32 18.5 2 4.1 4.5.6-3.3 3.1.8 4.5-4-2.1-4 2.1.8-4.5-3.3-3.1 4.5-.6z" fill="#fff" stroke="${m[2]}" stroke-width="1"/>`,
+      `<path d="m32 17.5 2.3 4.7 5.2.7-3.8 3.6.9 5.1-4.6-2.4-4.6 2.4.9-5.1-3.8-3.6 5.2-.7z" fill="#fff" stroke="${m[2]}" stroke-width="1"/>`,
+      `<path d="M26 22.5 29 18h6l3 4.5-6 8z" fill="#E8FAFF" stroke="#0A5580" stroke-width="1.1"/><path d="M26 22.5h12M29 18l3 12.5L35 18" stroke="#0A5580" stroke-width=".8" fill="none"/>`,
+      `<path d="M32 31c-6-4-8-7-8-10a4 4 0 0 1 8-1 4 4 0 0 1 8 1c0 3-2 6-8 10z" fill="#FFE1E1" stroke="#8E1626" stroke-width="1.1"/>`,
+      `<path d="M25 22 28.5 17h7l3.5 5-7 9z" fill="#fff" stroke="#5E2399" stroke-width="1.1"/><path d="M25 22h14M28.5 17 32 31l3.5-14" stroke="#5E2399" stroke-width=".8" fill="none"/>`][i]||"";
+    return `<svg class="arc-trophy" viewBox="0 0 64 64" width="${s}" height="${s}" ${lab?`role="img" aria-label="${esc(lab)}"`:'aria-hidden="true"'}>
+      ${wings}${laur}
+      <path d="M19 15h-5a7 7 0 0 0 7 11M45 15h5a7 7 0 0 1-7 11" fill="none" stroke="${g}" stroke-width="4" stroke-linecap="round"/>
+      <path d="M18 12h28v12c0 9-6 16-14 16s-14-7-14-16z" fill="${g}" stroke="${m[2]}" stroke-width="1.2"/>
+      <path d="M22 14v9c0 4 1.5 7.5 4 10" stroke="#fff" stroke-opacity=".55" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+      <rect x="29" y="39" width="6" height="7" fill="${g}"/>
+      <path d="M21 46h22a3 3 0 0 1 3 3v8H18v-8a3 3 0 0 1 3-3z" fill="${g}" stroke="${m[2]}" stroke-width="1.2"/>
+      <rect x="24" y="50" width="16" height="3.4" rx="1.7" fill="${m[2]}" fill-opacity=".45"/>
+      ${emb}${crown}</svg>`;
+  }
+  window.arcTrophy=trophySVG;
+
+  /* ---------------- 7 nonies. OUVERTURE DES COFFRES ----------------
+     Une vraie sequence : le coffre tombe, tremble de plus en plus fort,
+     s ouvre dans un eclair, des rayons tournent, les gemmes jaillissent,
+     puis la recompense monte. Chaque coffre a son ambiance. On peut
+     toucher l ecran pour passer directement a la recompense.            */
+  const THEMES={
+    coffre:{img:"coffre",open:"ouvert",a:"#FFC800",b:"#FF8A00",bg:"#2A1E0A",nm:"Coffre"},
+    matin:{img:"matin",open:"matin",a:"#FFB347",b:"#FF6F91",bg:"#3A1A2A",nm:"Coffre du matin"},
+    soir:{img:"soir",open:"soir",a:"#8C7CFF",b:"#3FD0FF",bg:"#0E1033",nm:"Coffre du soir"},
+    legendaire:{img:"legendaire",open:"legendaire",a:"#FF6FD8",b:"#FFD84D",bg:"#2A0B2E",nm:"Coffre légendaire"},
+    quete:{img:"quete",open:"quete",a:"#3DDC97",b:"#1CB0F6",bg:"#08261E",nm:"Coffre de quête"}};
+  let FX=null;
+  window.arcChestFX=function(kind,o){
+    o=o||{}; const t=THEMES[kind]||THEMES.coffre;
+    if(FX)FX.remove();
+    const reduit=window.matchMedia&&window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const parts=Array.from({length:kind==="legendaire"?34:24},(_,k)=>{ const a=(k/(kind==="legendaire"?34:24))*Math.PI*2+Math.random()*.3,
+      d=110+Math.random()*120, gem=k%3===0; return `<i class="${gem?"g":"s"}" style="--x:${Math.round(Math.cos(a)*d)}px;--y:${Math.round(Math.sin(a)*d-40)}px;--r:${Math.round(Math.random()*540-270)}deg;--d:${(Math.random()*.25).toFixed(2)}s">${gem?ico("gem",22):""}</i>`; }).join("");
+    const rew=(o.lines||[]).map(l=>`<div class="rw">${l}</div>`).join("");
+    const d=document.createElement("div");
+    d.className="arc-fx"+(reduit?" fast":""); d.setAttribute("role","dialog"); d.setAttribute("aria-label",o.title||t.nm);
+    d.style.cssText=`--a:${t.a};--b:${t.b};--bg:${t.bg}`;
+    d.innerHTML=`<div class="bgl"></div>${kind==="soir"?`<div class="stars">${Array.from({length:26},()=>`<b style="left:${Math.random()*100}%;top:${Math.random()*70}%;animation-delay:${(Math.random()*2).toFixed(2)}s"></b>`).join("")}</div>`:""}
+      <div class="stage"><div class="rays"></div><div class="halo"></div>
+        <div class="box">${aimg(t.img,170,"closed")}${aimg(t.open,170,"opened")}</div>
+        <div class="beam"></div><div class="flash"></div><div class="parts">${parts}</div></div>
+      <div class="card"><div class="k">${esc(t.nm)}</div><div class="ttl">${esc(o.title||"Coffre ouvert !")}</div>${rew}
+        <button class="btn gold" type="button">Récupérer</button></div>
+      <div class="skip">Touche pour passer</div>`;
+    document.body.appendChild(d); FX=d;
+    sfx("click"); buzz&&buzz(15);
+    const T=[setTimeout(()=>{ buzz&&buzz(25); },900),setTimeout(()=>{ d.classList.add("open"); sfx("complete"); buzz&&buzz([40,30,60]);
+        try{ confetti(kind==="legendaire"?120:70,[t.a,t.b,"#fff"]); }catch(e){} },reduit?200:1650),
+      setTimeout(()=>{ d.classList.add("done"); count(); },reduit?400:2350)];
+    function count(){ d.querySelectorAll("[data-n]").forEach(el=>{ const n=+el.dataset.n, t0=performance.now();
+      const st=now=>{ const p=Math.min(1,(now-t0)/700); el.textContent="+"+Math.round(n*(1-Math.pow(1-p,3))); if(p<1)requestAnimationFrame(st); }; requestAnimationFrame(st); }); }
+    const close=()=>{ T.forEach(clearTimeout); d.classList.add("out"); setTimeout(()=>{ d.remove(); if(FX===d)FX=null; if(o.onDone)o.onDone(); },260); };
+    d.addEventListener("click",e=>{
+      if(e.target.closest(".btn")){ close(); return; }
+      if(!d.classList.contains("done")){ T.forEach(clearTimeout); d.classList.add("open","done"); count(); }
+    });
+  };
+  const gemLine=n=>`${ico("gem",22)} <b data-n="${n}">+${n}</b> gemmes`;
+  const QFX=[];
+  function playQ(){ const q=QFX.shift(); if(!q)return;
+    arcChestFX("quete",{title:"Quête terminée !",lines:[esc(q.t),gemLine(q.n)],onDone:()=>{ if(QFX.length)setTimeout(playQ,300); }}); }
+
+  /* ---------------- 7 decies. SERIE JUSTE ----------------
+     1. La serie affichee retombe a 0 des qu un jour est vraiment manque
+        (avant, l ancien chiffre restait affiche jusqu a la lecon suivante).
+     2. Un gel de serie qui sauve un jour manque est note et montre dans la
+        semaine (flocon), pour que « 2 jours » ne surprenne plus.          */
+  function streakFix(){
+    if(typeof S==="undefined"||!S||!S.lastDay)return;
+    const d=dayDiff(S.lastDay,today());
+    if(d>2||(d===2&&!(S.freezes>0))){ if(S.streak){ S.streak=0; save(); } }
+    Object.keys(S.courses||{}).forEach(k=>{ const c=S.courses[k]; if(!c||!c.lastDay)return;
+      const e=dayDiff(c.lastDay,today()); if((e>2||(e===2&&!(S.freezes>0)))&&c.streak)c.streak=0; });
+  }
+  const gelDays=()=>{ if(!Array.isArray(S.gelDays))S.gelDays=[]; return S.gelDays; };
+
   /* ---------------- 8. BRANCHEMENTS ---------------- */
   function boot(){
     document.body.classList.add("arcade");
@@ -21147,7 +21366,11 @@ body.arcade .gwrap .ghero{border-radius:22px}
       applyCats(); if(ORG){ orgPaint(); return; }
       __rc.apply(null,arguments);
       const b=document.getElementById("coursesbody");
-      if(b)b.insertAdjacentHTML("afterbegin",`<button class="btn ghost" type="button" style="margin:4px 0 6px" onclick="arcOrg(true)">${ico("pencil",16)} Organiser mes catégories</button>`);
+      if(b){ b.insertAdjacentHTML("afterbegin",`<button class="btn ghost" type="button" style="margin:4px 0 6px" onclick="arcOrg(true)">${ico("pencil",16)} Organiser mes catégories</button>`);
+        b.querySelectorAll(".cattile").forEach(t=>{ const m=/openCat\('([^']*)'\)/.exec(t.getAttribute("onclick")||""), k=m&&allCats().find(x=>x.id===m[1]), ci=t.querySelector(".ci");
+          if(k&&ci){ ci.style.background="none"; ci.innerHTML=catIcon(k,44); } });
+        const hd=b.querySelector(".cathead .ci"), ko=allCats().find(x=>x.id===S.catOpen); if(hd&&ko){ hd.style.background="none"; hd.innerHTML=catIcon(ko,40); }
+        b.querySelectorAll(".courseline").forEach(r=>{ const m=/setCourse\('([^']+)'\)/.exec(r.innerHTML), cf=r.querySelector(".cf"); if(m&&cf){ cf.style.background="none"; cf.innerHTML=glassBadge(m[1],40); } }); }
     }; }
     if(typeof renderNav==="function"){ const __rn=renderNav; window.renderNav=function(){ __rn.apply(null,arguments); arcNav(); }; }
     window.moreTabs=arcMoreTabs;
@@ -21162,7 +21385,7 @@ body.arcade .gwrap .ghero{border-radius:22px}
     const __og=openGuide;
     window.openGuide=function(uid){ __og.apply(null,arguments); try{ arcGuide(uid); }catch(e){ if(window.console)console.error("guide arcade",e); } };
     const __refresh=refreshTop;
-    window.refreshTop=function(){ __refresh.apply(null,arguments); arcTopFill(); };
+    window.refreshTop=function(){ try{ streakFix(); }catch(e){} __refresh.apply(null,arguments); arcTopFill(); };
 
     const __rp=renderPath;
     window.renderPath=function(){
@@ -21182,7 +21405,23 @@ body.arcade .gwrap .ghero{border-radius:22px}
       else snakeDress(b);
     };
     const __oc=openChest;
-    window.openChest=function(k){ __oc.apply(null,arguments); const d=document.querySelector("#mcard > div"); if(d)d.innerHTML=aimg("ouvert",130); };
+    window.openChest=function(k){ const g0=S.gems; __oc.apply(null,arguments); const n=S.gems-g0; closeModal();
+      arcChestFX("coffre",{title:"Coffre ouvert !",lines:[gemLine(n)],onDone:()=>{ renderPath(); refreshTop(); }}); };
+    if(typeof chestMoment==="function"){ const __cm=chestMoment; window.chestMoment=function(){ const r=__cm.apply(null,arguments);
+      if(!r)return r; const k=/matin/.test(r)?"matin":"soir";
+      setTimeout(()=>arcChestFX(k,{title:k==="matin"?"Coffre du matin ouvert !":"Coffre du soir ouvert !",
+        lines:[gemLine(15),`${aimg(k==="matin"?"potion2":"potion15",30)} Une potion ${k==="matin"?"x2":"x1,5"} offerte`]}),900);
+      return ""; }; }
+    if(typeof qprog==="function"){ const __qp=qprog; window.qprog=function(){ const avant=((S.quests||{}).list||[]).map(q=>q.done);
+      const r=__qp.apply(null,arguments);
+      ((S.quests||{}).list||[]).forEach((q,i)=>{ if(q.done&&!avant[i])QFX.push({n:q.r,t:q.n}); });
+      if(QFX.length&&!document.body.classList.contains("arc-focus"))playQ();
+      return r; }; }
+    if(typeof touchDay==="function"){ const __td=touchDay; window.touchDay=function(){ const avant=S.lastDay; const ev=__td.apply(null,arguments);
+      if(ev==="freeze"&&avant){ const p=avant.split("-").map(Number); gelDays().push(fmtDay(new Date(p[0],p[1]-1,p[2]+1))); save(); }
+      return ev; }; }
+    window.badgeSVG=glassBadge;
+    streakFix();
 
     const __rq=renderQ;
     window.renderQ=function(ex){ __rq.apply(null,arguments); if(ex&&ex.t==="num")arcPad(); };
@@ -21195,6 +21434,7 @@ body.arcade .gwrap .ghero{border-radius:22px}
       const snap=L?{t0:L.t0,ok:L.ok,wrong:L.wrong,max:L.maxCombo}:null, xp0=S.xp, st0=S.streak;
       __fin.apply(null,arguments);
       if(snap)try{ arcDone(snap,S.xp-xp0,S.streak!==st0); }catch(e){}
+      if(QFX.length)setTimeout(playQ,1400);
     };
 
     const __rl=renderLeague;
@@ -21203,9 +21443,10 @@ body.arcade .gwrap .ghero{border-radius:22px}
       const b=document.getElementById("leaguebody"); if(!b)return;
       const t=b.querySelector(".trophies");
       if(t&&!t.dataset.arc){ t.dataset.arc="1"; t.className="arc-cups";
-        t.innerHTML=LEAGUES.map((l,i)=>`<div class="cup ${i<=S.league.tier?"on":""} ${i===S.league.tier?"cur":""}" title="${esc(l.n)}">${ico("trophy",i===S.league.tier?52:40,l.c)}<i></i></div>`).join("");
+        t.innerHTML=LEAGUES.map((l,i)=>`<div class="cup ${i<=S.league.tier?"on":""} ${i===S.league.tier?"cur":""}" title="${esc(l.n)}">${trophySVG(i,i===S.league.tier?56:40,l.n)}<i></i></div>`).join("");
         const hd=t.previousElementSibling; if(hd&&hd.firstElementChild)hd.firstElementChild.remove(); if(hd)hd.parentNode.insertBefore(t,hd);
       }
+      const big=b.querySelector('div[style*="font-size:56px"]'); if(big&&!big.dataset.arc){ big.dataset.arc="1"; big.style.fontSize="0"; big.innerHTML=trophySVG(S.league.tier,88,LEAGUES[S.league.tier].n); }
       b.querySelectorAll(".zone").forEach(z=>{ if(z.dataset.arc)return; z.dataset.arc="1";
         const dn=z.classList.contains("dn"), mid=/Maintien/.test(z.textContent);
         if(!mid)z.innerHTML=ico(dn?"arrowdown":"arrowup",16)+" "+esc(z.textContent)+" "+ico(dn?"arrowdown":"arrowup",16); });
