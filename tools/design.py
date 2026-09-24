@@ -12,7 +12,7 @@ P = os.path.join(R, 'index.html')
 css = io.open(os.path.join(R, 'design/arcade/arcade.css'), encoding='utf-8').read().strip()
 js = io.open(os.path.join(R, 'design/arcade/arcade.js'), encoding='utf-8').read().strip()
 for nom, txt in (('css', css), ('js', js)):
-    assert '—' not in txt, 'tiret cadratin interdit dans ' + nom
+    assert '\u2014' not in txt, 'tiret cadratin interdit dans ' + nom
     assert not re.search('[\U0001F300-\U0001FAFF☀-➿]', txt), 'emoji litteral interdit dans ' + nom
 s = io.open(P, encoding='utf-8').read()
 s = re.sub(r'\n?<!-- DESIGN:ARCADE:DEBUT -->.*?<!-- DESIGN:ARCADE:FIN -->\n?', '\n', s, flags=re.S)

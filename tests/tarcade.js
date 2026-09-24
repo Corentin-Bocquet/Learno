@@ -26,7 +26,7 @@ E("if(typeof authSkip==='function')authSkip()"); await wait(100);
 const bloc=(html.match(/<!-- DESIGN:ARCADE:DEBUT -->[\s\S]*?<!-- DESIGN:ARCADE:FIN -->/)||[""])[0];
 if(!bloc)ko("bloc DESIGN:ARCADE absent");
 if(/[\u{1F300}-\u{1FAFF}]/u.test(bloc))ko("emoji litteral dans le bloc de design");
-if(bloc.includes("—"))ko("tiret cadratin dans le bloc de design");
+if(bloc.includes("\u2014"))ko("tiret cadratin dans le bloc de design");
 if(html.lastIndexOf("<!-- DESIGN:ARCADE:FIN -->")<html.lastIndexOf("<script>"))ko("le bloc de design n est pas la derniere couche");
 console.log("classe arcade :",doc.body.classList.contains("arcade"));
 if(!doc.body.classList.contains("arcade"))ko("classe arcade absente");
