@@ -25,7 +25,7 @@
 <tr><td>Biais de récence</td><td>Donner trop de poids aux événements récents</td><td>Yanis veut tout mettre sur le fonds qui a fait +30 % l'an dernier</td></tr></table>
 <h3>Colonne 3 : Stratégie d'entretien</h3>
 <ul><li><b>Question d'ouverture</b> : la première question, ouverte, qui lance la découverte (« Qu'est-ce qui a changé pour vous depuis la vente de l'entrepôt ? »).</li>
-<li><b>Preuves et analogies</b> : les chiffres et documents qui soutiennent tes arguments, et les images qui rendent un produit compréhensible. Par exemple : « Le fonds euros, c'est le coffre-fort ; les unités de compte, c'est un verger : il pousse sur le long terme, mais certaines années il gèle. »</li>
+<li><b>Preuves et analogies</b> : ce sont les chiffres et documents qui soutiennent tes arguments, et les images qui rendent un produit compréhensible. Par exemple : « Le fonds euros, c'est le coffre-fort. Les unités de compte, c'est un verger : il pousse sur le long terme, mais certaines années il gèle. »</li>
 <li><b>Documents à remettre et à retracer</b> : ce que tu donnes au client (document d'entrée en relation, questionnaire, DIC, notice, rapport ou déclaration d'adéquation) et ce que tu gardes comme trace écrite du conseil. Ce qui n'est pas écrit n'a pas eu lieu.</li></ul>
 <h3>Ce que tu dois savoir faire en examen</h3>
 <ul><li>Remplir les trois colonnes pour un cas client</li><li>Citer au moins quatre non négociables réglementaires</li><li>Distinguer patrimoine de flux et patrimoine de stock</li><li>Repérer décideurs et influenceurs</li><li>Nommer un biais à partir d'une phrase de client</li></ul>`},

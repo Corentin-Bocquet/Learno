@@ -1,7 +1,7 @@
 /*UNIT*/
 {id:221,c:"MMA",n:"Module 7",t:"La lutte : amener au sol quand on veut",col:"--red",ic:"🤸",guide:`
 <h3>Lina montre ses jambes</h3>
-<div class="gstory">Lundi matin, séance de lutte. Lina, ancienne championne de France de lutte libre, demande à Tom de lui lancer un direct. Tom frappe ; Lina a déjà disparu sous son bras, un genou au sol, les deux bras autour de ses cuisses. Une seconde plus tard, Tom est sur le dos et Lina rit : « Tu m'as donné ton poids en frappant. Merci. » Rachid à tout le monde : « Retenez ça. En MMA, celui qui décide où se passe le combat, debout ou au sol, a déjà gagné la moitié du combat. »</div>
+<div class="gstory">Lundi matin, séance de lutte. Lina, ancienne championne de France de lutte libre, demande à Tom de lui lancer un direct. Tom frappe. Lina a déjà disparu sous son bras, un genou au sol, les deux bras autour de ses cuisses. Une seconde plus tard, Tom est sur le dos et Lina rit : « Tu m'as donné ton poids en frappant. Merci. » Rachid s'adresse à tout le monde : « Retenez ça. En MMA, celui qui décide où se passe le combat, debout ou au sol, a déjà gagné la moitié du combat. »</div>
 <h3>Les lutteurs du MMA</h3>
 <table><tr><th>Style</th><th>Particularité</th><th>Apport au MMA</th></tr>
 <tr><td><b>Lutte libre</b></td><td>Saisies du corps entier, jambes comprises</td><td>Amenées aux jambes, contrôle</td></tr>

@@ -8,13 +8,13 @@ S : Stop, je ne décide pas maintenant
 T : Temps, je prends au moins 24 heures
 O : Offre réelle, je calcule le coût total, sur toute la durée
 P : Partir, je m'autorise à m'en aller sans rien signer</div>
-<div class="gmnemo"><b>S.T.O.P., comme au carrefour.</b> Face à un vendeur, tu marques l'arrêt : Stop, Temps, Offre réelle, Partir. Et la phrase qui fait tout : <b>« Je ne signe jamais le jour même. Laissez-moi la documentation. »</b> Un vendeur honnête l'accepte ; un vendeur qui refuse vient de te donner la meilleure raison de dire non.</div>
+<div class="gmnemo"><b>S.T.O.P., comme au carrefour.</b> Face à un vendeur, tu marques l'arrêt : Stop, Temps, Offre réelle, Partir. Et la phrase qui fait tout : <b>« Je ne signe jamais le jour même. Laissez-moi la documentation. »</b> Un vendeur honnête l'accepte. Un vendeur qui refuse vient de te donner la meilleure raison de dire non.</div>
 <h3>Tes droits (France, à jour en 2026)</h3>
 <table><tr><th>Situation</th><th>Règle</th></tr>
-<tr><td><b>Démarchage à domicile</b> (hors établissement)</td><td>14 jours de rétractation ; aucun paiement ne peut être exigé pendant les 7 premiers jours</td></tr>
+<tr><td><b>Démarchage à domicile</b> (hors établissement)</td><td>Tu as 14 jours pour te rétracter. Aucun paiement ne peut être exigé pendant les 7 premiers jours.</td></tr>
 <tr><td><b>Achat à distance</b> (internet, téléphone)</td><td>14 jours de rétractation, pour la plupart des produits</td></tr>
 <tr><td><b>Achat en magasin</b></td><td><b>Aucun droit de rétractation légal</b> (seulement si le magasin l'offre commercialement)</td></tr>
-<tr><td><b>Démarchage téléphonique</b></td><td>Depuis le 11 août 2026, interdit sans ton <b>consentement préalable</b> (loi du 30 juin 2025) ; Bloctel disparaît ; le consentement vaut un an maximum et se retire à tout moment</td></tr>
+<tr><td><b>Démarchage téléphonique</b></td><td>Depuis le 11 août 2026, le démarchage téléphonique est interdit sans ton <b>consentement préalable</b> (loi du 30 juin 2025). Bloctel disparaît. Ton consentement vaut un an au maximum et tu peux le retirer à tout moment.</td></tr>
 <tr><td><b>Abonnement souscrit en ligne</b></td><td>Résiliation « en trois clics » obligatoire depuis le 1er juin 2023 (loi du 16 août 2022)</td></tr></table>
 <h3>Les techniques de vente à reconnaître</h3>
 <ul><li><b>La fausse urgence</b> (rareté) : « l'offre s'arrête ce soir ».</li>

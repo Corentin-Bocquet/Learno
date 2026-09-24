@@ -8,7 +8,7 @@
 Par défaut : PFU ou « flat tax » de 31,4 % en 2026
    12,8 % d'impôt sur le revenu + 18,6 % de prélèvements sociaux
 Sur option : barème progressif de l'impôt + 18,6 % de prélèvements sociaux</div>
-<div class="gmnemo">« <b>Douze huit plus dix-huit six, trente et un quatre.</b> » Le PFU existe depuis le 1er janvier 2018 ; il est passé de 30 % à 31,4 % en 2026, parce que les prélèvements sociaux sont montés de 17,2 % à 18,6 %.</div>
+<div class="gmnemo">« <b>Douze huit plus dix-huit six, trente et un quatre.</b> » Le PFU existe depuis le 1er janvier 2018. Il est passé de 30 % à 31,4 % en 2026, parce que les prélèvements sociaux sont montés de 17,2 % à 18,6 %.</div>
 <h3>Les abattements pour durée de détention : barème uniquement</h3>
 <p>Ils ne s'appliquent que si <b>les titres ont été acquis avant le 1er janvier 2018</b> et si le vendeur <b>opte pour le barème</b>. Ils réduisent l'<b>impôt sur le revenu</b>, jamais les prélèvements sociaux, qui restent dus sur toute la plus-value.</p>
 <table><tr><th>Abattement de droit commun</th><th>Abattement renforcé (PME de moins de 10 ans à l'acquisition)</th></tr>
@@ -36,7 +36,7 @@ Sur option : barème progressif de l'impôt + 18,6 % de prélèvements sociaux</
 <div class="gmnemo">« <b>Zéro, trois, cinq, avec deux frontières : vingt-trois mille et deux cent mille.</b> » Pour le fonds de commerce. Et « <b>un pour mille pour les actions</b> » : 0,1 %.</div>
 <h3>Céder un fonds de commerce : les exonérations</h3>
 <table><tr><th>Dispositif</th><th>Condition clé</th><th>Effet</th></tr>
-<tr><td>Selon les recettes</td><td>Activité exercée depuis 5 ans ; recettes sous 250 000 € (ventes) ou 90 000 € (services)</td><td>Exonération totale, dégressive jusqu'à 350 000 € ou 126 000 €</td></tr>
+<tr><td>Selon les recettes</td><td>L'activité doit être exercée depuis 5 ans. Les recettes doivent rester sous 250 000 € pour une activité de vente, ou sous 90 000 € pour une activité de services.</td><td>Exonération totale, dégressive jusqu'à 350 000 € ou 126 000 €</td></tr>
 <tr><td>Selon la valeur transmise</td><td>Activité de 5 ans, transmission d'une entreprise ou d'une branche complète</td><td>Exonération totale si la valeur est inférieure à 500 000 €, partielle jusqu'à 1 000 000 €</td></tr>
 <tr><td>Départ en retraite de l'entrepreneur individuel</td><td>5 ans d'activité, cession intégrale, retraite dans les 2 ans</td><td>Exonération d'impôt sur le revenu sur la plus-value professionnelle</td></tr>
 <tr><td>Transmission agricole à un jeune agriculteur</td><td>Activité agricole de 5 ans</td><td>Exonération totale sous 700 000 €, partielle jusqu'à 1 200 000 €</td></tr></table>

@@ -6,19 +6,19 @@
 <table><tr><th>Étape</th><th>Module</th><th>Règle à retenir</th></tr>
 <tr><td>1. Choisir ses tournois</td><td>2</td><td>Meilleures victoires, adversaires à son niveau ou au-dessus</td></tr>
 <tr><td>2. Préparer le jour J</td><td>14</td><td>Deux raquettes, trois consignes, un carnet</td></tr>
-<tr><td>3. Lire le terrain et l'adversaire</td><td>10, 11</td><td>Haut, bas, court, lob, volée ; le terrain fait partie de l'adversaire</td></tr>
-<tr><td>4. Servir et retourner</td><td>4, 5</td><td>TCE ; RPC ; recule sur la première, avance sur la deuxième</td></tr>
-<tr><td>5. Construire du fond</td><td>3, 6</td><td>Croisé pour construire, long de ligne pour conclure ; la hauteur donne la longueur</td></tr>
-<tr><td>6. Finir au filet</td><td>7</td><td>Monte sur la courte, suis la balle ; pieds d'abord, passing ensuite</td></tr>
-<tr><td>7. Gérer le score et la tête</td><td>9, 12</td><td>Gros point, gros pourcentage ; les 4 R</td></tr>
-<tr><td>8. Analyser et progresser</td><td>8, 15</td><td>70 dans les 4 ; les 3 S</td></tr></table>
+<tr><td>3. Lire le terrain et l'adversaire</td><td>10, 11</td><td>Varie les hauteurs, les longueurs, les lobs et les volées. Le terrain (surface, vent, soleil) fait partie de l'adversaire.</td></tr>
+<tr><td>4. Servir et retourner</td><td>4, 5</td><td>Au service, varie les cibles avec TCE (T, corps, extérieur). Au retour, applique RPC (remettre, profond, centre). Recule sur la première balle et avance sur la deuxième.</td></tr>
+<tr><td>5. Construire du fond</td><td>3, 6</td><td>Joue croisé pour construire et long de ligne pour conclure. C'est la hauteur au-dessus du filet qui donne la longueur.</td></tr>
+<tr><td>6. Finir au filet</td><td>7</td><td>Monte au filet sur la balle courte en suivant la trajectoire de ta balle. Place tes pieds d'abord, puis pense au passing de l'adversaire.</td></tr>
+<tr><td>7. Gérer le score et la tête</td><td>9, 12</td><td>Sur les gros points, joue le coup au plus gros pourcentage de réussite. Entre les points, applique les 4 R : réagir, relâcher, préparer, ritualiser.</td></tr>
+<tr><td>8. Analyser et progresser</td><td>8, 15</td><td>Retiens que 70 % des points se jouent en quatre frappes ou moins. Analyse chaque match avec les 3 S : service, schémas, score.</td></tr></table>
 <div class="gsvg-wrap"><svg class='gsvg' viewBox='0 0 140 216' xmlns='http://www.w3.org/2000/svg' role='img' style='font-family:inherit'><rect x='25' y='9' width='90' height='181' fill='var(--green-d)' rx='2'/><rect x='31' y='15' width='78' height='169' stroke='var(--txt)' stroke-width='1.2' fill='none'/><line x1='40.7' y1='15' x2='40.7' y2='184' stroke='var(--txt)' stroke-width='1.2' fill='none'/><line x1='99.3' y1='15' x2='99.3' y2='184' stroke='var(--txt)' stroke-width='1.2' fill='none'/><line x1='40.7' y1='54' x2='99.3' y2='54' stroke='var(--txt)' stroke-width='1.2' fill='none'/><line x1='40.7' y1='145' x2='99.3' y2='145' stroke='var(--txt)' stroke-width='1.2' fill='none'/><line x1='70' y1='54' x2='70' y2='145' stroke='var(--txt)' stroke-width='1.2' fill='none'/><line x1='25' y1='99.5' x2='115' y2='99.5' stroke='var(--gold)' stroke-width='2'/><line x1='70' y1='184' x2='70' y2='181' stroke='var(--txt)' stroke-width='1.2' fill='none'/><line x1='70' y1='15' x2='70' y2='18' stroke='var(--txt)' stroke-width='1.2' fill='none'/><text x='70' y='212' font-size='7.5' fill='var(--txt)' text-anchor='middle' font-weight='700'>Les trois zones du joueur</text><rect x='25' y='186' width='90' height='13' fill='var(--red)' opacity='.7'/><text x='70' y='195.5' font-size='7' fill='var(--bg)' text-anchor='middle' font-weight='700'>défense</text><rect x='31' y='160' width='78' height='24' fill='var(--gold)' opacity='.45'/><text x='70' y='175' font-size='7' fill='var(--bg)' text-anchor='middle' font-weight='700'>neutre</text><rect x='31' y='118' width='78' height='40' fill='var(--green)' opacity='.5'/><text x='70' y='141' font-size='7' fill='var(--bg)' text-anchor='middle' font-weight='700'>attaque</text></svg></div>
 <h3>Les chiffres à connaître par cœur</h3>
-<ul><li>Filet : 0,914 m au centre, 1,07 m aux poteaux ; terrain 23,77 m sur 8,23 m (10,97 m en double).</li>
-<li>ATP : 52 semaines, 19 résultats ; Grand Chelem 2000, Masters 1000, 500, 250.</li>
-<li>FFT : classement mensuel sur 12 mois ; victoire au même échelon 60 points, un échelon au-dessus 90, deux ou plus 120.</li>
+<ul><li>Le filet mesure 0,914 m au centre et 1,07 m aux poteaux. Le terrain mesure 23,77 m sur 8,23 m (10,97 m de large en double).</li>
+<li>Le classement ATP porte sur 52 semaines et retient 19 résultats. Un Grand Chelem rapporte 2000 points au vainqueur, puis viennent les Masters 1000, les tournois 500 et les tournois 250.</li>
+<li>Le classement FFT est mensuel et porte sur 12 mois. Une victoire contre un joueur du même échelon rapporte 60 points, 90 points un échelon au-dessus, et 120 points deux échelons ou plus au-dessus.</li>
 <li>Service : environ 70 à 75 % de points gagnés sur la première, 50 % sur la deuxième.</li>
-<li>Points : environ 70 % en 4 frappes ou moins ; Federer, 54 % des points et près de 80 % des matchs.</li>
+<li>Environ 70 % des points se jouent en 4 frappes ou moins. Federer n'a gagné que 54 % des points joués, mais près de 80 % de ses matchs.</li>
 <li>Temps : 25 secondes entre les points, 90 secondes au changement de côté, 120 entre les sets.</li></ul>
 <div class="gmnemo"><b>« Classe, Prépare, Lis, Sers, Construis, Finis, Gère, Analyse. »</b> Huit verbes, un par étape du plan. Et la phrase qui résume tout le cours : <b>« Gagner plus de points sans frapper plus fort. »</b></div>
 <div class="gtrap">Le piège final : vouloir tout appliquer en même temps. Sous pression, on applique trois consignes, pas trente. Choisis les trois règles qui correspondent à l'adversaire du jour, et garde les autres pour ton carnet.</div>

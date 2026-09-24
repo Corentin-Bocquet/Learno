@@ -12,10 +12,10 @@
 <tr><td>Point décisif (à 40-40 sans avantage)</td><td>Le relanceur choisit son côté : il prend celui de son meilleur retour</td></tr></table>
 <h3>Le jeu décisif</h3>
 <ul><li>Chaque point y pèse lourd : un « <b>mini-break</b> » (point gagné sur le service adverse) donne l'avantage.</li>
-<li>Le premier serveur sert un point, puis chacun sert deux points ; on change de côté tous les 6 points (module 1).</li>
+<li>Dans un jeu décisif, le premier serveur sert un point, puis chaque joueur sert deux points. On change de côté tous les 6 points (module 1).</li>
 <li>On y garde ses schémas les plus sûrs, et l'on ne donne aucun point gratuit.</li></ul>
 <div class="gmnemo"><b>« Gros point, gros pourcentage. »</b> Sur les points importants, on joue le coup qui réussit le plus souvent, pas le coup le plus spectaculaire. Et après un break : <b>« Break pris, break gardé. »</b></div>
-<div class="gtrap">Idée reçue : « le 7e jeu est toujours le plus important du set ». C'est un vieux dicton, pas une règle : l'importance d'un jeu dépend du score (à 3-3, le 7e jeu pèse ; à 5-1, beaucoup moins). Autre piège : « se relâcher quand on mène ». Mener 5-2 ne gagne rien ; c'est souvent là qu'on offre des points gratuits.</div>
+<div class="gtrap">Idée reçue : « le 7e jeu est toujours le plus important du set ». C'est un vieux dicton, pas une règle. L'importance d'un jeu dépend du score : à 3-3, le 7e jeu pèse lourd, à 5-1, beaucoup moins. Autre piège : « se relâcher quand on mène ». Mener 5-2 ne gagne rien, et c'est souvent là qu'on offre des points gratuits.</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Repérer les points importants d'un jeu et d'un set</li><li>Adapter le risque au score</li><li>Gérer le jeu qui suit un break et le service pour le set</li><li>Jouer un jeu décisif et un point décisif</li></ul>`},
 /*EXOS*/

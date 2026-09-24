@@ -17,7 +17,7 @@
 <tr><td>Viande crue en bas, jamais au-dessus des aliments prêts à manger</td><td>Le jus de viande crue coule et contamine</td></tr>
 <tr><td>Planche et couteau lavés entre viande crue et crudités</td><td>Même risque de contamination croisée</td></tr>
 <tr><td>Zone de danger entre 4 et 63 °C</td><td>C'est là que les bactéries prolifèrent : on n'y laisse pas les plats</td></tr></table>
-<p>Sur les emballages : la <b>DLC</b> (« à consommer jusqu'au ») est une date de sécurité, à respecter strictement ; la <b>DDM</b> (« à consommer de préférence avant ») est une date de qualité : le produit reste consommable après.</p>
+<p>Sur les emballages, la <b>DLC</b> (« à consommer jusqu'au ») est une date de sécurité, à respecter strictement. La <b>DDM</b> (« à consommer de préférence avant ») est une date de qualité : le produit reste consommable après.</p>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Expliquer le risque du riz cuit et les bons gestes</li><li>Donner les règles du réchauffage au micro-ondes</li><li>Organiser un frigo sans contamination croisée</li><li>Distinguer DLC et DDM pour éviter le gaspillage sans prendre de risque</li></ul>`},
 /*EXOS*/

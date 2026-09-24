@@ -19,7 +19,7 @@
   Actif reçu (ce que je reçois)          : maison, voiture, argent, titres, entreprise
 - Passif et obligations (ce que je dois) : dépenses, entretien, prise en charge d'une personne
 = Avantage économique réel</div>
-<div class="gmnemo">« <b>On ne compte pas les cadeaux, on compte ce qui reste après les avoir entretenus.</b> » Et n'oublie jamais la différence du cours : <b>donner</b>, c'est sans contrepartie ; <b>vendre</b>, c'est contre un prix. Une charge très lourde rapproche le legs d'un échange.</div>
+<div class="gmnemo">« <b>On ne compte pas les cadeaux, on compte ce qui reste après les avoir entretenus.</b> » Et n'oublie jamais la différence du cours : <b>donner</b>, c'est sans contrepartie, alors que <b>vendre</b>, c'est contre un prix. Une charge très lourde rapproche le legs d'un échange.</div>
 <h3>Pourquoi utiliser un legs avec charge ?</h3>
 <p>Ils sont rares, mais utiles dans les situations familiales complexes :</p>
 <ul><li><b>Protéger un conjoint qui a besoin de soins</b> : « je lègue la maison à ma fille, à charge pour elle de s'occuper de sa mère ». Limite du professeur : on ne peut pas <b>décréter l'amour</b>. L'argent garantit une action, pas l'affection.</li>
@@ -32,7 +32,7 @@
 <h3>Legs graduel et legs résiduel</h3>
 <ul><li><b>Legs graduel</b> : le premier légataire doit <b>conserver</b> le bien et le <b>transmettre</b> à son décès à un second bénéficiaire désigné par le testateur.</li>
 <li><b>Legs résiduel</b> : le second bénéficiaire recueille seulement <b>ce qui reste</b> au décès du premier, qui pouvait vendre ou consommer.</li></ul>
-<div class="gstory">Stéphane lègue un appartement à Lina, sa fille handicapée, à charge de le conserver et de le transmettre à son décès à son demi-frère Hugo. Lina en profite toute sa vie ; l'appartement ne se perdra pas dans une succession où Hugo ne serait pas héritier. C'est un legs graduel.</div>
+<div class="gstory">Stéphane lègue un appartement à Lina, sa fille handicapée, à charge pour elle de le conserver et de le transmettre à son décès à son demi-frère Hugo. Lina en profite toute sa vie, et l'appartement ne se perdra pas dans une succession où Hugo ne serait pas héritier. C'est un legs graduel.</div>
 <h3>Une bonne rédaction</h3>
 <p>Elle rend la volonté claire, limite les contestations, précise les bénéficiaires, les biens, les charges, les conséquences d'un refus et la fin des obligations. Idée forte du professeur : la personne à qui l'on demande un service acceptera plus facilement si le mécanisme est bien construit.</p>`},
 /*EXOS*/

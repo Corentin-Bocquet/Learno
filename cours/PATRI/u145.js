@@ -6,7 +6,7 @@
 <div class="gmnemo">« <b>Le prix est la dernière ligne, pas la première.</b> » Avant le prix : le juridique, le fiscal, la transition, les clients. Retiens le vocabulaire avec une image : le <b>cédant cède</b> (il lâche), le <b>cessionnaire encaisse</b> l'entreprise (il reçoit). Vendeur, acheteur.</div>
 <h3>Pourquoi le cédant vend-il ?</h3>
 <p>C'est la question fondamentale. La motivation du vendeur influence la négociation, révèle ce qu'il cherche vraiment et oriente la stratégie. Il n'y a pas qu'une raison, et vendre ne veut pas dire être en difficulté :</p>
-<ul><li>départ à la retraite ;</li><li>besoin d'argent ou envie de faire du cash ;</li><li>financer un nouveau projet, changer d'activité ;</li><li>recentrage stratégique ;</li><li>raisons personnelles ;</li><li>organisation de la succession patrimoniale.</li></ul>
+<ul><li>Départ à la retraite.</li><li>Besoin d'argent ou envie de faire du cash.</li><li>Financer un nouveau projet, changer d'activité.</li><li>Recentrage stratégique.</li><li>Raisons personnelles.</li><li>Organisation de la succession patrimoniale.</li></ul>
 <p>Le professeur cite un entrepreneur jeune, déjà aisé, vivant de la création de contenu et de placements de produits, qui vendait quand même. Question centrale : <b>pourquoi vend-il ?</b></p>
 <h3>Ce qu'on vend : le fonds ou les titres</h3>
 <table><tr><th>Cession du fonds de commerce ou d'actifs</th><th>Cession de titres</th></tr>
@@ -14,7 +14,7 @@
 <h3>La transition après la vente</h3>
 <p>La vente ne s'arrête pas le jour de la signature. Il faut préserver les <b>clients</b>, les <b>salariés</b>, les <b>fournisseurs</b>, les relations commerciales, les connaissances et les méthodes. Un départ trop brutal du cédant peut faire chuter la valeur : le risque vient de la <b>dépendance de l'entreprise à la personne du dirigeant</b>. D'où des mécanismes contractuels : accompagnement du repreneur, transmission progressive, garanties (module 14).</p>
 <h3>Habiller la mariée</h3>
-<p>Expression du jargon : <b>rendre l'entreprise la plus attractive possible avant de la mettre sur le marché</b>. Une entreprise attractive attire plusieurs candidats ; la concurrence entre eux améliore le prix et les conditions. Le vendeur compare trois offres, trois prix, trois jeux de conditions. Pour l'habiller : informations claires, risques sécurisés, ce qui peut être amélioré est amélioré.</p>
+<p>Expression du jargon : <b>rendre l'entreprise la plus attractive possible avant de la mettre sur le marché</b>. Une entreprise attractive attire plusieurs candidats, et la concurrence entre eux améliore le prix et les conditions. Le vendeur compare alors trois offres, trois prix et trois jeux de conditions. Pour habiller l'entreprise, on donne des informations claires, on sécurise les risques et on améliore ce qui peut l'être.</p>
 <div class="gmnemo">Une promotion précédente avait détourné l'expression en « <b>déshabiller la mariée</b> ». Le professeur revient au sens juste, et toi aussi : on <b>habille</b>, on prépare, on rend désirable. Imagine la mariée qui se prépare des heures avant d'entrer : c'est ton entreprise six à vingt-quatre mois avant la vente.</div>
 <h3>Les diagnostics avant de vendre</h3>
 <p>Quatre diagnostics : <b>fiscal</b>, <b>juridique</b>, <b>social</b>, <b>financier</b>. Le diagnostic financier peut révéler une <b>cessation des paiements</b> : l'entreprise ne peut plus faire face à son passif exigible avec son actif disponible. Le dirigeant doit alors la déclarer lui-même au tribunal dans les <b>45 jours</b>, sauf s'il a demandé une conciliation.</p>
@@ -23,11 +23,11 @@
 <table><tr><th>Sociétés de capitaux</th><th>Sociétés de personnes et entrepreneur individuel</th></tr>
 <tr><td>SA, SAS, SASU. Responsabilité des associés limitée aux apports : si l'entreprise va mal, c'est l'entreprise qui va mal, pas la personne.</td><td>SNC, sociétés civiles : responsabilité indéfinie des associés.</td></tr></table>
 <p>La <b>SARL</b> est une forme <b>hybride</b> : responsabilité limitée comme une société de capitaux, mais parts sociales et fonctionnement proches d'une société de personnes.</p>
-<div class="gtrap">Les notes rangent SARL, SAS et SASU sous « sociétés anonymes » et citent l'EIRL. Seule la SA est une société anonyme ; la SARL est hybride. L'<b>EIRL</b> ne peut plus être créée depuis 2022 : l'<b>entrepreneur individuel</b> bénéficie désormais d'une séparation de plein droit entre patrimoine professionnel et personnel.</div>
+<div class="gtrap">Les notes rangent SARL, SAS et SASU sous « sociétés anonymes » et citent l'EIRL. Seule la SA est une société anonyme, et la SARL est une forme hybride. L'<b>EIRL</b> ne peut plus être créée depuis 2022 : l'<b>entrepreneur individuel</b> bénéficie désormais d'une séparation de plein droit entre patrimoine professionnel et patrimoine personnel.</div>
 <p>La séparation entre la personne et la société a des exceptions : le dirigeant est exposé s'il s'est porté <b>caution personnelle</b>, s'il n'a pas déclaré la cessation des paiements à temps, ou en cas de <b>faute de gestion</b>.</p>
 <h3>La rémunération du dirigeant, en bref</h3>
 <ul><li>Président de SAS : <b>assimilé salarié</b>. Gérant majoritaire de SARL : <b>travailleur non salarié</b>.</li>
-<li>Deux leviers : la <b>rémunération</b> (soumise aux cotisations sociales et au barème de l'impôt) et les <b>dividendes</b> (flat tax de 31,4 % en 2026 ; pour un gérant majoritaire de SARL, la part au-delà de 10 % du capital supporte des cotisations sociales).</li></ul>
+<li>Le dirigeant a deux leviers. La <b>rémunération</b> est soumise aux cotisations sociales et au barème de l'impôt. Les <b>dividendes</b> supportent la flat tax de 31,4 % en 2026. Pour un gérant majoritaire de SARL, la part des dividendes qui dépasse 10 % du capital supporte en plus des cotisations sociales.</li></ul>
 <h3>En entretien avec le client</h3>
 <p>Premières questions : <b>qui a quoi ?</b> <b>Quel régime matrimonial ?</b> Si le cédant est marié en communauté et que l'entreprise est un bien commun, il faut l'<b>accord du conjoint</b> pour vendre le fonds de commerce ou les parts sociales.</p>`},
 /*EXOS*/

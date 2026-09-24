@@ -22,7 +22,7 @@
 <tr><td>Au sol, au centre, adversaire à distance</td><td><b>Relevé technique</b> : une main au sol derrière, l'autre protège la tête, on ramène la jambe sous soi et on se relève en reculant</td></tr>
 <tr><td>Au sol contre la cage</td><td><b>Monter le long du grillage</b> : dos et tête contre la cage, pieds sous soi, underhook, on remonte en poussant sur les jambes</td></tr>
 <tr><td>À quatre pattes, adversaire sur le dos</td><td>Contrôler ses mains, ne jamais laisser la tête basse et le cou exposé</td></tr></table>
-<div class="gtrap">Erreur fréquente chez les frappeurs : s'accrocher au grillage pour ne pas tomber. C'est une <b>faute</b> (avertissement, puis retrait de point). Autre erreur : se relever en laissant le cou et la tête exposés, ce qui offre un étranglement ou un genou. Et une nuance sur les règles récentes : depuis fin 2024, poser une <b>main</b> au sol ne fait plus de toi un combattant « au sol » ; il faut une autre partie du corps que les mains ou les pieds (module 1).</div>
+<div class="gtrap">Erreur fréquente chez les frappeurs : s'accrocher au grillage pour ne pas tomber. C'est une <b>faute</b> (avertissement, puis retrait de point). Autre erreur : se relever en laissant le cou et la tête exposés, ce qui offre un étranglement ou un genou. Et une nuance sur les règles récentes : depuis fin 2024, poser une <b>main</b> au sol ne fait plus de toi un combattant « au sol ». Il faut qu'une autre partie du corps que les mains ou les pieds touche le sol (module 1).</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Décrire le sprawl et son timing</li><li>Choisir la bonne défense selon l'amenée</li><li>Expliquer les deux façons de se relever</li><li>Construire un plan « sprawl and brawl »</li></ul>`},
 /*EXOS*/

@@ -15,11 +15,11 @@
 <li><b>Les signaux</b> : le joueur au filet montre dans son dos un <b>poing fermé</b> (je reste) ou une <b>main ouverte</b> (je croise).</li>
 <li><b>Les cibles</b> : les pieds du joueur au filet, ou le lob au-dessus de lui.</li></ul>
 <h3>Les règles propres au double</h3>
-<ul><li>L'ordre de service est fixé pour chaque set ; chaque relanceur garde son côté de retour pendant tout le set.</li>
+<ul><li>L'ordre de service est fixé pour chaque set. Chaque relanceur garde son côté de retour pendant tout le set.</li>
 <li>Au <b>point décisif</b> (sans avantage), l'équipe qui retourne choisit qui reçoit.</li>
 <li>Les couloirs sont en jeu (10,97 m de large, sauf au service).</li>
 <li>Le <b>super jeu décisif</b> en 10 points remplace souvent le troisième set.</li></ul>
-<div class="gmnemo"><b>« Au centre, la solution. »</b> Et pour les signaux : <b>« Poing fermé, je reste ; main ouverte, je croise. »</b></div>
+<div class="gmnemo"><b>« Au centre, la solution. »</b> Et pour les signaux : <b>« Poing fermé, je reste. Main ouverte, je croise. »</b></div>
 <div class="gtrap">Idée reçue : « le double, c'est deux simples côte à côte ». Faux : on joue ensemble, on se déplace comme reliés par une corde, et l'on vise le centre plutôt que les couloirs. Autre piège : le joueur au filet qui ne bouge jamais. Même sans interception, une fausse feinte gêne le relanceur.</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Choisir une formation selon le relanceur</li><li>Intercepter et couvrir</li><li>Communiquer par signaux</li><li>Appliquer les règles du double</li></ul>`},

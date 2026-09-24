@@ -5,7 +5,7 @@
 <h3>Le constat</h3>
 <ul><li>L'ANSES estime qu'environ <b>95 %</b> des adultes français sont exposés à un risque pour leur santé par manque d'activité physique ou excès de temps assis.</li>
 <li>Selon Laurence Plumey, seuls environ <b>5 %</b> des adultes font réellement du sport de façon régulière.</li>
-<li>Nos ancêtres parcouraient <b>15 à 20 km</b> par jour pour trouver leur nourriture ; aujourd'hui, elle arrive toute seule.</li></ul>
+<li>Nos ancêtres parcouraient <b>15 à 20 km</b> par jour pour trouver leur nourriture. Aujourd'hui, elle arrive toute seule.</li></ul>
 <h3>Les repères officiels</h3>
 <table><tr><th>Repère</th><th>Contenu</th></tr>
 <tr><td><b>OMS (adultes)</b></td><td>150 à 300 minutes d'activité modérée par semaine, ou 75 à 150 minutes d'activité intense, plus du renforcement musculaire 2 fois par semaine</td></tr>

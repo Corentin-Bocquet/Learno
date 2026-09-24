@@ -10,7 +10,7 @@
 <tr><td>Mineur de 16 ans non émancipé</td><td>Oui, mais seulement pour la moitié de ce qu'un majeur pourrait léguer</td></tr>
 <tr><td>Mineur émancipé (possible dès 16 ans)</td><td>Oui, librement, comme un majeur</td></tr>
 <tr><td>Majeur sous curatelle</td><td>Oui, seul, sauf s'il n'était pas sain d'esprit à ce moment</td></tr>
-<tr><td>Majeur sous tutelle</td><td>Oui, avec l'<b>autorisation du juge</b> ou du conseil de famille ; le tuteur ne peut ni l'assister ni le représenter</td></tr></table>
+<tr><td>Majeur sous tutelle</td><td>Oui, mais seulement avec l'<b>autorisation du juge</b> ou du conseil de famille. Le tuteur ne peut ni l'assister ni le représenter pour rédiger son testament.</td></tr></table>
 <div class="gtrap">Les notes indiquent pour la tutelle : « possible s'il est fait avec le tuteur ». C'est inexact : le testament d'un majeur en tutelle exige l'<b>autorisation du juge</b> (ou du conseil de famille), et le tuteur ne peut <b>ni l'assister ni le représenter</b>. Un testament « fait avec le tuteur » serait au contraire suspect.</div>
 <div class="gmnemo">« <b>La curatelle tient la main, la tutelle tient la clé, et c'est le juge qui a la clé du testament.</b> » Sous curatelle, on teste seul. Sous tutelle, il faut le feu vert du juge.</div>
 <h3>Contester pour insanité d'esprit</h3>

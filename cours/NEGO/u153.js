@@ -9,7 +9,7 @@
 <tr><td><b>Silence utile</b></td><td>Laisser émerger les vrais critères de décision</td><td>Compter trois secondes après une réponse importante</td></tr>
 <tr><td><b>Résumé intermédiaire</b></td><td>Transformer le flou du client en critères d'accord</td><td>« Nous avons trois critères : sécurité, disponibilité pour Léo, transmission. »</td></tr></table>
 <h3>Question ouverte ou fermée ?</h3>
-<p>Une <b>question fermée</b> appelle oui, non ou un chiffre : « Voulez-vous un fonds euros ? ». Elle sert à <b>vérifier</b> ou <b>conclure</b>. Une <b>question ouverte</b> commence souvent par comment, qu'est-ce que, pourquoi, dans quelle mesure : elle sert à <b>découvrir</b>. En début d'entretien, on ouvre ; en fin d'entretien, on ferme.</p>
+<p>Une <b>question fermée</b> appelle oui, non ou un chiffre : « Voulez-vous un fonds euros ? ». Elle sert à <b>vérifier</b> ou à <b>conclure</b>. Une <b>question ouverte</b> commence souvent par comment, qu'est-ce que, pourquoi ou dans quelle mesure : elle sert à <b>découvrir</b>. En début d'entretien, on pose des questions ouvertes. En fin d'entretien, on pose des questions fermées.</p>
 <div class="gtrap">« Pourquoi » est une question ouverte, mais elle peut sonner comme un reproche (« Pourquoi avez-vous fait ça ? »). Préfère « Qu'est-ce qui vous a amené à... ? » ou « Qu'est-ce qui compte pour vous dans... ? ». Et attention à la fausse question ouverte : « Vous ne pensez pas qu'un fonds euros serait mieux ? » est une suggestion déguisée, fermée.</div>
 <h3>La méthode des 4R</h3>
 <div class="formula">Reprendre   : reprendre les mots exacts du client
@@ -21,7 +21,7 @@ Revalider   : obtenir un « oui, c'est bien cela » avant tout conseil</div>
 <h3>Pourquoi valider la compréhension avant de conseiller ?</h3>
 <p>Pour être sûr que le conseil est en <b>réelle adéquation</b> avec la situation du client. Un conseil bâti sur un malentendu est inadapté, même s'il est techniquement parfait. C'est aussi une exigence réglementaire : le conseil doit être adapté (on parle d'<b>adéquation</b> en investissement), et la reformulation validée en est la meilleure preuve.</p>
 <h3>Reformuler sans interpréter</h3>
-<p>Reformuler, ce n'est pas ajouter ton analyse. Claire dit « je veux de la sécurité » ; « donc vous êtes prudente et vous voulez du fonds euros » est une interprétation. « La sécurité est votre priorité » est une reformulation. L'interprétation vient plus tard, dans le conseil.</p>
+<p>Reformuler, ce n'est pas ajouter ton analyse. Claire dit « je veux de la sécurité ». Répondre « donc vous êtes prudente et vous voulez du fonds euros » est une interprétation. Répondre « la sécurité est votre priorité » est une reformulation. L'interprétation vient plus tard, dans le conseil.</p>
 <h3>Ce que tu dois savoir faire en examen</h3>
 <ul><li>Citer les quatre outils de l'écoute active et leur utilité exacte</li><li>Transformer une question fermée en question ouverte</li><li>Dérouler les 4R sur un cas</li><li>Distinguer reformulation et interprétation</li><li>Expliquer pourquoi on valide avant de conseiller</li></ul>`},
 /*EXOS*/

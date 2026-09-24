@@ -1,7 +1,7 @@
 /*UNIT*/
 {id:219,c:"MMA",n:"Module 5",t:"Muay Thaï : tibias, coudes, genoux et coups de pied",col:"--red",ic:"🦵",guide:`
 <h3>Le sac qui tremble</h3>
-<div class="gstory">Mercredi soir, un invité au dojo : Somchai, 38 ans, ancien boxeur thaï du Lumpinee de Bangkok, installé à Marseille. Il frappe le sac de frappe d'un seul coup de pied circulaire ; la chaîne grince, le sac tremble encore dix secondes après. Tom est bouche bée. Somchai montre son tibia : « Pas le pied. Le pied se casse. Le tibia coupe. » Puis il se tourne vers Enzo : « En Thaïlande, je lève la jambe tranquille. Dans ta cage, si tu lèves la jambe comme moi, ta lutteuse l'attrape et tu finis sur le dos. »</div>
+<div class="gstory">Mercredi soir, un invité arrive au dojo : Somchai, 38 ans, ancien boxeur thaï du Lumpinee de Bangkok, installé à Marseille. Il frappe le sac d'un seul coup de pied circulaire. La chaîne grince, et le sac tremble encore dix secondes après. Tom est bouche bée. Somchai montre son tibia : « Pas le pied. Le pied se casse. Le tibia coupe. » Puis il se tourne vers Enzo : « En Thaïlande, je lève la jambe tranquille. Dans ta cage, si tu lèves la jambe comme moi, ta lutteuse l'attrape et tu finis sur le dos. »</div>
 <h3>L'art des huit membres</h3>
 <p>Le Muay Thaï, boxe thaïlandaise, utilise <b>huit armes</b> : deux poings, deux <b>coudes</b>, deux <b>genoux</b>, deux <b>tibias</b>. Il apporte au MMA ses coups de pied puissants, son travail des coudes et son <b>clinch</b> redoutable.</p>
 <div class="gmnemo"><b>« P.C.G.T. : Poings, Coudes, Genoux, Tibias. »</b> Deux de chaque, huit armes. Et la règle de Somchai : <b>« Le tibia frappe, le pied se casse. »</b></div>
@@ -15,10 +15,10 @@
 <tr><td><b>Teep</b> (coup de pied de face)</td><td>Ventre, hanche, jambe avant</td><td>Le « jab des jambes » : garde la distance</td><td>Faible</td></tr>
 <tr><td>Coup de pied oblique</td><td>Genou avant, de face</td><td>Bloque l'avancée</td><td>Légal, mais dangereux pour le genou adverse</td></tr></table>
 <h3>Bien frapper, bien bloquer</h3>
-<ul><li>On frappe avec le <b>tibia</b>, en faisant tourner la <b>hanche</b> ; le pied d'appui pivote sur la pointe, le bras du côté qui frappe balance vers l'arrière pour l'équilibre.</li>
+<ul><li>On frappe avec le <b>tibia</b>, en faisant tourner la <b>hanche</b>. Le pied d'appui pivote sur la pointe, et le bras du côté qui frappe balance vers l'arrière pour garder l'équilibre.</li>
 <li>On bloque un coup de pied bas en levant la jambe, <b>tibia contre tibia</b>, genou vers l'extérieur : c'est le <b>check</b>. Le 28 décembre 2013 (UFC 168), Anderson Silva se brise le tibia sur le check de Chris Weidman.</li></ul>
 <h3>Coudes et genoux</h3>
-<ul><li>Les <b>coudes</b> frappent de très près ; ils coupent (arcade sourcilière) et peuvent provoquer un arrêt médical. Horizontal, remontant, descendant, et depuis fin 2024, le coude vertical « 12-6 » est autorisé par les règles unifiées.</li>
+<ul><li>Les <b>coudes</b> frappent de très près. Ils coupent la peau (souvent à l'arcade sourcilière) et peuvent provoquer un arrêt médical. On les donne à l'horizontale, en remontant ou en descendant. Depuis fin 2024, le coude vertical « 12-6 » est autorisé par les règles unifiées.</li>
 <li>Les <b>genoux</b> frappent au corps ou à la tête d'un adversaire <b>debout</b>, souvent dans le clinch. Le genou volant surprend un adversaire qui baisse la tête.</li></ul>
 <h3>Le clinch thaï</h3>
 <p>Deux mains derrière la tête de l'adversaire (le <b>plum</b>), coudes serrés contre son cou : on tire sa tête vers le bas et on monte les genoux. Le module 6 le détaille.</p>

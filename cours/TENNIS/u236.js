@@ -18,7 +18,7 @@
 <li><b>Varier la hauteur et le rythme</b> : une balle haute, puis une balle basse slicée, dérègle un joueur qui aime le rythme.</li>
 <li><b>Changer de direction sur la balle qu'on contrôle</b> : le long de ligne se joue sur une balle confortable (module 3).</li></ul>
 <div class="gmnemo"><b>« La hauteur donne la longueur. »</b> Et pour le choix d'effet : <b>« Lift pour la marge, slice pour le piège, plat pour la fin. »</b></div>
-<div class="gtrap">Idée reçue : « une balle rasante est une bonne balle ». Faux chez les amateurs : elle part souvent dans le filet et tombe courte. Autre piège : contourner son revers à chaque balle. Le coup droit décalé ouvre tout le côté coup droit ; si l'adversaire répond long de ligne, on court tout le terrain.</div>
+<div class="gtrap">Idée reçue : « une balle rasante est une bonne balle ». C'est faux chez les amateurs : elle part souvent dans le filet et tombe courte. Autre piège : contourner son revers à chaque balle. Le coup droit décalé ouvre tout le côté coup droit. Si l'adversaire répond long de ligne, on doit courir tout le terrain.</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Choisir l'effet selon la situation</li><li>Jouer profond avec de la hauteur</li><li>Décider quand jouer le coup droit décalé</li><li>Attaquer le point faible de l'adversaire</li></ul>`},
 /*EXOS*/

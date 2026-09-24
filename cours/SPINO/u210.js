@@ -9,7 +9,7 @@
 <tr><td><b>3e</b></td><td><b>Science intuitive</b></td><td>De l'idée adéquate de certains attributs de Dieu à la connaissance adéquate de l'<b>essence</b> des choses singulières, d'un seul regard</td><td>Nécessairement vraie, source de la plus haute joie</td></tr></table>
 <div class="gmnemo"><b>« Entendre, Démontrer, Voir. »</b> Premier genre : j'ai entendu dire. Deuxième : je démontre. Troisième : je vois d'un coup. Ou en initiales : <b>O.R.I. : Opinion, Raison, Intuition</b>.</div>
 <h3>L'exemple des nombres proportionnels</h3>
-<p>Trois nombres sont donnés ; il faut en trouver un quatrième qui soit au troisième comme le deuxième est au premier. Prenons 1, 2, 3.</p>
+<p>On te donne trois nombres. Il faut en trouver un quatrième qui soit au troisième ce que le deuxième est au premier. Prenons 1, 2, 3.</p>
 <ul><li>Le <b>marchand</b> multiplie le deuxième par le troisième et divise par le premier, parce qu'on le lui a appris ou que ça a marché avant : <b>premier genre</b>.</li>
 <li>Le <b>mathématicien</b> le démontre par la propriété des proportionnels (Euclide) : <b>deuxième genre</b>.</li>
 <li>Avec des nombres si simples, <b>tout le monde voit</b> d'un coup que le quatrième est <b>6</b> : <b>troisième genre</b>.</li></ul>
@@ -18,7 +18,7 @@
 <tr><td>1er</td><td>L'entrepreneur qui associe mécaniquement levée de fonds et bonheur, ou qui croit que plus d'argent le rendra plus séduisant. (« Plus d'argent vous rendra toujours plus séduisant… auprès des personnes séduites par l'argent », glisse Théo Lion.)</td></tr>
 <tr><td>2e</td><td>L'enfant qui comprend que le tonnerre accompagne nécessairement l'orage : la peur se dissipe. L'entrepreneur qui comprend que l'argent, la gloire et le prestige ne sont pas des biens en soi, mais des moyens : son malaise change de nature.</td></tr>
 <tr><td>3e</td><td>L'ancien fumeur devenu vraiment <b>non-fumeur</b> : il ne lutte plus contre l'envie, il ne la ressent plus. L'entrepreneur qui a saisi intuitivement qu'une levée mal motivée mène à la tristesse ne combat plus ce désir : il ne l'éprouve plus.</td></tr></table>
-<p>La raison peut <b>réordonner</b> les passions ; seule l'intuition les <b>transforme en profondeur</b>. Elle fait passer d'un combat perpétuel contre nos désirs à une vraie paix de l'âme, où ce qui nous nuisait cesse simplement de nous attirer.</p>
+<p>La raison peut <b>réordonner</b> les passions, mais seule l'intuition les <b>transforme en profondeur</b>. Elle fait passer d'un combat perpétuel contre nos désirs à une vraie paix de l'âme, où ce qui nous nuisait cesse simplement de nous attirer.</p>
 <h3>Le vrai se montre lui-même</h3>
 <p>« Qui a une idée vraie sait en même temps qu'il a une idée vraie » (E2P43). Dans le scolie : <b>comme la lumière se manifeste elle-même et manifeste les ténèbres</b>, la vérité est la norme d'elle-même et du faux (<i>verum index sui et falsi</i>). Et dans la partie V : l'effort suprême de l'esprit est de connaître par le troisième genre (E5P25), d'où naît le plus grand contentement de l'esprit (E5P27).</p>
 <div class="gtrap">Précision : le premier genre n'est pas « mauvais » et on ne s'en débarrasse jamais. On vit avec l'imagination (on continue à voir le soleil proche, module 6). Une idée imaginative n'est pas fausse en elle-même : elle le devient quand on la prend pour la vérité des choses. Et Spinoza ne dit pas que l'intuition est une inspiration mystérieuse ou un « feeling » : c'est une connaissance <b>adéquate</b>, préparée par la raison.</div>

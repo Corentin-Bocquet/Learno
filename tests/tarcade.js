@@ -32,7 +32,8 @@ console.log("classe arcade :",doc.body.classList.contains("arcade"));
 if(!doc.body.classList.contains("arcade"))ko("classe arcade absente");
 
 /* 2. onglets et barre du haut */
-const noms=[...doc.querySelectorAll("#mtabs .navitem")].map(b=>b.textContent.trim());
+const noms=[...doc.querySelectorAll("#mtabs .navitem")].map(b=>b.getAttribute("aria-label")||"");
+if([...doc.querySelectorAll("#mtabs .navitem")].some(b=>b.textContent.trim()))ko("la barre du bas affiche encore du texte sous les icones");
 console.log("barre du bas :",noms.join(" | "));
 ["Jouer","Réviser","Ligue","Boutique","Plus"].forEach(n=>{ if(!noms.includes(n))ko("onglet absent : "+n); });
 if(noms.length!==5)ko("la barre du bas doit compter 5 cases, pas "+noms.length);
@@ -151,6 +152,26 @@ for(const cid of ["PATRI","TENNIS","MRC"]){
 E("arcGame('eclair')"); await wait(30); E("setTab('league')"); await wait(30);
 if(!doc.getElementById("sc-league").classList.contains("on"))ko("quitter un jeu par les onglets ne marche pas");
 
+/* 5 bis. categories : renommer, ajouter, deplacer, supprimer une vide */
+E("setTab('courses');arcOrg(true)"); await wait(40);
+const nCat0=doc.querySelectorAll("#coursesbody .arc-catbox").length;
+E("arcCatAdd()"); await wait(20);
+const idNew=E("S.cats.add[S.cats.add.length-1].id");
+doc.getElementById("arc-catin").value="Mes favoris"; E(`arcCatSave('${idNew}')`); await wait(20);
+E(`arcCatTo('MMA','${idNew}')`); await wait(20);
+const okMv=E(`catOf('MMA').nm`)==="Mes favoris";
+E("arcCatRen('sport')"); doc.getElementById("arc-catin").value="Sport"; E("arcCatSave('sport')");
+const okRen=E("CATS.find(k=>k.id==='sport').nm")==="Sport";
+E(`arcCatTo('MMA','sport')`); E(`arcCatDel('${idNew}')`); await wait(20);
+const okDel=!E(`CATS.some(k=>k.id==='${idNew}')`)&&E("catOf('MMA').id")==="sport";
+console.log("catégories :",nCat0,"| ajout+déplacement",okMv,"| renommage",okRen,"| suppression",okDel,"| poignées",doc.querySelectorAll("#coursesbody [data-grip]").length);
+if(!okMv||!okRen||!okDel)ko("gestion des catégories cassée");
+E("arcCatRen('sport')"); doc.getElementById("arc-catin").value="Sport et santé"; E("arcCatSave('sport')"); E("arcOrg(false)");
+/* la lecon du module se ferme par une croix */
+E(`openGuide(courseUnits('MMA')[0].id)`); await wait(30);
+if(!doc.querySelector("#mcard .arc-mclose"))ko("pas de croix pour fermer la leçon du module");
+E("closeModal()");
+
 /* 6. ligue, boutique, défis, réviser, profil */
 const ecrans={league:".arc-cups",shop:".shopit .si img",quests:".quest .qi img",review:".arc-games",profile:".arc-goalcard"};
 E("setTab('profile')"); await wait(60);
@@ -164,6 +185,12 @@ for(const [t,sel] of Object.entries(ecrans)){
   console.log(" ",t,":",ok?"habillé":"PROBLÈME");
   if(!ok)ko("écran "+t+" non habillé ("+sel+")");
 }
+/* les lecons sont ecrites en phrases : aucun point-virgule dans la prose
+   (on tolere les citations entre guillemets et les formules) */
+const semi=E(`UNITS.map(u=>{ const t=String(u.guide||"").replace(/<div class="formula">[\\s\\S]*?<\\/div>/g,"").replace(/<svg[\\s\\S]*?<\\/svg>/g,"")
+  .replace(/<[^>]+>/g," ").replace(/«[^»]*»/g,""); return / ; |\\s;\\s*$/m.test(t)?u.c+" "+u.id:null; }).filter(Boolean)`);
+console.log("leçons avec des points-virgules :",semi.length,semi.slice(0,6).join(", "));
+if(semi.length)ko("points-virgules dans la prose des leçons : "+semi.slice(0,6).join(", "));
 /* le contenu n a pas bouge */
 console.log("cours :",E("COURSES.length"),"| unités :",E("UNITS.length"),"| exercices :",E("EXOS.length"));
 

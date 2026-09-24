@@ -3,8 +3,8 @@
 <h3>Le patrimoine est coupé en deux parts</h3>
 <div class="gstory">Bernard Lefèvre te regarde droit dans les yeux : « Marc ne m'a pas adressé la parole depuis six ans. Je veux tout laisser à Julie et Sophie. » Tu vas devoir lui dire non, gentiment, et lui montrer ce qu'il peut faire à la place. La réserve est ton argument.</div>
 <p>En présence d'enfants, le patrimoine se divise en deux :</p>
-<ul><li>la <b>réserve héréditaire</b> : la part que la loi garantit aux enfants, que personne ne peut leur retirer ;</li>
-<li>la <b>quotité disponible</b> : la part dont le défunt peut disposer librement, par donation ou testament, au profit de qui il veut.</li></ul>
+<ul><li>La <b>réserve héréditaire</b> : la part que la loi garantit aux enfants, que personne ne peut leur retirer.</li>
+<li>La <b>quotité disponible</b> : la part dont le défunt peut disposer librement, par donation ou testament, au profit de qui il veut.</li></ul>
 <h3>Le tableau à connaître par cœur</h3>
 <table><tr><th>Nombre d'enfants</th><th>Réserve globale</th><th>Quotité disponible</th></tr>
 <tr><td>1</td><td>1/2</td><td>1/2</td></tr>

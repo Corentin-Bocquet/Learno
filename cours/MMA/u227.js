@@ -26,7 +26,7 @@
 <li>La fatigue fait baisser les mains, ralentit le sprawl et rend les décisions mauvaises : Diaz contre McGregor (module 10).</li>
 <li>Une <b>perte de poids brutale</b> avant la pesée (déshydratation) peut réduire le cardio et la résistance aux coups.</li></ul>
 <h3>La minute de repos</h3>
-<p>Une minute, c'est très court : eau, respiration, glace, et <b>deux consignes claires</b> maximum (« Tourne vers ta gauche ; calf kick quand il avance »). Un coin qui crie dix choses n'en fait passer aucune. Le coin peut aussi <b>arrêter le combat</b> s'il juge son combattant en danger (TKO).</p>
+<p>Une minute, c'est très court. Le coin donne de l'eau, fait respirer, pose la glace et donne <b>deux consignes claires</b> au maximum (« Tourne vers ta gauche. Calf kick quand il avance. »). Un coin qui crie dix choses n'en fait passer aucune. Le coin peut aussi <b>arrêter le combat</b> s'il juge son combattant en danger (TKO).</p>
 <div class="gtrap">Idée reçue : « l'agressivité gagne les rounds ». Non : avancer sans toucher n'est pas de l'agressivité efficace. Les juges regardent d'abord l'<b>impact</b>. Un combattant qui recule mais touche plus fort et plus souvent peut gagner le round.</div>
 <h3>Ce que tu dois savoir faire</h3>
 <ul><li>Appliquer les critères I.A.C. dans l'ordre</li><li>Construire un plan A et un plan B</li><li>Reconnaître les profils stratégiques et proposer une réponse</li><li>Donner des consignes utiles à la minute de repos</li></ul>`},
