@@ -45,6 +45,7 @@ E("closeModal()");
 /* zones de securite iPhone, verre liquide, pas d ancien design au lancement */
 if(!/#center\{padding-top:env\(safe-area-inset-top\)\}/.test(bloc))ko("marge du haut iPhone absente");
 if(!/#mtabs\{[^}]*backdrop-filter/.test(bloc))ko("barre du bas sans verre liquide");
+if(!/#mtabs\{z-index:60\}/.test(bloc))ko("la barre du bas peut passer sous les bandeaux de module");
 if(!/<!-- DESIGN:ARCADE:TETE:DEBUT -->[\s\S]*arc-wait[\s\S]*<\/head>/.test(html))ko("masque de lancement absent de la tete");
 if(doc.documentElement.classList.contains("arc-wait"))ko("la page reste masquee apres le chargement");
 if(!doc.querySelector("#mt-course.arc-cpill"))ko("pastille du cours absente");
