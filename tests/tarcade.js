@@ -34,7 +34,18 @@ if(!doc.body.classList.contains("arcade"))ko("classe arcade absente");
 /* 2. onglets et barre du haut */
 const noms=[...doc.querySelectorAll("#mtabs .navitem")].map(b=>b.textContent.trim());
 console.log("barre du bas :",noms.join(" | "));
-["Jouer","Réviser","Défis","Ligue","Boutique"].forEach(n=>{ if(!noms.includes(n))ko("onglet absent : "+n); });
+["Jouer","Réviser","Ligue","Boutique","Plus"].forEach(n=>{ if(!noms.includes(n))ko("onglet absent : "+n); });
+if(noms.length!==5)ko("la barre du bas doit compter 5 cases, pas "+noms.length);
+E("moreTabs()"); await wait(40);
+const plus=[...doc.querySelectorAll("#mcard .arc-more button")].map(b=>b.textContent.trim());
+console.log("dans Plus :",plus.join(" | "));
+["Défis","Profil"].forEach(n=>{ if(!plus.includes(n))ko("onglet introuvable dans Plus : "+n); });
+E("closeModal()");
+/* zones de securite iPhone, verre liquide, pas d ancien design au lancement */
+if(!/#center\{padding-top:env\(safe-area-inset-top\)\}/.test(bloc))ko("marge du haut iPhone absente");
+if(!/#mtabs\{[^}]*backdrop-filter/.test(bloc))ko("barre du bas sans verre liquide");
+if(!/<!-- DESIGN:ARCADE:TETE:DEBUT -->[\s\S]*arc-wait[\s\S]*<\/head>/.test(html))ko("masque de lancement absent de la tete");
+if(doc.documentElement.classList.contains("arc-wait"))ko("la page reste masquee apres le chargement");
 if(!doc.querySelector("#mt-course.arc-cpill"))ko("pastille du cours absente");
 ["mt-streak","mt-gems","mt-hearts","mt-xp"].forEach(i=>{ if(!doc.getElementById(i))ko("compteur disparu : "+i); });
 
@@ -58,6 +69,25 @@ for(const cid of ["PATRI","MRC","POKER","NUTRI"]){
 E("arcCourses()"); await wait(60);
 console.log("sélecteur de cours :",doc.querySelectorAll("#mcard .arc-crow").length,"cours");
 if(doc.querySelectorAll("#mcard .arc-crow").length<10)ko("sélecteur de cours incomplet");
+E("closeModal()");
+
+/* 3 bis. la lecon s affiche avant le quiz, et on peut la passer */
+E("S.active='MMA';save()");
+const u1=E("courseUnits('MMA')[0].id");
+E(`delete S.courses.MMA.lessons[lkey(${u1},0)];arcStart(${u1},0)`); await wait(40);
+const intro=doc.getElementById("sc-intro");
+console.log("leçon avant le quiz :",intro&&intro.classList.contains("on"),"|",(doc.querySelector("#introbody h2")||{}).textContent);
+if(!intro||!intro.classList.contains("on"))ko("la leçon ne s'affiche pas avant le quiz");
+if(!doc.querySelector("#introbody .arc-lesson")||doc.querySelector("#introbody .arc-lesson").textContent.trim().length<40)ko("leçon avant le quiz vide");
+E("arcIntroGo()"); await wait(40);
+if(!doc.getElementById("sc-lesson").classList.contains("on"))ko("Passer ne lance pas le quiz");
+E("quitLesson()"); await wait(30);
+/* le guide devient la lecon : objectifs, sommaire, parties repliables */
+E(`openGuide(${u1})`); await wait(40);
+const parts=doc.querySelectorAll("#mcard details.arc-acc").length;
+console.log("leçon du module :",parts,"parties repliables | objectifs :",!!doc.querySelector("#mcard .arc-goals"));
+if(parts<3)ko("guide non découpé en parties");
+if(!doc.querySelector("#mcard .arc-goals"))ko("objectifs du module absents");
 E("closeModal()");
 
 /* 4. une lecon : correction, memo, pave numerique, fin */
@@ -123,6 +153,11 @@ if(!doc.getElementById("sc-league").classList.contains("on"))ko("quitter un jeu 
 
 /* 6. ligue, boutique, défis, réviser, profil */
 const ecrans={league:".arc-cups",shop:".shopit .si img",quests:".quest .qi img",review:".arc-games",profile:".arc-goalcard"};
+E("setTab('profile')"); await wait(60);
+const acc=doc.querySelectorAll("#profilebody > details.arc-acc").length;
+console.log("profil rangé :",acc,"sections repliables | réglages en grille :",!!doc.querySelector("#profilebody .arc-setgrid"));
+if(acc<6)ko("profil non rangé en sections");
+if(doc.querySelectorAll("#profilebody .tabrow").length<5)ko("réglage des onglets perdu dans le profil");
 for(const [t,sel] of Object.entries(ecrans)){
   E(`setTab('${t}')`); await wait(60);
   const ok=!!doc.querySelector("#sc-"+t+" "+sel);

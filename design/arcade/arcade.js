@@ -22,6 +22,32 @@
   const phrase1=t=>{ t=String(t||"").replace(/\s+/g," ").trim(); const m=/^(.{20,180}?[.!?])(\s|$)/.exec(t); return m?m[1]:court(t,160); };
   const cName=()=>{ const c=COURSES.find(x=>x.id===S.active); return c?c.short:""; };
 
+  /* ---------------- 0. ICONES MAISON : flamme, XP, chrono, lecon ----------------
+     Les degrades vivent dans un seul <defs> toujours affiche : un degrade
+     range dans un ecran masque ne se dessine plus dans Chrome ni Safari.   */
+  const DEFS=`<svg id="arc-defs" width="0" height="0" style="position:absolute;width:0;height:0" aria-hidden="true" focusable="false"><defs>
+    <linearGradient id="arcFl" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FF3D1F"/><stop offset=".5" stop-color="#FF8A00"/><stop offset="1" stop-color="#FFC21A"/></linearGradient>
+    <linearGradient id="arcFc" x1="0" y1="1" x2="0" y2="0"><stop offset="0" stop-color="#FFD84A"/><stop offset="1" stop-color="#FFF7D1"/></linearGradient>
+    <linearGradient id="arcXp" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFE473"/><stop offset="1" stop-color="#F29E00"/></linearGradient>
+    <linearGradient id="arcCh" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8FE0FF"/><stop offset="1" stop-color="#1C8FF6"/></linearGradient></defs></svg>`;
+  const FL="M13.2 1.6C13.6 5 17 7.1 18.6 10.4c.8 1.6 1.2 3.1 1.2 4.5A7.8 7.8 0 0 1 12 22.6a7.8 7.8 0 0 1-7.8-7.7c0-2.9 1.4-5.2 3.4-6.9-.1 1.9.6 3.5 1.9 4.4C9 8.2 10.6 4.4 13.2 1.6z";
+  const FC="M12.3 11.2c.3 2.1 3.3 3.2 3.3 6.1a3.6 3.6 0 0 1-7.2 0c0-1.7.8-2.9 2-3.8.1 1 .5 1.7 1.1 2.1-.2-1.6.1-3.1.8-4.4z";
+  const svgw=(s,inner,lab)=>`<svg class="arc-ico" viewBox="0 0 24 24" width="${s||20}" height="${s||20}" ${lab?`role="img" aria-label="${lab}"`:'aria-hidden="true"'}>${inner}</svg>`;
+  const MINE={
+    flame:(s,c)=>(!c||c==="var(--orange)"||c==="currentColor")
+      ? svgw(s,`<path d="${FL}" fill="url(#arcFl)"/><path d="${FC}" fill="url(#arcFc)"/><path d="M13.2 3.6c.6 2.2 2.5 3.8 3.7 5.7" stroke="rgba(255,255,255,.45)" stroke-width="1.1" fill="none" stroke-linecap="round"/>`)
+      : svgw(s,`<path d="${FL}" fill="${c}"/>`),
+    xp:s=>svgw(s,`<path d="M12 1.8 21 7v10l-9 5.2L3 17V7z" fill="url(#arcXp)" stroke="#C77800" stroke-width="1.3" stroke-linejoin="round"/><path d="M5 8 12 4v3.2L7.6 9.8z" fill="rgba(255,255,255,.4)"/><path d="M13.3 5.4 8 13.3h3.4l-1.1 5.3 5.5-8h-3.5z" fill="#fff"/>`,"XP"),
+    chrono:s=>svgw(s,`<rect x="9.8" y="1.4" width="4.4" height="2.6" rx="1.1" fill="#1C8FF6"/><rect x="11.2" y="3.6" width="1.6" height="2.2" fill="#1C8FF6"/><path d="M18.4 5.4l1.7 1.7" stroke="#1C8FF6" stroke-width="2.2" stroke-linecap="round"/><circle cx="12" cy="13.6" r="8.4" fill="url(#arcCh)"/><circle cx="12" cy="13.6" r="6.3" fill="#fff"/><path d="M12 7.9v1.3M17.7 13.6h-1.3M12 19.3V18M6.3 13.6h1.3" stroke="#9DB8D6" stroke-width="1.2" stroke-linecap="round"/><path d="M12 13.6 12 9.6" stroke="#FF4B4B" stroke-width="1.8" stroke-linecap="round"/><path d="M12 13.6l2.8 1.7" stroke="#10102A" stroke-width="1.6" stroke-linecap="round"/><circle cx="12" cy="13.6" r="1.2" fill="#10102A"/>`,"Chronométré")
+  };
+  function arcIcons(){
+    if(typeof ICONS==="object"&&ICONS&&!ICONS.lecon)ICONS.lecon='<path d="M11.2 6.3C9.5 4.9 7 4.2 4.3 4.2c-.7 0-1.3.6-1.3 1.3v11.9c0 .7.6 1.3 1.3 1.3 2.6 0 4.9.7 6.9 2.1zM12.8 6.3c1.7-1.4 4.2-2.1 6.9-2.1.7 0 1.3.6 1.3 1.3v11.9c0 .7-.6 1.3-1.3 1.3-2.6 0-4.9.7-6.9 2.1z"/>';
+    if(!document.getElementById("arc-defs"))document.body.insertAdjacentHTML("afterbegin",DEFS);
+    const __ico=ico;
+    window.ico=function(n,s,c){ return MINE[n]?MINE[n](s,c):__ico.apply(null,arguments); };
+  }
+  const xpTag=n=>ico("xp",22)+"+"+n;
+
   /* ---------------- 1. ONGLETS : Jouer, Réviser, Défis, Ligue, Boutique ---------------- */
   const NOMS={path:"Jouer",review:"Réviser",quests:"Défis",league:"Ligue",shop:"Boutique",profile:"Profil"};
   const ICS={quests:"sun"};
@@ -72,7 +98,7 @@
     const d=new Date(), dow=(d.getDay()+6)%7, L7=["L","M","M","J","V","S","D"]; let h="";
     for(let i=0;i<7;i++){ const x=new Date(d); x.setDate(d.getDate()-(dow-i)); const k=fmtDay(x);
       const on=((S.hist||{})[k]||0)>0 || (i===dow&&S.lastDay===today());
-      h+=`<div class="d ${on?"on":""} ${i===dow?"now":""}"><span>${L7[i]}</span><span class="o">${ico("flame",18,on?"#fff":"var(--line)")}</span></div>`; }
+      h+=`<div class="d ${on?"on":""} ${i===dow?"now":""}"><span>${L7[i]}</span><span class="o">${ico("flame",on?20:18,on?undefined:"var(--line)")}</span></div>`; }
     return h;
   }
   function chestRow(){
@@ -98,10 +124,10 @@
       <div class="t">${esc(u.t)} · leçon ${n.l+1}</div>
       <button class="go" type="button" onclick="arcResume()">Continuer</button></div>${ring}</div>`;
   }
-  window.arcResume=function(){ const n=nextLessonExists(); if(n)startLesson(n.u,n.l); else setTab("review"); };
+  window.arcResume=function(){ const n=nextLessonExists(); if(n)arcStart(n.u,n.l); else setTab("review"); };
   function play(bg,sh,icon,t,s,tag,act){
     return `<button class="arc-play" type="button" style="background:${bg};--sh:${sh}" onclick="${act}">
-      <span class="pi">${ico(icon,30,"#fff")}</span><span class="pt"><b>${t}</b><span>${s}</span></span><span class="pg">${tag}</span></button>`;
+      <span class="pi">${ico(icon,30,"#fff")}</span><span class="pt"><b>${t}</b><span>${s}</span></span><span class="pg${/<img/.test(tag)?" img":""}">${tag}</span></button>`;
   }
   function homeHTML(){
     const cid=S.active, due=dueItems(cid,999).length, calib=typeof needsCalib==="function"&&needsCalib(cid);
@@ -112,10 +138,10 @@
       ${calib?"":resumeCard()}
       ${chestRow()}
       <div class="arc-sec"><span>Au programme</span></div>
-      ${play("#9B51E0","#7A3BB5","bolt","Éclair 60 s","Paires express, combo à battre","+20 XP","arcGame('eclair')")}
-      ${play("#1899D6","#10729F","target","Rappels",due?due+" notion"+(due>1?"s":"")+" à revoir avant oubli":"Rien à revoir, tout est frais","+12 XP","startPractice('review')")}
-      ${play("#C7478F","#93306A","crown","Boss du module","Bats le Diable pour un coffre légendaire","Coffre","arcGame('boss')")}
-      ${play("#E5484D","#B3363A","exam","Examen blanc","Facile · Moyen · Difficile","Chrono","setTab('exam')")}`;
+      ${play("#9B51E0","#7A3BB5","bolt","Éclair 60 s","Paires express, combo à battre",xpTag(20),"arcGame('eclair')")}
+      ${play("#1899D6","#10729F","target","Rappels",due?due+" notion"+(due>1?"s":"")+" à revoir avant oubli":"Rien à revoir, tout est frais",xpTag(12),"startPractice('review')")}
+      ${play("#C7478F","#93306A","crown","Boss du module","Bats le Diable pour un coffre légendaire",aimg("legendaire",38),"arcGame('boss')")}
+      ${play("#E5484D","#B3363A","exam","Examen blanc","Facile · Moyen · Difficile",ico("chrono",30),"setTab('exam')")}`;
   }
   function pathView(){ return (S.settings&&S.settings.pathView)==="snake"?"snake":"cards"; }
   window.arcView=function(v){ S.settings.pathView=v; save(); sfx("click"); renderPath(); };
@@ -134,7 +160,7 @@
         const st=c.lessons[lkey(u.id,li)];
         let cls="arc-dot", g=ico("lock",16), act="lockMsg()", lab="Leçon "+(li+1)+" verrouillée";
         if(unlocked&&st){ cls+=st>=3?" gold":" done"; g=ico(st>=3?"crown":"check",18); act=`startLesson(${u.id},${li})`; lab="Refaire la leçon "+(li+1); }
-        else if(unlocked&&firstOpen){ cls+=" now"; g=ico("star",18); act=`startLesson(${u.id},${li})`; firstOpen=false; cur=true; curLi=li; lab="Commencer la leçon "+(li+1); }
+        else if(unlocked&&firstOpen){ cls+=" now"; g=ico("star",18); act=`arcStart(${u.id},${li})`; firstOpen=false; cur=true; curLi=li; lab="Commencer la leçon "+(li+1); }
         dots+=`<button class="${cls}" type="button" onclick="${act}" aria-label="${lab}">${g}</button>`;
         if(li>0&&(li%3===2||(nL<3&&li===nL-1))){
           const ck=`chest-${u.id}-${li}`, got=c.lessons[ck], ready=done>li&&!got;
@@ -148,8 +174,8 @@
       h+=`<div class="arc-card arc-mod ${cur?"cur":""} ${unlocked?"":"lock"}">
         <div class="h"><div><div class="k" style="color:var(${u.col})">${esc(u.n)}</div><div class="t">${esc(u.t)}</div></div><span class="c">${done} / ${nL}</span></div>
         <div class="arc-dots">${dots}</div>
-        <div class="f"><button class="arc-mini" type="button" onclick="openGuide(${u.id})">${ico("book",15)} Guide</button>
-        ${cur?`<button class="arc-go" type="button" onclick="startLesson(${u.id},${curLi})">Commencer +10 XP</button>`:""}</div></div>`;
+        <div class="f"><button class="arc-mini" type="button" onclick="openGuide(${u.id})">${ico("lecon",16)} Leçon</button>
+        ${cur?`<button class="arc-go" type="button" onclick="arcStart(${u.id},${curLi})">Commencer +10 XP</button>`:""}</div></div>`;
     });
     return h;
   }
@@ -160,6 +186,10 @@
       g.innerHTML=aimg(/ouvert/i.test(lab)?"ouvert":"coffre",74);
     });
     body.querySelectorAll(".startbub").forEach(b=>{ b.textContent="Commencer +10 XP"; });
+    body.querySelectorAll(".unitbar button").forEach(b=>{ b.innerHTML=ico("lecon",15)+" Leçon"; });
+    /* une lecon jamais faite commence par son cours, puis le quiz */
+    body.querySelectorAll('.node[onclick^="startLesson("]').forEach(n=>{
+      n.setAttribute("onclick",n.getAttribute("onclick").replace(/^startLesson\(/,"arcStart(")); });
   }
 
   /* ---------------- 5. LECON : corrections et pave numerique ---------------- */
@@ -415,7 +445,7 @@
     if(G.hp<=0){ const xp=award(30,30); endScreen({img:"legendaire",title:"Boss vaincu !",sub:"Le Diable du "+G.u.n+" est à terre. Le coffre légendaire est à toi.",
       stats:[["+"+xp,"XP","var(--gold)"],["+30","gemmes","var(--blue)"],[G.hearts+" / 3","coeurs","var(--red)"]]}); return; }
     if(G.hearts<=0||G.i+1>=G.q.length){ const xp=award(5,0); endScreen({win:false,masc:masc("fier","","width:130px;height:130px","diable"),title:"Le Diable a gagné",
-      sub:"Relis le guide du module et reviens le défier. Tes erreurs sont déjà dans tes rappels.",stats:[["+"+xp,"XP","var(--gold)"],[G.hp+" PV","restants","var(--orange)"]]}); return; }
+      sub:"Relis la leçon du module et reviens le défier. Tes erreurs sont déjà dans tes rappels.",stats:[["+"+xp,"XP","var(--gold)"],[G.hp+" PV","restants","var(--orange)"]]}); return; }
     G.i++; G.picked=null; G.opt=null; bossPaint(); };
 
   /* --- Duel de ligue : memes questions, ton rival joue en meme temps --- */
@@ -459,6 +489,139 @@
   const __game=window.arcGame;
   window.arcGame=function(k){ if(k==="exam"){ setTab("exam"); return; } return __game(k); };
 
+  /* ---------------- 7 bis. LA LECON AVANT LE QUIZ ----------------
+     Une lecon jamais faite s ouvre sur son cours : la partie du guide qui
+     colle le mieux aux quatre questions neuves. On peut la passer. Les
+     lecons deja faites et l epreuve legendaire partent droit au quiz.   */
+  const GOALS=/savoir faire|en examen|pour l'examen|à retenir pour/i;
+  const txt=h=>String(h||"").replace(/<[^>]+>/g," ").replace(/&[a-z]+;/g," ").replace(/\s+/g," ").trim();
+  function sections(u){
+    return String(u.guide||"").split(/(?=<h3[\s>])/).map(p=>{
+      const m=/^<h3[^>]*>([\s\S]*?)<\/h3>/.exec(p);
+      return {t:m?txt(m[1]):"",h:m?p.slice(m[0].length):p};
+    }).filter(s=>txt(s.h)||s.t);
+  }
+  const mots=t=>new Set(txt(t).toLowerCase().split(/[^a-z0-9àâäéèêëïîôöùûüç]+/).filter(w=>w.length>4));
+  function lessonSec(u,li){
+    const all=sections(u), cand=all.filter(s=>s.t&&!GOALS.test(s.t));
+    if(!cand.length)return all[0]||null;
+    const W=mots(unitExos(u.id).slice(li*4,li*4+4).map(e=>[e.q,e.ctx,e.w,(e.o||[]).join(" ")].join(" ")).join(" "));
+    const nL=Math.max(1,lessonsIn(u.id)), base=Math.min(cand.length-1,Math.floor(li*cand.length/nL));
+    let best=cand[base], bs=-1;
+    cand.forEach((s,i)=>{ const M=mots(s.t+" "+s.h); let n=0; M.forEach(w=>{ if(W.has(w))n++; });
+      const sc=n/Math.sqrt(M.size+1)-Math.abs(i-base)*.08; if(sc>bs){ bs=sc; best=s; } });
+    return best;
+  }
+  let INTRO=null;
+  window.arcStart=function(uid,li){
+    const u=unitOf(uid), c=u&&S.courses[u.c];
+    const done=c&&c.lessons&&c.lessons[lkey(uid,li)];
+    const sec=u&&li>=0&&!done&&S.settings.arcIntro!==false?lessonSec(u,li):null;
+    if(!sec)return startLesson(uid,li);
+    INTRO={uid,li};
+    const nL=lessonsIn(uid), min=Math.max(1,Math.round(txt(sec.h).split(" ").length/200));
+    document.getElementById("intro-ttl").textContent=u.n+" · leçon "+(li+1)+"/"+nL;
+    document.getElementById("introbody").innerHTML=`<div class="arc-ihero" style="background:var(${u.col})">
+        <div class="k">${ico("lecon",14)} La leçon avant le quiz</div><h2>${esc(sec.t||u.t)}</h2>
+        <div class="m"><span>${ico("clock",13)} ${min} min de lecture</span><span>${ico("target",13)} puis 4 questions</span><span>${ico("xp",15)} +10 XP</span></div></div>
+      <div class="arc-lesson" style="--gcol:var(${u.col})">${sec.h}</div>`;
+    show("intro"); const b=document.getElementById("introbody"); if(b)b.scrollTop=0;
+    sfx("click");
+  };
+  window.arcIntroGo=function(){ const i=INTRO; INTRO=null; if(i)startLesson(i.uid,i.li); };
+  window.arcIntroQuit=function(){ INTRO=null; setTab("path"); };
+  window.arcIntroAll=function(){ if(INTRO)openGuide(INTRO.uid); };
+
+  /* ---------------- 7 ter. LE GUIDE DEVIENT « LA LECON » ----------------
+     Meme contenu, mieux range : les objectifs en haut, un sommaire, puis
+     chaque partie repliable. On lit une partie a la fois au lieu d un mur
+     de texte. Le contenu des cours n est pas touche.                     */
+  function arcGuide(uid){
+    const w=document.querySelector("#mcard .gwrap"); if(!w||w.dataset.arc)return; w.dataset.arc="1";
+    const u=unitOf(uid);
+    w.querySelectorAll(".gtag").forEach(t=>{ if(/Fiche de cours/.test(t.textContent))t.innerHTML=ico("lecon",13)+" Leçon du module"; });
+    const secs=[...w.querySelectorAll(":scope > .gsec")]; if(!secs.length)return;
+    const frag=document.createElement("div"); let n=0; const toc=[];
+    let goals=null;
+    secs.forEach(s=>{
+      const h=s.querySelector(":scope > h3");
+      if(!h){ if(txt(s.innerHTML)){ s.classList.add("arc-lesson"); frag.appendChild(s); } else s.remove(); return; }
+      const t=txt(h.innerHTML); h.remove();
+      if(GOALS.test(t)&&!goals){ goals=document.createElement("div"); goals.className="arc-goals arc-lesson";
+        goals.innerHTML=`<div class="k">${ico("target",15)} ${esc(t)}</div>`; while(s.firstChild)goals.appendChild(s.firstChild); s.remove(); return; }
+      n++; const d=document.createElement("details"); d.className="arc-acc"; d.id="arc-g"+n; if(n===1)d.open=true;
+      d.innerHTML=`<summary><span class="n">${n}</span><span class="t">${esc(t)}</span><span class="ch">${ico("arrowdown",16)}</span></summary>`;
+      const b=document.createElement("div"); b.className="b arc-lesson"; while(s.firstChild)b.appendChild(s.firstChild); d.appendChild(b);
+      frag.appendChild(d); toc.push(t); s.remove();
+    });
+    const anchor=w.querySelector(".gtag")?w.querySelector(".gtag").parentElement:w.querySelector(".ghero");
+    const head=document.createElement("div");
+    if(goals)head.appendChild(goals);
+    if(toc.length>2)head.insertAdjacentHTML("beforeend",`<div class="arc-toc" role="navigation" aria-label="Sommaire">${toc.map((t,i)=>
+      `<button type="button" onclick="arcToc(${i+1})">${i+1}. ${esc(court(t,34))}</button>`).join("")}</div>`);
+    anchor.after(head); head.after(frag);
+    while(frag.firstChild)head.parentNode.insertBefore(frag.firstChild,frag);
+    frag.remove();
+    w.style.setProperty("--gcol",`var(${u.col})`);
+  }
+  window.arcToc=function(i){ const d=document.getElementById("arc-g"+i); if(!d)return; d.open=true; d.scrollIntoView({behavior:"smooth",block:"start"}); };
+
+  /* ---------------- 7 quater. PROFIL ET REVISER RANGES ----------------
+     Chaque titre de section devient une carte repliable : tout reste la,
+     on ouvre seulement ce qu on cherche. L etat ouvert est retenu.       */
+  const OUV={profile:{"Statistiques":1},review:{"Pratique personnalisée":1}};
+  const SICO={"Statistiques":"chart","Analyse":"chart","Badges":"medal","Succès":"trophy","Progression":"book","Réglages":"gear",
+    "Ton compagnon":"heart","Onglets":"grid","Synchronisation":"refresh","Rappels":"bell","Sauvegarde":"save","Zone":"lock",
+    "Pratique":"target","Maîtrise":"chart"};
+  function arcAcc(root,key){
+    if(!root||root.querySelector(":scope > .arc-acc"))return;
+    let cur=null;
+    [...root.children].forEach(el=>{
+      if(el.classList&&el.classList.contains("section-t")){
+        const t=txt(el.innerHTML), k=Object.keys(SICO).find(x=>t.indexOf(x)===0);
+        cur=document.createElement("details"); cur.className="arc-acc pf"; cur.open=!!OUV[key][t];
+        cur.innerHTML=`<summary><span class="n">${ico(SICO[k]||"star",17)}</span><span class="t">${esc(t)}</span><span class="ch">${ico("arrowdown",16)}</span></summary><div class="b"></div>`;
+        cur.addEventListener("toggle",function(){ OUV[key][t]=this.open?1:0; });
+        root.insertBefore(cur,el); cur.lastElementChild.appendChild(el);
+        if(/^Réglages/.test(t))cur.lastElementChild.classList.add("arc-setbox");
+        return;
+      }
+      if(cur)cur.lastElementChild.appendChild(el);
+    });
+    root.querySelectorAll(".arc-setbox").forEach(b=>{
+      const g=document.createElement("div"); g.className="arc-setgrid";
+      [...b.children].forEach(x=>{ if(x.classList.contains("section-t"))return; g.appendChild(x); });
+      b.appendChild(g);
+    });
+  }
+
+  /* ---------------- 7 quinquies. BARRE DU BAS : cinq cases ----------------
+     Jouer, Réviser, Ligue, Boutique et Plus. Défis, Profil et les autres
+     onglets passent dans Plus. La série (flamme) ouvre toujours les Défis,
+     l avatar ouvre toujours le Profil.                                     */
+  const PRIO=["path","review","league","shop"];
+  let TAB="path";
+  function navSplit(){
+    const vis=visibleTabs(), main=[];
+    PRIO.forEach(id=>{ const t=vis.find(x=>x.id===id); if(t)main.push(t); });
+    vis.forEach(t=>{ if(main.length<4&&!main.includes(t)&&t.id!=="profile")main.push(t); });
+    return {main,reste:vis.filter(t=>!main.includes(t))};
+  }
+  function arcNav(){
+    const mt=document.getElementById("mtabs"); if(!mt||typeof visibleTabs!=="function")return;
+    const {main,reste}=navSplit();
+    mt.innerHTML=main.map(t=>`<button class="navitem${t.id===TAB?" on":""}" data-tab="${t.id}" type="button"><span class="ic">${ico(t.ic,24)}</span>${t.nm}</button>`).join("")
+      +`<button class="navitem${reste.some(t=>t.id===TAB)?" on":""}" id="arc-more" type="button" onclick="moreTabs()" aria-label="Plus d'onglets"><span class="ic">${ico("grid",24)}</span>Plus</button>`;
+    if(typeof bindNav==="function")bindNav();
+  }
+  function arcMoreTabs(){
+    const {reste}=navSplit();
+    openModal(`<h2 class="arc-h" style="margin:0;text-align:left">Plus</h2>
+      <div class="arc-more">${reste.map(t=>`<button type="button" class="${t.id===TAB?"on":""}" onclick="closeModal();setTab('${t.id}')">
+        <span class="i">${ico(t.ic,24,"var(--blue)")}</span>${esc(t.nm)}</button>`).join("")}</div>
+      <button class="btn ghost" onclick="closeModal()">Fermer</button>`);
+  }
+
   /* ---------------- 8. BRANCHEMENTS ---------------- */
   function boot(){
     document.body.classList.add("arcade");
@@ -466,12 +629,28 @@
       const ref=document.getElementById("sc-lesson");
       if(ref)ref.insertAdjacentHTML("afterend",`<section class="screen" id="sc-game"><div class="scroll" id="gamebody"></div></section>`);
     }
+    if(!document.getElementById("sc-intro")){
+      const ref=document.getElementById("sc-lesson");
+      if(ref)ref.insertAdjacentHTML("afterend",`<section class="screen" id="sc-intro" aria-label="Leçon avant le quiz">
+        <div class="arc-ihead"><button class="lquit" type="button" onclick="arcIntroQuit()" aria-label="Fermer la leçon">${ico("cross",24,"var(--dim)")}</button>
+          <div class="ttl" id="intro-ttl"></div><button class="arc-skip" type="button" onclick="arcIntroGo()">Passer</button></div>
+        <div class="arc-ibody" id="introbody"></div>
+        <div class="arc-ifoot"><button class="btn" type="button" onclick="arcIntroGo()">J'ai compris, au quiz</button>
+          <button class="arc-mini" type="button" style="justify-content:center" onclick="arcIntroAll()">${ico("lecon",16)} Toute la leçon du module</button></div></section>`);
+    }
+    arcIcons();
+    if(typeof renderNav==="function"){ const __rn=renderNav; window.renderNav=function(){ __rn.apply(null,arguments); arcNav(); }; }
+    window.moreTabs=arcMoreTabs;
     arcTop(); arcTabs();
 
     const __show=show;
-    window.show=function(id){ __show.apply(null,arguments); document.body.classList.toggle("arc-focus",id==="lesson"||id==="game"); };
+    window.show=function(id){ __show.apply(null,arguments); document.body.classList.toggle("arc-focus",id==="lesson"||id==="game"||id==="intro"); };
     const __setTab=setTab;
-    window.setTab=function(t){ if(G){ stop(); G=null; } return __setTab.apply(null,arguments); };
+    window.setTab=function(t){ if(G){ stop(); G=null; } INTRO=null; TAB=t; const r=__setTab.apply(null,arguments);
+      const m=document.getElementById("arc-more"); if(m)m.classList.toggle("on",navSplit().reste.some(x=>x.id===t));
+      return r; };
+    const __og=openGuide;
+    window.openGuide=function(uid){ __og.apply(null,arguments); try{ arcGuide(uid); }catch(e){ if(window.console)console.error("guide arcade",e); } };
     const __refresh=refreshTop;
     window.refreshTop=function(){ __refresh.apply(null,arguments); arcTopFill(); };
 
@@ -553,6 +732,7 @@
       __rr.apply(null,arguments);
       const b=document.getElementById("reviewbody"); if(!b||b.querySelector(".arc-games"))return;
       b.insertAdjacentHTML("afterbegin",`<div class="arc-sec" style="margin-top:4px"><span>Jeux · ${esc(cName())}</span></div>${gamesHTML()}`);
+      arcAcc(b,"review");
     };
 
     const __rpf=renderProfile;
@@ -561,9 +741,13 @@
       const pb=document.querySelector("#profilebody .pbanner"); if(!pb||document.querySelector("#profilebody .arc-goalcard"))return;
       const c=COURSES.find(x=>x.id===S.active), p=coursePct(S.active);
       pb.insertAdjacentHTML("afterend",`<div class="arc-card arc-goalcard"><div style="flex:1"><b>Finis le cours ${esc(c?c.short:"")} pour décrocher sa couronne de maître</b><span>${p} % du cours accompli</span></div>${masc("content","","width:74px;height:74px")}</div>`);
+      arcAcc(document.getElementById("profilebody"),"profile");
     };
 
     if(typeof S!=="undefined"&&S){ refreshTop(); if(document.getElementById("sc-path").classList.contains("on"))renderPath(); }
+    /* l ancien design ne doit plus apparaitre au lancement : la page reste
+       masquee (voir le bloc DESIGN:ARCADE:TETE) jusqu ici */
+    document.documentElement.classList.remove("arc-wait");
   }
-  try{ boot(); }catch(e){ if(window.console)console.error("design arcade",e); }
+  try{ boot(); }catch(e){ document.documentElement.classList.remove("arc-wait"); if(window.console)console.error("design arcade",e); }
 })();
