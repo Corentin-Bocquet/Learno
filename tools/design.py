@@ -17,7 +17,19 @@ for nom, txt in (('css', css), ('js', js)):
 s = io.open(P, encoding='utf-8').read()
 s = re.sub(r'\n?<!-- DESIGN:ARCADE:DEBUT -->.*?<!-- DESIGN:ARCADE:FIN -->\n?', '\n', s, flags=re.S)
 s = s.rstrip('\n') + '\n'
-bloc = '<!-- DESIGN:ARCADE:DEBUT -->\n<style>\n' + css + '\n</style>\n<script>\n' + js + '\n</script>\n<!-- DESIGN:ARCADE:FIN -->\n'
+# tete de page : la page reste masquee tant que la couche Arcade n a pas
+# fini de s installer, sinon l ancien design s affiche une a deux secondes
+# au lancement. Filet de securite : on la devoile au bout de 6 s quoi qu il arrive.
+s = re.sub(r'<!-- DESIGN:ARCADE:TETE:DEBUT -->.*?<!-- DESIGN:ARCADE:TETE:FIN -->\n?', '', s, flags=re.S)
+tete = ('<!-- DESIGN:ARCADE:TETE:DEBUT -->\n'
+        '<style>html.arc-wait body{background:#141432}html.arc-wait #shell{visibility:hidden}</style>\n'
+        '<script>(function(){var d=document.documentElement;d.classList.add("arc-wait");'
+        'setTimeout(function(){d.classList.remove("arc-wait")},6000);'
+        'var m=document.getElementById("meta-theme");if(m)m.setAttribute("content","#141432");})();</script>\n'
+        '<!-- DESIGN:ARCADE:TETE:FIN -->\n')
+assert s.count('</head>') == 1
+s = s.replace('</head>', tete + '</head>', 1)
+bloc ='<!-- DESIGN:ARCADE:DEBUT -->\n<style>\n' + css + '\n</style>\n<script>\n' + js + '\n</script>\n<!-- DESIGN:ARCADE:FIN -->\n'
 s += bloc
 # police des titres
 ancien = 'family=Nunito:wght@600;700;800;900&display=swap'

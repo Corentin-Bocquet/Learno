@@ -100,6 +100,24 @@ On retient ce qu'on a vécu. Chaque guide doit contenir :
 - Images générées (coffres, potions, gel) : `design/assets/`, prompts dans `design/assets/PROMPTS_IMAGES.md`.
 - Nouveaux jeux construits sur les exercices existants : Éclair (paires), Vrai ou faux express, Frise
   (remise en ordre), Boss du module (le Diable), Duel de ligue. Test : `tests/tarcade.js`.
+- iPhone (demande du 24/09/2026) : rien ne passe sous l'encoche ni sous l'heure. Tout écran plein
+  (barre du haut, croix de leçon, modales, jeux) respecte `env(safe-area-inset-top)` ; en bas, la marge
+  suit `env(safe-area-inset-bottom)` sans la doubler. Vérifier chaque nouvel écran à 390 x 844.
+- Barre du bas : cinq cases au maximum (Jouer, Réviser, Ligue, Boutique, Plus), en verre liquide
+  flottant. Tout autre onglet va dans Plus. Profil et Réviser sont rangés en sections repliables :
+  on garde toutes les fonctions, on évite les longs défilements.
+- « Guide » s'appelle « Leçon » partout. Une leçon jamais faite s'ouvre sur son cours (la partie du guide
+  la plus proche de ses questions), avec un bouton Passer, puis le quiz.
+- Le masque de lancement (`DESIGN:ARCADE:TETE`, injecté dans `<head>` par `tools/design.py`) cache
+  l'ancien design tant que la couche Arcade n'est pas installée.
+
+## Rédaction des leçons (guides) : visuel d'abord
+
+Demande de Corentin : une leçon doit se lire comme une fiche, pas comme un bloc de texte.
+- Une partie `<h3>` par idée, 60 à 120 mots maximum par partie ; une phrase par idée.
+- Préférer listes, tableaux, formules et schémas SVG aux paragraphes ; un paragraphe ne dépasse pas trois lignes sur iPhone.
+- Commencer chaque guide par « Ce que tu dois savoir faire » (affiché en objectifs en haut de la leçon).
+- Mettre en gras le mot clé de chaque phrase importante (il est surligné à l'écran).
 
 ## Examen blanc
 
