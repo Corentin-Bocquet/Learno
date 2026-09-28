@@ -1,0 +1,79 @@
+# Notions du cours ECHECS (formation Notion « Échecs : de 0 à 1500 Elo », complétée)
+# Une ligne = une notion ; variantes séparées par | ; * = notion centrale (5 exercices minimum, sinon 3)
+échiquier
+*cavalier
+fou
+tour
+*dame
+*pion
+*roque|roquer
+petit roque
+grand roque
+en passant
+*promotion|promu
+*échec
+*mat
+*pat
+triple répétition
+notation
+*valeur|points
+paire de fous
+*centre
+*développ
+tempo
+règles d'or
+10e coup
+italienne
+londres
+caro-kann
+gambit dame refusé
+répertoire
+*fourchette
+*clouage|cloué
+clouage absolu
+clouage relatif
+*enfilade
+*découverte
+échec double
+surcharg
+déviation|dévier
+*couloir
+trou d'air
+mat du baiser
+mat étouffé
+escalier
+*berger
+f7
+légal
+mat du fou
+erreur de débutant|erreurs de débutant
+pilote automatique
+abandonner|abandonne
+*é.p.m.|échecs, prises, menaces
+menace
+compte|compter
+non défendu|non défendue
+cadence
+15+10
+bullet
+blitz
+finale
+opposition
+règle du carré|carré
+pion passé
+colonne ouverte
+avant-poste
+elo
+glicko
+fide
+feuille de route
+palier
+*puzzles
+analyse
+moteur
+lichess
+chess.com
+chessable
+chernev
+checklist
+gaffe
