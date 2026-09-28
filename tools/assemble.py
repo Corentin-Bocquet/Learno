@@ -1,9 +1,9 @@
 import io,glob,os,re,sys
 BASE=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','cours')
 P=os.path.join(os.path.dirname(os.path.abspath(__file__)),'..','index.html')
-TITRES={'PATRI':'TRANSMISSION DU PATRIMOINE','NEGO':'NEGOCIATION BANCAIRE','FISCA':'FISCALITE IMMOBILIERE ET FINANCIERE','NON':'OSER DIRE NON',
+TITRES={'PATRI':'TRANSMISSION DU PATRIMOINE','NEGO':'NEGOCIATION BANCAIRE','FISCA':'FISCALITE IMMOBILIERE ET FINANCIERE','FOOT':'FOOTBALL','ECHECS':'ECHECS','NON':'OSER DIRE NON',
         'NUTRI':'NUTRITION','SPINO':'SPINOZA','MMA':'MMA','TENNIS':'TENNIS'}
-ORDRE=['PATRI','NEGO','FISCA','NON','NUTRI','SPINO','MMA','TENNIS']
+ORDRE=['PATRI','NEGO','FISCA','NON','NUTRI','SPINO','MMA','TENNIS','FOOT','ECHECS']
 s=io.open(P,encoding='utf-8').read()
 s=re.sub(r'<!-- PATRI:DEBUT -->.*?<!-- PATRI:FIN -->\n','',s,flags=re.S)
 s=re.sub(r'<!-- COURS:\w+:DEBUT -->.*?<!-- COURS:\w+:FIN -->\n','',s,flags=re.S)

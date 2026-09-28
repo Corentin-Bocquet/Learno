@@ -1,0 +1,75 @@
+/*UNIT*/
+{id:278,c:"FOOT",n:"Module 14",t:"Synthèse : analyser un match entier comme un pro",col:"--gold",ic:"🏆",guide:`
+<h3>Ce que tu dois savoir faire</h3>
+<ul><li>Définir les <b>14 termes</b> du lexique tactique.</li>
+<li>Analyser un match complet avec la <b>grille</b>, les <b>réflexes</b> et les <b>chiffres</b>.</li>
+<li>Rédiger un <b>rapport</b> clair : faits, schémas, ajustements.</li></ul>
+<h3>Le derby de fin de saison</h3>
+<div class="gstory">Dernière journée. Racing contre FC Scarpe, pour la montée. Élodie est malade : c'est toi, seul, qui fais l'analyse. Samir te serre la main : « Fais comme d'habitude. » Mehdi a pris place à côté de toi, carnet en main. Il a relu sa fiche cinq minutes avant le match. Il ne regarde plus le ballon.</div>
+<h3>Le lexique tactique complet</h3>
+<table><tr><th>Terme</th><th>Définition</th></tr>
+<tr><td><b>Pressing trigger</b></td><td>Signal (passe latérale, mauvais contrôle...) qui déclenche le pressing collectif</td></tr>
+<tr><td><b>Gegenpressing</b></td><td>Pressing immédiat dès la perte du ballon, dans les 5 secondes</td></tr>
+<tr><td><b>Rest defense</b></td><td>Joueurs qui restent en couverture pendant une possession haute</td></tr>
+<tr><td><b>Demi-espace</b></td><td>Couloir entre l'axe et la ligne de touche</td></tr>
+<tr><td><b>Zone 14</b></td><td>Espace devant la surface, dans l'axe : meilleurs angles de tir et de passe</td></tr>
+<tr><td><b>Overload</b></td><td>Surcharge d'un côté pour isoler un joueur en 1 contre 1 de l'autre côté</td></tr>
+<tr><td><b>Build-up</b></td><td>Construction et sortie de balle depuis le gardien et les défenseurs</td></tr>
+<tr><td><b>Surnombre (3 contre 2)</b></td><td>Un joueur de plus que les presseurs : un homme toujours libre</td></tr>
+<tr><td><b>Bloc</b></td><td>Hauteur de la ligne défensive hors possession : haut, moyen, bas</td></tr>
+<tr><td><b>Latéral inversé</b></td><td>Latéral qui vient au milieu en possession</td></tr>
+<tr><td><b>Marquage mixte</b></td><td>Sur corner : zone et individuel combinés</td></tr>
+<tr><td><b>Second ballon</b></td><td>Ballon qui retombe après un duel aérien ou un long ballon</td></tr>
+<tr><td><b>Set-piece coach</b></td><td>Entraîneur spécialisé sur les coups de pied arrêtés</td></tr>
+<tr><td><b>Scanning</b></td><td>Coups d'œil avant de recevoir le ballon</td></tr></table>
+<div class="gmnemo">Tout le cours en une question : <b>« Où est l'espace, et qui va le prendre ? »</b>. Le bloc le ferme, le pressing le réduit, le décrochage l'ouvre, la transition l'exploite, les coups de pied arrêtés le fabriquent.</div>
+<h3>La méthode complète</h3>
+<div class="formula">Avant : relire la fiche, noter le système attendu de l'adversaire
+Pendant : grille en 7 questions, 3 réflexes, notes minute / phase / fait
+Mi-temps : 3 points (marche, ne marche pas, ajustement)
+Après : croiser les faits avec les chiffres (xG, PPDA, field tilt)</div>
+<h3>Les erreurs du supporter, corrigées</h3>
+<table><tr><th>Le supporter dit</th><th>L'observateur répond</th></tr>
+<tr><td>« Hors-jeu sur la touche ! »</td><td>Pas de hors-jeu sur Touche, Corner, 6 mètres</td></tr>
+<tr><td>« Ils ont peur, ils reculent »</td><td>Bloc bas choisi pour contrer</td></tr>
+<tr><td>« Notre 9 fuit la surface »</td><td>Il décroche pour libérer quelqu'un</td></tr>
+<tr><td>« 65 % de possession, on domine »</td><td>Regarde les xG</td></tr>
+<tr><td>« Dégage, Tom ! »</td><td>Relancer court avec un homme libre</td></tr></table>
+<h3>Ce que tu dois retenir</h3>
+<ul><li>Les 14 termes du lexique.</li>
+<li>Où est l'espace, et qui va le prendre ?</li>
+<li>Avant, pendant, mi-temps, après.</li>
+<li>Les faits d'abord, les chiffres pour confirmer.</li></ul>`},
+/*EXOS*/
+{i:"k278_01",u:278,t:"match",d:.3,nw:"Le lexique tactique",q:"Associe chaque terme à sa définition.",p:[["Scanning","Coups d'œil avant de recevoir"],["Second ballon","Ballon qui retombe après un duel aérien"],["Overload","Surcharge d'un côté"],["Rest defense","Joueurs qui couvrent pendant l'attaque"]],w:"Quatre termes du lexique de ta fiche. Chacun sert une question de la grille d'observation."},
+{i:"k278_02",u:278,t:"match",d:.3,q:"Associe d'autres termes du lexique.",p:[["Zone 14","Devant la surface, dans l'axe"],["Demi-espace","Entre axe et touche"],["Build-up","Construction depuis l'arrière"],["Latéral inversé","Latéral qui rentre au milieu"]],w:"Les espaces et la construction. Les espaces et la construction, au cœur des modules 8 et 9."},
+{i:"k278_03",u:278,t:"tiles",d:.3,q:"Reconstitue la question qui résume tout le cours.",a:["Où","est","l'espace,","et","qui","va","le","prendre","?"],dd:["ballon,","score"],w:"Chaque module répond à cette question sous un angle différent."},
+{i:"k278_04",u:278,t:"story",d:.35,q:"Rappel du module 1 : que réponds-tu à un voisin de tribune ?",sc:[{who:"Supporter",txt:"Hors-jeu ! Leur attaquant était derrière tout le monde sur ce corner !"}],o:["Pas de hors-jeu sur un corner","Oui, et le but doit être annulé tout de suite","Seulement si la VAR le confirme après examen","Oui, sauf si le corner est tiré en rentrant"],a:0,w:"T.C.6 : Touche, Corner, 6 mètres. Le supporter l'oublie à chaque match."},
+{i:"k278_05",u:278,t:"sort",d:.35,q:"Rappel des modules 1 et 2 : quelle décision ?",bins:["Corner adverse","Coup franc indirect","Penalty"],it:[["Gardien, 10 s ballon en main",0],["Hors-jeu d'un attaquant qui touche le ballon",1],["Défenseur qui fait trébucher un attaquant dans sa surface",2],["Gardien qui prend à la main une passe volontaire du pied",1]],w:"8 secondes : corner. Hors-jeu et passe en retrait prise à la main : indirect. Faute dans sa surface : penalty."},
+{i:"k278_06",u:278,t:"mcq",d:.35,q:"Rappel du module 3 : quel rôle rentre sur son pied fort depuis le côté ?",o:["L'ailier inversé","Le pivot","La sentinelle","Le gardien relanceur"],a:0,w:"Le pied fort vers l'axe. Un droitier à gauche rentre et frappe enroulé."},
+{i:"k278_07",u:278,t:"fill",d:.35,q:"Rappel du module 4 : dans un système écrit en chiffres, la somme fait toujours ___.",o:["10","11","9","8"],a:0,w:"Toujours 10, jamais le gardien. Une somme de 11 veut dire qu'on a compté le gardien."},
+{i:"k278_08",u:278,t:"order",d:.4,q:"Rappel du module 5 : remets le cycle des phases dans l'ordre.",it:["Construire","Réagir","Défendre","Frapper"],w:"Possession, transition défensive, défense organisée, transition offensive."},
+{i:"k278_09",u:278,t:"story",d:.4,q:"Rappel du module 6 : que réponds-tu à Mehdi ?",sc:[{who:"Mehdi",txt:"Le Scarpe défend à dix dans ses 30 mètres, ils ont peur !"}],o:["C'est un bloc bas choisi pour contrer","Oui, ils ont peur de perdre la montée","Non, ils sont fatigués après la saison","Oui, et l'arbitre devrait les avertir"],a:0,w:"Bas je protège : un choix, pas une peur. Il faudra attaquer ce bloc par la largeur et l'overload."},
+{i:"k278_10",u:278,t:"tiles",d:.4,q:"Rappel du module 7 : reconstitue les quatre L du pressing.",a:["Latéral,","Lent,","Loupé,","Ligne"],dd:["Long,","Libre,"],w:"Passe latérale, passe lente, contrôle loupé, joueur près de la ligne. Arriver en courbe couvre la ligne de passe vers le partenaire."},
+{i:"k278_11",u:278,t:"num",d:.4,q:"Rappel du module 8 : le Scarpe presse à 2. Combien de relanceurs faut-il au Racing pour avoir un homme libre ?",a:3,tol:0,un:" joueurs",h:"Un de plus qu'eux",w:"2 + 1 = 3 : deux centraux et le 6, ou le gardien."},
+{i:"k278_12",u:278,t:"multi",d:.45,q:"Rappel du module 9 : quelles zones sont les plus dangereuses ?",o:["La zone 14","Les demi-espaces","L'espace entre les lignes","Le rond central de son camp","Le coin de son propre terrain"],a:[0,1,2],w:"Zone 14, demi-espaces, entre-lignes : c'est là qu'il faut recevoir."},
+{i:"k278_13",u:278,t:"story",d:.45,q:"Rappel du module 10 : que se passe-t-il ?",ctx:"Rayan perd le ballon. Kylian et l'avant-centre sautent sur le porteur, trois défenseurs et deux milieux restent derrière.",sc:[{who:"Mehdi",txt:"C'est quoi, ce qu'ils font ?"}],o:["Gegenpressing, avec une rest defense 3 + 2","Un pressing classique déclenché sur un trigger adverse","Une contre-attaque rapide du Racing après récupération","Un bloc bas pour fermer l'accès à notre surface"],a:0,w:"Perdu ? Mords ! Et l'assurance derrière rend le contre-pressing possible."},
+{i:"k278_14",u:278,t:"mcq",d:.45,q:"Rappel du module 11 : quel joueur récupère le second ballon sur un corner ?",o:["Le joueur placé en retrait","Le joueur au premier poteau","Le gardien adverse","Le tireur du corner"],a:0,w:"Dévier, Reprendre, Récupérer : le retrait récupère. Le set-piece coach fait répéter ce placement chaque semaine."},
+{i:"k278_15",u:278,t:"sort",d:.45,q:"Rappel du module 12 : victoire logique ou chanceuse ?",bins:["Logique","Chanceuse"],it:[["1-0 avec 2,4 xG contre 0,5",0],["1-0 avec 0,4 xG contre 2,3",1],["2-1 avec 1,9 xG contre 1,2",0],["3-2 avec 0,8 xG contre 2,9",1]],w:"Les xG disent la qualité des occasions. Beaucoup moins de xG que l'adversaire : la victoire est chanceuse."},
+{i:"k278_16",u:278,t:"story",d:.45,q:"Rappel du module 13 : ta note de la 20e minute ?",ctx:"20e minute. Le Racing vient de perdre le ballon, personne ne réagit, le Scarpe frappe en 4 secondes.",sc:[{who:"Mehdi",txt:"Tu écris quoi dans ton carnet ?"}],o:["« 20e, transition défensive, aucune réaction »","« 20e, ils sont vraiment nuls, on va sûrement perdre ce match »","« 20e, rien de spécial à signaler dans cette action »","« 20e, l'arbitre est clairement contre nous depuis le début »"],a:0,w:"Minute, phase, fait. Pas d'avis. Un avis ne se corrige pas, un fait si."},
+{i:"k278_17",u:278,t:"tf",d:.45,q:"Un bon milieu attend d'avoir contrôlé le ballon pour lever la tête et regarder autour de lui.",a:false,w:"Faux : il se fait avant de recevoir, pour savoir où jouer avant que la pression arrive."},
+{i:"k278_18",u:278,t:"fill",d:.5,q:"Le gegenpressing se joue dans les ___ secondes qui suivent la perte.",o:["5","15","30","60"],a:0,w:"Perdu ? Mords ! Pendant 5 secondes. Après, on se replie dans le bloc."},
+{i:"k278_19",u:278,t:"match",d:.5,q:"Associe chaque erreur du supporter à la réponse de l'observateur.",p:[["« Hors-jeu sur la touche ! »","Pas de hors-jeu sur une touche"],["« Notre 9 fuit la surface »","Il décroche pour libérer quelqu'un"],["« 65 % de possession, on domine »","Regarde les xG"],["« Dégage, Tom ! »","Relancer court avec un homme libre"]],w:"Le supporter regarde le ballon, l'observateur regarde la structure."},
+{i:"k278_20",u:278,t:"story",d:.5,q:"Le match commence. Que notes-tu en premier ?",sc:[{who:"Samir Benhaddou",txt:"Première question de la grille ?"}],o:["La hauteur du bloc de chaque équipe","Le nom du meilleur buteur adverse","La météo et l'état de la pelouse","Le nombre de spectateurs"],a:0,w:"Bloc, Presse, Décroche, Libre, Cinq, Reste, Pause : on commence par le bloc."},
+{i:"k278_21",u:278,t:"multi",d:.5,q:"Pendant le match, que dois-tu faire ?",o:["Appliquer les 7 questions","Suivre la structure","Noter minute, phase, fait","Suivre uniquement le ballon","Écrire des avis sur les joueurs"],a:[0,1,2],w:"Grille, réflexes, notes factuelles. Les avis et le ballon seul n'aident pas l'équipe."},
+{i:"k278_22",u:278,t:"story",d:.55,q:"Mi-temps, 0-0. Quel rapport fais-tu ?",ctx:"Le Scarpe défend en bloc bas et coulisse fort. Le Racing a le ballon mais attaque toujours dans l'axe. Leur contre-attaque vise le couloir de Nabil.",sc:[{who:"Samir Benhaddou",txt:"Trois points."}],o:["« Overload puis renversement, Nabil plus bas, 3 + 2 derrière »","« Continuer à attaquer dans l'axe, ça finira bien par passer »","« Courir beaucoup plus, et contester chaque décision de l'arbitre »","« Mettre neuf joueurs devant et tenter notre chance jusqu'au bout »"],a:0,w:"Ce qui ne marche pas (l'axe), la faille (le couloir), les ajustements : overload, joueur, assurance."},
+{i:"k278_23",u:278,t:"tf",d:.55,q:"Pour attaquer un bloc bas qui coulisse, l'overload suivi d'un renversement est une bonne arme.",a:true,w:"Charger à droite, frapper à gauche : le coulissement se retourne contre le bloc."},
+{i:"k278_24",u:278,t:"num",d:.55,q:"Rappel du module 7 : le Racing laisse 150 passes au Scarpe pour 25 actions défensives. PPDA ?",a:6,tol:0,un:"",h:"150 / 25",w:"150 / 25 = 6 : pressing très intense. Un PPDA sous 10 signale une équipe très pressante."},
+{i:"k278_25",u:278,t:"story",d:.55,q:"70e minute : le Racing marque sur overload et renversement. Mehdi te regarde.",sc:[{who:"Mehdi",txt:"C'est ton plan de la mi-temps, ça !"}],o:["Oui : chargé à droite, frappé à gauche","Non, c'est un pur hasard, rien de plus","Non, c'est une grosse erreur de leur gardien","Oui, mais cette tactique est interdite par le règlement"],a:0,w:"L'ajustement de la pause a fonctionné : c'est le rôle de l'analyste."},
+{i:"k278_26",u:278,t:"slider",d:.55,q:"Rappel du module 11 : environ quelle part des buts de Premier League 2024-25 est venue d'un coup de pied arrêté (%) ?",min:0,max:50,step:1,a:21,tol:2,pre:"",un:" %",w:"20,6 % hors penalties : un but sur cinq."},
+{i:"k278_27",u:278,t:"order",d:.55,q:"Remets dans l'ordre la méthode complète de l'analyste.",it:["Relire la fiche avant le match","Appliquer la grille pendant le match","Faire le rapport de mi-temps en 3 points","Repérer les ajustements adverses","Croiser les faits avec les chiffres après le match"],w:"Avant, pendant, mi-temps, seconde période, après."},
+{i:"k278_28",u:278,t:"mcq",d:.6,q:"Après le match, avec quoi croises-tu tes observations ?",o:["Les xG, le PPDA et le field tilt","L'avis des supporters en tribune","Le prix des billets du match","Le nombre de cartons, et seulement lui"],a:0,w:"Les faits disent pourquoi, les chiffres disent combien."},
+{i:"k278_29",u:278,t:"sort",d:.6,q:"Rappel général : quelle règle mémo ?",bins:["Le bloc","Les transitions","La construction"],it:[["Haut je vole, moyen je contrôle, bas je protège",0],["Perdu ? Mords !",1],["Un de plus qu'eux",2],["L'assurance de l'attaque",1],["Le bloc est un accordéon",0],["Qui décroche libère quelqu'un d'autre",2]],w:"Chaque module a sa phrase : elles tiennent tout le cours."},
+{i:"k278_30",u:278,t:"tf",d:.6,q:"Un observateur juge un match sur une seule statistique isolée.",a:false,w:"Jamais : une seule statistique trompe. Il croise la grille et plusieurs chiffres."},
+{i:"k278_31",u:278,t:"story",d:.6,q:"Fin de match, 1-0, montée. Samir te demande un bilan honnête.",sc:[{who:"Samir Benhaddou",txt:"On a mérité ?"}],o:["Oui : 1,9 xG contre 0,6, plan réussi","Non, un 1-0 reste toujours une question de chance","Oui, parce qu'on avait beaucoup plus de supporters","Non, on n'a pas eu assez de corners dans le match"],a:0,w:"Plus de xG et un plan qui a fonctionné : victoire logique."},
+{i:"k278_32",u:278,t:"story",d:.65,q:"Synthèse finale : Mehdi te demande ce qu'il a appris.",sc:[{who:"Mehdi",txt:"En une phrase, qu'est-ce qui a changé dans ma façon de regarder ?"}],o:["« Tu suis la structure, plus seulement le ballon »","« Tu cries beaucoup plus fort sur l'arbitre qu'avant le cours »","« Tu regardes enfin le tableau d'affichage à chaque minute »","« Tu comptes les passes réussies de chaque joueur du Racing »"],a:0,w:"Du spectateur à l'observateur : où est l'espace, et qui va le prendre ?"}
