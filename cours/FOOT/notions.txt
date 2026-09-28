@@ -1,0 +1,78 @@
+# Notions du cours FOOT (formation Notion « Comprendre le Football », complétée)
+# Une ligne = une notion ; variantes séparées par | ; * = notion centrale (5 exercices minimum, sinon 3)
+*hors-jeu
+touche
+corner
+coup de pied de but|6 metres
+penalty
+remplacement
+carton
+8 secondes
+capitaine
+avant-dernier
+coup franc direct|direct
+coup franc indirect|indirect
+main
+*VAR
+gardien
+sentinelle|6
+relayeur|box-to-box
+meneur|10
+*ailier inverse
+faux 9
+pivot
+*lateral inverse
+*scanning
+*systeme
+4-4-2
+4-3-3
+4-2-3-1
+3-5-2
+piston
+animation
+3-2-5
+*possession organisee|possession
+*transition defensive
+*defense organisee
+*transition offensive
+*5 secondes|cinq secondes
+*bloc
+bloc haut|haut
+bloc moyen|moyen
+bloc bas|bas
+compact
+coulisse
+zone
+individuel
+*pressing
+*pressing trigger|trigger
+ligne de passe
+*PPDA
+*build-up
+*surnombre
+structurellement libre|libre
+*decroche
+troisieme homme|jeu a trois
+second ballon
+*demi-espace
+*zone 14
+*overload
+renversement
+largeur
+profondeur
+entre les lignes
+*gegenpressing
+*rest defense
+contre-attaque
+faute tactique
+coups de pied arretes|coup de pied arrete
+mixte
+set-piece coach
+premier poteau
+second poteau
+*xG|expected goals
+field tilt
+difference de xG
+*grille
+structure
+ajustement
