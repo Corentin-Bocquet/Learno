@@ -25943,6 +25943,8 @@ window.ARC_GLOSS=[
   /* ---------------- BRANCHEMENTS ---------------- */
   const __rq=renderQ;
   window.renderQ=function(ex){
+    /* le minuteur de l ecran « Nouvelle notion » peut tomber apres la sortie de la lecon */
+    if(typeof L==="undefined"||!L)return;
     __rq.apply(null,arguments);
     try{
       const box=document.querySelector("#qwrap .ctxbox");
