@@ -127,6 +127,32 @@ if(!E(`unitUnlocked(${us[1]})`))ko("un module deja commence ne doit pas se refer
 E(`S.courses.PATRI.lessons={};S.courses.PATRI.crowns={};S.courses.PATRI.lessons[lkey(${u0},0)]=2;save();chainNext()`); await wait(50);
 if(!doc.getElementById("sc-intro").classList.contains("on"))ko("enchainer saute la lecon avant le quiz");
 
+/* 10. demandes du 02/10/2026 */
+/* 10a. prix des potions coherents : une potion plus forte ou plus longue coute plus cher */
+const dom=E(`(()=>{const out=[];SHOP.forEach(a=>SHOP.forEach(b=>{ if(a!==b&&a.m>=b.m&&a.min>=b.min&&a.prix<=b.prix)out.push(a.m+"x"+a.min+" <= "+b.m+"x"+b.min); }));return out;})()`);
+if(dom.length)ko("prix incoherents : "+dom.join(", "));
+const tarif=E(`SHOP.filter(x=>x.prix!==arcPrixPotion(x.m,x.min)).map(x=>x.id)`);
+if(tarif.length)ko("potions hors du tarif unique : "+tarif.join(", "));
+/* 10b. cases a cocher : le nombre de fausses varie */
+const nm=E("EXOS.filter(e=>e.t==='multi').length"), cov=E("EXOS.filter(e=>e.t==='multi'&&!(ARC_MFAUX[e.i]||[]).length).length");
+if(cov)ko(cov+" exercices a cases sans affirmation fausse supplementaire");
+const varie=E(`(()=>{const s=new Set();const e=EXOS.find(x=>x.t==="multi"&&x.o.length-x.a.length===1);for(let k=0;k<200;k++){const v=arcMultiVar(e);s.add(v.o.length-v.a.length);}return [...s].sort().join(",");})()`);
+console.log("cases a cocher :",nm,"exercices | nombre de fausses observe :",varie);
+if(varie.split(",").length<3)ko("le nombre de fausses ne varie pas assez : "+varie);
+const juste=E(`(()=>{const e=EXOS.find(x=>x.t==="multi");L=buildLesson(e.u,0,"normal");L.queue=[e];show("lesson");renderQ(e);
+  A.ex.a.forEach(k=>multiTap(document.querySelector('#qwrap .mchk[data-m="'+k+'"]'),k));doCheck();return document.getElementById("checkbar").className;})()`);
+if(!/good/.test(juste))ko("les bonnes cases de la version tiree ne sont pas validees");
+/* 10c. espaces des milliers */
+[["120000","120 000"],["1234,5","1 234,5"],["0.6","0,6"],["-99999","-99 999"]].forEach(([v,a])=>{ const r=E(`arcFmtIn(${JSON.stringify(v)})`); if(r!==a)ko("saisie mal formatee : "+v+" donne "+r); });
+E(`(()=>{const e=EXOS.find(x=>x.t==="num"&&x.a>10000);L=buildLesson(e.u,0,"normal");L.queue=[e];show("lesson");renderQ(e);
+  const i=document.getElementById("numin");i.value=String(e.a);i.dispatchEvent(new Event("input",{bubbles:true}));doCheck();})()`);
+if(!/ /.test(doc.getElementById("numin").value))ko("pas d espace des milliers dans la saisie du quiz");
+if(!doc.querySelector("#checkbar.good"))ko("une reponse avec espaces des milliers est refusee");
+if(E("arcGrp('45000+1200,5')")!=="45 000+1 200,5")ko("calculatrice sans espaces des milliers");
+/* 10d. la situation du module avant le premier quiz */
+E(`S.active="FISCA";S.courses.FISCA.lessons={};save();arcStart(courseUnits("FISCA")[3].id,0)`); await wait(50);
+if(!doc.querySelector("#introbody .arc-situ .gstory"))ko("la mise en situation n apparait pas avant le premier quiz du module");
+
 console.log("glossaire :",G,"entrees | potions :",E("SHOP.length"),"| gel : 150");
 console.log("ERREURS:",errs.length,JSON.stringify(errs));
 process.exit(0);

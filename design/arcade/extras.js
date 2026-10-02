@@ -77,7 +77,11 @@
     return r.v;
   }
   window.arcCalcEval=calcEval;
-  const nfmt=v=>{ if(!isFinite(v))return "erreur"; let s=String(Number(v.toPrecision(12))); if(/e/.test(s))s=v.toPrecision(10); return s.replace(".",","); };
+  /* espaces des milliers (espace fine insecable) : 1 234 567,5 */
+  const NB="\u202f", grpD=d=>d.replace(/\B(?=(\d{3})+(?!\d))/g,NB);
+  const grpNum=t=>String(t).replace(/(\d+)((?:[.,]\d*)?)/g,(m,a,b)=>grpD(a)+b);
+  const nfmt=v=>{ if(!isFinite(v))return "erreur"; let s=String(Number(v.toPrecision(12))); if(/e/.test(s))return v.toPrecision(10).replace(".",","); return grpNum(s.replace(".",",")); };
+  window.arcGrp=grpNum;
   const KEYS=[
     ["ln","ln(","fn"],["eˣ","exp(","fn"],["log","log(","fn"],["xʸ","^","fn"],["x²","²","fn"],
     ["√","√(","fn"],["π","π","fn"],["%","%","fn"],["(","(","op"],[")",")","op"],
@@ -87,7 +91,7 @@
     ["0","0"],[",",","],["Ans","Ans","fn"],["=","","eq"]];
   function calcPaint(){
     const e=$id("calc-exp"), r=$id("calc-res"), u=$id("calc-use"); if(!e)return;
-    e.textContent=(CX.exp||"0").replace(/-/g,"−");
+    e.textContent=grpNum(CX.exp||"0").replace(/-/g,"−");
     let prev=null; if(CX.res==null&&CX.exp){ try{ prev=calcEval(CX.exp); }catch(err){} }
     r.textContent=CX.res!=null?nfmt(CX.res):(prev!=null&&/[^0-9,.]/.test(CX.exp)?"= "+nfmt(prev):"");
     r.classList.toggle("pv",CX.res==null);
@@ -353,10 +357,18 @@
   /* ---------------- 6. POTIONS : nouvelles durees et jauge ---------------- */
   const PIMG=m=>m>=3?"potion3":m>=2?"potion2":"potion15";
   const PD={1.5:"XP multipliés par 1,5. Pour une longue session tranquille.",2:"XP doublés. Deux leçons suffisent à la rentabiliser.",3:"XP triplés. Pour un sprint de révision à fond."};
-  if(typeof SHOP!=="undefined"&&Array.isArray(SHOP)&&!SHOP.find(x=>x.id==="p3d")){
+  /* un seul tarif pour toute la boutique (demande du 02/10/2026) : on paie la
+     minute de bonus, plus cher quand la potion est plus forte. Prix = tarif x
+     (multiplicateur - 1) x minutes, arrondi a 5. Une potion plus forte ou plus
+     longue coute donc toujours plus cher qu une potion qu elle surpasse. */
+  const TARIF={1.5:4,2:6.5,3:8};
+  const prixPotion=(m,min)=>Math.round(TARIF[m]*(m-1)*min/5)*5;
+  window.arcPrixPotion=prixPotion;
+  if(typeof SHOP!=="undefined"&&Array.isArray(SHOP)){
     const ic={1.5:"\u{1F9EA}",2:"\u{2697}\u{FE0F}",3:"\u{1F525}"};
-    [[1.5,45,85,"p15b"],[2,30,190,"p2b"],[2,45,270,"p2c"],[3,20,340,"p3b"],[3,30,490,"p3c"],[3,45,700,"p3d"]].forEach(([m,min,prix,id])=>
-      SHOP.push({id,nm:"Potion ×"+fr(m),d:PD[m],m,min,prix,ic:ic[m]}));
+    if(!SHOP.find(x=>x.id==="p3d"))[[1.5,45,"p15b"],[2,30,"p2b"],[2,45,"p2c"],[3,20,"p3b"],[3,30,"p3c"],[3,45,"p3d"]].forEach(([m,min,id])=>
+      SHOP.push({id,nm:"Potion ×"+fr(m),d:PD[m],m,min,prix:0,ic:ic[m]}));
+    SHOP.forEach(x=>{ if(TARIF[x.m])x.prix=prixPotion(x.m,x.min); });
   }
   const PSEL={};
   window.arcPotSel=function(m,id){ PSEL[m]=id; sfx("click"); renderShop(); };
@@ -367,6 +379,7 @@
       return `<div class="shopit arc-pcard ${m===2?"hot":""}"><div class="si">${arcImg(PIMG(m),84)}</div>
         <div class="sn">Potion ×${fr(m)}</div><div class="sd">${PD[m]}</div>
         <div class="arc-pdur" role="group" aria-label="Durée de la potion">${its.map(x=>`<button type="button" class="${x===sel?"on":""}" aria-pressed="${x===sel}" onclick="arcPotSel(${m},'${x.id}')">${x.min} min</button>`).join("")}</div>
+        <div class="arc-prate">${ico("gem",13)} ${fr(TARIF[m])} gemmes la minute de bonus</div>
         <button class="btn ${S.gems>=sel.prix?"":"ghost"}" type="button" onclick="buyPotion('${sel.id}')">Acheter ${sel.min} min · ${sel.prix} ${ico("gem",16)}</button>
         ${stock.map(x=>`<button class="btn blue" type="button" onclick="drinkPotion('${x.id}')">Boire ${x.min} min (${inv()[x.id]} en stock)</button>`).join("")}</div>`;
     }).join("");
@@ -477,13 +490,76 @@
     if(now-lastT<350&&e.target&&e.target.closest&&e.target.closest(".ckey,.arc-pad button,.tile,.chip")){ e.preventDefault(); e.target.closest(".ckey,.arc-pad button,.tile,.chip").click(); }
     lastT=now; },{passive:false});
 
+  /* ---------------- 11. NOMBRES LISIBLES (02/10/2026) ----------------
+     Espace des milliers dans la saisie du quiz, la calculatrice et les
+     textes des questions (5 chiffres et plus, ou 4 chiffres suivis d une
+     unite : 1 500 €). Les annees (2026) et les decimales ne bougent pas. */
+  function grpText(s){
+    return s.replace(/(\d)[ \u00a0](?=\d{3}(?!\d))/g,"$1"+NB)
+      .replace(/(^|[^\d.,\u202f\u00a0])(\d{5,})(?!\d)/g,(m,p,d)=>p+grpD(d))
+      .replace(/(^|[^\d.,\u202f\u00a0])(\d{4})(?=\s?(?:€|%|kcal|euros?|k€|m²))/g,(m,p,d)=>p+grpD(d));
+  }
+  const NSKIP="input,textarea,script,style,svg,.tile,.chip,.mgrid,.formula";
+  function grpIn(root){
+    if(!root)return;
+    const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>/\d{4}/.test(n.data)&&!(n.parentElement&&n.parentElement.closest(NSKIP))?1:2});
+    const ns=[]; while(tw.nextNode())ns.push(tw.currentNode);
+    ns.forEach(n=>{ const t=grpText(n.data); if(t!==n.data)n.data=t; });
+  }
+  function fmtIn(v){
+    if(!/^-?[\d\s\u202f\u00a0.,]*$/.test(v))return v;
+    let s=v.replace(/[\s\u202f\u00a0]/g,"");
+    if(s.indexOf(",")<0&&(s.match(/\./g)||[]).length===1)s=s.replace(".",",");
+    const neg=s[0]==="-"; if(neg)s=s.slice(1);
+    const k=s.indexOf(","), a=k<0?s:s.slice(0,k), b=k<0?"":s.slice(k);
+    return (neg?"-":"")+grpD(a)+b;
+  }
+  window.arcFmtIn=fmtIn;
+  if(typeof sliderMove==="function"){ const __sm=sliderMove; window.sliderMove=function(){ __sm.apply(null,arguments); try{ grpIn($id("sldval")); }catch(e){} }; }
+
+  /* ---------------- 12. CASES A COCHER VARIEES (02/10/2026) ----------------
+     Avant, il y avait presque toujours une seule proposition fausse. A chaque
+     affichage on tire un nombre variable de propositions justes (une peut
+     manquer) et fausses (de zero a toutes), en puisant aussi dans les
+     affirmations fausses de multi_faux.js. Si la question annonce un nombre
+     (« les cinq objections »), toutes les justes restent affichees. */
+  const MF=window.ARC_MFAUX||{};
+  const COMPTE=/(^|[^\p{L}\d])(deux|trois|quatre|cinq|six|sept|huit|[2-9])(?![\p{L}\d])/iu;
+  const rnd=n=>Math.floor(Math.random()*n);
+  function multiVar(src){
+    const C=src.a.map(k=>src.o[k]), W=src.o.filter((_,k)=>src.a.indexOf(k)<0).concat(MF[src.i]||[]);
+    const garde=COMPTE.test(src.q);
+    let nC=garde?C.length:Math.max(1,C.length-rnd(2));
+    let nW=W.length?1+rnd(W.length):0;
+    if(!garde&&C.length>=2&&Math.random()<.12)nW=0;
+    while(nC+nW<3&&(nW<W.length||nC<C.length)){ if(nW<W.length)nW++; else nC++; }
+    while(nC+nW>6){ if(nW>1)nW--; else if(!garde&&nC>1)nC--; else break; }
+    const c=shuffle(C.slice()).slice(0,nC), w=shuffle(W.slice()).slice(0,nW);
+    return Object.assign({},src,{o:c.concat(w),a:c.map((_,k)=>k),_src:src});
+  }
+  window.arcMultiVar=multiVar;
+
+  /* ---------------- 13. LA SITUATION AVANT LE PREMIER QUIZ ----------------
+     La premiere lecon d un module montre la mise en situation du guide
+     (personnages, lieu, enjeu) avant le quiz : on connait l histoire avant
+     de repondre. */
+  function situation(u){
+    if(!u||!u.guide)return "";
+    const t=document.createElement("div"); t.innerHTML=u.guide;
+    const g=t.querySelector(".gstory"); return g?g.outerHTML:"";
+  }
+
   /* ---------------- BRANCHEMENTS ---------------- */
   const __rq=renderQ;
   window.renderQ=function(ex){
     /* le minuteur de l ecran « Nouvelle notion » peut tomber apres la sortie de la lecon */
     if(typeof L==="undefined"||!L)return;
-    __rq.apply(null,arguments);
+    if(ex&&ex.t==="multi"&&Array.isArray(ex.o)&&Array.isArray(ex.a)){ try{ ex=multiVar(ex._src||ex); }catch(e){} }
+    __rq.call(null,ex);
     try{
+      grpIn($id("qwrap"));
+      const ni=$id("numin");
+      if(ni)ni.addEventListener("input",()=>{ const f=fmtIn(ni.value); if(f!==ni.value)ni.value=f; if(A&&!A.done)A.val=ni.value; });
       const box=document.querySelector("#qwrap .ctxbox");
       if(box&&ex&&(ex.ctx||ex.tab)){ const h=ctxHTML(ex); if(h){ const ck=box.querySelector(".ck"); box.innerHTML=""; if(ck)box.appendChild(ck); box.insertAdjacentHTML("beforeend",h); box.classList.add("arc-ctxbox"); } }
       glossIn($id("qwrap"),cidNow());
@@ -505,6 +581,7 @@
     try{
       prettyVerdict();
       const cb=$id("checkbar");
+      if(cb)grpIn(cb.querySelector(".vw"));
       if(souple&&cb&&cb.classList.contains("good")&&!cb.querySelector(".arc-alt")){
         const ex=A.ex, v=cb.querySelector(".verdict");
         const cours=ex.t==="num"?fr(ex.a)+(ex.un||""):ex.a.join(" ");
@@ -527,7 +604,11 @@
   };
   if(typeof arcStart==="function"){ const __as=arcStart; window.arcStart=function(uid){
     const r=__as.apply(null,arguments);
-    try{ const b=$id("introbody"); if(b&&$id("sc-intro").classList.contains("on")){ prettyLesson(b); glossIn(b,unitOf(uid).c); } }catch(e){}
+    try{ const b=$id("introbody"); if(b&&$id("sc-intro").classList.contains("on")){
+      const u=unitOf(uid), st=arguments[1]===0&&!b.querySelector(".gstory")?situation(u):"";
+      if(st){ const h=b.querySelector(".arc-ihero"); const d=`<div class="arc-situ"><div class="k">${ico("user",15)} La situation du module</div>${st}<p class="s">Garde ces personnages en tête : les questions du module partent de leur histoire.</p></div>`;
+        if(h)h.insertAdjacentHTML("afterend",d); else b.insertAdjacentHTML("afterbegin",d); }
+      prettyLesson(b); glossIn(b,u.c); grpIn(b); } }catch(e){}
     return r; }; }
   const __og=openGuide;
   window.openGuide=function(uid){

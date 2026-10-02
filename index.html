@@ -24098,6 +24098,13 @@ body.theme-light .arc-soltab .r span:first-child,body.theme-light .arc-solbin b,
 .arc-legcta .m{display:flex;gap:10px;align-items:flex-start;text-align:left;border:2px solid rgba(255,200,0,.55);border-radius:16px;padding:10px 12px;font-size:14px;line-height:1.45;background:rgba(255,200,0,.08)}
 .arc-legcta .m b{color:var(--gold)}
 .btn.gold{background:var(--gold);color:#3A2A00;box-shadow:0 4px 0 var(--gold-d)}
+
+/* ---------- 02/10/2026 : situation du module, tarif des potions ---------- */
+.arc-situ{margin:12px 0 4px;border:2px solid var(--gcol,var(--blue));border-radius:18px;padding:12px 14px;background:rgba(28,176,246,.07)}
+.arc-situ .k{display:flex;align-items:center;gap:6px;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:var(--gcol,var(--blue));margin-bottom:6px}
+.arc-situ .gstory{margin:0}
+.arc-situ .s{margin:8px 0 0;font-size:13px;color:var(--dim);line-height:1.45}
+.arc-prate{grid-column:1 / -1;display:flex;align-items:center;gap:5px;font-size:12px;color:var(--dim);margin:2px 0}
 </style>
 <script>
 /* =====================================================================
@@ -24367,6 +24374,409 @@ window.ARC_GLOSS=[
  {t:"assertivité",c:"NON",d:"S'affirmer en respectant l'autre : dire ce qu'on pense et ce qu'on veut, sans agresser ni se soumettre.",x:"« Je ne peux pas ce soir, mais samedi me va très bien. »"},
  {t:"CNV",c:"NON",d:"Communication non violente : décrire les faits, dire son sentiment, son besoin, puis faire une demande claire.",x:"« Quand tu arrives à 21 h, je m'inquiète. J'ai besoin d'être prévenu. Peux-tu m'écrire ? »"}
 ];
+/* =====================================================================
+   CASES A COCHER : AFFIRMATIONS FAUSSES SUPPLEMENTAIRES (02/10/2026)
+   Demande de Corentin : dans « coche toutes les bonnes réponses », il y
+   avait presque toujours une seule proposition fausse. Chaque exercice
+   reçoit ici une affirmation fausse de plus, relue une par une. A chaque
+   affichage, extras.js tire un nombre variable de propositions justes et
+   fausses (parfois aucune fausse, parfois deux ou trois).
+   Les cours ne sont pas modifies : ces propositions s ajoutent a l ecran.
+   ===================================================================== */
+window.ARC_MFAUX={
+ /* ---------- PATRI ---------- */
+ "p133_11":["L'héritier était simplement brouillé avec le défunt"],
+ "p133_26":["La mère hérite de la moitié de la succession"],
+ "p134_11":["Le concubin qui vivait avec le défunt depuis vingt ans"],
+ "p134_20":["La moitié de la succession en pleine propriété, quoi qu'il arrive"],
+ "p134_31":["Un appartement acheté à deux avec les salaires du couple"],
+ "p135_10":["Être signée sous seing privé, sans notaire"],
+ "p135_12":["Le renonçant regrette simplement sa décision"],
+ "p135_32":["Léguer à Julie la moitié de la succession"],
+ "p136_05":["Deux personnes de même sexe"],
+ "p136_08":["Un contrat signé chez le notaire"],
+ "p136_10":["Elle est interdite aux couples non mariés"],
+ "p137_09":["Un terrain à bâtir"],
+ "p137_18":["Permettre au nu-propriétaire d'habiter le bien sans accord"],
+ "p137_31":["La donation est taxée sur la valeur de 600 000 €"],
+ "p138_01":["Elle doit toujours porter sur un bien immobilier"],
+ "p138_06":["Donateur âgé d'au moins 65 ans"],
+ "p138_24":["Le barème des donations est plus doux que celui des successions"],
+ "p139_01":["Le donateur perd définitivement l'usufruit"],
+ "p139_11":["Le bénéficiaire devient propriétaire du bien à l'échéance"],
+ "p139_23":["Il doit déclarer les loyers perçus par le bénéficiaire"],
+ "p140_01":["Elle ne peut être faite que dans le contrat de mariage"],
+ "p140_17":["Un bien appartenant aux enfants du couple"],
+ "p140_31":["Elle supprime les droits de succession au second décès"],
+ "p141_10":["L'enfant du souscripteur"],
+ "p141_21":["Les 200 000 € sont taxés à 20 % dès le premier euro"],
+ "p142_01":["Être enregistré chez un notaire pour être valable"],
+ "p142_10":["Recevoir une part de la succession en remerciement"],
+ "p142_27":["Le prix de vente futur des biens légués"],
+ "p143_06":["Le fait que le testament ait été écrit à la main"],
+ "p143_14":["Le légataire a revendu le bien légué"],
+ "p143_29":["La suppression des droits de succession de ses héritiers"],
+ "p144_08":["La loi interdit toute charge dans un testament"],
+ "p144_16":["Le second bénéficiaire est choisi par le premier légataire"],
+ "p144_27":["Une clause interdisant toute contestation aux réservataires"],
+ "p145_03":["Communication sur les réseaux sociaux"],
+ "p145_11":["Publicitaire"],
+ "p145_18":["Le bureau personnel du cédant"],
+ "p146_07":["Une clientèle large et diversifiée"],
+ "p146_13":["Audit du patrimoine personnel des enfants du cédant"],
+ "p146_15":["Le repreneur regrette le prix qu'il a payé"],
+ "p147_08":["Avoir plus de 70 ans au jour de la cession"],
+ "p147_20":["Contribuable dans la tranche marginale à 45 %"],
+ "p148_07":["Que les héritiers revendent l'entreprise dans l'année"],
+ "p148_21":["L'exonération de tout droit d'enregistrement sur le rachat"],
+ "p148_28":["L'histoire du Code civil"],
+ /* ---------- NEGO ---------- */
+ "n149_05":["Le rendement promis par le commercial d'un concurrent"],
+ "n149_16":["Céder vite pour préserver la relation"],
+ "n149_31":["« Je vous mets sur le fonds euros, d'accord ? »"],
+ "n150_09":["Promettre de rester client à vie"],
+ "n150_21":["Le ton qu'il emploie pour menacer"],
+ "n151_06":["Une baisse de moitié de tous ses frais bancaires"],
+ "n151_20":["L'humeur du négociateur d'en face"],
+ "n152_05":["La couleur de la brochure"],
+ "n152_13":["« Je vous garantis 5 % par an »"],
+ "n152_27":["Promettre un déblocage des fonds en 24 heures"],
+ "n153_09":["« Vous préférez le livret ou l'assurance-vie ? »"],
+ "n153_19":["Il résume l'idée en une phrase courte"],
+ "n153_32":["Le client change aussitôt de sujet"],
+ "n154_10":["« Quel âge avez-vous ? »"],
+ "n154_20":["« Combien gagnez-vous par mois ? »"],
+ "n154_31":["Le conseiller place le produit le plus cher"],
+ "n155_08":["Le prestige d'une gestion privée"],
+ "n155_19":["Sa marque de voiture seule"],
+ "n156_08":["Une remise immédiate sans contrepartie"],
+ "n156_21":["Reformuler l'objection pour bien la comprendre"],
+ "n156_32":["Dire « tous les autres clients paient ce prix »"],
+ "n157_10":["Un appel chaque jour pour vérifier qu'il est content"],
+ "n157_22":["Laisser au client un délai pour réfléchir"],
+ "n157_31":["Elle fait baisser la note de l'agence"],
+ "n158_01":["Pousser l'équipe à démissionner"],
+ "n158_15":["Le prénom du manager"],
+ "n158_32":["Une menace de démission sans autre offre"],
+ "n159_02":["Le taux d'intérêt d'un crédit"],
+ "n159_15":["Un abonnement à une salle de sport"],
+ "n159_29":["La garantie du capital sur les unités de compte"],
+ "n160_07":["« Vous aimez le risque ? »"],
+ "n160_19":["Les parts se revendent toujours sous 48 heures"],
+ "n160_28":["Dette : un crédit immobilier de 200 000 €"],
+ "n161_02":["Combien d'impôts payez-vous ?"],
+ "n161_12":["La pression commerciale de l'agence"],
+ "n161_28":["Son équipe de football préférée"],
+ "n162_07":["Ne vendre que les contrats de sa compagnie"],
+ "n162_19":["La liste de ses clients actuels"],
+ "n162_28":["Avocat"],
+ "n163_07":["Le niveau d'études de ses enfants"],
+ "n163_18":["Les comptes bancaires détenus"],
+ "n163_29":["Un changement de conseiller dans l'agence"],
+ "n164_08":["Le livret A"],
+ "n164_18":["Un client connu depuis vingt ans aux revenus stables"],
+ "n164_31":["Un taux d'intérêt majoré sur ses crédits"],
+ "n165_02":["Le taux d'usure fixé par la Banque de France"],
+ "n165_26":["Une demande de réponse dans l'heure"],
+ "n166_06":["Vendre le plus de contrats possible"],
+ "n166_17":["Combien voulez-vous gagner ?"],
+ "n166_29":["Une offre de crédit qu'il n'a pas demandée"],
+ /* ---------- FISCA ---------- */
+ "f247_04":["L'acheteur paie la totalité du prix à la signature"],
+ "f247_05":["Le montant des futurs loyers"],
+ "f247_17":["Il sert à payer les frais de notaire"],
+ "f248_04":["Le prix de revente conseillé"],
+ "f248_11":["La prise en charge de leur loyer actuel par l'État"],
+ "f249_02":["Une fissure apparue cinq ans plus tard"],
+ "f249_21":["Une poignée de porte qui grince"],
+ "f249_28":["La prise en charge de ses impôts locaux par le notaire"],
+ "f250_01":["Supprimer la taxe foncière des propriétaires"],
+ "f250_24":["Il s'applique par personne, et non par foyer"],
+ "f251_04":["La cuisine fermée"],
+ "f251_16":["On regarde ses relevés bancaires du mois"],
+ "f251_32":["Location saisonnière autorisée l'été"],
+ "f252_03":["Il réduit directement l'impôt, comme le Pinel"],
+ "f252_23":["Louer à un locataire sans lien familial"],
+ "f253_08":["Réduction d'impôt de 21 % du prix"],
+ "f253_18":["Le nombre de pièces du logement"],
+ "f253_22":["Réduction d'impôt Denormandie"],
+ "f254_02":["Avoir été propriétaire de sa résidence l'an dernier"],
+ "f254_24":["Une revente obligatoire au locataire"],
+ "f255_04":["Elle verse un salaire à ses associés"],
+ "f255_22":["Il fixe seul le prix des parts"],
+ "f256_01":["Le locataire devient propriétaire des murs"],
+ "f256_17":["Pinel"],
+ "f256_27":["La publicité vue à la télévision"],
+ "f257_01":["Le relevé de compte du gérant"],
+ "f257_17":["Le crédit rend le capital garanti"],
+ "f257_30":["Le syndic de copropriété de l'immeuble"],
+ "f258_10":["Le locataire vient d'avoir un enfant"],
+ "f258_26":["Des fenêtres en double vitrage standard"],
+ "f259_04":["Les associés ne paient jamais de charges"],
+ "f259_12":["Elle permet de déshériter un enfant"],
+ "f259_23":["Le prix de l'immeuble voisin"],
+ "f260_10":["Dissoudre la SCI"],
+ "f260_20":["Par simple décision du notaire"],
+ "f261_05":["Aux créanciers du défunt"],
+ "f261_20":["Elles rapportent beaucoup de TVA"],
+ "f262_13":["Du nombre d'enfants de l'acheteur"],
+ "f262_20":["Un bouquet payé chez le notaire"],
+ "f263_06":["L'obligation de payer les dettes de l'émetteur"],
+ "f263_22":["Les foyers dans la tranche à 41 %"],
+ "f263_29":["Les SCPI fiscales Pinel"],
+ "f264_08":["Acheter une résidence secondaire"],
+ "f264_26":["Un paiement en liquide sans écrit"],
+ /* ---------- NON ---------- */
+ "o167_09":["Repos bien mérité"],
+ "o167_19":["Un excès de confiance en soi"],
+ "o167_31":["Tu l'as dit parce qu'on insistait"],
+ "o168_01":["Obliger l'autre à accepter ton refus avec le sourire"],
+ "o168_17":["Statut social"],
+ "o168_32":["« Tu abuses toujours de moi. »"],
+ "o169_08":["« Pas cette fois, mais merci d'avoir pensé à moi »"],
+ "o169_17":["Une confiance plus grande de l'équipe"],
+ "o169_31":["Se justifier jusqu'à convaincre"],
+ "o170_01":["Conflictuel"],
+ "o170_20":["Une phrase courte et posée"],
+ "o170_32":["« Peut-être, je te redis. »"],
+ "o171_10":["Céder un peu pour faire passer le non"],
+ "o171_22":["Promettre de tout relire demain sans le faire"],
+ "o171_32":["Il est suivi d'une longue justification"],
+ "o172_10":["« Je me sens fatigué »"],
+ "o172_18":["Hier soir à 22 h"],
+ "o172_32":["Elle reste vague pour laisser le choix"],
+ "o173_09":["Un argument nouveau à chaque relance"],
+ "o173_19":["« Tu dis n'importe quoi. »"],
+ "o173_30":["« Allez, à la prochaine ! »"],
+ "o174_09":["« Offre valable jusqu'à ce soir seulement »"],
+ "o174_17":["Délai de réflexion proposé spontanément"],
+ "o174_29":["Quand on a bien dormi et mangé"],
+ "o175_10":["« Tu viens samedi ? »"],
+ "o175_19":["Le premier oui est toujours payé"],
+ "o175_31":["« Bon, d'accord, juste pour cette fois. »"],
+ "o176_09":["On se sent écouté et compris"],
+ "o176_16":["Envoyer dix messages pour qu'il réponde"],
+ "o176_28":["Promettre n'importe quoi pour calmer l'autre"],
+ "o177_08":["La lucidité sur ses propres limites"],
+ "o177_16":["Elle est formulée poliment"],
+ "o177_29":["Ne plus jamais rendre service"],
+ "o178_07":["Le souhait de regarder un match ce soir-là"],
+ "o178_18":["« Je m'y mets tout de suite, promis. »"],
+ "o178_30":["Céder à chaque demande pour éviter un conflit"],
+ "o179_07":["Exiger des intérêts élevés pour se protéger"],
+ "o179_19":["La loi oblige à aider sa famille en toute circonstance"],
+ "o179_29":["Rendre service en silence en ruminant"],
+ "o180_13":["« Je signe tout de suite, on verra après. »"],
+ "o180_25":["Les appels restent autorisés le dimanche"],
+ "o181_02":["La crainte d'être mal vu"],
+ "o181_17":["« Évidemment, tout ce que tu veux »"],
+ "o181_29":["Tu aides tout le monde, même épuisé"],
+ "o182_05":["La comparaison avec les autres"],
+ "o182_18":["Signer pour qu'il arrête d'insister"],
+ "o182_28":["Tu évites tous les gens qui demandent"],
+ /* ---------- NUTRI ---------- */
+ "a183_04":["Les médicaments coupe-faim"],
+ "a183_18":["Il exige un appareil de mesure coûteux"],
+ "a184_12":["Le fait que manger apporte de l'énergie"],
+ "a184_23":["Ils mangent plus de sucre"],
+ "a185_09":["Il arrête complètement de fonctionner"],
+ "a185_19":["Un gros repas gras juste avant de dormir"],
+ "a186_04":["Envoyer un mail au collègue d'en face"],
+ "a186_18":["Nos os sont devenus plus lourds"],
+ "a186_30":["Elle fait fondre la graisse d'une zone précise"],
+ "a187_10":["Proposer de l'eau à table"],
+ "a187_19":["Doubler les portions dès le début"],
+ "a188_15":["Une sieste au frais"],
+ "a188_30":["Le nom du designer de l'étiquette"],
+ "a189_07":["Sucre d'une pomme entière"],
+ "a189_23":["Boire un smoothie de fruits chaque matin"],
+ "a190_07":["Prostate"],
+ "a190_24":["Bière blonde"],
+ "a191_08":["Fabriquer les globules rouges"],
+ "a191_23":["Huile d'arachide"],
+ "a192_06":["Piquant"],
+ "a192_26":["Charcuterie"],
+ "a193_09":["Pinces de homard"],
+ "a193_28":["Fibres"],
+ "a194_06":["Le laisser refroidir puis le ranger vite au frigo"],
+ "a194_22":["Couper le pain avec le couteau de la viande crue"],
+ "a195_18":["C'est bio et local"],
+ "a195_27":["Sauter le dîner pour se coucher plus tôt"],
+ "a196_03":["Les fruits"],
+ "a196_22":["Jeûner un jour sur deux"],
+ "a197_10":["Elle mange forcément plus"],
+ "a197_28":["Amélioration de la vue"],
+ "a198_09":["Signe astrologique"],
+ "a198_25":["Prix d'un repas au restaurant"],
+ /* ---------- SPINO ---------- */
+ "s199_09":["La sérénité intérieure du fondateur"],
+ "s199_23":["Une joie intérieure liée à l'acte lui-même"],
+ "s200_12":["Le Discours de la méthode"],
+ "s200_24":["De manger du pain"],
+ "s201_11":["L'amour de Dieu"],
+ "s201_24":["Poèmes en vers"],
+ "s202_09":["Une puissance infinie"],
+ "s202_23":["Dieu a créé le monde pour l'homme"],
+ "s203_09":["Le facteur qui a apporté le courrier"],
+ "s203_23":["Le corps obéit à une âme séparée"],
+ "s204_11":["Volonté et entendement sont une seule et même chose"],
+ "s204_24":["Son libre arbitre absolu"],
+ "s205_10":["Une obligation légale"],
+ "s205_23":["Comment imiter exactement Victor ?"],
+ "s206_01":["La peur"],
+ "s206_21":["Rater son examen de conduite"],
+ "s207_02":["Le pur hasard"],
+ "s207_19":["Elle coûte trop cher en impôts"],
+ "s208_13":["Sa passion pour la cuisine"],
+ "s208_24":["Le futur pèse toujours plus que le présent"],
+ "s209_09":["Comprendre que la joie augmente la puissance"],
+ "s209_22":["Réprimer toute émotion par la volonté"],
+ "s210_09":["La connaissance intuitive des essences"],
+ "s210_23":["L'élève qui récite une règle apprise par cœur"],
+ "s211_05":["Fuir toute relation humaine"],
+ "s211_21":["Comprendre les vraies causes de ses affects"],
+ "s212_10":["Il lève de nouveaux fonds pour grossir"],
+ "s212_22":["Les autres font notre travail à notre place"],
+ "s213_10":["Il dépend des faveurs de Dieu"],
+ "s213_22":["Le succès rend forcément joyeux"],
+ "s214_07":["E2P1 : le corps est une prison de l'âme"],
+ "s214_20":["Spinoza meurt à La Haye en 1677"],
+ /* ---------- MMA ---------- */
+ "m215_10":["Les cuisses"],
+ "m215_23":["Un temps mort demandé par le coin"],
+ "m216_13":["Le gant est plus lourd"],
+ "m216_25":["Il frappe plus fort du pied avant"],
+ "m217_13":["On récupère mieux son souffle"],
+ "m217_24":["Pour reculer uniquement en ligne droite"],
+ "m218_08":["Baisser les mains pour provoquer"],
+ "m218_21":["Les gants sont plus fins en contre"],
+ "m219_01":["Les épaules"],
+ "m219_21":["Le lancer de très loin sans préparation"],
+ "m220_09":["Coups de coude à l'arrière de la tête"],
+ "m220_21":["Coup de poing retourné"],
+ "m221_10":["Lever les mains au-dessus de la tête"],
+ "m221_21":["Jambes tendues"],
+ "m222_14":["Croiser les pieds en reculant"],
+ "m222_22":["Pour remplacer le travail de frappe"],
+ "m223_14":["Verte"],
+ "m223_24":["Il voit venir tous les coups"],
+ "m224_09":["Croiser les bras derrière la tête"],
+ "m224_21":["Clé de talon depuis le dos"],
+ "m225_10":["Garder les jambes tendues au sol"],
+ "m225_22":["L'interdiction de toute soumission"],
+ "m226_09":["Israel Adesanya"],
+ "m226_18":["Son équilibre et sa lecture des appuis"],
+ "m226_29":["Quel est son plat préféré ?"],
+ "m227_09":["Faire des pompes pour rester chaud"],
+ "m227_21":["Ignorer complètement l'adversaire"],
+ "m228_10":["Garde haute et serrée"],
+ "m228_21":["Comparer avec plusieurs combats passés"],
+ "m229_12":["Avoir dominé Poirier lors de leur premier combat"],
+ "m229_23":["Accepter le sol volontairement contre un lutteur"],
+ "m230_15":["Faire perdre 10 kilos la veille du combat"],
+ "m230_27":["Se jeter au sol contre le lutteur"],
+ /* ---------- TENNIS ---------- */
+ "t231_15":["La marque de la raquette"],
+ "t231_25":["Largeur en double : 8,23 m"],
+ "t232_18":["Les tournois juniors"],
+ "t232_30":["Il a changé de raquette"],
+ "t233_08":["On évite toujours le filet"],
+ "t233_20":["Changer de raquette"],
+ "t234_13":["Le relanceur n'a pas le droit de bouger"],
+ "t234_27":["Viser la ligne de fond à plat"],
+ "t235_07":["Le nom de son sponsor"],
+ "t235_22":["Faire une grande préparation"],
+ "t236_12":["Il peut monter au filet plus facilement"],
+ "t236_24":["Toujours frapper au même endroit"],
+ "t237_11":["Elle est jouée sur une balle très profonde"],
+ "t237_22":["Faire un pas d'ajustement"],
+ "t238_12":["Le dernier coup d'un long échange"],
+ "t238_26":["Les coups spectaculaires entre les jambes"],
+ "t239_11":["Garder sa routine habituelle"],
+ "t239_24":["15-0"],
+ "t240_10":["Son âge exact"],
+ "t240_23":["Lui donner un rythme régulier"],
+ "t241_10":["Une surface lente comme la terre battue"],
+ "t241_25":["Finir le point en deux frappes à tout prix"],
+ "t242_12":["Changer de stratégie sans raison"],
+ "t242_23":["Long et compliqué"],
+ "t243_11":["Le centre compte double"],
+ "t243_23":["Le relanceur change de côté à chaque point"],
+ "t244_07":["Des chaussures de ville"],
+ "t244_23":["Longue et générale"],
+ "t245_10":["Wimbledon 2019"],
+ "t245_22":["Nom de l'arbitre"],
+ "t246_11":["Filet à 1,07 m au centre"],
+ "t246_24":["Une raquette prêtée le jour même"],
+ /* ---------- FOOT ---------- */
+ "k265_11":["Le coup franc direct"],
+ "k265_24":["Le gardien peut garder le ballon 15 secondes"],
+ "k266_04":["Le bas des bras, coude compris"],
+ "k266_08":["Il est derrière le ballon au moment de la passe"],
+ "k266_21":["Une touche mal attribuée"],
+ "k267_10":["Un ailier de plus collé à la ligne"],
+ "k267_18":["L'arbitre siffle une faute"],
+ "k267_24":["Sauter plus haut"],
+ "k268_10":["Cinq défenseurs en permanence"],
+ "k268_19":["Les deux latéraux restent en défense"],
+ "k269_11":["L'arbitre accorde un temps mort"],
+ "k269_16":["Le gardien a le ballon en main depuis 20 secondes"],
+ "k270_07":["Le gardien n'a jamais à sortir"],
+ "k270_23":["Chacun suit son adversaire partout"],
+ "k271_08":["Un long dégagement du gardien dans les tribunes"],
+ "k271_16":["Des joueurs qui pressent sans couvrir derrière"],
+ "k272_09":["Libre parce qu'un adversaire s'est blessé"],
+ "k272_28":["De longs ballons sans cible"],
+ "k273_06":["Prendre un carton pour gagner du temps"],
+ "k273_19":["Réduire la taille du terrain"],
+ "k273_31":["Des passes en retrait au gardien"],
+ "k274_05":["L'adversaire a toujours plus de joueurs"],
+ "k274_12":["Tirer les touches longues"],
+ "k274_28":["Ils sont réservés aux gardiens"],
+ "k275_18":["Le tireur frappe directement au but à chaque fois"],
+ "k275_26":["Les buts sur corner comptent double"],
+ "k276_03":["Le nom du tireur"],
+ "k276_20":["Plus de tirs non cadrés"],
+ "k277_06":["Regarder le tableau d'affichage"],
+ "k277_14":["Le public"],
+ "k277_26":["Dix points détaillés"],
+ "k278_12":["La ligne de touche de son camp"],
+ "k278_21":["Commenter l'arbitrage"],
+ /* ---------- ECHECS ---------- */
+ "e279_09":["c4"],
+ "e279_17":["Une pièce en e4"],
+ "e279_27":["Le pion peut reculer d'une case"],
+ "e280_05":["Le roi n'a jamais été mis en échec"],
+ "e280_24":["On ne peut prendre une dame que si l'on a perdu la sienne"],
+ "e281_14":["Un camp qui n'a plus que des pions"],
+ "e281_25":["Roi et deux cavaliers contre roi"],
+ "e282_15":["La couleur des cases"],
+ "e282_26":["Un échec sans suite"],
+ "e283_01":["Jouer beaucoup de coups de pions sur l'aile"],
+ "e283_15":["Ch3"],
+ "e283_26":["d1"],
+ "e284_05":["Elle fait mat en quatre coups à coup sûr"],
+ "e284_21":["L'ordre alphabétique des variantes"],
+ "e285_05":["Aucune, c'est interdit par les règles"],
+ "e285_13":["Le roi"],
+ "e285_20":["Pousser un pion au hasard sur l'aile"],
+ "e286_05":["Le pion"],
+ "e286_16":["Les Noirs n'ont plus le droit de roquer"],
+ "e286_30":["Le gambit"],
+ "e287_03":["Fd3"],
+ "e287_19":["Le roi noir est sur une case blanche"],
+ "e288_04":["3...d6"],
+ "e288_13":["Le pion e4"],
+ "e288_27":["Contrôler le centre dès le début"],
+ "e289_14":["Combien de temps a mis l'adversaire ?"],
+ "e289_27":["Ai-je joué mon coup préféré ?"],
+ "e290_16":["Les Blancs ont trop de matériel"],
+ "e290_29":["Pousser son pion passé avec le roi en soutien"],
+ "e291_15":["Regarder trois heures de vidéos de grands maîtres"],
+ "e291_27":["Les règles du roque"],
+ "e292_07":["Pousser les pions de l'aile au début"],
+ "e292_22":["Pat"]
+};
 /* =====================================================================
    DESIGN ARCADE (septembre 2026)
    Refonte visuelle demandee par Corentin : base « Arcade », avec les
@@ -25540,7 +25950,11 @@ window.ARC_GLOSS=[
     return r.v;
   }
   window.arcCalcEval=calcEval;
-  const nfmt=v=>{ if(!isFinite(v))return "erreur"; let s=String(Number(v.toPrecision(12))); if(/e/.test(s))s=v.toPrecision(10); return s.replace(".",","); };
+  /* espaces des milliers (espace fine insecable) : 1 234 567,5 */
+  const NB="\u202f", grpD=d=>d.replace(/\B(?=(\d{3})+(?!\d))/g,NB);
+  const grpNum=t=>String(t).replace(/(\d+)((?:[.,]\d*)?)/g,(m,a,b)=>grpD(a)+b);
+  const nfmt=v=>{ if(!isFinite(v))return "erreur"; let s=String(Number(v.toPrecision(12))); if(/e/.test(s))return v.toPrecision(10).replace(".",","); return grpNum(s.replace(".",",")); };
+  window.arcGrp=grpNum;
   const KEYS=[
     ["ln","ln(","fn"],["eˣ","exp(","fn"],["log","log(","fn"],["xʸ","^","fn"],["x²","²","fn"],
     ["√","√(","fn"],["π","π","fn"],["%","%","fn"],["(","(","op"],[")",")","op"],
@@ -25550,7 +25964,7 @@ window.ARC_GLOSS=[
     ["0","0"],[",",","],["Ans","Ans","fn"],["=","","eq"]];
   function calcPaint(){
     const e=$id("calc-exp"), r=$id("calc-res"), u=$id("calc-use"); if(!e)return;
-    e.textContent=(CX.exp||"0").replace(/-/g,"−");
+    e.textContent=grpNum(CX.exp||"0").replace(/-/g,"−");
     let prev=null; if(CX.res==null&&CX.exp){ try{ prev=calcEval(CX.exp); }catch(err){} }
     r.textContent=CX.res!=null?nfmt(CX.res):(prev!=null&&/[^0-9,.]/.test(CX.exp)?"= "+nfmt(prev):"");
     r.classList.toggle("pv",CX.res==null);
@@ -25816,10 +26230,18 @@ window.ARC_GLOSS=[
   /* ---------------- 6. POTIONS : nouvelles durees et jauge ---------------- */
   const PIMG=m=>m>=3?"potion3":m>=2?"potion2":"potion15";
   const PD={1.5:"XP multipliés par 1,5. Pour une longue session tranquille.",2:"XP doublés. Deux leçons suffisent à la rentabiliser.",3:"XP triplés. Pour un sprint de révision à fond."};
-  if(typeof SHOP!=="undefined"&&Array.isArray(SHOP)&&!SHOP.find(x=>x.id==="p3d")){
+  /* un seul tarif pour toute la boutique (demande du 02/10/2026) : on paie la
+     minute de bonus, plus cher quand la potion est plus forte. Prix = tarif x
+     (multiplicateur - 1) x minutes, arrondi a 5. Une potion plus forte ou plus
+     longue coute donc toujours plus cher qu une potion qu elle surpasse. */
+  const TARIF={1.5:4,2:6.5,3:8};
+  const prixPotion=(m,min)=>Math.round(TARIF[m]*(m-1)*min/5)*5;
+  window.arcPrixPotion=prixPotion;
+  if(typeof SHOP!=="undefined"&&Array.isArray(SHOP)){
     const ic={1.5:"\u{1F9EA}",2:"\u{2697}\u{FE0F}",3:"\u{1F525}"};
-    [[1.5,45,85,"p15b"],[2,30,190,"p2b"],[2,45,270,"p2c"],[3,20,340,"p3b"],[3,30,490,"p3c"],[3,45,700,"p3d"]].forEach(([m,min,prix,id])=>
-      SHOP.push({id,nm:"Potion ×"+fr(m),d:PD[m],m,min,prix,ic:ic[m]}));
+    if(!SHOP.find(x=>x.id==="p3d"))[[1.5,45,"p15b"],[2,30,"p2b"],[2,45,"p2c"],[3,20,"p3b"],[3,30,"p3c"],[3,45,"p3d"]].forEach(([m,min,id])=>
+      SHOP.push({id,nm:"Potion ×"+fr(m),d:PD[m],m,min,prix:0,ic:ic[m]}));
+    SHOP.forEach(x=>{ if(TARIF[x.m])x.prix=prixPotion(x.m,x.min); });
   }
   const PSEL={};
   window.arcPotSel=function(m,id){ PSEL[m]=id; sfx("click"); renderShop(); };
@@ -25830,6 +26252,7 @@ window.ARC_GLOSS=[
       return `<div class="shopit arc-pcard ${m===2?"hot":""}"><div class="si">${arcImg(PIMG(m),84)}</div>
         <div class="sn">Potion ×${fr(m)}</div><div class="sd">${PD[m]}</div>
         <div class="arc-pdur" role="group" aria-label="Durée de la potion">${its.map(x=>`<button type="button" class="${x===sel?"on":""}" aria-pressed="${x===sel}" onclick="arcPotSel(${m},'${x.id}')">${x.min} min</button>`).join("")}</div>
+        <div class="arc-prate">${ico("gem",13)} ${fr(TARIF[m])} gemmes la minute de bonus</div>
         <button class="btn ${S.gems>=sel.prix?"":"ghost"}" type="button" onclick="buyPotion('${sel.id}')">Acheter ${sel.min} min · ${sel.prix} ${ico("gem",16)}</button>
         ${stock.map(x=>`<button class="btn blue" type="button" onclick="drinkPotion('${x.id}')">Boire ${x.min} min (${inv()[x.id]} en stock)</button>`).join("")}</div>`;
     }).join("");
@@ -25940,13 +26363,76 @@ window.ARC_GLOSS=[
     if(now-lastT<350&&e.target&&e.target.closest&&e.target.closest(".ckey,.arc-pad button,.tile,.chip")){ e.preventDefault(); e.target.closest(".ckey,.arc-pad button,.tile,.chip").click(); }
     lastT=now; },{passive:false});
 
+  /* ---------------- 11. NOMBRES LISIBLES (02/10/2026) ----------------
+     Espace des milliers dans la saisie du quiz, la calculatrice et les
+     textes des questions (5 chiffres et plus, ou 4 chiffres suivis d une
+     unite : 1 500 €). Les annees (2026) et les decimales ne bougent pas. */
+  function grpText(s){
+    return s.replace(/(\d)[ \u00a0](?=\d{3}(?!\d))/g,"$1"+NB)
+      .replace(/(^|[^\d.,\u202f\u00a0])(\d{5,})(?!\d)/g,(m,p,d)=>p+grpD(d))
+      .replace(/(^|[^\d.,\u202f\u00a0])(\d{4})(?=\s?(?:€|%|kcal|euros?|k€|m²))/g,(m,p,d)=>p+grpD(d));
+  }
+  const NSKIP="input,textarea,script,style,svg,.tile,.chip,.mgrid,.formula";
+  function grpIn(root){
+    if(!root)return;
+    const tw=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>/\d{4}/.test(n.data)&&!(n.parentElement&&n.parentElement.closest(NSKIP))?1:2});
+    const ns=[]; while(tw.nextNode())ns.push(tw.currentNode);
+    ns.forEach(n=>{ const t=grpText(n.data); if(t!==n.data)n.data=t; });
+  }
+  function fmtIn(v){
+    if(!/^-?[\d\s\u202f\u00a0.,]*$/.test(v))return v;
+    let s=v.replace(/[\s\u202f\u00a0]/g,"");
+    if(s.indexOf(",")<0&&(s.match(/\./g)||[]).length===1)s=s.replace(".",",");
+    const neg=s[0]==="-"; if(neg)s=s.slice(1);
+    const k=s.indexOf(","), a=k<0?s:s.slice(0,k), b=k<0?"":s.slice(k);
+    return (neg?"-":"")+grpD(a)+b;
+  }
+  window.arcFmtIn=fmtIn;
+  if(typeof sliderMove==="function"){ const __sm=sliderMove; window.sliderMove=function(){ __sm.apply(null,arguments); try{ grpIn($id("sldval")); }catch(e){} }; }
+
+  /* ---------------- 12. CASES A COCHER VARIEES (02/10/2026) ----------------
+     Avant, il y avait presque toujours une seule proposition fausse. A chaque
+     affichage on tire un nombre variable de propositions justes (une peut
+     manquer) et fausses (de zero a toutes), en puisant aussi dans les
+     affirmations fausses de multi_faux.js. Si la question annonce un nombre
+     (« les cinq objections »), toutes les justes restent affichees. */
+  const MF=window.ARC_MFAUX||{};
+  const COMPTE=/(^|[^\p{L}\d])(deux|trois|quatre|cinq|six|sept|huit|[2-9])(?![\p{L}\d])/iu;
+  const rnd=n=>Math.floor(Math.random()*n);
+  function multiVar(src){
+    const C=src.a.map(k=>src.o[k]), W=src.o.filter((_,k)=>src.a.indexOf(k)<0).concat(MF[src.i]||[]);
+    const garde=COMPTE.test(src.q);
+    let nC=garde?C.length:Math.max(1,C.length-rnd(2));
+    let nW=W.length?1+rnd(W.length):0;
+    if(!garde&&C.length>=2&&Math.random()<.12)nW=0;
+    while(nC+nW<3&&(nW<W.length||nC<C.length)){ if(nW<W.length)nW++; else nC++; }
+    while(nC+nW>6){ if(nW>1)nW--; else if(!garde&&nC>1)nC--; else break; }
+    const c=shuffle(C.slice()).slice(0,nC), w=shuffle(W.slice()).slice(0,nW);
+    return Object.assign({},src,{o:c.concat(w),a:c.map((_,k)=>k),_src:src});
+  }
+  window.arcMultiVar=multiVar;
+
+  /* ---------------- 13. LA SITUATION AVANT LE PREMIER QUIZ ----------------
+     La premiere lecon d un module montre la mise en situation du guide
+     (personnages, lieu, enjeu) avant le quiz : on connait l histoire avant
+     de repondre. */
+  function situation(u){
+    if(!u||!u.guide)return "";
+    const t=document.createElement("div"); t.innerHTML=u.guide;
+    const g=t.querySelector(".gstory"); return g?g.outerHTML:"";
+  }
+
   /* ---------------- BRANCHEMENTS ---------------- */
   const __rq=renderQ;
   window.renderQ=function(ex){
     /* le minuteur de l ecran « Nouvelle notion » peut tomber apres la sortie de la lecon */
     if(typeof L==="undefined"||!L)return;
-    __rq.apply(null,arguments);
+    if(ex&&ex.t==="multi"&&Array.isArray(ex.o)&&Array.isArray(ex.a)){ try{ ex=multiVar(ex._src||ex); }catch(e){} }
+    __rq.call(null,ex);
     try{
+      grpIn($id("qwrap"));
+      const ni=$id("numin");
+      if(ni)ni.addEventListener("input",()=>{ const f=fmtIn(ni.value); if(f!==ni.value)ni.value=f; if(A&&!A.done)A.val=ni.value; });
       const box=document.querySelector("#qwrap .ctxbox");
       if(box&&ex&&(ex.ctx||ex.tab)){ const h=ctxHTML(ex); if(h){ const ck=box.querySelector(".ck"); box.innerHTML=""; if(ck)box.appendChild(ck); box.insertAdjacentHTML("beforeend",h); box.classList.add("arc-ctxbox"); } }
       glossIn($id("qwrap"),cidNow());
@@ -25968,6 +26454,7 @@ window.ARC_GLOSS=[
     try{
       prettyVerdict();
       const cb=$id("checkbar");
+      if(cb)grpIn(cb.querySelector(".vw"));
       if(souple&&cb&&cb.classList.contains("good")&&!cb.querySelector(".arc-alt")){
         const ex=A.ex, v=cb.querySelector(".verdict");
         const cours=ex.t==="num"?fr(ex.a)+(ex.un||""):ex.a.join(" ");
@@ -25990,7 +26477,11 @@ window.ARC_GLOSS=[
   };
   if(typeof arcStart==="function"){ const __as=arcStart; window.arcStart=function(uid){
     const r=__as.apply(null,arguments);
-    try{ const b=$id("introbody"); if(b&&$id("sc-intro").classList.contains("on")){ prettyLesson(b); glossIn(b,unitOf(uid).c); } }catch(e){}
+    try{ const b=$id("introbody"); if(b&&$id("sc-intro").classList.contains("on")){
+      const u=unitOf(uid), st=arguments[1]===0&&!b.querySelector(".gstory")?situation(u):"";
+      if(st){ const h=b.querySelector(".arc-ihero"); const d=`<div class="arc-situ"><div class="k">${ico("user",15)} La situation du module</div>${st}<p class="s">Garde ces personnages en tête : les questions du module partent de leur histoire.</p></div>`;
+        if(h)h.insertAdjacentHTML("afterend",d); else b.insertAdjacentHTML("afterbegin",d); }
+      prettyLesson(b); glossIn(b,u.c); grpIn(b); } }catch(e){}
     return r; }; }
   const __og=openGuide;
   window.openGuide=function(uid){
