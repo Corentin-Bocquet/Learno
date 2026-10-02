@@ -2,7 +2,7 @@
    Objectif : que l'application s'ouvre et fonctionne sans reseau.
    Strategie : reseau d'abord pour la page, cache d'abord pour les
    ressources fixes. Le cache est purge a chaque nouvelle version.   */
-const V = "learno-v14";
+const V = "learno-v15";
 const FIXE = [
   "./",
   "./index.html",
@@ -50,7 +50,9 @@ self.addEventListener("fetch", e => {
   /* la page principale : reseau d'abord, cache en secours */
   if (r.mode === "navigate" || url.pathname.endsWith("index.html") || url.pathname.endsWith("/")) {
     e.respondWith(
-      fetch(r)
+      /* no-cache : on revalide toujours aupres du serveur, sinon le cache HTTP
+         du navigateur peut resservir l ancienne page pendant 10 minutes */
+      fetch(r.url, { cache: "no-cache", credentials: "same-origin" })
         .then(rep => {
           const copie = rep.clone();
           caches.open(V).then(c => c.put(r, copie)).catch(() => {});

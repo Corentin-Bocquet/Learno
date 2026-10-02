@@ -26505,6 +26505,13 @@ window.ARC_MFAUX={
   const __sh=show;
   window.show=function(){ __sh.apply(null,arguments); gClose(); setTimeout(boostTick,0); };
 
+  /* mise a jour automatique : quand une nouvelle version de l application
+     prend la main (nouveau service worker), on recharge une fois pour
+     l afficher tout de suite, au lieu d attendre la prochaine ouverture. */
+  try{ if(navigator.serviceWorker){ const deja=!!navigator.serviceWorker.controller; let fait=false;
+    navigator.serviceWorker.addEventListener("controllerchange",()=>{ if(deja&&!fait&&!(typeof L!=="undefined"&&L)){ fait=true; location.reload(); } });
+    navigator.serviceWorker.getRegistration&&navigator.serviceWorker.getRegistration().then(r=>{ if(r&&r.update)r.update(); }).catch(()=>{}); } }catch(e){}
+
   boostTick();
   if(typeof S!=="undefined"&&S&&$id("sc-path")&&$id("sc-path").classList.contains("on"))renderPath();
 })();
