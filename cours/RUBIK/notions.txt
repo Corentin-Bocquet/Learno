@@ -1,0 +1,82 @@
+# Notions du cours RUBIK (méthode débutant couche par couche, vitesse, CFOP 2-look)
+# Une ligne = une notion ; variantes séparées par | ; * = notion centrale (5 exercices minimum, sinon 3)
+*centre
+*arête|arêtes
+*coin|coins
+autocollant
+couleurs opposées|opposé
+schéma de couleurs|vert devant
+*couche par couche|couche
+fausse face
+ernő rubik|rubik
+1974
+nombre de dieu
+43 milliards de milliards|43 252
+*notation
+prime
+demi-tour
+*sexy move|r u r' u'
+tranche
+rotation
+cube en main
+*marguerite
+petit t|petits t
+croix blanche
+pétale
+libère la place|libérer la place
+garer|garé
+machine à laver
+droite 1, haut 3, devant 5|droite 1
+coin coincé
+deuxième couche
+t vertical
+u r u' r' u' f' u f
+u' l' u l u f u' f'
+miroir
+arête coincée
+*croix jaune
+f r u r' u' f'
+point
+9 h et midi
+ligne
+horizontale
+pair
+*sune
+r u r' u r u2 r'
+voisines
+opposées
+u r u' l' u r' u' l
+r' d' r d
+bien placé|bien placée
+diagnostic
+première fissure
+impossible
+1 chance sur 12|12
+démonter|démonte
+speedcube
+aimants|magnétique
+tension
+lubrifiant
+pop
+lock-up
+finger tricks|finger trick
+regrip
+lookahead
+*ao5|moyenne de 5
+inspection
+dnf
+stackmat
+record
+wca
+*cfop
+f2l
+*oll
+*pll
+2-look
+paire
+t-perm
+y-perm
+antisune
+fridrich
+roux
+plan d'entraînement|routine

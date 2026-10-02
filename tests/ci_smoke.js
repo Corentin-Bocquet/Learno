@@ -16,7 +16,7 @@ const errs=[];
 const vc=new VirtualConsole();
 vc.on("jsdomError",e=>{if(!/getContext|HTMLMediaElement|Not implemented/.test(e.message))errs.push(e.message.slice(0,180))});
 
-const SEUILS={cours:19, unites:292, exos:6649};
+const SEUILS={cours:20, unites:304, exos:7033};
 
 const dom=new JSDOM(html,{runScripts:"dangerously",pretendToBeVisual:true,url:"http://localhost/",virtualConsole:vc,
   beforeParse(w){

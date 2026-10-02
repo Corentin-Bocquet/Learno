@@ -92,10 +92,10 @@ setTimeout(()=>{
   console.log("familles de cours :",tuiles,"|",E("catList().map(c=>c.nm+':'+catCourses(c.id).map(x=>x.id).join('+')).join(' | ')"));
   if(tuiles<4)ko("les familles de cours ne s'affichent pas");
   if(E("catOf('PATRI').id")!=="ecole"||E("catOf('MRC').id")!=="ecole"||E("catOf('BANQUE').id")!=="ecole"||E("catOf('RISK').id")!=="ecole")ko("PATRI, MRC, BANQUE et RISK doivent être dans École");
-  if(E("catOf('POKER').id")!=="jeux"||E("catOf('DAMES').id")!=="jeux"||E("catOf('ECHECS').id")!=="jeux")ko("poker, dames et échecs doivent être dans Jeux");
+  if(E("catOf('POKER').id")!=="jeux"||E("catOf('DAMES').id")!=="jeux"||E("catOf('ECHECS').id")!=="jeux"||E("catOf('RUBIK').id")!=="jeux")ko("poker, dames, échecs et Rubik's Cube doivent être dans Jeux");
   E("openCat('jeux')");
   const lignes=w.document.querySelectorAll("#coursesbody .courseline").length;
-  if(lignes!==3)ko("la famille Jeux devrait afficher 3 cours (poker, dames, échecs), pas "+lignes);
+  if(lignes!==4)ko("la famille Jeux devrait afficher 4 cours (poker, dames, échecs, Rubik's Cube), pas "+lignes);
 
   /* ---------- 7. boutique ---------- */
   E("setTab('shop')");
