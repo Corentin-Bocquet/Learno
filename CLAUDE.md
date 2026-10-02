@@ -145,8 +145,18 @@ Source : `design/arcade/extras.js` (injectée par `tools/design.py` après `arca
   (un module déjà commencé reste ouvert). « Continuer » mène à l'épreuve quand elle est due.
 - **Leçon avant chaque quiz**, y compris quand on enchaîne depuis la fin d'une leçon (`chainNext`).
 - **Calculatrice** : multiplication implicite 2(3+4), puissance, carré, racine, ln, log, eˣ, %, π, Ans.
-- **Boutique** : potions x1,5 (30, 45 min), x2 (15, 30, 45 min), x3 (10, 20, 30, 45 min), plus chères quand
-  elles durent plus ; jauge et minuteur posés sur le bas de la barre du haut. Gel de série : 150 gemmes.
+- **Boutique** : potions x1,5 (30, 45 min), x2 (15, 30, 45 min), x3 (10, 20, 30, 45 min) au tarif unique
+  prix = tarif x (multiplicateur - 1) x minutes, tarif 4, 6,5 et 8 gemmes la minute de bonus (02/10/2026) :
+  une potion plus forte ou plus longue coûte toujours plus cher. Jauge et minuteur posés sur le bas de la
+  barre du haut. Gel de série : 150 gemmes.
+- **Cases à cocher** (`multi`, 02/10/2026) : jamais « toujours une seule fausse ». `design/arcade/multi_faux.js`
+  ajoute au moins une affirmation fausse à chaque exercice et chaque affichage tire un nombre variable de
+  justes et de fausses (de zéro à trois fausses). Tout nouvel exercice `multi` doit y avoir son entrée, et
+  viser des cours avec 1 à 3 fausses et 1 à 4 justes.
+- **Situation du module** : la première leçon d'un module affiche la mise en situation (`gstory`) du guide
+  avant le quiz. Chaque guide doit donc commencer son histoire dans un `gstory` compréhensible seul.
+- **Nombres** : espace des milliers (espace fine insécable) dans la saisie du quiz, la calculatrice et les
+  textes des questions (1 234 567,5). Dans les sources des cours, écrire déjà « 1 500 € » et non « 1500 € ».
 - **iPhone** : pas de zoom au double toucher ni à la saisie (`touch-action`, `maximum-scale=1`) ; en mode
   application, la hauteur suit l'écran entier (pas de bande morte en bas). Chargement : rien si c'est rapide,
   sinon une animation Arcade après 0,3 s ; l'ancien design n'apparaît jamais.
@@ -170,8 +180,8 @@ avec les mêmes durées de 8, 20 et 35 minutes (choix de Corentin).
 
 ## Gemmes, ligue, serveur
 
-- Boutique : potions d'XP (x1,5 30 min, x2 15 min, x3 10 min), coffres du matin et du soir, pari de série,
-  gels et coeurs.
+- Boutique : potions d'XP (voir « Couche confort » pour les durées et le tarif), coffres du matin et du soir,
+  pari de série, gels et coeurs.
 - Ligue en ligne : table Supabase `learno_league` (SQL dans `supabase/learno_league.sql`, déjà appliqué).
   Les vrais joueurs remplacent des personnages fictifs.
 - Supabase est accessible via le connecteur Composio de Corentin (projet `nrhkijgxbxslczutjrev`).
