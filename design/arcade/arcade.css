@@ -576,3 +576,121 @@ body.arcade .pbanner .avbig svg,body.arcade .pbanner .avbig img{width:92px!impor
 /* la barre du bas reste toujours au dessus du contenu qui defile
    (les bandeaux de module colles en haut sont au niveau 12) */
 @media (max-width:860px){ body.arcade #mtabs{z-index:60} }
+
+/* =====================================================================
+   COUCHE CONFORT (01/10/2026) : voir design/arcade/extras.js
+   ===================================================================== */
+/* ---------- iPhone : pas de zoom au double toucher, pas de bande morte ---------- */
+html,body,button,a,input,label,summary,[onclick],[role="button"]{touch-action:manipulation}
+.ckey,.arc-pad button,.tile,.chip,.choice,.arc-dot,.navitem{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
+html.arc-fullh,html.arc-fullh body{height:var(--arc-h)!important;min-height:var(--arc-h)}
+body.arcade #shell{min-height:100%}
+
+/* ---------- calculatrice ---------- */
+.arc-calc .calcpanel{background:var(--bg);border:2px solid var(--line);border-radius:24px;padding:14px;max-width:420px}
+.arc-chead{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;font-family:var(--arc-font,inherit);font-size:18px;font-weight:800}
+.arc-calc .calcscr{border-radius:16px;padding:12px 14px;margin-bottom:10px;background:var(--bg2)}
+.arc-calc .calcexp{font-family:var(--font);font-size:20px;color:var(--txt);min-height:26px;word-break:break-all;letter-spacing:.3px}
+.arc-calc .calcres{font-family:var(--arc-font,var(--font));font-size:30px;font-weight:800;color:var(--green);min-height:36px;margin-top:2px}
+.arc-calc .calcres.pv{font-size:18px;color:var(--dim)}
+.arc-cgrid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}
+.arc-cgrid .ckey{padding:11px 0;font-size:18px;font-weight:800;border-radius:14px;min-height:46px}
+.arc-cgrid .ckey.fn{font-size:15px;color:var(--blue)}
+.arc-cgrid .ckey.op{font-size:20px}
+.arc-cgrid .ckey.eq{font-size:22px}
+.arc-chint{font-size:11.5px;margin:8px 0 0;text-align:center;line-height:1.45}
+
+/* ---------- corrections lisibles ---------- */
+.arc-solbox{background:rgba(0,0,0,.18);border-radius:14px;padding:10px 12px;margin:2px 0 10px}
+.arc-solk{font-size:11.5px;letter-spacing:1px;text-transform:uppercase;opacity:.75;margin-bottom:6px}
+.arc-soltab{display:flex;flex-direction:column;gap:5px}
+.arc-soltab .r{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:10px;align-items:start;padding:6px 0;border-top:1px solid rgba(255,255,255,.1)}
+.arc-soltab .r:first-child{border-top:0;padding-top:0}
+.arc-soltab .r span:first-child{color:#fff;font-weight:900}
+.arc-solbin{margin:6px 0}
+.arc-solbin b{display:block;color:#fff;margin-bottom:4px}
+.arc-solbin div{display:flex;flex-wrap:wrap;gap:6px}
+.arc-solbin span{background:rgba(255,255,255,.12);border-radius:99px;padding:3px 10px;font-size:13.5px}
+.arc-solol,.arc-solul{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:4px}
+.arc-solol li::marker{font-weight:900;color:#fff}
+.arc-wsplit{display:flex;flex-direction:column;gap:6px}
+.arc-wsplit > span{display:block}
+.arc-alt{display:flex;gap:8px;align-items:flex-start;margin-top:8px;font-size:13.5px;line-height:1.45;background:rgba(88,204,2,.12);border-radius:12px;padding:8px 10px}
+.arc-alt b{color:#fff}
+body.theme-light .arc-solbox{background:rgba(0,0,0,.05)}
+body.theme-light .arc-soltab .r span:first-child,body.theme-light .arc-solbin b,body.theme-light .arc-alt b{color:inherit}
+
+/* ---------- formules des lecons : une ligne par idee, sans fleches ASCII ---------- */
+.formula.arc-fml{font-family:var(--font);font-variant-numeric:tabular-nums;white-space:normal;line-height:1.55;font-size:15px;display:flex;flex-direction:column;gap:3px}
+.formula.arc-fml .fl{display:block;white-space:pre-wrap}
+.formula.arc-fml .fl.gap{height:6px}
+.formula.arc-fml .fk{color:var(--gcol,var(--blue));font-weight:900;margin-right:2px}
+.arc-arw{display:inline-block;width:1.15em;height:.75em;vertical-align:-.02em;margin:0 .1em;background:var(--gcol,var(--blue));
+  -webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 14'%3E%3Cpath d='M1 7h19M14 1.5 20.5 7 14 12.5' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat;
+  mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 14'%3E%3Cpath d='M1 7h19M14 1.5 20.5 7 14 12.5' fill='none' stroke='%23000' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/contain no-repeat}
+
+/* ---------- glossaire « En clair » ---------- */
+.gterm{text-decoration:underline dotted;text-decoration-color:var(--gold);text-decoration-thickness:2px;text-underline-offset:3px;cursor:help;border-radius:4px}
+.gterm:hover,.gterm:focus-visible{background:rgba(255,200,0,.14);outline:none}
+.arc-gpop{position:fixed;inset:0;z-index:700;display:flex;align-items:flex-end;justify-content:center;background:rgba(8,8,28,.45);
+  padding:12px 12px max(14px,calc(env(safe-area-inset-bottom) + 8px));opacity:0;transition:opacity .18s}
+.arc-gpop.on{opacity:1}
+.arc-gp-card{width:100%;max-width:460px;background:var(--card);border:2px solid var(--line);border-radius:22px;padding:16px 16px 14px;
+  box-shadow:0 18px 50px rgba(0,0,0,.45);transform:translateY(16px);transition:transform .22s cubic-bezier(.2,1.3,.4,1)}
+.arc-gpop.on .arc-gp-card{transform:none}
+.arc-gp-card .k{display:flex;align-items:center;gap:6px;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:var(--gold)}
+.arc-gp-card .t{font-family:var(--arc-font,inherit);font-size:23px;font-weight:800;margin:2px 0 6px;line-height:1.15}
+.arc-gp-card p{margin:0 0 10px;font-size:15px;line-height:1.5;color:var(--txt)}
+.arc-gp-card .x{background:var(--bg2);border-radius:14px;padding:10px 12px;font-size:14px;line-height:1.5;color:var(--dim);margin-bottom:12px}
+.arc-gp-card .x b{display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--blue);margin-bottom:2px}
+
+/* ---------- enonces en fiche ---------- */
+.arc-ctx{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.arc-ctx .r{line-height:1.45;padding-left:14px;position:relative}
+.arc-ctx .r::before{content:"";position:absolute;left:2px;top:.62em;width:6px;height:6px;border-radius:50%;background:var(--blue);opacity:.8}
+.arc-ctx .r.kv{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:10px;padding:6px 0 0;border-top:1px solid var(--line)}
+.arc-ctx .r.kv::before{display:none}
+.arc-ctx .r.kv .k{color:var(--dim);font-size:13.5px}
+.arc-num{color:var(--gold);font-weight:900;white-space:nowrap}
+.arc-tabwrap{overflow-x:auto;margin-top:10px;border-radius:12px;border:1px solid var(--line)}
+.arc-tab{width:100%;border-collapse:collapse;font-size:13.5px}
+.arc-tab th{text-align:left;background:var(--card2);padding:7px 9px;font-size:12px;letter-spacing:.4px}
+.arc-tab td{padding:7px 9px;border-top:1px solid var(--line)}
+
+/* ---------- jauge de potion, posee sur le bas de la barre du haut ---------- */
+.arc-boost{position:absolute;left:0;right:0;height:0;z-index:45;pointer-events:none}
+.arc-boost .g{position:absolute;left:0;right:0;top:-2px;height:3px;background:rgba(255,255,255,.08);display:block;overflow:hidden}
+.arc-boost .g > i{display:block;height:100%;background:linear-gradient(90deg,#CE82FF,#FFC800);box-shadow:0 0 8px rgba(255,200,0,.6);transition:width .9s linear}
+.arc-boost .pill{pointer-events:auto;position:absolute;left:50%;top:0;transform:translate(-50%,-50%);display:flex;align-items:center;gap:6px;
+  padding:3px 10px 3px 4px;border-radius:99px;background:linear-gradient(180deg,#3B2A70,#2A1F58);border:2px solid rgba(206,130,255,.65);
+  box-shadow:0 4px 14px rgba(0,0,0,.35),0 0 12px rgba(206,130,255,.35);color:#fff;font-size:13px;font-weight:900;white-space:nowrap;overflow:hidden}
+.arc-boost .pill .im{display:flex;width:22px;height:22px}
+.arc-boost .pill .im img{width:22px!important;height:22px!important}
+.arc-boost .pill b{color:var(--gold);font-family:var(--arc-font,inherit);font-size:14px}
+.arc-boost .pill .t{font-variant-numeric:tabular-nums;letter-spacing:.3px}
+.arc-boost .pill .mini{position:absolute;left:8px;right:8px;bottom:1px;height:2px;border-radius:2px;background:rgba(255,255,255,.12);display:none}
+.arc-boost .pill .mini > i{display:block;height:100%;border-radius:2px;background:var(--gold)}
+.arc-boost.focus .g{display:none}
+.arc-boost.focus .pill{left:auto;right:12px;transform:translateY(-20%);padding-bottom:5px}
+.arc-boost.focus .pill .mini{display:block}
+.arc-boost.low .pill{border-color:var(--orange);animation:arcBoostLow 1.2s ease-in-out infinite}
+@keyframes arcBoostLow{50%{box-shadow:0 4px 14px rgba(0,0,0,.35),0 0 18px rgba(255,150,0,.7)}}
+@media (prefers-reduced-motion:reduce){ .arc-boost.low .pill{animation:none} .arc-boost .g > i{transition:none} }
+
+/* ---------- boutique : une carte par potion, la duree se choisit ---------- */
+.arc-pdur{grid-column:1 / -1;display:flex;gap:6px;margin:8px 0 2px}
+.arc-pdur button{flex:1 1 0;padding:8px 0;border-radius:12px;border:2px solid var(--line);background:var(--bg2);color:var(--dim);font-size:13.5px;font-weight:900}
+.arc-pdur button.on{border-color:var(--gold);color:#fff;background:rgba(255,200,0,.16)}
+
+/* ---------- epreuve legendaire obligatoire ---------- */
+.arc-legcta{display:flex;flex-direction:column;gap:10px;margin:4px 0 10px;width:100%}
+.arc-legcta .m{display:flex;gap:10px;align-items:flex-start;text-align:left;border:2px solid rgba(255,200,0,.55);border-radius:16px;padding:10px 12px;font-size:14px;line-height:1.45;background:rgba(255,200,0,.08)}
+.arc-legcta .m b{color:var(--gold)}
+.btn.gold{background:var(--gold);color:#3A2A00;box-shadow:0 4px 0 var(--gold-d)}
+
+/* ---------- 02/10/2026 : situation du module, tarif des potions ---------- */
+.arc-situ{margin:12px 0 4px;border:2px solid var(--gcol,var(--blue));border-radius:18px;padding:12px 14px;background:rgba(28,176,246,.07)}
+.arc-situ .k{display:flex;align-items:center;gap:6px;font-size:11.5px;letter-spacing:1px;text-transform:uppercase;color:var(--gcol,var(--blue));margin-bottom:6px}
+.arc-situ .gstory{margin:0}
+.arc-situ .s{margin:8px 0 0;font-size:13px;color:var(--dim);line-height:1.45}
+.arc-prate{grid-column:1 / -1;display:flex;align-items:center;gap:5px;font-size:12px;color:var(--dim);margin:2px 0}

@@ -125,6 +125,42 @@ On retient ce qu'on a vécu. Chaque guide doit contenir :
 - Le masque de lancement (`DESIGN:ARCADE:TETE`, injecté dans `<head>` par `tools/design.py`) cache
   l'ancien design tant que la couche Arcade n'est pas installée.
 
+## Couche confort (demandes du 01/10/2026)
+
+Source : `design/arcade/extras.js` (injectée par `tools/design.py` après `arcade.js`), test `tests/tconfort.js`.
+- **Mots du métier** : tout terme qu'un non-initié ne connaît pas (rente viagère, usufruit, spread...) a une
+  entrée dans `design/arcade/glossaire.js` : explication simple + exemple concret, limitée aux cours concernés (`c`).
+  Il est souligné dans la leçon, l'énoncé et la correction, un toucher ouvre la bulle « En clair ».
+  Chaque nouveau cours ajoute ses termes au glossaire.
+- **Plusieurs réponses justes** : les formules (`eq`, ou `tiles` contenant un opérateur) sont comparées par leur
+  valeur (a + b = b + a, côtés inversés). Pour une phrase `tiles` qui admet une autre formulation juste, ajouter
+  `alts:["autre phrase juste"]` à l'exercice. Les nombres arrondis correctement, écrits « 1 234,5 » ou sous forme
+  de calcul sont acceptés ; `alt:[...]` sur un `num` ajoute d'autres valeurs justes.
+- **Cas pratiques visuels** : l'énoncé `ctx` s'affiche en fiche (une ligne par phrase, « Libellé : valeur » en
+  tableau, chiffres en évidence). Un champ optionnel `tab:[["Bien","Valeur"],["Maison","400 000 €"]]` affiche un
+  vrai tableau sous l'énoncé : à utiliser dès qu'un cas compare plusieurs chiffres.
+- **Corrections** : jamais de « A → B · C → D ». Paires en tableau, classement par case, ordre en liste numérotée.
+  Dans les formules des leçons, pas de flèche ASCII « -> » : elle est redessinée, mais préférer une phrase.
+- **Épreuve légendaire obligatoire** : le module suivant ne s'ouvre qu'avec la couronne du module précédent
+  (un module déjà commencé reste ouvert). « Continuer » mène à l'épreuve quand elle est due.
+- **Leçon avant chaque quiz**, y compris quand on enchaîne depuis la fin d'une leçon (`chainNext`).
+- **Calculatrice** : multiplication implicite 2(3+4), puissance, carré, racine, ln, log, eˣ, %, π, Ans.
+- **Boutique** : potions x1,5 (30, 45 min), x2 (15, 30, 45 min), x3 (10, 20, 30, 45 min) au tarif unique
+  prix = tarif x (multiplicateur - 1) x minutes, tarif 4, 6,5 et 8 gemmes la minute de bonus (02/10/2026) :
+  une potion plus forte ou plus longue coûte toujours plus cher. Jauge et minuteur posés sur le bas de la
+  barre du haut. Gel de série : 150 gemmes.
+- **Cases à cocher** (`multi`, 02/10/2026) : jamais « toujours une seule fausse ». `design/arcade/multi_faux.js`
+  ajoute au moins une affirmation fausse à chaque exercice et chaque affichage tire un nombre variable de
+  justes et de fausses (de zéro à trois fausses). Tout nouvel exercice `multi` doit y avoir son entrée, et
+  viser des cours avec 1 à 3 fausses et 1 à 4 justes.
+- **Situation du module** : la première leçon d'un module affiche la mise en situation (`gstory`) du guide
+  avant le quiz. Chaque guide doit donc commencer son histoire dans un `gstory` compréhensible seul.
+- **Nombres** : espace des milliers (espace fine insécable) dans la saisie du quiz, la calculatrice et les
+  textes des questions (1 234 567,5). Dans les sources des cours, écrire déjà « 1 500 € » et non « 1500 € ».
+- **iPhone** : pas de zoom au double toucher ni à la saisie (`touch-action`, `maximum-scale=1`) ; en mode
+  application, la hauteur suit l'écran entier (pas de bande morte en bas). Chargement : rien si c'est rapide,
+  sinon une animation Arcade après 0,3 s ; l'ancien design n'apparaît jamais.
+
 ## Rédaction des leçons (guides) : visuel d'abord
 
 Demande de Corentin : une leçon doit se lire comme une fiche, pas comme un bloc de texte.
@@ -144,8 +180,8 @@ avec les mêmes durées de 8, 20 et 35 minutes (choix de Corentin).
 
 ## Gemmes, ligue, serveur
 
-- Boutique : potions d'XP (x1,5 30 min, x2 15 min, x3 10 min), coffres du matin et du soir, pari de série,
-  gels et coeurs.
+- Boutique : potions d'XP (voir « Couche confort » pour les durées et le tarif), coffres du matin et du soir,
+  pari de série, gels et coeurs.
 - Ligue en ligne : table Supabase `learno_league` (SQL dans `supabase/learno_league.sql`, déjà appliqué).
   Les vrais joueurs remplacent des personnages fictifs.
 - Supabase est accessible via le connecteur Composio de Corentin (projet `nrhkijgxbxslczutjrev`).
@@ -154,7 +190,7 @@ avec les mêmes durées de 8, 20 et 35 minutes (choix de Corentin).
 ## Tests
 
 Avant tout envoi : `tests/ci_smoke.js`, `tests/tall.js` pour chaque cours (`CID=...`), puis
-`tbackup tcloud tui tmissions tpratique tpro tmasc tpatri tarcade`. Ajouter chaque nouveau cours dans
+`tbackup tcloud tui tmissions tpratique tpro tmasc tpatri tarcade tconfort`. Ajouter chaque nouveau cours dans
 `.github/workflows/verification.yml` et relever les seuils de `tests/ci_smoke.js`.
 
 ## Publication : fusion automatique dans main (demande de Corentin, 24/09/2026)

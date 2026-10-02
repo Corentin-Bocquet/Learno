@@ -171,7 +171,7 @@
       <button class="go" type="button" onclick="setTab('review')">Réviser</button></div>${ring}</div>`;
     const u=unitOf(n.u);
     return `<div class="arc-resume"><div style="flex:1;min-width:0"><div class="k">Reprendre</div>
-      <div class="t">${esc(u.t)} · leçon ${n.l+1}</div>
+      <div class="t">${esc(u.t)} · ${n.l<0?"épreuve légendaire":"leçon "+(n.l+1)}</div>
       <button class="go" type="button" onclick="arcResume()">Continuer</button></div>${ring}</div>`;
   }
   window.arcResume=function(){ const n=nextLessonExists(); if(n)arcStart(n.u,n.l); else setTab("review"); };
@@ -1051,8 +1051,10 @@
     const __rs=renderShop;
     window.renderShop=function(){
       __rs.apply(null,arguments);
-      const K=["potion15","potion2","potion3","matin","soir","gel",null,"coffre"];
-      document.querySelectorAll("#shopbody .shopit .si").forEach((s,i)=>{ if(K[i])s.innerHTML=aimg(K[i],84); });
+      /* l image suit le nom de l article, pas sa place : la boutique peut grandir */
+      const K=[[/×\s?1,5/,"potion15"],[/×\s?2/,"potion2"],[/×\s?3/,"potion3"],[/matin/i,"matin"],[/soir/i,"soir"],[/Gel/,"gel"],[/Double ou rien/i,"coffre"]];
+      document.querySelectorAll("#shopbody .shopit").forEach(it=>{ const s=it.querySelector(".si"), n=(it.querySelector(".sn")||{}).textContent||"";
+        const k=K.find(x=>x[0].test(n)); if(s&&k&&!s.querySelector("img"))s.innerHTML=aimg(k[1],84); });
     };
 
     const __rqu=renderQuests;
