@@ -198,11 +198,22 @@ const semi=E(`UNITS.map(u=>{ const t=String(u.guide||"").replace(/<div class="fo
 console.log("leçons avec des points-virgules :",semi.length,semi.slice(0,6).join(", "));
 if(semi.length)ko("points-virgules dans la prose des leçons : "+semi.slice(0,6).join(", "));
 /* serie juste : un vrai jour manque remet l affichage a 0, un gel sauve un jour et se voit */
-E("(()=>{const d=new Date();d.setDate(d.getDate()-4);S.lastDay=fmtDayT(d);S.streak=5;})()".replace("fmtDayT(d)","d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')"));
+E("(()=>{const d=new Date();d.setDate(d.getDate()-4);S.lastDay=fmtDayT(d);S.streak=5;S.freezes=0;})()".replace("fmtDayT(d)","d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')"));
 E("refreshTop()");
 const st0=E("S.streak");
 E("(()=>{const d=new Date();d.setDate(d.getDate()-2);S.lastDay=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');S.streak=3;S.freezes=1;S.gelDays=[];touchDay(S.active);})()");
 const gel=E("S.gelDays.length"), st1=E("S.streak");
+/* deux jours manques et deux gels : la serie tient des l ouverture, les deux gels partent */
+E("(()=>{const d=new Date();d.setDate(d.getDate()-3);S.lastDay=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');S.streak=10;S.freezes=2;S.gelDays=[];})()");
+E("refreshTop()");
+const g2=[E("S.streak"),E("S.freezes"),E("S.gelDays.length"),E("dayDiff(S.lastDay,today())")];
+E("touchDay(S.active)"); const g2b=E("S.streak");
+/* trois jours manques et un seul gel : serie perdue, gel garde */
+E("(()=>{const d=new Date();d.setDate(d.getDate()-4);S.lastDay=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');S.streak=10;S.freezes=1;S.gelDays=[];})()");
+E("refreshTop()"); E("touchDay(S.active)"); const g3=[E("S.streak"),E("S.freezes")];
+console.log("2 jours manqués, 2 gels :",g2.join(" / "),"puis",g2b,"| 3 jours manqués, 1 gel :",g3.join(" / "));
+if(g2[0]!==10||g2[1]!==0||g2[2]!==2||g2[3]!==1||g2b!==11)ko("plusieurs gels doivent couvrir plusieurs jours manqués");
+if(g3[0]!==1||g3[1]!==1)ko("sans assez de gels, la série repart et les gels sont gardés");
 E("setTab('path')"); await wait(40);
 console.log("série après 4 jours sans leçon :",st0,"| gel utilisé :",gel,"jour noté | série :",st1,"| flocon dans la semaine :",!!doc.querySelector(".arc-week .d.gel"));
 if(st0!==0)ko("la série affichée ne retombe pas à 0 après un jour manqué");
