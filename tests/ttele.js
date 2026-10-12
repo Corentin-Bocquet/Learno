@@ -204,6 +204,30 @@ if(rq().querySelector("#rq-disp").textContent!=="1,5")ko("affichage de la saisie
 key("back"); await st(300);
 if(hd.getElementById("numin").value!=="1,")ko("effacer : "+hd.getElementById("numin").value);
 
+/* calculatrice : ouverte depuis le telephone, sans curseur */
+if(!rq().querySelector('[data-a="calc"]'))ko("bouton Calculatrice absent sur la question de calcul");
+else{
+  clickP(rq().querySelector('[data-a="calc"]')); await st(900);
+  if(!hd.getElementById("calc-wrap"))ko("la calculatrice ne s ouvre pas sur la tele");
+  if(!rq().querySelector(".rq-calc"))ko("clavier de calculatrice absent sur le telephone");
+  const ck=l=>{ const b=[...rq().querySelectorAll(".rq-ck")].find(x=>x.textContent===l); if(!b){ ko("touche absente : "+l); return; } clickP(b); };
+  const nk=[...rq().querySelectorAll(".rq-ck")].length; if(nk<27)ko("touches de la calculatrice : "+nk);
+  for(const k of ["2","(","3","+","4",")"]){ ck(k); await st(300); }
+  ck("="); await st(700);
+  if(!/14/.test(hd.getElementById("calc-res").textContent))ko("resultat sur la tele : "+hd.getElementById("calc-res").textContent);
+  if(!/14/.test(rq().querySelector("#rq-cres").textContent))ko("resultat sur le telephone : "+rq().querySelector("#rq-cres").textContent);
+  if(!/2\(3\+4\)/.test(rq().querySelector("#rq-cexp").textContent))ko("expression sur le telephone : "+rq().querySelector("#rq-cexp").textContent);
+  const use=rq().querySelector("#rq-cuse"); if(!use||use.hidden)ko("Utiliser comme reponse absent"); else{ clickP(use); await st(900); }
+  if(hd.getElementById("calc-wrap"))ko("la calculatrice reste ouverte apres Utiliser");
+  if(hd.getElementById("numin").value.replace(/\s/g,"")!=="14")ko("reponse remplie : "+hd.getElementById("numin").value);
+  if(!rq().querySelector(".rq-keys"))ko("retour au pave numerique apres la calculatrice");
+  clickP(rq().querySelector('[data-a="calc"]')); await st(800);
+  clickP(rq().querySelector('[data-a="calcclose"]')); await st(800);
+  if(hd.getElementById("calc-wrap"))ko("Fermer ne ferme pas la calculatrice");
+}
+if(startQ("eq")){ await st(900); if(!rq().querySelector('[data-a="calc"]'))ko("bouton Calculatrice absent sur une formule"); }
+startQ("num"); await st(900);
+
 /* Curseur : retour a la telecommande classique */
 clickP(pd.getElementById("rc-free")); await st(300);
 if(quizOn())ko("le bouton Curseur ne rend pas la telecommande classique");
