@@ -28005,6 +28005,27 @@ body.tele-tv [class*="tq-c"].good{--tq:#3FB950;outline:6px solid #fff;outline-of
 body.tele-tv [class*="tq-c"].bad{opacity:.35;filter:grayscale(.7)}
 body.tele-tv #checkbar .btn{font-size:20px}
 body.tele-tv #side,body.tele-tv #rail{display:none!important}
+
+/* calculatrice en mode quiz */
+.rq-row{flex:none;display:flex;gap:10px}
+.rq-row .rq-go{flex:1}
+.rq-sec{flex:none;min-height:62px;padding:0 20px;border-radius:20px;border:2px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:#fff;
+  font:800 18px/1 "Baloo 2","Nunito",system-ui,sans-serif;touch-action:manipulation}
+.rq-sec:active{background:#1CB0F6}
+.rq-calc{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px}
+.rq-cscr{flex:none;padding:10px 14px;border-radius:20px;background:rgba(255,255,255,.08);border:2px solid rgba(255,255,255,.22);text-align:right;overflow:hidden}
+.rq-cexp{min-height:30px;font:800 24px/1.2 "Baloo 2","Nunito",system-ui,sans-serif;word-break:break-all;color:rgba(244,244,255,.85)}
+.rq-cres{min-height:44px;font:800 38px/1.1 "Baloo 2","Nunito",system-ui,sans-serif}
+.rq-ckeys{flex:1;min-height:0;display:grid;grid-template-columns:repeat(5,1fr);grid-auto-rows:1fr;gap:7px}
+.rq-ck{border-radius:16px;border:1px solid rgba(255,255,255,.28);background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.06));color:#fff;
+  font:800 22px/1 "Baloo 2","Nunito",system-ui,sans-serif;touch-action:manipulation;padding:0}
+.rq-ck.fn{background:linear-gradient(160deg,rgba(206,130,255,.45),rgba(206,130,255,.18));font-size:19px}
+.rq-ck.op{background:linear-gradient(160deg,rgba(28,176,246,.55),rgba(28,176,246,.2))}
+.rq-ck.del{background:linear-gradient(160deg,rgba(229,72,77,.55),rgba(229,72,77,.2))}
+.rq-ck.eq{background:linear-gradient(#6BDB10,#58CC02);border-color:#58CC02}
+.rq-ck.w2{grid-column:span 2}
+.rq-ck:active{filter:brightness(1.4)}
+body.tele-tv .calcpanel{zoom:var(--tzc,1.1)}
 /* =====================================================================
    TELECOMMANDE, QUIZ A PLUSIEURS (12/10/2026) : salon, question, resultat,
    podium sur la tele, vues de jeu sur les telephones.
@@ -31178,6 +31199,10 @@ window.ARC_MFAUX={
     const sc=(document.querySelector(".screen.on")||{}).id||"";
     if(sc==="sc-intro")return actions(ROOTS[1]);
     if(sc!=="sc-lesson")return null;
+    const cw=$id("calc-wrap");
+    if(cw){ const use=cw.querySelector("#calc-use button");
+      return {k:"cl",exp:txt($id("calc-exp")),res:txt($id("calc-res")),use:use?txt(use).replace(/^Utiliser\s*/,"").replace(/\s*comme réponse$/,""):"",
+        kb:Array.from(cw.querySelectorAll(".ckey")).map(b=>[+b.dataset.i,txt(b),/\b(fn|op|del|eq)\b/.exec(b.className)?RegExp.$1:""])}; }
     const qw=$id("qwrap");
     if(!qw||!qw.querySelector(".qkind")||typeof A==="undefined"||!A||!A.ex)return actions(ROOTS[2]);
     const ex=A.ex, t=ex.t;
@@ -31190,10 +31215,10 @@ window.ARC_MFAUX={
         const lab=t==="tf"?(e.dataset.v==="1"?"Vrai":"Faux"):(t==="spot"?body:String.fromCharCode(65+i));
         const sub=(t==="tf"||t==="spot"||!body||body.length>16||/^(color|outfit|thumb)$/.test(t))?"":body; return [lab.slice(0,16),sub]; }),c:t==="tf"?els.map(e=>e.dataset.v==="1"?3:0):null,rd}; }
     if(t==="multi"){ const els=$$q("#qwrap .mchk"); return {k:"m",l:els.map((e,i)=>String.fromCharCode(65+i)),s:els.map(e=>e.classList.contains("sel")?1:0),rd}; }
-    if(t==="num"){ const i=$id("numin"); return {k:"n",v:i?i.value:"",rd}; }
+    if(t==="num"){ const i=$id("numin"); return {k:"n",v:i?i.value:"",rd,calc:typeof openCalc==="function"?1:0}; }
     if(t==="slider"){ const r=$q("#qwrap input.sld"); if(!r)return null; return {k:"s",min:+r.min,max:+r.max,step:+r.step||1,v:+r.value,pre:ex.pre||"",un:ex.un||"",rd}; }
     if(t==="tiles"||t==="eq"){ const bank=$$q('#qwrap [id^="tk"]').map(e=>({i:+e.id.slice(2),w:txt(e),u:e.classList.contains("used")?1:0}));
-      return {k:"t",b:bank,s:$$q("#tgt > *").map(txt),rd}; }
+      return {k:"t",b:bank,s:$$q("#tgt > *").map(txt),rd,calc:t==="eq"&&typeof openCalc==="function"?1:0}; }
     if(t==="match"){ const L=$$q('#qwrap [id^="ml"]'), R=$$q('#qwrap [id^="mr"]');
       return {k:"p",L:L.map((e,i)=>({i,t:txt(e),d:e.classList.contains("good")?1:0,s:e.classList.contains("sel")?1:0})),R:R.map((e,i)=>({i,t:txt(e),d:e.classList.contains("good")?1:0})),rd}; }
     if(t==="sort"){ const rows=$$q("#qwrap .sortrow"); if(!rows.length)return null;
@@ -31204,7 +31229,7 @@ window.ARC_MFAUX={
     let q=null; try{ q=H.on&&H.hasPhone?spec():null; }catch(e){ q=null; }
     const tv=!!(q&&q.k!=="btns");
     document.body.classList.toggle("tele-tv",tv);
-    if(tv){ const z=clamp((window.innerWidth||1280)/1000,1.15,1.9); document.documentElement.style.setProperty("--tz",z.toFixed(2)); }
+    if(tv){ const z=clamp((window.innerWidth||1280)/1000,1.15,1.9); document.documentElement.style.setProperty("--tz",z.toFixed(2)); document.documentElement.style.setProperty("--tzc",clamp((window.innerHeight||720)/900,1,1.25).toFixed(2)); }
     return q; };
 
   /* ---------------- PC : rejouer les gestes du joueur ---------------- */
@@ -31223,6 +31248,10 @@ window.ARC_MFAUX={
       case "mR": clickIf($id("mr"+(+m.i))); break;
       case "sort": clickIf($q('#sr'+(+m.k)+' .sortbin[data-b="'+(+m.b)+'"]')); break;
       case "ord": { const row=$$q("#olist .orow")[+m.p]; if(row){ const bs=row.querySelectorAll(".oarr button"); clickIf(bs[m.d<0?0:1]); } break; }
+      case "calc": if(typeof openCalc==="function"&&!A.done)openCalc(); break;
+      case "ck": clickIf($q('#calc-wrap .ckey[data-i="'+(+m.i)+'"]')); break;
+      case "calcuse": clickIf($q("#calc-use button")); break;
+      case "calcclose": if(typeof closeCalc==="function")closeCalc(); break;
       case "act": { const sc=(document.querySelector(".screen.on")||{}).id||""; const m2=$id("modal"); const root=(m2&&m2.classList.contains("on"))?ROOTS[0]:(sc==="sc-intro"?ROOTS[1]:ROOTS[2]); clickIf(actionEls(root)[+m.i]); break; }
     }
   };
@@ -31234,20 +31263,24 @@ window.ARC_MFAUX={
   const svgOn='<svg viewBox="0 0 24 24" width="84" height="84" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';
   const send=o=>{ pSend(o); try{ if(navigator.vibrate)navigator.vibrate(12); }catch(e){} };
   const validBtn=(q,txtv)=>`<button type="button" class="rq-go" data-a="check" ${q.rd?"":"disabled"}>${esc(txtv||"Valider")}</button>`;
-  function keyOf(q){ const c=Object.assign({},q); if(q.k==="s")delete c.v; if(q.k==="n")delete c.v; return JSON.stringify(c); }
+  function keyOf(q){ const c=Object.assign({},q); if(q.k==="s")delete c.v; if(q.k==="n")delete c.v; if(q.k==="cl"){ delete c.exp; delete c.res; delete c.use; } return JSON.stringify(c); }
+  const calcBtn=q=>q.calc?`<button type="button" class="rq-sec" data-a="calc">Calculatrice</button>`:"";
   function view(q){
     switch(q.k){
       case "c": { const n=q.l.length; return `<div class="rq-grid n${Math.min(n,8)}">${q.l.map((x,i)=>`<button type="button" class="rq-c" style="--c:${PAL[q.c?q.c[i]:i]}" data-a="opt" data-i="${i}"><b>${esc(x[0])}</b>${x[1]?`<small>${esc(x[1])}</small>`:""}</button>`).join("")}</div>`; }
       case "m": return `<div class="rq-grid n${Math.min(q.l.length,8)}">${q.l.map((x,i)=>`<button type="button" class="rq-c rq-m ${q.s[i]?"on":""}" style="--c:${PAL[i]}" data-a="mt" data-i="${i}"><b>${x}</b>${q.s[i]?svgOn.replace('width="84" height="84"','width="30" height="30"'):""}</button>`).join("")}</div>${validBtn(q)}`;
-      case "n": return `<div class="rq-num"><div class="rq-disp" id="rq-disp">${esc(q.v||"")}</div><div class="rq-keys">${["7","8","9","4","5","6","1","2","3",",","0","-"].map(k=>`<button type="button" data-a="key" data-k="${k}">${k}</button>`).join("")}<button type="button" data-a="key" data-k="back" class="w">Effacer</button></div></div>${validBtn(q)}`;
+      case "n": return `<div class="rq-num"><div class="rq-disp" id="rq-disp">${esc(q.v||"")}</div><div class="rq-keys">${["7","8","9","4","5","6","1","2","3",",","0","-"].map(k=>`<button type="button" data-a="key" data-k="${k}">${k}</button>`).join("")}<button type="button" data-a="key" data-k="back" class="w">Effacer</button></div></div><div class="rq-row">${calcBtn(q)}${validBtn(q)}</div>`;
       case "s": return `<div class="rq-sld"><div class="rq-big" id="rq-sv">${esc(q.pre+num(q.v)+q.un)}</div><input type="range" id="rq-range" min="${q.min}" max="${q.max}" step="${q.step}" value="${q.v}"><div class="rq-ends"><span>${esc(q.pre+num(q.min)+q.un)}</span><span>${esc(q.pre+num(q.max)+q.un)}</span></div></div>${validBtn(q)}`;
-      case "t": return `<div class="rq-built">${q.s.length?q.s.map((w,i)=>`<button type="button" class="rq-w b" data-a="untile" data-i="${i}">${esc(w)}</button>`).join(""):'<span class="rq-hint">Touche les mots dans l\'ordre</span>'}</div><div class="rq-bank">${q.b.map(b=>`<button type="button" class="rq-w ${b.u?"u":""}" data-a="tile" data-i="${b.i}" ${b.u?"disabled":""}>${esc(b.w)}</button>`).join("")}</div>${validBtn(q)}`;
+      case "t": return `<div class="rq-built">${q.s.length?q.s.map((w,i)=>`<button type="button" class="rq-w b" data-a="untile" data-i="${i}">${esc(w)}</button>`).join(""):'<span class="rq-hint">Touche les mots dans l\'ordre</span>'}</div><div class="rq-bank">${q.b.map(b=>`<button type="button" class="rq-w ${b.u?"u":""}" data-a="tile" data-i="${b.i}" ${b.u?"disabled":""}>${esc(b.w)}</button>`).join("")}</div><div class="rq-row">${calcBtn(q)}${validBtn(q)}</div>`;
       case "p": { return `<div class="rq-pairs"><div>${q.L.map(x=>`<button type="button" class="rq-p ${x.d?"d":""} ${x.s?"s":""}" data-a="mL" data-i="${x.i}" ${x.d?"disabled":""}>${esc(x.t)}</button>`).join("")}</div><div>${q.R.map(x=>`<button type="button" class="rq-p r ${x.d?"d":""}" data-a="mR" data-i="${x.i}" ${x.d?"disabled":""}>${esc(x.t)}</button>`).join("")}</div></div>${validBtn(q)}`; }
       case "o": { const cur=Q.cur!=null&&Q.cur<q.it.length?Q.cur:Math.max(0,q.it.findIndex(x=>x.b<0)); const it=q.it[cur>=0?cur:0];
         return `<div class="rq-dots">${q.it.map((x,i)=>`<button type="button" class="${i===cur?"on":""} ${x.b>=0?"d":""}" data-a="cur" data-i="${i}" aria-label="Élément ${i+1}"></button>`).join("")}</div>
           <div class="rq-card">${esc(it.t)}</div>
           <div class="rq-grid n${Math.min(q.bins.length,8)}">${q.bins.map((b,i)=>`<button type="button" class="rq-c ${it.b===i?"on":""}" style="--c:${PAL[i]}" data-a="sort" data-k="${it.k}" data-b="${i}"><b>${esc(b)}</b></button>`).join("")}</div>${validBtn(q)}`; }
       case "r": return `<div class="rq-ord">${q.it.map((x,p)=>`<div class="rq-orow"><i>${p+1}</i><span>${esc(x)}</span><button type="button" data-a="ord" data-p="${p}" data-d="-1" aria-label="Monter">&#9650;</button><button type="button" data-a="ord" data-p="${p}" data-d="1" aria-label="Descendre">&#9660;</button></div>`).join("")}</div>${validBtn(q)}`;
+      case "cl": return `<div class="rq-calc"><div class="rq-cscr"><div class="rq-cexp" id="rq-cexp">${esc(q.exp||"0")}</div><div class="rq-cres" id="rq-cres">${esc(q.res||"")}</div></div>
+        <div class="rq-ckeys">${q.kb.map(k=>`<button type="button" class="rq-ck ${k[2]} ${k[1]==="="?"w2":""}" data-a="ck" data-i="${k[0]}">${esc(k[1])}</button>`).join("")}</div>
+        <div class="rq-row"><button type="button" class="rq-sec" data-a="calcclose">Fermer</button><button type="button" class="rq-go" id="rq-cuse" data-a="calcuse" ${q.use?"":"hidden"}>${esc("Utiliser "+q.use)}</button></div></div>`;
       case "res": { const c=q.ok===true?"ok":(q.ok===false?"ko":"nt"); return `<button type="button" class="rq-res ${c}" data-a="check"><span>${q.ok===true?svgOk:(q.ok===false?svgKo:"")}</span><b>${esc(q.ok===null?"Réponse enregistrée":(q.vt||(q.ok?"Bien joué":"Raté")))}</b><em>${esc(q.go)}</em></button>`; }
       case "btns": return `<div class="rq-btns">${q.list.map((l,i)=>`<button type="button" class="rq-act" style="--c:${PAL[[3,1,2][i]]}" data-a="act" data-i="${i}">${esc(l)}</button>`).join("")}</div>`;
     }
@@ -31255,6 +31288,8 @@ window.ARC_MFAUX={
   function bump(q){
     /* retours legers sans reconstruire la vue : saisie, curseur */
     if(q.k==="n"){ const d=$id("rq-disp"); if(d)d.textContent=q.v||""; }
+    if(q.k==="cl"){ const e=$id("rq-cexp"), r=$id("rq-cres"), u=$id("rq-cuse"); if(e)e.textContent=q.exp||"0"; if(r)r.textContent=q.res||"";
+      if(u){ u.hidden=!q.use; u.textContent="Utiliser "+q.use; } }
     if(q.k==="s"){ const r=$id("rq-range"), v=$id("rq-sv"); if(v)v.textContent=q.pre+num(q.v)+q.un; if(r&&document.activeElement!==r&&+r.value!==q.v)r.value=q.v; }
   }
   hooks.render=function(){
@@ -31288,6 +31323,10 @@ window.ARC_MFAUX={
       else if(a==="cur"){ Q.cur=+d.i; Q.key=""; hooks.render(); }
       else if(a==="ord")send({t:"ord",p:+d.p,d:+d.d});
       else if(a==="act")send({t:"act",i:+d.i});
+      else if(a==="calc")send({t:"calc"});
+      else if(a==="ck")send({t:"ck",i:+d.i});
+      else if(a==="calcuse")send({t:"calcuse"});
+      else if(a==="calcclose")send({t:"calcclose"});
     });
     box.addEventListener("input",e=>{ const r=e.target; if(r.id==="rq-range"){ const q=Q.last; if(q){ const v=$id("rq-sv"); if(v)v.textContent=q.pre+num(+r.value)+q.un; } send({t:"sld",v:+r.value}); } });
     const fr=$id("rc-free"); if(fr&&!fr.dataset.b){ fr.dataset.b="1"; fr.addEventListener("click",()=>{ P.free=!P.free; Q.key=""; if(T.P.rt)hooks.render(); }); }
