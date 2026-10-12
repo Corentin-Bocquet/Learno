@@ -37,7 +37,8 @@
     if(sc!=="sc-lesson")return null;
     const cw=$id("calc-wrap");
     if(cw){ const use=cw.querySelector("#calc-use button");
-      return {k:"cl",exp:txt($id("calc-exp")),res:txt($id("calc-res")),use:use?txt(use).replace(/^Utiliser\s*/,"").replace(/\s*comme réponse$/,""):"",
+      const cs=typeof calcState==="function"?calcState():{exp:txt($id("calc-exp")),pos:0};
+      return {k:"cl",ex:cs.exp,pos:cs.pos,res:txt($id("calc-res")),use:use?txt(use).replace(/^Utiliser\s*/,"").replace(/\s*comme réponse$/,""):"",
         kb:Array.from(cw.querySelectorAll(".ckey")).map(b=>[+b.dataset.i,txt(b),/\b(fn|op|del|eq)\b/.exec(b.className)?RegExp.$1:""])}; }
     const qw=$id("qwrap");
     if(!qw||!qw.querySelector(".qkind")||typeof A==="undefined"||!A||!A.ex)return actions(ROOTS[2]);
@@ -98,6 +99,8 @@
       case "ord": { const row=$$q("#olist .orow")[+m.p]; if(row){ const bs=row.querySelectorAll(".oarr button"); clickIf(bs[m.d<0?0:1]); } break; }
       case "calc": if(typeof openCalc==="function"&&!A.done)openCalc(); break;
       case "ck": clickIf($q('#calc-wrap .ckey[data-i="'+(+m.i)+'"]')); break;
+      case "cset": if(typeof calcSet==="function")calcSet(+m.i); break;
+      case "cmove": if(typeof calcMove==="function")calcMove(+m.d); break;
       case "calcuse": clickIf($q("#calc-use button")); break;
       case "calcclose": if(typeof closeCalc==="function")closeCalc(); break;
       case "act": { const sc=(document.querySelector(".screen.on")||{}).id||""; const m2=$id("modal"); const root=(m2&&m2.classList.contains("on"))?ROOTS[0]:(sc==="sc-intro"?ROOTS[1]:ROOTS[2]); clickIf(actionEls(root)[+m.i]); break; }
@@ -111,7 +114,8 @@
   const svgOn='<svg viewBox="0 0 24 24" width="84" height="84" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';
   const send=o=>{ pSend(o); try{ if(navigator.vibrate)navigator.vibrate(12); }catch(e){} };
   const validBtn=(q,txtv)=>`<button type="button" class="rq-go" data-a="check" ${q.rd?"":"disabled"}>${esc(txtv||"Valider")}</button>`;
-  function keyOf(q){ const c=Object.assign({},q); if(q.k==="s")delete c.v; if(q.k==="n")delete c.v; if(q.k==="cl"){ delete c.exp; delete c.res; delete c.use; } return JSON.stringify(c); }
+  function keyOf(q){ const c=Object.assign({},q); if(q.k==="s")delete c.v; if(q.k==="n")delete c.v; if(q.k==="cl"){ delete c.ex; delete c.pos; delete c.res; delete c.use; } return JSON.stringify(c); }
+  const calcExp=q=>typeof calcExpHtml==="function"?calcExpHtml(q.ex||"",q.pos==null?(q.ex||"").length:q.pos):esc(q.ex||"0");
   const calcBtn=q=>q.calc?`<button type="button" class="rq-sec" data-a="calc">Calculatrice</button>`:"";
   function view(q){
     switch(q.k){
@@ -126,7 +130,7 @@
           <div class="rq-card">${esc(it.t)}</div>
           <div class="rq-grid n${Math.min(q.bins.length,8)}">${q.bins.map((b,i)=>`<button type="button" class="rq-c ${it.b===i?"on":""}" style="--c:${PAL[i]}" data-a="sort" data-k="${it.k}" data-b="${i}"><b>${esc(b)}</b></button>`).join("")}</div>${validBtn(q)}`; }
       case "r": return `<div class="rq-ord">${q.it.map((x,p)=>`<div class="rq-orow"><i>${p+1}</i><span>${esc(x)}</span><button type="button" data-a="ord" data-p="${p}" data-d="-1" aria-label="Monter">&#9650;</button><button type="button" data-a="ord" data-p="${p}" data-d="1" aria-label="Descendre">&#9660;</button></div>`).join("")}</div>${validBtn(q)}`;
-      case "cl": return `<div class="rq-calc"><div class="rq-cscr"><div class="rq-cexp" id="rq-cexp">${esc(q.exp||"0")}</div><div class="rq-cres" id="rq-cres">${esc(q.res||"")}</div></div>
+      case "cl": return `<div class="rq-calc"><div class="rq-cscr"><div class="rq-cexp" id="rq-cexp" aria-label="Expression, touche pour placer le curseur">${calcExp(q)}</div><div class="rq-cmv"><button type="button" data-a="cmove" data-d="-1" aria-label="Curseur à gauche">&#9664;</button><button type="button" data-a="cmove" data-d="1" aria-label="Curseur à droite">&#9654;</button></div><div class="rq-cres" id="rq-cres">${esc(q.res||"")}</div></div>
         <div class="rq-ckeys">${q.kb.map(k=>`<button type="button" class="rq-ck ${k[2]} ${k[1]==="="?"w2":""}" data-a="ck" data-i="${k[0]}">${esc(k[1])}</button>`).join("")}</div>
         <div class="rq-row"><button type="button" class="rq-sec" data-a="calcclose">Fermer</button><button type="button" class="rq-go" id="rq-cuse" data-a="calcuse" ${q.use?"":"hidden"}>${esc("Utiliser "+q.use)}</button></div></div>`;
       case "res": { const c=q.ok===true?"ok":(q.ok===false?"ko":"nt"); return `<button type="button" class="rq-res ${c}" data-a="check"><span>${q.ok===true?svgOk:(q.ok===false?svgKo:"")}</span><b>${esc(q.ok===null?"Réponse enregistrée":(q.vt||(q.ok?"Bien joué":"Raté")))}</b><em>${esc(q.go)}</em></button>`; }
@@ -136,7 +140,7 @@
   function bump(q){
     /* retours legers sans reconstruire la vue : saisie, curseur */
     if(q.k==="n"){ const d=$id("rq-disp"); if(d)d.textContent=q.v||""; }
-    if(q.k==="cl"){ const e=$id("rq-cexp"), r=$id("rq-cres"), u=$id("rq-cuse"); if(e)e.textContent=q.exp||"0"; if(r)r.textContent=q.res||"";
+    if(q.k==="cl"){ const e=$id("rq-cexp"), r=$id("rq-cres"), u=$id("rq-cuse"); if(e)e.innerHTML=calcExp(q); if(r)r.textContent=q.res||"";
       if(u){ u.hidden=!q.use; u.textContent="Utiliser "+q.use; } }
     if(q.k==="s"){ const r=$id("rq-range"), v=$id("rq-sv"); if(v)v.textContent=q.pre+num(q.v)+q.un; if(r&&document.activeElement!==r&&+r.value!==q.v)r.value=q.v; }
   }
@@ -158,6 +162,9 @@
   function bind(){
     const box=$id("rc-q"); if(!box||box.dataset.b)return; box.dataset.b="1";
     box.addEventListener("click",e=>{
+      const sp=e.target.closest&&e.target.closest("#rq-cexp");
+      if(sp){ const c=e.target.closest("[data-i]"); let i=(Q.last&&Q.last.ex||"").length;
+        if(c){ const r=c.getBoundingClientRect(); i=+c.dataset.i+((e.clientX-r.left)>r.width/2?1:0); } send({t:"cset",i}); return; }
       const b=e.target.closest("button[data-a]"); if(!b||b.disabled)return; const a=b.dataset.a, d=b.dataset;
       if(a==="opt"){ if(Q.lock)return; Q.lock=1; b.classList.add("sel"); box.classList.add("lock"); setTimeout(()=>{ Q.lock=0; box.classList.remove("lock"); },1600); send({t:"opt",i:+d.i}); }
       else if(a==="check")send({t:"check"});
@@ -173,6 +180,7 @@
       else if(a==="act")send({t:"act",i:+d.i});
       else if(a==="calc")send({t:"calc"});
       else if(a==="ck")send({t:"ck",i:+d.i});
+      else if(a==="cmove")send({t:"cmove",d:+d.d});
       else if(a==="calcuse")send({t:"calcuse"});
       else if(a==="calcclose")send({t:"calcclose"});
     });

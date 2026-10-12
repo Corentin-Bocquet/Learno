@@ -226,7 +226,7 @@
         <div class="h"><div><div class="k" style="color:var(${u.col})">${esc(u.n)}</div><div class="t">${esc(u.t)}</div></div><span class="c">${done} / ${nL}</span></div>
         <div class="arc-dots">${dots}</div>
         <div class="f"><button class="arc-mini" type="button" onclick="openGuide(${u.id})">${ico("lecon",16)} Leçon</button>
-        ${cur?`<button class="arc-go" type="button" onclick="arcStart(${u.id},${curLi})">Commencer +10 XP</button>`:""}</div></div>`;
+        ${cur?`<button class="arc-go" type="button" onclick="arcStart(${u.id},${curLi})">Commencer +${10*(typeof XP_X!=="undefined"?XP_X:1)} XP</button>`:""}</div></div>`;
     });
     return h;
   }
@@ -236,7 +236,7 @@
       const lab=(n.parentElement&&n.parentElement.querySelector(".nodelabel")||{}).textContent||"";
       g.innerHTML=aimg(/ouvert/i.test(lab)?"ouvert":"coffre",74);
     });
-    body.querySelectorAll(".startbub").forEach(b=>{ b.textContent="Commencer +10 XP"; });
+    body.querySelectorAll(".startbub").forEach(b=>{ b.textContent="Commencer +"+(10*(typeof XP_X!=="undefined"?XP_X:1))+" XP"; });
     body.querySelectorAll(".unitbar button").forEach(b=>{ b.innerHTML=ico("lecon",15)+" Leçon"; });
     /* une lecon jamais faite commence par son cours, puis le quiz */
     body.querySelectorAll('.node[onclick^="startLesson("]').forEach(n=>{
@@ -323,7 +323,7 @@
   function pool(test,min){ return EXOS.filter(e=>test(e)&&studied(e)); }
   window.arcPool=pool; window.arcChoix=CHOIX;
   function award(xp,gems){
-    const m=typeof boostMult==="function"?boostMult():1; xp=Math.round(xp*m);
+    const m=typeof boostMult==="function"?boostMult():1; xp=Math.round(xp*m*(typeof XP_X!=="undefined"?XP_X:1));
     S.xp+=xp; S.daily.xp+=xp; S.hist=S.hist||{}; S.hist[today()]=(S.hist[today()]||0)+xp; S.league.xpWeek+=xp;
     if(S.courses[S.active])S.courses[S.active].xp+=xp; S.gems+=gems||0;
     if(xp>0){ touchDay(S.active); qprog("xp",xp); }
@@ -521,7 +521,7 @@
       <div class="muted" style="font-size:13.5px;margin-bottom:10px">Question ${G.i+1} sur ${G.q.length} · mêmes questions pour vous deux</div>
       ${qHTML(ex,"arcDuel")}
       ${G.picked!=null?`<div class="arc-foot"><div class="arc-flash" style="text-align:left;margin-top:0"><b>${G.rvOk?esc(G.rv.n)+" a trouvé aussi.":esc(G.rv.n)+" s'est trompé."}</b> ${esc(court(ex.w,160))}</div><button class="btn" onclick="arcDuelNext()">${G.i+1<G.q.length?"Question suivante":"Voir le résultat"}</button></div>`
-        :`<div class="arc-reward">${ico("gem",26,"var(--blue)")}<span>Le gagnant remporte 10 gemmes et 30 XP de ligue.</span></div>`}</div>`;
+        :`<div class="arc-reward">${ico("gem",26,"var(--blue)")}<span>Le gagnant remporte 10 gemmes et ${30*(typeof XP_X!=="undefined"?XP_X:1)} XP de ligue.</span></div>`}</div>`;
   }
   window.arcDuel=function(j){ if(!G||G.picked!=null)return; const ex=G.q[G.i]; G.picked=G.opt[j]; const ok=G.picked===ex.a; grade(ex,ok,S.active);
     G.rvOk=Math.random()<G.acc; if(ok)G.me++; if(G.rvOk)G.him++; G.res[G.i]=ok; sfx(ok?"correct":"wrong"); duelPaint(); };
@@ -579,7 +579,7 @@
     document.getElementById("intro-ttl").textContent=u.n+" · leçon "+(li+1)+"/"+nL;
     document.getElementById("introbody").innerHTML=`<div class="arc-ihero" style="background:var(${u.col})">
         <div class="k">${ico("lecon",14)} La leçon avant le quiz</div><h2>${esc(sec.t||u.t)}</h2>
-        <div class="m"><span>${ico("clock",13)} ${min} min de lecture</span><span>${ico("target",13)} puis 4 questions</span><span>${ico("xp",15)} +10 XP</span></div></div>
+        <div class="m"><span>${ico("clock",13)} ${min} min de lecture</span><span>${ico("target",13)} puis 4 questions</span><span>${ico("xp",15)} +${10*(typeof XP_X!=="undefined"?XP_X:1)} XP</span></div></div>
       <div class="arc-lesson" style="--gcol:var(${u.col})">${sec.h}</div>`;
     show("intro"); const b=document.getElementById("introbody"); if(b)b.scrollTop=0;
     sfx("click");

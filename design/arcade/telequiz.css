@@ -114,3 +114,7 @@ body.tele-tv #side,body.tele-tv #rail{display:none!important}
 .rq-ck.w2{grid-column:span 2}
 .rq-ck:active{filter:brightness(1.4)}
 body.tele-tv .calcpanel{zoom:var(--tzc,1.1)}
+.rq-cscr{position:relative}
+.rq-cmv{position:absolute;left:8px;bottom:6px;display:flex;gap:6px}
+.rq-cmv button{width:40px;height:34px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font-size:15px;padding:0}
+.rq-cmv button:active{background:#1CB0F6}

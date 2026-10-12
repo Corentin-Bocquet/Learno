@@ -23243,7 +23243,7 @@ function renderPath(){
         deco=`<div class="replay" title="Refaire cette leçon">${GLYPH.replay}</div>`;
       }
       else if(firstOpen){cls+=" done"; g=GLYPH.star; firstOpen=false;
-        deco=`<div class="startbub">Commencer +10 XP</div><div class="ring"></div>`;}
+        deco=`<div class="startbub">Commencer +${10*XP_X} XP</div><div class="ring"></div>`;}
       else {cls+=" lock"; g=GLYPH.lock;}
       const open=unlocked&&(st||cls.indexOf("lock")<0);
       h+=`<div class="noderow"><div style="margin-left:${OFF[li%OFF.length]}px;display:flex;flex-direction:column;align-items:center">
@@ -23292,7 +23292,7 @@ function openGuide(uid){
     <div style="margin-bottom:12px">
       <span class="gtag">${ico("book",13)} Fiche de cours</span>
       <span class="gtag">${ico("target",13)} ${unitExos(u.id).length} exercices</span>
-      <span class="gtag">${ico("bolt",13)} +10 XP par leçon</span>
+      <span class="gtag">${ico("bolt",13)} +${10*XP_X} XP par leçon</span>
     </div>
     <div class="gsec">${body}</div>
     <div style="height:14px"></div>
@@ -23709,11 +23709,14 @@ function quitLesson(){killCalc();L=null;setTab("path");}
 </script>
 
 <script>
+/* XP : tout ce qui rapporte des XP est multiplie par XP_X (demande du 12/10/2026, bots de la ligue inchanges) */
+const XP_X=3;
+const txp=t=>(t.xp||15)*XP_X;
 /* ---------------- FIN DE LEÇON ---------------- */
 function finish(){
   const perfect=L.wrong===0, legend=L.mode==="legend", practice=["review","weak","mistakes"].includes(L.mode);
   const base=legend?30:(practice?12:10);
-  const xp=base+(perfect?5:0)+Math.min(10,L.maxCombo);
+  const xp=XP_X*(base+(perfect?5:0)+Math.min(10,L.maxCombo));
   S.xp+=xp; S.daily.xp+=xp; S.hist=S.hist||{}; S.hist[today()]=(S.hist[today()]||0)+xp; S.league.xpWeek+=xp; S.courses[L.cid].xp+=xp;
   S.gems+=perfect?4:2; S.stats.lessons++; if(perfect)S.stats.perfect++;
   const ev=touchDay(L.cid);
@@ -24067,7 +24070,7 @@ function taskSorted(){
 function taskIcon(kind){return kind==="reel"?ico("run",14):ico("bolt",14);}
 function renderTasks(){
   const T=ensureTasks(), items=taskSorted();
-  const doneXP=T.items.filter(t=>t.done).reduce((n,t)=>n+(t.xp||0),0);
+  const doneXP=T.items.filter(t=>t.done).reduce((n,t)=>n+(t.xp?t.xp*XP_X:0),0);
   const nDone=T.items.filter(t=>t.done).length;
   let h=`<h2 class="section-t">Missions</h2>
   <div class="card" style="border-color:var(--blue)">
@@ -24095,7 +24098,7 @@ function renderTasks(){
     const list=tasksOf(L.id), fait=list.filter(t=>t.done).length;
     h+=`<div class="listhead" style="border-left:5px solid ${L.c}" ondragover="event.preventDefault()" ondrop="dropTask(event,'${L.id}')">
       <h3 style="color:${L.c}">${esc(L.n)}</h3>
-      <span class="muted">${fait}/${list.length} · ${list.reduce((n,t)=>n+(t.xp||15),0)} XP</span>
+      <span class="muted">${fait}/${list.length} · ${list.reduce((n,t)=>n+txp(t),0)} XP</span>
       <button class="tbtn" style="padding:3px 8px" onclick="renameList('${L.id}')" title="Renommer">${ico("pencil",13)}</button>
       <button class="tbtn warn" style="padding:3px 8px" onclick="delList('${L.id}')" title="Supprimer la liste">${ico("trash",13)}</button>
     </div><div class="listzone" ondragover="event.preventDefault()" ondrop="dropTask(event,'${L.id}')">`;
@@ -24108,7 +24111,7 @@ function renderTasks(){
           <span class="pdot" style="background:${pc}"></span>
           <span class="ttl" style="${t.done?"text-decoration:line-through;opacity:.6":""}">${esc(t.title)}</span>
           ${nSub?`<span class="badgesm">${okSub}/${nSub}</span>`:""}
-          <span class="xpchip">${t.xp||15} XP</span>
+          <span class="xpchip">${txp(t)} XP</span>
           <span class="chev">${open?ico("arrowup",13):ico("arrowdown",13)}</span>
         </div>`;
       if(open){
@@ -24127,7 +24130,7 @@ function renderTasks(){
             <button class="tbtn" onclick="moveMenu('${t.id}')">${ico("refresh",15)} Déplacer</button>
             <button class="tbtn warn" onclick="askDelTask('${t.id}')">${ico("trash",15)} Supprimer</button>
             <button class="taskxp ${t.done?"done":""}" style="margin-left:auto" onclick="doTask('${t.id}')">
-              ${t.done?ico("check",15)+" Terminée":ico("bolt",15)+" Valider · "+(t.xp||15)+" XP"}</button>
+              ${t.done?ico("check",15)+" Terminée":ico("bolt",15)+" Valider · "+txp(t)+" XP"}</button>
           </div>
         </div>`;
       }
@@ -24337,7 +24340,7 @@ async function genPrompt(id){
   openModal(`<h2>Prompt prêt</h2><p class="muted">Copie-le dans Claude, puis reviens valider la tâche pour encaisser tes XP.</p>
     <textarea class="tnote" id="promptbox" style="height:200px">${esc(p)}</textarea>
     <button class="btn blue" onclick="copyPrompt()">📋 Copier le prompt</button><div style="height:8px"></div>
-    <button class="btn" onclick="closeModal();doTask('${t.id}',true)">⚡ J'ai fait la tâche · +${t.xp||15} XP</button><div style="height:8px"></div>
+    <button class="btn" onclick="closeModal();doTask('${t.id}',true)">⚡ J'ai fait la tâche · +${txp(t)} XP</button><div style="height:8px"></div>
     <button class="btn ghost" onclick="closeModal()">Fermer</button>`);
 }
 function copyPrompt(){
@@ -24352,12 +24355,12 @@ function doTask(id,skipAsk){
   if(t.kind==="ia"&&!skipAsk){ genPrompt(id); return; }
   openModal(`${img("fox","hero")}<h2>Tu l'as vraiment faite ?</h2>
     <p>« ${esc(t.title)} »<br>Valide seulement si c'est réellement terminé : c'est ta série et ta crédibilité envers toi-même qui sont en jeu.</p>
-    <button class="btn" onclick="confirmTask('${id}')">Oui, c'est fait · +${t.xp||15} XP</button><div style="height:8px"></div>
+    <button class="btn" onclick="confirmTask('${id}')">Oui, c'est fait · +${txp(t)} XP</button><div style="height:8px"></div>
     <button class="btn ghost" onclick="closeModal()">Pas encore</button>`);
 }
 function confirmTask(id){
   const T=ensureTasks(), t=T.items.find(x=>x.id===id); if(!t)return;
-  t.done=true; const gain=t.xp||15;
+  t.done=true; const gain=txp(t);
   S.xp+=gain; S.daily.xp+=gain; S.league.xpWeek+=gain; S.gems+=Math.max(1,Math.round(gain/10));
   touchDay(S.active); qprog("xp",gain); save();
   sfx("complete"); confetti(90); buzz([25,40,25]);
@@ -24695,7 +24698,7 @@ function finishCalib(){
     const n=lessonsIn(us[k].id);
     for(let li=0;li<n;li++) c.lessons[lkey(us[k].id,li)]=Math.max(c.lessons[lkey(us[k].id,li)]||0,2);
   }
-  const xp=20+lv*10; S.xp+=xp; S.daily.xp+=xp; S.hist=S.hist||{}; S.hist[today()]=(S.hist[today()]||0)+xp;
+  const xp=XP_X*(20+lv*10); S.xp+=xp; S.daily.xp+=xp; S.hist=S.hist||{}; S.hist[today()]=(S.hist[today()]||0)+xp;
   save(); sfx("complete"); confetti(110);
   const start=Math.min(info.unlock,us.length-1);
   openModal(`<div class="big">${ico("medal",56,info.col)}</div>
@@ -26208,7 +26211,7 @@ function examFinish(tempsEcoule){
   S.exams=S.exams||[];
   S.exams.push({ts:Date.now(),cid:L.cid,n:log.length,ok:just,pc,sec:duree,fmt:L.exam.fmt,lvl:L.exam.lvl|0});
   S.exams=S.exams.slice(-40);
-  S.xp+=Math.round(pc/5);
+  S.xp+=XP_X*Math.round(pc/5);
   save();
   const cl=pc>=75?"good":pc>=50?"mid":"bad";
   const mot=pc>=90?"Tu es prêt.":pc>=75?"Solide. Quelques trous à boucher.":pc>=50?"La moitié tient. L'autre moitié, c'est le travail des prochains jours.":"Le score est bas et c'est une information, pas un jugement. Tu sais maintenant où creuser.";
@@ -27840,6 +27843,14 @@ body.theme-light .arc-soltab .r span:first-child,body.theme-light .arc-solbin b,
 .arc-situ .gstory{margin:0}
 .arc-situ .s{margin:8px 0 0;font-size:13px;color:var(--dim);line-height:1.45}
 .arc-prate{grid-column:1 / -1;display:flex;align-items:center;gap:5px;font-size:12px;color:var(--dim);margin:2px 0}
+
+/* calculatrice : curseur de saisie dans l expression (toucher pour corriger un chiffre) */
+.arc-calc .calcexp,.rq-cexp{cursor:text;min-height:30px}
+.arc-calc .calcexp span,.rq-cexp span{padding:6px 0}
+.cc{display:inline-block;width:2px;height:1.15em;margin:0 -1px;background:#1CB0F6;vertical-align:text-bottom;animation:ccBlink 1s steps(1) infinite}
+.cph{opacity:.45}
+@keyframes ccBlink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){ .cc{animation:none} }
 /* =====================================================================
    TELECOMMANDE (12/10/2026) : curseur sur la tele, ecran telecommande
    sur le telephone, fenetre de choix. Respecte les zones sures iPhone.
@@ -28047,6 +28058,10 @@ body.tele-tv #side,body.tele-tv #rail{display:none!important}
 .rq-ck.w2{grid-column:span 2}
 .rq-ck:active{filter:brightness(1.4)}
 body.tele-tv .calcpanel{zoom:var(--tzc,1.1)}
+.rq-cscr{position:relative}
+.rq-cmv{position:absolute;left:8px;bottom:6px;display:flex;gap:6px}
+.rq-cmv button{width:40px;height:34px;border-radius:12px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.12);color:#fff;font-size:15px;padding:0}
+.rq-cmv button:active{background:#1CB0F6}
 /* =====================================================================
    TELECOMMANDE, QUIZ A PLUSIEURS (12/10/2026) : salon, question, resultat,
    podium sur la tele, vues de jeu sur les telephones.
@@ -29238,7 +29253,7 @@ window.ARC_MFAUX={
         <div class="h"><div><div class="k" style="color:var(${u.col})">${esc(u.n)}</div><div class="t">${esc(u.t)}</div></div><span class="c">${done} / ${nL}</span></div>
         <div class="arc-dots">${dots}</div>
         <div class="f"><button class="arc-mini" type="button" onclick="openGuide(${u.id})">${ico("lecon",16)} Leçon</button>
-        ${cur?`<button class="arc-go" type="button" onclick="arcStart(${u.id},${curLi})">Commencer +10 XP</button>`:""}</div></div>`;
+        ${cur?`<button class="arc-go" type="button" onclick="arcStart(${u.id},${curLi})">Commencer +${10*(typeof XP_X!=="undefined"?XP_X:1)} XP</button>`:""}</div></div>`;
     });
     return h;
   }
@@ -29248,7 +29263,7 @@ window.ARC_MFAUX={
       const lab=(n.parentElement&&n.parentElement.querySelector(".nodelabel")||{}).textContent||"";
       g.innerHTML=aimg(/ouvert/i.test(lab)?"ouvert":"coffre",74);
     });
-    body.querySelectorAll(".startbub").forEach(b=>{ b.textContent="Commencer +10 XP"; });
+    body.querySelectorAll(".startbub").forEach(b=>{ b.textContent="Commencer +"+(10*(typeof XP_X!=="undefined"?XP_X:1))+" XP"; });
     body.querySelectorAll(".unitbar button").forEach(b=>{ b.innerHTML=ico("lecon",15)+" Leçon"; });
     /* une lecon jamais faite commence par son cours, puis le quiz */
     body.querySelectorAll('.node[onclick^="startLesson("]').forEach(n=>{
@@ -29335,7 +29350,7 @@ window.ARC_MFAUX={
   function pool(test,min){ return EXOS.filter(e=>test(e)&&studied(e)); }
   window.arcPool=pool; window.arcChoix=CHOIX;
   function award(xp,gems){
-    const m=typeof boostMult==="function"?boostMult():1; xp=Math.round(xp*m);
+    const m=typeof boostMult==="function"?boostMult():1; xp=Math.round(xp*m*(typeof XP_X!=="undefined"?XP_X:1));
     S.xp+=xp; S.daily.xp+=xp; S.hist=S.hist||{}; S.hist[today()]=(S.hist[today()]||0)+xp; S.league.xpWeek+=xp;
     if(S.courses[S.active])S.courses[S.active].xp+=xp; S.gems+=gems||0;
     if(xp>0){ touchDay(S.active); qprog("xp",xp); }
@@ -29533,7 +29548,7 @@ window.ARC_MFAUX={
       <div class="muted" style="font-size:13.5px;margin-bottom:10px">Question ${G.i+1} sur ${G.q.length} · mêmes questions pour vous deux</div>
       ${qHTML(ex,"arcDuel")}
       ${G.picked!=null?`<div class="arc-foot"><div class="arc-flash" style="text-align:left;margin-top:0"><b>${G.rvOk?esc(G.rv.n)+" a trouvé aussi.":esc(G.rv.n)+" s'est trompé."}</b> ${esc(court(ex.w,160))}</div><button class="btn" onclick="arcDuelNext()">${G.i+1<G.q.length?"Question suivante":"Voir le résultat"}</button></div>`
-        :`<div class="arc-reward">${ico("gem",26,"var(--blue)")}<span>Le gagnant remporte 10 gemmes et 30 XP de ligue.</span></div>`}</div>`;
+        :`<div class="arc-reward">${ico("gem",26,"var(--blue)")}<span>Le gagnant remporte 10 gemmes et ${30*(typeof XP_X!=="undefined"?XP_X:1)} XP de ligue.</span></div>`}</div>`;
   }
   window.arcDuel=function(j){ if(!G||G.picked!=null)return; const ex=G.q[G.i]; G.picked=G.opt[j]; const ok=G.picked===ex.a; grade(ex,ok,S.active);
     G.rvOk=Math.random()<G.acc; if(ok)G.me++; if(G.rvOk)G.him++; G.res[G.i]=ok; sfx(ok?"correct":"wrong"); duelPaint(); };
@@ -29591,7 +29606,7 @@ window.ARC_MFAUX={
     document.getElementById("intro-ttl").textContent=u.n+" · leçon "+(li+1)+"/"+nL;
     document.getElementById("introbody").innerHTML=`<div class="arc-ihero" style="background:var(${u.col})">
         <div class="k">${ico("lecon",14)} La leçon avant le quiz</div><h2>${esc(sec.t||u.t)}</h2>
-        <div class="m"><span>${ico("clock",13)} ${min} min de lecture</span><span>${ico("target",13)} puis 4 questions</span><span>${ico("xp",15)} +10 XP</span></div></div>
+        <div class="m"><span>${ico("clock",13)} ${min} min de lecture</span><span>${ico("target",13)} puis 4 questions</span><span>${ico("xp",15)} +${10*(typeof XP_X!=="undefined"?XP_X:1)} XP</span></div></div>
       <div class="arc-lesson" style="--gcol:var(${u.col})">${sec.h}</div>`;
     show("intro"); const b=document.getElementById("introbody"); if(b)b.scrollTop=0;
     sfx("click");
@@ -30135,7 +30150,7 @@ window.ARC_MFAUX={
   const cidNow=()=>(typeof L!=="undefined"&&L&&L.cid)||S.active;
 
   /* ---------------- 1. CALCULATRICE ---------------- */
-  const CX={exp:"",ans:null,res:null};
+  const CX={exp:"",ans:null,res:null,pos:0};
   const FNS1={"ln":x=>Math.log(x),"log":x=>Math.log10(x),"exp":x=>Math.exp(x),"√":x=>Math.sqrt(x)};
   function tokens(s){
     const t=[]; let i=0;
@@ -30199,9 +30214,22 @@ window.ARC_MFAUX={
     ["4","4"],["5","5"],["6","6"],["×","×","op"],["÷","÷","op"],
     ["1","1"],["2","2"],["3","3"],["+","+","op"],["−","-","op"],
     ["0","0"],[",",","],["Ans","Ans","fn"],["=","","eq"]];
+  /* expression cliquable : un toucher place le curseur, pour corriger un chiffre sans tout effacer */
+  function expHtml(exp,pos){
+    if(!exp)return '<span class="cph">0</span><i class="cc"></i>';
+    let h="", run=0, n=0;
+    for(let i=0;i<exp.length;i++){
+      const c=exp[i];
+      if(i===pos)h+='<i class="cc"></i>';
+      if(/[0-9]/.test(c)){ if(run===0){ n=0; for(let j=i;j<exp.length&&/[0-9]/.test(exp[j]);j++)n++; } if(run>0&&(n-run)%3===0)h+=NB; run++; } else run=0;
+      h+=`<span data-i="${i}">${c==="-"?"−":c.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</span>`;
+    }
+    if(pos>=exp.length)h+='<i class="cc"></i>';
+    return h; }
   function calcPaint(){
     const e=$id("calc-exp"), r=$id("calc-res"), u=$id("calc-use"); if(!e)return;
-    e.textContent=grpNum(CX.exp||"0").replace(/-/g,"−");
+    CX.pos=Math.max(0,Math.min(CX.exp.length,CX.pos==null?CX.exp.length:CX.pos));
+    e.innerHTML=expHtml(CX.exp,CX.pos);
     let prev=null; if(CX.res==null&&CX.exp){ try{ prev=calcEval(CX.exp); }catch(err){} }
     r.textContent=CX.res!=null?nfmt(CX.res):(prev!=null&&/[^0-9,.]/.test(CX.exp)?"= "+nfmt(prev):"");
     r.classList.toggle("pv",CX.res==null);
@@ -30218,19 +30246,27 @@ window.ARC_MFAUX={
       <div id="calc-use" style="margin-top:10px"></div>
       <p class="muted arc-chint">2(3+4) se calcule sans le signe ×. xʸ pour une puissance, % pour un pourcentage (200 + 10 % = 220).</p></div>`;
     w.querySelector(".arc-cgrid").addEventListener("click",e=>{ const b=e.target.closest(".ckey"); if(!b)return; press(KEYS[+b.dataset.i]); });
+    w.querySelector("#calc-exp").addEventListener("click",e=>{ const sp=e.target.closest&&e.target.closest("[data-i]");
+      if(!sp){ calcSet(CX.exp.length); return; }
+      const r=sp.getBoundingClientRect(); calcSet(+sp.dataset.i+((e.clientX-r.left)>r.width/2?1:0)); });
     (document.getElementById("sc-lesson")||document.body).appendChild(w);
     calcPaint();
   };
   function press(k){
     if(!k)return; const n=k[0];
-    if(n==="C"){ CX.exp=""; CX.res=null; }
-    else if(n==="DEL"){ if(CX.res!=null){ CX.res=null; } else CX.exp=CX.exp.replace(/(Ans|ln\(|log\(|exp\(|√\(|.)$/,""); }
+    if(n==="C"){ CX.exp=""; CX.res=null; CX.pos=0; }
+    else if(n==="DEL"){ if(CX.res!=null){ CX.res=null; } else { const av=CX.exp.slice(0,CX.pos), m=/(Ans|ln\(|log\(|exp\(|√\(|.)$/.exec(av); if(m){ CX.exp=av.slice(0,av.length-m[0].length)+CX.exp.slice(CX.pos); CX.pos-=m[0].length; } } }
     else if(n==="="){ if(!CX.exp)return; try{ CX.res=calcEval(CX.exp); CX.ans=CX.res; sfx("correct"); }catch(err){ CX.res=null; toast("Calcul impossible : vérifie l'expression."); } }
-    else{ if(CX.res!=null){ CX.exp=/^[+\-×÷^%²]/.test(k[1])?"Ans":""; CX.res=null; } CX.exp+=k[1]; }
+    else{ if(CX.res!=null){ CX.exp=/^[+\-×÷^%²]/.test(k[1])?"Ans":""; CX.res=null; CX.pos=CX.exp.length; } CX.exp=CX.exp.slice(0,CX.pos)+k[1]+CX.exp.slice(CX.pos); CX.pos+=k[1].length; }
     sfx("click"); calcPaint();
   }
-  window.calcKey=function(k){ CX.exp+=k; CX.res=null; calcPaint(); };
-  window.calcClear=function(){ CX.exp=""; CX.res=null; calcPaint(); };
+  window.calcKey=function(k){ CX.exp=CX.exp.slice(0,CX.pos)+k+CX.exp.slice(CX.pos); CX.pos+=k.length; CX.res=null; calcPaint(); };
+  window.calcClear=function(){ CX.exp=""; CX.res=null; CX.pos=0; calcPaint(); };
+  /* curseur de saisie : toucher dans l'expression, fleches, ou telecommande */
+  window.calcSet=function(i){ CX.res=null; CX.pos=Math.max(0,Math.min(CX.exp.length,+i||0)); calcPaint(); };
+  window.calcMove=function(d){ CX.res=null; CX.pos=Math.max(0,Math.min(CX.exp.length,CX.pos+(+d||0))); calcPaint(); };
+  window.calcState=function(){ return {exp:CX.exp,pos:CX.pos,res:CX.res}; };
+  window.calcExpHtml=expHtml;
   window.calcEq=function(){ press(["=","","eq"]); };
   window.calcUse=function(){
     const v=CX.res; if(v==null)return; const i=$id("numin");
@@ -30240,6 +30276,7 @@ window.ARC_MFAUX={
   document.addEventListener("keydown",e=>{
     if(!$id("calc-wrap")||e.metaKey||e.ctrlKey||e.altKey)return;
     const m={"Enter":"=","=":"=","Backspace":"DEL","Escape":"ESC","Delete":"C","*":"×","x":"×","/":"÷","-":"−",".":",","^":"xʸ"};
+    if(e.key==="ArrowLeft"||e.key==="ArrowRight"){ e.preventDefault(); calcMove(e.key==="ArrowLeft"?-1:1); return; }
     const n=m[e.key]||e.key; if(n==="ESC"){ closeCalc(); return; }
     const k=KEYS.find(x=>x[0]===n); if(k){ e.preventDefault(); press(k); }
   });
@@ -31234,7 +31271,8 @@ window.ARC_MFAUX={
     if(sc!=="sc-lesson")return null;
     const cw=$id("calc-wrap");
     if(cw){ const use=cw.querySelector("#calc-use button");
-      return {k:"cl",exp:txt($id("calc-exp")),res:txt($id("calc-res")),use:use?txt(use).replace(/^Utiliser\s*/,"").replace(/\s*comme réponse$/,""):"",
+      const cs=typeof calcState==="function"?calcState():{exp:txt($id("calc-exp")),pos:0};
+      return {k:"cl",ex:cs.exp,pos:cs.pos,res:txt($id("calc-res")),use:use?txt(use).replace(/^Utiliser\s*/,"").replace(/\s*comme réponse$/,""):"",
         kb:Array.from(cw.querySelectorAll(".ckey")).map(b=>[+b.dataset.i,txt(b),/\b(fn|op|del|eq)\b/.exec(b.className)?RegExp.$1:""])}; }
     const qw=$id("qwrap");
     if(!qw||!qw.querySelector(".qkind")||typeof A==="undefined"||!A||!A.ex)return actions(ROOTS[2]);
@@ -31295,6 +31333,8 @@ window.ARC_MFAUX={
       case "ord": { const row=$$q("#olist .orow")[+m.p]; if(row){ const bs=row.querySelectorAll(".oarr button"); clickIf(bs[m.d<0?0:1]); } break; }
       case "calc": if(typeof openCalc==="function"&&!A.done)openCalc(); break;
       case "ck": clickIf($q('#calc-wrap .ckey[data-i="'+(+m.i)+'"]')); break;
+      case "cset": if(typeof calcSet==="function")calcSet(+m.i); break;
+      case "cmove": if(typeof calcMove==="function")calcMove(+m.d); break;
       case "calcuse": clickIf($q("#calc-use button")); break;
       case "calcclose": if(typeof closeCalc==="function")closeCalc(); break;
       case "act": { const sc=(document.querySelector(".screen.on")||{}).id||""; const m2=$id("modal"); const root=(m2&&m2.classList.contains("on"))?ROOTS[0]:(sc==="sc-intro"?ROOTS[1]:ROOTS[2]); clickIf(actionEls(root)[+m.i]); break; }
@@ -31308,7 +31348,8 @@ window.ARC_MFAUX={
   const svgOn='<svg viewBox="0 0 24 24" width="84" height="84" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';
   const send=o=>{ pSend(o); try{ if(navigator.vibrate)navigator.vibrate(12); }catch(e){} };
   const validBtn=(q,txtv)=>`<button type="button" class="rq-go" data-a="check" ${q.rd?"":"disabled"}>${esc(txtv||"Valider")}</button>`;
-  function keyOf(q){ const c=Object.assign({},q); if(q.k==="s")delete c.v; if(q.k==="n")delete c.v; if(q.k==="cl"){ delete c.exp; delete c.res; delete c.use; } return JSON.stringify(c); }
+  function keyOf(q){ const c=Object.assign({},q); if(q.k==="s")delete c.v; if(q.k==="n")delete c.v; if(q.k==="cl"){ delete c.ex; delete c.pos; delete c.res; delete c.use; } return JSON.stringify(c); }
+  const calcExp=q=>typeof calcExpHtml==="function"?calcExpHtml(q.ex||"",q.pos==null?(q.ex||"").length:q.pos):esc(q.ex||"0");
   const calcBtn=q=>q.calc?`<button type="button" class="rq-sec" data-a="calc">Calculatrice</button>`:"";
   function view(q){
     switch(q.k){
@@ -31323,7 +31364,7 @@ window.ARC_MFAUX={
           <div class="rq-card">${esc(it.t)}</div>
           <div class="rq-grid n${Math.min(q.bins.length,8)}">${q.bins.map((b,i)=>`<button type="button" class="rq-c ${it.b===i?"on":""}" style="--c:${PAL[i]}" data-a="sort" data-k="${it.k}" data-b="${i}"><b>${esc(b)}</b></button>`).join("")}</div>${validBtn(q)}`; }
       case "r": return `<div class="rq-ord">${q.it.map((x,p)=>`<div class="rq-orow"><i>${p+1}</i><span>${esc(x)}</span><button type="button" data-a="ord" data-p="${p}" data-d="-1" aria-label="Monter">&#9650;</button><button type="button" data-a="ord" data-p="${p}" data-d="1" aria-label="Descendre">&#9660;</button></div>`).join("")}</div>${validBtn(q)}`;
-      case "cl": return `<div class="rq-calc"><div class="rq-cscr"><div class="rq-cexp" id="rq-cexp">${esc(q.exp||"0")}</div><div class="rq-cres" id="rq-cres">${esc(q.res||"")}</div></div>
+      case "cl": return `<div class="rq-calc"><div class="rq-cscr"><div class="rq-cexp" id="rq-cexp" aria-label="Expression, touche pour placer le curseur">${calcExp(q)}</div><div class="rq-cmv"><button type="button" data-a="cmove" data-d="-1" aria-label="Curseur à gauche">&#9664;</button><button type="button" data-a="cmove" data-d="1" aria-label="Curseur à droite">&#9654;</button></div><div class="rq-cres" id="rq-cres">${esc(q.res||"")}</div></div>
         <div class="rq-ckeys">${q.kb.map(k=>`<button type="button" class="rq-ck ${k[2]} ${k[1]==="="?"w2":""}" data-a="ck" data-i="${k[0]}">${esc(k[1])}</button>`).join("")}</div>
         <div class="rq-row"><button type="button" class="rq-sec" data-a="calcclose">Fermer</button><button type="button" class="rq-go" id="rq-cuse" data-a="calcuse" ${q.use?"":"hidden"}>${esc("Utiliser "+q.use)}</button></div></div>`;
       case "res": { const c=q.ok===true?"ok":(q.ok===false?"ko":"nt"); return `<button type="button" class="rq-res ${c}" data-a="check"><span>${q.ok===true?svgOk:(q.ok===false?svgKo:"")}</span><b>${esc(q.ok===null?"Réponse enregistrée":(q.vt||(q.ok?"Bien joué":"Raté")))}</b><em>${esc(q.go)}</em></button>`; }
@@ -31333,7 +31374,7 @@ window.ARC_MFAUX={
   function bump(q){
     /* retours legers sans reconstruire la vue : saisie, curseur */
     if(q.k==="n"){ const d=$id("rq-disp"); if(d)d.textContent=q.v||""; }
-    if(q.k==="cl"){ const e=$id("rq-cexp"), r=$id("rq-cres"), u=$id("rq-cuse"); if(e)e.textContent=q.exp||"0"; if(r)r.textContent=q.res||"";
+    if(q.k==="cl"){ const e=$id("rq-cexp"), r=$id("rq-cres"), u=$id("rq-cuse"); if(e)e.innerHTML=calcExp(q); if(r)r.textContent=q.res||"";
       if(u){ u.hidden=!q.use; u.textContent="Utiliser "+q.use; } }
     if(q.k==="s"){ const r=$id("rq-range"), v=$id("rq-sv"); if(v)v.textContent=q.pre+num(q.v)+q.un; if(r&&document.activeElement!==r&&+r.value!==q.v)r.value=q.v; }
   }
@@ -31355,6 +31396,9 @@ window.ARC_MFAUX={
   function bind(){
     const box=$id("rc-q"); if(!box||box.dataset.b)return; box.dataset.b="1";
     box.addEventListener("click",e=>{
+      const sp=e.target.closest&&e.target.closest("#rq-cexp");
+      if(sp){ const c=e.target.closest("[data-i]"); let i=(Q.last&&Q.last.ex||"").length;
+        if(c){ const r=c.getBoundingClientRect(); i=+c.dataset.i+((e.clientX-r.left)>r.width/2?1:0); } send({t:"cset",i}); return; }
       const b=e.target.closest("button[data-a]"); if(!b||b.disabled)return; const a=b.dataset.a, d=b.dataset;
       if(a==="opt"){ if(Q.lock)return; Q.lock=1; b.classList.add("sel"); box.classList.add("lock"); setTimeout(()=>{ Q.lock=0; box.classList.remove("lock"); },1600); send({t:"opt",i:+d.i}); }
       else if(a==="check")send({t:"check"});
@@ -31370,6 +31414,7 @@ window.ARC_MFAUX={
       else if(a==="act")send({t:"act",i:+d.i});
       else if(a==="calc")send({t:"calc"});
       else if(a==="ck")send({t:"ck",i:+d.i});
+      else if(a==="cmove")send({t:"cmove",d:+d.d});
       else if(a==="calcuse")send({t:"calcuse"});
       else if(a==="calcclose")send({t:"calcclose"});
     });

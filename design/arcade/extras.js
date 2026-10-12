@@ -25,7 +25,7 @@
   const cidNow=()=>(typeof L!=="undefined"&&L&&L.cid)||S.active;
 
   /* ---------------- 1. CALCULATRICE ---------------- */
-  const CX={exp:"",ans:null,res:null};
+  const CX={exp:"",ans:null,res:null,pos:0};
   const FNS1={"ln":x=>Math.log(x),"log":x=>Math.log10(x),"exp":x=>Math.exp(x),"√":x=>Math.sqrt(x)};
   function tokens(s){
     const t=[]; let i=0;
@@ -89,9 +89,22 @@
     ["4","4"],["5","5"],["6","6"],["×","×","op"],["÷","÷","op"],
     ["1","1"],["2","2"],["3","3"],["+","+","op"],["−","-","op"],
     ["0","0"],[",",","],["Ans","Ans","fn"],["=","","eq"]];
+  /* expression cliquable : un toucher place le curseur, pour corriger un chiffre sans tout effacer */
+  function expHtml(exp,pos){
+    if(!exp)return '<span class="cph">0</span><i class="cc"></i>';
+    let h="", run=0, n=0;
+    for(let i=0;i<exp.length;i++){
+      const c=exp[i];
+      if(i===pos)h+='<i class="cc"></i>';
+      if(/[0-9]/.test(c)){ if(run===0){ n=0; for(let j=i;j<exp.length&&/[0-9]/.test(exp[j]);j++)n++; } if(run>0&&(n-run)%3===0)h+=NB; run++; } else run=0;
+      h+=`<span data-i="${i}">${c==="-"?"−":c.replace(/&/g,"&amp;").replace(/</g,"&lt;")}</span>`;
+    }
+    if(pos>=exp.length)h+='<i class="cc"></i>';
+    return h; }
   function calcPaint(){
     const e=$id("calc-exp"), r=$id("calc-res"), u=$id("calc-use"); if(!e)return;
-    e.textContent=grpNum(CX.exp||"0").replace(/-/g,"−");
+    CX.pos=Math.max(0,Math.min(CX.exp.length,CX.pos==null?CX.exp.length:CX.pos));
+    e.innerHTML=expHtml(CX.exp,CX.pos);
     let prev=null; if(CX.res==null&&CX.exp){ try{ prev=calcEval(CX.exp); }catch(err){} }
     r.textContent=CX.res!=null?nfmt(CX.res):(prev!=null&&/[^0-9,.]/.test(CX.exp)?"= "+nfmt(prev):"");
     r.classList.toggle("pv",CX.res==null);
@@ -108,19 +121,27 @@
       <div id="calc-use" style="margin-top:10px"></div>
       <p class="muted arc-chint">2(3+4) se calcule sans le signe ×. xʸ pour une puissance, % pour un pourcentage (200 + 10 % = 220).</p></div>`;
     w.querySelector(".arc-cgrid").addEventListener("click",e=>{ const b=e.target.closest(".ckey"); if(!b)return; press(KEYS[+b.dataset.i]); });
+    w.querySelector("#calc-exp").addEventListener("click",e=>{ const sp=e.target.closest&&e.target.closest("[data-i]");
+      if(!sp){ calcSet(CX.exp.length); return; }
+      const r=sp.getBoundingClientRect(); calcSet(+sp.dataset.i+((e.clientX-r.left)>r.width/2?1:0)); });
     (document.getElementById("sc-lesson")||document.body).appendChild(w);
     calcPaint();
   };
   function press(k){
     if(!k)return; const n=k[0];
-    if(n==="C"){ CX.exp=""; CX.res=null; }
-    else if(n==="DEL"){ if(CX.res!=null){ CX.res=null; } else CX.exp=CX.exp.replace(/(Ans|ln\(|log\(|exp\(|√\(|.)$/,""); }
+    if(n==="C"){ CX.exp=""; CX.res=null; CX.pos=0; }
+    else if(n==="DEL"){ if(CX.res!=null){ CX.res=null; } else { const av=CX.exp.slice(0,CX.pos), m=/(Ans|ln\(|log\(|exp\(|√\(|.)$/.exec(av); if(m){ CX.exp=av.slice(0,av.length-m[0].length)+CX.exp.slice(CX.pos); CX.pos-=m[0].length; } } }
     else if(n==="="){ if(!CX.exp)return; try{ CX.res=calcEval(CX.exp); CX.ans=CX.res; sfx("correct"); }catch(err){ CX.res=null; toast("Calcul impossible : vérifie l'expression."); } }
-    else{ if(CX.res!=null){ CX.exp=/^[+\-×÷^%²]/.test(k[1])?"Ans":""; CX.res=null; } CX.exp+=k[1]; }
+    else{ if(CX.res!=null){ CX.exp=/^[+\-×÷^%²]/.test(k[1])?"Ans":""; CX.res=null; CX.pos=CX.exp.length; } CX.exp=CX.exp.slice(0,CX.pos)+k[1]+CX.exp.slice(CX.pos); CX.pos+=k[1].length; }
     sfx("click"); calcPaint();
   }
-  window.calcKey=function(k){ CX.exp+=k; CX.res=null; calcPaint(); };
-  window.calcClear=function(){ CX.exp=""; CX.res=null; calcPaint(); };
+  window.calcKey=function(k){ CX.exp=CX.exp.slice(0,CX.pos)+k+CX.exp.slice(CX.pos); CX.pos+=k.length; CX.res=null; calcPaint(); };
+  window.calcClear=function(){ CX.exp=""; CX.res=null; CX.pos=0; calcPaint(); };
+  /* curseur de saisie : toucher dans l'expression, fleches, ou telecommande */
+  window.calcSet=function(i){ CX.res=null; CX.pos=Math.max(0,Math.min(CX.exp.length,+i||0)); calcPaint(); };
+  window.calcMove=function(d){ CX.res=null; CX.pos=Math.max(0,Math.min(CX.exp.length,CX.pos+(+d||0))); calcPaint(); };
+  window.calcState=function(){ return {exp:CX.exp,pos:CX.pos,res:CX.res}; };
+  window.calcExpHtml=expHtml;
   window.calcEq=function(){ press(["=","","eq"]); };
   window.calcUse=function(){
     const v=CX.res; if(v==null)return; const i=$id("numin");
@@ -130,6 +151,7 @@
   document.addEventListener("keydown",e=>{
     if(!$id("calc-wrap")||e.metaKey||e.ctrlKey||e.altKey)return;
     const m={"Enter":"=","=":"=","Backspace":"DEL","Escape":"ESC","Delete":"C","*":"×","x":"×","/":"÷","-":"−",".":",","^":"xʸ"};
+    if(e.key==="ArrowLeft"||e.key==="ArrowRight"){ e.preventDefault(); calcMove(e.key==="ArrowLeft"?-1:1); return; }
     const n=m[e.key]||e.key; if(n==="ESC"){ closeCalc(); return; }
     const k=KEYS.find(x=>x[0]===n); if(k){ e.preventDefault(); press(k); }
   });
