@@ -549,6 +549,25 @@
     const g=t.querySelector(".gstory"); return g?g.outerHTML:"";
   }
 
+  /* ---------------- 14. LES CAS PRATIQUES EN PLUSIEURS CARTES (12/10/2026) ----------------
+     Demande de Corentin : un cas pratique se deroule etape par etape, sur
+     plusieurs cartes, dans le bon ordre. Un exercice peut porter cas:"nom"
+     et k:1, 2, 3... Dans une lecon, les etapes d un meme cas se suivent, dans
+     l ordre, a la place de la premiere d entre elles. Le reste est inchange. */
+  function casOrdre(q){
+    if(!Array.isArray(q)||!q.some(e=>e&&e.cas))return q;
+    const out=[], fait={};
+    q.forEach(e=>{
+      if(!e||!e.cas){ out.push(e); return; }
+      if(fait[e.cas])return; fait[e.cas]=1;
+      q.filter(x=>x&&x.cas===e.cas).sort((a,b)=>(a.k||0)-(b.k||0)).forEach(x=>out.push(x));
+    });
+    return out;
+  }
+  window.arcCasOrdre=casOrdre;
+  if(typeof buildLesson==="function"){ const __blc=buildLesson; window.buildLesson=function(){
+    const r=__blc.apply(null,arguments); try{ if(r&&r.queue)r.queue=casOrdre(r.queue); }catch(e){} return r; }; }
+
   /* ---------------- BRANCHEMENTS ---------------- */
   const __rq=renderQ;
   window.renderQ=function(ex){
