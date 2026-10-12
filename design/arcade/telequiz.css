@@ -1,0 +1,95 @@
+/* =====================================================================
+   TELECOMMANDE, MODE QUIZ (12/10/2026)
+   Telephone : gros boutons colores comme une manette. Telé : question en
+   grand, reponses en tuiles colorees. Rien ne change hors mode telecommande.
+   ===================================================================== */
+#tele-rc [hidden]{display:none!important}
+#rc-free{padding:9px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(28,176,246,.25);font-weight:800;font-size:14px}
+.rc-q{display:none}
+#tele-rc.quiz .rc-q{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
+#tele-rc.quiz .rc-mainrow,#tele-rc.quiz #rc-ch,#tele-rc.quiz .rc-pad,#tele-rc.quiz .rc-mid,#tele-rc.quiz .rc-row,#tele-rc.quiz .rc-keys{display:none!important}
+.rq-grid{flex:1;min-height:0;display:grid;gap:12px;grid-template-columns:1fr 1fr;grid-auto-rows:1fr}
+.rq-grid.n1,.rq-grid.n2,.rq-grid.n3{grid-template-columns:1fr}
+.rq-c{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:0;padding:8px;border-radius:24px;border:0;color:#fff;
+  background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0) 45%),var(--c);
+  box-shadow:0 8px 0 rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.4);touch-action:manipulation}
+.rq-c b{font:800 clamp(40px,13vw,72px)/1 "Baloo 2","Nunito",system-ui,sans-serif;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.rq-c small{font-size:15px;font-weight:800;opacity:.92;text-align:center;line-height:1.2}
+.rq-c:active{transform:translateY(5px);box-shadow:0 3px 0 rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.4)}
+.rq-c.sel,.rq-c.on{outline:6px solid #fff;outline-offset:-6px}
+.rq-m{position:relative}
+.rq-m svg{position:absolute;top:8px;right:8px}
+.rq-box.lock .rq-c:not(.sel),#rc-q.lock .rq-c:not(.sel){opacity:.4}
+.rq-go{flex:none;min-height:62px;border-radius:20px;border:0;font:800 22px/1 "Baloo 2","Nunito",system-ui,sans-serif;color:#fff;
+  background:linear-gradient(#6BDB10,#58CC02);box-shadow:0 6px 0 #3E9A00,inset 0 2px 0 rgba(255,255,255,.35)}
+.rq-go:active{transform:translateY(4px);box-shadow:0 2px 0 #3E9A00}
+.rq-go:disabled{background:#3A3A66;box-shadow:0 6px 0 #2A2A4E;color:#8A8AB8}
+.rq-num{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px}
+.rq-disp{min-height:68px;display:flex;align-items:center;justify-content:center;border-radius:20px;border:2px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);
+  font:800 40px/1 "Baloo 2","Nunito",system-ui,sans-serif;letter-spacing:1px;overflow:hidden}
+.rq-keys{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:8px}
+.rq-keys button{border-radius:18px;border:1px solid rgba(255,255,255,.28);background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.06));
+  font:800 30px/1 "Baloo 2","Nunito",system-ui,sans-serif;touch-action:manipulation}
+.rq-keys button:active{background:#1CB0F6}
+.rq-keys .w{grid-column:span 3;font-size:18px}
+.rq-sld{flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:0 4px}
+.rq-big{text-align:center;font:800 clamp(48px,16vw,84px)/1 "Baloo 2","Nunito",system-ui,sans-serif;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.rq-sld input[type=range]{width:100%;height:56px;-webkit-appearance:none;appearance:none;background:transparent;touch-action:pan-y}
+.rq-sld input[type=range]::-webkit-slider-runnable-track{height:16px;border-radius:99px;background:rgba(255,255,255,.22)}
+.rq-sld input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:52px;height:52px;margin-top:-18px;border-radius:50%;background:#1CB0F6;border:4px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+.rq-sld input[type=range]::-moz-range-track{height:16px;border-radius:99px;background:rgba(255,255,255,.22)}
+.rq-sld input[type=range]::-moz-range-thumb{width:44px;height:44px;border-radius:50%;background:#1CB0F6;border:4px solid #fff}
+.rq-ends{display:flex;justify-content:space-between;font-weight:800;color:rgba(244,244,255,.65)}
+.rq-built{flex:none;min-height:72px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;padding:10px;border-radius:20px;border:2px dashed rgba(255,255,255,.3);background:rgba(255,255,255,.05)}
+.rq-hint{margin:auto;color:rgba(244,244,255,.55);font-weight:700;font-size:14px}
+.rq-bank{flex:1;min-height:0;overflow:auto;display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}
+.rq-w{padding:14px 18px;border-radius:18px;border:1px solid rgba(255,255,255,.3);color:#fff;font:800 19px/1.1 "Nunito",system-ui,sans-serif;
+  background:linear-gradient(160deg,rgba(255,255,255,.26),rgba(255,255,255,.08));box-shadow:0 4px 0 rgba(0,0,0,.25);touch-action:manipulation}
+.rq-w.b{background:rgba(28,176,246,.55)}
+.rq-w.u{opacity:.22;box-shadow:none}
+.rq-pairs{flex:1;min-height:0;overflow:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start}
+.rq-pairs>div{display:flex;flex-direction:column;gap:8px}
+.rq-p{min-height:62px;padding:10px;border-radius:16px;border:2px solid rgba(255,255,255,.3);color:#fff;font:800 15px/1.2 "Nunito",system-ui,sans-serif;
+  background:rgba(255,255,255,.1);word-break:break-word;touch-action:manipulation}
+.rq-p.r{background:rgba(206,130,255,.22)}
+.rq-p.s{outline:5px solid #1CB0F6;outline-offset:-5px;background:rgba(28,176,246,.35)}
+.rq-p.d{background:rgba(88,204,2,.4);border-color:#58CC02;opacity:.6}
+.rq-p:disabled:not(.d){opacity:.45}
+.rq-dots{flex:none;display:flex;gap:8px;justify-content:center}
+.rq-dots button{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,.5);background:transparent;padding:0}
+.rq-dots button.d{background:#58CC02;border-color:#58CC02}
+.rq-dots button.on{outline:3px solid #fff;outline-offset:2px}
+.rq-card{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;border-radius:26px;overflow:auto;
+  background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,.06));border:2px solid rgba(255,255,255,.3);font:800 clamp(22px,7vw,34px)/1.2 "Baloo 2","Nunito",system-ui,sans-serif}
+.rq-card+.rq-grid{flex:none;grid-auto-rows:78px}
+.rq-card+.rq-grid .rq-c b{font-size:20px;line-height:1.1;text-align:center}
+.rq-ord{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:8px}
+.rq-orow{display:flex;align-items:center;gap:8px;padding:8px;border-radius:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22)}
+.rq-orow i{flex:none;width:30px;height:30px;border-radius:50%;background:#1CB0F6;display:flex;align-items:center;justify-content:center;font:800 15px/1 "Nunito",sans-serif;font-style:normal}
+.rq-orow span{flex:1;font-weight:800;font-size:15px;line-height:1.2}
+.rq-orow button{flex:none;width:48px;height:48px;border-radius:14px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.14);font-size:20px;touch-action:manipulation}
+.rq-orow button:active{background:#1CB0F6}
+.rq-res{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:0;border-radius:28px;color:#fff;text-align:center;padding:20px}
+.rq-res.ok{background:linear-gradient(#4FD40E,#2FA600)}
+.rq-res.ko{background:linear-gradient(#F5555B,#C42B33)}
+.rq-res.nt{background:linear-gradient(#35B6FA,#1688CF)}
+.rq-res b{font:800 clamp(30px,10vw,44px)/1.1 "Baloo 2","Nunito",system-ui,sans-serif}
+.rq-res em{font-style:normal;font-weight:800;font-size:19px;padding:12px 26px;border-radius:99px;background:rgba(0,0,0,.25)}
+.rq-btns{flex:1;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.rq-act{min-height:96px;padding:12px;border-radius:26px;border:0;color:#fff;font:800 24px/1.15 "Baloo 2","Nunito",system-ui,sans-serif;
+  background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0) 45%),var(--c);box-shadow:0 8px 0 rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.4)}
+.rq-act:active{transform:translateY(5px)}
+@media (max-height:700px){ .rq-go{min-height:52px} .rq-disp{min-height:56px;font-size:32px} }
+
+/* telé : la question en grand, les reponses en tuiles de couleur */
+body.tele-tv #qwrap{zoom:var(--tz,1.3)}
+body.tele-tv .tq-c0{--tq:#E5484D}body.tele-tv .tq-c1{--tq:#1CB0F6}body.tele-tv .tq-c2{--tq:#F5B800}body.tele-tv .tq-c3{--tq:#3FB950}
+body.tele-tv .tq-c4{--tq:#9B51E0}body.tele-tv .tq-c5{--tq:#FF8A00}body.tele-tv .tq-c6{--tq:#E6559A}body.tele-tv .tq-c7{--tq:#18B8A8}
+body.tele-tv .choice[class*="tq-c"]{background:var(--tq)!important;color:#fff!important;border:0!important;box-shadow:0 6px 0 rgba(0,0,0,.28)!important;font-weight:800}
+body.tele-tv .choice[class*="tq-c"] .kk{background:rgba(0,0,0,.25)!important;color:#fff!important;border:0!important}
+body.tele-tv .swcard[class*="tq-c"],body.tele-tv .fitcard[class*="tq-c"],body.tele-tv .thumbcard[class*="tq-c"]{border:6px solid var(--tq)!important}
+body.tele-tv [class*="tq-c"].sel{outline:6px solid #fff;outline-offset:2px}
+body.tele-tv [class*="tq-c"].good{--tq:#3FB950;outline:6px solid #fff;outline-offset:2px;transform:scale(1.03)}
+body.tele-tv [class*="tq-c"].bad{opacity:.35;filter:grayscale(.7)}
+body.tele-tv #checkbar .btn{font-size:20px}
+body.tele-tv #side,body.tele-tv #rail{display:none!important}

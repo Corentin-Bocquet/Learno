@@ -126,6 +126,7 @@
 
   /* ---------------- 3. COTE PC : curseur, clic, navigation ---------------- */
   const CLICK='button,a[href],input,select,textarea,summary,label,[onclick],[role="button"],[role="switch"],[role="tab"],[tabindex]:not([tabindex="-1"]),.choice,.tile,.swcard';
+  const hooks={};
   const H={on:false,code:"",rt:null,x:0,y:0,seen:0,last:"",timer:null,idle:null,wl:null,link:false,hasPhone:false};
   const vw=()=>window.innerWidth||document.documentElement.clientWidth||1280, vh=()=>window.innerHeight||document.documentElement.clientHeight||720;
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -215,7 +216,8 @@
     let chk=null; if(lesson&&btn&&btn.getBoundingClientRect().width>0)chk={txt:(btn.textContent||"").trim().slice(0,14),en:!btn.disabled};
     let ch=[]; if(lesson&&!done)ch=choices().slice(0,8).map((e,i)=>{ const k=e.querySelector(".kk"); return (k?k.textContent:(e.textContent||"")).replace(/[^A-Za-zÀ-ÿ0-9]/g,"").slice(0,5)||String.fromCharCode(65+i); });
     const num=!!(lesson&&!done&&$id("numin")), m=$id("modal");
-    return {sc,chk,ch,num,modal:!!(m&&m.classList.contains("on"))}; }
+    let q=null; try{ q=hooks.spec?hooks.spec():null; }catch(e){ q=null; }
+    return {sc,chk,ch,num,modal:!!(m&&m.classList.contains("on")),q}; }
   function pushState(force){ if(!H.rt)return; const s=JSON.stringify(snap()); if(!force&&s===H.last)return; H.last=s; H.rt.send({r:"h",t:"state",s:JSON.parse(s)}); }
   function hostMsg(m){
     if(!H.on||!m||m.r!=="p")return;
@@ -233,6 +235,7 @@
       case "back": backAction(); break;
       case "home": { const m2=$id("modal"); if(m2&&m2.classList.contains("on")){ try{ closeModal(); }catch(e){} } const sc=document.querySelector(".screen.on"); if(sc&&sc.id==="sc-lesson"){ const q=$id("ls-quit"); if(q)q.click(); } else if(typeof setTab==="function")setTab("path"); break; }
       case "bye": H.hasPhone=false; break;
+      default: try{ if(hooks.msg)hooks.msg(m); }catch(e){}
     }
     setTimeout(()=>pushState(false),120);
     hostUi(); }
@@ -276,7 +279,8 @@
     if(main){ const t=s.chk?s.chk.txt:"OK"; main.textContent=t||"OK"; main.disabled=!!(s.chk&&!s.chk.en); }
     const ch=$id("rc-ch"); if(ch){ const a=s.ch||[]; const key=a.join("|"); if(ch.dataset.k!==key){ ch.dataset.k=key; ch.innerHTML=a.map((l,i)=>`<button type="button" class="rc-c" data-i="${i}">${esc(l)}</button>`).join(""); } ch.style.display=a.length?"flex":"none"; }
     const num=!!s.num; if(P.keysAuto&&P.keys!==num){ P.keys=num; }
-    r.classList.toggle("keys",P.keys); }
+    r.classList.toggle("keys",P.keys);
+    try{ if(hooks.render)hooks.render(); }catch(e){ if(window.console)console.error("telequiz",e); } }
   function remoteMsg(m){
     if(!P.on||!m||m.r!=="h")return;
     P.seen=Date.now();
@@ -286,7 +290,8 @@
   function buildRemote(){
     if($id("tele-rc"))return;
     const d=document.createElement("div"); d.id="tele-rc";
-    d.innerHTML=`<div class="rc-top"><span class="rc-dot"></span><b id="rc-stat">Connexion...</b><button type="button" id="rc-quit">Quitter</button></div>
+    d.innerHTML=`<div class="rc-top"><span class="rc-dot"></span><b id="rc-stat">Connexion...</b><button type="button" id="rc-free" hidden>Curseur</button><button type="button" id="rc-quit">Quitter</button></div>
+      <div id="rc-q" class="rc-q"></div>
       <div class="rc-mainrow"><button type="button" id="rc-main" class="rc-main">OK</button></div>
       <div id="rc-ch" class="rc-chs" style="display:none"></div>
       <div id="rc-pad" class="rc-pad"><span>Glisse pour déplacer le curseur<br>Touche pour cliquer<br>Deux doigts pour défiler</span></div>
@@ -338,7 +343,7 @@
   function remoteStart(code){
     code=cleanCode(code); if(code.length<6){ NOTE("Le code fait 6 caractères."); return false; }
     if(P.on)remoteStop();
-    P.on=true; P.code=code; P.link=false; P.seen=0; P.st=null; P.keys=false; P.keysAuto=true;
+    P.on=true; P.free=false; P.code=code; P.link=false; P.seen=0; P.st=null; P.keys=false; P.keysAuto=true;
     try{ if(typeof closeModal==="function")closeModal(); }catch(e){}
     buildRemote();
     P.rt=rtOpen(code,remoteMsg,ok=>{ P.link=ok; if(ok){ pSend({t:"hello"}); } remoteUi(); });
@@ -383,7 +388,7 @@
   window.teleJoin=()=>{ const i=$id("tele-in"); remoteStart(i?i.value:""); };
   window.teleStop=()=>{ hostStop(); try{ closeModal(); }catch(e){} NOTE("Télécommande arrêtée."); };
   window.teleFull=()=>{ try{ const e=document.documentElement; (e.requestFullscreen||e.webkitRequestFullscreen).call(e); }catch(err){} };
-  window.__tele={pickDir,qrMatrix,qrSvg,newCode,cleanCode,H,P,snap,hostMsg,remoteMsg,remoteStart,remoteStop,hostStop,rtOpen};
+  window.__tele={hooks,H,P,$id,esc,clamp,pSend,pickDir,qrMatrix,qrSvg,newCode,cleanCode,snap,hostMsg,remoteMsg,remoteStart,remoteStop,hostStop,rtOpen};
 
   /* ---------------- 6. POINTS D'ENTREE ---------------- */
   const __mt=window.moreTabs;
