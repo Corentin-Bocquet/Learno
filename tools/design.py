@@ -9,10 +9,10 @@ On n edite jamais ce bloc a la main : on modifie les sources puis on relance
 import io, os, re
 R = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..')
 P = os.path.join(R, 'index.html')
-css = io.open(os.path.join(R, 'design/arcade/arcade.css'), encoding='utf-8').read().strip()
+css = '\n'.join(io.open(os.path.join(R, 'design/arcade', f), encoding='utf-8').read().strip() for f in ('arcade.css', 'telecommande.css'))
 # glossaire (donnees) puis la couche Arcade, puis la couche confort qui l enveloppe
 lire = lambda f: io.open(os.path.join(R, 'design/arcade', f), encoding='utf-8').read().strip()
-js = '\n'.join(lire(f) for f in ('glossaire.js', 'multi_faux.js', 'arcade.js', 'extras.js'))
+js = '\n'.join(lire(f) for f in ('glossaire.js', 'multi_faux.js', 'arcade.js', 'extras.js', 'telecommande.js'))
 for nom, txt in (('css', css), ('js', js)):
     assert '\u2014' not in txt, 'tiret cadratin interdit dans ' + nom
     assert not re.search('[\U0001F300-\U0001FAFF☀-➿]', txt), 'emoji litteral interdit dans ' + nom

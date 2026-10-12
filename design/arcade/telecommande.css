@@ -1,0 +1,89 @@
+/* =====================================================================
+   TELECOMMANDE (12/10/2026) : curseur sur la tele, ecran telecommande
+   sur le telephone, fenetre de choix. Respecte les zones sures iPhone.
+   ===================================================================== */
+#tele-cur{position:fixed;left:0;top:0;z-index:2147483000;width:var(--s,32px);height:var(--s,32px);pointer-events:none;opacity:0;
+  transition:transform .09s linear,opacity .3s;filter:drop-shadow(0 3px 6px rgba(0,0,0,.55));will-change:transform}
+#tele-cur.on{opacity:1}
+#tele-hl{position:fixed;z-index:2147482999;pointer-events:none;opacity:0;border:4px solid #1CB0F6;border-radius:16px;
+  box-shadow:0 0 0 3px rgba(20,20,50,.55),0 0 26px rgba(28,176,246,.7);transition:all .12s ease-out,opacity .25s}
+#tele-hl.on{opacity:1}
+.tele-rip{position:fixed;z-index:2147483001;width:20px;height:20px;margin:-10px 0 0 -10px;border-radius:50%;pointer-events:none;
+  border:4px solid #FFC800;animation:teleRip .55s ease-out forwards}
+@keyframes teleRip{from{transform:scale(.4);opacity:1}to{transform:scale(4.2);opacity:0}}
+#tele-pill{position:fixed;left:14px;bottom:14px;z-index:2147482990;display:flex;align-items:center;gap:8px;padding:9px 14px;border-radius:999px;
+  border:1px solid rgba(255,255,255,.3);background:rgba(20,20,50,.78);color:#F4F4FF;font:700 13px/1 "Nunito",system-ui,sans-serif;
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);opacity:.72;cursor:pointer}
+#tele-pill i{width:9px;height:9px;border-radius:50%;background:#FFC800}
+#tele-pill.ok i{background:#58CC02;box-shadow:0 0 8px #58CC02}
+@media (prefers-reduced-motion:reduce){ #tele-cur,#tele-hl{transition:none} .tele-rip{animation:none;opacity:0} }
+
+/* fenetre de choix */
+.tele-p{margin:0 0 12px;color:var(--dim,#A9A9D6);font-size:15px;line-height:1.45}
+.tele-p.small{font-size:13px;margin:12px 0 0}
+.tele-big{display:flex;align-items:center;gap:14px;width:100%;text-align:left;margin:0 0 10px;padding:12px;border-radius:20px;cursor:pointer;
+  border:2px solid rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:inherit;font:inherit}
+.tele-big b{display:block;font:800 17px/1.2 "Baloo 2","Nunito",system-ui,sans-serif}
+.tele-big small{display:block;margin-top:2px;color:var(--dim,#A9A9D6);font-size:13px}
+.tele-ol{margin:0 0 12px;padding-left:20px;line-height:1.5;font-size:15px}
+.tele-card{display:flex;flex-direction:column;align-items:center;gap:12px;padding:14px;border-radius:20px;background:rgba(255,255,255,.06);margin-bottom:10px}
+.tele-qr{border-radius:12px;max-width:100%;height:auto}
+.tele-code{display:flex;gap:6px;font:800 34px/1 "Baloo 2",ui-monospace,monospace;letter-spacing:2px}
+.tele-code i{display:none}
+.tele-stat{margin:0 0 10px;padding:10px 12px;border-radius:14px;font-weight:700;font-size:14px;text-align:center}
+.tele-stat.wait{background:rgba(255,200,0,.14);color:#FFD84A}
+.tele-stat.ok{background:rgba(88,204,2,.18);color:#8FE04A}
+.tele-btns{display:flex;gap:8px;flex-wrap:wrap}
+.tele-btns .btn{flex:1 1 90px;margin:0}
+.tele-in{width:100%;box-sizing:border-box;margin:0 0 12px;padding:16px;border-radius:16px;border:2px solid rgba(255,255,255,.2);background:rgba(255,255,255,.07);
+  color:inherit;text-align:center;text-transform:uppercase;letter-spacing:8px;font:800 32px/1 "Baloo 2",ui-monospace,monospace;outline:none}
+.tele-in:focus{border-color:#1CB0F6}
+
+/* ecran telecommande (telephone) */
+body.tele-phone{overflow:hidden}
+#tele-rc{position:fixed;inset:0;z-index:2147483200;display:flex;flex-direction:column;gap:10px;box-sizing:border-box;
+  padding:calc(env(safe-area-inset-top,0px) + 10px) 14px calc(env(safe-area-inset-bottom,0px) + 12px);
+  background:radial-gradient(70% 40% at 50% 0,#2B2B6A 0,#141432 70%);color:#F4F4FF;font-family:"Nunito",system-ui,sans-serif;
+  -webkit-user-select:none;user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+#tele-rc button{font-family:inherit;color:inherit;-webkit-tap-highlight-color:transparent}
+.rc-top{display:flex;align-items:center;gap:10px;min-height:40px}
+.rc-top b{flex:1;font-size:15px}
+.rc-dot{width:12px;height:12px;border-radius:50%;background:#FFC800}
+#tele-rc.ok .rc-dot{background:#58CC02;box-shadow:0 0 10px #58CC02}
+#rc-quit{padding:9px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);font-weight:800;font-size:14px}
+.rc-main{width:100%;min-height:56px;border-radius:18px;border:0;font:800 20px/1 "Baloo 2","Nunito",system-ui,sans-serif;
+  background:linear-gradient(#6BDB10,#58CC02);box-shadow:0 5px 0 #3E9A00,inset 0 2px 0 rgba(255,255,255,.35);color:#fff}
+.rc-main:active{transform:translateY(3px);box-shadow:0 2px 0 #3E9A00}
+.rc-main:disabled{background:#3A3A66;box-shadow:0 5px 0 #2A2A4E;color:#8A8AB8}
+.rc-chs{gap:8px;justify-content:center;flex-wrap:wrap}
+.rc-c{flex:1 1 56px;min-height:52px;border-radius:16px;border:2px solid rgba(255,255,255,.28);background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,.06));
+  font:800 20px/1 "Baloo 2","Nunito",system-ui,sans-serif;box-shadow:inset 0 1px 0 rgba(255,255,255,.4)}
+.rc-c:active{background:#1CB0F6}
+.rc-pad{flex:1 1 120px;min-height:110px;display:flex;align-items:center;justify-content:center;text-align:center;border-radius:24px;touch-action:none;
+  border:2px solid rgba(255,255,255,.22);background:linear-gradient(160deg,rgba(255,255,255,.14),rgba(255,255,255,.03));
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.35),inset 0 -10px 24px rgba(0,0,0,.18)}
+.rc-pad span{padding:0 16px;color:rgba(244,244,255,.55);font-size:13px;line-height:1.7;pointer-events:none}
+.rc-mid{display:flex;justify-content:center}
+.rc-dp{display:grid;grid-template-columns:repeat(3,64px);grid-template-rows:repeat(3,64px);gap:6px}
+.rc-d{display:flex;align-items:center;justify-content:center;border-radius:20px;border:1px solid rgba(255,255,255,.35);touch-action:none;
+  background:linear-gradient(160deg,rgba(255,255,255,.34),rgba(255,255,255,.08) 55%),rgba(28,176,246,.34);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.55),0 5px 12px rgba(0,0,0,.28)}
+.rc-d:active{background:#1CB0F6}
+.rc-d.u{grid-area:1/2}.rc-d.l{grid-area:2/1}.rc-d.c{grid-area:2/2;border-radius:50%;font:800 18px/1 "Baloo 2","Nunito",system-ui,sans-serif;
+  background:linear-gradient(160deg,rgba(255,255,255,.4),rgba(255,255,255,.1) 55%),rgba(88,204,2,.5)}
+.rc-d.r{grid-area:2/3}.rc-d.b{grid-area:3/2}
+.rc-row{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.rc-g{display:flex;flex-direction:column;align-items:center;gap:3px;padding:8px 2px;border-radius:16px;border:1px solid rgba(255,255,255,.22);
+  background:rgba(255,255,255,.07);touch-action:none}
+.rc-g small{font-size:11px;font-weight:800;color:rgba(244,244,255,.8)}
+.rc-g:active{background:rgba(255,255,255,.22)}
+#tele-rc.keys #rc-kb{background:rgba(28,176,246,.4)}
+.rc-keys{display:none;grid-template-columns:repeat(3,1fr);gap:6px}
+#tele-rc.keys .rc-keys{display:grid}
+.rc-keys button{min-height:46px;border-radius:14px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.09);font:800 20px/1 "Baloo 2","Nunito",system-ui,sans-serif}
+.rc-keys button:active{background:#1CB0F6}
+.rc-keys .w{grid-column:span 1;font-size:15px}
+.rc-keys .go{background:#58CC02;border-color:#58CC02}
+#tele-rc.keys .rc-pad{flex-basis:60px;min-height:60px}
+#tele-rc.keys .rc-pad span{display:none}
+@media (max-height:700px){ .rc-dp{grid-template-columns:repeat(3,54px);grid-template-rows:repeat(3,54px)} .rc-g small{display:none} }

@@ -85,6 +85,7 @@
     cours:`<rect x="3" y="4" width="5" height="17" rx="1.4" ${W}/><rect x="9.4" y="2.6" width="5" height="18.4" rx="1.4" ${W} opacity=".6"/><path d="m15.4 5.6 4.3-1.1 3.3 15.2-4.4 1z" ${W}/><path d="M4.5 8h2M4.5 17h2M10.9 7h2" ${DS} stroke-width="1.4"/>`,
     lecon:`<path d="M11.2 6.3C9.5 4.9 7 4.2 4.3 4.2c-.7 0-1.3.6-1.3 1.3v11.9c0 .7.6 1.3 1.3 1.3 2.6 0 4.9.7 6.9 2.1z" ${W}/><path d="M12.8 6.3c1.7-1.4 4.2-2.1 6.9-2.1.7 0 1.3.6 1.3 1.3v11.9c0 .7-.6 1.3-1.3 1.3-2.6 0-4.9.7-6.9 2.1z" ${W} opacity=".7"/>`,
     modules:`<rect x="3" y="3.5" width="18" height="5" rx="2" ${W}/><rect x="3" y="10" width="18" height="5" rx="2" ${W} opacity=".7"/><rect x="3" y="16.5" width="18" height="5" rx="2" ${W} opacity=".45"/>`,
+    tele:`<path d="M3.2 6.6a7.4 7.4 0 0 0 0 6.8M20.8 6.6a7.4 7.4 0 0 1 0 6.8" ${WS} stroke-width="1.7" opacity=".7"/><rect x="7" y="2.2" width="10" height="19.6" rx="3.4" ${W}/><circle cx="12" cy="8" r="2.5" ${D}/><circle cx="9.7" cy="14" r="1.1" ${D}/><circle cx="14.3" cy="14" r="1.1" ${D}/><path d="M9.8 18h4.4" ${DS}/>`,
     chemin:`<path d="M6 20c0-4 12-4 12-8S6 8 6 4" ${WS} stroke-dasharray="1 3.2" opacity=".8"/><circle cx="6" cy="20" r="2.6" ${W}/><circle cx="18" cy="12" r="2.6" ${W}/><path d="m6 1.3.9 1.8 2 .3-1.5 1.4.4 2-1.8-1-1.8 1 .4-2-1.5-1.4 2-.3z" ${W}/>`
   };
   /* glyphe seul (barre du bas) ou pose sur sa tuile de verre coloree */
