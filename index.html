@@ -23042,7 +23042,11 @@ function grade(ex,ok,cid){
 const unitOf=id=>UNITS.find(u=>u.id===id);
 const unitExos=uid=>EXOS.filter(e=>e.u===uid);
 const courseUnits=cid=>UNITS.filter(u=>u.c===cid);
-const lessonsIn=uid=>Math.max(1,Math.ceil(unitExos(uid).length/4));
+/* cours express (reglage) : 6 questions neuves par lecon au lieu de 4, chaque
+   exercice du module n est vu qu une fois, plus 1 rappel d un module precedent */
+const isExpress=()=>!!(S&&S.settings&&S.settings.express);
+const lessonStep=uid=>isExpress()?6:4;
+const lessonsIn=uid=>Math.max(1,Math.ceil(unitExos(uid).length/lessonStep(uid)));
 const lkey=(u,l)=>u+"-"+l;
 function unitDone(uid){let n=0;const c=S.courses[unitOf(uid).c];for(let i=0;i<lessonsIn(uid);i++)if(c.lessons[lkey(uid,i)])n++;return n;}
 const unitComplete=uid=>unitDone(uid)>=lessonsIn(uid);
@@ -23313,7 +23317,16 @@ function isPracticeCourse(cid){const c=COURSES.find(x=>x.id===cid);return !!(c&&
 let L=null,A={};
 function buildLesson(uid,li,mode){
   const cid=unitOf(uid).c, pool=unitExos(uid); let picked=[];
-  if(mode==="legend"){
+  if(mode!=="legend"&&isExpress()){
+    /* cours express : les 6 exercices neufs de la lecon, puis 1 rappel tire des
+       modules precedents (le plus oublie d abord), sinon une lecon de 6 */
+    picked=pool.slice(li*6,li*6+6);
+    const avant=courseUnits(cid).filter(u=>u.id<uid).map(u=>u.id);
+    const vieux=EXOS.filter(e=>avant.includes(e.u)&&S.items[e.i]&&S.items[e.i].n>0)
+      .map(e=>({e,s:(1-recall(e.i))+Math.random()*.35})).sort((a,b)=>b.s-a.s).map(o=>o.e);
+    if(picked.length<3)picked=picked.concat(pool.slice(Math.max(0,li*6-(3-picked.length)),li*6));
+    picked=picked.concat(vieux.slice(0,1));
+  }else if(mode==="legend"){
     picked=shuffle(pool).sort((a,b)=>{const A2=S.items[a.i],B=S.items[b.i];
       return (A2?A2.c/Math.max(1,A2.n):0)-(B?B.c/Math.max(1,B.n):0);}).slice(0,10);
   }else if(isPracticeCourse(cid)){
@@ -25225,6 +25238,7 @@ function renderProfile(){
   <button class="btn blue" onclick="testSound()">▶️ Tester les sons</button><div style="height:8px"></div>
   <button class="btn ghost" onclick="tog('haptics')">📳 Vibrations : ${S.settings.haptics?"activées":"coupées"}</button><div style="height:8px"></div>
   <button class="btn ghost" onclick="tog('hearts')">❤️ Coeurs : ${S.settings.hearts?"activés":"illimités"}</button><div style="height:8px"></div>
+  <button class="btn ghost" onclick="togExpress()">⚡ Cours express : ${S.settings.express?"activé":"désactivé"}</button><div style="height:8px"></div>
   <button class="btn ${S.admin?"purple":"ghost"}" onclick="askCode()">🔑 ${S.admin?"Mode admin actif · vies illimitées":"Entrer un code"}</button><div style="height:8px"></div>
   <button class="btn ghost" onclick="editGoal()">🎯 Objectif quotidien : ${S.goal} XP</button><div style="height:8px"></div>
   <button class="btn ghost" onclick="editName()">✏️ Changer mon nom</button><div style="height:8px"></div>
@@ -25320,6 +25334,11 @@ addEventListener("keydown",e=>{
   KBUF=(KBUF+e.key.toLowerCase()).slice(-8);
   if(KBUF.endsWith("coco")&&!S.admin)setAdmin(true);
 });
+function togExpress(){
+  if(!S.settings.express){openModal(`<h2>Cours express</h2><p>Chaque exercice d'un module n'est posé <b>qu'une seule fois</b> : des leçons de 6 questions neuves et 1 rappel d'un module précédent. Environ <b>deux fois moins de questions</b> par module, idéal avant un examen.</p><p class="muted">L'épreuve légendaire reste là pour valider chaque module. Les leçons déjà faites restent cochées.</p>
+    <button class="btn" onclick="S.settings.express=true;save();closeModal();renderProfile();renderPath();toast('Cours express activé')">Activer</button><div style="height:8px"></div><button class="btn ghost" onclick="closeModal()">Annuler</button>`);return;}
+  S.settings.express=false;save();renderProfile();renderPath();toast("Cours express désactivé");
+}
 function tog(k){S.settings[k]=!S.settings[k];if(k==="hearts"&&!S.settings.hearts)S.hearts=5;save();renderProfile();refreshTop();}
 function openAvatar(){
   if(!S.avatar.cfg)S.avatar.cfg=avatarCfg(S.name||"Corentin");
@@ -29288,7 +29307,7 @@ window.ARC_MFAUX={
   function studied(e){
     const u=unitOf(e.u); if(!u||u.c!==S.active||!unitUnlocked(e.u))return false;
     if(S.items&&S.items[e.i]&&S.items[e.i].n>0)return true;
-    return unitExos(e.u).indexOf(e)<Math.min(lessonsIn(e.u),unitDone(e.u)+1)*4;
+    return unitExos(e.u).indexOf(e)<Math.min(lessonsIn(e.u),unitDone(e.u)+1)*lessonStep(e.u);
   }
   function pool(test,min){ return EXOS.filter(e=>test(e)&&studied(e)); }
   window.arcPool=pool; window.arcChoix=CHOIX;
@@ -29531,7 +29550,7 @@ window.ARC_MFAUX={
   function lessonSec(u,li){
     const all=sections(u), cand=all.filter(s=>s.t&&!GOALS.test(s.t));
     if(!cand.length)return all[0]||null;
-    const W=mots(unitExos(u.id).slice(li*4,li*4+4).map(e=>[e.q,e.ctx,e.w,(e.o||[]).join(" ")].join(" ")).join(" "));
+    const W=mots(unitExos(u.id).slice(li*lessonStep(u.id),(li+1)*lessonStep(u.id)).map(e=>[e.q,e.ctx,e.w,(e.o||[]).join(" ")].join(" ")).join(" "));
     const nL=Math.max(1,lessonsIn(u.id)), base=Math.min(cand.length-1,Math.floor(li*cand.length/nL));
     let best=cand[base], bs=-1;
     cand.forEach((s,i)=>{ const M=mots(s.t+" "+s.h); let n=0; M.forEach(w=>{ if(W.has(w))n++; });
@@ -29889,7 +29908,7 @@ window.ARC_MFAUX={
   function lessonGate(Lx){
     if(!Lx||Lx.mode!=="normal"||Lx.uid==null||!(Lx.li>=0))return Lx;
     const uid=Lx.uid, cid=unitOf(uid).c, us=courseUnits(cid), ui=us.findIndex(u=>u.id===uid);
-    const pool=unitExos(uid), lim=(Lx.li+1)*4;
+    const pool=unitExos(uid), lim=(Lx.li+1)*lessonStep(uid);
     const ok=e=>{ if(e.u===uid)return pool.indexOf(e)<lim; const k=us.findIndex(u=>u.id===e.u); return k>=0&&k<ui; };
     const keep=Lx.queue.filter(ok), ids=new Set(keep.map(e=>e.i)), manque=Lx.queue.length-keep.length;
     if(manque>0){

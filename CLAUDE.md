@@ -222,3 +222,11 @@ Un cas pratique se déroule étape par étape sur plusieurs cartes d'une même l
 données (la carte peut tomber seule en révision). `design/arcade/extras.js` (section 14) remet les étapes d'un
 même cas à la suite et dans l'ordre. Au moins la moitié des leçons d'un cours de type examen sont des cas pratiques
 en face à face avec un client.
+
+## Cours express (demande du 12/10/2026)
+
+Réglage « Cours express » (Profil, Réglages, `S.settings.express`, désactivé par défaut, pour tout le monde).
+Activé : chaque leçon pose 6 exercices neufs du module + 1 rappel d'un module précédent (le plus oublié),
+donc chaque exercice d'un module n'est posé qu'une fois (32 exercices = 6 leçons au lieu de 8, environ
+40 questions au lieu de 56). `lessonStep(uid)` (6 ou 4) remplace le « 4 » codé en dur : toute nouvelle
+fonction qui découpe un module en leçons doit l'utiliser. L'épreuve légendaire reste obligatoire. Test : `tests/texpress.js`.
