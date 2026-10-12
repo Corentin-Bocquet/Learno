@@ -223,10 +223,14 @@ données (la carte peut tomber seule en révision). `design/arcade/extras.js` (s
 même cas à la suite et dans l'ordre. Au moins la moitié des leçons d'un cours de type examen sont des cas pratiques
 en face à face avec un client.
 
-## Cours express (demande du 12/10/2026)
+## Cours express (demandes du 12/10/2026)
 
 Réglage « Cours express » (Profil, Réglages, `S.settings.express`, désactivé par défaut, pour tout le monde).
-Activé : chaque leçon pose 6 exercices neufs du module + 1 rappel d'un module précédent (le plus oublié),
-donc chaque exercice d'un module n'est posé qu'une fois (32 exercices = 6 leçons au lieu de 8, environ
-40 questions au lieu de 56). `lessonStep(uid)` (6 ou 4) remplace le « 4 » codé en dur : toute nouvelle
-fonction qui découpe un module en leçons doit l'utiliser. L'épreuve légendaire reste obligatoire. Test : `tests/texpress.js`.
+Activé : chaque module est réduit à ses 18 exercices les plus importants (`expressPool(uid)` : les formats pratiques
+story, num, multi... pèsent plus que tf et mcq, puis difficulté, notion étiquetée `nw`, et couverture régulière du
+module ; un cas pratique en plusieurs cartes reste d'un bloc, donc 18 à 21 cartes ; un module de 18 exercices ou
+moins est gardé entier). Chaque leçon pose 5 exercices neufs + 2 rappels de modules précédents (le plus oublié
+d'abord). Un exercice n'est donc posé qu'une fois dans son module ; l'épreuve légendaire reste obligatoire et pioche
+dans tout le module (`unitExos`). `lessonPool(uid)` (pool express ou complet) et `lessonStep(uid)` (5 ou 4)
+remplacent `unitExos` et le « 4 » codé en dur pour découper un module en leçons : toute nouvelle fonction qui
+découpe un module doit les utiliser. Test : `tests/texpress.js`.
