@@ -23042,16 +23042,45 @@ function grade(ex,ok,cid){
 const unitOf=id=>UNITS.find(u=>u.id===id);
 const unitExos=uid=>EXOS.filter(e=>e.u===uid);
 const courseUnits=cid=>UNITS.filter(u=>u.c===cid);
-/* cours express (reglage) : 6 questions neuves par lecon au lieu de 4, chaque
-   exercice du module n est vu qu une fois, plus 1 rappel d un module precedent */
+/* cours express (reglage) : 18 exercices par module au maximum (les plus importants),
+   poses une seule fois par module : 5 questions neuves + 2 rappels de modules
+   precedents par lecon. L epreuve legendaire pioche toujours dans tout le module. */
 const isExpress=()=>!!(S&&S.settings&&S.settings.express);
-const lessonStep=uid=>isExpress()?6:4;
-const lessonsIn=uid=>Math.max(1,Math.ceil(unitExos(uid).length/lessonStep(uid)));
+const EXPRESS_MAX=18;
+const lessonStep=uid=>isExpress()?5:4;
+const _exprCache={};
+/* importance d un exercice : les formats pratiques (conversation, calcul, cas) pesent plus
+   que le simple vrai ou faux, une difficulte plus haute et une notion etiquetee comptent un peu */
+const _exW={story:1,num:1,multi:.9,sort:.9,eq:.9,order:.8,match:.8,tiles:.8,slider:.8,fill:.5,mcq:.5,tf:.4};
+function expressPool(uid){
+  if(_exprCache[uid])return _exprCache[uid];
+  const all=unitExos(uid); if(all.length<=EXPRESS_MAX)return _exprCache[uid]=all;
+  /* un cas pratique en plusieurs cartes reste d un bloc */
+  const items=[], byCas={};
+  all.forEach((e,pos)=>{
+    const sc=(_exW[e.t]||.8)+(e.d||.4)*.5+(e.nw?.3:0)+(e.pr?.2:0);
+    if(e.cas){ if(!byCas[e.cas]){ byCas[e.cas]={ex:[],sc:0,pos}; items.push(byCas[e.cas]); } byCas[e.cas].ex.push(e); byCas[e.cas].sc+=sc; }
+    else items.push({ex:[e],sc,pos});
+  });
+  items.forEach(it=>{ it.sc/=it.ex.length; it.sc+=Math.min(.4,.1*(it.ex.length-1)); });
+  let kept=items.slice(), total=all.length;
+  while(total>EXPRESS_MAX){
+    /* on retire le moins important, en priorite dans les zones surchargees du module */
+    const cand=kept.filter(it=>total-it.ex.length>=EXPRESS_MAX)
+      .map(it=>({it,v:it.sc-.25*kept.filter(o=>o!==it&&Math.abs(o.pos-it.pos)<=1).length}))
+      .sort((a,b)=>a.v-b.v||b.it.pos-a.it.pos);
+    if(!cand.length)break;
+    kept=kept.filter(o=>o!==cand[0].it); total-=cand[0].it.ex.length;
+  }
+  return _exprCache[uid]=kept.sort((a,b)=>a.pos-b.pos).flatMap(it=>it.ex.slice().sort((a,b)=>(a.k||0)-(b.k||0)));
+}
+const lessonPool=uid=>isExpress()?expressPool(uid):unitExos(uid);
+const lessonsIn=uid=>Math.max(1,Math.ceil(lessonPool(uid).length/lessonStep(uid)));
 const lkey=(u,l)=>u+"-"+l;
 function unitDone(uid){let n=0;const c=S.courses[unitOf(uid).c];for(let i=0;i<lessonsIn(uid);i++)if(c.lessons[lkey(uid,i)])n++;return n;}
 const unitComplete=uid=>unitDone(uid)>=lessonsIn(uid);
 function unitUnlocked(uid){const l=courseUnits(unitOf(uid).c);const i=l.findIndex(u=>u.id===uid);return i<=0||unitComplete(l[i-1].id);}
-function mastery(uid){const ex=unitExos(uid);if(!ex.length)return 0;let s=0;
+function mastery(uid){const ex=lessonPool(uid);if(!ex.length)return 0;let s=0;
   ex.forEach(e=>{const it=S.items[e.i];if(it&&it.n){const acc=it.c/it.n;s+=Math.min(1,acc*(.4+.6*Math.min(1,recall(e.i)+.35)));}});
   return s/ex.length;}
 function dueItems(cid,max){
@@ -23291,7 +23320,7 @@ function openGuide(uid){
     </div>
     <div style="margin-bottom:12px">
       <span class="gtag">${ico("book",13)} Fiche de cours</span>
-      <span class="gtag">${ico("target",13)} ${unitExos(u.id).length} exercices</span>
+      <span class="gtag">${ico("target",13)} ${lessonPool(u.id).length} exercices</span>
       <span class="gtag">${ico("bolt",13)} +${10*XP_X} XP par leçon</span>
     </div>
     <div class="gsec">${body}</div>
@@ -23316,16 +23345,15 @@ function isPractice(e){return e.pr===1||PRACTICE_T.includes(e.t);}
 function isPracticeCourse(cid){const c=COURSES.find(x=>x.id===cid);return !!(c&&c.practice);}
 let L=null,A={};
 function buildLesson(uid,li,mode){
-  const cid=unitOf(uid).c, pool=unitExos(uid); let picked=[];
+  const cid=unitOf(uid).c, pool=mode==='legend'?unitExos(uid):lessonPool(uid); let picked=[];
   if(mode!=="legend"&&isExpress()){
-    /* cours express : les 6 exercices neufs de la lecon, puis 1 rappel tire des
-       modules precedents (le plus oublie d abord), sinon une lecon de 6 */
-    picked=pool.slice(li*6,li*6+6);
+    /* cours express : les 5 exercices neufs de la lecon, puis 2 rappels tires des
+       modules precedents (le plus oublie d abord). Jamais de repetition dans le module. */
+    picked=pool.slice(li*5,li*5+5);
     const avant=courseUnits(cid).filter(u=>u.id<uid).map(u=>u.id);
     const vieux=EXOS.filter(e=>avant.includes(e.u)&&S.items[e.i]&&S.items[e.i].n>0)
       .map(e=>({e,s:(1-recall(e.i))+Math.random()*.35})).sort((a,b)=>b.s-a.s).map(o=>o.e);
-    if(picked.length<3)picked=picked.concat(pool.slice(Math.max(0,li*6-(3-picked.length)),li*6));
-    picked=picked.concat(vieux.slice(0,1));
+    picked=picked.concat(vieux.slice(0,2));
   }else if(mode==="legend"){
     picked=shuffle(pool).sort((a,b)=>{const A2=S.items[a.i],B=S.items[b.i];
       return (A2?A2.c/Math.max(1,A2.n):0)-(B?B.c/Math.max(1,B.n):0);}).slice(0,10);
@@ -25338,7 +25366,7 @@ addEventListener("keydown",e=>{
   if(KBUF.endsWith("coco")&&!S.admin)setAdmin(true);
 });
 function togExpress(){
-  if(!S.settings.express){openModal(`<h2>Cours express</h2><p>Chaque exercice d'un module n'est posé <b>qu'une seule fois</b> : des leçons de 6 questions neuves et 1 rappel d'un module précédent. Environ <b>deux fois moins de questions</b> par module, idéal avant un examen.</p><p class="muted">L'épreuve légendaire reste là pour valider chaque module. Les leçons déjà faites restent cochées.</p>
+  if(!S.settings.express){openModal(`<h2>Cours express</h2><p>Chaque module est réduit à ses <b>18 exercices les plus importants</b>, posés <b>une seule fois</b> : des leçons de 5 questions neuves et 2 rappels d'anciens modules. Environ <b>trois fois moins de questions</b>, idéal avant un examen.</p><p class="muted">L'épreuve légendaire reste obligatoire et pioche dans tout le module (les 32 exercices). Les leçons déjà faites restent cochées.</p>
     <button class="btn" onclick="S.settings.express=true;save();closeModal();renderProfile();renderPath();toast('Cours express activé')">Activer</button><div style="height:8px"></div><button class="btn ghost" onclick="closeModal()">Annuler</button>`);return;}
   S.settings.express=false;save();renderProfile();renderPath();toast("Cours express désactivé");
 }
@@ -29350,7 +29378,7 @@ window.ARC_MFAUX={
   function studied(e){
     const u=unitOf(e.u); if(!u||u.c!==S.active||!unitUnlocked(e.u))return false;
     if(S.items&&S.items[e.i]&&S.items[e.i].n>0)return true;
-    return unitExos(e.u).indexOf(e)<Math.min(lessonsIn(e.u),unitDone(e.u)+1)*lessonStep(e.u);
+    return lessonPool(e.u).indexOf(e)<Math.min(lessonsIn(e.u),unitDone(e.u)+1)*lessonStep(e.u);
   }
   function pool(test,min){ return EXOS.filter(e=>test(e)&&studied(e)); }
   window.arcPool=pool; window.arcChoix=CHOIX;
@@ -29593,7 +29621,7 @@ window.ARC_MFAUX={
   function lessonSec(u,li){
     const all=sections(u), cand=all.filter(s=>s.t&&!GOALS.test(s.t));
     if(!cand.length)return all[0]||null;
-    const W=mots(unitExos(u.id).slice(li*lessonStep(u.id),(li+1)*lessonStep(u.id)).map(e=>[e.q,e.ctx,e.w,(e.o||[]).join(" ")].join(" ")).join(" "));
+    const W=mots(lessonPool(u.id).slice(li*lessonStep(u.id),(li+1)*lessonStep(u.id)).map(e=>[e.q,e.ctx,e.w,(e.o||[]).join(" ")].join(" ")).join(" "));
     const nL=Math.max(1,lessonsIn(u.id)), base=Math.min(cand.length-1,Math.floor(li*cand.length/nL));
     let best=cand[base], bs=-1;
     cand.forEach((s,i)=>{ const M=mots(s.t+" "+s.h); let n=0; M.forEach(w=>{ if(W.has(w))n++; });
@@ -29951,7 +29979,7 @@ window.ARC_MFAUX={
   function lessonGate(Lx){
     if(!Lx||Lx.mode!=="normal"||Lx.uid==null||!(Lx.li>=0))return Lx;
     const uid=Lx.uid, cid=unitOf(uid).c, us=courseUnits(cid), ui=us.findIndex(u=>u.id===uid);
-    const pool=unitExos(uid), lim=(Lx.li+1)*lessonStep(uid);
+    const pool=lessonPool(uid), lim=(Lx.li+1)*lessonStep(uid);
     const ok=e=>{ if(e.u===uid)return pool.indexOf(e)<lim; const k=us.findIndex(u=>u.id===e.u); return k>=0&&k<ui; };
     const keep=Lx.queue.filter(ok), ids=new Set(keep.map(e=>e.i)), manque=Lx.queue.length-keep.length;
     if(manque>0){
