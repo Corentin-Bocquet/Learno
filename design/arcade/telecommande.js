@@ -254,12 +254,13 @@
     clearInterval(H.timer); H.timer=setInterval(()=>{ pushState(false); if(H.hasPhone&&Date.now()-H.seen>=10000){ H.hasPhone=false; } hostUi(); },600);
     keepAwake(H); ensureOverlay(); hostUi(); }
   function hostStop(){
-    if(!H.on)return; H.on=false; clearInterval(H.timer); clearTimeout(H.idle);
+    if(!H.on)return; try{ if(hooks.stop)hooks.stop(); }catch(e){} H.on=false; clearInterval(H.timer); clearTimeout(H.idle);
     try{ H.rt&&H.rt.send({r:"h",t:"bye"}); }catch(e){} setTimeout(()=>{ try{ H.rt&&H.rt.close(); }catch(e){} H.rt=null; },150);
     freeAwake(H); ["tele-cur","tele-hl","tele-pill"].forEach(i=>{ const e=$id(i); if(e)e.remove(); }); H.hasPhone=false; }
 
   /* ---------------- 4. COTE TELEPHONE : l'ecran telecommande ---------------- */
   const P={on:false,code:"",rt:null,link:false,seen:0,st:null,ping:null,wl:null,keys:false,keysAuto:true};
+  function myPid(){ let v=""; try{ v=localStorage.getItem("learno_tele_pid")||""; }catch(e){} if(!/^[A-Z2-9]{6}$/.test(v)){ v=newCode(); try{ localStorage.setItem("learno_tele_pid",v); }catch(e){} } return v; }
   const AR={up:"M5 15l7-7 7 7",down:"M5 9l7 7 7-7",left:"M15 5l-7 7 7 7",right:"M9 5l7 7-7 7"};
   const arrow=d=>`<svg viewBox="0 0 24 24" width="30" height="30" aria-hidden="true"><path d="${AR[d]}" stroke="url(#arcGw)" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>`;
   const SV={back:`<path d="M9 7 4 12l5 5M4 12h11a5 5 0 0 1 5 5" stroke="url(#arcGw)" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none"/>`,
@@ -343,7 +344,7 @@
   function remoteStart(code){
     code=cleanCode(code); if(code.length<6){ NOTE("Le code fait 6 caractères."); return false; }
     if(P.on)remoteStop();
-    P.on=true; P.free=false; P.code=code; P.link=false; P.seen=0; P.st=null; P.keys=false; P.keysAuto=true;
+    P.on=true; P.free=false; P.pid=myPid(); P.code=code; P.link=false; P.seen=0; P.st=null; P.keys=false; P.keysAuto=true;
     try{ if(typeof closeModal==="function")closeModal(); }catch(e){}
     buildRemote();
     P.rt=rtOpen(code,remoteMsg,ok=>{ P.link=ok; if(ok){ pSend({t:"hello"}); } remoteUi(); });
@@ -374,7 +375,9 @@
       <div class="tele-btns"><button type="button" class="btn blue" onclick="teleFull()">Plein écran</button>
         <button type="button" class="btn ghost" onclick="closeModal()">Réduire</button>
         <button type="button" class="btn red" onclick="teleStop()">Arrêter</button></div>
+      <div id="tele-multi-slot"></div>
       <p class="tele-p small">Astuce télé : plein écran, puis Ctrl et + pour agrandir. Le téléphone ne reçoit rien de ton compte, il envoie seulement des touches.</p>`);
+    try{ if(hooks.hostPanel)hooks.hostPanel(); }catch(e){ if(window.console)console.error("telearena",e); }
     hostUi(); }
   function panelPhone(pre){
     openModal(`<h2 class="arc-h" style="margin:0 0 6px;text-align:left">Code du PC</h2>

@@ -321,6 +321,7 @@
     return unitExos(e.u).indexOf(e)<Math.min(lessonsIn(e.u),unitDone(e.u)+1)*4;
   }
   function pool(test,min){ return EXOS.filter(e=>test(e)&&studied(e)); }
+  window.arcPool=pool; window.arcChoix=CHOIX;
   function award(xp,gems){
     const m=typeof boostMult==="function"?boostMult():1; xp=Math.round(xp*m);
     S.xp+=xp; S.daily.xp+=xp; S.hist=S.hist||{}; S.hist[today()]=(S.hist[today()]||0)+xp; S.league.xpWeek+=xp;
