@@ -203,3 +203,11 @@ Tout travail terminé est fusionné dans `main` automatiquement, sans redemander
 
 Si la CI est rouge, on corrige et on repousse ; on ne fusionne jamais une PR rouge ou en conflit.
 Après une fusion, tout nouveau travail repart de `main` à jour, sur une nouvelle PR.
+
+## Cas pratiques en plusieurs cartes (demande du 12/10/2026)
+
+Un cas pratique se déroule étape par étape sur plusieurs cartes d'une même leçon : chaque carte porte
+`cas:"<module>-<nom>"`, `k:1, 2, 3...` et `ck:"Cas pratique · étape 2 sur 4"`, avec un `ctx` qui redonne les
+données (la carte peut tomber seule en révision). `design/arcade/extras.js` (section 14) remet les étapes d'un
+même cas à la suite et dans l'ordre. Au moins la moitié des leçons d'un cours de type examen sont des cas pratiques
+en face à face avec un client.
