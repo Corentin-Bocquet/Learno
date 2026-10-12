@@ -47,6 +47,6 @@ E("renderProfile()"); await wait(30);
 if(!/Cours express/.test(doc.body.innerHTML))ko("bouton Cours express absent des reglages");
 E("S.settings.express=false");
 if(E(`lessonsIn(${us[0]})`)!==8)ko("le mode normal ne revient pas");
-console.log(errs.length?errs.join("\n"):"texpress OK");
+console.log("cours express : "+(errs.length?"a corriger":"tout est bon")); console.log("ERREURS: "+errs.length+(errs.length?"\n"+errs.join("\n"):""));
 process.exit(errs.length?1:0);
 })();
