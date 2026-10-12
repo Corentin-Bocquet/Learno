@@ -168,6 +168,7 @@ et `telecommande.css` (injectés par `tools/design.py`), test `tests/ttele.js`.
 - Transport : Supabase Realtime (broadcast) sur le canal `learno-tele-<CODE>`, sans table ni compte. Code de 6 caractères tiré au hasard sur le PC, QR code maison (versions 1 à 6, vérifié par décodage).
 - Entrées : Plus (téléphone), barre latérale (PC). Le lien `?tele=CODE` ouvre directement la télécommande.
 - Téléphone : pavé tactile, croix directionnelle (navigation spatiale), boutons A B C D pour les QCM, pavé numérique, défilement, Retour, Accueil. Pas de glisser-déposer.
+- **Mode quiz (Kahoot, demande du 12/10/2026)** : `design/arcade/telequiz.js` et `telequiz.css`. Automatique dès qu'une question s'affiche avec le téléphone connecté, jamais de question à poser. Télé : question en grand (`body.tele-tv`, zoom `--tz`), réponses en tuiles de couleur. Téléphone : seulement les boutons du format (QCM, vrai ou faux, cases, curseur, calcul, phrase, paires, classement, ordre), un toucher répond et corrige les choix simples. Le PC lit la question affichée (`A.ex`, DOM) et rejoue les gestes sur le vrai moteur : aucun exercice n'est réécrit. Formats visuels (plateau, courbe, poker...) : télécommande classique, bouton Curseur pour y revenir. Tout nouveau format d'exercice doit être ajouté à `spec()` et `hooks.msg`, sinon il reste en télécommande classique.
 
 ## Rédaction des leçons (guides) : visuel d'abord
 

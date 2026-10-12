@@ -127,32 +127,94 @@ if(!hd.getElementById("tele-cur"))ko("curseur absent");
 HT.hostMsg({r:"h",t:"tap"}); HT.hostMsg({t:"tap"});
 if(hw.__clics!==2)ko("un message sans role telephone a ete execute");
 
-/* 9. un QCM se joue avec les boutons A B C D */
-HE(`(()=>{const e=EXOS.find(x=>x.t==="mcq"); S.active=unitOf(e.u).c; L=buildLesson(e.u,0,"normal"); L.queue=[e]; show("lesson"); renderQ(e);})()`);
-await wait(900);
-const labels=[...pd.querySelectorAll("#rc-ch .rc-c")].map(b=>b.textContent);
-if(labels.length<2||labels[0]!=="A")ko("boutons de choix sur le telephone : "+JSON.stringify(labels));
-const mainBtn=pd.getElementById("rc-main");
-if(!mainBtn.disabled)ko("Verifier devrait etre grise avant de choisir");
-if(!/V.rifier/.test(mainBtn.textContent))ko("libelle du bouton principal : "+mainBtn.textContent);
-pd.querySelector('#rc-ch .rc-c[data-i="1"]').dispatchEvent(new pw.MouseEvent("click",{bubbles:true})); await wait(900);
-if(HE("A.val")===null)ko("le choix B n a pas ete pris en compte sur le PC");
-if(mainBtn.disabled)ko("Verifier devrait etre actif apres un choix");
-mainBtn.dispatchEvent(new pw.MouseEvent("click",{bubbles:true})); await wait(900);
-if(!HE("A.done"))ko("la reponse n a pas ete validee");
-if(!/Continuer/.test(mainBtn.textContent))ko("le bouton devrait afficher Continuer : "+mainBtn.textContent);
-if(pd.querySelectorAll("#rc-ch .rc-c").length)ko("les boutons de choix devraient disparaitre apres la correction");
+/* 9. mode quiz : le telephone n affiche que des boutons, la tele agrandit la question */
+const startQ=(t,extra)=>HE(`(()=>{closeModal(); const e=EXOS.find(x=>x.t===${JSON.stringify(t)}${extra||""}); if(!e)return false; S.active=unitOf(e.u).c; L=buildLesson(e.u,0,"normal"); L.queue=[e]; show("lesson"); renderQ(e); return true;})()`);
+const rq=()=>pd.getElementById("rc-q");
+const clickP=el=>el.dispatchEvent(new pw.MouseEvent("click",{bubbles:true}));
+const st=ms=>wait(ms||650);
+const done=()=>HE("A.done"), okv=()=>hd.getElementById("checkbar").classList.contains("good");
+const quizOn=()=>pd.getElementById("tele-rc").classList.contains("quiz");
 
-/* 10. un calcul se saisit au pave numerique */
-HE(`(()=>{const e=EXOS.find(x=>x.t==="num"); S.active=unitOf(e.u).c; L=buildLesson(e.u,0,"normal"); L.queue=[e]; show("lesson"); renderQ(e);})()`);
-await wait(900);
-if(!pd.getElementById("tele-rc").classList.contains("keys"))ko("le pave numerique devrait s ouvrir pour un calcul");
-const key=k=>pd.querySelector('.rc-keys [data-k="'+k+'"]').dispatchEvent(new pw.MouseEvent("click",{bubbles:true}));
-key("1"); key(","); key("5"); await wait(60);
+startQ("mcq"); await st(900);
+if(!quizOn())ko("le mode quiz ne s active pas sur le telephone");
+if(!hd.body.classList.contains("tele-tv"))ko("la tele n est pas passee en mode grand ecran");
+if(!hd.documentElement.style.getPropertyValue("--tz"))ko("zoom de la tele absent");
+const cs=[...rq().querySelectorAll(".rq-c")];
+if(cs.length<2||cs[0].textContent.trim()[0]!=="A")ko("gros boutons du QCM : "+cs.map(b=>b.textContent));
+if(!hd.querySelector("#qwrap .choice.tq-c0"))ko("tuiles de couleur absentes sur la tele");
+const good=HE("(()=>{const e=A.ex; return [...document.querySelectorAll('#qwrap .choice[data-v]')].findIndex(b=>+b.dataset.v===e.a)})()");
+clickP(cs[good]); await st();
+if(!done()||!okv())ko("un seul toucher doit repondre et corriger (QCM) : done="+done());
+if(!rq().querySelector(".rq-res.ok"))ko("ecran Bien joue absent sur le telephone");
+const go1=rq().querySelector(".rq-res"); if(!/Continuer/.test(go1.textContent))ko("bouton Continuer absent : "+go1.textContent);
+clickP(go1); await st(1200);
+if(!rq().querySelector(".rq-btns"))ko("fin de lecon : boutons d action absents : "+rq().innerHTML.slice(0,120));
+
+/* vrai ou faux : deux gros boutons, le faux part en premier si la reponse est fausse */
+if(startQ("tf")){ await st(900);
+  const b=[...rq().querySelectorAll(".rq-c")]; if(b.length!==2||!/Vrai/.test(b[0].textContent+b[1].textContent))ko("vrai ou faux : "+b.map(x=>x.textContent));
+  const ans=HE("A.ex.a"); const w=b.find(x=>/Vrai/.test(x.textContent)===!!ans); clickP(w); await st();
+  if(!done()||!okv())ko("vrai ou faux : bonne reponse refusee"); }
+
+/* cases a cocher */
+if(startQ("multi")){ await st(900);
+  const idx=HE("(()=>{const e=A.ex; return [...document.querySelectorAll('#qwrap .mchk')].map((b,i)=>e.a.includes(+b.dataset.m)?i:-1).filter(i=>i>=0)})()");
+  idx.forEach(i=>clickP(rq().querySelector('.rq-m[data-i="'+i+'"]'))); await st();
+  const go=rq().querySelector(".rq-go"); if(!go||go.disabled)ko("cases a cocher : Valider grise"); else{ clickP(go); await st(); if(!done()||!okv())ko("cases a cocher : bonne reponse refusee"); } }
+
+/* curseur */
+if(startQ("slider")){ await st(900);
+  const r=rq().querySelector("#rq-range"); if(!r)ko("curseur absent"); else{ r.value=String(HE("A.ex.a")); r.dispatchEvent(new pw.Event("input",{bubbles:true})); await st();
+    const go=rq().querySelector(".rq-go"); clickP(go); await st(); if(!done()||!okv())ko("curseur : bonne valeur refusee"); } }
+
+/* phrase a reconstituer */
+if(startQ("tiles")){ await st(900);
+  const words=HE("A.ex.a.slice()");
+  for(const w of words){ const chip=[...rq().querySelectorAll(".rq-bank .rq-w")].find(c=>c.textContent===w&&!c.disabled); if(!chip){ ko("mot absent : "+w); break; } clickP(chip); await st(450); }
+  clickP(rq().querySelector(".rq-go")); await st(); if(!done()||!okv())ko("phrase : bonne reponse refusee"); }
+
+/* paires */
+if(startQ("match")){ await st(900);
+  const pairs=HE("A.ex.p.map(p=>[p[0],p[1]])");
+  for(const [l,r] of pairs){ clickP([...rq().querySelectorAll('[data-a="mL"]')].find(c=>c.textContent===l&&!c.disabled)); await st(450);
+    clickP([...rq().querySelectorAll('[data-a="mR"]')].find(c=>c.textContent===r&&!c.disabled)); await st(450); }
+  const go=rq().querySelector(".rq-go"); if(go.disabled)ko("paires : Valider grise"); else{ clickP(go); await st(); if(!done()||!okv())ko("paires : refusees"); } }
+
+/* classement */
+if(startQ("sort")){ await st(900);
+  const items=HE("A.ex.it.map(i=>[i[0],i[1]])");
+  for(let n=0;n<items.length;n++){ const tx=rq().querySelector(".rq-card").textContent; const bin=(items.find(i=>i[0]===tx)||[])[1];
+    if(bin===undefined){ ko("classement : element inconnu "+tx); break; } clickP(rq().querySelector('.rq-grid [data-b="'+bin+'"]')); await st(500); }
+  const go=rq().querySelector(".rq-go"); if(go.disabled)ko("classement : Valider grise"); else{ clickP(go); await st(); if(!done()||!okv())ko("classement : refuse"); } }
+
+/* remise en ordre */
+if(startQ("order")){ await st(900);
+  const want=HE("A.ex.it.slice()");
+  for(let n=0;n<20;n++){ const cur=[...rq().querySelectorAll(".rq-orow span")].map(x=>x.textContent); const p=want.findIndex((w,i)=>cur[i]!==w); if(p<0)break;
+    const j=cur.indexOf(want[p]); clickP(rq().querySelectorAll(".rq-orow")[j].querySelector('[data-d="-1"]')); await st(350); }
+  clickP(rq().querySelector(".rq-go")); await st(); if(!done()||!okv())ko("ordre : refuse"); }
+
+/* calcul : pave numerique */
+startQ("num"); await st(900);
+if(!rq().querySelector(".rq-keys"))ko("pave numerique absent en mode quiz");
+const key=k=>clickP(rq().querySelector('.rq-keys [data-k="'+k+'"]'));
+key("1"); key(","); key("5"); await st(400);
 if(hd.getElementById("numin").value!=="1,5")ko("saisie : "+hd.getElementById("numin").value);
-if(HE("document.getElementById('btn-check').disabled"))ko("Verifier devrait etre actif apres la saisie");
-key("back"); await wait(40);
+if(rq().querySelector("#rq-disp").textContent!=="1,5")ko("affichage de la saisie : "+rq().querySelector("#rq-disp").textContent);
+key("back"); await st(300);
 if(hd.getElementById("numin").value!=="1,")ko("effacer : "+hd.getElementById("numin").value);
+
+/* Curseur : retour a la telecommande classique */
+clickP(pd.getElementById("rc-free")); await st(300);
+if(quizOn())ko("le bouton Curseur ne rend pas la telecommande classique");
+clickP(pd.getElementById("rc-free")); await st(300);
+if(!quizOn())ko("le bouton Quiz ne revient pas aux boutons");
+
+/* un format visuel garde la telecommande classique */
+if(startQ("curve")){ await st(900); if(quizOn())ko("un format visuel ne doit pas passer en mode quiz"); if(hd.body.classList.contains("tele-tv"))ko("la tele ne doit pas changer pour un format visuel"); }
+/* hors quiz : la tele reprend son aspect normal */
+HE("show('path')"); await st(900);
+if(hd.body.classList.contains("tele-tv"))ko("la tele garde le mode quiz hors d une question");
 
 /* 11. retour : ferme d'abord la fenetre ouverte */
 HE("openModal('<p>test</p>')"); await wait(40);

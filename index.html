@@ -27910,6 +27910,101 @@ body.tele-phone{overflow:hidden}
 #tele-rc.keys .rc-pad{flex-basis:60px;min-height:60px}
 #tele-rc.keys .rc-pad span{display:none}
 @media (max-height:700px){ .rc-dp{grid-template-columns:repeat(3,54px);grid-template-rows:repeat(3,54px)} .rc-g small{display:none} }
+/* =====================================================================
+   TELECOMMANDE, MODE QUIZ (12/10/2026)
+   Telephone : gros boutons colores comme une manette. Telé : question en
+   grand, reponses en tuiles colorees. Rien ne change hors mode telecommande.
+   ===================================================================== */
+#tele-rc [hidden]{display:none!important}
+#rc-free{padding:9px 14px;border-radius:12px;border:1px solid rgba(255,255,255,.25);background:rgba(28,176,246,.25);font-weight:800;font-size:14px}
+.rc-q{display:none}
+#tele-rc.quiz .rc-q{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0}
+#tele-rc.quiz .rc-mainrow,#tele-rc.quiz #rc-ch,#tele-rc.quiz .rc-pad,#tele-rc.quiz .rc-mid,#tele-rc.quiz .rc-row,#tele-rc.quiz .rc-keys{display:none!important}
+.rq-grid{flex:1;min-height:0;display:grid;gap:12px;grid-template-columns:1fr 1fr;grid-auto-rows:1fr}
+.rq-grid.n1,.rq-grid.n2,.rq-grid.n3{grid-template-columns:1fr}
+.rq-c{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;min-height:0;padding:8px;border-radius:24px;border:0;color:#fff;
+  background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0) 45%),var(--c);
+  box-shadow:0 8px 0 rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.4);touch-action:manipulation}
+.rq-c b{font:800 clamp(40px,13vw,72px)/1 "Baloo 2","Nunito",system-ui,sans-serif;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.rq-c small{font-size:15px;font-weight:800;opacity:.92;text-align:center;line-height:1.2}
+.rq-c:active{transform:translateY(5px);box-shadow:0 3px 0 rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.4)}
+.rq-c.sel,.rq-c.on{outline:6px solid #fff;outline-offset:-6px}
+.rq-m{position:relative}
+.rq-m svg{position:absolute;top:8px;right:8px}
+.rq-box.lock .rq-c:not(.sel),#rc-q.lock .rq-c:not(.sel){opacity:.4}
+.rq-go{flex:none;min-height:62px;border-radius:20px;border:0;font:800 22px/1 "Baloo 2","Nunito",system-ui,sans-serif;color:#fff;
+  background:linear-gradient(#6BDB10,#58CC02);box-shadow:0 6px 0 #3E9A00,inset 0 2px 0 rgba(255,255,255,.35)}
+.rq-go:active{transform:translateY(4px);box-shadow:0 2px 0 #3E9A00}
+.rq-go:disabled{background:#3A3A66;box-shadow:0 6px 0 #2A2A4E;color:#8A8AB8}
+.rq-num{flex:1;min-height:0;display:flex;flex-direction:column;gap:10px}
+.rq-disp{min-height:68px;display:flex;align-items:center;justify-content:center;border-radius:20px;border:2px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);
+  font:800 40px/1 "Baloo 2","Nunito",system-ui,sans-serif;letter-spacing:1px;overflow:hidden}
+.rq-keys{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:1fr;gap:8px}
+.rq-keys button{border-radius:18px;border:1px solid rgba(255,255,255,.28);background:linear-gradient(160deg,rgba(255,255,255,.2),rgba(255,255,255,.06));
+  font:800 30px/1 "Baloo 2","Nunito",system-ui,sans-serif;touch-action:manipulation}
+.rq-keys button:active{background:#1CB0F6}
+.rq-keys .w{grid-column:span 3;font-size:18px}
+.rq-sld{flex:1;display:flex;flex-direction:column;justify-content:center;gap:22px;padding:0 4px}
+.rq-big{text-align:center;font:800 clamp(48px,16vw,84px)/1 "Baloo 2","Nunito",system-ui,sans-serif;text-shadow:0 3px 0 rgba(0,0,0,.25)}
+.rq-sld input[type=range]{width:100%;height:56px;-webkit-appearance:none;appearance:none;background:transparent;touch-action:pan-y}
+.rq-sld input[type=range]::-webkit-slider-runnable-track{height:16px;border-radius:99px;background:rgba(255,255,255,.22)}
+.rq-sld input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:52px;height:52px;margin-top:-18px;border-radius:50%;background:#1CB0F6;border:4px solid #fff;box-shadow:0 4px 10px rgba(0,0,0,.4)}
+.rq-sld input[type=range]::-moz-range-track{height:16px;border-radius:99px;background:rgba(255,255,255,.22)}
+.rq-sld input[type=range]::-moz-range-thumb{width:44px;height:44px;border-radius:50%;background:#1CB0F6;border:4px solid #fff}
+.rq-ends{display:flex;justify-content:space-between;font-weight:800;color:rgba(244,244,255,.65)}
+.rq-built{flex:none;min-height:72px;display:flex;flex-wrap:wrap;gap:8px;align-content:flex-start;padding:10px;border-radius:20px;border:2px dashed rgba(255,255,255,.3);background:rgba(255,255,255,.05)}
+.rq-hint{margin:auto;color:rgba(244,244,255,.55);font-weight:700;font-size:14px}
+.rq-bank{flex:1;min-height:0;overflow:auto;display:flex;flex-wrap:wrap;gap:10px;align-content:flex-start}
+.rq-w{padding:14px 18px;border-radius:18px;border:1px solid rgba(255,255,255,.3);color:#fff;font:800 19px/1.1 "Nunito",system-ui,sans-serif;
+  background:linear-gradient(160deg,rgba(255,255,255,.26),rgba(255,255,255,.08));box-shadow:0 4px 0 rgba(0,0,0,.25);touch-action:manipulation}
+.rq-w.b{background:rgba(28,176,246,.55)}
+.rq-w.u{opacity:.22;box-shadow:none}
+.rq-pairs{flex:1;min-height:0;overflow:auto;display:grid;grid-template-columns:1fr 1fr;gap:10px;align-content:start}
+.rq-pairs>div{display:flex;flex-direction:column;gap:8px}
+.rq-p{min-height:62px;padding:10px;border-radius:16px;border:2px solid rgba(255,255,255,.3);color:#fff;font:800 15px/1.2 "Nunito",system-ui,sans-serif;
+  background:rgba(255,255,255,.1);word-break:break-word;touch-action:manipulation}
+.rq-p.r{background:rgba(206,130,255,.22)}
+.rq-p.s{outline:5px solid #1CB0F6;outline-offset:-5px;background:rgba(28,176,246,.35)}
+.rq-p.d{background:rgba(88,204,2,.4);border-color:#58CC02;opacity:.6}
+.rq-p:disabled:not(.d){opacity:.45}
+.rq-dots{flex:none;display:flex;gap:8px;justify-content:center}
+.rq-dots button{width:22px;height:22px;border-radius:50%;border:2px solid rgba(255,255,255,.5);background:transparent;padding:0}
+.rq-dots button.d{background:#58CC02;border-color:#58CC02}
+.rq-dots button.on{outline:3px solid #fff;outline-offset:2px}
+.rq-card{flex:1;min-height:0;display:flex;align-items:center;justify-content:center;text-align:center;padding:16px;border-radius:26px;overflow:auto;
+  background:linear-gradient(160deg,rgba(255,255,255,.22),rgba(255,255,255,.06));border:2px solid rgba(255,255,255,.3);font:800 clamp(22px,7vw,34px)/1.2 "Baloo 2","Nunito",system-ui,sans-serif}
+.rq-card+.rq-grid{flex:none;grid-auto-rows:78px}
+.rq-card+.rq-grid .rq-c b{font-size:20px;line-height:1.1;text-align:center}
+.rq-ord{flex:1;min-height:0;overflow:auto;display:flex;flex-direction:column;gap:8px}
+.rq-orow{display:flex;align-items:center;gap:8px;padding:8px;border-radius:16px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.22)}
+.rq-orow i{flex:none;width:30px;height:30px;border-radius:50%;background:#1CB0F6;display:flex;align-items:center;justify-content:center;font:800 15px/1 "Nunito",sans-serif;font-style:normal}
+.rq-orow span{flex:1;font-weight:800;font-size:15px;line-height:1.2}
+.rq-orow button{flex:none;width:48px;height:48px;border-radius:14px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.14);font-size:20px;touch-action:manipulation}
+.rq-orow button:active{background:#1CB0F6}
+.rq-res{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:0;border-radius:28px;color:#fff;text-align:center;padding:20px}
+.rq-res.ok{background:linear-gradient(#4FD40E,#2FA600)}
+.rq-res.ko{background:linear-gradient(#F5555B,#C42B33)}
+.rq-res.nt{background:linear-gradient(#35B6FA,#1688CF)}
+.rq-res b{font:800 clamp(30px,10vw,44px)/1.1 "Baloo 2","Nunito",system-ui,sans-serif}
+.rq-res em{font-style:normal;font-weight:800;font-size:19px;padding:12px 26px;border-radius:99px;background:rgba(0,0,0,.25)}
+.rq-btns{flex:1;display:flex;flex-direction:column;gap:14px;justify-content:center}
+.rq-act{min-height:96px;padding:12px;border-radius:26px;border:0;color:#fff;font:800 24px/1.15 "Baloo 2","Nunito",system-ui,sans-serif;
+  background:linear-gradient(180deg,rgba(255,255,255,.28),rgba(255,255,255,0) 45%),var(--c);box-shadow:0 8px 0 rgba(0,0,0,.3),inset 0 2px 0 rgba(255,255,255,.4)}
+.rq-act:active{transform:translateY(5px)}
+@media (max-height:700px){ .rq-go{min-height:52px} .rq-disp{min-height:56px;font-size:32px} }
+
+/* telé : la question en grand, les reponses en tuiles de couleur */
+body.tele-tv #qwrap{zoom:var(--tz,1.3)}
+body.tele-tv .tq-c0{--tq:#E5484D}body.tele-tv .tq-c1{--tq:#1CB0F6}body.tele-tv .tq-c2{--tq:#F5B800}body.tele-tv .tq-c3{--tq:#3FB950}
+body.tele-tv .tq-c4{--tq:#9B51E0}body.tele-tv .tq-c5{--tq:#FF8A00}body.tele-tv .tq-c6{--tq:#E6559A}body.tele-tv .tq-c7{--tq:#18B8A8}
+body.tele-tv .choice[class*="tq-c"]{background:var(--tq)!important;color:#fff!important;border:0!important;box-shadow:0 6px 0 rgba(0,0,0,.28)!important;font-weight:800}
+body.tele-tv .choice[class*="tq-c"] .kk{background:rgba(0,0,0,.25)!important;color:#fff!important;border:0!important}
+body.tele-tv .swcard[class*="tq-c"],body.tele-tv .fitcard[class*="tq-c"],body.tele-tv .thumbcard[class*="tq-c"]{border:6px solid var(--tq)!important}
+body.tele-tv [class*="tq-c"].sel{outline:6px solid #fff;outline-offset:2px}
+body.tele-tv [class*="tq-c"].good{--tq:#3FB950;outline:6px solid #fff;outline-offset:2px;transform:scale(1.03)}
+body.tele-tv [class*="tq-c"].bad{opacity:.35;filter:grayscale(.7)}
+body.tele-tv #checkbar .btn{font-size:20px}
+body.tele-tv #side,body.tele-tv #rail{display:none!important}
 </style>
 <script>
 /* =====================================================================
@@ -30686,6 +30781,7 @@ window.ARC_MFAUX={
 
   /* ---------------- 3. COTE PC : curseur, clic, navigation ---------------- */
   const CLICK='button,a[href],input,select,textarea,summary,label,[onclick],[role="button"],[role="switch"],[role="tab"],[tabindex]:not([tabindex="-1"]),.choice,.tile,.swcard';
+  const hooks={};
   const H={on:false,code:"",rt:null,x:0,y:0,seen:0,last:"",timer:null,idle:null,wl:null,link:false,hasPhone:false};
   const vw=()=>window.innerWidth||document.documentElement.clientWidth||1280, vh=()=>window.innerHeight||document.documentElement.clientHeight||720;
   const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
@@ -30775,7 +30871,8 @@ window.ARC_MFAUX={
     let chk=null; if(lesson&&btn&&btn.getBoundingClientRect().width>0)chk={txt:(btn.textContent||"").trim().slice(0,14),en:!btn.disabled};
     let ch=[]; if(lesson&&!done)ch=choices().slice(0,8).map((e,i)=>{ const k=e.querySelector(".kk"); return (k?k.textContent:(e.textContent||"")).replace(/[^A-Za-zÀ-ÿ0-9]/g,"").slice(0,5)||String.fromCharCode(65+i); });
     const num=!!(lesson&&!done&&$id("numin")), m=$id("modal");
-    return {sc,chk,ch,num,modal:!!(m&&m.classList.contains("on"))}; }
+    let q=null; try{ q=hooks.spec?hooks.spec():null; }catch(e){ q=null; }
+    return {sc,chk,ch,num,modal:!!(m&&m.classList.contains("on")),q}; }
   function pushState(force){ if(!H.rt)return; const s=JSON.stringify(snap()); if(!force&&s===H.last)return; H.last=s; H.rt.send({r:"h",t:"state",s:JSON.parse(s)}); }
   function hostMsg(m){
     if(!H.on||!m||m.r!=="p")return;
@@ -30793,6 +30890,7 @@ window.ARC_MFAUX={
       case "back": backAction(); break;
       case "home": { const m2=$id("modal"); if(m2&&m2.classList.contains("on")){ try{ closeModal(); }catch(e){} } const sc=document.querySelector(".screen.on"); if(sc&&sc.id==="sc-lesson"){ const q=$id("ls-quit"); if(q)q.click(); } else if(typeof setTab==="function")setTab("path"); break; }
       case "bye": H.hasPhone=false; break;
+      default: try{ if(hooks.msg)hooks.msg(m); }catch(e){}
     }
     setTimeout(()=>pushState(false),120);
     hostUi(); }
@@ -30836,7 +30934,8 @@ window.ARC_MFAUX={
     if(main){ const t=s.chk?s.chk.txt:"OK"; main.textContent=t||"OK"; main.disabled=!!(s.chk&&!s.chk.en); }
     const ch=$id("rc-ch"); if(ch){ const a=s.ch||[]; const key=a.join("|"); if(ch.dataset.k!==key){ ch.dataset.k=key; ch.innerHTML=a.map((l,i)=>`<button type="button" class="rc-c" data-i="${i}">${esc(l)}</button>`).join(""); } ch.style.display=a.length?"flex":"none"; }
     const num=!!s.num; if(P.keysAuto&&P.keys!==num){ P.keys=num; }
-    r.classList.toggle("keys",P.keys); }
+    r.classList.toggle("keys",P.keys);
+    try{ if(hooks.render)hooks.render(); }catch(e){ if(window.console)console.error("telequiz",e); } }
   function remoteMsg(m){
     if(!P.on||!m||m.r!=="h")return;
     P.seen=Date.now();
@@ -30846,7 +30945,8 @@ window.ARC_MFAUX={
   function buildRemote(){
     if($id("tele-rc"))return;
     const d=document.createElement("div"); d.id="tele-rc";
-    d.innerHTML=`<div class="rc-top"><span class="rc-dot"></span><b id="rc-stat">Connexion...</b><button type="button" id="rc-quit">Quitter</button></div>
+    d.innerHTML=`<div class="rc-top"><span class="rc-dot"></span><b id="rc-stat">Connexion...</b><button type="button" id="rc-free" hidden>Curseur</button><button type="button" id="rc-quit">Quitter</button></div>
+      <div id="rc-q" class="rc-q"></div>
       <div class="rc-mainrow"><button type="button" id="rc-main" class="rc-main">OK</button></div>
       <div id="rc-ch" class="rc-chs" style="display:none"></div>
       <div id="rc-pad" class="rc-pad"><span>Glisse pour déplacer le curseur<br>Touche pour cliquer<br>Deux doigts pour défiler</span></div>
@@ -30898,7 +30998,7 @@ window.ARC_MFAUX={
   function remoteStart(code){
     code=cleanCode(code); if(code.length<6){ NOTE("Le code fait 6 caractères."); return false; }
     if(P.on)remoteStop();
-    P.on=true; P.code=code; P.link=false; P.seen=0; P.st=null; P.keys=false; P.keysAuto=true;
+    P.on=true; P.free=false; P.code=code; P.link=false; P.seen=0; P.st=null; P.keys=false; P.keysAuto=true;
     try{ if(typeof closeModal==="function")closeModal(); }catch(e){}
     buildRemote();
     P.rt=rtOpen(code,remoteMsg,ok=>{ P.link=ok; if(ok){ pSend({t:"hello"}); } remoteUi(); });
@@ -30943,7 +31043,7 @@ window.ARC_MFAUX={
   window.teleJoin=()=>{ const i=$id("tele-in"); remoteStart(i?i.value:""); };
   window.teleStop=()=>{ hostStop(); try{ closeModal(); }catch(e){} NOTE("Télécommande arrêtée."); };
   window.teleFull=()=>{ try{ const e=document.documentElement; (e.requestFullscreen||e.webkitRequestFullscreen).call(e); }catch(err){} };
-  window.__tele={pickDir,qrMatrix,qrSvg,newCode,cleanCode,H,P,snap,hostMsg,remoteMsg,remoteStart,remoteStop,hostStop,rtOpen};
+  window.__tele={hooks,H,P,$id,esc,clamp,pSend,pickDir,qrMatrix,qrSvg,newCode,cleanCode,snap,hostMsg,remoteMsg,remoteStart,remoteStop,hostStop,rtOpen};
 
   /* ---------------- 6. POINTS D'ENTREE ---------------- */
   const __mt=window.moreTabs;
@@ -30961,6 +31061,160 @@ window.ARC_MFAUX={
   try{ const q=new URLSearchParams(location.search).get("tele");
     if(q){ const c=cleanCode(q); try{ history.replaceState(null,"",location.pathname+location.hash); }catch(e){}
       if(c.length===6)setTimeout(()=>remoteStart(c),700); } }catch(e){}
+})();
+/* =====================================================================
+   TELECOMMANDE, MODE QUIZ (demande du 12/10/2026)
+   Dès que la télécommande est connectée et qu'une question s'affiche,
+   la télé montre la question en grand et le téléphone ne montre que de
+   gros boutons adaptés au format (comme une manette de Kahoot) :
+   QCM et vrai ou faux en gros boutons de couleur, calcul au pavé numérique,
+   curseur, phrase à reconstituer, paires, classement, remise en ordre.
+   Aucun exercice n'est réécrit : le PC lit la question affichée et
+   rejoue les gestes du joueur sur le vrai moteur.
+   Les formats visuels (plateau, courbe, main de poker...) gardent la
+   télécommande classique, avec le bouton Curseur pour y revenir à tout moment.
+   ===================================================================== */
+(function(){
+  "use strict";
+  const T=window.__tele; if(!T||window.__teleQ)return;
+  const {hooks,H,P,$id,esc,clamp,pSend}=T;
+  const $q=s=>document.querySelector(s), $$q=s=>Array.from(document.querySelectorAll(s));
+  const CHOICE=["tf","mcq","fill","story","cards","dames","studio","spot","color","outfit","thumb"];
+  const PAL=["#E5484D","#1CB0F6","#F5B800","#3FB950","#9B51E0","#FF8A00","#E6559A","#18B8A8"];
+  const txt=e=>(e&&e.textContent||"").replace(/\s+/g," ").trim();
+  const vis=e=>{ if(!e)return false; const r=e.getBoundingClientRect(); if(r.width<2||r.height<2)return false; const cs=window.getComputedStyle(e); return cs.display!=="none"&&cs.visibility!=="hidden"; };
+  const btn=()=>$id("btn-check");
+  const ready=()=>{ const b=btn(); return !!(b&&!b.disabled); };
+  const num=v=>String(v).replace(".",",");
+
+  /* ---------------- PC : lire la question affichee ---------------- */
+  function choiceEls(){ return $$q("#qwrap .choice[data-v], #qwrap .swcard[data-v], #qwrap .fitcard[data-v]:not([data-s]), #qwrap .thumbcard[data-v]"); }
+  function actions(root){
+    const l=$$q(root).filter(e=>!e.disabled&&vis(e)).slice(0,3);
+    return l.length?{k:"btns",list:l.map(e=>txt(e).slice(0,30)||"OK"),root}:null; }
+  function actionEls(root){ return $$q(root).filter(e=>!e.disabled&&vis(e)).slice(0,3); }
+  const ROOTS=["#mcard .btn","#sc-intro .arc-ifoot .btn:first-child","#qwrap .btn, #checkbar .btn"];
+  function spec(){
+    const m=$id("modal"); if(m&&m.classList.contains("on")&&!$q("#mcard .tele-card")&&!$q("#mcard .tele-big")){ const a=actions(ROOTS[0]); if(a)return a; }
+    const sc=(document.querySelector(".screen.on")||{}).id||"";
+    if(sc==="sc-intro")return actions(ROOTS[1]);
+    if(sc!=="sc-lesson")return null;
+    const qw=$id("qwrap");
+    if(!qw||!qw.querySelector(".qkind")||typeof A==="undefined"||!A||!A.ex)return actions(ROOTS[2]);
+    const ex=A.ex, t=ex.t;
+    if(A.done){ const cb=$id("checkbar"); return {k:"res",ok:cb&&cb.classList.contains("good")?true:(cb&&cb.classList.contains("bad")?false:null),vt:txt($q("#verdict .vt")).slice(0,40),go:txt(btn()).slice(0,24)||"Continuer"}; }
+    const rd=ready();
+    if(CHOICE.includes(t)){
+      const els=choiceEls(); if(!els.length)return null;
+      els.forEach((e,i)=>{ for(let c=0;c<8;c++)e.classList.remove("tq-c"+c); e.classList.add("tq-c"+(t==="tf"?(e.dataset.v==="1"?3:0):i)); });
+      return {k:"c",t,l:els.map((e,i)=>{ const kk=e.querySelector(".kk"), body=txt(e).replace(txt(kk),"").trim();
+        const lab=t==="tf"?(e.dataset.v==="1"?"Vrai":"Faux"):(t==="spot"?body:String.fromCharCode(65+i));
+        const sub=(t==="tf"||t==="spot"||!body||body.length>16||/^(color|outfit|thumb)$/.test(t))?"":body; return [lab.slice(0,16),sub]; }),c:t==="tf"?els.map(e=>e.dataset.v==="1"?3:0):null,rd}; }
+    if(t==="multi"){ const els=$$q("#qwrap .mchk"); return {k:"m",l:els.map((e,i)=>String.fromCharCode(65+i)),s:els.map(e=>e.classList.contains("sel")?1:0),rd}; }
+    if(t==="num"){ const i=$id("numin"); return {k:"n",v:i?i.value:"",rd}; }
+    if(t==="slider"){ const r=$q("#qwrap input.sld"); if(!r)return null; return {k:"s",min:+r.min,max:+r.max,step:+r.step||1,v:+r.value,pre:ex.pre||"",un:ex.un||"",rd}; }
+    if(t==="tiles"||t==="eq"){ const bank=$$q('#qwrap [id^="tk"]').map(e=>({i:+e.id.slice(2),w:txt(e),u:e.classList.contains("used")?1:0}));
+      return {k:"t",b:bank,s:$$q("#tgt > *").map(txt),rd}; }
+    if(t==="match"){ const L=$$q('#qwrap [id^="ml"]'), R=$$q('#qwrap [id^="mr"]');
+      return {k:"p",L:L.map((e,i)=>({i,t:txt(e),d:e.classList.contains("good")?1:0,s:e.classList.contains("sel")?1:0})),R:R.map((e,i)=>({i,t:txt(e),d:e.classList.contains("good")?1:0})),rd}; }
+    if(t==="sort"){ const rows=$$q("#qwrap .sortrow"); if(!rows.length)return null;
+      return {k:"o",it:rows.map(r=>{ const b=r.querySelector(".sortbin.sel"); return {k:+r.id.slice(2),t:txt(r.querySelector(".sortit")),b:b?+b.dataset.b:-1}; }),bins:$$q("#qwrap .sortrow:first-child .sortbin").map(txt),rd}; }
+    if(t==="order"){ return {k:"r",it:$$q("#olist .orow .choice").map(txt),rd}; }
+    return null; }
+  hooks.spec=function(){
+    let q=null; try{ q=H.on&&H.hasPhone?spec():null; }catch(e){ q=null; }
+    const tv=!!(q&&q.k!=="btns");
+    document.body.classList.toggle("tele-tv",tv);
+    if(tv){ const z=clamp((window.innerWidth||1280)/1000,1.15,1.9); document.documentElement.style.setProperty("--tz",z.toFixed(2)); }
+    return q; };
+
+  /* ---------------- PC : rejouer les gestes du joueur ---------------- */
+  const later=(f,ms)=>setTimeout(f,ms||0);
+  const clickIf=e=>{ if(e&&typeof e.click==="function")e.click(); };
+  hooks.msg=function(m){
+    if(typeof A==="undefined"||!A)return;
+    switch(m.t){
+      case "opt": { const e=choiceEls()[+m.i]; if(!e||A.done)break; e.click(); later(()=>{ const b=btn(); if(b&&!b.disabled&&!A.done)b.click(); },70); break; }
+      case "mt": clickIf($$q("#qwrap .mchk")[+m.i]); break;
+      case "sld": { const r=$q("#qwrap input.sld"); if(!r||A.done)break; const mn=+r.min, mx=+r.max, st=+r.step||1;
+        r.value=String(clamp(Math.round((+m.v-mn)/st)*st+mn,mn,mx)); r.dispatchEvent(new Event("input",{bubbles:true})); r.dispatchEvent(new Event("change",{bubbles:true})); break; }
+      case "tile": clickIf($id("tk"+(+m.i))); break;
+      case "untile": clickIf($$q("#tgt > *")[+m.i]); break;
+      case "mL": clickIf($id("ml"+(+m.i))); break;
+      case "mR": clickIf($id("mr"+(+m.i))); break;
+      case "sort": clickIf($q('#sr'+(+m.k)+' .sortbin[data-b="'+(+m.b)+'"]')); break;
+      case "ord": { const row=$$q("#olist .orow")[+m.p]; if(row){ const bs=row.querySelectorAll(".oarr button"); clickIf(bs[m.d<0?0:1]); } break; }
+      case "act": { const sc=(document.querySelector(".screen.on")||{}).id||""; const m2=$id("modal"); const root=(m2&&m2.classList.contains("on"))?ROOTS[0]:(sc==="sc-intro"?ROOTS[1]:ROOTS[2]); clickIf(actionEls(root)[+m.i]); break; }
+    }
+  };
+
+  /* ---------------- TELEPHONE : les gros boutons ---------------- */
+  const Q={key:"",lock:0,last:null};
+  const svgOk='<svg viewBox="0 0 24 24" width="96" height="96" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke="#fff" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';
+  const svgKo='<svg viewBox="0 0 24 24" width="96" height="96" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18" stroke="#fff" stroke-width="3.4" stroke-linecap="round" fill="none"/></svg>';
+  const svgOn='<svg viewBox="0 0 24 24" width="84" height="84" aria-hidden="true"><path d="m5 12.5 4.5 4.5L19 7" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>';
+  const send=o=>{ pSend(o); try{ if(navigator.vibrate)navigator.vibrate(12); }catch(e){} };
+  const validBtn=(q,txtv)=>`<button type="button" class="rq-go" data-a="check" ${q.rd?"":"disabled"}>${esc(txtv||"Valider")}</button>`;
+  function keyOf(q){ const c=Object.assign({},q); if(q.k==="s")delete c.v; if(q.k==="n")delete c.v; return JSON.stringify(c); }
+  function view(q){
+    switch(q.k){
+      case "c": { const n=q.l.length; return `<div class="rq-grid n${Math.min(n,8)}">${q.l.map((x,i)=>`<button type="button" class="rq-c" style="--c:${PAL[q.c?q.c[i]:i]}" data-a="opt" data-i="${i}"><b>${esc(x[0])}</b>${x[1]?`<small>${esc(x[1])}</small>`:""}</button>`).join("")}</div>`; }
+      case "m": return `<div class="rq-grid n${Math.min(q.l.length,8)}">${q.l.map((x,i)=>`<button type="button" class="rq-c rq-m ${q.s[i]?"on":""}" style="--c:${PAL[i]}" data-a="mt" data-i="${i}"><b>${x}</b>${q.s[i]?svgOn.replace('width="84" height="84"','width="30" height="30"'):""}</button>`).join("")}</div>${validBtn(q)}`;
+      case "n": return `<div class="rq-num"><div class="rq-disp" id="rq-disp">${esc(q.v||"")}</div><div class="rq-keys">${["7","8","9","4","5","6","1","2","3",",","0","-"].map(k=>`<button type="button" data-a="key" data-k="${k}">${k}</button>`).join("")}<button type="button" data-a="key" data-k="back" class="w">Effacer</button></div></div>${validBtn(q)}`;
+      case "s": return `<div class="rq-sld"><div class="rq-big" id="rq-sv">${esc(q.pre+num(q.v)+q.un)}</div><input type="range" id="rq-range" min="${q.min}" max="${q.max}" step="${q.step}" value="${q.v}"><div class="rq-ends"><span>${esc(q.pre+num(q.min)+q.un)}</span><span>${esc(q.pre+num(q.max)+q.un)}</span></div></div>${validBtn(q)}`;
+      case "t": return `<div class="rq-built">${q.s.length?q.s.map((w,i)=>`<button type="button" class="rq-w b" data-a="untile" data-i="${i}">${esc(w)}</button>`).join(""):'<span class="rq-hint">Touche les mots dans l\'ordre</span>'}</div><div class="rq-bank">${q.b.map(b=>`<button type="button" class="rq-w ${b.u?"u":""}" data-a="tile" data-i="${b.i}" ${b.u?"disabled":""}>${esc(b.w)}</button>`).join("")}</div>${validBtn(q)}`;
+      case "p": { return `<div class="rq-pairs"><div>${q.L.map(x=>`<button type="button" class="rq-p ${x.d?"d":""} ${x.s?"s":""}" data-a="mL" data-i="${x.i}" ${x.d?"disabled":""}>${esc(x.t)}</button>`).join("")}</div><div>${q.R.map(x=>`<button type="button" class="rq-p r ${x.d?"d":""}" data-a="mR" data-i="${x.i}" ${x.d?"disabled":""}>${esc(x.t)}</button>`).join("")}</div></div>${validBtn(q)}`; }
+      case "o": { const cur=Q.cur!=null&&Q.cur<q.it.length?Q.cur:Math.max(0,q.it.findIndex(x=>x.b<0)); const it=q.it[cur>=0?cur:0];
+        return `<div class="rq-dots">${q.it.map((x,i)=>`<button type="button" class="${i===cur?"on":""} ${x.b>=0?"d":""}" data-a="cur" data-i="${i}" aria-label="Élément ${i+1}"></button>`).join("")}</div>
+          <div class="rq-card">${esc(it.t)}</div>
+          <div class="rq-grid n${Math.min(q.bins.length,8)}">${q.bins.map((b,i)=>`<button type="button" class="rq-c ${it.b===i?"on":""}" style="--c:${PAL[i]}" data-a="sort" data-k="${it.k}" data-b="${i}"><b>${esc(b)}</b></button>`).join("")}</div>${validBtn(q)}`; }
+      case "r": return `<div class="rq-ord">${q.it.map((x,p)=>`<div class="rq-orow"><i>${p+1}</i><span>${esc(x)}</span><button type="button" data-a="ord" data-p="${p}" data-d="-1" aria-label="Monter">&#9650;</button><button type="button" data-a="ord" data-p="${p}" data-d="1" aria-label="Descendre">&#9660;</button></div>`).join("")}</div>${validBtn(q)}`;
+      case "res": { const c=q.ok===true?"ok":(q.ok===false?"ko":"nt"); return `<button type="button" class="rq-res ${c}" data-a="check"><span>${q.ok===true?svgOk:(q.ok===false?svgKo:"")}</span><b>${esc(q.ok===null?"Réponse enregistrée":(q.vt||(q.ok?"Bien joué":"Raté")))}</b><em>${esc(q.go)}</em></button>`; }
+      case "btns": return `<div class="rq-btns">${q.list.map((l,i)=>`<button type="button" class="rq-act" style="--c:${PAL[[3,1,2][i]]}" data-a="act" data-i="${i}">${esc(l)}</button>`).join("")}</div>`;
+    }
+    return ""; }
+  function bump(q){
+    /* retours legers sans reconstruire la vue : saisie, curseur */
+    if(q.k==="n"){ const d=$id("rq-disp"); if(d)d.textContent=q.v||""; }
+    if(q.k==="s"){ const r=$id("rq-range"), v=$id("rq-sv"); if(v)v.textContent=q.pre+num(q.v)+q.un; if(r&&document.activeElement!==r&&+r.value!==q.v)r.value=q.v; }
+  }
+  hooks.render=function(){
+    const root=$id("tele-rc"), box=$id("rq")||$id("rc-q"), fr=$id("rc-free"); if(!root||!box)return;
+    const s=P.st||{}, q=s.q||null, on=!!(q&&!P.free);
+    if(fr){ fr.hidden=!q; fr.textContent=P.free?"Quiz":"Curseur"; }
+    root.classList.toggle("quiz",on);
+    if(!on){ if(box.innerHTML){ box.innerHTML=""; } Q.key=""; Q.last=null; return; }
+    const k=keyOf(q);
+    if(k!==Q.key){
+      if(q.k==="o"&&(!Q.last||Q.last.k!=="o"||Q.last.it.length!==q.it.length))Q.cur=null;
+      Q.key=k; box.innerHTML=view(q); box.dataset.k=q.k; Q.lock=0;
+      if(q.k==="res"){ try{ if(navigator.vibrate)navigator.vibrate(q.ok===false?[60,40,60]:q.ok?[30]:[10]); }catch(e){} }
+    } else bump(q);
+    Q.last=q; };
+
+  /* gestes sur la vue (delegation) */
+  function bind(){
+    const box=$id("rc-q"); if(!box||box.dataset.b)return; box.dataset.b="1";
+    box.addEventListener("click",e=>{
+      const b=e.target.closest("button[data-a]"); if(!b||b.disabled)return; const a=b.dataset.a, d=b.dataset;
+      if(a==="opt"){ if(Q.lock)return; Q.lock=1; b.classList.add("sel"); box.classList.add("lock"); setTimeout(()=>{ Q.lock=0; box.classList.remove("lock"); },1600); send({t:"opt",i:+d.i}); }
+      else if(a==="check")send({t:"check"});
+      else if(a==="mt")send({t:"mt",i:+d.i});
+      else if(a==="key")send({t:"key",k:d.k});
+      else if(a==="tile")send({t:"tile",i:+d.i});
+      else if(a==="untile")send({t:"untile",i:+d.i});
+      else if(a==="mL")send({t:"mL",i:+d.i});
+      else if(a==="mR")send({t:"mR",i:+d.i});
+      else if(a==="sort"){ send({t:"sort",k:+d.k,b:+d.b}); const l=Q.last; if(l&&l.k==="o"){ const i=l.it.findIndex(x=>x.k===+d.k), nx=l.it.findIndex((x,j)=>j>i&&x.b<0); Q.cur=nx>=0?nx:(l.it.findIndex(x=>x.b<0&&x.k!==+d.k)); if(Q.cur<0)Q.cur=i; } }
+      else if(a==="cur"){ Q.cur=+d.i; Q.key=""; hooks.render(); }
+      else if(a==="ord")send({t:"ord",p:+d.p,d:+d.d});
+      else if(a==="act")send({t:"act",i:+d.i});
+    });
+    box.addEventListener("input",e=>{ const r=e.target; if(r.id==="rq-range"){ const q=Q.last; if(q){ const v=$id("rq-sv"); if(v)v.textContent=q.pre+num(+r.value)+q.un; } send({t:"sld",v:+r.value}); } });
+    const fr=$id("rc-free"); if(fr&&!fr.dataset.b){ fr.dataset.b="1"; fr.addEventListener("click",()=>{ P.free=!P.free; Q.key=""; if(T.P.rt)hooks.render(); }); }
+  }
+  const __r=hooks.render; hooks.render=function(){ bind(); __r(); };
+  window.__teleQ={spec,view,Q};
 })();
 </script>
 <!-- DESIGN:ARCADE:FIN -->
