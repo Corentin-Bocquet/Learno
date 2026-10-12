@@ -1,0 +1,75 @@
+/* =====================================================================
+   TELECOMMANDE, QUIZ A PLUSIEURS (12/10/2026) : salon, question, resultat,
+   podium sur la tele, vues de jeu sur les telephones.
+   ===================================================================== */
+#tele-arena{position:fixed;inset:0;z-index:2147482000;display:flex;flex-direction:column;box-sizing:border-box;padding:2.2vw 4vw 2vw;overflow:hidden;
+  background:radial-gradient(70% 55% at 50% 0,#2B2B6A 0,#141432 72%);color:#F4F4FF;font-family:"Nunito",system-ui,sans-serif}
+.ta-stop{position:absolute;left:1.2vw;top:1.2vw;padding:.6vw 1.1vw;border-radius:.9vw;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.08);
+  color:inherit;font:800 max(12px,1.1vw)/1 "Nunito",sans-serif;cursor:pointer;z-index:2}
+.ta-mid{margin:auto;text-align:center;max-width:70vw}
+.ta-mid h1,.ta-l h1{margin:0 0 1vw;font:800 max(30px,4.2vw)/1.1 "Baloo 2","Nunito",system-ui,sans-serif}
+.ta-mid p,.ta-l p{margin:0 0 1.2vw;font-size:max(15px,1.6vw);color:rgba(244,244,255,.75)}
+#tele-arena .btn{font-size:max(16px,1.6vw);padding:1vw 2.4vw;width:auto}
+.ta-lobby{flex:1;display:grid;grid-template-columns:1fr 1fr;gap:4vw;align-items:center;margin-top:2vw}
+.ta-l{text-align:center}
+.ta-code{display:inline-block;margin:0 0 1.2vw;padding:.6vw 2vw;border-radius:1.4vw;background:rgba(255,255,255,.1);border:2px solid rgba(255,255,255,.25);
+  font:800 max(40px,6vw)/1 "Baloo 2",ui-monospace,monospace;letter-spacing:.5vw}
+.ta-l .tele-qr{display:block;margin:0 auto;width:max(150px,14vw);height:auto}
+.ta-r h2{margin:0 0 1vw;font:800 max(24px,3vw)/1 "Baloo 2","Nunito",sans-serif}
+.ta-chips{display:flex;flex-wrap:wrap;gap:.8vw;margin-bottom:1.6vw;min-height:4vw}
+.ta-chips span{padding:.7vw 1.5vw;border-radius:99px;background:var(--c);font:800 max(16px,2vw)/1 "Baloo 2","Nunito",sans-serif;box-shadow:0 .3vw 0 rgba(0,0,0,.25)}
+.ta-chips em{color:rgba(244,244,255,.6);font-size:max(15px,1.6vw)}
+.ta-count{font:800 max(80px,12vw)/1 "Baloo 2","Nunito",sans-serif;text-align:center;text-shadow:0 .4vw 0 rgba(0,0,0,.3)}
+.ta-top{display:flex;justify-content:space-between;align-items:center;padding:0 0 .6vw 9vw;font:800 max(16px,1.8vw)/1 "Nunito",sans-serif}
+.ta-sec{font:800 max(34px,4.4vw)/1 "Baloo 2","Nunito",sans-serif}
+.ta-barw{height:max(8px,.9vw);border-radius:99px;background:rgba(255,255,255,.15);overflow:hidden}
+.ta-barw i{display:block;height:100%;background:linear-gradient(90deg,#58CC02,#F5B800 70%,#E5484D);transition:width .2s linear}
+.ta-q{margin:1.6vw 0;text-align:center;font:800 max(26px,3.6vw)/1.2 "Baloo 2","Nunito",system-ui,sans-serif;min-height:8vw;display:flex;align-items:center;justify-content:center}
+.ta-opts{display:grid;gap:1.2vw;grid-template-columns:1fr 1fr;flex:1;min-height:0}
+.ta-opts.n1,.ta-opts.n2{grid-template-columns:1fr}
+.ta-o{position:relative;display:flex;align-items:center;gap:1.4vw;padding:1vw 2vw;border-radius:1.6vw;background:var(--c);color:#fff;
+  box-shadow:0 .5vw 0 rgba(0,0,0,.28),inset 0 .15vw 0 rgba(255,255,255,.35);font:800 max(18px,2.4vw)/1.15 "Nunito",sans-serif}
+.ta-o b{flex:none;width:4.4vw;height:4.4vw;min-width:34px;min-height:34px;border-radius:1vw;background:rgba(0,0,0,.25);display:flex;align-items:center;justify-content:center;font:800 max(20px,2.8vw)/1 "Baloo 2",sans-serif}
+.ta-o b:empty{display:none}
+.ta-o em{position:absolute;right:1.4vw;top:.6vw;font:800 max(18px,2.4vw)/1 "Baloo 2",sans-serif;font-style:normal;background:rgba(0,0,0,.3);border-radius:99px;padding:.2vw 1vw}
+.ta-o.ok{outline:.5vw solid #fff;outline-offset:-.5vw;transform:scale(1.02)}
+.ta-o.no{opacity:.35;filter:grayscale(.6)}
+.ta-foot{margin-top:1.2vw;min-height:5vw;text-align:center}
+.ta-wait{margin:0;font:800 max(16px,2vw)/1 "Nunito",sans-serif;color:rgba(244,244,255,.8)}
+.ta-why{margin:.8vw auto 0;max-width:70vw;font-size:max(14px,1.4vw);color:rgba(244,244,255,.7)}
+.ta-board{list-style:none;margin:0 auto;padding:0;max-width:44vw;display:flex;flex-direction:column;gap:.5vw}
+.ta-board li{display:flex;align-items:center;gap:1vw;padding:.5vw 1.2vw;border-radius:1vw;background:rgba(255,255,255,.1);font:800 max(15px,1.8vw)/1 "Nunito",sans-serif}
+.ta-board li.ok{background:rgba(88,204,2,.28)}
+.ta-board b{width:2vw;min-width:20px;opacity:.7}.ta-board span{flex:1;text-align:left}
+.ta-board em{font-style:normal;color:#8FE04A}.ta-board strong{min-width:5vw;text-align:right}
+.ta-pod{display:flex;align-items:flex-end;justify-content:center;gap:1.4vw;margin:1.4vw 0}
+.ta-p{width:max(110px,16vw);display:flex;flex-direction:column;align-items:center;justify-content:flex-start;gap:.3vw;padding:1vw .6vw;border-radius:1.4vw 1.4vw 0 0;position:relative;color:#fff;font:800 max(15px,1.9vw)/1.1 "Baloo 2","Nunito",sans-serif}
+.ta-p span{font-size:max(13px,1.4vw);opacity:.9}.ta-p i{font:800 max(30px,4vw)/1 "Baloo 2",sans-serif;font-style:normal;margin-top:auto}
+.ta-p.p1{height:max(150px,21vw);background:linear-gradient(#FFD84A,#E8A21A)}
+.ta-p.p2{height:max(120px,16vw);background:linear-gradient(#D5DBF2,#8E96B8)}
+.ta-p.p3{height:max(100px,13vw);background:linear-gradient(#E9A56B,#B26A2E)}
+.ta-p.p2{order:-1}
+.ta-rest{list-style:none;margin:0 auto 1.2vw;padding:0;max-width:30vw;font:800 max(14px,1.6vw)/1.5 "Nunito",sans-serif}
+.ta-rest li{display:flex;gap:1vw}.ta-rest b{width:2vw}.ta-rest span{margin-left:auto}
+body.tele-arena #tele-pill{display:none}
+
+/* telephones */
+.ra-join{flex:1;display:flex;flex-direction:column;justify-content:center;gap:14px;text-align:center}
+.ra-join b{font:800 clamp(28px,9vw,40px)/1.1 "Baloo 2","Nunito",system-ui,sans-serif}
+.ra-join p{margin:0;color:rgba(244,244,255,.75);font-weight:700}
+.ra-join input{width:100%;box-sizing:border-box;padding:18px;border-radius:18px;border:2px solid rgba(255,255,255,.25);background:rgba(255,255,255,.08);color:inherit;text-align:center;
+  font:800 28px/1 "Baloo 2","Nunito",system-ui,sans-serif;outline:none}
+.ra-join input:focus{border-color:#1CB0F6}
+.ra-list{display:flex;flex-wrap:wrap;gap:8px;justify-content:center}
+.ra-list span{padding:8px 16px;border-radius:99px;background:rgba(255,255,255,.12);font-weight:800}
+.ra-list .me{background:#1CB0F6}
+.ra-gain{font:800 clamp(40px,14vw,64px)/1 "Baloo 2","Nunito",sans-serif}
+
+/* fenetre de la tele : nombre de joueurs */
+.tele-multi{margin:0 0 10px;padding:12px;border-radius:18px;background:rgba(255,255,255,.06)}
+.tm-row{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:8px;font-weight:800}
+.tm-step{display:flex;align-items:center;gap:12px}
+.tm-step button,.tm-chips button{min-width:44px;height:44px;padding:0 12px;border-radius:14px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.1);color:inherit;font:800 20px/1 "Baloo 2","Nunito",sans-serif;cursor:pointer}
+.tm-step b{min-width:28px;text-align:center;font:800 26px/1 "Baloo 2","Nunito",sans-serif}
+.tm-chips{display:flex;gap:6px}.tm-chips button{font-size:15px}.tm-chips .on{background:#1CB0F6;border-color:#1CB0F6}
+.tele-multi .btn{margin-top:6px}
