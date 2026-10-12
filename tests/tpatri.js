@@ -17,7 +17,7 @@ setTimeout(()=>{
   E("S.onboarded=true;S.settings.hearts=false");
   /* ---------- 1. structure du cours ---------- */
   const U=JSON.parse(E("JSON.stringify(courseUnits('PATRI').map(u=>({id:u.id,t:u.t,n:unitExos(u.id).length,l:lessonsIn(u.id),g:(u.guide||'').length})))"));
-  const MIN_U=+(process.env.PATRI_MIN_UNITS||16);
+  const MIN_U=+(process.env.PATRI_MIN_UNITS||24);
   if(U.length<MIN_U)ko("PATRI : "+U.length+" modules (minimum "+MIN_U+")");
   U.forEach(u=>{
     if(u.n!==32)ko("module "+u.id+" : "+u.n+" exercices au lieu de 32");

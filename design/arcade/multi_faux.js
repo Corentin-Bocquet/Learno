@@ -54,6 +54,16 @@ window.ARC_MFAUX={
  "p148_07":["Que les héritiers revendent l'entreprise dans l'année"],
  "p148_21":["L'exonération de tout droit d'enregistrement sur le rachat"],
  "p148_28":["L'histoire du Code civil"],
+ /* modules de cas pratiques (12/10/2026) */
+ "p327_09":["L'abattement des frères et sœurs de 15 932 €"],
+ "p328_29":["Avez-vous pensé à renégocier votre crédit immobilier ?"],
+ "p329_22":["La belle-fille qui soignait le défunt à domicile"],
+ "p330_17":["Le nombre de contrats ouverts chez le même assureur"],
+ "p331_12":["Sa fille deviendra propriétaire de la maison après 10 ans"],
+ "p331_22":["Un bénéficiaire âgé de moins de 25 ans"],
+ "p332_03":["Un donateur de moins de 70 ans pour que le pacte existe"],
+ "p333_27":["Le père reste seul dirigeant pendant les 3 ans"],
+ "p334_05":["La holding détient au moins 95 % de la filiale"],
  /* ---------- NEGO ---------- */
  "n149_05":["Le rendement promis par le commercial d'un concurrent"],
  "n149_16":["Céder vite pour préserver la relation"],
