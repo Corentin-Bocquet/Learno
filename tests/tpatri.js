@@ -107,7 +107,17 @@ setTimeout(()=>{
   E(`L=buildLesson(courseUnits('PATRI')[0].id,0);L.wrong=1;L.ok=6;L.maxCombo=0;window.__av=S.xp;finish()`);
   const gain=E("S.xp-window.__av");
   console.log("XP d'une leçon sous potion ×2 :",gain);
-  if(gain!==20)ko("la potion ×2 devrait donner 20 XP sur une leçon imparfaite, pas "+gain);
+  const XPX=E("XP_X");
+  if(gain!==20*XPX)ko("la potion ×2 devrait donner "+20*XPX+" XP sur une leçon imparfaite (XP ×"+XPX+"), pas "+gain);
+  /* potion active au lancement du quiz, terminée à la fin : le multiplicateur est conservé */
+  E(`closeModal();S.boost={m:2,until:Date.now()+600000,t0:Date.now(),id:'p2'};L=buildLesson(courseUnits('PATRI')[0].id,0);L.wrong=1;L.ok=6;L.maxCombo=0;renderQ(L.queue[0]);S.boost.until=Date.now()-1000;window.__av=S.xp;finish()`);
+  const gainFin=E("S.xp-window.__av");
+  console.log("XP avec potion finie pendant le quiz :",gainFin);
+  if(gainFin!==20*XPX)ko("une potion active au lancement doit compter jusqu'à la fin du quiz : "+gainFin+" au lieu de "+20*XPX);
+  /* potion déjà finie au lancement : aucun bonus */
+  E(`closeModal();L=buildLesson(courseUnits('PATRI')[0].id,0);L.wrong=1;L.ok=6;L.maxCombo=0;renderQ(L.queue[0]);window.__av=S.xp;finish()`);
+  const gainSans=E("S.xp-window.__av");
+  if(gainSans!==10*XPX)ko("sans potion le quiz doit donner "+10*XPX+" XP, pas "+gainSans);
   E("closeModal();S.boost={m:3,until:Date.now()+1000,id:'p3'};drinkPotion('p2')");
   if(E("S.boost.m")!==3)ko("une potion plus faible ne doit pas écraser une plus forte");
 

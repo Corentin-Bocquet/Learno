@@ -217,9 +217,19 @@ else{
   if(!/14/.test(hd.getElementById("calc-res").textContent))ko("resultat sur la tele : "+hd.getElementById("calc-res").textContent);
   if(!/14/.test(rq().querySelector("#rq-cres").textContent))ko("resultat sur le telephone : "+rq().querySelector("#rq-cres").textContent);
   if(!/2\(3\+4\)/.test(rq().querySelector("#rq-cexp").textContent))ko("expression sur le telephone : "+rq().querySelector("#rq-cexp").textContent);
+  /* corriger un chiffre sans tout effacer : toucher dans l expression place le curseur */
+  const sp=rq().querySelector('#rq-cexp [data-i="2"]'); if(!sp)ko("l expression n est pas cliquable sur le telephone");
+  else{ sp.dispatchEvent(new pw.MouseEvent("click",{bubbles:true,clientX:100})); await st(700);
+    if(hw.calcState().pos!==3)ko("le toucher doit placer le curseur apres le 3 : "+hw.calcState().pos);
+    ck("\u232B"); await st(400); ck("5"); await st(400);
+    if(hw.calcState().exp!=="2(5+4)")ko("correction de l expression : "+hw.calcState().exp);
+    clickP(rq().querySelector('[data-a="cmove"][data-d="-1"]')); await st(500);
+    if(hw.calcState().pos!==2)ko("la fleche gauche deplace le curseur : "+hw.calcState().pos);
+    ck("="); await st(700);
+    if(!/18/.test(hd.getElementById("calc-res").textContent))ko("resultat apres correction : "+hd.getElementById("calc-res").textContent); }
   const use=rq().querySelector("#rq-cuse"); if(!use||use.hidden)ko("Utiliser comme reponse absent"); else{ clickP(use); await st(900); }
   if(hd.getElementById("calc-wrap"))ko("la calculatrice reste ouverte apres Utiliser");
-  if(hd.getElementById("numin").value.replace(/\s/g,"")!=="14")ko("reponse remplie : "+hd.getElementById("numin").value);
+  if(hd.getElementById("numin").value.replace(/\s/g,"")!=="18")ko("reponse remplie : "+hd.getElementById("numin").value);
   if(!rq().querySelector(".rq-keys"))ko("retour au pave numerique apres la calculatrice");
   clickP(rq().querySelector('[data-a="calc"]')); await st(800);
   clickP(rq().querySelector('[data-a="calcclose"]')); await st(800);

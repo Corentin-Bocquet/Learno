@@ -694,3 +694,11 @@ body.theme-light .arc-soltab .r span:first-child,body.theme-light .arc-solbin b,
 .arc-situ .gstory{margin:0}
 .arc-situ .s{margin:8px 0 0;font-size:13px;color:var(--dim);line-height:1.45}
 .arc-prate{grid-column:1 / -1;display:flex;align-items:center;gap:5px;font-size:12px;color:var(--dim);margin:2px 0}
+
+/* calculatrice : curseur de saisie dans l expression (toucher pour corriger un chiffre) */
+.arc-calc .calcexp,.rq-cexp{cursor:text;min-height:30px}
+.arc-calc .calcexp span,.rq-cexp span{padding:6px 0}
+.cc{display:inline-block;width:2px;height:1.15em;margin:0 -1px;background:#1CB0F6;vertical-align:text-bottom;animation:ccBlink 1s steps(1) infinite}
+.cph{opacity:.45}
+@keyframes ccBlink{50%{opacity:0}}
+@media (prefers-reduced-motion:reduce){ .cc{animation:none} }
