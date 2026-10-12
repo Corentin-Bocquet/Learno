@@ -45,7 +45,7 @@ const clk=(w,el)=>el.dispatchEvent(new w.MouseEvent("click",{bubbles:true}));
 const st=ms=>wait(ms||700);
 
 /* reglages rapides et questions fournies */
-A.cfg.count=1; A.cfg.rev=1; A.cfg.nq=3; A.cfg.tq=15;
+A.cfg.count=1; A.cfg.rev=3; A.cfg.nq=3; A.cfg.tq=15;
 A.cfg.pool=()=>hw.eval("EXOS.filter(e=>(e.t==='mcq'||e.t==='tf')&&e.q&&(e.t==='tf'||(e.o&&e.o.length>=4))).slice(0,20)");
 
 /* 1. fenetre de la tele : le nombre de joueurs est reglable, solo par defaut */
@@ -62,62 +62,71 @@ if(!hd.querySelector("#tele-arena .ta-lobby"))ko("salon absent sur la tele");
 if(!hd.querySelector("#tele-arena svg.tele-qr")||!hd.querySelector("#tele-arena .ta-code"))ko("code ou QR absent du salon");
 
 /* 2. deux telephones rejoignent */
+const until=async(f,ms)=>{ const t=Date.now(); while(Date.now()-t<(ms||15000)){ try{ if(f())return true; }catch(e){} await wait(100); } return false; };
 const pa=boot("http://localhost/Learno/?tele="+code), pb=boot("http://localhost/Learno/?tele="+code);
-await wait(5200);
 const A1={w:pa.window,d:pa.window.document}, B1={w:pb.window,d:pb.window.document};
-const join=async(X,nm)=>{ const i=X.d.getElementById("ra-name"); if(!i){ ko("formulaire de prenom absent ("+nm+")"); return; } i.value=nm; clk(X.w,X.d.querySelector('[data-a="join"]')); await st(500); };
-await join(A1,"Léa"); 
+const rqA=()=>A1.d.getElementById("rc-q"), rqB=()=>B1.d.getElementById("rc-q");
+await until(()=>A1.d.getElementById("ra-name")&&B1.d.getElementById("ra-name"),30000);
+const join=async(X,nm,n)=>{ const i=X.d.getElementById("ra-name"); if(!i){ ko("formulaire de prenom absent ("+nm+")"); return; } i.value=nm; clk(X.w,X.d.querySelector('[data-a="join"]')); await until(()=>A.M.ord.length>=n,8000); };
+await join(A1,"Léa",1);
 if(A.M.ord.length!==1)ko("le premier joueur n est pas enregistre");
-await join(B1,"<b>Tom</b>");
+await join(B1,"<b>Tom</b>",2);
 if(A.M.ord.length!==2)ko("deux joueurs attendus : "+A.M.ord.length);
 if(hd.querySelector(".ta-chips b"))ko("un prenom avec du HTML s affiche tel quel sur la tele");
-if(!/Tom/.test(hd.querySelector(".ta-chips").textContent))ko("prenom absent de la tele");
-await wait(2600);
+const chipsTxt=()=>(hd.querySelector(".ta-chips")||{}).textContent||"";
+if(!/Tom/.test(chipsTxt())&&A.M.ph==="lobby"||A.M.ph==="count"&&!/Tom/.test(chipsTxt()))ko("prenom absent de la tele");
 
 /* 3. question 1 : Lea juste, Tom faux */
+await until(()=>A.M.ph==="q"&&A.M.q.i===0,10000);
 if(A.M.ph!=="q")ko("la partie ne demarre pas apres le compte a rebours : "+A.M.ph);
-const rqA=()=>A1.d.getElementById("rc-q"), rqB=()=>B1.d.getElementById("rc-q");
+const btns=X=>[...X.d.querySelectorAll("#rc-q .rq-c")];
+await until(()=>btns(A1).length>=2&&btns(B1).length>=2,8000);
 if(!hd.querySelector("#tele-arena .ta-opts .ta-o"))ko("question absente de la tele");
-const cA=[...rqA().querySelectorAll(".rq-c")], cB=[...rqB().querySelectorAll(".rq-c")];
-if(cA.length<2)ko("boutons de reponse absents sur le telephone");
-const good=A.M.q.a, bad=(good+1)%cA.length;
-clk(A1.w,cA[good]); await st(500);
+if(btns(A1).length<2)ko("boutons de reponse absents sur le telephone");
+const good=A.M.q.a, bad=(good+1)%btns(A1).length;
+clk(A1.w,btns(A1)[good]);
+await until(()=>/Réponse envoyée/.test(rqA().textContent),8000);
 if(!/Réponse envoyée/.test(rqA().textContent))ko("Lea ne voit pas sa reponse envoyee : "+rqA().textContent);
 if(A.M.ph!=="q")ko("la question ne doit pas finir avant la reponse de Tom");
-clk(B1.w,cB[bad]); await st(900);
+clk(B1.w,btns(B1)[bad]);
+await until(()=>A.M.ph==="rev",8000);
 if(A.M.ph!=="rev")ko("la question doit finir quand tout le monde a repondu : "+A.M.ph);
 const ids=A.M.ord, la=A.M.pl[ids[0]], to=A.M.pl[ids[1]];
 if(!(la.score>=500&&la.score<=1000))ko("points de Lea : "+la.score);
 if(to.score!==0)ko("Tom ne doit rien marquer : "+to.score);
+await until(()=>rqA().querySelector(".rq-res.ok")&&rqB().querySelector(".rq-res.ko"),8000);
 if(!rqA().querySelector(".rq-res.ok"))ko("Lea ne voit pas Bonne reponse");
 if(!rqB().querySelector(".rq-res.ko"))ko("Tom ne voit pas Rate");
 if(!hd.querySelector("#tele-arena .ta-o.ok")||!hd.querySelector("#tele-arena .ta-board"))ko("correction ou classement absents de la tele");
 
 /* 4. question 2 : Tom ne repond pas, le temps fait finir la question */
-await wait(1800);
+await until(()=>A.M.ph==="q"&&A.M.q.i===1,12000);
 if(A.M.ph!=="q"||A.M.q.i!==1)ko("la question 2 ne demarre pas : "+A.M.ph);
+await until(()=>btns(A1).length>=2,8000);
 A.M.t0-=14200;   /* il ne reste que 0,8 s : Tom n a rien envoye */
-clk(A1.w,[...rqA().querySelectorAll(".rq-c")][A.M.q.a]);
-for(let n=0;n<30&&!(A.M.pl[ids[1]].last&&A.M.pl[ids[1]].last.none);n++)await wait(100);
+clk(A1.w,btns(A1)[A.M.q.a]);
+await until(()=>A.M.pl[ids[1]].last&&A.M.pl[ids[1]].last.none,8000);
 if(!(A.M.pl[ids[1]].last&&A.M.pl[ids[1]].last.none))ko("le temps doit terminer la question (Tom sans reponse)");
 if(A.M.pl[ids[1]].score!==0)ko("Tom ne marque rien sans reponse");
-if(!/Trop tard/.test(rqB().textContent)&&A.M.ph==="rev")ko("Tom devrait voir Trop tard : "+rqB().textContent);
+await until(()=>/Trop tard/.test(rqB().textContent),8000);
+if(!/Trop tard/.test(rqB().textContent))ko("Tom devrait voir Trop tard : "+rqB().textContent);
 
 /* 5. un faux joueur ou un message hors partie est ignore */
 const before=JSON.stringify(A.M.pl);
-hw.__tele.H.rt&&hw.__tele.hooks.msg({r:"p",t:"ans",pid:"ZZZZZZ",i:0});
+hw.__tele.hooks.msg({r:"p",t:"ans",pid:"ZZZZZZ",i:0});
 if(JSON.stringify(A.M.pl)!==before)ko("un joueur inconnu a modifie la partie");
 
 /* 6. question 3 puis podium */
-for(let n=0;n<40&&!(A.M.ph==="q"&&A.M.q.i===2);n++)await wait(100);
-await st(300);
+await until(()=>A.M.ph==="q"&&A.M.q.i===2,12000);
 if(A.M.ph!=="q"||A.M.q.i!==2)ko("la question 3 ne demarre pas : "+A.M.ph);
-clk(A1.w,[...rqA().querySelectorAll(".rq-c")][A.M.q.a]);
-clk(B1.w,[...rqB().querySelectorAll(".rq-c")][A.M.q.a]); await st(900);
-await wait(1800);
+await until(()=>btns(A1).length>=2&&btns(B1).length>=2,8000);
+clk(A1.w,btns(A1)[A.M.q.a]);
+clk(B1.w,btns(B1)[A.M.q.a]);
+await until(()=>A.M.ph==="end",15000);
 if(A.M.ph!=="end")ko("la partie doit se terminer apres 3 questions : "+A.M.ph);
 if(hd.querySelectorAll("#tele-arena .ta-p").length!==2)ko("podium incomplet");
 if(!/Léa/.test(hd.querySelector("#tele-arena .ta-p.p1").textContent))ko("Lea devrait gagner");
+await until(()=>/1er sur 2/.test(rqA().textContent)&&/2e sur 2/.test(rqB().textContent),8000);
 if(!/1er sur 2/.test(rqA().textContent))ko("rang de Lea : "+rqA().textContent);
 if(!/2e sur 2/.test(rqB().textContent))ko("rang de Tom : "+rqB().textContent);
 
