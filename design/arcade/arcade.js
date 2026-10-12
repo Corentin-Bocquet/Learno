@@ -318,7 +318,7 @@
   function studied(e){
     const u=unitOf(e.u); if(!u||u.c!==S.active||!unitUnlocked(e.u))return false;
     if(S.items&&S.items[e.i]&&S.items[e.i].n>0)return true;
-    return unitExos(e.u).indexOf(e)<Math.min(lessonsIn(e.u),unitDone(e.u)+1)*4;
+    return unitExos(e.u).indexOf(e)<Math.min(lessonsIn(e.u),unitDone(e.u)+1)*lessonStep(e.u);
   }
   function pool(test,min){ return EXOS.filter(e=>test(e)&&studied(e)); }
   window.arcPool=pool; window.arcChoix=CHOIX;
@@ -561,7 +561,7 @@
   function lessonSec(u,li){
     const all=sections(u), cand=all.filter(s=>s.t&&!GOALS.test(s.t));
     if(!cand.length)return all[0]||null;
-    const W=mots(unitExos(u.id).slice(li*4,li*4+4).map(e=>[e.q,e.ctx,e.w,(e.o||[]).join(" ")].join(" ")).join(" "));
+    const W=mots(unitExos(u.id).slice(li*lessonStep(u.id),(li+1)*lessonStep(u.id)).map(e=>[e.q,e.ctx,e.w,(e.o||[]).join(" ")].join(" ")).join(" "));
     const nL=Math.max(1,lessonsIn(u.id)), base=Math.min(cand.length-1,Math.floor(li*cand.length/nL));
     let best=cand[base], bs=-1;
     cand.forEach((s,i)=>{ const M=mots(s.t+" "+s.h); let n=0; M.forEach(w=>{ if(W.has(w))n++; });
@@ -919,7 +919,7 @@
   function lessonGate(Lx){
     if(!Lx||Lx.mode!=="normal"||Lx.uid==null||!(Lx.li>=0))return Lx;
     const uid=Lx.uid, cid=unitOf(uid).c, us=courseUnits(cid), ui=us.findIndex(u=>u.id===uid);
-    const pool=unitExos(uid), lim=(Lx.li+1)*4;
+    const pool=unitExos(uid), lim=(Lx.li+1)*lessonStep(uid);
     const ok=e=>{ if(e.u===uid)return pool.indexOf(e)<lim; const k=us.findIndex(u=>u.id===e.u); return k>=0&&k<ui; };
     const keep=Lx.queue.filter(ok), ids=new Set(keep.map(e=>e.i)), manque=Lx.queue.length-keep.length;
     if(manque>0){
