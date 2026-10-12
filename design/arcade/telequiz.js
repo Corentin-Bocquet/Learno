@@ -61,11 +61,23 @@
       return {k:"o",it:rows.map(r=>{ const b=r.querySelector(".sortbin.sel"); return {k:+r.id.slice(2),t:txt(r.querySelector(".sortit")),b:b?+b.dataset.b:-1}; }),bins:$$q("#qwrap .sortrow:first-child .sortbin").map(txt),rd}; }
     if(t==="order"){ return {k:"r",it:$$q("#olist .orow .choice").map(txt),rd}; }
     return null; }
+  /* la question et toutes les reponses doivent tenir a l ecran de la tele :
+     on part d un grand zoom, puis on le reduit tant que ca deborde */
+  const FIT={key:"",z:1};
+  function fit(){
+    const qw=$id("qwrap"); if(!qw)return;
+    const base=clamp((window.innerWidth||1280)/1000,1.15,1.9);
+    const key=((typeof A!=="undefined"&&A&&A.ex&&A.ex.i)||"")+"|"+(typeof A!=="undefined"&&A&&A.done?1:0)+"|"+base+"|"+(window.innerHeight||0);
+    if(key!==FIT.key){ FIT.key=key; FIT.z=base; }
+    let z=FIT.z; const set=v=>document.documentElement.style.setProperty("--tz",v.toFixed(3));
+    set(z);
+    for(let n=0;n<16&&z>0.45&&qw.scrollHeight>qw.clientHeight+2;n++){ z=z*0.94; set(z); }
+    FIT.z=z; }
   hooks.spec=function(){
     let q=null; try{ q=H.on&&H.hasPhone?spec():null; }catch(e){ q=null; }
     const tv=!!(q&&q.k!=="btns");
     document.body.classList.toggle("tele-tv",tv);
-    if(tv){ const z=clamp((window.innerWidth||1280)/1000,1.15,1.9); document.documentElement.style.setProperty("--tz",z.toFixed(2)); document.documentElement.style.setProperty("--tzc",clamp((window.innerHeight||720)/900,1,1.25).toFixed(2)); }
+    if(tv){ document.documentElement.style.setProperty("--tzc",clamp((window.innerHeight||720)/900,1,1.25).toFixed(2)); try{ fit(); }catch(e){} }
     return q; };
 
   /* ---------------- PC : rejouer les gestes du joueur ---------------- */

@@ -87,3 +87,5 @@ body.tele-phone{overflow:hidden}
 #tele-rc.keys .rc-pad{flex-basis:60px;min-height:60px}
 #tele-rc.keys .rc-pad span{display:none}
 @media (max-height:700px){ .rc-dp{grid-template-columns:repeat(3,54px);grid-template-rows:repeat(3,54px)} .rc-g small{display:none} }
+
+.rc-pad.cur{border-color:#1CB0F6;background:linear-gradient(160deg,rgba(28,176,246,.28),rgba(28,176,246,.08));box-shadow:0 0 0 4px rgba(28,176,246,.35),inset 0 1px 0 rgba(255,255,255,.35)}

@@ -27910,6 +27910,8 @@ body.tele-phone{overflow:hidden}
 #tele-rc.keys .rc-pad{flex-basis:60px;min-height:60px}
 #tele-rc.keys .rc-pad span{display:none}
 @media (max-height:700px){ .rc-dp{grid-template-columns:repeat(3,54px);grid-template-rows:repeat(3,54px)} .rc-g small{display:none} }
+
+.rc-pad.cur{border-color:#1CB0F6;background:linear-gradient(160deg,rgba(28,176,246,.28),rgba(28,176,246,.08));box-shadow:0 0 0 4px rgba(28,176,246,.35),inset 0 1px 0 rgba(255,255,255,.35)}
 /* =====================================================================
    TELECOMMANDE, MODE QUIZ (12/10/2026)
    Telephone : gros boutons colores comme une manette. Telé : question en
@@ -31047,7 +31049,7 @@ window.ARC_MFAUX={
       <div id="rc-q" class="rc-q"></div>
       <div class="rc-mainrow"><button type="button" id="rc-main" class="rc-main">OK</button></div>
       <div id="rc-ch" class="rc-chs" style="display:none"></div>
-      <div id="rc-pad" class="rc-pad"><span>Glisse pour déplacer le curseur<br>Touche pour cliquer<br>Deux doigts pour défiler</span></div>
+      <div id="rc-pad" class="rc-pad"><span>Glisse : fait défiler la télé<br>Reste appuyé, puis glisse : déplace le curseur<br>Touche : clique</span></div>
       <div class="rc-mid"><div class="rc-dp">
         <button type="button" class="rc-d u" data-d="up" aria-label="Haut">${arrow("up")}</button>
         <button type="button" class="rc-d l" data-d="left" aria-label="Gauche">${arrow("left")}</button>
@@ -31065,16 +31067,28 @@ window.ARC_MFAUX={
     document.body.appendChild(d);
     document.body.classList.add("tele-phone");
     /* pave tactile */
-    const pad=$id("rc-pad"), pts=new Map(); let t0=0, moved=0, multi=false, ax=0, ay=0, flush=null, lastSc=0;
-    const send=()=>{ flush=null; if(ax||ay){ pSend({t:"move",dx:Math.round(ax),dy:Math.round(ay)}); ax=0; ay=0; } };
+    /* un doigt qui glisse fait defiler la tele, comme sur un telephone.
+       Rester appuye puis glisser deplace le curseur. Un toucher clique. */
+    const pad=$id("rc-pad"), pts=new Map(); let t0=0, moved=0, multi=false, mode="", hold=null, sx=0, sy=0, ax=0, ay=0, as=0, flush=null, lastSc=0;
+    const LONG=260, SLOP=9, GS=3.4;
+    const send=()=>{ flush=null; if(ax||ay){ pSend({t:"move",dx:Math.round(ax),dy:Math.round(ay)}); ax=0; ay=0; } if(as){ pSend({t:"scroll",dy:Math.round(as)}); as=0; } };
+    const setMode=m=>{ mode=m; pad.classList.toggle("cur",m==="cursor"); };
     pad.addEventListener("pointerdown",e=>{ e.preventDefault(); try{ pad.setPointerCapture(e.pointerId); }catch(_){}
-      pts.set(e.pointerId,{x:e.clientX,y:e.clientY}); if(pts.size===1){ t0=Date.now(); moved=0; multi=false; } else multi=true; });
+      pts.set(e.pointerId,{x:e.clientX,y:e.clientY});
+      if(pts.size===1){ t0=Date.now(); moved=0; multi=false; sx=e.clientX; sy=e.clientY; setMode(""); clearTimeout(hold);
+        hold=setTimeout(()=>{ if(pts.size===1&&!mode&&moved<=SLOP){ setMode("cursor"); buzz(16); } },LONG); }
+      else{ multi=true; clearTimeout(hold); setMode("scroll"); } });
     pad.addEventListener("pointermove",e=>{ const p=pts.get(e.pointerId); if(!p)return; e.preventDefault();
-      const dx=e.clientX-p.x, dy=e.clientY-p.y; p.x=e.clientX; p.y=e.clientY; moved+=Math.abs(dx)+Math.abs(dy);
-      if(pts.size>=2){ multi=true; const n=Date.now(); lastSc+=dy; if(n-(pad._st||0)>40){ pad._st=n; pSend({t:"scroll",dy:Math.round(-lastSc*4)}); lastSc=0; } return; }
-      const sp=Math.hypot(dx,dy), g=2.1+Math.min(3.2,sp*.22); ax+=dx*g; ay+=dy*g; if(!flush)flush=setTimeout(send,28); });
-    const up=e=>{ if(!pts.has(e.pointerId))return; pts.delete(e.pointerId);
-      if(pts.size===0){ if(!multi&&Date.now()-t0<300&&moved<12){ send(); pSend({t:"tap"}); buzz(10); } else send(); } };
+      const dx=e.clientX-p.x, dy=e.clientY-p.y; p.x=e.clientX; p.y=e.clientY; moved=Math.max(moved,Math.hypot(e.clientX-sx,e.clientY-sy));
+      if(pts.size>=2){ multi=true; setMode("scroll"); }
+      else if(!mode&&moved>SLOP){ clearTimeout(hold); setMode("scroll"); }
+      if(mode==="cursor"){ const sp=Math.hypot(dx,dy), g=2.1+Math.min(3.2,sp*.22); ax+=dx*g; ay+=dy*g; }
+      else if(mode==="scroll"){ as+=-dy*GS*(1+Math.min(1.2,Math.abs(dy)*.05)); }
+      else return;
+      if(!flush)flush=setTimeout(send,30); });
+    const up=e=>{ if(!pts.has(e.pointerId))return; pts.delete(e.pointerId); clearTimeout(hold);
+      if(pts.size===0){ const was=mode; send(); setMode("");
+        if(!multi&&!was&&Date.now()-t0<LONG+120&&moved<=SLOP){ pSend({t:"tap"}); buzz(10); } } };
     pad.addEventListener("pointerup",up); pad.addEventListener("pointercancel",up);
     /* croix directionnelle avec repetition */
     d.querySelectorAll(".rc-d[data-d]").forEach(b=>{ let rep=null, to=null;
@@ -31225,11 +31239,23 @@ window.ARC_MFAUX={
       return {k:"o",it:rows.map(r=>{ const b=r.querySelector(".sortbin.sel"); return {k:+r.id.slice(2),t:txt(r.querySelector(".sortit")),b:b?+b.dataset.b:-1}; }),bins:$$q("#qwrap .sortrow:first-child .sortbin").map(txt),rd}; }
     if(t==="order"){ return {k:"r",it:$$q("#olist .orow .choice").map(txt),rd}; }
     return null; }
+  /* la question et toutes les reponses doivent tenir a l ecran de la tele :
+     on part d un grand zoom, puis on le reduit tant que ca deborde */
+  const FIT={key:"",z:1};
+  function fit(){
+    const qw=$id("qwrap"); if(!qw)return;
+    const base=clamp((window.innerWidth||1280)/1000,1.15,1.9);
+    const key=((typeof A!=="undefined"&&A&&A.ex&&A.ex.i)||"")+"|"+(typeof A!=="undefined"&&A&&A.done?1:0)+"|"+base+"|"+(window.innerHeight||0);
+    if(key!==FIT.key){ FIT.key=key; FIT.z=base; }
+    let z=FIT.z; const set=v=>document.documentElement.style.setProperty("--tz",v.toFixed(3));
+    set(z);
+    for(let n=0;n<16&&z>0.45&&qw.scrollHeight>qw.clientHeight+2;n++){ z=z*0.94; set(z); }
+    FIT.z=z; }
   hooks.spec=function(){
     let q=null; try{ q=H.on&&H.hasPhone?spec():null; }catch(e){ q=null; }
     const tv=!!(q&&q.k!=="btns");
     document.body.classList.toggle("tele-tv",tv);
-    if(tv){ const z=clamp((window.innerWidth||1280)/1000,1.15,1.9); document.documentElement.style.setProperty("--tz",z.toFixed(2)); document.documentElement.style.setProperty("--tzc",clamp((window.innerHeight||720)/900,1,1.25).toFixed(2)); }
+    if(tv){ document.documentElement.style.setProperty("--tzc",clamp((window.innerHeight||720)/900,1,1.25).toFixed(2)); try{ fit(); }catch(e){} }
     return q; };
 
   /* ---------------- PC : rejouer les gestes du joueur ---------------- */

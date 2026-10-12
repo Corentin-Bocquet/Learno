@@ -234,6 +234,27 @@ if(quizOn())ko("le bouton Curseur ne rend pas la telecommande classique");
 clickP(pd.getElementById("rc-free")); await st(300);
 if(!quizOn())ko("le bouton Quiz ne revient pas aux boutons");
 
+/* gestes du pave : un doigt defile, appui long puis glisse deplace, toucher clique */
+{
+  const sent=[]; const orig=PT.P.rt.send.bind(PT.P.rt); PT.P.rt.send=p=>{ sent.push(p); return orig(p); };
+  const pad=pd.getElementById("rc-pad");
+  const pe=(type,x,y)=>{ const e=new pw.MouseEvent(type,{bubbles:true,cancelable:true,clientX:x,clientY:y}); e.pointerId=1; pad.dispatchEvent(e); };
+  const cnt=t=>sent.filter(m=>m.t===t).length, sum=t=>sent.filter(m=>m.t===t).reduce((a,m)=>a+(m.dy||0),0);
+  sent.length=0; pe("pointerdown",100,100); for(let i=1;i<=6;i++)pe("pointermove",100,100+i*15); pe("pointerup",100,190); await wait(150);
+  if(!cnt("scroll")||sum("scroll")>=0)ko("glisser vers le bas doit faire remonter la page : "+JSON.stringify(sent));
+  if(cnt("move")||cnt("tap"))ko("un glissement simple ne doit ni deplacer le curseur ni cliquer");
+  sent.length=0; pe("pointerdown",100,200); for(let i=1;i<=6;i++)pe("pointermove",100,200-i*15); pe("pointerup",100,110); await wait(150);
+  if(!cnt("scroll")||sum("scroll")<=0)ko("glisser vers le haut doit faire descendre la page");
+  sent.length=0; pe("pointerdown",100,100); await wait(380); pe("pointermove",120,110); pe("pointermove",150,125); pe("pointerup",150,125); await wait(150);
+  if(!cnt("move"))ko("appui long puis glisse doit deplacer le curseur");
+  if(cnt("scroll")||cnt("tap"))ko("en mode curseur : ni defilement ni clic : "+JSON.stringify(sent));
+  sent.length=0; pe("pointerdown",100,100); await wait(40); pe("pointerup",100,100); await wait(100);
+  if(cnt("tap")!==1||cnt("scroll")||cnt("move"))ko("un toucher rapide doit cliquer une fois : "+JSON.stringify(sent));
+  sent.length=0; pe("pointerdown",100,100); await wait(420); pe("pointerup",100,100); await wait(100);
+  if(cnt("tap")||cnt("scroll")||cnt("move"))ko("un appui long sans bouger ne doit rien envoyer : "+JSON.stringify(sent));
+  PT.P.rt.send=orig;
+}
+
 /* un format visuel garde la telecommande classique */
 if(startQ("curve")){ await st(900); if(quizOn())ko("un format visuel ne doit pas passer en mode quiz"); if(hd.body.classList.contains("tele-tv"))ko("la tele ne doit pas changer pour un format visuel"); }
 /* hors quiz : la tele reprend son aspect normal */
