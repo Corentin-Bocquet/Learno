@@ -29244,7 +29244,7 @@ window.ARC_MFAUX={
     const cid=S.active, due=dueItems(cid,999).length, calib=typeof needsCalib==="function"&&needsCalib(cid);
     return `<div class="arc-card arc-streak"><div class="top">${ico("flame",46,"var(--orange)")}
         <div><div class="n arc-h">${S.streak} jour${S.streak>1?"s":""}</div>
-        <div class="s">${S.lastDay===today()?"Série tenue aujourd'hui. Bravo.":S.streak?"Fais une leçon pour tenir ta série":"Fais une leçon pour lancer ta série"}${S.streak&&gelDays().some(x=>dayDiff(x,today())<=S.streak)?`<br><span class="gl">${aimg("gel",16)} Un gel a sauvé un jour de ta série</span>`:""}</div></div></div>
+        <div class="s">${S.lastDay===today()?"Série tenue aujourd'hui. Bravo.":S.streak?"Fais une leçon pour tenir ta série":"Fais une leçon pour lancer ta série"}${S.streak&&gelDays().some(x=>dayDiff(x,today())<=S.streak)?`<br><span class="gl">${aimg("gel",16)} ${(n=>n>1?n+" gels ont sauvé ta série":"Un gel a sauvé un jour de ta série")(gelDays().filter(x=>dayDiff(x,today())<=S.streak).length)}</span>`:""}</div></div></div>
         <div class="arc-week">${weekHTML()}</div></div>
       ${calib?"":resumeCard()}
       ${chestRow()}
@@ -29965,10 +29965,30 @@ window.ARC_MFAUX={
         semaine (flocon), pour que « 2 jours » ne surprenne plus.          */
   function streakFix(){
     if(typeof S==="undefined"||!S||!S.lastDay)return;
+    gelAuto();
     const d=dayDiff(S.lastDay,today());
-    if(d>2||(d===2&&!(S.freezes>0))){ if(S.streak){ S.streak=0; save(); } }
+    if(d>=2){ if(S.streak){ S.streak=0; save(); } }
     Object.keys(S.courses||{}).forEach(k=>{ const c=S.courses[k]; if(!c||!c.lastDay)return;
-      const e=dayDiff(c.lastDay,today()); if((e>2||(e===2&&!(S.freezes>0)))&&c.streak)c.streak=0; });
+      if(dayDiff(c.lastDay,today())>=2&&c.streak)c.streak=0; });
+  }
+  /* 7 decies bis. GELS AUTOMATIQUES (demande du 12/10/2026)
+     Avant, un gel ne couvrait qu un seul jour manque, et seulement au moment
+     de la lecon suivante : deux jours manques cassaient la serie meme avec
+     plusieurs gels. Desormais, des l ouverture, chaque jour manque consomme
+     un gel. Si les gels couvrent tous les jours manques, la serie est gardee
+     (le dernier jour tenu devient hier) et chaque jour sauve est note. S il
+     n y a pas assez de gels, la serie est perdue et les gels sont gardes.   */
+  function gelAuto(){
+    if(typeof S==="undefined"||!S||!S.lastDay)return 0;
+    const t=today(), manque=dayDiff(S.lastDay,t)-1;
+    if(manque<1||!S.streak||!((S.freezes|0)>=manque))return 0;
+    const p=S.lastDay.split("-").map(Number), jour=k=>fmtDay(new Date(p[0],p[1]-1,p[2]+k)), hier=jour(manque);
+    for(let k=1;k<=manque;k++){ const j=jour(k); if(!gelDays().includes(j))gelDays().push(j); }
+    Object.keys(S.courses||{}).forEach(k=>{ const c=S.courses[k]; if(c&&c.lastDay&&c.streak&&dayDiff(c.lastDay,S.lastDay)===0)c.lastDay=hier; });
+    S.freezes-=manque; S.saved=(S.saved|0)+manque; S.lastDay=hier;
+    if(gelDays().length>60)S.gelDays=gelDays().slice(-60);
+    save();
+    return manque;
   }
   const gelDays=()=>{ if(!Array.isArray(S.gelDays))S.gelDays=[]; return S.gelDays; };
 
@@ -30067,7 +30087,10 @@ window.ARC_MFAUX={
       ((S.quests||{}).list||[]).forEach((q,i)=>{ if(q.done&&!avant[i])QFX.push({n:q.r,t:q.n}); });
       if(QFX.length&&!document.body.classList.contains("arc-focus"))playQ();
       return r; }; }
-    if(typeof touchDay==="function"){ const __td=touchDay; window.touchDay=function(){ const avant=S.lastDay; const ev=__td.apply(null,arguments);
+    if(typeof touchDay==="function"){ const __td=touchDay; window.touchDay=function(){ const n=gelAuto(), avant=S.lastDay, f=S.freezes, trou=avant&&dayDiff(avant,today())>=2;
+      /* trou non couvert : la serie repart, l ancien moteur ne doit pas bruler un gel pour rien */
+      if(trou)S.freezes=0; let ev=__td.apply(null,arguments); if(trou)S.freezes=f;
+      if(n&&ev==="up")ev="freeze"; else
       if(ev==="freeze"&&avant){ const p=avant.split("-").map(Number); gelDays().push(fmtDay(new Date(p[0],p[1]-1,p[2]+1))); save(); }
       return ev; }; }
     window.badgeSVG=glassBadge;
