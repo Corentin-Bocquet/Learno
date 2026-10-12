@@ -27024,10 +27024,15 @@ setInterval(()=>{ const el=document.getElementById("boostc"); if(el){ if(boostOn
     if(t==="shop"){ $$(".navitem").forEach(b=>b.classList.toggle("on",b.dataset.tab===t)); show("shop"); renderShop(); refreshTop(); return; }
     return __setTab.apply(null,arguments);
   };
+  /* le multiplicateur est fige au lancement du quiz : une potion active a la premiere question
+     compte jusqu'a la fin, meme si son temps s'ecoule pendant le quiz (demande du 12/10/2026) */
+  const __rqb=renderQ;
+  window.renderQ=function(){ try{ if(L&&L.bm==null)L.bm=boostMult(); }catch(e){} return __rqb.apply(null,arguments); };
+  const quizMult=()=>Math.max(boostMult(),(typeof L!=="undefined"&&L&&L.bm)||1);
   /* fin de lecon : multiplicateur, coffre du moment, pari */
   const __fin=finish;
   window.finish=function(){
-    const m=boostMult(), avant=S.xp, cid=L&&L.cid;
+    const m=quizMult(), avant=S.xp, cid=L&&L.cid;
     __fin.apply(null,arguments);
     let bonus=0;
     if(m>1){
@@ -27047,7 +27052,7 @@ setInterval(()=>{ const el=document.getElementById("boostc"); if(el){ if(boostOn
   if(typeof examFinish==="function"){
     const __ef=examFinish;
     window.examFinish=function(){
-      const m=boostMult(), avant=S.xp;
+      const m=quizMult(), avant=S.xp;
       __ef.apply(null,arguments);
       if(m>1){ const b=Math.round((S.xp-avant)*(m-1)); S.xp+=b; S.daily.xp+=b; S.league.xpWeek+=b; save(); }
     };
