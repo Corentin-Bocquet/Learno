@@ -161,6 +161,14 @@ Source : `design/arcade/extras.js` (injectée par `tools/design.py` après `arca
   application, la hauteur suit l'écran entier (pas de bande morte en bas). Chargement : rien si c'est rapide,
   sinon une animation Arcade après 0,3 s ; l'ancien design n'apparaît jamais.
 
+## Télécommande (demande du 12/10/2026)
+
+Le PC branché en HDMI sur la télé affiche Learno, le téléphone le pilote. Source : `design/arcade/telecommande.js`
+et `telecommande.css` (injectés par `tools/design.py`), test `tests/ttele.js`.
+- Transport : Supabase Realtime (broadcast) sur le canal `learno-tele-<CODE>`, sans table ni compte. Code de 6 caractères tiré au hasard sur le PC, QR code maison (versions 1 à 6, vérifié par décodage).
+- Entrées : Plus (téléphone), barre latérale (PC). Le lien `?tele=CODE` ouvre directement la télécommande.
+- Téléphone : pavé tactile, croix directionnelle (navigation spatiale), boutons A B C D pour les QCM, pavé numérique, défilement, Retour, Accueil. Pas de glisser-déposer.
+
 ## Rédaction des leçons (guides) : visuel d'abord
 
 Demande de Corentin : une leçon doit se lire comme une fiche, pas comme un bloc de texte.
