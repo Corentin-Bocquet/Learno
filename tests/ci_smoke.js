@@ -33,6 +33,9 @@ setTimeout(()=>{
   console.log("contenu :",JSON.stringify(n));
   Object.keys(SEUILS).forEach(k=>{ if(n[k]<SEUILS[k])dur.push(k+" est tombe a "+n[k]+" (minimum "+SEUILS[k]+")"); });
 
+  const sansExamen=w.eval("COURSES.filter(c=>!(window.PEXAM&&PEXAM[c.id])).map(c=>c.id).join(',')");
+  if(sansExamen)dur.push("cours sans banque d'examen pratique : "+sansExamen);
+
   const doublons=w.eval("(()=>{const s={},d=[];EXOS.forEach(e=>{if(s[e.i])d.push(e.i);s[e.i]=1});return d.join(',')})()");
   if(doublons)dur.push("identifiants dupliques : "+doublons);
   const orphelins=w.eval("EXOS.filter(e=>!UNITS.find(u=>u.id===e.u)).map(e=>e.i).join(',')");

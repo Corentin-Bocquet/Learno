@@ -16,6 +16,10 @@
   const $id=i=>document.getElementById(i);
   const E=s=>typeof esc==="function"?esc(s):String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
   const fr=n=>String(n).replace(".",",");
+  /* l'enonce en fiche (extras.js) transforme tout « Libelle : valeur » en tableau : on garde ce rendu pour les donnees
+     (libelle de trois mots au plus) et on neutralise les phrases de recit en remplacant les deux-points par le signe de rapport */
+  const narr=t=>String(t||"").replace(/([.!?])\s+/g,"$1\n").split("\n").map(p=>{ const m=/^(.+?)\s:\s(.+)$/.exec(p);
+    return m&&m[1].trim().split(/\s+/).length>=4?m[1]+" \u2236 "+m[2]:p; }).join(" ");
   const DUREES=[
     {min:15,nm:"Rapide",d:"Un ou deux cas"},
     {min:30,nm:"Court",d:"Deux ou trois cas"},
@@ -54,7 +58,7 @@
       if(cs.mods&&cs.mods.length&&e.u==null)e.u=cs.mods[0];
       e.cas=cid+"-"+cs.id; e.k=n+1;
       e.ck=cs.t+" · question "+(n+1)+" sur "+cs.cards.length;
-      e.ctx=[cs.ctx,c.ctx].filter(Boolean).join(" ");
+      e.ctx=narr([cs.ctx,c.ctx].filter(Boolean).join(" "));
       if(!e.tab&&cs.tab)e.tab=cs.tab;
       if(!e.svg&&cs.svg)e.svg=cs.svg;
       if(e.d==null)e.d=.5;
