@@ -67,7 +67,7 @@
   const FIT={key:"",z:1};
   function fit(){
     const qw=$id("qwrap"); if(!qw)return;
-    const base=clamp((window.innerWidth||1280)/1000,1.15,1.9);
+    const base=clamp((window.innerWidth||1280)/650,1.3,3);
     const key=((typeof A!=="undefined"&&A&&A.ex&&A.ex.i)||"")+"|"+(typeof A!=="undefined"&&A&&A.done?1:0)+"|"+base+"|"+(window.innerHeight||0);
     if(key!==FIT.key){ FIT.key=key; FIT.z=base; }
     let z=FIT.z; const set=v=>document.documentElement.style.setProperty("--tz",v.toFixed(3));
@@ -78,6 +78,10 @@
     let q=null; try{ q=H.on&&H.hasPhone?spec():null; }catch(e){ q=null; }
     const tv=!!(q&&q.k!=="btns");
     document.body.classList.toggle("tele-tv",tv);
+    /* telecommande active : l'ecran de la tele est horizontal, on agrandit et on occupe toute la largeur */
+    const on=!!(H.on&&H.hasPhone);
+    document.body.classList.toggle("tele-on",on);
+    if(on)document.documentElement.style.setProperty("--tzs",clamp((window.innerWidth||1280)/1100,1,1.6).toFixed(2));
     if(tv){ document.documentElement.style.setProperty("--tzc",clamp((window.innerHeight||720)/900,1,1.25).toFixed(2)); try{ fit(); }catch(e){} }
     return q; };
 
