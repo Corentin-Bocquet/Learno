@@ -452,6 +452,8 @@
   /* un module deja commence reste ouvert : on ne reprend rien a personne */
   const __uu=unitUnlocked;
   window.unitUnlocked=function(uid){
+    /* cours express : tous les modules sont ouverts, dans le desordre, sans module precedent */
+    if(isExpress())return true;
     if(!__uu.apply(null,arguments))return false;
     const l=courseUnits(unitOf(uid).c), i=l.findIndex(u=>u.id===uid);
     return i<=0||crown(l[i-1].id)||started(uid);

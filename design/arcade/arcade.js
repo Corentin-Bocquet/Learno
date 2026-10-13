@@ -219,7 +219,7 @@
             aria-label="${got?"Coffre ouvert":ready?"Ouvrir le coffre":"Coffre verrouillé"}">${aimg(got?"ouvert":"coffre",40)}</button>`;
         }
       }
-      const can=unitComplete(u.id), crown=c.crowns[u.id];
+      const can=unitComplete(u.id)||isExpress(), crown=c.crowns[u.id];
       dots+=`<button class="arc-dot legend ${can?"on":""}" type="button" onclick="${can?`startLesson(${u.id},-1)`:"lockMsg()"}"
         aria-label="${crown?"Épreuve légendaire validée":"Épreuve légendaire"}">${ico(crown?"trophy":can?"crown":"lock",17)}</button>`;
       h+=`<div class="arc-card arc-mod ${cur?"cur":""} ${unlocked?"":"lock"}">
@@ -318,6 +318,8 @@
   function studied(e){
     const u=unitOf(e.u); if(!u||u.c!==S.active||!unitUnlocked(e.u))return false;
     if(S.items&&S.items[e.i]&&S.items[e.i].n>0)return true;
+    /* cours express : un module jamais commence n a rien fait etudier */
+    if(isExpress()&&unitDone(e.u)===0)return false;
     return lessonPool(e.u).indexOf(e)<Math.min(lessonsIn(e.u),unitDone(e.u)+1)*lessonStep(e.u);
   }
   function pool(test,min){ return EXOS.filter(e=>test(e)&&studied(e)); }
@@ -940,12 +942,13 @@
     if(!Lx||Lx.mode!=="normal"||Lx.uid==null||!(Lx.li>=0))return Lx;
     const uid=Lx.uid, cid=unitOf(uid).c, us=courseUnits(cid), ui=us.findIndex(u=>u.id===uid);
     const pool=lessonPool(uid), lim=(Lx.li+1)*lessonStep(uid);
-    const ok=e=>{ if(e.u===uid)return pool.indexOf(e)<lim; const k=us.findIndex(u=>u.id===e.u); return k>=0&&k<ui; };
+    const vu=e=>{ const it=S.items&&S.items[e.i]; return !!(it&&it.n>0); };
+    const ok=e=>{ if(e.u===uid)return pool.indexOf(e)<lim; const k=us.findIndex(u=>u.id===e.u); if(isExpress())return k>=0&&vu(e); return k>=0&&k<ui; };
     const keep=Lx.queue.filter(ok), ids=new Set(keep.map(e=>e.i)), manque=Lx.queue.length-keep.length;
     if(manque>0){
       const rec=e=>{ const it=S.items&&S.items[e.i]; return it&&it.n?recall(e.i):2; };
       const ici=pool.slice(0,lim).filter(e=>!ids.has(e.i)).sort((a,b)=>rec(a)-rec(b));
-      const avant=EXOS.filter(e=>{ const k=us.findIndex(u=>u.id===e.u); return k>=0&&k<ui&&!ids.has(e.i)&&S.items&&S.items[e.i]&&S.items[e.i].n>0; })
+      const avant=EXOS.filter(e=>{ const k=us.findIndex(u=>u.id===e.u); return k>=0&&(isExpress()?k!==ui:k<ui)&&!ids.has(e.i)&&S.items&&S.items[e.i]&&S.items[e.i].n>0; })
         .sort((a,b)=>rec(a)-rec(b));
       ici.concat(avant).slice(0,manque).forEach(e=>{ keep.push(e); ids.add(e.i); });
     }

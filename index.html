@@ -26465,7 +26465,8 @@ function buildLesson(uid,li,mode){
     /* cours express : les 5 exercices neufs de la lecon, puis 2 rappels tires des
        modules precedents (le plus oublie d abord). Jamais de repetition dans le module. */
     picked=pool.slice(li*5,li*5+5);
-    const avant=courseUnits(cid).filter(u=>u.id<uid).map(u=>u.id);
+    /* dans le desordre : rappels de tous les autres modules du cours deja vus */
+    const avant=courseUnits(cid).filter(u=>u.id!==uid).map(u=>u.id);
     const vieux=EXOS.filter(e=>avant.includes(e.u)&&S.items[e.i]&&S.items[e.i].n>0)
       .map(e=>({e,s:(1-recall(e.i))+Math.random()*.35})).sort((a,b)=>b.s-a.s).map(o=>o.e);
     picked=picked.concat(vieux.slice(0,2));
@@ -28481,7 +28482,7 @@ addEventListener("keydown",e=>{
   if(KBUF.endsWith("coco")&&!S.admin)setAdmin(true);
 });
 function togExpress(){
-  if(!S.settings.express){openModal(`<h2>Cours express</h2><p>Chaque module est réduit à ses <b>18 exercices les plus importants</b>, posés <b>une seule fois</b> : des leçons de 5 questions neuves et 2 rappels d'anciens modules. Environ <b>trois fois moins de questions</b>, idéal avant un examen.</p><p class="muted">L'épreuve légendaire reste obligatoire et pioche dans tout le module (les 32 exercices). Les leçons déjà faites restent cochées.</p>
+  if(!S.settings.express){openModal(`<h2>Cours express</h2><p>Chaque module est réduit à ses <b>18 exercices les plus importants</b>, posés <b>une seule fois</b> : des leçons de 5 questions neuves et 2 rappels d'anciens modules. Environ <b>trois fois moins de questions</b>, idéal avant un examen.</p><p class="muted"><b>Tous les modules et toutes les épreuves légendaires sont ouverts</b>, dans l'ordre que tu veux. L'épreuve légendaire pioche dans tout le module (les 32 exercices). Les leçons déjà faites restent cochées.</p>
     <button class="btn" onclick="S.settings.express=true;save();closeModal();renderProfile();renderPath();toast('Cours express activé')">Activer</button><div style="height:8px"></div><button class="btn ghost" onclick="closeModal()">Annuler</button>`);return;}
   S.settings.express=false;save();renderProfile();renderPath();toast("Cours express désactivé");
 }
@@ -32460,7 +32461,7 @@ window.ARC_MFAUX={
             aria-label="${got?"Coffre ouvert":ready?"Ouvrir le coffre":"Coffre verrouillé"}">${aimg(got?"ouvert":"coffre",40)}</button>`;
         }
       }
-      const can=unitComplete(u.id), crown=c.crowns[u.id];
+      const can=unitComplete(u.id)||isExpress(), crown=c.crowns[u.id];
       dots+=`<button class="arc-dot legend ${can?"on":""}" type="button" onclick="${can?`startLesson(${u.id},-1)`:"lockMsg()"}"
         aria-label="${crown?"Épreuve légendaire validée":"Épreuve légendaire"}">${ico(crown?"trophy":can?"crown":"lock",17)}</button>`;
       h+=`<div class="arc-card arc-mod ${cur?"cur":""} ${unlocked?"":"lock"}">
@@ -32559,6 +32560,8 @@ window.ARC_MFAUX={
   function studied(e){
     const u=unitOf(e.u); if(!u||u.c!==S.active||!unitUnlocked(e.u))return false;
     if(S.items&&S.items[e.i]&&S.items[e.i].n>0)return true;
+    /* cours express : un module jamais commence n a rien fait etudier */
+    if(isExpress()&&unitDone(e.u)===0)return false;
     return lessonPool(e.u).indexOf(e)<Math.min(lessonsIn(e.u),unitDone(e.u)+1)*lessonStep(e.u);
   }
   function pool(test,min){ return EXOS.filter(e=>test(e)&&studied(e)); }
@@ -33181,12 +33184,13 @@ window.ARC_MFAUX={
     if(!Lx||Lx.mode!=="normal"||Lx.uid==null||!(Lx.li>=0))return Lx;
     const uid=Lx.uid, cid=unitOf(uid).c, us=courseUnits(cid), ui=us.findIndex(u=>u.id===uid);
     const pool=lessonPool(uid), lim=(Lx.li+1)*lessonStep(uid);
-    const ok=e=>{ if(e.u===uid)return pool.indexOf(e)<lim; const k=us.findIndex(u=>u.id===e.u); return k>=0&&k<ui; };
+    const vu=e=>{ const it=S.items&&S.items[e.i]; return !!(it&&it.n>0); };
+    const ok=e=>{ if(e.u===uid)return pool.indexOf(e)<lim; const k=us.findIndex(u=>u.id===e.u); if(isExpress())return k>=0&&vu(e); return k>=0&&k<ui; };
     const keep=Lx.queue.filter(ok), ids=new Set(keep.map(e=>e.i)), manque=Lx.queue.length-keep.length;
     if(manque>0){
       const rec=e=>{ const it=S.items&&S.items[e.i]; return it&&it.n?recall(e.i):2; };
       const ici=pool.slice(0,lim).filter(e=>!ids.has(e.i)).sort((a,b)=>rec(a)-rec(b));
-      const avant=EXOS.filter(e=>{ const k=us.findIndex(u=>u.id===e.u); return k>=0&&k<ui&&!ids.has(e.i)&&S.items&&S.items[e.i]&&S.items[e.i].n>0; })
+      const avant=EXOS.filter(e=>{ const k=us.findIndex(u=>u.id===e.u); return k>=0&&(isExpress()?k!==ui:k<ui)&&!ids.has(e.i)&&S.items&&S.items[e.i]&&S.items[e.i].n>0; })
         .sort((a,b)=>rec(a)-rec(b));
       ici.concat(avant).slice(0,manque).forEach(e=>{ keep.push(e); ids.add(e.i); });
     }
@@ -33814,6 +33818,8 @@ window.ARC_MFAUX={
   /* un module deja commence reste ouvert : on ne reprend rien a personne */
   const __uu=unitUnlocked;
   window.unitUnlocked=function(uid){
+    /* cours express : tous les modules sont ouverts, dans le desordre, sans module precedent */
+    if(isExpress())return true;
     if(!__uu.apply(null,arguments))return false;
     const l=courseUnits(unitOf(uid).c), i=l.findIndex(u=>u.id===uid);
     return i<=0||crown(l[i-1].id)||started(uid);

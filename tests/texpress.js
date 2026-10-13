@@ -67,6 +67,38 @@ if(rappels<6)ko("express : trop peu de rappels d anciens modules ("+rappels+")")
 const leg=E(`(function(){const u=${us[1]};const q=buildLesson(u,0,"legend").queue;return [q.length,q.every(e=>e.u===u),unitExos(u).length]})()`);
 if(leg[0]!==10||!leg[1])ko("epreuve legendaire express : "+JSON.stringify(leg));
 console.log("modules reduits a 18 :",reduits,"| rappels sur 3 modules :",rappels);
+/* 4. express : tout est ouvert dans le desordre, epreuves legendaires comprises */
+E("S.settings.express=false");
+E(`S.active="NEGO";`);
+const nu=E(`courseUnits("NEGO").map(u=>u.id)`), dernier=nu[nu.length-1], milieu=nu[Math.floor(nu.length/2)];
+if(E(`unitUnlocked(${dernier})`))ko("mode normal : le dernier module devrait rester verrouille");
+E("S.settings.express=true");
+nu.forEach(id=>{ if(!E(`unitUnlocked(${id})`))ko("express : module "+id+" verrouille"); });
+/* un module du milieu, sans rien avoir fait avant : leçon sans rappel, pas d erreur */
+const q0=E(`buildLesson(${milieu},0,"normal").queue.map(e=>e.u)`);
+if(!q0.length||q0.some(u=>u!==milieu))ko("express : lecon du module du milieu incoherente "+JSON.stringify(q0));
+/* un module fait, puis un autre module fait avant lui : rappels venus de tous les modules deja vus */
+E(`unitExos(${dernier}).slice(0,6).forEach(e=>{S.items[e.i]={n:1,c:1,t:Date.now()-86400000,s:1}})`);
+const q1=E(`buildLesson(${nu[0]},0,"normal").queue.map(e=>e.u)`);
+if(!q1.includes(dernier))ko("express : aucun rappel du module deja fait plus loin dans le cours");
+if(q1.some(u=>u!==nu[0]&&u!==dernier))ko("express : rappel d un module jamais vu");
+/* l epreuve legendaire se lance sans rien avoir fait avant */
+E(`startLesson(${dernier},-1)`); await wait(50);
+const lg=E(`[L&&L.mode,L&&L.queue.length]`);
+if(lg[0]!=="legend"||lg[1]!==10)ko("express : epreuve legendaire non lancee "+JSON.stringify(lg));
+E(`L=null;show("path")`);
+/* le bouton de l epreuve n est pas verrouille dans le chemin */
+E("renderPath()"); await wait(50);
+const verrous=doc.querySelectorAll("#sc-path .arc-card.arc-mod.lock").length, legendes=doc.querySelectorAll("#sc-path .arc-dot.legend.on").length;
+if(verrous)ko("express : "+verrous+" modules encore verrouilles dans le chemin");
+if(legendes<nu.length)ko("express : "+legendes+" epreuves legendaires actives sur "+nu.length);
+/* les jeux ne piochent que dans les modules commences */
+const jeu=E(`arcPool(()=>true).map(e=>e.u)`);
+if(jeu.some(u=>u!==dernier))ko("express : un jeu pioche dans un module jamais commence");
+E("S.settings.express=false");
+if(E(`unitUnlocked(${dernier})`))ko("retour au mode normal : modules de nouveau verrouilles attendu");
+E("S.settings.express=true");
+
 E("renderProfile()"); await wait(30);
 if(!/Cours express/.test(doc.body.innerHTML))ko("bouton Cours express absent des reglages");
 E("S.settings.express=false");
