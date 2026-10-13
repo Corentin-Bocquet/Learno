@@ -24266,6 +24266,140 @@ cases:[
 };
 </script>
 <!-- EXAMEN:NEGO:FIN -->
+<!-- EXAMEN:NIETZ:DEBUT -->
+<script>
+/* Examen pratique NIETZ : banque de cas. Genere depuis cours/NIETZ/examen.js */
+window.PEXAM=window.PEXAM||{};PEXAM["NIETZ"]={
+cases:[
+{id:"genealogie",t:"D'où ça me vient ? Le réflexe généalogique",mods:[117],
+ ctx:"Après un dîner de famille, Camille dit à son frère Louis : « Ce n'est pas bien de ne pas finir son assiette. » Louis lui demande si elle le pense vraiment ou si on le lui a mis dans la tête. Camille s'énerve : elle veut savoir si c'est vrai ou faux.",
+ cards:[
+ {t:"sort",q:"Quelle question est posée à chaque fois ?",bins:["Origine","Fonction","Intérêt"],it:[["Qui m'a transmis ça, et quand ?",0],["Qu'est-ce que cette croyance me permet de ne pas regarder ?",1],["Qui gagne quelque chose à ce que j'y croie ?",2],["Mes parents, l'école, un prof ou une vidéo ?",0]],w:"La généalogie ne réfute pas les valeurs, elle enquête sur leur naissance."},
+ {t:"story",q:"Que réponds-tu à Camille, qui veut savoir si c'est vrai ?",sc:[{who:"Camille",txt:"Mais enfin, est-ce que c'est vrai, oui ou non, qu'il faut finir son assiette ?"}],
+  o:["Demande d'abord d'où ça te vient et à qui ça profite avant de trancher", "Réponds par oui ou par non, une valeur est toujours vraie ou fausse en soi", "Cherche le texte sacré qui le prouve et applique-le sans autre examen", "Considère que c'est faux, toute valeur transmise est forcément trompeuse"],a:0,w:"Ne demande pas « est-ce vrai ? », demande « d'où ça me vient ? » et « à quoi ça sert, à qui ça profite ? »"},
+ {t:"match",q:"Associe chaque question à ce qu'elle cherche.",p:[["Origine","Qui l'a transmis, et quand"],["Fonction","Ce que la croyance permet de ne pas regarder"],["Intérêt","Qui gagne à ce qu'on y croie"]],w:"Une valeur n'est pas tombée du ciel : quelqu'un l'a fabriquée, à un moment, pour une raison."},
+ {t:"num",q:"Camille se pose les trois questions (origine, fonction, intérêt) pour cinq croyances. Combien de questions au total ?",a:15,tol:0.1,w:"3 x 5 = 15. Chaque croyance mérite ses trois questions."},
+ {t:"tf",q:"Nietzsche est là pour te dire quoi croire.",a:false,w:"Faux : il est là pour te rendre impossible de croire sans savoir pourquoi."}
+ ]},
+{id:"dieu",t:"Le fou sur la place : Dieu est mort",mods:[118],
+ ctx:"Dans un débat à la fac, un étudiant lance : « Nietzsche dit que Dieu est mort, donc enfin on est libres et la religion est stupide ! » Un autre répond que le Progrès, la Science et la Nation ont pris la place. Le prof veut qu'on lise le paragraphe 125.",
+ cards:[
+ {t:"story",q:"Que réponds-tu à l'étudiant ?",sc:[{who:"L'étudiant",txt:"Dieu est mort, donc la religion est stupide et on est enfin libres, non ?"}],
+  o:["C'est un constat de catastrophe, pas un cri de victoire : le socle du sens ne tient plus", "Oui, c'est exactement ce que Nietzsche applaudit dans le paragraphe 125 du livre", "Non, c'est un argument scientifique solide contre l'existence de Dieu lui-même", "Oui, mais seulement pour ceux qui ne croient plus en rien du tout aujourd'hui"],a:0,w:"Le Gai Savoir, §125. Un fou, lanterne allumée en plein jour, dit que nous l'avons tué. Les passants rient : « je viens trop tôt »."},
+ {t:"sort",q:"Ce que dit ou ne dit pas la phrase ?",bins:["Ce que ça dit","Ce que ça n'est pas"],it:[["Le garant du sens, du bien et du vrai ne fonctionne plus",0],["La religion est stupide",1],["Super, on est enfin libres",1],["C'est un argument contre l'existence de Dieu",1]],w:"Traduction pratique : le socle qui garantissait le sens ne fonctionne plus, y compris pour ceux qui croient encore."},
+ {t:"match",q:"Associe chaque ombre de Dieu à ce qu'elle remplace.",p:[["Le Progrès","Un garant qui évite de faire le travail"],["La Science comme dogme","Une croyance qu'on n'examine plus"],["La Nation","Un absolu de remplacement"],["La Morale évidente","Une vérité qu'on ne questionne pas"]],w:"On garde les habitudes de la croyance en changeant d'étiquette."},
+ {t:"order",q:"Remets dans l'ordre la scène du Gai Savoir, §125.",it:["Le fou surgit sur la place, lanterne allumée en plein jour","Il crie que Dieu est mort et que nous l'avons tué","Les passants rient","Il conclut qu'il vient trop tôt"],w:"Ils n'ont pas encore compris ce qu'ils ont fait."},
+ {t:"tf",q:"La vraie question de Nietzsche est de savoir qui fabrique les valeurs maintenant que le garant a disparu.",a:true,w:"Vrai : c'est le début du travail, après la mort de Dieu."}
+ ]},
+{id:"nihilisme",t:"Tout se vaut, à quoi bon : les visages du nihilisme",mods:[119],
+ ctx:"Trois amis réagissent à une crise. Maxime : « De toute façon tout se vaut, je m'en fous. » Inès détruit les vieilles habitudes de son équipe pour reconstruire autre chose. Paul s'accroche à une règle qu'il n'a jamais examinée, de peur du vide.",
+ cards:[
+ {t:"sort",q:"Quel nihilisme ?",bins:["Passif","Actif","Déguisé"],it:[["« Tout se vaut, rien n'a de sens donc rien n'importe »",0],["Détruire les vieilles valeurs pour faire de la place",1],["S'accrocher à une valeur jamais examinée par peur du vide",2],["Résignation, cynisme, divertissement permanent",0]],w:"Passif : une fatigue. Actif : une force, le marteau casse pour construire."},
+ {t:"story",q:"Que dis-tu à Maxime ?",sc:[{who:"Maxime",txt:"Tout se vaut, c'est relatif. Je suis lucide, c'est tout."}],
+  o:["Ce n'est pas de la lucidité : c'est du nihilisme déguisé, une fatigue", "Tu as raison : c'est la seule position honnête devant le vide du monde", "Tu n'es pas assez relatif : va jusqu'au bout et nie toute valeur existante", "Tu as raison, mais seulement pour les valeurs religieuses de ton enfance"],a:0,w:"Le nihilisme le plus fréquent ne se présente jamais comme du nihilisme. « C'est relatif », « à quoi bon » en sont les masques."},
+ {t:"story",q:"Que dis-tu à Paul, accroché à sa règle ?",sc:[{who:"Paul",txt:"Moi, je ne suis pas nihiliste, j'ai des valeurs solides et je n'y touche jamais."}],
+  o:["Un attachement crispé à une valeur jamais examinée peut cacher la peur du vide", "Tu as raison : ne jamais examiner une valeur la rend toujours plus forte", "Tu as tort : toute valeur doit être détruite sans exception, dès maintenant", "Tu as raison, le nihilisme concerne seulement les autres, jamais toi-même"],a:0,w:"Le nihilisme n'est pas un état d'âme triste. C'est un moment historique qu'il faut traverser, pas contourner."},
+ {t:"match",q:"Associe chaque formule à la forme de nihilisme.",p:[["« à quoi bon »","Passif"],["Le marteau qui casse pour construire","Actif"],["« c'est relatif »","Déguisé"]],w:"Les valeurs suprêmes se dévalorisent, le « pourquoi ? » reste sans réponse."},
+ {t:"tf",q:"Le nihilisme actif est une force : le marteau ne casse pas pour casser, il casse pour construire.",a:true,w:"Vrai : le nihilisme actif est une force qui détruit les vieilles valeurs pour faire de la place à de nouvelles."}
+ ]},
+{id:"ressentiment",t:"Le ressentiment : quand l'impuissance devient morale",mods:[120],
+ ctx:"Sophie n'a pas été promue. Elle explique à ses collègues que la promotion est « une affaire de lèche et de combines, ce n'est pas bien ». Un collègue lui demande si elle mépriserait encore la promotion si elle pouvait l'avoir. Sophie se tait.",
+ cards:[
+ {t:"order",q:"Remets dans l'ordre le mécanisme du ressentiment.",it:["Je ne peux pas obtenir ou faire quelque chose","Je ne supporte pas de le reconnaître","Je décrète que cette chose est mauvaise"],w:"Le ressentiment ne dit jamais « je n'y arrive pas ». Il dit « ce n'est pas bien »."},
+ {t:"sort",q:"Critique ou ressentiment ?",bins:["Critique","Ressentiment"],it:[["Je veux X, je vois que Y l'empêche, j'attaque Y",0],["Je n'ai pas X, donc je décide que X est méprisable",1],["Je commence par un OUI qui vient de moi",0],["Je commence par un NON adressé à l'extérieur, j'ai besoin d'un ennemi",1]],w:"Supprime l'ennemi et le ressentiment n'a plus rien à dire."},
+ {t:"story",q:"Que dis-tu à Sophie ?",sc:[{who:"Sophie",txt:"Je ne suis pas jalouse, je dénonce un système injuste."}],
+  o:["Teste-toi : mépriserais-tu encore la promotion si tu pouvais l'avoir ?", "Tu as raison : dénoncer est toujours la meilleure réponse à l'injustice", "Tu es jalouse, c'est évident, et il faut simplement le reconnaître ici", "Prends la promotion de force pour tester ton courage devant tout le monde"],a:0,w:"Le test personnel : est-ce que je le mépriserais encore si je pouvais l'avoir ?"},
+ {t:"match",q:"Associe chaque attitude à son ressort.",p:[["Je n'y arrive pas","Impuissance reconnue"],["Ce n'est pas bien","Impuissance transformée en morale"],["Un NON adressé à l'extérieur","Signe du ressentiment"]],w:"Une impuissance transformée en morale : le ressentiment ne dit jamais je n'y arrive pas, il dit ce n'est pas bien."},
+ {t:"tf",q:"Le ressentiment commence toujours par un OUI qui vient de soi.",a:false,w:"Faux : il commence par un NON adressé à l'extérieur, jamais par un OUI qui vient de soi."}
+ ]},
+{id:"maitres",t:"Maîtres et esclaves : deux façons de fabriquer des valeurs",mods:[121,122],
+ ctx:"Au séminaire de philosophie, un étudiant résume Nietzsche : « Il dit qu'il faut être un maître et écraser les faibles ! » Une autre parle de la volonté de puissance comme du désir de dominer. Le prof sort le livre « La Volonté de puissance ».",
+ cards:[
+ {t:"sort",q:"Morale des maîtres ou morale des esclaves ?",bins:["Maîtres","Esclaves"],it:[["Part de soi : « je suis bon »",0],["Part de l'autre : « il est méchant, donc je suis bon »",1],["Axe bon / mauvais (réussi / raté)",0],["Axe bien / mal (vertueux / coupable)",1]],w:"La première affirme puis déprécie presque distraitement. La seconde a besoin de condamner d'abord pour se définir."},
+ {t:"match",q:"Associe chaque retournement de la transvaluation.",p:[["La faiblesse","Devient bonté"],["L'impuissance","Devient patience"],["La soumission","Devient humilité"],["L'incapacité à se venger","Devient pardon"]],w:"Le coup de génie des faibles, selon Nietzsche : retourner la table des valeurs."},
+ {t:"story",q:"Que réponds-tu à l'étudiant sur le contresens ?",sc:[{who:"L'étudiant",txt:"Nietzsche dit qu'il faut être un maître et écraser les faibles, non ?"}],
+  o:["Il décrit un mécanisme historique : le problème, c'est la douceur qui ment", "Oui, c'est le message central de toute son oeuvre philosophique, sans nuance", "Non, il veut que chacun devienne esclave volontairement, par décision libre", "Oui, mais seulement dans Zarathoustra, jamais dans ses autres livres publiés"],a:0,w:"Nietzsche ne dit pas « soyez des maîtres, écrasez les faibles »."},
+ {t:"sort",q:"Volonté de puissance : ce que c'est ou ce que ce n'est pas ?",bins:["C'est","Ce n'est pas"],it:[["Croître, s'étendre, se dépasser",0],["Vouloir dominer les autres",1],["Le pouvoir politique ou l'argent",1],["Un arbre qui pousse vers la lumière",0],["La simple survie, à la manière de Darwin",1]],w:"La puissance n'est pas un stock qu'on possède, c'est un débordement."},
+ {t:"tf",q:"Le livre « La Volonté de puissance » est un livre écrit et publié par Nietzsche lui-même.",a:false,w:"Faux : c'est une compilation posthume de ses notes, assemblée et orientée par sa soeur. Le concept, lui, est bien de lui."}
+ ]},
+{id:"metamorphoses",t:"Chameau, lion, enfant : où en es-tu ?",mods:[123],
+ ctx:"Léo, 27 ans, a obéi toute sa vie à ses parents et à son patron, sans jamais choisir. Il vient de claquer la porte de son entreprise et passe ses journées à critiquer tout ce qu'on lui avait enseigné. Il n'invente encore rien.",
+ cards:[
+ {t:"match",q:"Associe chaque figure à sa formule.",p:[["Le chameau","Tu dois"],["Le lion","Je veux"],["L'enfant","Je suis"]],w:"Ainsi parlait Zarathoustra, première partie."},
+ {t:"story",q:"Où en est Léo ?",sc:[{who:"Léo",txt:"Je dis non à tout ce qu'on m'a appris. Je suis enfin libre, non ?"}],
+  o:["Il est lion : il sait dire NON mais n'a pas encore créé","Il est enfant : il crée déjà ses propres valeurs","Il est chameau : il porte encore la charge de ses parents","Il est surhomme : il a tout accompli"],a:0,w:"Beaucoup s'arrêtent au lion : ils passent leur vie à dire non et n'inventent jamais rien."},
+ {t:"order",q:"Remets dans l'ordre les trois métamorphoses.",it:["Le chameau se charge et obéit","Le lion affronte le dragon aux écailles « Tu dois »","L'enfant crée ses propres valeurs et joue"],w:"On ne saute pas d'étape : le chameau porte, le lion conquiert la liberté, l'enfant crée et joue avec ses propres valeurs."},
+ {t:"sort",q:"Force ou limite de la figure ?",bins:["Force","Limite"],it:[["Le chameau encaisse",0],["Ce n'est pas le chameau qui a choisi la charge",1],["Le lion conquiert la liberté",0],["Le lion sait dire non, pas créer",1]],w:"Chaque figure a sa force et sa limite : le chameau encaisse sans choisir, le lion dit non sans créer, l'enfant crée."},
+ {t:"tf",q:"Un lion qui n'a jamais été chameau n'a rien porté : il fait juste un caprice.",a:true,w:"Vrai : l'ordre compte. Un enfant qui n'a pas été lion n'a rien libéré."}
+ ]},
+{id:"surhomme",t:"Surhomme ou dernier homme ? Un critère pratique",mods:[124,125],
+ ctx:"Dans une série télé, un héros musclé domine tout le monde et on parle de « surhomme nietzschéen ». Un spectateur dit que le dernier homme est un méchant. Nina, elle, ne cherche que le confort et ses petits plaisirs du jour et du soir.",
+ cards:[
+ {t:"sort",q:"Contresens ou bonne lecture du surhomme ?",bins:["Contresens","Bonne lecture"],it:[["Le superhéros doté d'une force physique",0],["Le tyran qui domine les autres",0],["Celui qui crée ses propres valeurs au lieu de les recevoir",1],["La race supérieure",0],["Un horizon, une corde tendue entre l'animal et le surhomme",1]],w:"La lecture nazie a été obtenue en falsifiant les textes."},
+ {t:"story",q:"Que dis-tu du héros musclé ?",sc:[{who:"Le spectateur",txt:"Ce héros musclé qui domine tout le monde, c'est le surhomme, non ?"}],
+  o:["Non : dominer les autres est le contraire du projet, il crée ses valeurs", "Oui : plus il est fort physiquement, plus il est surhomme, c'est évident", "Non : le surhomme est un chef politique naturel, qui commande les autres", "Oui : le surhomme est une race supérieure, selon la lecture de Nietzsche"],a:0,w:"Ce n'est pas une race, pas un homme supérieur biologiquement, pas un chef."},
+ {t:"multi",q:"Coche les traits du dernier homme.",o:["Il évite tout ce qui fatigue, y compris penser","Son petit plaisir pour le jour, son petit plaisir pour la nuit","Il ne veut ni gouverner ni obéir","Il croit tout comprendre parce qu'il ne risque rien","Il cherche le risque et les grands désirs"],a:[0,1,2,3],w:"Le dernier homme n'est pas méchant, il est petit et content de l'être."},
+ {t:"story",q:"Quel critère pratique appliques-tu à Nina ?",sc:[{who:"Nina",txt:"Mes valeurs, c'est comme ça, je n'ai pas à me justifier."}],
+  o:["Si la réponse est « c'est comme ça », tu es encore chameau", "Tu es déjà surhomme, tu n'as rien à prouver à personne ici-bas", "Tu es lion, car tu refuses d'expliquer tes valeurs aux autres", "Tu es enfant, car tu joues avec les valeurs sans jamais les poser"],a:0,w:"Si tu peux répondre « je les ai choisies après examen, et j'en réponds », tu marches vers le surhomme."},
+ {t:"tf",q:"Dans le prologue de Zarathoustra, la foule réclame le dernier homme au lieu d'être choquée.",a:true,w:"Vrai : c'est le passage le plus cruel du livre."}
+ ]},
+{id:"retour",t:"Le démon dans ta solitude : éternel retour et amor fati",mods:[126,127],
+ ctx:"Un soir, Théo reçoit une mauvaise nouvelle. Il imagine un démon qui lui dit de revivre cette vie une infinité de fois. Sa sœur lui dit d'accepter. Son ami lui dit de résister. Il se demande si cela signifie qu'il ne doit plus rien changer.",
+ cards:[
+ {t:"story",q:"Quelle est la fonction de l'éternel retour ?",sc:[{who:"Théo",txt:"Le démon dit que tout recommencera à l'identique. C'est une théorie sur le cosmos ?"}],
+  o:["C'est un test : comment vivre pour dire oui à cette proposition ?", "C'est une théorie cosmologique démontrée en détail par Nietzsche lui-même", "C'est une punition divine infligée pour les fautes commises dans la vie", "C'est une promesse de réincarnation après la mort, selon le livre cité"],a:0,w:"Le Gai Savoir, §341 : peu importe si l'univers se répète. La question est la façon de vivre."},
+ {t:"sort",q:"Résignation, acceptation ou amor fati ?",bins:["Résignation","Acceptation","Amor fati"],it:[["« Je n'y peux rien »",0],["« C'est comme ça, je fais avec »",1],["« C'est ça qui m'a fait, et je le veux »",2]],w:"Résignation : passif, triste. Acceptation : neutre. Amor fati : actif, joyeux."},
+ {t:"story",q:"Théo doit-il renoncer à changer sa vie ?",sc:[{who:"Théo",txt:"Amor fati, ça veut dire que je ne dois plus rien changer ?"}],
+  o:["Non : c'est un rapport au passé et au nécessaire, pas au futur", "Oui : aimer son destin suppose de ne plus rien tenter pour le changer", "Oui : changer, c'est refuser son destin et donc refuser la vie elle-même", "Non : mais seulement pour le passé très lointain, jamais pour le récent"],a:0,w:"Nietzsche a passé sa vie à vouloir transformer. On intègre ce qui a eu lieu comme condition de ce qu'on est devenu."},
+ {t:"order",q:"Remets dans l'ordre le filtre de l'éternel retour avant une décision.",it:["Imaginer revivre exactement ce moment une infinité de fois","Se demander si on le choisirait quand même","Garder ce qui compte, écarter le reste"],w:"C'est le filtre le plus brutal et le plus rapide."},
+ {t:"tf",q:"Amor fati veut dire supporter son destin avec patience.",a:false,w:"Faux : non pas le supporter, non pas l'accepter, l'aimer."}
+ ]},
+{id:"souffrance",t:"Ce qui ne me tue pas : souffrance et grande santé",mods:[128],
+ ctx:"Un collègue de Claire a perdu son frère. Un manager lui sort : « Ce qui ne nous tue pas nous rend plus forts. » Claire hésite : cette phrase est de Nietzsche, et elle sent qu'elle est mal citée.",
+ cards:[
+ {t:"story",q:"Que réponds-tu au manager ?",sc:[{who:"Le manager",txt:"Ce qui ne nous tue pas nous rend plus forts. Nietzsche l'a dit, donc c'est une loi !"}],
+  o:["Il écrit « me », pas « nous » : un constat personnel, pas une loi", "C'est exact : c'est une loi générale qui vaut pour tout le monde sans exception", "Il ne l'a jamais écrit : c'est une invention récente venue des réseaux sociaux", "Il l'a écrit pour justifier les souffrances des autres, c'est bien connu"],a:0,w:"Crépuscule des idoles. Un constat personnel, écrit par un homme malade en permanence."},
+ {t:"sort",q:"Ce que Nietzsche dit ou ne dit pas ?",bins:["Il le dit","Il ne le dit pas"],it:[["La souffrance est une condition de la croissance",0],["La souffrance est bonne en soi",1],["La souffrance est une punition méritée",1],["La résistance est la condition du muscle",0]],w:"Elle n'est ni méritée, ni une punition, ni une leçon envoyée par quelqu'un."},
+ {t:"story",q:"Comment utilises-tu cette idée avec ton collègue endeuillé ?",sc:[{who:"Claire",txt:"Je lui dis que sa souffrance le rendra plus fort ?"}],
+  o:["Jamais pour justifier une souffrance chez autrui ni éviter de soigner", "Oui : c'est un conseil bienveillant et efficace pour quelqu'un qui souffre", "Oui : et ajoute que c'est une punition utile et méritée pour sa croissance", "Non : mais dis-lui que la souffrance est bonne en soi et enrichissante"],a:0,w:"Le contresens à éviter absolument : utiliser cette idée pour ne pas soigner une souffrance qui peut l'être, ou pour la justifier chez quelqu'un d'autre."},
+ {t:"match",q:"Associe chaque notion à sa définition.",p:[["La grande santé","La capacité à traverser et à s'en servir"],["L'absence de maladie","Ce que la grande santé n'est pas"],["Acquérir et reperdre sans cesse","On la dépense"]],w:"Nietzsche appelle « grande santé » celle qu'on acquiert et reperd sans cesse."},
+ {t:"tf",q:"La grande santé est l'absence de maladie.",a:false,w:"Faux : c'est la capacité à traverser la maladie et à s'en servir."}
+ ]},
+{id:"perspective",t:"Il n'y a pas de faits : perspectivisme sans relativisme",mods:[129,130],
+ ctx:"Au repas de famille, Antoine dit : « Nietzsche dit qu'il n'y a pas de faits, donc chacun sa vérité, tout se vaut. » Plus tard, un cousin lui dit qu'un tableau l'a bouleversé parce qu'il mêle forme maîtrisée et quelque chose qui déborde.",
+ cards:[
+ {t:"story",q:"Que réponds-tu à Antoine ?",sc:[{who:"Antoine",txt:"Pas de faits, seulement des interprétations : donc chacun sa vérité, tout se vaut."}],
+  o:["Non : c'est le nihilisme passif qu'il combat, une perspective peut être plus riche", "Oui : c'est exactement la conclusion de Nietzsche dans tous ses livres, sans nuance", "Non : il faut supprimer tous les points de vue pour trouver enfin la vérité", "Oui : mais seulement en science, pas en morale ni en art ni en philosophie"],a:0,w:"Plus on mobilise de perspectives sur une même chose, plus la connaissance est complète."},
+ {t:"sort",q:"Apollinien ou dionysiaque ?",bins:["Apollinien","Dionysiaque"],it:[["La forme, la mesure, le contour net, le rêve",0],["L'ivresse, la démesure, la perte de soi",1],["La sculpture, l'individu séparé",0],["La musique, la danse, l'effacement des limites",1]],w:"La Naissance de la tragédie, 1872, son premier livre."},
+ {t:"story",q:"Que dis-tu au cousin sur le tableau ?",sc:[{who:"Le cousin",txt:"Ce tableau me touche : forme maîtrisée, mais quelque chose déborde."}],
+  o:["C'est le mélange apollinien et dionysiaque, comme la tragédie grecque", "C'est purement apollinien : la forme maîtrisée suffit à elle seule à émouvoir", "C'est purement dionysiaque : le chaos et le débordement suffisent pour toucher", "C'est rationnel : tout doit y être compris, justifié et transparent pour émouvoir"],a:0,w:"Apollon sans Dionysos donne de la joliesse vide. Dionysos sans Apollon donne du chaos illisible."},
+ {t:"match",q:"Associe chaque cible à sa critique.",p:[["Socrate et Euripide","Ont tué la tragédie en imposant la raison seule"],["Le « je pense »","Un je fabriqué par la grammaire"],["Le relativisme paresseux","Le nihilisme passif"]],w:"Tout doit être compris, justifié, transparent : le dionysiaque disparaît."},
+ {t:"tf",q:"Pour Nietzsche, il y a un acteur derrière l'action : le sujet est une réalité première.",a:false,w:"Faux : il n'y a pas d'acteur derrière l'action. Le sujet est une fiction fabriquée par la grammaire."}
+ ]},
+{id:"vie",t:"La vie de Nietzsche : chronologie et légende du cheval",mods:[131],
+ ctx:"Un site affirme que Nietzsche est mort fou à 44 ans après avoir embrassé un cheval à Turin. Un élève demande des dates et si l'histoire du cheval est attestée.",
+ cards:[
+ {t:"order",q:"Remets dans l'ordre chronologique.",it:["1844 : naissance à Röcken","1869 : professeur de philologie à Bâle","1872 : La Naissance de la tragédie","1882 : Le Gai Savoir","1889 : effondrement à Turin","1900 : mort"],w:"1849 : mort du père, il a 5 ans. 1879 : démission pour raisons de santé."},
+ {t:"num",q:"Nietzsche naît en 1844 et son père meurt en 1849. Quel âge a-t-il à la mort de son père ?",a:5,tol:0.1,un:" ans",w:"1849 - 1844 = 5 ans. Il devient professeur de philologie à Bâle en 1869 à 24 ans, sans thèse achevée."},
+ {t:"num",q:"Nietzsche s'effondre à Turin en janvier 1889 et meurt en 1900. Combien d'années de démence ?",a:11,tol:0.1,un:" ans",w:"1900 - 1889 = 11 ans. Il avait 44 ans au moment de l'effondrement."},
+ {t:"story",q:"Que réponds-tu à l'élève sur l'histoire du cheval ?",sc:[{who:"L'élève",txt:"Il a bien serré un cheval dans ses bras avant de s'effondrer ?"}],
+  o:["Aucun témoin direct : les historiens la jugent probablement légendaire", "Oui, c'est un fait attesté par plusieurs témoins directs de la scène à Turin", "Oui, c'est écrit noir sur blanc dans un de ses derniers livres publiés", "Non, mais il a vraiment sauvé un cheval un jour, bien avant, à Bâle"],a:0,w:"Elle est trop belle pour être vraie, et c'est précisément pour ça qu'elle circule."},
+ {t:"tf",q:"Nietzsche a connu un grand succès de son vivant avec Ainsi parlait Zarathoustra.",a:false,w:"Faux : presque aucun lecteur. Il finance lui-même certaines éditions, il est seul, sans poste ni école de disciples."}
+ ]},
+{id:"falsification",t:"Ce qu'on lui a fait dire : trois phrases volées",mods:[132],
+ ctx:"Sur un réseau social, un influenceur cite Nietzsche pour justifier la dureté, le triomphe athée et la race supérieure. Tu dois vérifier chaque citation. Tu sais que sa soeur Elisabeth avait pris le contrôle de ses manuscrits.",
+ cards:[
+ {t:"match",q:"Associe chaque phrase détournée à son vrai sens.",p:[["« Ce qui ne me tue pas me rend plus fort »","Il écrit ME, pas NOUS : un constat personnel"],["« Dieu est mort »","Un constat inquiet, pas un cri de triomphe"],["« Le surhomme »","Un projet de création de valeurs, pas une race"]],w:"Transformées en slogan de dureté, en cri athée, en race supérieure."},
+ {t:"story",q:"Quel réflexe appliques-tu à une citation sur les réseaux ?",sc:[{who:"L'influenceur",txt:"Nietzsche l'a dit, c'est une citation, donc c'est vrai."}],
+  o:["Demande quel livre, quel paragraphe : souvent un mème ou un recueil posthume", "Crois-la : une citation attribuée à un auteur célèbre est toujours exacte", "Vérifie seulement la date de publication, le reste n'a pas d'importance", "Ne vérifie que si elle est très longue, les courtes sont presque toujours vraies"],a:0,w:"Le réflexe : quel livre, quel paragraphe."},
+ {t:"multi",q:"Coche ce que Nietzsche pensait vraiment.",o:["Il était violemment anti-antisémite, une des raisons de sa rupture avec Wagner","Il méprisait le nationalisme allemand","Il se disait volontiers « bon Européen »","Il a rompu avec sa soeur sur ces sujets, par écrit","Il soutenait le nationalisme et l'antisémitisme de son beau-frère"],a:[0,1,2,3],w:"Elisabeth était mariée à Bernhard Förster, antisémite militant, avec qui elle fonda une colonie « aryenne » au Paraguay."},
+ {t:"sort",q:"Qui a fait quoi ?",bins:["Nietzsche","Elisabeth Förster-Nietzsche"],it:[["A rompu par écrit avec sa soeur",0],["A publié La Volonté de puissance en orientant les notes",1],["S'est dit bon Européen",0],["A accueilli Hitler aux archives de Weimar",1]],w:"Elle compile des notes non publiées et les oriente dans un sens nationaliste et antisémite."},
+ {t:"tf",q:"Le livre La Volonté de puissance a été orienté par la soeur de Nietzsche dans un sens nationaliste.",a:true,w:"Vrai : c'est la falsification qui a permis la lecture nazie."}
+ ]}
+]
+};
+</script>
+<!-- EXAMEN:NIETZ:FIN -->
 <!-- EXAMEN:NON:DEBUT -->
 <script>
 /* Examen pratique NON : banque de cas. Genere depuis cours/NON/examen.js */
