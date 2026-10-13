@@ -257,3 +257,9 @@ d'abord). Un exercice n'est donc posé qu'une fois dans son module ; l'épreuve 
 dans tout le module (`unitExos`). `lessonPool(uid)` (pool express ou complet) et `lessonStep(uid)` (5 ou 4)
 remplacent `unitExos` et le « 4 » codé en dur pour découper un module en leçons : toute nouvelle fonction qui
 découpe un module doit les utiliser. Test : `tests/texpress.js`.
+
+**Tout ouvert (demande du 13/10/2026)** : en express, `unitUnlocked` renvoie toujours vrai (extras.js, section 8) et le bouton
+de l'épreuve légendaire est actif sur tous les modules (`can` dans `arcade.js`), sans module précédent ni couronne
+précédente. Les modules se font dans le désordre : les 2 rappels de chaque leçon viennent de tous les autres modules du
+cours déjà vus (`buildLesson`, `lessonGate`), jamais d'un exercice jamais posé. Les jeux (`studied`) ignorent un module
+jamais commencé. Le mode normal garde l'ordre et l'épreuve obligatoire. Tests : section 4 de `tests/texpress.js`.
