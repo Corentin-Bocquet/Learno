@@ -40,7 +40,7 @@ function answer(ex,correct){
   else if(ex.t==="sort"){ ex.it.forEach((it,k)=>w.eval("sortTap("+k+","+(correct?it[1]:(it[1]+1)%ex.bins.length)+")"));}
   else if(ex.t==="multi"){
     /* le moteur tire parfois d autres propositions : on repond d apres ce qui est affiche */
-    const sh=w.eval("A.ex"); const want=correct?sh.a:[sh.o.map((_,k)=>k).find(k=>!sh.a.includes(k))];
+    const sh=w.eval("A.ex"); const fx=sh.o.map((_,k)=>k).find(k=>!sh.a.includes(k)); const want=correct?sh.a:(fx!==undefined?[fx]:[sh.a[0]]);
     want.forEach(k=>click(doc.querySelector('#qwrap .mchk[data-m="'+k+'"]')));}
   else if(ex.t==="order"){ if(!correct){ w.eval("moveO(0,1)"); w.eval("moveO(1,1)"); }
     for(let p=0;correct&&p<80;p++){const o=w.eval("A.order.slice()");let sw=false;
