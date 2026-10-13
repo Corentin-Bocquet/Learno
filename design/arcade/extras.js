@@ -276,6 +276,7 @@
     if(ex.t==="look"&&ex.slots)return `<div class="arc-solk">La tenue attendue</div><div class="arc-soltab">${ex.slots.map(sl=>`<div class="r"><span>${E(sl.n)}</span><span>${E(sl.items[sl.a].n)}</span></div>`).join("")}</div>`;
     return "";
   }
+  window.arcSolBlock=solBlock; window.arcFormatW=formatW;
   function prettyVerdict(){
     if(typeof L==="undefined"||!L||L.mode==="exam"||!A||!A.ex)return;
     const cb=$id("checkbar"); if(!cb)return;

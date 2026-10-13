@@ -7,6 +7,7 @@ ORDRE=['PATRI','NEGO','FISCA','NON','NUTRI','SPINO','MMA','TENNIS','FOOT','ECHEC
 s=io.open(P,encoding='utf-8').read()
 s=re.sub(r'<!-- PATRI:DEBUT -->.*?<!-- PATRI:FIN -->\n','',s,flags=re.S)
 s=re.sub(r'<!-- COURS:\w+:DEBUT -->.*?<!-- COURS:\w+:FIN -->\n','',s,flags=re.S)
+s=re.sub(r'<!-- EXAMEN:\w+:DEBUT -->.*?<!-- EXAMEN:\w+:FIN -->\n','',s,flags=re.S)
 blocks=''
 for cid in ORDRE:
     d=BASE+'/'+cid
@@ -22,6 +23,16 @@ for cid in ORDRE:
       '   ===================================================================== */\n'
       'UNITS.push(\n%s\n);\nEXOS.push(\n%s\n);\n</script>\n<!-- COURS:%s:FIN -->\n')%(cid,cid,TITRES[cid],len(fs),',\n'.join(units),',\n'.join(exos),cid)
     print(cid,len(fs),'modules')
+# banques de l'examen pratique : cours/<CID>/examen.js (tous les cours, meme sans modules dans cours/)
+for cid in sorted(os.listdir(BASE)):
+    f=BASE+'/'+cid+'/examen.js'
+    if not os.path.exists(f): continue
+    t=io.open(f,encoding='utf-8').read()
+    assert '/*EXAMEN*/' in t, f
+    cas=t.split('/*EXAMEN*/')[1].strip().rstrip(';').rstrip()
+    blocks+=('<!-- EXAMEN:%s:DEBUT -->\n<script>\n/* Examen pratique %s : banque de cas. Genere depuis cours/%s/examen.js */\n'
+      'window.PEXAM=window.PEXAM||{};PEXAM["%s"]=%s;\n</script>\n<!-- EXAMEN:%s:FIN -->\n')%(cid,cid,cid,cid,cas,cid)
+    print(cid,'examen pratique')
 anchor='<script>\n/* =====================================================================\n   MULTILINGO v2'
 assert s.count(anchor)==1
 s=s.replace(anchor,blocks+anchor)

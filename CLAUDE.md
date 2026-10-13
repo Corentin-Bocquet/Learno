@@ -223,6 +223,29 @@ données (la carte peut tomber seule en révision). `design/arcade/extras.js` (s
 même cas à la suite et dans l'ordre. Au moins la moitié des leçons d'un cours de type examen sont des cas pratiques
 en face à face avec un client.
 
+## Examen pratique (demande du 13/10/2026)
+
+Chaque cours a un examen pratique final, fait uniquement de cas pratiques et d'exercices inspirés des notes, des TD et des
+mind maps (pas des contenus approfondis ajoutés au-delà). Il est distinct de l'examen blanc (quiz et théorie).
+Sources : `design/arcade/exprat.js` et `exprat.css` (injectés par `tools/design.py`), banques `cours/<CID>/examen.js`
+(injectées par `tools/assemble.py` dans `window.PEXAM[CID]`), test `tests/texprat.js`.
+- **Accès** : bouton en fin de parcours du cours et carte dans l'onglet Examen. Jouable à tout moment, sans avoir fini
+  les modules. Durées : 15, 30, 60 ou 90 minutes (`DUREES`), les cas sont tirés en privilégiant ceux vus le moins
+  récemment (`S.pexSeen`).
+- **Indépendant du mode express** : la banque `PEXAM` est séparée de `EXOS`, donc le tirage est identique cours express
+  ou non. Aucune carte de l'examen n'entre dans la répétition espacée ni dans les erreurs (`S.mistakes`).
+- **Note sur 20** : points pondérés par type de carte (`PTS`), crédit partiel pour `multi` et `sort`, arrondi à 0,5,
+  mention et correction détaillée. Historique dans `S.pexams`.
+- **Format d'un cas** : `{id, t, mods:[ids d'unités à revoir], ctx, cards:[3 à 7 cartes]}`. Types gérés : `mcq`, `story`,
+  `fill`, `tf`, `num` (avec `tol`), `tiles`, `match` (`p`), `order` (`it`), `slider`, `sort` (`bins`, `it`), `multi`.
+  Une carte peut porter `svg` (échiquier, damier : générés par un script, jamais dessinés à la main), `tab`, `pts`.
+  `docs:[{t,h}]` ajoute un bouton « tableaux fournis » (barèmes, formules) comme sur un vrai sujet.
+- **Charte d'une banque** (vérifiée par `texprat.js`) : 8 cas minimum, 80 minutes de matière au moins, 6 formats au
+  moins, bonne réponse la plus longue dans 34 % des choix au plus, vrai ou faux entre 35 % et 65 %, explication `w` de
+  40 caractères au moins, aucun emoji littéral, aucun tiret cadratin, chaque `mods` est une unité du cours. Écrire les
+  distractors aussi longs que la bonne réponse dès le départ : corriger après coup coûte beaucoup plus cher.
+- **Nouveau cours** : ajouter `cours/<CID>/examen.js` (premier caractère `/*EXAMEN*/`), sinon `ci_smoke.js` échoue.
+
 ## Cours express (demandes du 12/10/2026)
 
 Réglage « Cours express » (Profil, Réglages, `S.settings.express`, désactivé par défaut, pour tout le monde).
