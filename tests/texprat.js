@@ -113,7 +113,7 @@ setTimeout(()=>{
     });
     const nf=Object.keys(fmt).length;
     if(nf<6)ko(cid+" : "+nf+" formats seulement (minimum 6)");
-    if((fmt.story||0)<4&&!["NUTRI","MMA","TENNIS","FOOT","ECHECS","RUBIK","SPINO"].includes(cid))ko(cid+" : moins de 4 conversations");
+    if((fmt.story||0)<4&&!["MRC","NUTRI","MMA","TENNIS","FOOT","ECHECS","RUBIK","SPINO"].includes(cid))ko(cid+" : moins de 4 conversations");
     if((fmt.mcq||0)>nCartes*.3)ko(cid+" : trop de QCM classiques ("+fmt.mcq+")");
     if(totMin<80)ko(cid+" : "+Math.round(totMin)+" minutes de matière, il en faut 80 au moins pour remplir 90 minutes");
     let lg=0, rat=[]; ch.forEach(e=>{const L=e.o.map(x=>x.length),b=L[e.a],o=L.filter((_,k)=>k!==e.a);
