@@ -122,6 +122,8 @@ setTimeout(()=>{
     if(part>.34)ko(cid+" : bonne réponse la plus longue dans "+Math.round(part*100)+"% des cas");
     if(ch.length>=30&&part<.12)ko(cid+" : bonne réponse presque jamais la plus longue ("+Math.round(part*100)+"%)");
     if(moy>1.12)ko(cid+" : bonnes réponses trop longues en moyenne ("+moy.toFixed(2)+")");
+    if(ch.length>=20&&moy<.88)ko(cid+" : bonnes réponses trop courtes en moyenne ("+moy.toFixed(2)+")");
+    if(ch.length>=20&&part<.08)ko(cid+" : bonne réponse presque jamais la plus longue ("+Math.round(part*100)+"%)");
     if(tfN>=8&&(tfV/tfN<.35||tfV/tfN>.65))ko(cid+" : vrai ou faux déséquilibré ("+tfV+"/"+tfN+")");
     console.log(cid,":",cases.length,"cas,",nCartes,"cartes,",Math.round(totMin),"min,",nf,"formats | longue:",Math.round(part*100)+"%","ratio",moy.toFixed(2));
   });
