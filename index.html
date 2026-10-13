@@ -25528,6 +25528,139 @@ cases:[
 };
 </script>
 <!-- EXAMEN:TENNIS:FIN -->
+<!-- EXAMEN:YT:DEBUT -->
+<script>
+/* Examen pratique YT : banque de cas. Genere depuis cours/YT/examen.js */
+window.PEXAM=window.PEXAM||{};PEXAM["YT"]={
+cases:[
+{id:"conversion",t:"La chaîne de Sofia : le seul calcul qui compte",mods:[76,77],
+ ctx:"Sofia a une chaîne tech. Sur les 10 dernières vidéos, elle a fait 50 000 vues pour 400 abonnés gagnés. Une seule vidéo a fait 4 % de conversion, les autres sont autour de 0,3 %. Elle regarde surtout ses likes et ses vues.",
+ cards:[
+ {t:"num",q:"Calcule le taux de conversion de Sofia : 400 abonnés gagnés pour 50 000 vues, en %.",a:0.8,tol:0.01,un:" %",h:"abonnés gagnés / vues x 100.",w:"400 / 50 000 x 100 = 0,8 %. C'est la bonne zone pour une chaîne tech ou éducation (0,8 % à 1,5 %)."},
+ {t:"num",q:"Vidéo A : 100 000 vues à 0,2 % de conversion. Vidéo B : 20 000 vues à 1,5 %. Combien d'abonnés de plus apporte la vidéo B que la A ? (A gagne 200, B gagne 300)",a:100,tol:1,un:" abonnés",w:"A : 100 000 x 0,2 % = 200. B : 20 000 x 1,5 % = 300. B rapporte 100 abonnés de plus avec cinq fois moins de vues."},
+ {t:"story",q:"Que lui dis-tu sur le fait qu'une vidéo a fait 4 % ?",sc:[{who:"Sofia",txt:"Ma moyenne est bonne grâce à une vidéo à 4 %. Tout va bien, non ?"}],
+  o:["Regarde aussi la médiane : très en dessous de la moyenne, c'est un coup de chance", "Oui, la moyenne est la seule mesure qui compte vraiment sur une chaîne", "Non, une vidéo virale ne compte jamais dans le calcul de la moyenne", "Il faut refaire la même vidéo à l'identique chaque semaine pour durer"],a:0,w:"Si la médiane est très en dessous de la moyenne, la chaîne repose sur un coup de chance, pas sur un système."},
+ {t:"sort",q:"Lequel de ces chiffres pilote la croissance ?",bins:["Pilote la croissance","Ne la pilote pas"],it:[["Abonnés gagnés pour 1 000 vues",0],["Nombre de likes",1],["Nombre de commentaires",1],["Taux de conversion sur les 20 dernières vidéos",0]],w:"Après chaque vidéo : combien d'abonnés pour combien de vues. Ce ratio, et lui seul, pilote la croissance."},
+ {t:"tf",q:"Les abonnés gagnés par vidéo sont visibles sur la page publique de la chaîne.",a:false,w:"Faux : ils ne sont visibles que dans YouTube Studio. C'est la donnée la plus importante de la chaîne, et personne d'autre ne peut la voir."}
+ ]},
+{id:"diagnostic",t:"Le diagnostic de Studio : ce qui coince dans une vidéo",mods:[78,95],
+ ctx:"Trois vidéos de Karim à J+2. Vidéo 1 : beaucoup d'impressions, CTR à 2 %. Vidéo 2 : CTR à 7 %, mais chute de rétention avant 0:30. Vidéo 3 : tout correct, mais peu de vues. Il veut tout refaire et réuploader la vidéo 1.",
+ cards:[
+ {t:"match",q:"Associe chaque symptôme à ce qu'il faut travailler.",p:[["Peu d'impressions","Le sujet"],["Impressions hautes, CTR bas","La miniature et le titre"],["CTR bon, rétention basse","Le hook et la structure"],["Tout correct mais peu de vues","Le sujet : la demande n'existe pas"]],w:"Chaque chiffre dépend du précédent. Peu d'impressions : le sujet. CTR bas : packaging. Rétention basse : hook et structure."},
+ {t:"story",q:"Que lui dis-tu pour la vidéo 1 (beaucoup d'impressions, CTR sous 3 %) ?",sc:[{who:"Karim",txt:"CTR à 2 %. Je change le titre, la miniature et le sujet en même temps !"}],
+  o:["Change la miniature d'abord, une seule variable, re-mesure sous 48 h", "Change tout en même temps pour gagner du temps et voir ce qui marche", "Réuploade la vidéo avec un autre titre et une miniature plus claire", "Supprime la vidéo et recommence demain matin avec un nouveau sujet"],a:0,w:"Une seule variable à la fois, sinon tu ne sauras jamais ce qui a produit le gain. Ne jamais réuploader une vidéo qui sous-performe."},
+ {t:"story",q:"Que lui conseilles-tu pour la vidéo 2 (bon CTR, chute avant 0:30) ?",sc:[{who:"Karim",txt:"CTR de 7 %, mais tout le monde part avant 30 secondes."}],
+  o:["Coupe les 10 à 20 premières secondes molles dans l'éditeur YouTube", "Réuploade la vidéo avec les secondes molles coupées dans le montage", "Change le sujet : la demande n'existe pas pour ce type de vidéo", "Ne touche à rien pendant 48 heures, la chute se corrigera toute seule"],a:0,w:"Dissonance promesse / contenu, ou hook mou. C'est l'une des rares secondes chances que la plateforme accorde, sans réupload."},
+ {t:"sort",q:"Quand juger une vidéo ?",bins:["Trop tôt","Délai correct"],it:[["Après 6 heures",0],["À 48 à 72 heures",1],["À J+2, avec le CTR et la rétention",1],["Après 1 heure, sur les vues seulement",0]],w:"Juger une vidéo sur ses 6 premières heures est l'une des douze erreurs qui tuent une chaîne."},
+ {t:"tf",q:"Peu d'impressions mais un bon CTR : il faut changer la miniature tout de suite, car le packaging a échoué.",a:false,w:"Faux : le packaging marche, la diffusion n'a simplement pas démarré, donc on ne touche à rien pendant 48 heures. Première branche de l'arbre de décision à J+1 et J+2."}
+ ]},
+{id:"miniature",t:"La miniature d'Hugo : clic, CTR et packaging",mods:[79,94],
+ ctx:"Hugo a publié une vidéo : 40 000 impressions, 1 600 clics. Sa miniature contient une longue phrase de 12 mots en petit, sur un fond sombre. Le titre répète la même phrase. Il demande si son CTR est bon.",
+ cards:[
+ {t:"num",q:"Calcule le CTR d'Hugo : 1 600 clics pour 40 000 impressions, en %.",a:4,tol:0.1,un:" %",h:"clics / impressions x 100.",w:"1 600 / 40 000 x 100 = 4 %. Moyenne entre 2 et 4 %, bon entre 5 et 8 %, excellent au-dessus de 10 %."},
+ {t:"story",q:"Que dis-tu à Hugo sur sa miniature ?",sc:[{who:"Hugo",txt:"J'ai écrit une phrase complète sur la miniature, avec mon titre à côté. C'est bien, non ?"}],
+  o:["Trois mots maximum, très gros, et titre différent de la miniature", "Parfait : plus on écrit, mieux le spectateur comprend le sujet vite", "Il faut aussi y ajouter ton logo et ton nom en grand sur l'image", "Garde le même texte dans la miniature et dans le titre de la vidéo"],a:0,w:"La miniature pose une question visuelle, le titre donne la tension. S'ils répètent la même information, tu gaspilles la moitié de ton packaging."},
+ {t:"multi",q:"Coche ce qui fait cliquer sur une miniature.",o:["Un visage avec une émotion lisible","Trois mots maximum, très gros, contour noir épais","Un contraste fort, lisible en 120 pixels de large","Une tension visuelle : flèche, cercle rouge, avant/après, chiffre","Un texte long et détaillé en petite taille"],a:[0,1,2,3],w:"Le cerveau traite un visage en 13 millisecondes."},
+ {t:"order",q:"Remets dans l'ordre le test des trois secondes.",it:["Réduire la miniature à la taille d'un ongle","Regarder 3 secondes","Se demander de quoi parle la vidéo et pourquoi la regarder","Recommencer si la réponse n'est pas évidente"],w:"Ce test se fait avant publication, pas après."},
+ {t:"tf",q:"Un CTR très élevé sur peu d'impressions prouve toujours que la miniature attire de nouveaux spectateurs.",a:false,w:"Faux : il vient souvent des abonnés existants, pas de nouveaux spectateurs. Méfie-toi d'un CTR flatteur calculé sur un petit nombre d'impressions."}
+ ]},
+{id:"retention",t:"La courbe de rétention : lire où l'on décroche",mods:[80,93],
+ ctx:"Léa compare deux vidéos : une de 20 minutes retenue à 40 % et une de 5 minutes retenue à 60 %. Sa courbe chute brutalement à 0:08, décroche nettement à 6:12 et remonte à la fin.",
+ cards:[
+ {t:"num",q:"Vidéo de 20 minutes, rétention moyenne 40 %. Combien de minutes vues en moyenne ?",a:8,tol:0.1,un:" min",w:"20 x 0,4 = 8 minutes, contre 3 minutes pour 5 minutes à 60 %. YouTube compte des minutes, pas des pourcentages."},
+ {t:"num",q:"Vidéo de 5 minutes, rétention moyenne 60 %. Combien de minutes vues en moyenne ?",a:3,tol:0.1,un:" min",w:"5 x 0,6 = 3 minutes. La durée moyenne en minutes passe avant le pourcentage."},
+ {t:"match",q:"Associe chaque signal de la courbe à son sens.",p:[["Chute verticale au début","Le hook ne tient pas la promesse de la miniature"],["Décrochage net au milieu","Passage trop long, digression, promesse tenue trop tôt"],["Pic vers le haut","Moment rejoué, moment fort à reproduire"],["Remontée en fin de vidéo","Rewatch, excellent signal"]],w:"Note l'horodatage exact de chaque décrochage, puis regarde ce qui se passe à cet instant."},
+ {t:"story",q:"Quel est le meilleur résultat pour l'algorithme ?",sc:[{who:"Léa",txt:"10 % de clic puis 80 % d'abandon en 30 secondes, ou 5 % de clic avec 60 % de rétention ?"}],
+  o:["5 % de clic avec 60 % de rétention : il évalue le couple clic et rétention", "10 % de clic : le clic est la seule mesure qui compte pour le classement", "Les deux se valent, tout dépend de la miniature et du titre de chacune", "10 % de clic, car 80 % d'abandon n'est pas un problème pour la vidéo"],a:0,w:"Une chute brutale avant 0:30 signale que ta miniature a menti, et la vidéo est déclassée."},
+ {t:"tf",q:"La chute entre 0 et 30 secondes ne doit pas dépasser 40 %.",a:true,w:"Vrai : c'est la chute la plus brutale et c'est normal, mais elle ne doit pas dépasser 40 %."}
+ ]},
+{id:"hook",t:"Les 30 premières secondes : le hook",mods:[81],
+ ctx:"Jules commence toutes ses vidéos par « Salut à tous, j'espère que vous allez bien, aujourd'hui je vous parle de... ». Il a une intro animée de 8 secondes. Ses shorts mettent 5 secondes à démarrer.",
+ cards:[
+ {t:"order",q:"Remets dans l'ordre la structure d'un hook de vidéo longue.",it:["0 à 3 s : choc, question ou chiffre surprenant","3 à 10 s : amplification du problème","10 à 20 s : promesse claire de ce que la vidéo apporte","20 à 30 s : preuve de crédibilité rapide"],w:"Ensuite seulement, on entre dans la vidéo."},
+ {t:"sort",q:"Cette habitude tue-t-elle un hook ?",bins:["Tue le hook","Aide le hook"],it:[["« Salut à tous, j'espère que vous allez bien »",0],["Se présenter avant d'avoir donné une raison de rester",0],["Créer de la tension sur un chiffre surprenant",1],["Une intro animée de 8 secondes",0],["Supprimer la première phrase du hook après réécriture",1]],w:"L'intro animée est la façon la plus rapide de perdre 20 % de rétention."},
+ {t:"num",q:"Sur un short, le hook dure combien de secondes ?",a:2,tol:0.1,un:" s",w:"Deux secondes. Faire arrêter le scroll de 0 à 1 seconde, faire rester 3 à 5 secondes, tenir jusqu'au retournement puis jusqu'au CTA."},
+ {t:"match",q:"Associe chaque biais à son exemple.",p:[["Information gap","Révéler juste assez pour créer un manque"],["Aversion à la perte","La peur de rater motive plus que le désir"],["Preuve sociale","Montrer que d'autres l'ont déjà vécu"]],w:"Les trois biais à exploiter dans un hook."},
+ {t:"story",q:"Que lui dis-tu pour réécrire son hook ?",sc:[{who:"Jules",txt:"J'ai écrit mon hook en quatre phrases. Comment l'améliorer ?"}],
+  o:["Supprime la première phrase : neuf fois sur dix, ça commence mieux", "Ajoute une cinquième phrase pour bien présenter la chaîne aux nouveaux", "Garde les quatre phrases et lis-les un peu plus vite pour gagner du temps", "Place l'intro animée avant le hook pour préparer le spectateur à la suite"],a:0,w:"La règle de réécriture : écris ton hook, puis supprime la première phrase."}
+ ]},
+{id:"sujet",t:"Un thème n'est pas un sujet : outlayers et angles",mods:[82,83],
+ ctx:"Inès hésite entre « IA et travail » et « J'ai laissé une IA remplacer mon travail pendant 30 jours ». Elle a repéré une vidéo américaine qui a fait 60 000 vues alors que la chaîne en fait 8 000 en moyenne. Elle veut la copier mot pour mot.",
+ cards:[
+ {t:"sort",q:"Thème faible ou sujet fort ?",bins:["Faible (thème)","Fort (sujet)"],it:[["IA et addiction",0],["Pourquoi ChatGPT te rend dépendant sans que tu le réalises",1],["IA et travail",0],["J'ai laissé une IA remplacer mon travail pendant 30 jours",1]],w:"Un thème est abstrait. Un sujet est une promesse vidéo complète."},
+ {t:"multi",q:"Coche les quatre OUI obligatoires d'un sujet.",o:["Y a-t-il une histoire à raconter ?","Y a-t-il une tension ou un danger ?","Y a-t-il un humain au centre ?","Y a-t-il une promesse pour le spectateur ?","Le sujet est-il tendance sur les réseaux sociaux ?"],a:[0,1,2,3],w:"Un seul NON et le sujet est à reformuler ou à jeter. Ce filtre prend dix secondes."},
+ {t:"num",q:"La vidéo a fait 60 000 vues, la moyenne de la chaîne est de 8 000. Quel est le ratio d'outlayer (arrondi à une décimale) ?",a:7.5,tol:0.1,un:" x",w:"60 000 / 8 000 = 7,5. Au-dessus de x3 : signal fort. Au-dessus de x10 : format à copier immédiatement."},
+ {t:"story",q:"Que lui dis-tu sur la façon de copier cette vidéo ?",sc:[{who:"Inès",txt:"Cette vidéo a cartonné, je la copie telle quelle en français."}],
+  o:["Copie la structure, l'angle et le packaging, jamais le contenu exact", "Copie tout, le contenu, le titre et la miniature, tel quel en français", "N'utilise jamais aucun outlayer, c'est du plagiat dans tous les cas", "Copie le sujet exact mais change la couleur de la miniature, c'est assez"],a:0,w:"Un outlayer bien exploité donne une vidéo que personne n'a encore faite dans ta langue."},
+ {t:"tf",q:"Un outlayer chez une plus petite chaîne que la tienne prouve que c'est le sujet qui porte, pas l'audience.",a:true,w:"Vrai : c'est pourquoi il faut aussi chercher dans d'autres niches, sur YouTube US et chez les petites chaînes."}
+ ]},
+{id:"packaging",t:"Titre, miniature et short en 5 temps",mods:[84,85],
+ ctx:"Mélanie écrit le titre de sa prochaine vidéo. Elle a trouvé 5 idées et s'arrête. Elle prépare aussi un short avec trois conseils et deux appels à l'action. Elle veut une statistique pour appuyer sa révélation.",
+ cards:[
+ {t:"story",q:"Que lui dis-tu sur sa méthode de titres ?",sc:[{who:"Mélanie",txt:"J'ai cinq titres, je choisis le meilleur et je publie."}],
+  o:["Écris-en 20 : les vrais bons arrivent entre le 12e et le 18e", "Cinq titres suffisent si le premier est le plus clair des cinq proposés", "Écris-en deux seulement, la simplicité fait gagner du temps à chaque fois", "Reprends toujours le titre d'une vidéo qui a bien marché sur la chaîne"],a:0,w:"Les 5 premiers titres sont toujours les plus évidents et les plus faibles."},
+ {t:"match",q:"Associe chaque levier de titre à son exemple.",p:[["Le chiffre précis","37 jours bat un mois"],["La tension non résolue","Ce que personne ne te dit sur X"],["L'enjeu personnel","J'ai perdu X en faisant Y"],["La négation d'une évidence","Pourquoi X ne marche pas"]],w:"Un titre se juge avec sa miniature, jamais seul."},
+ {t:"order",q:"Remets dans l'ordre les cinq temps d'un short.",it:["Hook, 0 à 4 s","Promesse, 4 à 12 s","Retournement, 12 à 25 s","Révélation, 25 à 45 s","Payoff et CTA, 45 à 60 s"],w:"Un seul CTA, une seule idée dans la révélation, une statistique vérifiable."},
+ {t:"story",q:"Que dis-tu de ses trois conseils et deux CTA ?",sc:[{who:"Mélanie",txt:"Mon short donne trois conseils et deux appels à l'action. Plus de contenu, plus de valeur !"}],
+  o:["Une idée et un CTA : sinon on ne retient et n'obtient rien", "Parfait : plus il y a de conseils, plus la vidéo est partagée par le public", "Trois CTA seraient encore mieux : abonnement, commentaire et lien ensemble", "Garde les trois conseils et enlève seulement le hook du début de la vidéo"],a:0,w:"On choisit un seul CTA : abonnement, commentaire, ou lien. Jamais les trois."},
+ {t:"tf",q:"Une statistique inventée se repère, et la crédibilité de toute la chaîne s'effondre.",a:true,w:"Vrai : minimum une étude réelle, un chiffre issu d'une source primaire, et l'angle contre-intuitif que les données révèlent."}
+ ]},
+{id:"long",t:"Vidéo longue et SEO : actes, interactions et description",mods:[86,87],
+ ctx:"Antoine prépare une vidéo longue de 12 minutes. Il veut mettre le CTA d'abonnement dès le début et écrit une description en liste de mots-clés. Il a deux actes dont il pourrait faire le même résumé en une phrase.",
+ cards:[
+ {t:"story",q:"Que lui dis-tu sur ses deux actes ?",sc:[{who:"Antoine",txt:"Mes actes 2 et 3 se résument par la même phrase. Ce n'est pas grave, non ?"}],
+  o:["Ils ne sont pas assez distincts : l'un des deux fait décrocher", "C'est parfait : la redondance rassure beaucoup le spectateur en cours de vidéo", "Garde les deux et ajoute un troisième acte sur le même thème que ceux-là", "Fusionne-les et enlève le secret du début de la vidéo, il ne sert à rien"],a:0,w:"Chaque acte porte un seul thème distinct, zéro redondance."},
+ {t:"story",q:"Où places-tu le CTA d'abonnement ?",sc:[{who:"Antoine",txt:"Je mets le CTA d'abonnement au début, pour qu'il le voie."}],
+  o:["Après la révélation du secret, avant la phrase de clôture", "Dès la première minute pour maximiser les abonnements en début de vidéo", "Pendant le hook, avec une phrase courte, avant même de parler du sujet", "Au milieu de chaque acte, à chaque occasion de parler de la chaîne ici"],a:0,w:"Jamais au début : à ce moment le spectateur n'a encore aucune raison de s'abonner."},
+ {t:"num",q:"Une vidéo longue a au minimum 3 mini-expériences interactives, idéalement 4 à 5. Combien en faut-il au minimum pour une vidéo de 3 actes (une en intro, une par acte) ?",a:4,tol:0.1,w:"1 en intro + 3 (une par acte) = 4. Durée 15 à 35 secondes, en transition entre deux idées."},
+ {t:"match",q:"Associe chaque élément de la description à sa règle.",p:[["Ligne 1","Promesse et mot-clé principal, 150 caractères max"],["Ligne 2","Ce que le spectateur va apprendre et mot-clé secondaire"],["Ligne 3","Lien vers la playlist thématique la plus proche"],["Corps","150 à 400 mots en prose fluide"]],w:"Les 150 premiers caractères sont visibles avant le « voir plus » sur mobile, et indexés en priorité."},
+ {t:"num",q:"15 hashtags se répartissent en niche, thématiques larges et tendance, à parts égales. Combien de hashtags de niche ?",a:5,tol:0.1,w:"15 hashtags : 5 de niche, 5 thématiques larges, 5 tendance. Plus 20 tags dans le champ dédié."}
+ ]},
+{id:"testmesure",t:"Le cycle de 4 semaines : tester, mesurer, ajuster",mods:[88,89],
+ ctx:"Une chaîne publie 8 vidéos par mois et gagne 400 abonnés avec un taux de conversion de 0,8 % sur 50 000 vues. Théo passe à 12 vidéos par mois avec 60 % dans ses meilleurs formats. Après 28 jours, le taux n'a pas bougé.",
+ cards:[
+ {t:"num",q:"Théo passe de 8 à 12 vidéos par mois. Quel est le multiplicateur (N x ?) ?",a:1.5,tol:0.01,w:"12 / 8 = 1,5. La recommandation : passer de N à N x 1,5 vidéos par mois, dont 60 % dans les formats qui convertissent le mieux."},
+ {t:"num",q:"Scénario optimisé : +50 % de vidéos et +50 % de taux. Les abonnés passent de 400 à combien ?",a:900,tol:1,un:" abonnés",w:"400 x 1,5 x 1,5 = 900. C'est le calcul de référence : +125 % sans changer autre chose que le mix."},
+ {t:"story",q:"Que lui dis-tu à J+28, quand le taux n'a pas bougé ?",sc:[{who:"Théo",txt:"Le taux n'a pas bougé après 4 semaines. Je change de format ?"}],
+  o:["Change d'angle, pas de format : ne jette pas ce qui marchait", "Change de format tout de suite : l'ancien format est forcément mauvais", "Arrête la chaîne un mois pour faire une pause et revenir plus reposé", "Double le nombre de vidéos sans rien changer d'autre à ton mix actuel"],a:0,w:"Si le taux a augmenté, double encore la mise sur ces formats. S'il n'a pas bougé, change d'ANGLE."},
+ {t:"sort",q:"Short ou vidéo longue ?",bins:["Short","Vidéo longue"],it:[["Volume de vues et découverte",0],["Conversion forte et communauté",1],["Conversion faible",0],["Durée de visionnage",1]],w:"Le short amène le trafic, la longue transforme."},
+ {t:"tf",q:"Il faut juger une vidéo isolée, car la variance sur une publication est faible.",a:false,w:"Faux : la variance sur une seule publication est énorme. On ne juge jamais une vidéo isolée, on recalcule le taux moyen à J+28."}
+ ]},
+{id:"plan",t:"Du zéro à 100 000 abonnés : paliers et pièges",mods:[90,91],
+ ctx:"Camille veut atteindre 100 000 abonnés. Elle a 400 abonnés, change de niche tous les mois, retravaille le montage de chaque vidéo avant de publier et regarde ses vues plutôt que son taux.",
+ cards:[
+ {t:"num",q:"À 1 % de conversion, combien de vues cumulées faut-il pour 100 000 abonnés ?",a:10,tol:0.1,un:" millions",w:"100 000 / 0,01 = 10 millions de vues. À 2 %, il n'en faut plus que 5. Doubler ton taux divise par deux le temps qu'il te reste."},
+ {t:"match",q:"Associe chaque palier à son objectif.",p:[["0 à 1 000","Trouver son format, volume et tests"],["1 000 à 10 000","Répéter ce qui marche, régularité"],["10 000 à 100 000","Industrialiser, packaging et process"]],w:"Le palier 2 est le plus long et celui où la majorité abandonne."},
+ {t:"sort",q:"Piège ou bon réflexe ?",bins:["Piège","Bon réflexe"],it:[["Changer de niche tous les mois",0],["Soigner le montage avant le sujet",0],["Publier sans hypothèse",0],["Ouvrir Studio après chaque vidéo pour noter le taux et le décrochage",1],["Publier une vidéo à 80 % plutôt qu'attendre le parfait",1]],w:"Une vidéo publiée à 80 % vaut infiniment mieux qu'une vidéo parfaite jamais publiée."},
+ {t:"story",q:"Que lui dis-tu sur ses vues ?",sc:[{who:"Camille",txt:"Je regarde mes vues, c'est ce qui compte, non ?"}],
+  o:["Regarde le taux : on optimise ce qu'on mesure, et c'est lui qui pilote la croissance de la chaîne", "Oui : les vues sont la seule mesure fiable pour piloter une chaîne YouTube", "Regarde les likes, c'est plus important que n'importe quelle autre mesure", "Regarde le nombre de commentaires uniquement, c'est le seul vrai signal"],a:0,w:"Regarder les vues au lieu du taux est l'une des sept fautes les plus coûteuses."},
+ {t:"tf",q:"La routine hebdomadaire commence par chercher un outlayer et valider le sujet avec les quatre OUI.",a:true,w:"Vrai : puis vingt titres, le hook en premier, publication, et à J+3 le CTR et le point de décrochage."}
+ ]},
+{id:"monetisation",t:"Niche, RPM et seuils de monétisation",mods:[92,97],
+ ctx:"Kévin hésite entre une chaîne finance et une chaîne gaming. Il veut aussi monétiser vite. Il regarde le CPM affiché par une marque : 10 euros. Il a 600 abonnés et 3 200 heures de visionnage sur 12 mois.",
+ cards:[
+ {t:"story",q:"Que lui dis-tu sur le CPM de 10 euros ?",sc:[{who:"Kévin",txt:"Le CPM est de 10 euros. Je gagne donc 10 euros pour 1 000 vues ?"}],
+  o:["Ne regarde que le RPM : un CPM de 10 EUR peut donner 2,50 EUR", "Oui : le CPM est ce que tu touches, tout simplement, à la vue près", "Non : tu touches le double du CPM affiché, car il y a un bonus automatique", "Oui : mais seulement sur les vidéos longues, jamais sur les Shorts du tout"],a:0,w:"Le CPM, c'est ce que paie l'annonceur. Le RPM, c'est ce que tu touches. 55 % pour toi sur les vidéos longues, et 40 à 50 % de tes vues génèrent une pub."},
+ {t:"mcq",q:"Avec 600 abonnés et 3 200 heures sur 12 mois, à quel programme Kévin a-t-il accès ?",o:["Accès anticipé : Super Thanks, Super Chat, adhésions, mais pas de pub", "Programme complet avec les revenus publicitaires AdSense dès maintenant", "Aucun : il faut atteindre 1 000 abonnés pour avoir accès à quoi que ce soit", "Accès anticipé avec les revenus publicitaires complets sur toutes les vidéos"],a:0,w:"Accès anticipé : 500 abonnés et 3 000 heures sur 12 mois. Programme complet : 1 000 abonnés et 4 000 heures. Les deux voies ne se cumulent pas."},
+ {t:"num",q:"Une chaîne fait 30 000 vues par vidéo et facture un sponsor 20 euros pour 1 000 vues. Combien facture-t-elle l'intégration ?",a:600,tol:1,un:" €",w:"30 x 20 = 600 euros, jusqu'à 1 500 euros à 50 euros pour 1 000 vues. Sponsors : la source la plus rentable."},
+ {t:"num",q:"Un RPM de 2,50 € sur une vidéo de 40 000 vues. Combien de revenus ?",a:100,tol:1,un:" €",w:"40 x 2,50 = 100 euros. Le RPM est le revenu pour 1 000 vues. Un million de vues Shorts rapporte ce qu'une vidéo longue en finance rapporte avec 10 000 vues."},
+ {t:"multi",q:"Coche les leviers qui font monter le RPM.",o:["Dépasser 8 minutes pour débloquer les coupures en milieu de vidéo","Attaquer une niche à forte valeur annonceur","Élargir vers des audiences à fort pouvoir d'achat","Publier au quatrième trimestre, quand les CPM montent de 40 à 60 %","Ne publier que des Shorts, qui rapportent plus par vue"],a:[0,1,2,3],w:"Les Shorts ne sont pas un modèle économique, ce sont un canal d'acquisition."}
+ ]},
+{id:"systeme",t:"Hub et satellites : le système hebdomadaire",mods:[96,98],
+ ctx:"Nina publie sur YouTube, TikTok, Reels et Shorts depuis un mois, avec le même montage partout. Elle n'a pas de banque de packagings. Elle monte elle-même et délègue d'abord l'écriture.",
+ cards:[
+ {t:"story",q:"Que dis-tu à Nina sur son montage unique ?",sc:[{who:"Nina",txt:"Je poste le même montage sur TikTok et sur Reels. Ça fait gagner du temps !"}],
+  o:["TikTok pénalise le trop produit, Instagram le récompense : adapte-toi", "Parfait : un seul montage pour tout le monde est optimal sur chaque réseau", "Soigne le plus possible pour TikTok, dégrade pour Reels de façon volontaire", "Ne publie plus sur Instagram du tout, TikTok suffit largement pour la chaîne"],a:0,w:"Si tu ne fais qu'une seule adaptation, c'est celle-là. Une seule plateforme secondaire à la fois, maîtrisée trois mois."},
+ {t:"match",q:"Associe chaque format à son rôle.",p:[["YouTube long","Conversion"],["Shorts","Découverte"],["TikTok","Découverte"],["Reels","Crédibilité"]],w:"Hub = la vidéo longue. Satellites = 3 à 5 dérivés courts, autonomes."},
+ {t:"num",q:"La banque doit contenir 30 packagings validés d'avance. Elle en contient 12. Combien en manque-t-il pour atteindre l'objectif ?",a:18,tol:0.1,w:"30 - 12 = 18. Quand la banque descend sous 15, la reconstituer devient la priorité numéro un."},
+ {t:"order",q:"Remets dans l'ordre la semaine type.",it:["Lundi : packaging","Mardi : recherche et script","Mercredi : tournage","Jeudi : montage","Vendredi : mise en ligne","Samedi : découpe multiplateforme","Dimanche : analyse"],w:"Aucune décision créative à prendre en début de semaine."},
+ {t:"story",q:"Que lui dis-tu sur la délégation ?",sc:[{who:"Nina",txt:"Je délègue l'écriture et le choix des sujets en premier."}],
+  o:["Miniatures d'abord, puis montage, jamais l'écriture ni les sujets en premier", "Parfait : l'écriture est ce qui prend le plus de temps dans toute la semaine", "Délègue tout d'un coup pour gagner du temps dès le premier mois de la chaîne", "Ne délègue jamais rien, tout faire soi-même est plus sûr pour la qualité"],a:0,w:"La décision est le vrai goulot d'étranglement, pas l'exécution."}
+ ]}
+]
+};
+</script>
+<!-- EXAMEN:YT:FIN -->
 <script>
 /* =====================================================================
    MULTILINGO v2 — moteur
