@@ -22830,6 +22830,179 @@ EXOS.push(
 );
 </script>
 <!-- COURS:EPSAL:FIN -->
+<!-- EXAMEN:PATRI:DEBUT -->
+<script>
+/* Examen pratique PATRI : banque de cas. Genere depuis cours/PATRI/examen.js */
+window.PEXAM=window.PEXAM||{};PEXAM["PATRI"]={
+docs:[
+{t:"Barème des droits (ligne directe)",h:`<p>On cherche la ligne où tombe la part nette taxable <b>P</b>, puis on applique sa formule.</p>
+<table><tr><th>P (après abattement)</th><th>Droits</th></tr>
+<tr><td>Jusqu'à 8 072 €</td><td>P x 5 %</td></tr>
+<tr><td>De 8 072 à 12 109 €</td><td>P x 10 % - 404 €</td></tr>
+<tr><td>De 12 109 à 15 932 €</td><td>P x 15 % - 1 009 €</td></tr>
+<tr><td>De 15 932 à 552 324 €</td><td>P x 20 % - 1 806 €</td></tr>
+<tr><td>De 552 324 à 902 838 €</td><td>P x 30 % - 57 038 €</td></tr>
+<tr><td>De 902 838 à 1 805 677 €</td><td>P x 40 % - 147 322 €</td></tr>
+<tr><td>Au-delà de 1 805 677 €</td><td>P x 45 % - 237 606 €</td></tr></table>`},
+{t:"Abattements et taux hors ligne directe",h:`<table><tr><th>Lien</th><th>Abattement</th><th>Taux</th></tr>
+<tr><td>Enfant, parent</td><td>100 000 €</td><td>Barème ligne directe</td></tr>
+<tr><td>Petit-enfant (donation)</td><td>31 865 €</td><td>Barème ligne directe</td></tr>
+<tr><td>Frère, sœur</td><td>15 932 €</td><td>35 % jusqu'à 24 430 €, puis P x 45 % - 2 443 €</td></tr>
+<tr><td>Neveu, nièce</td><td>7 967 €</td><td>55 %</td></tr>
+<tr><td>Concubin, ami</td><td>1 594 €</td><td>60 %</td></tr>
+<tr><td>Conjoint, partenaire de PACS</td><td>Succession : exonéré. Donation : 80 724 €</td><td>Barème ligne directe</td></tr></table>
+<p>Les abattements se rechargent tous les 15 ans. Le don familial d'argent ajoute 31 865 € (donateur de moins de 80 ans, bénéficiaire majeur).</p>`},
+{t:"Usufruit et nue-propriété (article 669 du CGI)",h:`<p>On lit la ligne avec l'âge de l'<b>usufruitier</b>.</p>
+<table><tr><th>Âge de l'usufruitier</th><th>Usufruit</th><th>Nue-propriété</th></tr>
+<tr><td>Moins de 21 ans</td><td>90 %</td><td>10 %</td></tr>
+<tr><td>Moins de 31 ans</td><td>80 %</td><td>20 %</td></tr>
+<tr><td>Moins de 41 ans</td><td>70 %</td><td>30 %</td></tr>
+<tr><td>Moins de 51 ans</td><td>60 %</td><td>40 %</td></tr>
+<tr><td>Moins de 61 ans</td><td>50 %</td><td>50 %</td></tr>
+<tr><td>Moins de 71 ans</td><td>40 %</td><td>60 %</td></tr>
+<tr><td>Moins de 81 ans</td><td>30 %</td><td>70 %</td></tr>
+<tr><td>Moins de 91 ans</td><td>20 %</td><td>80 %</td></tr>
+<tr><td>91 ans et plus</td><td>10 %</td><td>90 %</td></tr></table>
+<p>Donation temporaire d'usufruit : 23 % de la valeur par période de 10 ans, sans fraction.</p>`},
+{t:"Assurance-vie et décès",h:`<table><tr><th></th><th>Primes avant 70 ans (990 I)</th><th>Primes après 70 ans (757 B)</th></tr>
+<tr><td>Base</td><td>Capital transmis, gains compris</td><td>Primes seulement, gains exonérés</td></tr>
+<tr><td>Abattement</td><td>152 500 € par bénéficiaire</td><td>30 500 € pour tous les bénéficiaires</td></tr>
+<tr><td>Taxation</td><td>20 % jusqu'à 700 000 €, puis 31,25 %</td><td>Barème des successions selon le lien</td></tr></table>
+<p>Le conjoint et le partenaire de PACS sont exonérés. Les 30 500 € se répartissent au prorata des primes entre les bénéficiaires taxables.</p>`},
+{t:"Dutreil, holding et cession",h:`<ul><li>Pacte Dutreil : abattement de <b>75 %</b> sur la valeur des titres. Engagement collectif de 2 ans (34 % des droits de vote, 17 % des droits financiers), engagement individuel de 6 ans, direction pendant l'engagement et 3 ans après.</li>
+<li>Réduction de <b>50 %</b> des droits en cas de donation de pleine propriété par un donateur de moins de 70 ans.</li>
+<li>Chronologie : Dutreil, démembrement, partage, abattement, barème, réduction.</li>
+<li>Régime mère-fille : quote-part de 5 % taxée à 25 %, soit 1,25 %. Intégration fiscale : 0,25 %.</li>
+<li>Flat tax : 31,4 % (12,8 % d'impôt et 18,6 % de prélèvements sociaux).</li>
+<li>Droits d'enregistrement : actions 0,1 %, parts de SARL 3 % après 23 000 €, fonds de commerce 0 %, 3 % puis 5 %.</li></ul>`}
+],
+cases:[
+{id:"bertrand",t:"Le dossier Bertrand : qui hérite de quoi",mods:[133,134,135,328],
+ ctx:"M. Bertrand meurt à 70 ans. Il était marié sous la communauté légale avec Françoise, 66 ans. Ils ont trois enfants communs : Paul, Zoé et Hugo. Biens communs : une maison de 560 000 € et des placements de 240 000 €. M. Bertrand possédait aussi un terrain de 120 000 € reçu de ses parents. Aucun testament, aucune donation.",
+ cards:[
+ {t:"num",q:"Quelle est la valeur de la succession de M. Bertrand ?",a:520000,tol:1,un:" €",h:"Régime d'abord : coupe les biens communs en deux.",w:"On liquide le régime avant tout : Françoise reprend sa moitié des biens communs (800 000 / 2 = 400 000 €). La succession = 400 000 € + 120 000 € de bien propre = 520 000 €. Moyen mnémotechnique : moitié d'abord, ordre ensuite."},
+ {t:"story",q:"Que réponds-tu à Françoise sur ses droits ?",sc:[{who:"Françoise Bertrand",txt:"Je voudrais rester dans la maison jusqu'à la fin. Qu'est-ce que la loi me donne, avec les trois enfants ?"}],
+  o:["Vous choisissez : un quart en pleine propriété ou toute la succession en usufruit","Vous recevez la moitié de la succession en pleine propriété, sans choix à faire ni calcul","Vous n'avez aucun droit sur la succession : les trois enfants héritent seuls de leur père marié","Vous recevez uniquement un quart en usufruit, sans autre option possible pour vous"],a:0,
+  w:"Enfants tous communs : le conjoint a le choix entre 1/4 en pleine propriété et 100 % en usufruit. Avec un enfant non commun, il n'aurait eu que le quart."},
+ {t:"num",q:"Françoise choisit le quart en pleine propriété. Quelle somme reçoit chaque enfant ?",a:130000,tol:1,un:" €",h:"3/4 restent aux enfants, à partager en trois.",w:"Le quart de 520 000 € = 130 000 € pour Françoise. Il reste 390 000 € pour trois enfants, soit 130 000 € chacun."},
+ {t:"num",q:"Françoise est finalement usufruitière de toute la succession. Quelle est la valeur de la nue-propriété reçue par chaque enfant ?",a:104000,tol:1,un:" €",h:"Lis le tableau avec l'âge de l'usufruitière, 66 ans.",w:"À 66 ans, l'usufruit vaut 40 % et la nue-propriété 60 % : 520 000 x 60 % = 312 000 €, soit 104 000 € par enfant. L'âge à lire est celui de l'usufruitière, pas celui du défunt."},
+ {t:"order",q:"Remets dans l'ordre la méthode du conseiller sur un dossier de succession.",it:["Régime matrimonial","Testament et donations","Héritiers","Valeur de ce que chacun reçoit","Droits à payer"],w:"Régime, Testament, Héritiers, Valeur, Droits : « Regarde Toujours Haut, Vise Droit »."}
+ ]},
+{id:"delmas",t:"La famille Delmas : le quart qui change de famille",mods:[134,135,328],
+ ctx:"M. Delmas, 61 ans, est remarié à Isabelle sous la séparation de biens. Il a une fille d'un premier mariage, Camille, et un fils avec Isabelle, Maxime. À son décès, son patrimoine personnel vaut 900 000 €. Aucun testament. Isabelle possède 300 000 € en propre.",
+ cards:[
+ {t:"mcq",q:"Que peut recevoir Isabelle dans la succession de M. Delmas ?",o:["Un quart en pleine propriété seulement","Un quart en pleine propriété ou tout en usufruit, à son choix","La moitié de la succession en pleine propriété","Tout le patrimoine en usufruit, sans limite de durée"],a:0,w:"Dès qu'un enfant n'est pas commun aux deux époux, le conjoint perd l'option de l'usufruit : il n'a que le quart en pleine propriété."},
+ {t:"num",q:"Quelle somme reçoit Isabelle, en pleine propriété ?",a:225000,tol:1,un:" €",w:"900 000 / 4 = 225 000 €. Ce quart entre dans le patrimoine propre d'Isabelle."},
+ {t:"story",q:"Que réponds-tu à Camille ?",sc:[{who:"Camille Delmas",txt:"Le quart d'Isabelle, un jour, ira bien à son fils Maxime et à lui seul ?"}],
+  o:["Oui, ce quart rejoint le patrimoine d'Isabelle et suivra sa propre succession","Non, le quart revient pour moitié à vous, car il vient de votre propre père","Non, il retourne automatiquement aux deux enfants de M. Delmas à parts égales","Oui, mais seulement si Isabelle rédige un testament en faveur de son fils Maxime"],a:0,w:"Le quart reçu devient un bien d'Isabelle. À son décès, il passe à ses propres héritiers : ici Maxime. C'est le quart qui change de famille."},
+ {t:"num",q:"Après le décès d'Isabelle (sans testament, Maxime est son seul héritier), combien Maxime aura-t-il reçu en tout depuis les deux décès ?",a:862500,tol:1,un:" €",h:"Sa part chez son père, plus tout le patrimoine d'Isabelle.",w:"Succession du père : (900 000 - 225 000) / 2 = 337 500 € pour chaque enfant. Patrimoine d'Isabelle : 300 000 + 225 000 = 525 000 €, tout pour Maxime. Total Maxime = 862 500 €, Camille = 337 500 €."},
+ {t:"tf",q:"Isabelle peut choisir l'usufruit de la totalité de la succession, comme pour un couple d'enfants communs.",a:false,w:"Faux : avec un enfant d'une première union, seule l'option du quart en pleine propriété existe."}
+ ]},
+{id:"aubry",t:"La succession Aubry : la représentation et les droits",mods:[133,135,329],
+ ctx:"M. Aubry, veuf, meurt à 82 ans. Succession nette : 900 000 €. Il laisse un fils, Marc, et deux petits-enfants, Lola et Tom, enfants de sa fille Nora décédée l'an dernier. Aucune donation antérieure.",
+ cards:[
+ {t:"mcq",q:"Comment se répartit la succession entre Marc, Lola et Tom ?",o:["450 000 € pour Marc, et 450 000 € à partager entre Lola et Tom","300 000 € pour chacun des trois, par tête","600 000 € pour Marc, 150 000 € pour Lola et pour Tom","Tout pour Marc : les petits-enfants n'héritent jamais d'un grand-père"],a:0,w:"Nora est prédécédée : ses enfants prennent sa place par représentation et se partagent sa souche. Deux souches, donc deux moitiés."},
+ {t:"num",q:"Quels droits Lola doit-elle payer ?",a:33194,tol:1,un:" €",h:"Elle partage l'abattement de 100 000 € de sa mère avec Tom.",w:"Part nette : 225 000 €. Abattement : 100 000 / 2 = 50 000 €. P = 175 000 €. Ligne à 20 % : 175 000 x 20 % - 1 806 = 33 194 €."},
+ {t:"num",q:"Quels droits Marc doit-il payer ?",a:68194,tol:1,un:" €",w:"Part nette : 450 000 €. Abattement 100 000 €. P = 350 000 €. 350 000 x 20 % - 1 806 = 68 194 €."},
+ {t:"tf",q:"Venant par représentation de leur mère, Lola et Tom ont chacun un abattement de 100 000 €.",a:false,w:"Faux : ils se partagent les 100 000 € de leur mère, soit 50 000 € chacun."}
+ ]},
+{id:"ferrand",t:"Mme Ferrand : neveu, concubin et assurance-vie",mods:[136,141,329,330],
+ ctx:"Mme Ferrand, 64 ans, célibataire et sans enfant, vit avec Étienne, son concubin. Elle a une nièce, Anaïs. Elle veut leur laisser 140 000 € à Étienne et 50 000 € à Anaïs. Ses parents sont décédés. Aucune donation antérieure.",
+ cards:[
+ {t:"match",q:"Associe chaque bénéficiaire à son abattement en succession.",p:[["Enfant","100 000 €"],["Frère ou sœur","15 932 €"],["Neveu ou nièce","7 967 €"],["Concubin","1 594 €"]],w:"100 000, 15 932, 7 967, 1 594 : plus le lien est lointain, plus l'abattement fond et plus le taux grimpe."},
+ {t:"num",q:"Si Étienne reçoit les 140 000 € par testament, quels droits paie-t-il ?",a:83044,tol:1,un:" €",h:"Concubin : abattement de 1 594 €, puis 60 %.",w:"140 000 - 1 594 = 138 406 €. 138 406 x 60 % = 83 043,6 €, soit 83 044 €. Presque 60 % de la somme part au fisc."},
+ {t:"num",q:"Anaïs reçoit 50 000 € par legs. Quels droits paie-t-elle ?",a:23118,tol:1,un:" €",h:"Nièce : abattement de 7 967 €, puis 55 %.",w:"50 000 - 7 967 = 42 033 €. 42 033 x 55 % = 23 118,15 €, soit 23 118 €."},
+ {t:"story",q:"Que conseilles-tu à Mme Ferrand pour Étienne ?",sc:[{who:"Mme Ferrand",txt:"Je ne veux pas qu'Étienne perde plus de la moitié de ce que je lui laisse. Il existe une solution ?"}],
+  o:["Une assurance-vie alimentée avant 70 ans, avec Étienne comme bénéficiaire","Un testament plus détaillé, avec des conditions d'attribution précises","Un PACS signé la veille du décès, dans le cabinet du notaire","Une donation de la maison avec réserve d'usufruit sur dix ans"],a:0,w:"L'assurance-vie transmet 152 500 € par bénéficiaire sans droits quand les primes sont versées avant 70 ans. Ici : 140 000 € < 152 500 €, donc 0 € de droits."},
+ {t:"tf",q:"Des primes versées avant 70 ans permettent de transmettre 140 000 € à Étienne sans aucun droit.",a:true,w:"Vrai : le 990 I exonère jusqu'à 152 500 € par bénéficiaire. Après 70 ans, ce serait le 757 B, avec 30 500 € d'abattement pour tous."}
+ ]},
+{id:"rolland",t:"Le contrat Rolland : avant et après 70 ans",mods:[141,330],
+ ctx:"M. Rolland décède à 74 ans. Son contrat d'assurance-vie a été souscrit en 2008. Primes versées avant ses 70 ans : 180 000 €, capital correspondant 230 000 € (gains compris). Primes versées après ses 70 ans : 90 000 €, avec 15 000 € de gains. Bénéficiaires à parts égales : sa fille Hélène et son neveu Victor.",
+ cards:[
+ {t:"sort",q:"Classe chaque élément dans le bon régime.",bins:["990 I (avant 70 ans)","757 B (après 70 ans)"],it:[["Primes versées à 66 ans",0],["Primes versées à 71 ans",1],["Abattement de 152 500 € par bénéficiaire",0],["Abattement de 30 500 € pour tous",1],["Taxation à 20 % puis 31,25 %",0],["Taxation au barème des successions",1]],w:"Avant 70, le capital et 152 500 € chacun. Après 70, les primes et 30 500 € pour tous."},
+ {t:"mcq",q:"Quelle somme de chaque bénéficiaire est taxable au titre du 990 I ?",o:["0 €, car 115 000 € est inférieur à 152 500 €","78 500 €, soit 115 000 € moins 36 500 €","115 000 €, sans aucun abattement","37 500 €, soit la moitié des primes après 70 ans"],a:0,w:"Capital 230 000 € à parts égales : 115 000 € chacun, sous le plafond de 152 500 € par bénéficiaire. Aucun droit."},
+ {t:"num",q:"Quel abattement du 757 B revient à Victor ?",a:15250,tol:1,un:" €",h:"Hélène et Victor sont tous deux taxables.",w:"30 500 € à répartir au prorata des primes. Chacun a 45 000 € de primes sur 90 000 € : 30 500 x 45 000 / 90 000 = 15 250 €."},
+ {t:"num",q:"Quels droits Victor paie-t-il au titre du 757 B ?",a:11981,tol:1,un:" €",h:"Primes de Victor moins son abattement 757 B, puis abattement et taux du neveu.",w:"Primes de Victor : 45 000 - 15 250 = 29 750 €. Neveu : 29 750 - 7 967 = 21 783 €, taxé à 55 % = 11 980,65 €, soit 11 981 €. Les gains de 15 000 € sont exonérés."},
+ {t:"tf",q:"Les 15 000 € de gains réalisés sur les primes versées après 70 ans sont taxés au 757 B.",a:false,w:"Faux : le 757 B ne taxe que les primes. Les gains sont exonérés."}
+ ]},
+{id:"roux",t:"Les Roux : donner la nue-propriété, maintenant ou plus tard",mods:[137,138,331],
+ ctx:"M. et Mme Roux, 61 et 59 ans, mariés sous la communauté, possèdent un appartement commun de 600 000 € qui fait leur résidence principale. Ils ont deux enfants. Ils veulent leur donner la nue-propriété de l'appartement et garder l'usufruit. Tous les abattements de 100 000 € par parent et par enfant sont intacts.",
+ cards:[
+ {t:"num",q:"Quelle est la valeur de la nue-propriété donnée par M. Roux, 61 ans, sur sa moitié ?",a:180000,tol:1,un:" €",h:"Sa moitié vaut 300 000 €. Lis la ligne de ses 61 ans.",w:"61 ans : ligne « moins de 71 ans », usufruit 40 % et nue-propriété 60 %. 300 000 x 60 % = 180 000 €, soit 90 000 € par enfant."},
+ {t:"num",q:"Quelle est la valeur de la nue-propriété donnée par Mme Roux, 59 ans, sur sa moitié ?",a:150000,tol:1,un:" €",w:"59 ans : ligne « moins de 61 ans », nue-propriété 50 %. 300 000 x 50 % = 150 000 €, soit 75 000 € par enfant."},
+ {t:"tf",q:"Les deux donations peuvent se faire sans aucun droit à payer.",a:true,w:"Vrai : chaque enfant reçoit 90 000 € de son père et 75 000 € de sa mère, soit moins de 100 000 € par parent. Les droits sont nuls."},
+ {t:"num",q:"M. Roux attend d'avoir 72 ans pour donner sa moitié de la même façon. Quels droits paie chaque enfant sur la part reçue de lui ?",a:250,tol:1,un:" €",h:"À 72 ans, la nue-propriété vaut 70 %. Regarde la première ligne du barème.",w:"300 000 x 70 % = 210 000 €, soit 105 000 € par enfant. P = 105 000 - 100 000 = 5 000 €. Première tranche : 5 000 x 5 % = 250 €. Attendre fait grimper la valeur donnée."},
+ {t:"story",q:"Que répondre à leur fils ?",sc:[{who:"Thomas Roux",txt:"Et quand vous mourrez, il faudra encore payer des droits pour récupérer la pleine propriété ?"}],
+  o:["Non, l'usufruit s'éteint et vous retrouvez la pleine propriété sans droits","Oui, la pleine propriété est de nouveau taxée à 60 % au décès du dernier parent","Oui, mais seulement si l'appartement a pris beaucoup de valeur depuis la donation","Non, mais il faudra racheter l'usufruit à la succession de vos deux parents"],a:0,w:"Au décès de l'usufruitier, l'usufruit s'éteint et le nu-propriétaire devient plein propriétaire sans droits supplémentaires. C'est tout l'intérêt de donner la nue-propriété."}
+ ]},
+{id:"kerval",t:"Mme Kerval : l'usufruit temporaire",mods:[139,331],
+ ctx:"Mme Kerval, 67 ans, est assujettie à l'IFI. Elle possède une résidence secondaire de 700 000 € en Bretagne. Elle envisage de donner l'usufruit de la maison pour 10 ans à son fils Louis, majeur, qui en a besoin pour se loger. Son abattement de 100 000 € est intact.",
+ cards:[
+ {t:"num",q:"Quelle est la valeur fiscale de l'usufruit temporaire donné pour 10 ans ?",a:161000,tol:1,un:" €",h:"23 % par période de 10 ans.",w:"700 000 x 23 % = 161 000 €. Cette valeur ne dépend ni de l'âge de Mme Kerval, ni de celui de Louis."},
+ {t:"num",q:"Quels droits de donation Louis paie-t-il ?",a:10394,tol:1,un:" €",w:"P = 161 000 - 100 000 = 61 000 €. Ligne à 20 % : 61 000 x 20 % - 1 806 = 10 394 €."},
+ {t:"multi",q:"Quels sont les avantages de cette donation temporaire d'usufruit pour Mme Kerval ?",o:["Elle ne se sépare pas du bien, car elle garde la nue-propriété","Pendant 10 ans, le bien sort de son patrimoine taxable à l'IFI","Les droits de donation sont limités à 23 % de la valeur","Louis devient propriétaire définitif de la maison au terme","La valeur fiscale diminue avec l'âge de la donatrice"],a:[0,1,2],w:"Elle garde l'arbre, prête les fruits : la propriété revient pleine à son terme, l'IFI baisse, la base taxable reste faible. La valeur de 23 % ne dépend pas de l'âge."},
+ {t:"tf",q:"Une donation temporaire d'usufruit de 5 ans est valorisée à 11,5 % de la valeur du bien.",a:false,w:"Faux : on ne coupe pas les périodes en fractions. 5 ans comptent pour une période entière de 10 ans, soit 23 %."}
+ ]},
+{id:"chevalier",t:"Les Chevalier : rapport, hors part et donation-partage",mods:[138,143,331],
+ ctx:"Mme Chevalier a deux enfants, Hugo et Léa. Il y a dix ans, elle a donné à Hugo un appartement qui valait 120 000 €, et à Léa 120 000 € en argent. Elle n'a rien prévu de plus. À son décès, l'appartement vaut 200 000 € et il reste 380 000 € dans la succession.",
+ cards:[
+ {t:"num",q:"Les deux donations sont des donations simples, rapportables. Quelle somme Léa reçoit-elle dans la succession ?",a:230000,tol:1,un:" €",h:"Masse de partage = succession + valeur des biens à rapporter (valeur au jour du partage).",w:"Masse = 380 000 + 200 000 (appartement à sa valeur actuelle) + 120 000 (argent) = 700 000 €, soit 350 000 € chacun. Léa a déjà reçu 120 000 € : elle prend 230 000 €. Hugo prend 150 000 €."},
+ {t:"num",q:"Si les deux donations avaient été faites dans une donation-partage, quelle somme chaque enfant prendrait-il dans la succession ?",a:190000,tol:1,un:" €",h:"Les valeurs sont figées à 120 000 € chacune.",w:"Masse = 380 000 + 120 000 + 120 000 = 620 000 €, soit 310 000 € chacun. Chacun a reçu 120 000 € : il prend 190 000 €. Hugo garde le bénéfice de la plus-value de son appartement."},
+ {t:"story",q:"Que réponds-tu à Léa ?",sc:[{who:"Léa Chevalier",txt:"Maman m'a donné 120 000 € il y a dix ans, mais l'appartement de Hugo vaut aujourd'hui bien plus. Comment fait-on l'égalité ?"}],
+  o:["En donation simple, on rapporte les biens à leur valeur d'aujourd'hui pour rétablir l'égalité","On ne rapporte rien du tout : une donation est définitive et n'est jamais comptée au décès","On rapporte la valeur d'origine de 120 000 € pour les deux enfants, par principe","Hugo doit vendre l'appartement avant le partage pour en fixer définitivement la valeur"],a:0,w:"Une donation simple est rapportée à sa valeur au jour du partage. Une donation-partage, elle, fige les valeurs au jour de l'acte."},
+ {t:"mcq",q:"Que signifie une donation « hors part » ?",o:["Elle s'impute sur la quotité disponible et avantage vraiment le bénéficiaire","Elle est rapportée au décès et rétablit l'égalité entre les enfants","Elle est réservée aux petits-enfants et échappe à toute règle de réserve","Elle ne peut jamais dépasser la valeur d'un présent d'usage"],a:0,w:"Avance de part : on rapporte au décès pour égaliser. Hors part : on impute sur la quotité disponible, le bénéficiaire garde l'avantage."},
+ {t:"fill",q:"Une donation-partage fige les valeurs au jour de la ___.",o:["donation","succession","vente","déclaration"],a:0,w:"Donation-partage : valeurs figées au jour de l'acte. Donation simple : valeur au jour du partage."}
+ ]},
+{id:"perrin",t:"Perrin Logistique : le pacte Dutreil chiffré",mods:[148,332],
+ ctx:"Mme Perrin, 63 ans, a fondé la SAS Perrin Logistique à Nantes (45 salariés), valorisée 3 200 000 €. Elle en détient 75 %. Elle veut donner toutes ses parts en pleine propriété à ses deux enfants, à parts égales : Alice, directrice générale de la société depuis quatre ans, et Bastien, cadre dans une autre entreprise. Les abattements de 100 000 € sont intacts. Barème et tableaux fournis.",
+ cards:[
+ {t:"mcq",q:"Quelle valeur Mme Perrin transmet-elle au total ?",o:["2 400 000 €","3 200 000 €","1 600 000 €","800 000 €"],a:0,w:"On transmet ce qu'on détient : 3 200 000 x 75 % = 2 400 000 €, soit 1 200 000 € par enfant."},
+ {t:"num",q:"Sans pacte Dutreil, quels droits chaque enfant paie-t-il ?",a:292678,tol:1,un:" €",h:"Pas d'abattement de 75 %, pas de réduction de 50 %.",w:"1 200 000 - 100 000 = 1 100 000 €. Ligne à 40 % : 1 100 000 x 40 % - 147 322 = 292 678 €."},
+ {t:"num",q:"Avec le pacte Dutreil, quels droits chaque enfant paie-t-il, réduction de 50 % comprise ?",a:19097,tol:1,un:" €",h:"Dutreil sur la valeur, puis abattement, barème, et enfin la réduction sur les droits.",w:"1 200 000 x 25 % = 300 000 €. P = 300 000 - 100 000 = 200 000 €. 200 000 x 20 % - 1 806 = 38 194 €. Mme Perrin a moins de 70 ans et donne en pleine propriété : réduction de 50 %, soit 19 097 €."},
+ {t:"multi",q:"Quelles conditions le pacte Dutreil exige-t-il ?",o:["Une entreprise opérationnelle, pas une société qui gère de l'immobilier","Un engagement collectif de 2 ans sur 34 % des droits de vote","Un engagement individuel de 6 ans après l'engagement collectif","Une direction exercée pendant l'engagement et 3 ans après","Un capital détenu à 100 % par la seule famille du dirigeant"],a:[0,1,2,3],w:"Quatre piliers : activité opérationnelle, engagement collectif (2 ans, 34 % des droits de vote et 17 % des droits financiers), engagement individuel (6 ans), direction. Aucune obligation de détenir 100 % du capital."},
+ {t:"tf",q:"La réduction de 50 % s'applique à la base taxable, avant le barème.",a:false,w:"Faux : le 75 % porte sur la valeur, le 50 % porte sur les droits. La chronologie : Dutreil, démembrement, partage, abattement, barème, réduction."}
+ ]},
+{id:"lemaitre",t:"Lemaître Menuiserie : pleine propriété ou nue-propriété",mods:[148,332,333],
+ ctx:"M. Lemaître, 68 ans, détient 100 % de la SARL Lemaître Menuiserie, valorisée 1 800 000 €. Ses deux enfants, Théo (qui dirige déjà l'atelier) et Eva (infirmière), recevront chacun la moitié. Un pacte Dutreil est signé. Il hésite entre la donation de pleine propriété (A) et la donation de la nue-propriété avec réserve d'usufruit (B). Abattements de 100 000 € intacts.",
+ cards:[
+ {t:"num",q:"Option A (pleine propriété, avec réduction de 50 %) : quels droits paie chaque enfant ?",a:11597,tol:1,un:" €",h:"Valeur par enfant : 900 000 €. Dutreil, abattement, barème, réduction.",w:"900 000 x 25 % = 225 000 €. P = 125 000 €. 125 000 x 20 % - 1 806 = 23 194 €. M. Lemaître a 68 ans et donne en pleine propriété : réduction de 50 %, soit 11 597 €."},
+ {t:"num",q:"Option B (nue-propriété, usufruit conservé) : quels droits paie chaque enfant ?",a:5194,tol:1,un:" €",h:"Dutreil d'abord, puis le démembrement à 68 ans.",w:"900 000 x 25 % = 225 000 €. À 68 ans, la nue-propriété vaut 60 % : 135 000 €. P = 35 000 €. 35 000 x 20 % - 1 806 = 5 194 €. Pas de réduction de 50 % : la donation ne porte pas sur la pleine propriété."},
+ {t:"mcq",q:"Pourquoi la réduction de 50 % ne joue-t-elle pas dans l'option B ?",o:["La donation ne porte pas sur la pleine propriété","M. Lemaître a plus de 70 ans dans cette option","Le pacte Dutreil exclut le démembrement par principe","La réduction ne vaut que pour les ventes de parts"],a:0,w:"La réduction de 50 % suppose une donation de pleine propriété par un donateur de moins de 70 ans. Ici, le démembrement l'exclut."},
+ {t:"tf",q:"Si M. Lemaître attend d'avoir 71 ans pour donner en pleine propriété, la réduction de 50 % disparaît.",a:true,w:"Vrai : à partir de 70 ans, plus de réduction. Il lui reste deux ans pour agir."},
+ {t:"order",q:"Remets dans l'ordre la chronologie du calcul.",it:["Dutreil : 25 % de la valeur","Démembrement éventuel","Partage entre les enfants","Abattement de 100 000 € par enfant","Barème, puis réduction de 50 %"],w:"« Des Dames Pressées Achètent Beaucoup de Roses » : Dutreil, Démembrement, Partage, Abattement, Barème, Réduction. La chronologie est fondamentale."}
+ ]},
+{id:"giraud",t:"Giraud Services : la donation-partage avec soulte",mods:[145,333,334],
+ ctx:"Mme Giraud, 66 ans, détient 100 % de la SAS Giraud Services, valorisée 2 550 000 €. Elle a trois enfants : Clément dirige l'entreprise, Diane et Éloi travaillent ailleurs. Elle n'a pas d'autre patrimoine. Elle veut une donation-partage : Clément reçoit tous les titres et verse une soulte à ses frère et sœur. Le pacte Dutreil est signé. Abattements intacts.",
+ cards:[
+ {t:"num",q:"Quelle soulte Clément doit-il verser à Diane, et la même à Éloi ?",a:850000,tol:1,un:" €",w:"Chacun doit avoir 2 550 000 / 3 = 850 000 €. Clément verse donc 850 000 € à Diane et 850 000 € à Éloi."},
+ {t:"num",q:"Quels droits paie chaque enfant, réduction de 50 % comprise ?",a:10347,tol:1,un:" €",h:"Fiscalement, chaque enfant est réputé recevoir 850 000 € de titres.",w:"850 000 x 25 % = 212 500 €. P = 112 500 €. 112 500 x 20 % - 1 806 = 20 694 €. Mme Giraud a moins de 70 ans, pleine propriété : réduction de 50 %, soit 10 347 €."},
+ {t:"tf",q:"Dans la donation-partage avec soulte, le pacte Dutreil profite aux trois enfants, pas seulement à Clément.",a:true,w:"Vrai : fiscalement, chaque enfant est réputé recevoir 850 000 € de titres. Le Dutreil profite aux trois."},
+ {t:"mcq",q:"Pourquoi préférer la donation-partage à une donation simple ?",o:["Elle fige les valeurs et évite un rapport si l'entreprise prend de la valeur","Elle supprime la réserve héréditaire des deux enfants non repreneurs","Elle permet de donner l'entreprise à un seul enfant sans soulte","Elle double l'abattement de 100 000 € de chaque enfant"],a:0,w:"Donation-partage : valeurs figées au jour de l'acte, pas de mauvaise surprise au décès. La réserve des autres enfants est respectée grâce à la soulte."},
+ {t:"order",q:"Remets dans l'ordre le montage qui finance la soulte (Family Buy-Out).",it:["Clément apporte ses titres à une holding à l'IS qu'il contrôle","La holding emprunte la somme des soultes","Le prêt paie les soultes de Diane et d'Éloi","Les dividendes de la société remontent à la holding","La holding rembourse la banque avec ces dividendes"],w:"Le Family Buy-Out : apport, emprunt, soultes, dividendes mère-fille, remboursement. Les dividendes remontent exonérés à 95 %."}
+ ]},
+{id:"lopez",t:"Le rachat de PlastiConcept : holding et cession",mods:[146,147,334],
+ ctx:"Mme Lopez, 38 ans, veut racheter PlastiConcept, PME de 20 salariés dont le résultat net est de 300 000 € par an. Le vendeur demande 4 fois le résultat. Mme Lopez peut apporter 240 000 €. Son banquier parle d'une holding SAS qui achèterait 100 % des actions. Barème et tableaux fournis.",
+ cards:[
+ {t:"mcq",q:"Quelle part du prix l'apport de Mme Lopez représente-t-il ?",o:["20 %","24 %","30 %","80 %"],a:0,w:"Prix = 300 000 x 4 = 1 200 000 €. Apport 240 000 / 1 200 000 = 20 %. La holding emprunte les 960 000 € restants."},
+ {t:"num",q:"Un an plus tard, PlastiConcept verse 100 000 € de dividendes à la holding (régime mère-fille). Quel impôt la holding paie-t-elle ?",a:1250,tol:1,un:" €",h:"Quote-part de 5 % taxée à l'IS de 25 %.",w:"Quote-part : 100 000 x 5 % = 5 000 €. IS à 25 % : 1 250 €, soit 1,25 % des dividendes. Les 98 750 € restants servent à rembourser la banque."},
+ {t:"num",q:"Si Mme Lopez avait acheté en direct et reçu elle-même ces 100 000 € de dividendes, quelle flat tax paierait-elle ?",a:31400,tol:1,un:" €",h:"Flat tax de 31,4 %.",w:"100 000 x 31,4 % = 31 400 €. En direct, on paie l'impôt sur un argent qui ne sert qu'à rembourser le banquier. La holding évite ce frottement."},
+ {t:"tf",q:"Le banquier prête à la holding, qui rembourse avec les dividendes de la société rachetée.",a:true,w:"Vrai : la banque prête à la holding, pas à la personne. Le repreneur montre son engagement par son apport."},
+ {t:"num",q:"La holding achète 100 % des actions de la SAS. Quels droits d'enregistrement paie-t-elle ?",a:1200,tol:1,un:" €",h:"Actions : un taux unique.",w:"Actions de SAS ou de SA : 0,1 %. 1 200 000 x 0,1 % = 1 200 €. Pour des parts de SARL, ce serait 3 % après un abattement de 23 000 €."}
+ ]},
+{id:"morin",t:"Le dossier Morin : régime, ordre, outils et droits",mods:[133,134,328,329,332,334],
+ ctx:"M. Morin, 72 ans, marié sous la communauté à Anne, 70 ans, dirige la SAS Morin Froid (valeur 2 000 000 €, bien propre créé avant le mariage). Ils ont deux enfants communs, Julie et Benoît. Autres biens communs : 600 000 €. M. Morin veut préparer la suite. Il hésite à donner sa société avec un pacte Dutreil mais craint pour son âge.",
+ cards:[
+ {t:"mcq",q:"Quelle est la nature de la SAS dans le patrimoine du couple ?",o:["Un bien propre de M. Morin, créé avant le mariage","Un bien commun, comme tout ce qui est acquis pendant le mariage","Un bien indivis à parts égales entre les deux époux","Un bien propre d'Anne, qui l'a gérée avec lui"],a:0,w:"Régime d'abord : une entreprise créée avant le mariage reste un bien propre, même en communauté."},
+ {t:"num",q:"Si M. Morin décédait demain sans testament, quelle serait la valeur de sa succession ?",a:2300000,tol:1,un:" €",h:"Sa société, plus sa moitié des biens communs.",w:"Bien propre : 2 000 000 €. Moitié des biens communs : 600 000 / 2 = 300 000 €. Succession = 2 300 000 €."},
+ {t:"story",q:"Que lui réponds-tu sur son âge ?",sc:[{who:"M. Morin",txt:"J'ai 72 ans. Le pacte Dutreil, c'est encore pour moi, ou je suis trop vieux ?"}],
+  o:["Le pacte reste possible, mais la réduction de 50 % est perdue après 70 ans","Le pacte est interdit au-delà de 70 ans, il faut passer par une holding","Le pacte garde la réduction de 50 % tant que la direction est transmise","Le pacte vaut seulement si vous donnez la nue-propriété avant 75 ans"],a:0,w:"Le Dutreil (75 % d'abattement) n'a pas de limite d'âge. La réduction de 50 % des droits disparaît à 70 ans."},
+ {t:"num",q:"M. Morin donne la nue-propriété de toute sa société (2 000 000 €) à ses deux enfants à parts égales, avec Dutreil. Quels droits paie chaque enfant ?",a:13194,tol:1,un:" €",h:"Nue-propriété à 72 ans : 70 %. Dutreil d'abord.",w:"2 000 000 x 25 % = 500 000 €. Nue-propriété à 72 ans : 70 % = 350 000 €, soit 175 000 € par enfant. P = 75 000 €. 75 000 x 20 % - 1 806 = 13 194 €. Pas de réduction de 50 % : le donateur a plus de 70 ans et ne donne pas la pleine propriété."},
+ {t:"multi",q:"Quels sont les trois outils qui réduisent la facture fiscale dans ce dossier ?",o:["Le pacte Dutreil sur les titres","Le démembrement avec réserve d'usufruit","Les abattements de 100 000 € par enfant","Une assurance-vie alimentée à 72 ans","Une donation-partage avec soulte"],a:[0,1,2],w:"Dutreil (75 % sur la valeur), démembrement (on ne donne que 70 %) et abattements de 100 000 €. L'assurance-vie à 72 ans relève du 757 B, peu avantageux ici."}
+ ]}
+]
+};
+</script>
+<!-- EXAMEN:PATRI:FIN -->
 <script>
 /* =====================================================================
    MULTILINGO v2 — moteur
@@ -27884,6 +28057,61 @@ body.theme-light .arc-soltab .r span:first-child,body.theme-light .arc-solbin b,
 .cph{opacity:.45}
 @keyframes ccBlink{50%{opacity:0}}
 @media (prefers-reduced-motion:reduce){ .cc{animation:none} }
+/* ---------- examen pratique (13/10/2026) ---------- */
+.pex-card{border-color:var(--red);background:rgba(229,72,77,.07);margin-top:14px}
+.pex-head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.pex-head h3{margin:0;color:var(--red);font-family:var(--arc-font);font-size:22px}
+.pex-intro{margin:0 0 12px;line-height:1.5;font-size:14px;color:var(--dim)}
+.pex-intro b{color:var(--text,inherit)}
+.pex-durs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pex-dur{display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left;border:2px solid var(--line);border-radius:18px;padding:12px 14px;
+  background:var(--card);color:inherit;box-shadow:0 4px 0 var(--line);transition:transform .08s}
+.pex-dur:active{transform:translateY(3px);box-shadow:0 1px 0 var(--line)}
+.pex-dur b{font-family:var(--arc-font);font-size:22px;line-height:1.1;color:var(--red)}
+.pex-dur span{font-weight:800;font-size:14px}
+.pex-dur small{font-size:12px;color:var(--dim);line-height:1.3}
+.pex-h4{margin:16px 0 6px;font-size:13px;letter-spacing:1px;text-transform:uppercase;color:var(--dim)}
+.pex-none{margin:4px 0 0;font-size:13px}
+.pex-hn{font-weight:900;white-space:nowrap}
+.pex-hn.good,.pex-note.good,.pex-men.good{color:var(--green)}
+.pex-hn.mid,.pex-note.mid,.pex-men.mid{color:var(--gold)}
+.pex-hn.bad,.pex-note.bad,.pex-men.bad{color:var(--red)}
+.pex-sep{margin-top:22px}
+.pex-end{margin-top:6px}
+.pex-prog{font-size:13px;font-weight:800;color:var(--dim);white-space:nowrap}
+/* resultat */
+.pex-res{text-align:center;padding:10px 0 6px}
+.pex-note{font-family:var(--arc-font);font-weight:800;line-height:1;display:flex;align-items:baseline;justify-content:center;gap:8px}
+.pex-note span{font-size:84px}
+.pex-note small{font-size:28px;color:var(--dim)}
+.pex-men{font-family:var(--arc-font);font-size:24px;font-weight:800;margin-top:6px}
+.pex-sub{margin-top:4px}
+.pex-mot{max-width:440px;margin:12px auto 10px;line-height:1.5}
+.pex-det{border:2px solid var(--line);border-radius:16px;margin:0 0 10px;background:var(--card);overflow:hidden}
+.pex-det>summary{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:12px 14px;cursor:pointer;list-style:none;font-size:14.5px}
+.pex-det>summary::-webkit-details-marker{display:none}
+.pex-det>summary span{font-weight:900;white-space:nowrap;color:var(--dim)}
+.pex-q{border-top:2px solid var(--line);padding:12px 14px}
+.pex-q.ok{background:rgba(88,204,2,.06)}
+.pex-q.ko{background:rgba(255,75,75,.07)}
+.pex-q.part{background:rgba(255,200,0,.07)}
+.pex-q.na{background:rgba(150,150,170,.08)}
+.pex-qh{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.pex-tag{font-size:11.5px;font-weight:900;letter-spacing:.8px;text-transform:uppercase;padding:3px 8px;border-radius:8px;background:rgba(255,255,255,.1)}
+.pex-q.ok .pex-tag{color:var(--green)} .pex-q.ko .pex-tag{color:var(--red)} .pex-q.part .pex-tag{color:var(--gold)}
+.pex-pt{font-size:12.5px;font-weight:800;color:var(--dim)}
+.pex-qq{font-weight:800;line-height:1.4;margin-bottom:6px}
+.pex-bonne,.pex-tienne{font-size:13.5px;line-height:1.45;margin:4px 0}
+.pex-tienne{color:var(--red)}
+.pex-w{font-size:13.5px;line-height:1.5;color:var(--dim);margin-top:6px}
+@media (max-width:420px){ .pex-note span{font-size:68px} .pex-dur b{font-size:20px} }
+.pex-docs{white-space:nowrap}
+.pex-doc{border:2px solid var(--line);border-radius:14px;margin:0 0 8px;background:var(--bg2);overflow:hidden}
+.pex-doc>summary{padding:11px 14px;font-weight:800;cursor:pointer;font-size:14px}
+.pex-docb{padding:2px 14px 12px;font-size:13.5px;line-height:1.5}
+.pex-docb table{width:100%;border-collapse:collapse;margin:6px 0}
+.pex-docb th,.pex-docb td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+.pex-docb ul{margin:6px 0 0;padding-left:18px}
 /* =====================================================================
    TELECOMMANDE (12/10/2026) : curseur sur la tele, ecran telecommande
    sur le telephone, fenetre de choix. Respecte les zones sures iPhone.
@@ -30468,6 +30696,7 @@ window.ARC_MFAUX={
     if(ex.t==="look"&&ex.slots)return `<div class="arc-solk">La tenue attendue</div><div class="arc-soltab">${ex.slots.map(sl=>`<div class="r"><span>${E(sl.n)}</span><span>${E(sl.items[sl.a].n)}</span></div>`).join("")}</div>`;
     return "";
   }
+  window.arcSolBlock=solBlock; window.arcFormatW=formatW;
   function prettyVerdict(){
     if(typeof L==="undefined"||!L||L.mode==="exam"||!A||!A.ex)return;
     const cb=$id("checkbar"); if(!cb)return;
@@ -30874,6 +31103,291 @@ window.ARC_MFAUX={
 
   boostTick();
   if(typeof S!=="undefined"&&S&&$id("sc-path")&&$id("sc-path").classList.contains("on"))renderPath();
+})();
+/* =====================================================================
+   EXAMEN PRATIQUE (demande de Corentin du 13/10/2026)
+   Un examen par cours, fait uniquement de cas pratiques et d'exercices,
+   note sur 20, en 15, 30, 60 ou 90 minutes. Il se passe a tout moment,
+   meme sans avoir fini les modules, et il est identique que le cours soit
+   en mode express ou non : il ne puise jamais dans EXOS, seulement dans
+   sa propre banque de cas (cours/<CID>/examen.js, injectee dans PEXAM).
+   Tout passe par des enveloppes autour du mode examen existant : le
+   moteur, les exercices et l'examen blanc ne sont pas modifies.
+   Aucun exercice de la banque n'entre dans la repetition espacee.
+   ===================================================================== */
+(function(){
+  "use strict";
+  if(typeof COURSES==="undefined"||typeof renderExam!=="function"||typeof examFinish!=="function")return;
+  const PX=window.PEXAM=window.PEXAM||{};
+  const $id=i=>document.getElementById(i);
+  const E=s=>typeof esc==="function"?esc(s):String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+  const fr=n=>String(n).replace(".",",");
+  const DUREES=[
+    {min:15,nm:"Rapide",d:"Un ou deux cas"},
+    {min:30,nm:"Court",d:"Deux ou trois cas"},
+    {min:60,nm:"Standard",d:"Le format d'une vraie épreuve"},
+    {min:90,nm:"Complet",d:"Tous les cas, conditions réelles"}
+  ];
+  /* points par type de question (un calcul pese plus qu'un vrai ou faux) et temps prevu en minutes */
+  const PTS={tf:1,mcq:1,fill:1,slider:1.5,story:1.5,multi:2,sort:2,match:2,order:2,tiles:2,num:3,eq:3};
+  const MIN={tf:.7,mcq:1,fill:1,slider:1.3,story:1.5,multi:1.8,sort:2,match:2,order:2,tiles:2,num:3,eq:3};
+  const ptsOf=c=>c.pts!=null?c.pts:(PTS[c.t]||1.5);
+  const minOf=c=>c.mn!=null?c.mn:(MIN[c.t]||1.5);
+  const caseMin=cs=>Math.round(10*cs.cards.reduce((a,c)=>a+minOf(c),0))/10;
+  const bankOf=cid=>{ const b=PX[cid]; return b&&Array.isArray(b.cases)?b.cases:[]; };
+  const docsOf=cid=>{ const b=PX[cid]; return b&&Array.isArray(b.docs)?b.docs:[]; };
+  window.pexCaseMin=caseMin; window.pexPts=ptsOf;
+
+  /* ---------------- tirage des cas ---------------- */
+  function shuf(a){ return typeof shuffle==="function"?shuffle(a.slice()):a.slice().sort(()=>Math.random()-.5); }
+  function tirer(cid,min){
+    const vu=((S.pexSeen||{})[cid])||{};
+    /* les cas jamais traites d'abord, puis les moins recents */
+    const ordre=shuf(bankOf(cid)).sort((a,b)=>(vu[a.id]||0)-(vu[b.id]||0));
+    const sel=[]; let tot=0;
+    ordre.forEach(cs=>{ const m=caseMin(cs); if(tot+m<=min*1.08){ sel.push(cs); tot+=m; } });
+    if(!sel.length&&ordre.length)sel.push(ordre.slice().sort((a,b)=>caseMin(a)-caseMin(b))[0]);
+    return shuf(sel);
+  }
+  function cartes(cid,cs){
+    return cs.cards.map((c,n)=>{
+      const e=Object.assign({},c);
+      /* dans les sources la bonne reponse peut etre ecrite en premier : l'ordre est melange a chaque examen */
+      if(["mcq","story","fill"].includes(e.t)&&Array.isArray(e.o)&&typeof e.a==="number"){
+        const bonne=e.o[e.a]; e.o=shuf(e.o); e.a=e.o.indexOf(bonne);
+      }
+      e.i="px_"+cid+"_"+cs.id+"_"+(n+1);
+      if(cs.mods&&cs.mods.length&&e.u==null)e.u=cs.mods[0];
+      e.cas=cid+"-"+cs.id; e.k=n+1;
+      e.ck=cs.t+" · question "+(n+1)+" sur "+cs.cards.length;
+      e.ctx=[cs.ctx,c.ctx].filter(Boolean).join(" ");
+      if(!e.tab&&cs.tab)e.tab=cs.tab;
+      if(!e.svg&&cs.svg)e.svg=cs.svg;
+      if(e.d==null)e.d=.5;
+      e.pex=cs.id; e.pp=ptsOf(c);
+      return e;
+    });
+  }
+
+  /* ---------------- depart ---------------- */
+  window.pexStart=function(cid,min){
+    const cases=tirer(cid,min); if(!cases.length){ toast("Pas encore de cas pour ce cours."); return; }
+    const queue=[], caseOf=[];
+    cases.forEach((cs,ci)=>cartes(cid,cs).forEach(e=>{ queue.push(e); caseOf.push(ci); }));
+    L={uid:null,li:null,cid,mode:"exam",queue,idx:0,wrong:0,ok:0,combo:0,maxCombo:0,repeat:[],errors:[],
+       pex:{cid,min,cases:cases.map(cs=>({id:cs.id,t:cs.t,mods:cs.mods||[]})),caseOf},
+       exam:{log:[],t0:Date.now(),limit:min*60000,fmt:-1,lvl:0}};
+    show("lesson");
+    const hw=$id("ls-hearts-w"); if(hw)hw.style.display="none";
+    examBar(true); docsBtn(cid); nextQ(); examPaint();
+    if(EXAM_TICK)clearInterval(EXAM_TICK);
+    EXAM_TICK=setInterval(examChrono,500);
+    toast("Examen pratique · "+cases.length+" cas, "+queue.length+" questions, "+min+" minutes. Aucune correction avant la fin.",4600);
+  };
+  /* les tableaux fournis le jour de l'examen : un bouton dans la barre du haut ouvre les documents */
+  function docsBtn(cid){
+    const d=docsOf(cid), bar=$id("exam-bar"); if(!d.length||!bar)return;
+    const b=document.createElement("button"); b.type="button"; b.className="tbtn pex-docs"; b.id="pex-docs";
+    b.innerHTML=ico("book",14)+" Tableaux"; b.onclick=()=>pexDocs(cid);
+    const warn=bar.querySelector(".warn"); if(warn)bar.insertBefore(b,warn); else bar.appendChild(b);
+  }
+  window.pexDocs=function(cid){
+    const d=docsOf(cid); if(!d.length)return;
+    openModal(`<h2 style="margin-top:0">Documents fournis</h2><p class="muted" style="margin:0 0 10px;font-size:13px">Comme à l'examen : les tableaux sont donnés, c'est la méthode qui est notée.</p>`+
+      d.map((x,i)=>`<details class="pex-doc" ${i===0?"open":""}><summary>${E(x.t)}</summary><div class="pex-docb">${x.h}</div></details>`).join("")+
+      `<div style="height:10px"></div><button class="btn" type="button" onclick="closeModal()">Fermer</button>`);
+  };
+  window.pexOpen=function(){
+    setTab("exam");
+    setTimeout(()=>{ const c=$id("pex-card"); if(c&&c.scrollIntoView)c.scrollIntoView({block:"start"}); },60);
+  };
+
+  /* ---------------- le moteur : enveloppes ---------------- */
+  /* rien de la banque n'entre dans la repetition espacee ni dans les erreurs */
+  const __gr=window.grade;
+  window.grade=function(){ if(typeof L!=="undefined"&&L&&L.pex)return; return __gr.apply(this,arguments); };
+
+  function frac(ex){
+    if(ex.t==="multi"){ const sel=A.sel||[], bon=sel.filter(k=>ex.a.includes(k)).length, mauv=sel.length-bon;
+      return Math.max(0,(bon-mauv)/ex.a.length); }
+    if(ex.t==="sort"){ const s=A.sort||{}; return ex.it.filter((it,k)=>s[k]===it[1]).length/ex.it.length; }
+    return null;
+  }
+  function mine(ex){
+    try{
+      if(["mcq","fill","story"].includes(ex.t))return A.val!=null?String(ex.o[A.val]):"";
+      if(ex.t==="tf")return A.val===true?"Vrai":A.val===false?"Faux":"";
+      if(ex.t==="num"||ex.t==="slider")return A.val==null?"":fr(String(A.val))+(ex.un||"");
+      if(ex.t==="multi")return (A.sel||[]).map(k=>ex.o[k]).join(" / ");
+    }catch(e){}
+    return "";
+  }
+  const __dc=window.doCheck;
+  window.doCheck=function(){
+    if(typeof L==="undefined"||!L||!L.pex||!A||!A.ex)return __dc.apply(this,arguments);
+    const ex=A.ex; let f=null, m="";
+    try{ f=frac(ex); m=mine(ex); }catch(e){}
+    const n0=L.exam.log.length;
+    const r=__dc.apply(this,arguments);
+    const e=L.exam.log[L.exam.log.length-1];
+    if(e&&L.exam.log.length>n0){ e.f=e.ok?1:(f==null?0:f); e.m=m; e.pp=ex.pp||ptsOf(ex); e.pex=ex.pex; }
+    return r;
+  };
+  const __ep=window.examPaint;
+  window.examPaint=function(){
+    if(typeof L!=="undefined"&&L&&L.pex){
+      const d=$id("exam-dots"); if(!d)return;
+      d.innerHTML="";
+      return;
+    }
+    return __ep.apply(this,arguments);
+  };
+  const __ef=window.examFinish;
+  window.examFinish=function(){
+    if(typeof L!=="undefined"&&L&&L.pex)return pexFinish.apply(null,arguments);
+    return __ef.apply(this,arguments);
+  };
+
+  /* ---------------- resultat : note sur 20 ---------------- */
+  function mention(n){
+    return n>=16?"Très bien":n>=14?"Bien":n>=12?"Assez bien":n>=10?"Passable":"Insuffisant";
+  }
+  function ansText(ex){
+    try{
+      if(ex.t==="tf")return ex.a?"Vrai":"Faux";
+      if(["mcq","fill","story"].includes(ex.t))return String(ex.o[ex.a]);
+      if(ex.t==="num")return fr(ex.a)+(ex.un||"");
+      if(ex.t==="slider")return fr(ex.a)+(ex.un||"");
+      if(ex.t==="tiles"||ex.t==="eq")return ex.a.join(" ");
+    }catch(e){}
+    return "";
+  }
+  function pexFinish(tempsEcoule){
+    if(EXAM_TICK){ clearInterval(EXAM_TICK); EXAM_TICK=null; }
+    const P=L.pex, log=L.exam.log, q=L.queue;
+    const duree=Math.round((Date.now()-L.exam.t0)/1000);
+    const rows=q.map((ex,i)=>{ const x=log[i]; const p=ex.pp||ptsOf(ex);
+      return {ex,x,p,got:x?p*(x.f==null?(x.ok?1:0):x.f):0,ci:P.caseOf[i]}; });
+    const tot=rows.reduce((a,r)=>a+r.p,0), pts=rows.reduce((a,r)=>a+r.got,0);
+    const note=Math.round(2*20*pts/(tot||1))/2;
+    const cl=note>=14?"good":note>=10?"mid":"bad";
+    const parCas=P.cases.map((c,ci)=>{ const rs=rows.filter(r=>r.ci===ci);
+      return {id:c.id,t:c.t,mods:c.mods,rows:rs,got:rs.reduce((a,r)=>a+r.got,0),max:rs.reduce((a,r)=>a+r.p,0)}; });
+    S.pexams=S.pexams||[];
+    S.pexams.push({ts:Date.now(),cid:P.cid,min:P.min,note,pts:Math.round(10*pts)/10,tot,sec:duree,n:q.length,
+      cases:parCas.map(c=>({id:c.id,t:c.t,g:Math.round(10*c.got)/10,m:c.max}))});
+    S.pexams=S.pexams.slice(-40);
+    S.pexSeen=S.pexSeen||{}; S.pexSeen[P.cid]=S.pexSeen[P.cid]||{};
+    P.cases.forEach(c=>{ S.pexSeen[P.cid][c.id]=Date.now(); });
+    S.xp+=(typeof XP_X!=="undefined"?XP_X:1)*Math.round(note);
+    save();
+    const mot=note>=16?"Tu es prêt. Les cas ne te font plus peur.":note>=14?"Solide. Il reste quelques points à aller chercher.":
+      note>=12?"C'est correct, mais l'examen se joue sur le détail : reprends les points perdus ci-dessous.":
+      note>=10?"Tu passes de justesse. Retravaille les modules signalés puis refais un examen.":
+      "Pas encore. C'est une information, pas un jugement : les modules ci-dessous sont ta priorité.";
+    const faibles=[]; parCas.forEach(c=>{ if(c.max&&c.got/c.max<.6)c.mods.forEach(u=>{ if(!faibles.includes(u)&&unitOf(u))faibles.push(u); }); });
+    let h=`<div class="pex-res">
+      <div class="pex-note ${cl}"><span id="pex-n">0</span><small>/ 20</small></div>
+      <div class="pex-men ${cl}">${mention(note)}</div>
+      <div class="muted pex-sub">${fr(Math.round(10*pts)/10)} points sur ${fr(tot)} · ${Math.floor(duree/60)} min ${duree%60} s sur ${P.min} min${tempsEcoule?" · temps écoulé":""}</div>
+      <p class="pex-mot">${E(mot)}</p></div>
+      <h2 class="section-t">Cas par cas</h2>`;
+    parCas.forEach(c=>{ const pc=c.max?Math.round(100*c.got/c.max):0, col=pc>=70?"var(--green)":pc>=50?"var(--gold)":"var(--red)";
+      h+=`<div class="rowline"><div class="lbl" style="font-size:13px">${E(c.t)}</div>
+        <div style="width:110px"><div class="mbar"><div style="width:${pc}%;background:${col}"></div></div></div>
+        <div style="min-width:86px;text-align:right;white-space:nowrap;color:${col}">${fr(Math.round(10*c.got)/10)} / ${fr(c.max)}</div></div>`; });
+    if(faibles.length){
+      h+=`<h2 class="section-t">Modules à retravailler en priorité</h2>`;
+      faibles.slice(0,6).forEach(u=>{ const un=unitOf(u);
+        h+=`<div class="rowline"><div class="lbl" style="font-size:13px">${E(un.n)} : ${E(un.t)}</div>
+          <button class="chip" type="button" onclick="examQuit();setTimeout(()=>openGuide(${u}),120)">Ouvrir la leçon</button></div>`; });
+    }
+    h+=`<h2 class="section-t">Correction détaillée</h2>`;
+    parCas.forEach((c,ci)=>{
+      const pleine=c.max&&c.got>=c.max-1e-6;
+      h+=`<details class="pex-det" ${pleine?"":"open"}><summary><b>${E(c.t)}</b><span>${fr(Math.round(10*c.got)/10)} / ${fr(c.max)}</span></summary>`;
+      c.rows.forEach((r,n)=>{
+        const ex=r.ex, x=r.x, ok=x&&x.ok, part=x&&!x.ok&&x.f>0;
+        const cls=!x?"na":ok?"ok":part?"part":"ko", marque=!x?"Non traité":ok?"Juste":part?"Partiel":"Faux";
+        const blk=(typeof arcSolBlock==="function"&&arcSolBlock(ex))||"";
+        const bonne=blk?`<div class="arc-solbox">${blk}</div>`:(ansText(ex)?`<div class="pex-bonne"><b>Bonne réponse :</b> ${E(ansText(ex))}</div>`:"");
+        const tienne=(!ok&&x&&x.m)?`<div class="pex-tienne"><b>Ta réponse :</b> ${E(x.m)}</div>`:"";
+        const w=typeof arcFormatW==="function"?arcFormatW(ex.w):E(ex.w||"");
+        h+=`<div class="pex-q ${cls}"><div class="pex-qh"><span class="pex-tag">${marque}</span><span class="pex-pt">${fr(Math.round(10*r.got)/10)} / ${fr(r.p)}</span></div>
+          <div class="pex-qq">${n+1}. ${E(ex.q)}</div>${ok?"":tienne+bonne}<div class="pex-w">${w}</div></div>`;
+      });
+      h+=`</details>`;
+    });
+    h+=`<div style="height:12px"></div><button class="btn" type="button" onclick="examQuit()">${ico("check",16)} Terminer</button>
+      <div style="height:8px"></div><button class="btn ghost" type="button" onclick="examQuit();setTimeout(()=>pexStart('${P.cid}',${P.min}),150)">Refaire un examen de ${P.min} minutes</button>`;
+    examBar(false);
+    $id("exambody").innerHTML=h;
+    L=null; killCalc(); show("exam");
+    try{ window.scrollTo(0,0); let n=$id("exambody"); while(n){ n.scrollTop=0; n=n.parentElement; } }catch(e){}
+    document.querySelectorAll(".navitem").forEach(b=>b.classList.toggle("on",b.dataset.tab==="exam"));
+    if(typeof sfx==="function")sfx(note>=12?"complete":"wrong");
+    if(note>=14&&typeof confetti==="function")confetti(note>=16?110:70);
+    const el=$id("pex-n");
+    if(el){ el.textContent="0"; setTimeout(()=>{ const t0=performance.now();
+      (function st(t){ const k=Math.min(1,(t-t0)/900), e=1-Math.pow(1-k,3); el.textContent=fr(Math.round(2*note*e)/2); if(k<1)requestAnimationFrame(st); else el.textContent=fr(note); })(t0); },200); }
+  }
+  window.pexFinish=pexFinish;
+
+  /* ---------------- l'entree dans l'onglet Examen ---------------- */
+  function histHTML(cid){
+    const h=(S.pexams||[]).filter(x=>x.cid===cid).slice(-5).reverse();
+    if(!h.length)return `<p class="muted pex-none">Aucun examen pratique passé sur ce cours. Le premier sert de point zéro.</p>`;
+    const moy=Math.round(10*h.reduce((a,b)=>a+b.note,0)/h.length)/10;
+    return `<div class="pex-hist">`+h.map(r=>{ const cl=r.note>=14?"good":r.note>=10?"mid":"bad";
+      return `<div class="rowline"><div class="lbl" style="font-size:13px">${new Date(r.ts).toLocaleDateString("fr-FR",{day:"2-digit",month:"short"})} · ${r.min} min · ${r.n} questions</div>
+        <div class="pex-hn ${cl}">${fr(r.note)} / 20</div></div>`; }).join("")+`</div>
+      <p class="muted" style="margin-top:8px;font-size:12.5px">Moyenne sur tes ${h.length} derniers examens pratiques : <b>${fr(moy)} / 20</b>.</p>`;
+  }
+  function cardHTML(cid){
+    const bank=bankOf(cid); if(!bank.length)return "";
+    const c=COURSES.find(x=>x.id===cid)||{name:""};
+    const tot=Math.round(bank.reduce((a,cs)=>a+caseMin(cs),0)), nq=bank.reduce((a,cs)=>a+cs.cards.length,0);
+    const tile=typeof arcTile==="function"?arcTile("examen",46,"rgba(255,255,255,.2)"):"";
+    return `<div class="card pex-card" id="pex-card">
+      <div class="pex-head">${tile}<div><h3>Examen pratique</h3>
+        <div class="muted" style="font-size:12.5px">${E(c.name)} · ${bank.length} cas, ${nq} questions en banque</div></div></div>
+      <p class="pex-intro">Que des <b>cas pratiques</b> et des <b>exercices</b>, comme à l'évaluation : tirés des notes, des TD et des exercices du cours.
+        Note sur <b>20</b>, chronomètre, aucune correction avant la fin. Tu peux le passer <b>à tout moment</b>, même sans avoir fini les modules.
+        Il est le même en cours express ou non, et il passe d'abord les cas que tu n'as pas encore faits.</p>
+      <div class="pex-durs">${DUREES.map(d=>`<button class="pex-dur" type="button" onclick="pexStart('${cid}',${d.min})">
+        <b>${d.min} min</b><span>${d.nm}</span><small>${E(d.d)}</small></button>`).join("")}</div>
+      <h4 class="pex-h4">Tes derniers résultats</h4>${histHTML(cid)}
+    </div>`;
+  }
+  const __re=window.renderExam;
+  window.renderExam=function(){
+    __re.apply(this,arguments);
+    try{
+      const b=$id("exambody"); if(!b)return;
+      const old=$id("pex-card"); if(old)old.remove();
+      const html=cardHTML(S.active); if(!html)return;
+      const first=b.querySelector(".card");
+      const sep=`<h2 class="section-t pex-sep">Examen blanc : le quiz du cours</h2>`;
+      const wrap=document.createElement("div"); wrap.innerHTML=html+sep;
+      const frag=document.createDocumentFragment(); while(wrap.firstChild)frag.appendChild(wrap.firstChild);
+      if(first)first.after(frag); else b.prepend(frag);
+    }catch(e){ if(window.console)console.error("examen pratique",e); }
+  };
+
+  /* ---------------- l'entree en fin de parcours ---------------- */
+  const __rp=window.renderPath;
+  window.renderPath=function(){
+    __rp.apply(this,arguments);
+    try{
+      const b=$id("pathbody"); if(!b)return;
+      const old=b.querySelector(".pex-end"); if(old)old.remove();
+      const cid=S.active; if(!bankOf(cid).length)return;
+      const tile=typeof arcTile==="function"?arcTile("examen",56):"";
+      b.insertAdjacentHTML("beforeend",`<div class="pex-end"><div class="arc-sec"><span>Pour finir</span></div>
+        <button class="arc-play" type="button" style="background:#E5484D;--sh:#B3363A" onclick="pexOpen()">
+        ${tile}<span class="pt"><b>Examen pratique</b><span>Cas et exercices, noté sur 20 · 15 à 90 min</span></span><span class="pg">Quand tu veux</span></button></div>`);
+    }catch(e){ if(window.console)console.error("fin de parcours",e); }
+  };
 })();
 /* =====================================================================
    TELECOMMANDE (demande du 12/10/2026)
