@@ -1,0 +1,115 @@
+# Asymétrie d'information
+- Un côté en sait moins
+- Sélection adverse
+-- [1] Ex ante
+-- [1] Avant la transaction
+-- [2] Voiture d'occasion
+-- [3] Médecin, cycliste assuré, firme financée
+- Aléa moral
+-- [1] Ex post
+-- [1] Après la transaction
+- Akerlof, 1970
+-- [2] Prix moyen
+-- [2] Les bons se retirent
+-- [3] Défaillance du marché
+- Outils
+-- [2] Signalement
+-- [2] Screening
+-- [2] Notation
+- [2] Le prêt est un signal positif
+- [3] Rigidité des prix
+
+# Signalement et screening
+- Signalement
+-- [1] Signal crédible et coûteux
+-- [3] Équilibre de signalement
+- Screening
+-- [1] Menu de contrats
+-- [1] Le choix révèle la nature
+- Équilibre mélangeant
+-- [2] Mêmes conditions pour tous
+-- [3] Pooling
+- Leland et Pyle, 1977
+-- [2] Investir sa richesse dans le projet
+-- [3] Diversification sous-optimale
+-- [3] Contre Modigliani-Miller
+- Wang et Williamson, 1993
+-- [2] Coûts de sélection ex ante
+-- [3] Deux périodes, trois agents
+
+# Coût de faillite et rationnement
+- Hausse du taux, effets opposés
+- Faillite : transfert de valeur
+-- [2] En marchés parfaits
+- Faillite : procédure réglementée
+-- [2] En marchés imparfaits
+- Coûts de faillite
+-- [1] Directs
+-- [1] Indirects
+-- [2] Perte de clients
+-- [2] Départ des employés
+-- [3] Indirects : après le dépôt de bilan
+- Code de la faillite : trois objectifs
+-- [2] Action collective des créanciers
+-- [2] Particuliers surendettés
+-- [2] Sauver les entreprises
+- [3] Flux croissants selon la conjoncture
+
+# Stiglitz et Weiss, 1981
+- Équilibre indifférencié
+- Rationnement
+-- [1] Type 1 : montants réduits
+-- [1] Type 2 : certains exclus
+- Exemple chiffré
+-- [2] Investissement de 100 000
+-- [2] Taux mélangeant : 5 %
+-- [3] Entreprise s : sans risque, 3/4
+-- [3] Entreprise r : risquée, 1/4
+- Deux effets du taux
+-- [1] Intérêts plus élevés
+-- [1] Anti-sélection dominante
+-- [3] Fuite des bons emprunteurs
+- Rendement en cloche
+-- [2] Maximum en i*
+- [2] Offre de crédit : rationnement à l'équilibre
+
+# Relations banque-entreprise
+- Financement relationnel
+-- [1] Information privée
+-- [1] Relation intense
+-- [1] Information confidentielle
+-- [3] Auteur : Boot
+- Credit scoring
+-- [2] Hard information
+- Relation
+-- [2] Soft information
+- Avantages pour l'entreprise
+-- [2] Crédit plus disponible
+-- [2] Moins de garanties
+-- [3] Soutien renforcé en difficulté
+- Risque de hold-up
+-- [3] Monopole informationnel
+- [2] Banque principale
+-- [2] Petites banques : relationnel
+-- [2] Grandes banques : transactionnel
+- [3] Petersen et Rajan, 1995
+- [3] Strahan et Weston, 1998
+
+# Crédit-bail et agence
+- Jouir d'un bien sans le posséder
+- Avantages
+-- [1] Trésorerie préservée
+-- [1] Économies d'impôts
+-- [1] Banque propriétaire du bien
+-- [3] Entreprises inéligibles au crédit
+- Étapes du contrat
+-- [2] Preneur choisit le bien
+-- [2] Bailleur propriétaire
+-- [2] Fin : racheter ou rendre
+-- [3] Bailleur amortit l'actif
+- Coûts d'agence
+-- [2] Sous-classement des dettes
+-- [2] Séparer usage et propriété
+-- [3] Coûts d'agence de la dette réduits
+- Rationnement au-delà d'un seuil K
+- [3] Bailleur en position de monopole

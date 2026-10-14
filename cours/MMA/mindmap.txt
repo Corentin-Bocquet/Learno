@@ -1,0 +1,190 @@
+# Règles et format
+- 3 rounds de 5 minutes
+-- [2] Titre : 5 rounds
+-- [2] 1 minute de repos
+-- [3] Règles unifiées de l'UFC
+- Gants de 4 onces
+-- [3] Environ 113 g
+- Fins de combat
+-- [1] KO
+-- [1] TKO
+-- [1] Soumission
+-- [1] Décision des juges
+-- [3] KO : inconscient
+-- [3] TKO : l'arbitre arrête
+- Fautes
+-- [2] Coups de tête
+-- [2] Doigts dans les yeux
+-- [2] Nuque et colonne
+-- [3] Petites articulations
+- [2] Huit catégories de poids
+-- Mouche : 56,7 kg
+-- Lourd : 120,2 kg
+- [2] Légal en France depuis 2020
+-- FMMAF
+
+# Cibles
+- Menton
+-- [3] Rotation de la tête
+- Tempe
+- Plexus
+- Foie
+-- [3] À droite : crochet gauche
+- Côtes
+- Cuisse et mollet
+-- [3] Faire boiter
+- [2] Rotation plus que force
+-- Le coup qu'on ne voit pas
+- [2] Flash knockdown
+- [3] Bras raide : commotion sévère
+
+# Garde et déplacements
+- Garde orthodoxe
+-- [3] Pied gauche devant
+- Fausse garde
+-- [3] Pied droit devant
+- Garde ouverte ou fermée
+- Pieds jamais croisés
+-- [3] Avancer du pied avant
+- Couper la cage
+- [2] Garde MMA plus de face
+- [2] Sortir en angle
+- [2] Octogone : 9 mètres
+-- [3] Apex : 7,6 mètres
+
+# Boxe dans la cage
+- Jab
+-- [3] Mesurer la distance
+- Direct
+-- [3] Rotation des hanches
+- Crochet
+- Puissance venue des hanches
+- Défense
+-- [1] Parade
+-- [1] Esquive latérale
+-- [2] Blocage moins efficace
+- [2] Contre : la plupart des KO
+- [2] Ne pas plonger sous un crochet
+- [3] Gants de 4 onces : plus de KO
+
+# Muay Thaï
+- Huit armes
+-- [1] Poings
+-- [1] Coudes
+-- [1] Genoux
+-- [1] Tibias
+-- [3] Mnémo P.C.G.T.
+- Low kick
+-- [3] Face externe de la cuisse
+- Calf kick
+-- [3] Mollet externe
+- Clinch thaï
+-- [2] Plum
+-- [3] Coudes serrés contre le cou
+-- [3] Genoux qui montent
+- [2] Bloquer en levant la jambe
+- [2] Coude : coupure et arrêt médical
+
+# Clinch et cage
+- Underhook
+-- [3] Bras sous l'aisselle
+- Overhook
+-- [3] Bras par-dessus
+- Pummeling
+-- [3] Glisser ses bras à l'intérieur
+- Contre la cage
+-- [2] Tête sous le menton
+-- [2] Hanches collées
+- [2] Juges : contrôle avec action
+- [2] Clinch sans action : séparé
+
+# Lutte
+- Trois temps
+-- [1] Changer de niveau
+-- [1] Pénétrer
+-- [1] Finir
+- Double jambe
+-- [3] Épaule dans les hanches
+- Simple jambe
+- Ceinture
+-- [3] Mains jointes
+- [2] Libre, gréco-romaine, universitaire
+- [2] Frapper pour plonger
+- [2] Khabib contre McGregor
+-- [3] UFC 229, 2018
+
+# Défendre l'amenée
+- Distance et mains
+- Sprawl
+-- [3] Hanches lourdes, jambes projetées
+- Whizzer
+- Underhook
+- Se relever
+-- [2] Relevé technique
+-- [2] Monter le long de la cage
+- [2] Cent sprawls
+
+# Sol : positions
+- Dos avec crochets
+-- [3] Étranglement arrière possible
+- Montée
+- Gardes
+-- [1] Fermée
+-- [1] Ouverte
+-- [2] Demi-garde
+- Points du JJB
+-- [2] Amenée, balayage : 2
+-- [2] Passage de garde : 3
+-- [2] Montée, dos : 4
+- Crevette
+-- [3] Échappement de hanche
+- Pont
+-- [3] Sous la montée
+- [2] Origine : Maeda puis Gracie
+-- [3] UFC 1 en 1993
+
+# Soumissions et sol en MMA
+- Étranglements
+-- [1] Rear naked choke
+-- [1] Guillotine
+- Clés
+-- [1] Armbar
+-- [1] Kimura
+- Taper n'est pas perdre
+-- [3] Perte de conscience en secondes
+- Ground and pound
+- Survivre d'en bas
+-- [2] Casser la posture
+- [2] JJB sportif contre sol du MMA
+- [2] Juges : dégâts et contrôle actif
+
+# Stratégie et lecture
+- Plan A et plan B
+- Base de l'adversaire
+- Profils
+-- [2] Presseur
+-- [2] Contreur
+-- [3] Presseur : angles et contres
+- Cardio
+-- [3] Efforts explosifs et phases calmes
+- Minute de repos : deux consignes
+- Notation
+-- [1] Impact
+-- [1] Agressivité efficace
+- [2] Lire le combat
+-- Signes qui trahissent
+-- Statistiques : frappes par minute
+-- Fatigue et blessure
+
+# Cas réels
+- Neuf combats, neuf leçons
+- Royce Gracie : le sol bat la force
+-- [3] UFC 1, 12 novembre 1993
+- Gane contre Tuivasa
+-- [2] Un knockdown n'est pas une défaite
+- Diaz contre McGregor
+-- [3] UFC 196, 2016
+- Analyser par la base
+- Coach responsable
+-- [2] Poids sur des semaines
+-- [2] Repos médical après un KO

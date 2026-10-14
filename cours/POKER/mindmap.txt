@@ -1,0 +1,213 @@
+# Règles et ordre des mains
+- 2 cartes privées
+- Board : flop, turn, river
+-- [1] Flop : 3 cartes
+-- [1] Turn : 1 carte
+-- [1] River : 1 carte
+-- [3] 5 cartes communes
+- Meilleure main de 5 cartes
+- Ordre des mains
+-- [2] Quinte flush
+-- [2] Carré
+-- [2] Full
+-- [2] Couleur
+-- [2] Quinte
+-- [3] Quinte flush royale : AKQJT
+- Couleur bat quinte
+- [2] Full bat couleur
+- [2] La roue : A2345
+
+# Déroulé et positions
+- Quatre tours d'enchères
+-- [1] Préflop
+-- [1] Flop
+-- [1] Turn
+-- [1] River
+-- [3] No Limit : tapis possible
+- Positions en 6-max
+-- [1] UTG : la pire
+-- [1] Bouton : la meilleure
+-- [2] CO, HJ, MP
+-- [2] SB et BB : les blindes
+-- [3] UTG, MP, HJ, CO, bouton, SB, BB
+- Agir en dernier : plus d'information
+- [2] Checker, miser, suivre, relancer, coucher
+
+# Mains de départ
+- AKs : assortis
+- AKo : dépareillés
+- Combinaisons
+-- [1] Paire : 6
+-- [1] Assortie : 4
+-- [1] Dépareillée : 12
+-- [3] Main non appariée : 16 au total
+- Probabilités
+-- [2] Paire : 5,9 %
+-- [2] AA : 0,45 %
+-- [3] Main assortie : 23,5 %
+-- [3] AK : 1,2 %
+- Trois moteurs
+-- [2] Force brute
+-- [2] Potentiel de tirage
+-- [2] Jouabilité
+-- [3] AJo : souvent dominé
+-- [3] 76s : bon potentiel
+
+# Ranges d'ouverture
+- Penser en range
+- Fréquences en 6-max
+-- [1] UTG : 18 %
+-- [1] Bouton : 43 %
+-- [2] HJ : 22 %
+-- [2] CO : 27 %
+-- [2] SB : 40 %
+-- [3] SB : relance ou mixte
+- Ce qui élargit une range
+-- [2] Position
+-- [2] Peu de joueurs derrière
+-- [2] Blindes passives
+-- [3] Contre blindes qui se couchent trop
+- Ouverture : 2 à 2,5 bb
+-- [3] Tournoi : 2 à 2,2 bb
+
+# Outs et cotes
+- Out : carte gagnante
+- Tirage couleur : 9 outs
+-- [3] Flop : 36 %, exact 34,97 %
+- Quinte bilatérale : 8 outs
+- Règle de 2 et 4
+-- [1] Flop : outs x 4
+-- [1] Turn : outs x 2
+-- [3] 9 outs au turn : 18 %
+- Cote du pot
+-- [1] Mise / pot final
+-- [2] 50 à payer pour gagner 150 : 25 %
+-- [3] Tirage couleur à 35 % : on suit
+- [2] Quinte ventrale : 4 outs
+- [2] Cote implicite
+
+# Équité et espérance
+- Équité : part du pot
+-- [3] AA contre KK : 82 / 18
+- EV : espérance de gain
+-- [2] p x gain - (1 - p) x perte
+- Bluff : point mort 33 %
+-- [2] 50 dans un pot de 100
+- Décisions d'espérance positive
+-- [2] Gagner des mains n'est pas le but
+-- [3] 60 % de mains gagnées : peut perdre
+
+# Flop et turn
+- Texture du flop
+-- [1] Sec
+-- [1] Humide
+-- [2] Pairé
+-- [3] Sec : K72 arc-en-ciel
+-- [3] Humide : 987 deux couleurs
+- Avantage de range
+-- [3] A72 : l'ouvreur a plus d'As
+- C-bet
+-- [1] Flop sec : 25 à 33 %
+-- [1] Flop coordonné : 60 à 75 %
+- Turn : trois questions
+-- [2] La carte change-t-elle les ranges ?
+-- [2] Puis-je encore miser trois fois ?
+-- [3] Quelle est ma range de check ?
+- [2] Double barrel
+- [2] SPR : tapis effectif
+- [3] Le c-bet automatique est une fuite
+
+# River
+- Plus d'équité
+- Valeur ou bluff
+-- [3] Sinon : bluff ou check
+- Une main plus faible peut-elle payer ?
+- Ratio bluffs sur valeur
+-- [2] Mise / (pot + 2 mises)
+-- [2] Mise 50 % : 25 % de bluffs
+- Bluffs avec blockers
+-- [3] Tirage couleur manqué avec l'As
+- Thin value bet
+-- [2] Miser petit avec une main moyenne
+-- [3] Les joueurs checkent trop
+
+# Préflop avancé
+- Open, 3-bet, 4-bet
+- Squeeze
+-- [1] Après un open et un caller
+-- [2] + 1 bb par caller
+-- [3] Spot le plus rentable
+- 3-bet polarisé
+-- [2] QQ+, AK et bluffs
+-- [3] Par défaut hors de position
+- 3-bet linéaire
+-- [2] TT+, AJs+, KQs
+-- [3] Contre ouvertures très larges
+- Tailles
+-- [2] 3-bet en position : 3 x
+-- [2] Hors de position : 4 x
+-- [2] 4-bet : 2,2 à 2,5 x
+- [2] A5s : bon bluff de 3-bet
+
+# Combos, blockers, MDF
+- Compter les combos
+-- [3] AK : 12 combos moins les bloquées
+- Blockers
+-- [2] Removal
+-- [2] Contresens : bloquer ses bluffs
+-- [3] Bluffer : bloquer ses mains payantes
+- Alpha = mise / (mise + pot)
+- MDF = pot / (pot + mise)
+-- [3] MDF = 1 - alpha
+- [2] Tableau alpha et MDF
+-- Mise 33 % : 25 et 75 %
+-- Mise 50 % : 33 et 67 %
+-- Mise 100 % : 50 et 50 %
+- [2] MDF : garde-fou, pas obligation
+- [2] Raisons de payer
+-- Sa fréquence de bluff
+-- Les blockers
+-- La MDF
+
+# Ranges et exploitation
+- Forme de la range
+-- [1] Polarisée
+-- [1] Condensée
+-- [2] Taille selon la forme
+- Avantage de nuts
+-- [3] Droit de miser gros
+- GTO contre exploitation
+-- [3] Équilibre : ne perd contre personne
+- Quatre statistiques
+-- [1] VPIP
+-- [1] PFR
+-- [1] 3-bet
+-- [1] Fold to c-bet
+-- [3] VPIP 45 et PFR 8 : passif large
+- [2] Range de check : pas une poubelle
+- [2] Ajustements
+-- Fold to c-bet > 60 % : miser 33 %
+-- Calling station : plus de bluffs
+-- Échantillon avant ajustement
+
+# Bankroll, tournoi, expert
+- Variance n'est pas une opinion
+-- [3] Résultat n'est pas décision
+- Bankroll
+-- [1] Cash : 30 à 50 caves
+-- [1] Tournois MTT : 100 à 200 buy-ins
+-- [2] Sit and go : 50 à 100
+-- [3] Distribution des gains asymétrique
+- Tilt
+-- [1] Stop-loss fixé avant
+-- [2] Juger la décision, pas le résultat
+-- [3] Signes : plus de mains, relances sans plan
+- ICM
+-- [1] Jeton qui perd de la valeur
+-- [2] Facteur bulle
+-- [2] Push or fold : 12 à 15 bb
+-- [3] Call neutre en jetons : perdant
+- [2] Stratégies mixtes
+- [2] Donk bet
+- [2] Multiway
+- [3] Node locking

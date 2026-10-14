@@ -8,6 +8,7 @@ s=io.open(P,encoding='utf-8').read()
 s=re.sub(r'<!-- PATRI:DEBUT -->.*?<!-- PATRI:FIN -->\n','',s,flags=re.S)
 s=re.sub(r'<!-- COURS:\w+:DEBUT -->.*?<!-- COURS:\w+:FIN -->\n','',s,flags=re.S)
 s=re.sub(r'<!-- EXAMEN:\w+:DEBUT -->.*?<!-- EXAMEN:\w+:FIN -->\n','',s,flags=re.S)
+s=re.sub(r'<!-- MINDMAP:\w+:DEBUT -->.*?<!-- MINDMAP:\w+:FIN -->\n','',s,flags=re.S)
 blocks=''
 for cid in ORDRE:
     d=BASE+'/'+cid
@@ -33,6 +34,16 @@ for cid in sorted(os.listdir(BASE)):
     blocks+=('<!-- EXAMEN:%s:DEBUT -->\n<script>\n/* Examen pratique %s : banque de cas. Genere depuis cours/%s/examen.js */\n'
       'window.PEXAM=window.PEXAM||{};PEXAM["%s"]=%s;\n</script>\n<!-- EXAMEN:%s:FIN -->\n')%(cid,cid,cid,cid,cas,cid)
     print(cid,'examen pratique')
+# mind maps magiques : cours/<CID>/mindmap.txt (texte brut, voir design/arcade/mindmap.js), injectees dans window.MMAP[CID]
+import json
+for cid in sorted(os.listdir(BASE)):
+    f=BASE+'/'+cid+'/mindmap.txt'
+    if not os.path.exists(f): continue
+    t=io.open(f,encoding='utf-8').read().strip()
+    assert '\u2014' not in t, f
+    blocks+=('<!-- MINDMAP:%s:DEBUT -->\n<script>\n/* Mind map magique %s. Genere depuis cours/%s/mindmap.txt */\n'
+      'window.MMAP=window.MMAP||{};MMAP["%s"]=%s;\n</script>\n<!-- MINDMAP:%s:FIN -->\n')%(cid,cid,cid,cid,json.dumps(t,ensure_ascii=False).replace('</','<\\/'),cid)
+    print(cid,'mind map magique')
 anchor='<script>\n/* =====================================================================\n   MULTILINGO v2'
 assert s.count(anchor)==1
 s=s.replace(anchor,blocks+anchor)

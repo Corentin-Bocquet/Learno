@@ -1,0 +1,186 @@
+# Échiquier et pièces
+- 64 cases
+-- [2] Colonnes a à h
+-- [2] Rangées 1 à 8
+-- [3] Blanche à droite : h1
+- Case blanche à droite
+- La dame aime sa couleur
+- Les Blancs commencent
+- Roi, dame, tour, fou, cavalier
+-- [1] Cavalier : saut en L
+-- [1] Fou : une seule couleur
+- Pion : avance droit, prend en diagonale
+-- [3] Deux cases au premier coup
+
+# Coups spéciaux
+- Roque
+-- [1] Petit : O-O
+-- [1] Grand : O-O-O
+-- [2] Roi g1, tour f1
+-- [2] Roi c1, tour d1
+-- [3] Seul coup à deux pièces
+- Cinq conditions du roque
+-- [2] Roi et tour jamais bougés
+-- [2] Cases vides entre eux
+-- [2] Roi ni en échec ni en passage
+- Prise en passant
+-- [1] Tout de suite ou jamais
+-- [3] Pion en 5e rangée
+- Promotion obligatoire
+-- [2] Souvent en dame
+-- [3] Dame, tour, fou ou cavalier
+
+# Fin de partie
+- Échec : fuir, parer, prendre
+-- [2] Échec double : fuir seulement
+- Mat : échec sans issue
+-- [3] Ni fuir, ni parer, ni prendre
+- Pat : pas d'échec, aucun coup
+-- [1] Nulle
+-- [3] Dame et roi contre roi : piège
+- Nulles
+-- [1] Accord
+-- [1] Triple répétition
+--- [3] 5e fois : nulle automatique
+-- [1] 50 coups
+-- [2] Matériel insuffisant
+- [2] Pièce touchée, pièce jouée
+
+# Notation et valeur
+- R, D, T, F, C
+-- [2] En anglais : K, Q, R, B, N
+- x : prise
+- + : échec
+- # : mat
+- Valeurs : 1, 3, 3, 5, 9
+-- [3] Escalier : pion, deux légères, tour, dame
+- Compter avant d'échanger
+-- [3] Additionner toute la séquence
+- [2] Qualité : + 2
+- [2] Paire de fous
+
+# Règles d'or de l'ouverture
+- Contrôler le centre
+- Cavaliers et fous avant la dame
+-- [3] Dame sortie tôt : chassée
+- Roque avant le 10e coup
+- Une pièce nouvelle à chaque coup
+- Tempo perdu = pièce en moins
+-- [3] Pièce qui recule chassée
+- [2] Pas deux fois la même pièce
+- [2] Fin d'ouverture
+-- Pièces légères sorties
+-- Roi roqué
+-- Tours reliées
+
+# Répertoire simple
+- Blancs : Italienne
+-- [1] 1.e4 e5 2.Cf3 Cc6 3.Fc4
+-- [2] Cible : f7
+--- [3] Développement rapide
+- Blancs : Londres
+-- [1] Ff4 avant e3
+-- [2] Même plan contre tout
+-- [3] d4, Ff4, e3, Fd3, Cf3
+- Noirs : Caro-Kann
+-- [1] 1.e4 c6 2.d4 d5
+-- [3] Structure de pions saine
+- Noirs : Gambit dame refusé
+-- [1] 1.d4 d5 2.c4 e6
+- 2 à 3 ouvertures bien connues
+- [2] Retenir les idées, pas 20 coups
+
+# Tactique
+- Fourchette
+-- [1] Le cavalier en est le roi
+-- [3] Une pièce, deux cibles
+- Clouage
+-- [1] Absolu : roi derrière
+--- [3] La pièce clouée ne peut pas bouger
+-- [1] Relatif : autre pièce derrière
+- Enfilade
+-- [3] Grosse pièce devant
+- Découverte
+-- [3] Une pièce part, l'autre attaque
+- Échec double
+-- [3] Seule parade : bouger le roi
+- [2] Surcharge
+- [2] Déviation
+
+# Mats types
+- Couloir
+-- [1] Parade : trou d'air
+-- [3] Roi enfermé par ses pions
+- Baiser
+-- [1] Dame collée au roi, protégée
+--- [3] Cible classique : g7 ou g2
+- Étouffé
+-- [1] Cavalier contre roi bloqué
+-- [3] Cavalier : pas d'interposition
+- Escalier
+-- [1] Deux tours alternent
+-- [3] Roi poussé rangée après rangée
+- [2] Trouver un mat en un coup
+-- Lister les échecs
+-- Vérifier les cases de fuite
+
+# Pièges et erreurs
+- Mat du berger
+-- [1] Parade : 3...g6
+-- [2] 1.e4 e5 2.Fc4 Cc6 3.Dh5
+-- [3] Dame et fou visent f7
+- Mat du fou
+-- [1] 1.f3 e5 2.g4 Dh4#
+- Piège de Légal
+-- [1] Un clouage relatif n'immobilise rien
+- Sept erreurs de débutant
+-- [2] Sortir la dame trop tôt
+-- [2] Pousser f, g, h sans raison
+- [2] Un piège est un pari
+-- [3] Il gagne si l'autre se trompe
+
+# Routine anti-gaffe
+- É.P.M. avant chaque coup
+-- [1] Échecs
+-- [1] Prises
+-- [1] Menaces
+- Compter attaquants et défenseurs
+- Prendre avec la pièce la moins chère
+- Pièces qui traînent
+-- [3] Pièce non défendue : cible
+- [2] Cadence 15+10
+-- [3] 10+0 au minimum
+- [2] Le coup de l'adversaire aussi
+
+# Finales
+- Le roi attaque
+- Opposition
+-- [3] Celui qui doit bouger cède
+- Règle du carré
+-- [3] Roi dans le carré : il rattrape
+- Mater avec dame
+-- [2] Boîte
+-- [2] Attention au pat
+-- [3] Saut de cavalier derrière le roi
+- Mater avec tour
+-- [2] Roi en opposition
+- [2] Roi vaut environ 4 en finale
+
+# Progresser
+- Plans de milieu de partie
+-- [1] Colonne ouverte
+-- [1] Avant-poste
+-- [2] Améliorer sa plus mauvaise pièce
+- Elo : classement relatif
+- Paliers
+-- [1] 0 à 400 : fondations
+-- [1] 400 à 800 : tactique
+-- [2] 800 à 1200
+-- [2] 1200 à 1500
+-- [3] Tactique avant ouvertures
+- Routine quotidienne
+-- [2] 15 à 20 minutes de puzzles
+-- [3] Régularité avant marathon
+-- [2] Analyser la défaite
+- [2] Lichess, Chess.com, Chessable
+- [2] Sous 1500 : zéro cadeau

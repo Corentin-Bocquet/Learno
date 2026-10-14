@@ -1,0 +1,143 @@
+# Spread de crédit
+- Rendement risqué moins taux sans risque
+- Rémunère la perte attendue
+- Rémunère l'aversion au risque
+- Rendement calculé sur le flux promis
+-- [2] Jamais sur le flux espéré
+-- [3] Nominal promis / prix
+- Spread = rendement - taux sans risque
+-- [3] Intègre PD et recouvrement
+- [2] Prime de risque
+-- Spread avec aversion moins sans
+- [2] Cas : PD 10 %, recouvrement 70 %
+-- Flux espéré : 97
+-- Prix : 92,38
+- [3] Zéro-coupon d'État à 5 % : 95,24
+
+# Vision optionnelle
+- Actionnaire = call sur l'actif
+-- [1] Gain : max(V - F ; 0)
+-- [1] Prix d'exercice : dette faciale
+-- [2] Responsabilité limitée
+-- [3] Valeur des actions = prime
+- Créancier = ZC - put
+-- [1] Gain : min(V ; F)
+-- [2] Vendeur d'un put
+-- [3] Gain : F - max(F - V ; 0)
+- Merton, 1974
+- [2] Absence d'arbitrage
+- [2] Call américain = européen
+- [3] Put américain > européen
+
+# Black et Scholes
+- Mouvement brownien géométrique
+-- [1] mu : tendance
+-- [1] sigma : volatilité
+-- [1] dz : Wiener
+-- [3] dS = mu S dt + sigma S dz
+- Portefeuille de réplication
+-- [2] Rapporte le taux sans risque
+- mu absent de la formule
+- Lemme d'Itô
+-- [2] dz x dz = dt
+-- [2] ln(S) : (mu - sigma²/2)
+-- [3] dt x dz = 0
+- Équation de Black et Scholes
+-- [3] Terme en dz supprimé
+- d1 et d2
+-- [2] C = S N(d1) - K e^(-rT) N(d2)
+-- [3] d2 = d1 - sigma racine(T)
+- [2] Convertir les jours en années
+
+# Parité put-call
+- p = c + K e^(-rT) - S
+- Options européennes
+- Preuve par arbitrage
+-- [3] Deux portefeuilles, mêmes flux
+- [2] Put : K e^(-rT) N(-d2) - S N(-d1)
+- [2] Vérifier call et put
+- [3] TD : call 0,6578, put 0,5765
+
+# Merton : le spread
+- Fonds propres = call
+-- [1] Ve = Va N(d1) - F e^(-rT) N(d2)
+-- [3] Va = valeur de l'actif
+- Dette = actif - fonds propres
+-- [3] Méthode 1 : équilibre du bilan
+- Dette par la parité
+-- [2] D = F e^(-rT) - P
+- YtM = -(1/T) ln(D/F)
+- Spread = YtM - r
+- [2] Exemple : spread de 0,491 %
+
+# Volatilité implicite et rachat
+- Volatilité de l'actif non observable
+- La déduire de Ve
+-- [3] Équation de Black et Scholes sur Ve
+- Méthode en cinq étapes
+-- [2] Trouver sigma implicite
+-- [2] Spread avant rachat
+-- [2] F diminue du rachat
+-- [2] Spread après rachat
+- [2] Exemple : rachat de 20 M
+- [3] Piège FFBC : déjà sous la cible
+
+# Probabilité de défaut
+- PD = N(-d2)
+-- [3] PD = 1 - N(d2)
+- Défaut si Va(T) < F
+- ln(Va) suit une loi normale
+- Le spread est une mesure bruitée
+- [2] Exemple : 22,51 % puis 7,50 %
+- Sensibilités
+-- [1] Maturité : PD monte
+-- [1] Volatilité : PD monte fort
+-- [1] Taux sans risque : PD baisse
+-- [1] Valeur de l'actif : PD baisse
+-- [1] Dette : PD monte
+-- [3] Taux sans risque : dérive de l'actif
+- [2] Dérive r en univers risque neutre
+
+# Dérivés de crédit et CDS
+- Couvrir le défaut d'un client
+-- [3] Comme un céréalier couvre ses cours
+- Marché de 13 000 à 16 000 milliards
+- CDS : valeur nulle à la signature
+-- [1] Jambe prime = jambe protection
+-- [2] Prime x probabilité de survie
+-- [2] Protection : PD et recouvrement
+- PD de Merton
+-- [2] Convertir en PD semestrielle
+-- [3] Univers risque neutre
+- [3] TD FFBC : PD annuelle 17,395 %
+
+# Basket CDS
+- Plusieurs actifs
+- FTD : First to Default
+-- [3] Contrat arrêté après n défauts
+- STD : Second to Default
+- Portfolio CDS
+- Corrélation parfaite
+-- [1] Deux états
+-- [2] Tous ou aucun
+-- [3] Tous défaillent ou aucun
+- Corrélation nulle
+-- [1] Loi binomiale
+-- [1] n + 1 états
+-- [2] Prime = espérance des paiements
+-- [3] Loi binomiale : LOI.BINOMIALE
+- [2] Probabilité jointe avec corrélation
+- [3] TD : STD de 20 actifs, 608 253
+
+# Révision : la chaîne
+- Spread, valeur de la dette
+- Vision optionnelle
+- Black et Scholes
+- Merton
+-- [3] PD = N(-d2)
+- PD et sensibilités
+- CDS et baskets
+- [2] Formules à ne jamais oublier
+-- Ve = Va N(d1) - F e^(-rT) N(d2)
+-- D = Va - Ve
+-- PD = N(-d2)

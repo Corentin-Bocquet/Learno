@@ -1,0 +1,165 @@
+# Le cube
+- 6 centres : fixes
+-- [3] Tournent sans changer de place
+- 12 arêtes : 2 couleurs
+-- [3] Jamais d'arête rouge et orange
+- 8 coins : 3 couleurs
+-- [3] 26 pièces, 54 autocollants
+- Couleurs opposées
+-- [1] Blanc et jaune
+-- [1] Rouge et orange
+-- [1] Bleu et vert
+- On résout des pièces, pas des faces
+-- [3] Fausse face blanche possible
+- [2] Inventé en 1974 par Ernő Rubik
+- [2] 43 milliards de milliards de positions
+
+# Notation
+- Six faces, six lettres
+-- [3] Right, Left, Up, Down, Front, Back
+- Lettre seule : sens horaire
+- Prime : sens inverse
+-- [3] R puis R' : rien n'a bougé
+- 2 : demi-tour
+-- [3] Peu importe le sens
+- Séquence R U R' U'
+-- [2] Six fois : retour au départ
+- [2] Tranches et rotations
+-- M : tranche du milieu
+-- x, y, z : tout le cube
+- [2] Cube immobile pendant la séquence
+
+# Étape 1 : croix blanche
+- Marguerite
+-- [1] Quatre pétales blancs
+-- [3] Jaune en haut, pétales blancs
+- Petits T
+-- [1] Pétale aligné sur son centre
+-- [3] Même couleur que le centre
+- Demi-tour
+-- [3] Le blanc arrive en dessous
+- [2] Libérer la place avec U
+- [2] Croix juste : un T par côté
+- [3] Croix en 8 mouvements au maximum
+
+# Étape 2 : coins blancs
+- Coin au-dessus de sa place
+-- [3] Tourner U pour l'amener
+- Devant à droite
+- R U R' U'
+-- [1] 1, 3 ou 5 fois
+- Coin coincé en bas
+-- [2] Un R U R' U' le remonte
+- [2] Ne pas tourner U pendant la répétition
+- [2] Première couche finie
+
+# Étape 3 : deuxième couche
+- Arête sans jaune
+-- [3] Une arête jaune attend l'étape 4
+- T vertical devant
+- Le dessus dit droite ou gauche
+- Droite : U R U' R' U' F' U F
+- Gauche : le miroir
+-- [3] R devient L
+- [2] Arête coincée au milieu
+-- Séquence avec une arête jaune
+
+# Étape 4 : croix jaune
+- Quatre dessins
+-- [1] Point
+-- [1] L
+-- [1] Ligne
+-- [1] Croix
+- F R U R' U' F'
+-- [3] Sexy move encadré par F et F'
+- L à 9 h et midi
+- Ligne à l'horizontale
+- [2] Toujours 0, 2 ou 4 arêtes jaunes
+-- [3] 1 ou 3 : cube mal remonté
+
+# Étape 5 : arêtes jaunes
+- Tourner U : deux arêtes bien placées
+-- [3] Toujours possible
+- Voisines
+-- [1] Derrière et à droite
+-- [1] Sune : R U R' U R U2 R' U
+- Opposées
+-- [1] Une formule, puis voisines
+- [2] Les coins ne comptent pas encore
+
+# Étapes 6 et 7 : coins jaunes
+- Placer les coins
+-- [1] U R U' L' U R' U' L
+-- [3] Les trois autres tournent en rond
+- Un coin bien placé devant à droite
+- Aucun bien placé : une formule
+- Tourner les coins
+-- [1] R' D' R D
+-- [2] 2 ou 4 fois
+- Entre deux coins : U seulement
+- [2] Le bas se répare à la fin
+
+# Dépanner et entretenir
+- Diagnostic du bas vers le haut
+-- [1] Reprendre à la première fissure
+-- [3] Une erreur coûte 30 secondes
+- Cubes impossibles
+-- [1] Une arête seule retournée
+-- [1] Un coin seul tourné
+-- [3] Aucune formule ne règle
+- Démonter à 45 degrés
+-- [3] Soulever une arête
+- Lubrifiant silicone
+-- [3] Quelques gouttes
+- [2] Speedcube magnétique
+- [2] Pop et lock-up
+- [3] Jamais de dégrippant
+
+# Aller plus vite
+- Finger tricks
+-- [1] Index pour U
+-- [1] Poignet pour R
+-- [3] U2 : deux coups d'index
+- Lookahead
+-- [3] Regarder la pièce suivante
+- Lent et sans pause
+- Moyenne de 5 : ao5
+-- [2] Retirer meilleur et pire
+-- [3] 5 résolutions, 3 retenues
+- Inspection de 15 secondes
+-- [2] +2 secondes jusqu'à 17 s
+-- [2] DNF au-delà
+- [3] Record : 2,76 secondes
+
+# Méthode CFOP
+- Cross
+-- [3] Croix blanche directe en dessous
+- F2L
+-- [1] Le plus rentable
+-- [2] Coin et arête par paires
+-- [3] Quatre paires coin et arête
+- OLL
+-- [3] Tout le dessus jaune
+- PLL
+-- [3] Placer les pièces du dessus
+- 2-look
+-- [2] 10 OLL
+-- [2] 6 PLL
+-- [3] 16 formules pour passer sous 30 s
+- [2] Sune et sexy move conservés
+- [2] Autres méthodes
+-- Roux
+-- ZZ
+-- Petrus
+
+# S'entraîner
+- Sept étapes, sept gestes
+- D'abord finir seul
+-- [3] Dix résolutions sans ouvrir le cours
+- Ensuite aller vite
+- Enfin la CFOP
+- 15 minutes par jour
+-- [3] Bat une soirée par mois
+- [2] Semaine 1 : deux couches
+- [2] Semaines 3 et 4 : sous 2 minutes
+- [2] Mélanger vraiment : 20 mouvements

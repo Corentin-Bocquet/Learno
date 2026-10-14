@@ -1,0 +1,200 @@
+# Le métier et les trois lignes
+- Identifier, mesurer, surveiller, rapporter
+-- [3] Évaluer un financement, émettre un avis
+- Ne porte pas le risque
+- Trois lignes de défense
+-- [1] 1re : le business
+-- [1] 2e : Risques et Conformité
+-- [1] 3e : audit interne
+-- [3] 2e ligne : droit de veto parfois
+- Indépendance : le mot clé
+- [2] Spécialisations
+-- Crédit, marché, contrepartie
+-- Liquidité, opérationnel
+- [2] CRO au comité exécutif
+- [2] Analyste, risk manager, quant
+
+# Risque de crédit
+- PD : probabilité de défaut
+- LGD : perte en cas de défaut
+-- [3] En % de l'exposition
+- EAD : exposition au défaut
+- EL = PD x LGD x EAD
+-- [2] 1 M, 0,5 %, 40 % : 2 000 €
+-- [3] Se provisionne
+- Perte inattendue : fonds propres
+- [2] Dossier corporate
+-- Levier sous 3x
+-- Gearing sous 1
+-- DSCR minimum 1,25x
+- [2] NPL et forbearance
+
+# Notation, IRB et RWA
+- Approche standard
+-- [3] Notations externes
+- Approche IRB
+-- [2] Fondation ou avancée
+-- [3] Soumise à l'agrément
+- RWA : risque inattendu
+-- [3] PD 0,5 %, LGD 35 % : pondération 9,6 %
+- Ratio CET1 = fonds propres / RWA
+-- [2] RWA plus haut, ratio plus bas
+- Output floor : 72,5 %
+-- [3] Montée en charge jusqu'en 2033
+
+# IFRS 9
+- Provisionner les pertes attendues
+- Trois stages
+-- [1] Stage 1 : 12 mois
+-- [1] Stage 2 : SICR, à maturité
+-- [1] Stage 3 : dépréciation
+-- [3] SICR : hausse significative du risque
+- ECL = PD x LGD x EAD
+-- [2] Actualisée
+-- [3] Exemple : 2 000 € au stage 1
+- Forward looking
+-- [2] Scénario central
+-- [2] Scénario adverse
+-- [2] Scénario favorable
+
+# Risque de marché
+- Trading book
+- VaR
+-- [1] 99 % : 2,33
+-- [1] 95 % : 1,645
+-- [2] 1 M, 2 % : 46 600 €
+-- [3] Valeur x volatilité x quantile
+- Trois méthodes
+-- [1] Historique
+-- [1] Paramétrique
+-- [1] Monte Carlo
+-- [3] Historique : rejouer le passé
+-- [3] Monte Carlo : milliers de scénarios
+- Expected Shortfall
+-- [2] Moyenne au-delà de la VaR
+-- [3] VaR muette sur la queue
+- [2] FRTB : ES à 97,5 %
+- [2] Greeks, stress tests, backtesting
+
+# Contrepartie et CVA
+- Défaut d'une contrepartie de dérivé
+-- [3] Risque bilatéral
+- CVA : défaut de la contrepartie
+- DVA : défaut propre
+- FVA : coût de financement
+- SA-CCR
+-- [2] Remplace le CEM
+-- [3] En vigueur depuis 2017
+- [2] Netting
+-- ISDA Master Agreement
+- [2] Collatéral
+- [2] Wrong-way risk
+
+# Liquidité et taux
+- LCR
+-- [1] HQLA sur sorties à 30 jours
+-- [1] Au moins 100 %
+-- [3] High Quality Liquid Assets
+- NSFR
+-- [1] Financement stable
+-- [1] Au moins 100 %
+-- [3] Financement stable disponible sur requis
+- Ratio de levier : 3 %
+-- [3] Tier 1 sur exposition totale
+- IRRBB : taux du banking book
+-- [1] EVE : long terme
+-- [1] NII : court terme
+-- [3] Gap de taux, chocs réglementaires
+- [2] ILAAP
+- [2] ALCO
+
+# Risque opérationnel et DORA
+- Processus, personnes, systèmes
+-- [3] Fraude, cyber, continuité
+- Dispositif de suivi
+-- [1] Cartographie
+-- [1] RCSA
+-- [2] Incidents et pertes
+-- [2] KRI
+-- [3] KRI : Key Risk Indicators
+- Triptyque d'alerte
+-- [2] KPI dégradé
+-- [2] KCI défavorable
+-- [2] KRI en hausse
+-- [3] Un seul signal ne suffit pas
+- DORA
+-- [2] 17 janvier 2025
+-- [2] Prestataires TIC, cloud
+-- [3] Résilience opérationnelle numérique
+- [2] SMA remplace les modèles
+
+# Risque de modèle
+- SR 11-7
+-- [3] Réserve fédérale américaine
+- Validation indépendante
+-- [2] Solidité conceptuelle
+-- [2] Backtesting, benchmarking
+-- [3] Outcomes analysis
+- Effective challenge
+-- [3] Critiquer, pas seulement vérifier
+- Séparation organisationnelle
+- [2] TRIM de la BCE
+- [2] Machine learning explicable
+
+# Bâle et piliers
+- Bâle : quatre étapes
+-- [1] I : 1988
+-- [1] II : 2004
+-- [1] III : 2010
+-- [1] IV : 2017
+-- [3] Bâle IV : output floor
+- Trois piliers
+-- [1] Exigences minimales
+-- [1] Supervision : SREP
+-- [1] Discipline de marché
+-- [3] Pilier 2 : SREP, ICAAP, ILAAP
+- [2] CET1 4,5 %, Tier 1 6 %, total 8 %
+- [2] Coussin de conservation : 2,5 %
+- [2] CBR et MDA
+- [2] P2R contraignant, P2G non
+- [2] TLAC et MREL
+-- [3] TLAC : 18 % des RWA
+
+# Reporting et ESG
+- Reportings
+-- [1] COREP
+-- [1] FINREP
+-- [1] AnaCredit
+- BCBS 239
+-- [2] Data lineage
+-- [3] Agrégation rapide et fiable
+- Qualité des données
+-- [3] Point de friction numéro un
+- ESG : deux risques
+-- [1] Physique
+-- [1] De transition
+-- [3] Physique : sécheresse, inondations
+-- [3] Transition : prix du carbone
+- [2] CSRD, SFDR, taxonomie
+- [2] GAR au Pilier 3
+- [2] Stress tests climatiques
+
+# Quotidien et carrière
+- Journée type
+-- [2] Matin : indicateurs de la veille
+-- [2] Midi : dossiers et calculs
+- Livrables
+-- [1] Notes de crédit
+-- [1] Tableaux de bord
+-- [2] RAF et RAS
+-- [3] Grilles de limites
+- Comités
+-- [3] Risques, crédit, ALCO, nouveaux produits
+- Socle triple
+-- [1] Quantitatif
+-- [1] Réglementaire
+-- [1] Outillé
+-- [3] Excel, SQL, Python
+- [2] FRM, PRM, CFA
+- [2] Débutant : 32 à 45 k€
+- [2] Progression jusqu'au CRO
