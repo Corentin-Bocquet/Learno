@@ -1,0 +1,151 @@
+# Lois du jeu
+- 11 joueurs, 90 minutes
+- But : 7,32 m sur 2,44 m
+- Penalty à 11 m
+- Ballon sorti : ligne franchie en entier
+- Pas de hors-jeu sur touche ou corner
+- 5 remplacements
+-- [2] 3 fenêtres au plus
+- [2] Gardien : 8 secondes en main
+-- [3] Nouveauté 2025/26
+- [2] Carton jaune et rouge
+
+# Hors-jeu, fautes, VAR
+- Hors-jeu : photo à la passe
+-- [1] Bras exclus
+-- [1] Égalité : en jeu
+- Position n'est pas faute
+-- [2] Participer au jeu
+- Coup franc direct ou indirect
+- Penalty dans sa surface
+- Main volontaire
+- VAR : B.P.R.M.
+-- [2] But
+-- [2] Penalty
+-- [2] Rouge direct
+-- [2] Méprise d'identité
+- [2] Erreur claire et évidente seulement
+
+# Postes et systèmes
+- Numéros traditionnels
+-- [1] 1 gardien, 2 et 3 latéraux
+-- [1] 4 et 5 centraux
+-- [1] 6, 8, 10 milieux
+-- [1] 7 et 11 ailiers, 9 avant-centre
+- Poste = où, rôle = quoi
+- Systèmes : on lit arrière vers avant
+-- [1] 4-4-2 compact
+-- [1] 4-3-3 large
+-- [1] 4-2-3-1 équilibré
+-- [1] 3-5-2 axial
+-- [2] Somme de 10, sans le gardien
+- [2] Rôles modernes
+-- Gardien relanceur
+-- Latéral inversé
+-- Faux 9
+- [2] Scanning avant de recevoir
+- [2] Système = photo, animation = film
+
+# Quatre phases
+- Possession organisée
+- Transition défensive
+- Défense organisée
+- Transition offensive
+-- [2] Se jouent en 0 à 5 secondes
+- Mnémo : Construire, Réagir, Défendre, Frapper
+- [2] Transition : moins de 5 secondes
+
+# Le bloc
+- Haut : je vole
+- Moyen : je contrôle
+- Bas : je protège
+- Compacité
+-- [2] Une trentaine de mètres
+- Coulissement
+- Zone, individuelle, mixte
+- [2] Orienter vers les côtés
+
+# Le pressing
+- Individuel
+- Collectif
+- Pressing triggers
+-- [1] Passe latérale
+-- [1] Contrôle loupé
+-- [2] Adversaire lent
+-- [2] Dos au jeu
+- Presser en courbe
+-- [2] Couvrir la ligne de passe
+- PPDA bas = pressing intense
+
+# Construction
+- Build-up
+- Surnombre : 3 contre 2
+- Joueur structurellement libre
+- Qui décroche libère
+- Troisième homme
+- Relance courte ou longue
+-- [2] Courte : garder le ballon
+-- [2] Longue : sauter le pressing
+
+# Espaces
+- Cinq couloirs
+- Demi-espaces
+-- [2] Frontière de deux défenseurs
+- Zone 14
+-- [2] Devant la surface, dans l'axe
+- Overload
+-- [2] Charger à droite, frapper à gauche
+- Renversement de jeu
+- Largeur et profondeur
+
+# Transitions
+- Gegenpressing
+-- [1] Dans les 5 secondes
+- Rest defense
+-- [2] Souvent 3 + 2
+- Contre-attaque verticale
+- Contre-presser ou se replier
+-- [2] Presser si adversaire mal orienté
+-- [2] Se replier si peu de joueurs autour
+
+# Coups de pied arrêtés
+- 1 but sur 5
+-- [2] 20,6 % en Premier League
+- Défendre un corner
+-- [1] Zone
+-- [1] Individuel
+-- [1] Mixte
+- Corner rentrant ou sortant
+- Mur à 9,15 m
+- Penalty : gardien un pied sur la ligne
+- [2] Premier poteau
+
+# Statistiques
+- xG : qualité des occasions
+- Possession : pas la domination
+- Tirs cadrés
+- PPDA
+- Field tilt
+- [2] Un match, du hasard
+- [2] Dix matchs, une tendance
+- [3] Victoire chanceuse : xG plus faible
+
+# Analyser en direct
+- Grille en 7 questions
+-- [1] Bloc
+-- [1] Presse
+-- [1] Décroche
+-- [1] Libre
+-- [2] Cinq
+-- [2] Reste
+-- [2] Pause
+- Trois réflexes
+-- [1] Suivre la structure
+-- [1] Observer les 5 secondes
+-- [1] Repérer qui décroche
+- Ajustements à la pause
+-- [2] Système
+-- [2] Bloc
+-- [2] Joueur
+- [2] Minute, phase, fait
+- [2] 1 fait, 3 faits : un plan

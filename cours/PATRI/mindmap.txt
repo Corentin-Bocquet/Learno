@@ -1,0 +1,207 @@
+# Qui hérite
+- Quatre ordres
+-- [1] 1 : descendants
+-- [1] 2 : parents et fratrie
+-- [1] 3 : grands-parents
+-- [1] 4 : autres collatéraux
+- Degré le plus proche gagne
+- Représentation par souche
+- [2] Ordre 2
+-- Parents et fratrie : 1/4, 1/4, 1/2
+-- Un parent et fratrie : 1/4, 3/4
+- [2] Fente paternelle et maternelle
+- [3] Degré = une génération
+
+# Conjoint et régime
+- Régime d'abord : on rend sa moitié
+- Régimes matrimoniaux
+-- [1] Communauté réduite aux acquêts
+-- [2] Séparation de biens
+-- [3] Communauté universelle : piège
+- Enfants communs : 1/4 ou usufruit
+-- [2] Option : 3 mois, silence = usufruit
+- Enfant non commun : 1/4 seulement
+- Exonéré de droits
+- [2] Sans enfant
+-- Avec 2 parents : 1/2, 1/4, 1/4
+-- Avec un parent : 3/4, 1/4
+-- Sans parent : tout
+- [2] Logement
+-- 1 an gratuit
+-- Droit viager à réclamer
+- [2] Donation entre époux
+-- Révocable à tout moment
+
+# Réserve et quotité
+- Réserve : part des enfants
+- Quotité : part libre
+- Selon le nombre d'enfants
+-- [1] 1 enfant : 1/2 et 1/2
+-- [1] 2 enfants : 2/3 et 1/3
+-- [1] 3 et plus : 3/4 et 1/4
+- [2] Masse : biens - dettes + donations
+- [2] Action en réduction
+-- 5 ans après le décès
+-- [3] 2 ans après la découverte
+- [2] RAAR : renoncer d'avance
+- [2] Indivision
+-- Nul n'est tenu d'y rester
+
+# PACS et concubinage
+- Rien sans testament
+- PACS exonéré, concubin à 60 %
+-- [2] Concubin : 1 594 € d'abattement
+- Outils de protection
+-- [1] Testament
+-- [1] Assurance-vie
+-- [1] Tontine
+-- [1] SCI à démembrement croisé
+- [2] PACS : séparation de biens
+- [2] Tontine : survivant propriétaire
+- [3] Concubin : 152 500 € en assurance-vie
+
+# Démembrement
+- Usufruit : usus et fructus
+- Nue-propriété : abusus
+- Barème de l'article 669
+-- [1] 61 à 70 ans : 40 / 60
+-- [2] 110 moins la dizaine
+- Usufruit viager ou temporaire
+- Quasi-usufruit : argent
+- [2] Usufruitier : loyers, entretien
+- [2] Nu-propriétaire : grosses réparations
+- [2] Donner la nue-propriété tôt
+-- Le fisc taxe moins
+-- Pleine propriété au décès
+- [3] Société : 30 ans maximum
+
+# Donations
+- Trois formes
+-- [2] Don manuel
+-- [1] Donation simple
+-- [1] Donation-partage
+--- [1] Fige les valeurs
+- Abattement tous les 15 ans
+-- [1] Enfant : 100 000 €
+-- [2] Petit-enfant : 31 865 €
+-- [2] Époux, PACS : 80 724 €
+-- [2] Frère, sœur : 15 932 €
+-- [2] Neveu, nièce : 7 967 €
+- Barème : 5 à 45 %
+- Don familial : 31 865 €
+-- [2] Donateur de moins de 80 ans
+- [2] Avance de part ou hors part
+- [2] Usufruit temporaire
+-- 23 % par tranche de 10 ans
+- [2] Hors ligne directe
+-- Frère : 35 puis 45 %
+-- Neveu : 55 %
+-- Concubin : 60 %
+
+# Assurance-vie
+- Hors succession
+- Clause bénéficiaire
+- Primes avant 70 ans
+-- [1] Article 990 I
+-- [1] 152 500 € par bénéficiaire
+-- [2] 20 % puis 31,25 %
+- Primes après 70 ans
+-- [1] Article 757 B
+-- [1] 30 500 € pour tous
+-- [2] Gains exonérés
+- Conjoint exonéré
+- [2] Prime manifestement exagérée
+- [3] Contrat avant le 20/11/1991
+- [3] Primes avant le 13/10/1998
+
+# Testament et legs
+- Trois formes de testament
+-- [1] Olographe
+--- [1] Écrit à la main, daté, signé
+-- [1] Authentique
+--- [1] Notaire et deux témoins
+-- [2] Mystique
+- Testaments conjoints interdits
+- Trois legs
+-- [1] Universel
+-- [1] À titre universel
+-- [1] À titre particulier
+- [2] Legs avec charge
+-- Cadeau empoisonné possible
+- [2] Capacité : sain d'esprit
+- [2] Révocation
+-- Expresse ou tacite
+- [2] Exhérédation : jamais les enfants
+- [3] Legs graduel et résiduel
+- [3] Exécuteur testamentaire
+
+# Céder l'entreprise
+- Motif du vendeur
+- Fonds ou titres
+- Quatre diagnostics
+-- [1] Fiscal
+-- [1] Juridique
+-- [1] Social
+-- [1] Financier
+-- [3] Habiller la mariée
+- Évaluer
+-- [2] Actif net comptable
+-- [2] Comparaison
+-- [2] Rentabilité
+-- [3] Décote de minorité
+-- [3] Prime de contrôle
+- Garantie d'actif et de passif
+- [2] Clauses du cédant
+-- Non-concurrence
+-- Séquestre
+- [2] Audits de l'acquéreur
+- [2] Accord du conjoint si communauté
+
+# Fiscalité de la cession
+- Vendeur : plus-value
+-- [1] PFU 31,4 %
+-- [2] 12,8 % + 18,6 %
+-- [2] Option pour le barème
+- Retraite du dirigeant
+-- [1] 500 000 € retirés
+-- [2] 5 ans de direction
+-- [2] 25 % des droits
+- Acheteur : droits d'enregistrement
+-- [1] Actions : 0,1 %
+-- [1] Parts de SARL : 3 %
+-- [1] Fonds : 0, 3, 5 %
+-- [2] Abattement de 23 000 €
+- [3] Hauts revenus : CEHR et CDHR
+
+# Pacte Dutreil
+- Entreprise opérationnelle
+-- [2] Société civile immobilière exclue
+- Engagement collectif : 2 ans
+- Engagement individuel : 6 ans
+- Direction : 3 ans
+- Abattement de 75 %
+- Réduction de 50 %
+-- [2] Donateur de moins de 70 ans
+-- [2] Pleine propriété
+- [2] Chronologie du calcul
+-- Dutreil, démembrement, partage
+-- Abattement, barème, réduction
+- [2] Holding animatrice
+- [3] Repreneur hors famille : 60 %
+
+# Holding
+- Détient des participations
+- Mère-fille
+-- [1] 5 % du capital, 2 ans
+-- [2] Quote-part de 5 % : 1,25 %
+- Intégration fiscale
+-- [1] 95 % du capital
+-- [2] Quote-part de 1 % : 0,25 %
+- Holding de reprise
+-- [1] Emprunt remboursé par dividendes
+- Apport-cession
+-- [1] Report d'imposition
+- Family buy-out
+-- [2] Financer la soulte
+- [2] Donation-partage avec soulte
+- [3] Comparer en direct et en holding

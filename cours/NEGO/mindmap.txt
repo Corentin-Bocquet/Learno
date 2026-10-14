@@ -1,0 +1,195 @@
+# Positions, MESORE, ZOPA
+- Position : ce que dit le client
+-- [3] La valeur répond à « trop cher »
+- Intérêt : ce dont il a besoin
+- Quatre gestes
+-- [1] Questions
+-- [1] Intérêts réels
+-- [1] Vers le client
+-- [1] Critères objectifs
+--- [2] Marché
+--- [2] Fiscalité
+--- [2] Profil de risque
+-- [2] École de Harvard
+--- Fisher et Ury
+--- Séparer personnes et problème
+- MESORE = BATNA
+-- [2] Améliorer sa MESORE avant
+- Cible et point de réserve
+-- [2] Réserve fixée à froid
+-- [2] Réserve jamais révélée
+- ZOPA : entre les deux réserves
+
+# Créer de la valeur
+- Distributive : gâteau fixe
+- Intégrative : gâteau agrandi
+- Échanger ce qui compte peu
+- Pas de prix en premier
+- [2] Un critère contre plusieurs
+- [2] Logrolling
+- [2] Monnaies d'échange en banque
+-- Frais de dossier offerts
+-- Bilan patrimonial annuel
+-- Modularité des échéances
+
+# Préparer
+- Carte du client : S.O.C.E.
+-- [1] Situation
+-- [1] Objectifs
+-- [1] Contraintes
+-- [1] Émotions
+- Position : C.P.A.P.
+-- [2] Chaque promesse a sa preuve
+- Cinq objections
+-- [1] Frais
+-- [1] Risques
+-- [2] Liquidité
+-- [2] Confiance
+-- [2] Fiscalité
+- Fiche en trois colonnes
+-- [2] Objectifs et limites
+-- [2] Hypothèses sur le client
+-- [2] Stratégie d'entretien
+- [2] Questions ouvertes prêtes
+- [2] M.P.D.R.
+-- Moments de vie
+-- Patrimoine de flux
+-- Décideurs et influenceurs
+-- Risques et biais
+- [3] Aversion à la perte
+- [3] Biais de statu quo
+
+# Écouter et questionner
+- Question ouverte
+- Silence
+- Méthode des 4R
+-- [1] Reprendre
+-- [1] Relier
+-- [1] Reformuler
+-- [1] Revalider
+- SPIN
+-- [1] Situation
+-- [1] Problème
+-- [1] Implication
+-- [1] Need-payoff
+- [2] Reformuler sans interpréter
+- [2] Valider avant de conseiller
+- [2] Neil Rackham
+- [2] Peu de questions de situation
+- [3] Ne pas sauter à la solution
+
+# Convaincre
+- SONCAS
+-- [1] Sécurité
+-- [1] Orgueil
+-- [1] Nouveauté
+-- [1] Confort
+-- [1] Argent
+-- [1] Sympathie
+- Levier dominant
+-- [2] Vocabulaire
+-- [2] Questions
+-- [2] Émotions
+- Objections en quatre temps
+-- [1] Accueillir
+-- [1] Clarifier
+-- [1] Traiter
+-- [1] Valider
+- [2] Trois natures
+-- Réelle
+-- Prétexte
+-- Inquiétude
+- [2] Preuve, exemple, compromis
+- [2] Limite éthique de SONCAS
+
+# Concéder et conclure
+- Si... alors
+- Réciprocité
+- Concessions décroissantes
+- Jamais couper la poire en deux
+- Closing éthique
+-- [2] Synthèse des besoins
+-- [2] Synthèse des risques
+-- [2] Synthèse des solutions
+- [2] Suivi écrit
+-- Compte rendu
+-- Date du prochain point
+
+# Négocier pour soi
+- Intérêts du manager
+-- [1] Tenir son budget
+-- [1] Effet boule de neige
+- Package
+-- [1] Abondement
+-- [1] Intéressement
+-- [1] Participation
+- [2] Recrutement : l'autre côté
+- [2] Question ouverte d'abord
+
+# Découverte et risque
+- Cinq blocs
+-- [1] Contexte
+-- [1] Objectifs
+-- [1] Contraintes
+-- [1] Risque
+-- [1] Décision
+- Horizons
+-- [1] Court : moins de 2 ans
+-- [1] Moyen : 2 à 8 ans
+-- [1] Long : plus de 8 ans
+- Risque en trois dimensions
+-- [2] Capacité
+-- [2] Tolérance
+-- [2] Expérience
+- [2] « Sans risque » : pourquoi
+- [3] Critères d'arbitrage objectifs
+
+# Statuts du conseiller
+- Un statut par activité
+- ORIAS
+- CIF : conseil en investissement
+-- [2] Association agréée AMF
+-- [2] Lettre de mission
+- IAS : assurance
+-- [2] Directive DDA
+- IOBSP : crédit
+-- [2] Devoir d'explication
+- [2] CGP : titre non protégé
+
+# KYC et LCB-FT
+- KYC : connais ton client
+-- [2] Passif : caution, engagements
+-- [2] Origine des fonds
+-- [2] Origine du patrimoine
+- Trois étapes du blanchiment
+- Approche par les risques
+-- [2] Client, produit, géographie, opération
+- [2] Parcours client
+-- Entrée en relation
+-- Mise à jour
+-- Suivi des opérations
+-- Réexamen du risque
+- [2] PPE : délai d'un an
+- [2] Soupçon en quatre étapes
+- [2] TRACFIN
+-- Confidentialité
+-- Conservation 5 ans
+
+# Crédit immobilier
+- Cadre fixe
+-- [1] Taux d'effort : 35 %
+-- [1] Durée : 25 ans
+-- [2] 27 ans si différé ou sur plan
+-- [2] Taux d'usure
+-- [2] Délai de réflexion : 10 jours
+- Négociable
+-- [1] Taux nominal
+-- [1] Assurance emprunteur
+-- [2] Frais de dossier
+-- [2] IRA
+-- [2] Loi Lemoine : changer à tout moment
+-- [3] Droit à l'oubli : 5 ans
+- Offre concurrente = MESORE
+- Comparer au TAEG
+- [2] Négocier le package
+- [2] Concession conditionnelle

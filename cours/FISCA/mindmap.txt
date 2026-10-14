@@ -1,0 +1,189 @@
+# VEFA
+- Neuf, vendu sur plan
+- Notaire
+- Dépôt de garantie
+-- [1] 5 % sous 1 an
+-- [1] 2 % entre 1 et 2 ans
+-- [1] Rien au delà
+-- [2] Compte bloqué
+-- [3] Rendu sous 3 mois dans 5 cas
+- Garanties
+-- [1] 1 an : parfait achèvement
+-- [1] 2 ans : bon fonctionnement
+-- [1] 10 ans : décennale
+- [2] Rétractation de 10 jours
+- [2] Appels de fonds
+-- 35, 70, 95, 100 %
+-- [3] Retard : 1 % par mois au plus
+- [2] Conformité du vendeur
+-- [3] Clause d'équivalence à surveiller
+- [2] Livraison
+-- [3] Réserves sur le procès-verbal
+-- [3] Dernier 5 % : réserves levées
+
+# Pinel (fini fin 2024)
+- Neuf
+- Location nue
+-- [2] En résidence principale
+- Réduction d'impôt
+-- [1] Durée de 6, 9 ou 12 ans
+-- [2] 9, 12, 14 % en 2024
+-- [3] 12, 18, 21 % avant 2023
+- Loyer plafonné
+-- [2] Zone x surface x coefficient
+-- [3] Coefficient : 0,7 + 19 / S, max 1,2
+- Ressources du locataire plafonnées
+-- [2] Revenus N-2
+- Zones tendues
+- [2] Prix plafonné
+-- 5 500 € par m²
+-- 300 000 € au total
+-- [3] 2 logements par an
+- [2] Sanctions : perdre, rendre, payer
+
+# Jeanbrun
+- Loi de finances 2026
+-- [2] Achats jusqu'à fin 2028
+- Toute la France
+- Immeubles collectifs
+- Amortissement
+-- [1] 80 % du prix
+-- [2] Déduit des revenus fonciers
+-- [2] Pas une réduction d'impôt
+- 9 ans minimum
+- Interdits
+-- [1] Famille jusqu'au 2e degré
+-- Meublé
+-- Démembrement
+-- Cumul avec Denormandie
+- [2] Neuf
+-- 3,5 % : intermédiaire, 8 000 €
+-- 4,5 % : social, 10 000 €
+-- 5,5 % : très social, 12 000 €
+- [2] Ancien rénové
+-- 3, 3,5, 4 % selon le niveau
+-- Plafond de 10 700 €
+
+# LLI et Super Pinel
+- TVA à 10 %
+- Crédit d'impôt = taxe foncière
+-- [2] Jusqu'à 20 ans
+- 15 ans de location
+-- [2] Revente avant : on rembourse
+- Zones A bis, A, B1
+- Famille autorisée
+- Super Pinel = LLI + Jeanbrun
+-- [2] Jusqu'à fin 2028
+- [2] Via une SCI
+-- [3] Deux associés suffisent
+- [2] Loyers et ressources plafonnés
+
+# Prêt à taux zéro
+- Primo-accédant
+- Résidence principale
+- Ressources N-2
+- Montant plafonné
+- 6 ans d'occupation
+- [2] Durée de 10 à 25 ans
+-- [3] Différé pour les plus modestes
+- [2] Location interdite
+-- Sauf mobilité, décès, chômage long
+-- [3] Avec un loyer social
+
+# SCPI
+- Achat de parts, pas d'immeuble
+- Gestion déléguée, loyers distribués
+- Risques V.R.L.
+-- [1] Valeur
+-- [1] Revenus
+-- [1] Liquidité
+- Trois familles
+-- [1] Rendement
+--- [2] Bureaux fragilisés : télétravail
+--- [3] Commerces : commerce en ligne
+-- [1] Plus-value
+-- [1] Fiscale
+- [2] Six organes
+-- Gérer, Surveiller, Voter
+-- Certifier, Estimer, Garder
+-- [3] Société de gestion agréée AMF
+- [2] Souscrire
+-- Délai de jouissance : 3 à 6 mois
+-- [3] Revente parfois difficile
+- [2] Fiscalité
+-- Loyers : barème + 17,2 %
+-- Trésorerie : PFU 31,4 %
+-- Plus-value : 22 ans et 30 ans
+
+# Baux et loyers
+- Loi de 1989
+- Bail vide : 3 ans
+-- [2] 6 ans pour une société
+- Révision par l'IRL
+-- [2] Un an pour la réclamer
+- Encadrement ALUR
+-- [1] Référence médiane
+-- [1] Majoré : + 20 %
+-- [1] Minoré : - 30 %
+- [2] Complément de loyer
+-- Caractère exceptionnel
+-- [3] Jamais pour un logement F ou G
+
+# SCI
+- Trois types
+-- [1] Vendre
+-- [1] Partager
+-- [1] Louer
+- 2 associés minimum
+-- [1] Pas de capital minimum
+- Parts selon les apports
+- [2] Intérêts
+-- Protection relative
+-- Transmission sans indivision
+-- Gestion par statuts
+- [2] Gérant
+-- Gratuit par défaut
+-- Gère mais ne vend pas
+- [2] Cession de parts
+-- Agrément à l'unanimité
+-- [3] Sauf ascendants et descendants
+- [2] Dissolution T.A.T.U.
+- [2] IR ou IS
+
+# Tontine
+- Dernier survivant propriétaire
+- Héritiers écartés
+- Conditions A.P.E.N.
+-- [1] Aléa
+-- [1] Participation
+-- [1] Espérance de vie
+-- [1] Notaire
+- Utile aux concubins
+- [2] Risques
+-- Nullité demandée par les héritiers
+-- Donation déguisée pour le fisc
+- [2] Droits de succession sur la part reçue
+-- [3] Sauf résidence principale sous 76 000 €
+
+# Viager
+- Aléa sur le décès
+- Occupé ou libre
+- Prix = bouquet + rente
+- Rente selon valeur et âge
+- Notaire, bonne foi, 20 jours
+- [2] Occupé : le plus courant
+- [2] Fisc attentif en famille
+- [2] Rente imposée
+-- 70, 50, 40 ou 30 %
+
+# Valeurs mobilières
+- Action : associé et dividende
+- Obligation : prêteur et coupon
+- OPCVM
+-- [1] SICAV : société, vote
+-- [1] FCP : copropriété, pas de vote
+- PFU 2026 : 31,4 %
+- PEA : 5 ans
+- Assurance-vie : 8 ans
+- [2] Option barème
+-- [3] 40 % d'abattement sur les dividendes
