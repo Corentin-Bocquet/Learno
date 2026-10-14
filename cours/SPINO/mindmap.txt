@@ -1,10 +1,12 @@
 # Le succès qui rend triste
 - Succès : une issue, pas une joie
+-- [3] Latin successus
 - Trois temps de la déroute
 -- [1] Questionnement
 -- [2] Abattement
 -- [2] Égarement
 - Bonheur : une bonne fortune
+-- [3] Heur : augurium, présage
 - Béatitude : une joie stable
 - [2] Théo Lion : « droite manière d'entreprendre »
 - [3] 23 300 € la première année
@@ -14,6 +16,7 @@
 -- [2] Famille marrane
 - Herem à 23 ans, en 1656
 -- [3] Prudence : publications anonymes
+-- [3] 27 juillet 1656
 - Polisseur de lentilles
 - Démontré comme en géométrie
 -- [3] Ethica ordine geometrico demonstrata
@@ -21,15 +24,20 @@
 -- [2] Briques du texte
 --- Définition, axiome, proposition
 --- Démonstration, corollaire, scolie
+-- [3] I : De Dieu
+-- [3] V : De la puissance de l'entendement
 - Éthique n'est pas morale
 -- [2] Bon et mauvais relatifs à chacun
 -- [2] Un art de vivre
 
 # Dieu ou la Nature
 - Substance
+-- [3] Image : l'océan
 - Attribut
+-- [3] Image : l'eau liquide
 - Mode
 -- [2] Tu es une vague de l'océan
+-- [3] Image : la vague
 - Dieu = la Nature
 - Cause immanente
 -- [2] Causa sui
@@ -39,7 +47,9 @@
 # Corps et esprit
 - Une seule chose, deux langues
 - Contre Descartes : glande pinéale
+-- [3] Préface de la partie V
 - Ce que peut un corps
+-- [3] Le somnambule sur les toits
 - Pas un empire dans un empire
 - Affection et affect
 -- [2] Affection : trace d'un autre corps
@@ -48,6 +58,7 @@
 # Libre arbitre
 - Illusion de liberté
 - Pierre de la lettre 58
+-- [3] Lettre à Schuller, 1674
 - Ignorance des causes
 - Volonté : pas de faculté à part
 - Déterminisme n'est pas fatalisme
@@ -57,6 +68,7 @@
 # Conatus et désir
 - Persévérer dans son être
 -- [2] E3P6
+-- [3] Latin conari : s'efforcer
 - Le conatus est ton essence
 - Volonté, appétit, désir
 - Le désir est l'essence de l'homme
@@ -71,9 +83,12 @@
 -- [1] Joie
 -- [1] Tristesse
 - Action ou passion
+-- [3] Cause adéquate : action
 - Joie : puissance qui augmente
 - Tristesse : puissance qui baisse
 - Amour, haine
+-- [3] Amour : joie et cause extérieure
+-- [3] Haine : tristesse et cause extérieure
 - [2] Espoir, crainte
 - [2] Fluctuation de l'âme
 - [3] 48 définitions des affects
@@ -82,6 +97,7 @@
 - Argent
 - Gloire et ambition
 - Amour de courtisane
+-- [3] Se change en haine
 - Trois raisons de les désirer
 -- [1] Inversion
 -- [1] Imagination
@@ -93,6 +109,7 @@
 - Impuissance face aux affects
 - Voir le meilleur, faire le pire
 - Savoir ne suffit pas
+-- [3] E4P14
 - Le présent écrase le futur
 - Dépendance : le vrai nœud
 - [2] Exemple : le pacte d'actionnaires
@@ -104,6 +121,7 @@
 - Comprendre transforme la passion
 -- [1] E5P3
 - Cinq remèdes
+-- [3] E5P20, scolie
 - [2] Remèdes antiques
 -- Épicuriens : trier les désirs
 -- Cyniques : rejeter les conventions
@@ -113,6 +131,7 @@
 # Trois genres de connaissance
 - Opinion et imagination
 - Raison
+-- [3] Notions communes
 - Science intuitive
 - Le vrai se montre lui-même
 - [2] Exemple des nombres proportionnels
@@ -127,6 +146,8 @@
 -- [1] Fermeté
 -- [1] Générosité
 -- [1] Haine vaincue par l'amour
+-- [3] Fermeté : animositas
+-- [3] Générosité : generositas
 - [2] Contentement de soi
 - [2] Amour intellectuel de Dieu
 - [2] Béatitude = vertu elle-même

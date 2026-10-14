@@ -1,6 +1,8 @@
 # VEFA
 - Neuf, vendu sur plan
 - Notaire
+-- [3] Acte authentique
+-- [3] Projet reçu un mois avant
 - Dépôt de garantie
 -- [1] 5 % sous 1 an
 -- [1] 2 % entre 1 et 2 ans
@@ -11,7 +13,9 @@
 -- [1] 1 an : parfait achèvement
 -- [1] 2 ans : bon fonctionnement
 -- [1] 10 ans : décennale
+-- [3] Mise en demeure du vendeur
 - [2] Rétractation de 10 jours
+-- [3] Sans motif
 - [2] Appels de fonds
 -- 35, 70, 95, 100 %
 -- [3] Retard : 1 % par mois au plus
@@ -29,12 +33,15 @@
 -- [1] Durée de 6, 9 ou 12 ans
 -- [2] 9, 12, 14 % en 2024
 -- [3] 12, 18, 21 % avant 2023
+-- [3] Plafond global des niches
 - Loyer plafonné
 -- [2] Zone x surface x coefficient
 -- [3] Coefficient : 0,7 + 19 / S, max 1,2
+-- [3] Surface pondérée : annexes à moitié
 - Ressources du locataire plafonnées
 -- [2] Revenus N-2
 - Zones tendues
+-- [3] Fin du Pinel : 31/12/2024
 - [2] Prix plafonné
 -- 5 500 € par m²
 -- 300 000 € au total
@@ -44,7 +51,9 @@
 # Jeanbrun
 - Loi de finances 2026
 -- [2] Achats jusqu'à fin 2028
+-- [3] Relance du logement
 - Toute la France
+-- [3] Neuf et ancien
 - Immeubles collectifs
 - Amortissement
 -- [1] 80 % du prix
@@ -66,10 +75,12 @@
 
 # LLI et Super Pinel
 - TVA à 10 %
+-- [3] Ouvert aux particuliers en 2024
 - Crédit d'impôt = taxe foncière
 -- [2] Jusqu'à 20 ans
 - 15 ans de location
 -- [2] Revente avant : on rembourse
+-- [3] Jusqu'à 20 ans d'avantage
 - Zones A bis, A, B1
 - Famille autorisée
 - Super Pinel = LLI + Jeanbrun
@@ -97,6 +108,7 @@
 -- [1] Valeur
 -- [1] Revenus
 -- [1] Liquidité
+-- [3] Horizon long
 - Trois familles
 -- [1] Rendement
 --- [2] Bureaux fragilisés : télétravail
@@ -110,6 +122,7 @@
 - [2] Souscrire
 -- Délai de jouissance : 3 à 6 mois
 -- [3] Revente parfois difficile
+-- [3] Documents remis avant
 - [2] Fiscalité
 -- Loyers : barème + 17,2 %
 -- Trésorerie : PFU 31,4 %
@@ -117,6 +130,7 @@
 
 # Baux et loyers
 - Loi de 1989
+-- [3] Habitation, commercial, professionnel
 - Bail vide : 3 ans
 -- [2] 6 ans pour une société
 - Révision par l'IRL
@@ -125,6 +139,7 @@
 -- [1] Référence médiane
 -- [1] Majoré : + 20 %
 -- [1] Minoré : - 30 %
+-- [3] Loi ALUR de 2014
 - [2] Complément de loyer
 -- Caractère exceptionnel
 -- [3] Jamais pour un logement F ou G
@@ -144,6 +159,8 @@
 - [2] Gérant
 -- Gratuit par défaut
 -- Gère mais ne vend pas
+-- [3] Associé ou non
+-- [3] Révocable
 - [2] Cession de parts
 -- Agrément à l'unanimité
 -- [3] Sauf ascendants et descendants
@@ -159,6 +176,7 @@
 -- [1] Espérance de vie
 -- [1] Notaire
 - Utile aux concubins
+-- [3] Familles recomposées
 - [2] Risques
 -- Nullité demandée par les héritiers
 -- Donation déguisée pour le fisc
@@ -167,6 +185,7 @@
 
 # Viager
 - Aléa sur le décès
+-- [3] Intérêts divergents
 - Occupé ou libre
 - Prix = bouquet + rente
 - Rente selon valeur et âge

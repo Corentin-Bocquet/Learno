@@ -2,6 +2,8 @@
 - Position : ce que dit le client
 -- [3] La valeur répond à « trop cher »
 - Intérêt : ce dont il a besoin
+-- [3] Sécurité : « je ne veux pas perdre »
+-- [3] Rendement : « je veux gagner »
 - Quatre gestes
 -- [1] Questions
 -- [1] Intérêts réels
@@ -15,16 +17,24 @@
 --- Séparer personnes et problème
 - MESORE = BATNA
 -- [2] Améliorer sa MESORE avant
+-- [3] Best Alternative To a Negotiated Agreement
 - Cible et point de réserve
 -- [2] Réserve fixée à froid
 -- [2] Réserve jamais révélée
+-- [3] Banque : cible 0,75 %
 - ZOPA : entre les deux réserves
+-- [3] Marc : pas plus de 0,70 %
+-- [3] Banque : pas sous 0,60 %
 
 # Créer de la valeur
 - Distributive : gâteau fixe
+-- [3] Je gagne, tu perds
 - Intégrative : gâteau agrandi
+-- [3] Je gagne, tu gagnes
 - Échanger ce qui compte peu
+-- [3] Contre ce qui compte beaucoup
 - Pas de prix en premier
+-- [3] Intérêts, options, puis prix
 - [2] Un critère contre plusieurs
 - [2] Logrolling
 - [2] Monnaies d'échange en banque
@@ -40,6 +50,7 @@
 -- [1] Émotions
 - Position : C.P.A.P.
 -- [2] Chaque promesse a sa preuve
+-- [3] Cible, plancher, arguments, preuves
 - Cinq objections
 -- [1] Frais
 -- [1] Risques
@@ -61,17 +72,20 @@
 
 # Écouter et questionner
 - Question ouverte
+-- [3] Comment, qu'est-ce que, pourquoi
 - Silence
 - Méthode des 4R
 -- [1] Reprendre
 -- [1] Relier
 -- [1] Reformuler
 -- [1] Revalider
+-- [3] Obtenir : « oui, c'est bien cela »
 - SPIN
 -- [1] Situation
 -- [1] Problème
 -- [1] Implication
 -- [1] Need-payoff
+-- [3] Créé par Neil Rackham en 1988
 - [2] Reformuler sans interpréter
 - [2] Valider avant de conseiller
 - [2] Neil Rackham
@@ -90,11 +104,14 @@
 -- [2] Vocabulaire
 -- [2] Questions
 -- [2] Émotions
+-- [3] Peur : sécurité
+-- [3] Fierté : orgueil
 - Objections en quatre temps
 -- [1] Accueillir
 -- [1] Clarifier
 -- [1] Traiter
 -- [1] Valider
+-- [3] Accueillir : « je comprends »
 - [2] Trois natures
 -- Réelle
 -- Prétexte
@@ -104,8 +121,11 @@
 
 # Concéder et conclure
 - Si... alors
+-- [3] Si j'ajuste X, vous validez Y
 - Réciprocité
+-- [3] Jamais céder gratuitement
 - Concessions décroissantes
+-- [3] 0,10 puis 0,05 puis 0,02
 - Jamais couper la poire en deux
 - Closing éthique
 -- [2] Synthèse des besoins
@@ -123,6 +143,8 @@
 -- [1] Abondement
 -- [1] Intéressement
 -- [1] Participation
+-- [3] Abondement : complément du plan d'épargne
+-- [3] Intéressement : prime facultative
 - [2] Recrutement : l'autre côté
 - [2] Question ouverte d'abord
 
@@ -137,10 +159,13 @@
 -- [1] Court : moins de 2 ans
 -- [1] Moyen : 2 à 8 ans
 -- [1] Long : plus de 8 ans
+-- [3] Convention courante, pas légale
 - Risque en trois dimensions
 -- [2] Capacité
 -- [2] Tolérance
 -- [2] Expérience
+-- [3] Capacité : combien perdre
+-- [3] Tolérance : combien supporter
 - [2] « Sans risque » : pourquoi
 - [3] Critères d'arbitrage objectifs
 
@@ -150,10 +175,13 @@
 - CIF : conseil en investissement
 -- [2] Association agréée AMF
 -- [2] Lettre de mission
+-- [3] Rapport écrit justifiant le conseil
 - IAS : assurance
 -- [2] Directive DDA
+-- [3] Courtier, agent général, mandataire
 - IOBSP : crédit
 -- [2] Devoir d'explication
+-- [3] Courtier ou mandataire
 - [2] CGP : titre non protégé
 
 # KYC et LCB-FT
@@ -162,8 +190,12 @@
 -- [2] Origine des fonds
 -- [2] Origine du patrimoine
 - Trois étapes du blanchiment
+-- [3] Placement
+-- [3] Empilement
+-- [3] Intégration
 - Approche par les risques
 -- [2] Client, produit, géographie, opération
+-- [3] Pays à risque, sanctions
 - [2] Parcours client
 -- Entrée en relation
 -- Mise à jour
@@ -174,6 +206,7 @@
 - [2] TRACFIN
 -- Confidentialité
 -- Conservation 5 ans
+-- [3] Déclaration de soupçon
 
 # Crédit immobilier
 - Cadre fixe
@@ -189,7 +222,9 @@
 -- [2] IRA
 -- [2] Loi Lemoine : changer à tout moment
 -- [3] Droit à l'oubli : 5 ans
+-- [3] IRA : 6 mois d'intérêts au plus
 - Offre concurrente = MESORE
+-- [3] Deuxième offre écrite ou courtier
 - Comparer au TAEG
 - [2] Négocier le package
 - [2] Concession conditionnelle

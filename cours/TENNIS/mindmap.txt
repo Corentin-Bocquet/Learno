@@ -1,20 +1,26 @@
 # Terrain et score
 - Terrain : 23,77 m sur 8,23 m
 -- [2] Double : 10,97 m de large
+-- [3] Balle profonde repousse l'adversaire
 - Filet : 0,914 m au centre
 -- [2] 1,07 m aux poteaux
 - Jeu : 15, 30, 40
+-- [3] 40-40 : deux points d'écart
 - Set : 6 jeux, 2 d'écart
+-- [3] Match : 2 sets gagnants
 - Jeu décisif : 7 points
+-- [3] 2 points d'écart
 - [2] Deux balles de service
 - [2] Changer de côté après les jeux impairs
 
 # Classements
 - ATP : 52 semaines
 -- [2] 19 résultats
+-- [3] Points qui disparaissent après un an
 - WTA : 52 semaines
 -- [2] 18 résultats
 - FFT : séries et échelons
+-- [3] Application Ten'Up
 - Défendre ses points
 - [2] Meilleures victoires comptent
 - [3] 5e série depuis juillet 2025
@@ -28,8 +34,11 @@
 -- [1] Défense
 -- [1] Neutre
 -- [1] Attaque
+-- [3] Défense : haut, long, au centre
 - Profondeur : la hauteur donne la longueur
 - Lifté et slice
+-- [3] Lifté : passe haut, plonge
+-- [3] Slice : rebond bas
 - Coup droit décalé
 -- [2] Croisé décalé
 -- [2] Long de ligne
@@ -42,39 +51,49 @@
 -- [1] T
 -- [1] Corps
 -- [1] Extérieur
+-- [3] T : filet plus bas, distance courte
 - Trois effets
 -- [1] Plat
 -- [1] Slicé
 -- [1] Lifté
+-- [3] Lifté : kick, rebond haut
 - Placer avant de cogner
 - 1re balle : 70 à 75 % des points
+-- [3] Passer beaucoup de premières
 - 2e balle : 50 %
 - [2] Radar ne fait pas gagner
 
 # Retour de service
 - Remettre la balle en jeu
+-- [3] Le serveur doit jouer un coup
 - Serveur : 80 % de jeux gagnés
 - Pas d'ajustement
+-- [3] Petit saut quand le serveur frappe
 - Retour bloqué ou chipé
+-- [3] Geste court, souvent slicé
 - Contre un gaucher
 -- [2] Se décaler vers le couloir
 - [2] Neutraliser puis attaquer
 
 # Monter au filet
 - Monter : 2 points sur 3
+-- [3] Bonne balle seulement
 - Approche longue de ligne
 - Première volée basse
 - Deuxième volée dans l'angle
 - Smash
+-- [3] De profil, main libre vers la balle
 - [2] Passing en deux coups
 - [2] Lob au-dessus du revers
 
 # Chiffres et points clés
 - Règle des 4 premières frappes
 -- [2] O'Shannessy
+-- [3] Points de 0 à 4 frappes : majorité
 - Petit écart, grand résultat
 -- [2] Federer : 80 % de matchs, 54 % de points
 - Coup gagnant, faute directe, faute provoquée
+-- [3] Faute provoquée : qualité adverse
 - Tous les points ne se valent pas
 -- [1] 30-40 : point de break
 - Jeu décisif
@@ -95,15 +114,21 @@
 -- [1] Attaquant de fond
 -- [2] Serveur-volleyeur
 -- [2] Pousseur
+-- [3] Contreur : patience, filet, amorties
+-- [3] Attaquant de fond : slice, profondeur
 - Plan A, plan B
 -- [2] Bill Tilden
+-- [3] On ne change pas ce qui gagne
 - [2] Changer une tactique qui perd
 
 # Surfaces et conditions
 - Terre battue : lente
 -- [2] Roland-Garros
+-- [3] Rebond haut, on glisse
 - Gazon : rapide
+-- [3] Wimbledon
 - Dur : intermédiaire
+-- [3] Open d'Australie, US Open
 - Chaleur : balle plus vive
 - Froid : balle lourde
 - Altitude : balle plus rapide
@@ -115,13 +140,16 @@
 - Routine en quatre étapes
 -- [2] Jim Loehr
 -- [2] Réagir
+-- [3] Réagir, relâcher, préparer, ritualiser
 - Contrôler sa cible, son effort
 - Langage corporel
 - [2] Ne pas ruminer
 
 # Double
 - Formation classique
+-- [3] Partenaire au filet côté opposé
 - Formation australienne
+-- [3] Partenaire au filet du même côté
 - Jouer au centre
 - Prendre le filet
 - Règles propres
@@ -138,6 +166,7 @@
 -- [1] Service
 -- [1] Schémas
 -- [1] Score
+-- [3] Service et retour : % de premières
 - [2] Repas glucidique 2 à 3 h avant
 - [2] Carnet de match
 - [2] Chang contre Lendl, 1989

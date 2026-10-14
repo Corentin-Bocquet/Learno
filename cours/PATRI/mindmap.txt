@@ -5,7 +5,9 @@
 -- [1] 3 : grands-parents
 -- [1] 4 : autres collatéraux
 - Degré le plus proche gagne
+-- [3] À égalité : partage par tête
 - Représentation par souche
+-- [3] À l'infini en ligne directe
 - [2] Ordre 2
 -- Parents et fratrie : 1/4, 1/4, 1/2
 -- Un parent et fratrie : 1/4, 3/4
@@ -20,6 +22,7 @@
 -- [3] Communauté universelle : piège
 - Enfants communs : 1/4 ou usufruit
 -- [2] Option : 3 mois, silence = usufruit
+-- [3] Usufruit converti en rente viagère
 - Enfant non commun : 1/4 seulement
 - Exonéré de droits
 - [2] Sans enfant
@@ -29,8 +32,11 @@
 - [2] Logement
 -- 1 an gratuit
 -- Droit viager à réclamer
+-- [3] PACS : 1 an aussi
 - [2] Donation entre époux
 -- Révocable à tout moment
+-- [3] Acte notarié
+-- [3] Effet au décès seulement
 
 # Réserve et quotité
 - Réserve : part des enfants
@@ -43,7 +49,9 @@
 - [2] Action en réduction
 -- 5 ans après le décès
 -- [3] 2 ans après la découverte
+-- [3] Indemnité en argent
 - [2] RAAR : renoncer d'avance
+-- [3] Du vivant du parent
 - [2] Indivision
 -- Nul n'est tenu d'y rester
 
@@ -51,6 +59,7 @@
 - Rien sans testament
 - PACS exonéré, concubin à 60 %
 -- [2] Concubin : 1 594 € d'abattement
+-- [3] PACS interdit entre frères et sœurs
 - Outils de protection
 -- [1] Testament
 -- [1] Assurance-vie
@@ -66,8 +75,12 @@
 - Barème de l'article 669
 -- [1] 61 à 70 ans : 40 / 60
 -- [2] 110 moins la dizaine
+-- [3] Moins de 21 ans : 90 / 10
+-- [3] 91 ans et plus : 10 / 90
 - Usufruit viager ou temporaire
+-- [3] Temporaire : durée fixée d'avance
 - Quasi-usufruit : argent
+-- [3] Restituer l'équivalent à la fin
 - [2] Usufruitier : loyers, entretien
 - [2] Nu-propriétaire : grosses réparations
 - [2] Donner la nue-propriété tôt
@@ -87,9 +100,14 @@
 -- [2] Époux, PACS : 80 724 €
 -- [2] Frère, sœur : 15 932 €
 -- [2] Neveu, nièce : 7 967 €
+-- [3] Arrière-petit-enfant : 5 310 €
+-- [3] Handicapé : 159 325 €
 - Barème : 5 à 45 %
+-- [3] Jusqu'à 8 072 € : 5 %
+-- [3] Au-delà de 1 805 677 € : 45 %
 - Don familial : 31 865 €
 -- [2] Donateur de moins de 80 ans
+-- [3] Bénéficiaire majeur
 - [2] Avance de part ou hors part
 - [2] Usufruit temporaire
 -- 23 % par tranche de 10 ans
@@ -101,6 +119,7 @@
 # Assurance-vie
 - Hors succession
 - Clause bénéficiaire
+-- [3] Peut être démembrée
 - Primes avant 70 ans
 -- [1] Article 990 I
 -- [1] 152 500 € par bénéficiaire
@@ -110,6 +129,7 @@
 -- [1] 30 500 € pour tous
 -- [2] Gains exonérés
 - Conjoint exonéré
+-- [3] PACS aussi
 - [2] Prime manifestement exagérée
 - [3] Contrat avant le 20/11/1991
 - [3] Primes avant le 13/10/1998
@@ -122,6 +142,7 @@
 --- [1] Notaire et deux témoins
 -- [2] Mystique
 - Testaments conjoints interdits
+-- [3] Un testament par personne
 - Trois legs
 -- [1] Universel
 -- [1] À titre universel
@@ -138,6 +159,8 @@
 # Céder l'entreprise
 - Motif du vendeur
 - Fonds ou titres
+-- [3] Fonds : clientèle, nom, bail
+-- [3] Titres : société entière
 - Quatre diagnostics
 -- [1] Fiscal
 -- [1] Juridique
@@ -151,6 +174,8 @@
 -- [3] Décote de minorité
 -- [3] Prime de contrôle
 - Garantie d'actif et de passif
+-- [3] Actifs surévalués
+-- [3] Passifs cachés
 - [2] Clauses du cédant
 -- Non-concurrence
 -- Séquestre
@@ -162,24 +187,32 @@
 -- [1] PFU 31,4 %
 -- [2] 12,8 % + 18,6 %
 -- [2] Option pour le barème
+-- [3] Prix de cession - prix d'acquisition
 - Retraite du dirigeant
 -- [1] 500 000 € retirés
 -- [2] 5 ans de direction
 -- [2] 25 % des droits
+-- [3] Céder la totalité des titres
 - Acheteur : droits d'enregistrement
 -- [1] Actions : 0,1 %
 -- [1] Parts de SARL : 3 %
 -- [1] Fonds : 0, 3, 5 %
 -- [2] Abattement de 23 000 €
+-- [3] Société immobilière : 5 %
+-- [3] Fonds : 0 % jusqu'à 23 000 €
 - [3] Hauts revenus : CEHR et CDHR
 
 # Pacte Dutreil
 - Entreprise opérationnelle
 -- [2] Société civile immobilière exclue
 - Engagement collectif : 2 ans
+-- [3] 34 % des droits de vote
+-- [3] 17 % des droits financiers
 - Engagement individuel : 6 ans
+-- [3] Total minimal : 8 ans
 - Direction : 3 ans
 - Abattement de 75 %
+-- [3] Sur la base, pas sur les droits
 - Réduction de 50 %
 -- [2] Donateur de moins de 70 ans
 -- [2] Pleine propriété
@@ -199,8 +232,10 @@
 -- [2] Quote-part de 1 % : 0,25 %
 - Holding de reprise
 -- [1] Emprunt remboursé par dividendes
+-- [3] Dividendes remontés presque sans impôt
 - Apport-cession
 -- [1] Report d'imposition
+-- [3] Reporté, pas exonéré
 - Family buy-out
 -- [2] Financer la soulte
 - [2] Donation-partage avec soulte

@@ -19,7 +19,7 @@ const w=dom.window, doc=w.document, E=x=>w.eval(x), ko=m=>errs.push(m);
 const click=el=>el&&el.dispatchEvent(new w.MouseEvent("click",{bubbles:true}));
 const ONLY=process.env.CID||"";
 const MAXK={1:6,2:8,3:10};
-const nmots=t=>t.replace(/(\d) (?=\d{3}\b)/g,'$1').split(/\s+/).filter(x=>/[\p{L}\p{N}]/u.test(x)).length;
+const nmots=t=>t.replace(/(\d) (?=\d{3}\b)/g,'$1').replace(/(^|[\s:])(?:[RLUDFBMxyz][2'’]?\s+){2,}[RLUDFBMxyz][2'’]?(?=\s|$)/g,'$1FORMULE').split(/\s+/).filter(x=>/[\p{L}\p{N}]/u.test(x)).length;
 
 setTimeout(()=>{
   const ids=E("COURSES.map(c=>c.id)").filter(c=>!ONLY||c===ONLY);
@@ -51,7 +51,7 @@ setTimeout(()=>{
       const all=n=>n.k.forEach(c=>{ for(let L=c.l;L<=3;L++)compte[L]++; if(c.l<=1)mots[1]+=nmots(c.t); all(c); }); all(b);
     });
     if(!(compte[2]>compte[1]*1.25))ko(cid+" : le niveau Approfondi doit etre nettement plus fourni que l'Essentiel ("+compte[2]+" contre "+compte[1]+")");
-    if(!(compte[3]>compte[2]))ko(cid+" : le niveau Expert doit etre plus fourni que l'Approfondi ("+compte[3]+" contre "+compte[2]+")");
+    if(!(compte[3]>=compte[2]*1.2))ko(cid+" : le niveau Expert doit ajouter au moins 20 % de noeuds a l'Approfondi ("+compte[3]+" contre "+compte[2]+", il en faut "+Math.ceil(compte[2]*1.2)+")");
     if(compte[1]>100)ko(cid+" : l'Essentiel compte "+compte[1]+" noeuds, c'est trop (100 au plus, le 20 % qui explique les 80 %)");
     if(compte[1]<18)ko(cid+" : l'Essentiel compte seulement "+compte[1]+" noeuds (18 au moins)");
     if(compte[3]>260)ko(cid+" : l'Expert compte "+compte[3]+" noeuds (260 au plus, ca doit rester concis)");
@@ -121,6 +121,7 @@ setTimeout(()=>{
     }
   }
   console.log(stats.join("\n"));
-  if(errs.length){ console.log("\nECHECS ("+errs.length+")"); errs.slice(0,60).forEach(e=>console.log(" - "+e)); if(errs.length>60)console.log(" ... et "+(errs.length-60)+" autres"); process.exit(1); }
-  console.log("\nmind map magique : OK ("+stats.length+" cours)"); process.exit(0);
+  console.log("\nERREURS: "+errs.length);
+  if(errs.length){ errs.slice(0,60).forEach(e=>console.log(" - "+e)); if(errs.length>60)console.log(" ... et "+(errs.length-60)+" autres"); process.exit(1); }
+  console.log("mind map magique : OK ("+stats.length+" cours)"); process.exit(0);
 },2500);

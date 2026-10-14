@@ -1,0 +1,158 @@
+# Damier et notation
+- Damier 10 x 10
+-- [3] 100 cases
+- 50 cases foncées jouables
+- 20 pions chacun
+- Numérotation de 1 à 50
+-- [2] Noirs : 1 à 20
+-- [2] Blancs : 31 à 50
+-- [2] Rangées 21 à 30 : vides
+-- [3] Fédération internationale
+- Grand diagonal : 5-46
+-- [3] Case 1 en haut, 50 en bas
+- Centre : 27, 28, 23, 24
+- [2] Notation indispensable pour lire
+
+# Déplacements et promotion
+- Pion : une case en diagonale vers l'avant
+-- [3] Blancs montent, noirs descendent
+- Ne recule pas pour se déplacer
+- Prend en arrière
+- Promotion : s'arrêter sur la dernière rangée
+-- [2] Blancs : cases 1 à 5
+-- [2] Traverser sans s'arrêter : reste pion
+- Ouverture 32-28
+-- [2] 33-28, 31-27, 34-30
+-- [3] Centre et structure souple
+
+# Prise obligatoire et rafle
+- Prise obligatoire
+-- [3] Tu n'as pas le choix
+- Le pion prend dans quatre directions
+-- [3] Un pion « hors de danger » peut prendre
+- Rafle : continuer jusqu'au bout
+- Prise majoritaire
+-- [1] Le plus de pièces
+-- [2] Dame et pion comptent pareil
+-- [3] Mauvaise prise : coup illégal
+- [2] Pièces retirées en fin de rafle
+-- [2] Jamais deux fois la même pièce
+- [2] Compter chaque branche
+
+# La dame volante
+- Portée longue en diagonale
+- Prend à distance
+- S'arrête après la prise
+- Vaut environ 3 pions
+-- [3] Pion = 1 point
+-- [3] Décisive en finale
+- Grand diagonal : position rêvée
+-- [3] Coupe le damier en deux
+- [2] Une dame seule ne gagne pas toujours
+
+# Matériel et échanges
+- Compter toujours
+- Un pion d'avance gagne souvent
+-- [3] La plupart des finales
+- Trois raisons d'échanger
+-- [1] Gagner un tempo
+-- [1] Casser une chaîne
+-- [1] Simplifier avec l'avantage
+- Mauvais échanges
+-- [2] Sans plan
+-- [2] Quand on est en retard
+- [2] Coup de tir : juger le solde
+-- [3] Jamais un cadeau sans compter
+
+# Centre et structure
+- Occuper le centre
+-- [3] Pion au bord : moitié des options
+- Formation classique
+- Attaque à l'aile
+- Formation en pointe
+- Trou
+-- [3] Porte d'entrée pour l'adversaire
+- Pion arriéré
+-- [3] Cible de tout un plan
+- [2] Chaque coup est irréversible
+- [2] Que ce coup ouvre-t-il chez moi ?
+
+# Tempo et opposition
+- Tempo : le rythme des coups
+-- [3] Les pions ne reculent jamais
+- Opposition
+-- [1] Frontale
+-- [1] Diagonale
+- Coups d'attente
+-- [2] Un de plus impose l'opposition
+- Temps de repos
+-- [3] Garder un coup d'attente en réserve
+-- [2] Être obligé de jouer est un désavantage
+
+# Combinaisons
+- Sacrifice
+-- [3] On choisit la case de l'adversaire
+- Prise forcée
+- Rafle
+- Coup de dame
+- Coups classiques
+-- [1] Coup Philippe
+-- [1] Coup du bûcheron
+-- [1] Coup royal
+-- [3] Philippe : deux sacrifices croisés
+-- [3] Bûcheron : rafle en zigzag
+-- [3] Royal : fin en dame
+- [2] Repérer les points de chute
+- [2] Réflexe défensif
+-- [3] Un pion donné cache un sacrifice
+- [2] Rejouer les positions
+
+# Blocage et faiblesses
+- Sans coup légal : perdu
+- Enfermement
+-- [2] Compter les pions actifs
+-- [3] Pion figé = pion en moins
+- Blocage d'une aile
+- Cases clés
+-- [3] Effet permanent
+- Faiblesses
+-- [1] Pion arriéré
+-- [1] Trou
+-- [2] Aile dégarnie
+-- [2] Pion avancé
+- [2] Diagnostic en trois questions
+- [2] Prophylaxie
+
+# Ouvertures et finales
+- Centre sans trou
+- Principe des trois coups
+-- [3] Trois parties comprises valent cent lignes
+-- [2] Ne pas perdre
+- Pas de pion isolé trop avancé
+- Finales
+-- [1] Dame contre pion : gain
+-- [1] Dame contre dame : nulle
+-- [1] Deux dames contre une : gain
+-- [3] Trois dames contre une : gain
+- Règle des seize coups
+-- [3] Finales à trois dames
+- [2] Grand diagonal en finale
+- [2] Travailler 20 finales
+
+# Calcul et plan
+- Quatre temps
+-- [1] Prises
+-- [1] Menaces
+-- [1] Candidats : 2 ou 3
+-- [1] Vérifier
+-- [3] Calculer jusqu'à une position calme
+- Dernier regard
+-- [3] Supprime la moitié des défaites
+- Trois coups vérifiés, pas dix supposés
+- Plan expert
+-- [1] Matériel
+-- [1] Positionnel
+-- [1] Percée
+-- [3] Un plan tient en une phrase
+- [2] Échange forcé comme outil
+- [2] Problèmes chronométrés chaque jour

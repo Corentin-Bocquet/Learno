@@ -1,0 +1,205 @@
+# Le calcul qui compte
+- Abonnés = vues x taux de conversion
+-- [3] Deux variables, pas trois
+- Deux leviers
+-- [1] Les vues
+-- [1] La conversion
+-- [3] Vues : miniature, titre, sujet
+-- [3] Conversion : hook, rétention, CTA
+- Taux = abonnés gagnés / vues
+- Repères de conversion
+-- [1] Moyenne : 0,3 à 0,8 %
+-- [1] Bonne chaîne : 0,8 à 1,5 %
+-- [2] Excellent : plus de 1,5 %
+-- [3] Calcul sur les 10 dernières vidéos
+- [2] Moyenne et médiane
+- [2] Recalculer toutes les 4 semaines
+- [3] Exemple : 0,8 % puis 1,2 %
+
+# Lire YouTube Studio
+- Six chiffres
+-- [1] Impressions
+-- [1] CTR
+-- [1] Vues
+-- [2] Durée moyenne
+-- [2] Rétention
+-- [2] Abonnés gagnés
+- Chaîne de causalité
+-- [3] Impressions basses : travailler le sujet
+- Diagnostic en trois cas
+-- [2] Peu d'impressions : le sujet
+-- [2] CTR bas : le packaging
+-- [2] Rétention basse : la promesse
+- [2] Onglets Reach, Engagement, Audience
+
+# CTR et miniature
+- CTR = clics / impressions
+-- [1] Moyenne : 2 à 4 %
+-- [1] Bon : 5 à 8 %
+-- [2] Excellent : plus de 10 %
+-- [3] CTR élevé sur peu d'impressions : abonnés
+- Un visage avec une émotion
+-- [3] 13 millisecondes pour un visage
+- Trois mots maximum
+- Contraste fort
+-- [3] Vue en 120 pixels sur mobile
+- Test des trois secondes
+-- [3] Réduire à la taille d'un ongle
+- [2] Miniature : question visuelle
+- [2] Titre : la tension
+
+# Rétention et hook
+- Courbe de rétention
+-- [2] 0 à 30 s : chute sous 40 %
+-- [3] Noter l'horodatage de chaque décrochage
+- Trois signaux
+-- [2] Chute verticale : hook
+-- [2] Décrochage : passage trop long
+-- [2] Pic : moment fort
+- Hook : structure en 4 temps
+-- [1] 0 à 3 s : choc
+-- [1] 3 à 10 s : enjeu
+-- [1] 10 à 20 s : promesse
+-- [2] 20 à 30 s : preuve
+-- [3] Supprimer la première phrase
+- Short : 2 secondes
+-- [3] Arrêter le scroll en 1 seconde
+- Trois biais
+-- [2] Information gap
+-- [2] Aversion à la perte
+-- [2] Preuve sociale
+
+# Sujet et angles
+- Un sujet, pas un thème
+- Quatre OUI
+-- [1] Une histoire
+-- [1] Une tension
+-- [1] Un humain
+-- [1] Une promesse
+-- [3] Un seul NON : sujet écarté
+- Peur, désir, curiosité
+- Outlayer
+-- [1] Vues / moyenne de la chaîne
+-- [2] Chercher ailleurs et en petit
+-- [3] Cherché sur YouTube US
+- Angle contre-intuitif
+-- [3] Contredit une croyance dominante
+- [2] Copier la structure, pas le contenu
+- [2] Chercher la donnée avant
+
+# Packaging
+- Titre et miniature : un duo
+-- [3] Jamais jugés séparément
+- Leviers du titre
+-- [1] Chiffre précis
+-- [1] Tension non résolue
+-- [2] Enjeu personnel
+-- [2] Négation d'une évidence
+-- [3] Chiffre : 37 jours bat un mois
+- Méthode des 20 titres
+-- [2] Les bons titres : 12e à 18e
+-- [3] Les 5 premiers : les plus faibles
+- Test des trois secondes
+- [2] Le clickbait pur ne marche plus
+
+# Short et vidéo longue
+- Short en 5 temps
+-- [1] Hook
+-- [1] Promesse
+-- [1] Retournement
+-- [1] Révélation
+-- [1] CTA
+-- [3] Douleur émotionnelle cachée
+- Une seule idée
+-- [3] Appuyée par un chiffre vérifiable
+- Un seul CTA
+-- [3] Abonnement, commentaire ou lien
+- Vidéo longue
+-- [2] Actes distincts
+-- [2] Question ouverte jusqu'à la fin
+-- [2] Mini-expériences : 3 minimum
+- [2] CTA après la révélation
+- [3] Statistique inventée : crédibilité détruite
+
+# Description et SEO
+- 150 premiers caractères
+-- [3] Mot-clé principal, phrase naturelle
+- Trois premières lignes
+-- [3] Ligne 3 : playlist thématique
+- Corps : 150 à 400 mots
+- 15 hashtags
+-- [3] 5 de niche, 5 larges, 5 tendance
+- 20 tags
+- Packaging pour le lancement
+- [2] SEO pour la longue traîne
+
+# Rythme, tests, pièges
+- N x 1,5 vidéos par mois
+-- [1] 60 % dans les formats qui convertissent
+-- [3] 40 % pour tester
+- Short découvre, longue transforme
+- Cycle de 4 semaines
+-- [3] Recalcul à J+28
+- Règle de décision
+-- [1] Taux en hausse : on double
+-- [1] Taux stable : changer d'angle
+- Tableau : 10 lignes, 5 colonnes
+-- [3] Titre, vues, abonnés, taux, format
+- [2] Régularité avant intensité
+- [2] Pièges
+-- Regarder les vues au lieu du taux
+-- Changer de niche chaque mois
+-- Juger une vidéo isolée
+- [2] Perfectionnisme
+
+# Plan de 0 à 100 000
+- Trois paliers
+-- [1] 0 à 1 000 : trouver son format
+-- [1] 1 000 à 10 000 : répéter
+-- [1] 10 000 à 100 000 : industrialiser
+-- [3] Palier 2 : le plus long
+- Positionnement
+-- [1] Ce que je sais faire
+-- [1] Ce que les gens cherchent
+-- [1] Ce que les annonceurs paient
+-- [3] La niche fixe le plafond
+- Phrase unique
+-- [2] J'aide qui à obtenir quoi
+-- [3] Test : 5 secondes sur la page
+- [2] RPM par niche
+- [2] Routine hebdomadaire
+
+# Quality CTR et diagnostic
+- Quality CTR : clic et rétention
+-- [3] Clic sans rétention : pénalisé
+- Minutes, pas pourcentages
+-- [3] 20 min à 40 % : 8 minutes
+- Benchmarks
+-- [1] Taux de clic : 4 à 6 % correct
+-- [1] Rétention à 0:30 : 50 à 65 % correct
+- Diagnostic à J+1 et J+2
+-- [2] Peu d'impressions, bon CTR : attendre
+-- [2] CTR sous 3 % : changer la miniature
+- Une seule variable à la fois
+- Jamais de réupload
+-- [3] Perte de l'historique
+- [2] Couper les 10 à 20 premières secondes
+- [2] Juger après 48 à 72 heures
+
+# Plateformes, argent, système
+- Hub et satellites
+-- [1] Une vidéo longue
+-- [1] 3 à 5 courts dérivés
+-- [3] Satellites réécrits, pas des extraits
+- Une plateforme secondaire à la fois
+- Une seule chaîne
+- Monétisation
+-- [1] 55 % longues, 45 % Shorts
+-- [2] 1 000 abonnés + 4 000 h
+-- [2] Accès anticipé : 500 + 3 000 h
+-- [2] Sponsors : meilleure source
+-- [2] 8 minutes : coupures pub
+-- [3] Vidéo à 30 000 vues : 600 à 1 500 €
+- [2] Banque de 30 packagings
+-- [3] Alerte sous 15
+- [2] Tournage groupé

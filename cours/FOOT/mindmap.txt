@@ -1,9 +1,13 @@
 # Lois du jeu
 - 11 joueurs, 90 minutes
+-- [3] Moins de 7 : match arrêté
+-- [3] Mi-temps : 15 minutes au plus
 - But : 7,32 m sur 2,44 m
 - Penalty à 11 m
 - Ballon sorti : ligne franchie en entier
+-- [3] But : entre poteaux, sous la barre
 - Pas de hors-jeu sur touche ou corner
+-- [3] Ni sur six mètres
 - 5 remplacements
 -- [2] 3 fenêtres au plus
 - [2] Gardien : 8 secondes en main
@@ -14,11 +18,14 @@
 - Hors-jeu : photo à la passe
 -- [1] Bras exclus
 -- [1] Égalité : en jeu
+-- [3] Tête, corps, pieds comptent
 - Position n'est pas faute
 -- [2] Participer au jeu
 - Coup franc direct ou indirect
+-- [3] Même faute dans sa surface : penalty
 - Penalty dans sa surface
 - Main volontaire
+-- [3] But refusé après main de l'attaquant
 - VAR : B.P.R.M.
 -- [2] But
 -- [2] Penalty
@@ -33,6 +40,7 @@
 -- [1] 6, 8, 10 milieux
 -- [1] 7 et 11 ailiers, 9 avant-centre
 - Poste = où, rôle = quoi
+-- [3] Deux latéraux, deux rôles opposés
 - Systèmes : on lit arrière vers avant
 -- [1] 4-4-2 compact
 -- [1] 4-3-3 large
@@ -48,7 +56,9 @@
 
 # Quatre phases
 - Possession organisée
+-- [3] Structure stable, progresser
 - Transition défensive
+-- [3] Réagir dans les 5 secondes
 - Défense organisée
 - Transition offensive
 -- [2] Se jouent en 0 à 5 secondes
@@ -57,11 +67,14 @@
 
 # Le bloc
 - Haut : je vole
+-- [3] Ligne près du milieu de terrain
 - Moyen : je contrôle
 - Bas : je protège
+-- [3] Ligne près de son but
 - Compacité
 -- [2] Une trentaine de mètres
 - Coulissement
+-- [3] Défendre la zone du ballon
 - Zone, individuelle, mixte
 - [2] Orienter vers les côtés
 
@@ -73,16 +86,20 @@
 -- [1] Contrôle loupé
 -- [2] Adversaire lent
 -- [2] Dos au jeu
+-- [3] Latéral, lent, loupé, ligne
 - Presser en courbe
 -- [2] Couvrir la ligne de passe
 - PPDA bas = pressing intense
+-- [3] Passes laissées avant action défensive
 
 # Construction
 - Build-up
 - Surnombre : 3 contre 2
+-- [3] Un homme toujours libre
 - Joueur structurellement libre
 - Qui décroche libère
 - Troisième homme
+-- [3] Arme contre le pressing individuel
 - Relance courte ou longue
 -- [2] Courte : garder le ballon
 -- [2] Longue : sauter le pressing
@@ -91,8 +108,10 @@
 - Cinq couloirs
 - Demi-espaces
 -- [2] Frontière de deux défenseurs
+-- [3] Zone du « à toi, à moi »
 - Zone 14
 -- [2] Devant la surface, dans l'axe
+-- [3] Meilleurs angles de tir et de passe
 - Overload
 -- [2] Charger à droite, frapper à gauche
 - Renversement de jeu
@@ -101,8 +120,10 @@
 # Transitions
 - Gegenpressing
 -- [1] Dans les 5 secondes
+-- [3] Adversaire mal orienté après récupération
 - Rest defense
 -- [2] Souvent 3 + 2
+-- [3] Empêcher la contre-attaque
 - Contre-attaque verticale
 - Contre-presser ou se replier
 -- [2] Presser si adversaire mal orienté
@@ -116,14 +137,19 @@
 -- [1] Individuel
 -- [1] Mixte
 - Corner rentrant ou sortant
+-- [3] Rentrant : dangereux pour le gardien
+-- [3] Sortant : tête en course
 - Mur à 9,15 m
+-- [3] Attaquants à 1 m du mur
 - Penalty : gardien un pied sur la ligne
 - [2] Premier poteau
 
 # Statistiques
 - xG : qualité des occasions
+-- [3] Probabilité entre 0 et 1
 - Possession : pas la domination
 - Tirs cadrés
+-- [3] Tirs qui obligent le gardien
 - PPDA
 - Field tilt
 - [2] Un match, du hasard
@@ -139,6 +165,7 @@
 -- [2] Cinq
 -- [2] Reste
 -- [2] Pause
+-- [3] Bloc-Presse-Décroche-Libre-Cinq-Reste-Pause
 - Trois réflexes
 -- [1] Suivre la structure
 -- [1] Observer les 5 secondes
@@ -147,5 +174,6 @@
 -- [2] Système
 -- [2] Bloc
 -- [2] Joueur
+-- [3] Mi-temps : 3 points
 - [2] Minute, phase, fait
 - [2] 1 fait, 3 faits : un plan

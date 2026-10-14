@@ -35,6 +35,8 @@ setTimeout(()=>{
 
   const sansExamen=w.eval("COURSES.filter(c=>!(window.PEXAM&&PEXAM[c.id])).map(c=>c.id).join(',')");
   if(sansExamen)dur.push("cours sans banque d'examen pratique : "+sansExamen);
+  const sansMap=w.eval("COURSES.filter(c=>!(window.MMAP&&MMAP[c.id])).map(c=>c.id).join(',')");
+  if(sansMap)dur.push("cours sans mind map magique : "+sansMap);
 
   const doublons=w.eval("(()=>{const s={},d=[];EXOS.forEach(e=>{if(s[e.i])d.push(e.i);s[e.i]=1});return d.join(',')})()");
   if(doublons)dur.push("identifiants dupliques : "+doublons);

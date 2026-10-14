@@ -246,6 +246,17 @@ Sources : `design/arcade/exprat.js` et `exprat.css` (injectés par `tools/design
   distractors aussi longs que la bonne réponse dès le départ : corriger après coup coûte beaucoup plus cher.
 - **Nouveau cours** : ajouter `cours/<CID>/examen.js` (premier caractère `/*EXAMEN*/`), sinon `ci_smoke.js` échoue.
 
+## Mind map magique (demande du 14/10/2026)
+
+À la fin de chaque cours, sous l'examen pratique : les grandes idées en mots clés floutés. Un toucher révèle (animation), un second
+recouvre ; l'apprenant devine puis vérifie. Trois profondeurs (Essentiel, Approfondi, Expert) sur les mêmes nœuds, test `tests/tmindmap.js`.
+- **Sources** : `cours/<CID>/mindmap.txt` (texte brut : `# Grande idée`, `- mot clé`, `-- détail`, `--- précision`, `[1]`, `[2]` ou `[3]`
+  pour forcer le niveau). `tools/assemble.py` les injecte dans `window.MMAP[CID]`. Moteur : `design/arcade/mindmap.js` et `mindmap.css`.
+- **Charte** (vérifiée par le test) : 4 à 12 grandes idées, au plus 6 flèches par notion à l'Essentiel (8 puis 10 aux niveaux détaillés),
+  un mot clé de 7 mots au plus (en moyenne moins de 4), Essentiel de 18 à 100 nœuds, Expert au moins 20 % plus fourni qu'Approfondi.
+  Le 20 % qui explique les 80 % : on retient les chiffres, les règles et les mnémos du cours, jamais de phrase.
+- **Nouveau cours** : écrire `cours/<CID>/mindmap.txt` à partir des encadrés « Ce que tu dois retenir » des guides, sinon `ci_smoke.js` échoue.
+
 ## Cours express (demandes du 12/10/2026)
 
 Réglage « Cours express » (Profil, Réglages, `S.settings.express`, désactivé par défaut, pour tout le monde).
